@@ -9,7 +9,7 @@ $app->router->get('/utrance-railway/public/index.php/', function() {
     return "hi from asindu";
 });
 
-$app->router->get('/utrance-railway/public/index.php/contact/', 'contact');
+$app->router->get('/utrance-railway/public/index.php/', 'home');
 
 $app->router->post('/utrance-railway/public/index.php/home/',[SiteController::class, 'home'] );
 

@@ -29,9 +29,6 @@
             $method = $this->request->getMethod();
             $callback = $this->routes[$method][$path] ?? false;
 
-            // var_dump($callback);
-            // exit;
-
             if ($callback === false) {
                 $this->response->setStatusCode(404);
                 return "Not found";
@@ -60,6 +57,8 @@
         {
             ob_start();
             include_once "../views/layouts/main.php";
+            include_once "../views/layouts/header.php";
+            include_once "../views/layouts/footer.php";
             return ob_get_clean();
         }
 
@@ -71,7 +70,7 @@
             }
 
             ob_start();
-            include_once "../views/$view.php";
+            include_once "../views/pages/$view.php";
             return ob_get_clean();
         }
 
