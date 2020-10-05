@@ -3,6 +3,7 @@
 include_once "Router.php";
 include_once "Request.php";
 include_once "Response.php";
+include_once "Database.php";
 
 class App {
     
@@ -11,13 +12,16 @@ class App {
     public $router;
     public $request;
     public $response;
+    public $db;
 
-    public function __construct($rootPath) {
+    public function __construct($rootPath, $config) {
         self::$ROOT_DIR = $rootPath;
         self::$APP = $this;
         $this->request = new Request();
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
+
+        $this->db = new Database($config['db']);
     }
 
     public function run() {

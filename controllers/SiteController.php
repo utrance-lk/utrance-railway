@@ -5,6 +5,7 @@ include_once "../classes/core/Controller.php";
 class SiteController extends Controller{
 
     public function home() {
+        echo "Hello";
         $params = [
             'name' => "shark"
         ];
@@ -16,7 +17,9 @@ class SiteController extends Controller{
         App::$APP->router->renderView('contact');
     }
 
-    public function handleContact() {
+    public function handleContact($request) {
+        $body = $request->getBody();
+        var_dump($body);
         return 'Handling submitted data';
     }
 
