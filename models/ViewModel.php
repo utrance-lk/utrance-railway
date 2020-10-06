@@ -10,9 +10,17 @@ class ViewModel extends Model{
 
     public function getTours() {
 
-        $from = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:from");
-        $to = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:to");
-        
+        $fromId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:from");
+        $toId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:to");
+
+        $fromId->bindValue(":from", $this->from);
+        $toId->bindValue(":to", $this->to);
+
+        $fromId = $fromId->execute();
+        $toId = $toId->execute();
+
+        $fromRouteId = APP::$APP->db->pdo->prepare("SELECT route_id FROM stops WHERE station_id=:fromId");
+        var_dump($fromRouteId);
 
     }
 

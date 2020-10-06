@@ -28,6 +28,15 @@ body {
 
 /* ///// BASE ///// */
 
+/* ///// COMPONENTS ///// */
+
+/* BUTTONS */
+
+/* BUTTONS */
+
+/* ///// COMPONENTS ///// */
+
+
 /* ///// LAYOUTS ///// */
 
 .container {
@@ -119,6 +128,8 @@ body {
 
 .search-bar__form {
   display: flex;
+  border: 1px solid orchid;
+
 }
 
 .search-bar__form-1,
@@ -155,8 +166,9 @@ input {
 .search-btn {
   display: inline-block;
   position: absolute;
-  top: 70%;
+  top: 120%;
   left: 50%;
+  outline: none;
 }
 
 .search-btn button {

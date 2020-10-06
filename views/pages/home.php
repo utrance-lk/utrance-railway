@@ -4,7 +4,7 @@
           <div class="primary-content--searchbar">
             <div class="search-box">
               <div class="search-box--inside">
-                <form action="#" class="search-bar__form">
+                <form action="" method="POST" class="search-bar__form">
                   <div class="search-bar__form-1">
                     <label for="from">From</label>
                     <input type="text" id="from" name="from" />
@@ -17,13 +17,12 @@
                     <label for="when">When</label>
                     <input type="date" id="when" name="when" />
                   </div>
+                  <div class="btn search-btn">
+                    <button type="submit">search <i class="fas fa-search"></i></button>
+                  </div>
                 </form>
               </div>
-            </div>
-            <div class="btn search-btn">
-              <button>search <i class="fas fa-search"></i></button>
             </div>
           </div>
         </div>
       </div>
-
