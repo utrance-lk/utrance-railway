@@ -1,16 +1,16 @@
 <?php
 
 include_once "../classes/core/Controller.php";
+include_once "../models/ViewModel.php";
 
-class SiteController extends Controller{
+class ViewController extends Controller{
 
     public function home() {
-        echo "Hello";
-        $params = [
-            'name' => "shark"
-        ];
-        // return App::$APP->router->renderView('home', $params);
-        $this->render('home', $params);
+        return $this->render('home');
+    }
+
+    public function search() {
+        $viewModel = new ViewModel();
     }
 
     public function contact() {

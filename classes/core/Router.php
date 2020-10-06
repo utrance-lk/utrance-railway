@@ -59,6 +59,7 @@
             include_once "../views/layouts/main.php";
             include_once "../views/layouts/header.php";
             include_once "../views/layouts/footer.php";
+            include_once "../views/layouts/libraries.php";
             return ob_get_clean();
         }
 
@@ -68,7 +69,6 @@
             foreach($params as $key => $value) {
                 $$key = $value;
             }
-
             ob_start();
             include_once "../views/pages/$view.php";
             return ob_get_clean();
