@@ -16,11 +16,20 @@ class ViewModel extends Model{
         $fromId->bindValue(":from", $this->from);
         $toId->bindValue(":to", $this->to);
 
-        $fromId = $fromId->execute();
+       $fromId = $fromId->execute();
         $toId = $toId->execute();
 
-        $fromRouteId = APP::$APP->db->pdo->prepare("SELECT route_id FROM stops WHERE station_id=:fromId");
-        var_dump($fromRouteId);
+        var_dump($fromId);
+        // print($fromId);
+        // var_dump($fromId);
+        // var_dump($toId);
+
+        // $fromRouteId = APP::$APP->db->pdo->prepare("SELECT route_id FROM stops WHERE station_id=:from");
+
+        // $fromRouteId->bindValue(":from", $fromId);
+        // $fromRouteId->execute();
+
+        // var_dump($fromRouteId);
 
     }
 

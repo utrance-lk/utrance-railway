@@ -15,6 +15,14 @@ class ViewController extends Controller{
         if($request->isPost()) {
             $viewModel->loadData($request->getBody());
             
+            if($viewModel->getTours()) {
+                return 'Success';
+            }
+
+            else {
+                return 'Failed';
+            }
+
         }
 
     }
