@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+   .dropbtn {
+  background-color: #140028;
+  color: white;
+  
+  font-size: 1.8rem;
+  border: none;
+  width: 17rem;
+  height: 5rem;
+  
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 16rem;
+  box-shadow: 0rem 0.8rem 1.6rem 0rem rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 1.2rem 1.6rem;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+html{
+  font-size: 62.5%;
+}
+
+
+    </style>
+    <body>
+      
+      <div class="dropdown" style="float:right;">
+        <button class="dropbtn" ><img src="img/user1.jpg"  class="img_role" style="width: 3rem;height: 3rem;float: left;">&nbsp;&nbsp;&nbsp;<text style="padding-top: 15px;">Ashika</text>&nbsp;&nbsp;&nbsp;<i class="fa fa-bars"></i></button>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+    </body>

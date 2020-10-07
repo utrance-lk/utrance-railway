@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/admin_dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="css/dashboard_newsFeed.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    
+</head>
+<body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
+    <div id="logo_header" style="float: left;">
+       <img src="img/logo1.png" style="width: 160px;height:150px;margin-top: -50px;padding-left: 20px;float: left;">
+
+     <!--img src="img/user1.jpg" class="img_role" style="width: 30px;height: 30px;padding-top: 10px;float: right;"!-->
+      <div class="dropdown" style="float:right;">
+        <button  class="dropbtn" style="margin-top: 10px;"><img src="img/user1.jpg"  class="img_role" style="width: 30px;height: 30px;float: left;">&nbsp;&nbsp;&nbsp;<text id="first_name">Ashika&nbsp;&nbsp;&nbsp;</text><i class="fa fa-bars"></i></button>
+        <div class="dropdown-content">
+          <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Dashboard</a>
+          <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Update Profile</a>
+          <a href="#"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Reset Password</a>
+          <a href="#"><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Notifications</a>
+          <a href="#"><i class="fa fa-train" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Update Train Details</a>
+          <a href="#"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Update User Details</a>
+          <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add notices</a>
+          <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Train Details</a>
+          <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Sign out</a>
+        </div>
+      </div> 
+
+       
+        
+           
+           </div>
+    </div>
+
+
+    <div id="hello_body" >
+        <br>
+        <br>
+        <br>
+        <br>
+        <text style="font-size: 40px; color: white;padding-left: 100px;font-weight: bold;">Hello, Ashika</text>
+        <div id="profileImage"></div>
+
+
+        <script>
+            $(document).ready(function(){
+                var firstName = $('#first_name').text();
+               // var lastName = $('#lastName').text();
+                var intials = $('#first_name').text().charAt(0) ;
+                var profileImage = $('#profileImage').text(intials);
+              });
+            </script>
+        
+        <br><br><br>
+        <text style="color: white;font-size: 25px;padding-left: 100px;"> Account Email</text>
+        <br>
+        <text id="user_email" style="color: white;font-size: 19px;padding-left: 100px;font-weight: bold;">ashikaabeysuriya456@gmail.com</text>
+   </div>
+
+   <div id="functions_body" >
+       <div id="functions_body_button_set">
+       <button id="button_dashboard" class="button_function" style="float: left;" >Dashboard&nbsp;&nbsp;|</button>
+       <button id="button_update" class="button_function" style="float: left;">Update Own profile&nbsp;&nbsp;|</button>
+       <button  id="button_changePassword" class="button_function" style="float: left;">Reset Password&nbsp;&nbsp;|</button>
+       <button id="button_update_Traindetails" class="button_function" style="float: left;">Update Train details&nbsp;&nbsp;|</button>
+       <button id="button_update_Traindetails" class="button_function" style="float: left;">Add Train details&nbsp;&nbsp;|</button>
+       <button class="button_function" style="float: left;margin-left: 15px;">Update User Details&nbsp;&nbsp;|</button>
+      
+       <button class="button_function" style="float: left;margin-left: 15px;">Add notices</button>
+       <div>
+   </div>
+   <br>
+   <br>
+   <div id="button_area_newsFeed" style="width: 100%;margin-top: 25px;">
+       <div id="button_area" >
+       
+        <div id="newsFeed"  >
+            <div class="newsCollection" style="float: left;font-weight: bold;">
+                <div class="img_train"><img  src="img/train1.webp" style="width: 250px;height:175px;"></div>
+                <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
+                
+            </div>
+    
+            <div class="newsCollection" style="float: left;">
+                <div class="img_train"><img src="img/train2.jpg" style="width: 250px;height:175px;"></div>
+                <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
+            </div>
+    
+            <div class="newsCollection" style="float: left;">
+                <div class="img_train"><img src="img/train3.jpg" style="width: 250px;height:175px;"></div>
+                <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
+            </div>
+            <div class="newsCollection" style="float: left;">
+                <div class="img_train"><img  src="img/train1.webp" style="width: 250px;height:175px;"></div>
+                <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
+                
+            </div>
+            <div class="newsCollection" style="float: left;margin-top: 50px;">
+                <div class="img_train"><img src="img/train3.jpg" style="width: 250px;height:175px;"></div>
+                <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
+            </div>
+
+            <div class="newsCollection" style="float: left;margin-top: 50px;">
+                <div class="img_train"><img src="img/train3.jpg" style="width: 250px;height:175px;"></div>
+                <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+            
+       </div>
+
+   </div>
+   <script>
+       $(document).ready(function(){
+           $("#button_dashboard").click(function(){
+               $("#button_area").load("dashboard_newsFeed.html");
+           });
+       });
+   </script>
+
+     
+
+
+<script>
+    $(document).ready(function(){
+        $("#button_update").click(function(){
+            $("#button_area").load("update_userProfile.html");
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $("#button_changePassword").click(function(){
+            $("#button_area").load("user_change_password.html");
+        });
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function(){
+        $("#button_update_Traindetails").click(function(){
+            $("#button_area").load("update_trainDetails.html");
+        });
+    });
+</script>
+</body>

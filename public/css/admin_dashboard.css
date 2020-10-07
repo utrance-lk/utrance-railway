@@ -1,0 +1,155 @@
+#logo_header{
+    background-color:#140028;
+    background-image: none;
+    height: 60px;
+    width: 100%;
+    padding: 0px;
+    
+    
+    
+
+}
+
+
+.body{
+    width:100%;
+    height:100%;
+    padding: 0px;  
+   
+}
+@font-face{
+    src:url(fonts/Aldrich-Regular.ttf);
+    font-family: Aldrich;
+}
+#user_name{
+    background-color:black;
+    color: white;
+    font-size: 25px;
+     font-weight:bold; 
+     float:right;
+     margin-right: -110px;
+     margin-top:15px;
+     font-family: Aldrich;
+     width:80px;
+     cursor:pointer;
+
+
+}
+
+#hello_body{
+    background-color: #210340;
+    width: 100%;
+    height: 300px;
+    font-family: Aldrich;
+    padding-top: 30px;
+    
+}
+
+#functions_body{
+    background-color: #210340;
+    width: 100%;
+    height: 50px; 
+    font-family: Aldrich;
+   
+}
+
+#functions_body_button_set{
+  
+    font-family: Aldrich;
+    width:1250px;
+    height: 100px;
+   padding-left: 80px;
+}
+.button_function{
+   cursor: pointer;
+    height: 40px;
+    border-radius: 14px;
+    border: none;
+    color:white;
+    background-color:#140028;
+    font-size: 17px;
+    border-bottom: 4px;
+    
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-weight: bold;
+    outline: none;
+    font-family: Aldrich;
+}
+.button_function:hover {
+   
+    color:grey;
+    }
+
+
+    #profileImage {
+        width: 190px;
+        height: 190px;
+        float: right;
+        border-radius: 50%;
+        background: #9c98a7;
+        font-size: 65px;
+        color: #fff;
+        text-align: center;
+        line-height: 190px;
+        margin: 20px 0;
+        margin-right: 20px;
+        margin-top: -30px;
+      }
+
+
+
+      
+
+
+  
+
+
+
+
+
+
+      .dropbtn {
+        background-color: #140028;
+        color: white;
+        outline: none;
+        font-size: 17px;
+        border: none;
+        width: 170px;
+        height: 30px;
+        font-family: Aldrich;
+        cursor: pointer;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        font-size: 16px;
+        font-weight: bolder;
+        background-color: #f9f9f9;
+        min-width: 240px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        outline: none;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: Aldrich;
+      }
+      .dropdown-content a:hover {background-color:lightgray;}
+      .dropdown:hover .dropdown-content {display: block;}
+      .dropdown:hover .dropbtn {background-color: #555555;font-family: Aldrich;}
+      
+      
+      
