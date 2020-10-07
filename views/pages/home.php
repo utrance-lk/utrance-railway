@@ -17,8 +17,8 @@
                     <label for="when">When</label>
                     <input type="date" id="when" name="when" />
                   </div>
-                  <div class="btn search-btn">
-                    <button type="submit">search <i class="fas fa-search"></i></button>
+                  <div class="search-btn">
+                    <button type="submit" class="btn">search <i class="fas fa-search"></i></button>
                   </div>
                 </form>
               </div>

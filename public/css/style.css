@@ -32,6 +32,11 @@ body {
 
 /* BUTTONS */
 
+.btn {
+  outline: none;
+  cursor: pointer;
+}
+
 /* BUTTONS */
 
 /* ///// COMPONENTS ///// */
@@ -168,7 +173,6 @@ input {
   position: absolute;
   top: 120%;
   left: 50%;
-  outline: none;
 }
 
 .search-btn button {
@@ -177,7 +181,6 @@ input {
   border-radius: 1.5rem;
   border: none;
   border-bottom: 1px solid red;
-  cursor: pointer;
   color: #fff;
 }
 
