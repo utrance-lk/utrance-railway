@@ -1,5 +1,13 @@
 /* ///// BASE ///// */
 
+/* variables */
+:root {
+  --color-primary-dark: 33, 3, 64;
+  --color-primary-light: 27, 147, 194;
+  --color-secondary-dark: 19, 0, 38;
+
+}
+
 *,
 *::before,
 *::after {
@@ -16,11 +24,11 @@ body {
   box-sizing: border-box;
   font-family: "Noto Sans JP", sans-serif;
   color: black;
-  background-color: rgb(33, 3, 64);
+  background-color: rgb(var(--color-primary-dark));
   background-image: linear-gradient(
       to right bottom,
-      rgba(33, 3, 64, 0.8),
-      rgba(19, 0, 38, 0.8)
+      rgba(var(--color-primary-dark), 0.8),
+      rgba(var(--color-secondary-dark), 0.8)
     ),
     url("../img/train-front.jpg");
   background-size: cover;
