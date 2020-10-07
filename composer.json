@@ -1,0 +1,13 @@
+{
+    "name": "av/utrance-railway",
+    "description": "Ticket reservation system for railways",
+    "authors": [
+        {
+            "name": "Asindu Vidanagamachchi",
+            "email": "ashvg.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.2"
+    }
+}

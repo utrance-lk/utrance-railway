@@ -1,0 +1,44 @@
+<?php
+
+require_once "../classes/core/App.php";
+require_once "../controllers/SiteController.php";
+require_once "../controllers/AuthController.php";
+require_once "../vendor/autoload.php";
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+
+// databse configuration (getting the details from the config.env)
+$config = [
+    'db' => [
+        'dsn' => $_ENV['DB_DSN'],
+        'user' => $_ENV['DB_USER'],
+        'password' => $_ENV['DB_PASSWORD'],
+    ],
+];
+
+$app = new App(dirname(__DIR__), $config);
+
+/* ROUTE HANDLING */
+//This stores the route data in an array in Route class, that means we specify if the '/register' like url recieved we should render the registration page.
+
+$app->router->get('/utrance-railway/public/index.php/', function () {
+    return "hi from asindu";
+});
+
+$app->router->get('/utrance-railway/public/index.php/hey/', [SiteController::class, 'handleContact']);
+
+$app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
+
+$app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
+
+$app->router->post('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
+
+$app->router->get('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
+
+$app->router->post('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
+
+/* ROUTE HANDLING */
+
+$app->run();
