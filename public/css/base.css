@@ -1,0 +1,36 @@
+:root {
+  --color-primary-dark: 33, 3, 64;
+  --color-primary-light: 27, 147, 194;
+  --color-secondary-dark: 19, 0, 38;
+
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */ /* 10px/16px */
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1.5rem;
+  color: black;
+  background-color: rgb(var(--color-primary-dark));
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+.btn {
+  outline: none;
+  cursor: pointer;
+}

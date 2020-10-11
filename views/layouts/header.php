@@ -13,5 +13,3 @@
           </div>
         </nav>
       </header>
-
-{{content}}
