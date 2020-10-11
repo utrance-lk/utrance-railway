@@ -14,7 +14,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/header.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/footer.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/home/home.css" />
 
     <title>Utrance Railway</title>
 </head>

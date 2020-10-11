@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  /* background-color: blueviolet; */
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(19, 0, 38);
+}
+
+.user-nav {
+  display: flex;
+  /* border: 1px solid salmon; */
+  margin-right: 19rem;
+}
+
+.user-nav div {
+  /* border: 2px dotted pink; */
+  margin-left: 2rem;
+  padding: 2rem;
+  color: #fff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.user-nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo {
+  height: 4rem;
+  margin-left: 19rem;
+}
