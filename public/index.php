@@ -31,13 +31,9 @@ $app = new App(dirname(__DIR__), $config);
 
 // $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
 
-$app->router->get('/utrance-railway/public/index.php/', [ViewController::class, 'home']);
+$app->router->get('/utrance-railway/public/index.php', [ViewController::class, 'home']);
 
 $app->router->post('/utrance-railway/public/index.php/', [ViewController::class, 'search']);
-
-
-
-
 
 $app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
