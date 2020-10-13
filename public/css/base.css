@@ -40,3 +40,9 @@ input {
   cursor: pointer;
   color: #fff;
 }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

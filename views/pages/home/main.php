@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/header.css" />
     <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/footer.css" />
     <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/home/home.css" />
-
+    
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/home/datepicker.css" />
     <title>Utrance Railway</title>
 </head>
 

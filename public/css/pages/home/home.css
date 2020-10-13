@@ -76,6 +76,14 @@ body {
   position: absolute;
   top: 120%;
   left: 50%;
+  border: 1px solid #fff;
+  padding: 1.5rem;
+  text-transform: capitalize;
+  border-radius: 10rem;
+}
+
+.search-btn span {
+  margin-right: 1rem;
 }
 
 .search-btn button {
@@ -105,20 +113,19 @@ body {
   cursor: pointer;
 }
 
-.searchbar__valuebox:active .input_from, 
-.searchbar__valuebox:focus-within .input_from {
-  /* visibility: visible; */
-  /* display: block; */
+.searchbar__valuebox-when {
+  height: 70%;
+  width: 100%;
 }
 
-.from__valuebox {
+.from__valuebox,
+.to__valuebox {
   position: absolute;
   top: 120%;
   left: 0;
   width: 150%;
   /* max-height: 100%; */
   /* height: 100%; */
-  /* visibility: hidden; */
   display: none;
   transition: all .5s;
   background-color: #fff;
@@ -128,7 +135,8 @@ body {
   /* border: 1px solid red; */
 }
 
-.from__valuebox-inside {
+.from__valuebox-inside,
+.to__valuebox-inside {
   display: flex;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -136,7 +144,8 @@ body {
   align-items: center;
 }
 
-.input__from {
+.input__from,
+.input__to {
   /* position: absolute; */
   /* top: 0; */
   /* left: 0; */
@@ -147,7 +156,7 @@ body {
   font-size: 2rem;
 }
 
-.from__valuebox-searchicon {
+.valuebox-searchicon {
   font-size: 2rem;
   /* margin-left: 1rem; */
 }
@@ -174,5 +183,5 @@ body {
 
 .results__list > *:hover {
   background-color: rgb(var(--color-tertiary-light));
-  /* color: #fff; */
 }
+
