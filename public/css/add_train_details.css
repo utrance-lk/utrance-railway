@@ -198,6 +198,8 @@ body{
     border-width: 2px;
     margin-left: 20px;
 }
+   
+
 #update_button{
     background-color:dodgerblue;
     color: white;
@@ -208,8 +210,7 @@ body{
     font-weight: bold;
     font-family: Aldrich;
     border: none;
-    margin-top:30px;
-    
+
 }
 #update_button:hover{
     background-color: dimgrey;

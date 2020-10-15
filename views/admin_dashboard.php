@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="css/admin_dashboard.css" />
-    <link rel="stylesheet" type="text/css" href="css/dashboard_newsFeed.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../utrance-railway/public/css/admin_dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../../../utrance-railway/public/css/dashboard_newsFeed.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
 
     
     
 </head>
 <body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
     <div id="logo_header" style="float: left;">
-       <img src="img/logo1.png" style="width: 160px;height:150px;margin-top: -50px;padding-left: 20px;float: left;">
+       <img src="../../../utrance-railway/public/img/logo2.jpeg" style="width: 80px;height:80px;padding-left: 20px;float: left;">
 
      <!--img src="img/user1.jpg" class="img_role" style="width: 30px;height: 30px;padding-top: 10px;float: right;"!-->
       <div class="dropdown" style="float:right;">
-        <button  class="dropbtn" style="margin-top: 10px;"><img src="img/user1.jpg"  class="img_role" style="width: 30px;height: 30px;float: left;">&nbsp;&nbsp;&nbsp;<text id="first_name">Ashika&nbsp;&nbsp;&nbsp;</text><i class="fa fa-bars"></i></button>
+        <button  class="dropbtn" style="margin-top: 10px;"><img src="../../../utrance-railway/public/img/user1.jpg"  class="img_role" style="width: 30px;height: 30px;float: left;"><i class="far fa-bell-on"></i>&nbsp;&nbsp;&nbsp;<text id="first_name">Ashika&nbsp;&nbsp;&nbsp;</text><i class="fa fa-bars"></i></button>
         <div class="dropdown-content">
           <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Dashboard</a>
           <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Update Profile</a>
@@ -35,7 +37,7 @@
         
            
            </div>
-    </div>
+    
 
 
     <div id="hello_body" >
@@ -64,65 +66,58 @@
 
    <div id="functions_body" >
        <div id="functions_body_button_set">
-       <button id="button_dashboard" class="button_function" style="float: left;" >Dashboard&nbsp;&nbsp;|</button>
-       <button id="button_update" class="button_function" style="float: left;">Update Own profile&nbsp;&nbsp;|</button>
-       <button  id="button_changePassword" class="button_function" style="float: left;">Reset Password&nbsp;&nbsp;|</button>
-       <button id="button_update_Traindetails" class="button_function" style="float: left;">Update Train details&nbsp;&nbsp;|</button>
-       <button id="button_update_Traindetails" class="button_function" style="float: left;">Add Train details&nbsp;&nbsp;|</button>
-       <button class="button_function" style="float: left;margin-left: 15px;">Update User Details&nbsp;&nbsp;|</button>
+       <button id="button_dashboard" class="button_function" style="float: left;" value="1" onload="loadPage()" >Dashboard&nbsp;&nbsp;|</button>
+       <button id="button_update" class="button_function" style="float: left;" value="2" onload="loadPage()">Update Own profile&nbsp;&nbsp;|</button>
+       <button  id="button_changePassword" class="button_function" style="float: left;" value="3" onload="loadPage()">Reset Password&nbsp;&nbsp;|</button>
+       <button id="button_update_Traindetails" class="button_function" style="float: left;" value="4" onload="loadPage()">Update Train details&nbsp;&nbsp;|</button>
+       <button id="button_add_Traindetails" class="button_function" style="float: left;" value="5" onload="loadPage()">Add Train details&nbsp;&nbsp;|</button>
+       <button class="button_function" style="float: left;margin-left: 15px;" value="6" onload="loadPage()">Update User Details&nbsp;&nbsp;|</button>
       
-       <button class="button_function" style="float: left;margin-left: 15px;">Add notices</button>
-       <div>
+       <button class="button_function" id="button_add_notices" style="float: left;margin-left: 15px;" value="7" onload="loadPage()">Add notices</button>
+      </div>
    </div>
-   <br>
-   <br>
-   <div id="button_area_newsFeed" style="width: 100%;margin-top: 25px;">
-       <div id="button_area" >
+   
+   <div id="button_area_newsFeed" style="width: 100%;">
+       <div id="button_area"  style="margin-top: -10px;">
        
-        <div id="newsFeed"  >
+        <!--div id="newsFeed" >
             <div class="newsCollection" style="float: left;font-weight: bold;">
-                <div class="img_train"><img  src="img/train1.webp" style="width: 250px;height:175px;"></div>
+                <div class="img_train"><img  src="../../../utrance-railway/public/img/train1.webp" style="width: 250px;height:175px;"></div>
                 <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
                 
             </div>
     
             <div class="newsCollection" style="float: left;">
-                <div class="img_train"><img src="img/train2.jpg" style="width: 250px;height:175px;"></div>
+                <div class="img_train"><img src="../../../utrance-railway/public/img/train2.jpg" style="width: 250px;height:175px;"></div>
                 <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
             </div>
     
             <div class="newsCollection" style="float: left;">
-                <div class="img_train"><img src="img/train3.jpg" style="width: 250px;height:175px;"></div>
+                <div class="img_train"><img src="../../../utrance-railway/public/img/train3.jpg" style="width: 250px;height:175px;"></div>
                 <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
             </div>
             <div class="newsCollection" style="float: left;">
-                <div class="img_train"><img  src="img/train1.webp" style="width: 250px;height:175px;"></div>
+                <div class="img_train"><img  src="../../../utrance-railway/public/img/train1.webp" style="width: 250px;height:175px;"></div>
                 <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
                 
             </div>
             <div class="newsCollection" style="float: left;margin-top: 50px;">
-                <div class="img_train"><img src="img/train3.jpg" style="width: 250px;height:175px;"></div>
+                <div class="img_train"><img src="../../../utrance-railway/public/img/train3.jpg" style="width: 250px;height:175px;"></div>
                 <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
             </div>
 
             <div class="newsCollection" style="float: left;margin-top: 50px;">
-                <div class="img_train"><img src="img/train3.jpg" style="width: 250px;height:175px;"></div>
+                <div class="img_train"><img src="../../../utrance-railway/public/img/train3.jpg" style="width: 250px;height:175px;"></div>
                 <div class="newFedd_content" style="font-family:Aldrich;cursor: pointer;padding: 10px;color: black;font-weight: bold;">Tommorow railway department will added aditional train to Matara to Colombo<button class="button" style="vertical-align:middle;font-size: 15px;"><span>More Details</span></button> </div>
             </div>
-            
-            
-            
-            
-            
-        </div>
-            
-       </div>
+            </div!-->
+    </div>
+</div>
 
-   </div>
-   <script>
+   <script type="text/javascript">
        $(document).ready(function(){
            $("#button_dashboard").click(function(){
-               $("#button_area").load("dashboard_newsFeed.html");
+               $("#button_area").load("../../../utrance-railway/views/dashboard_newsFeed.php");
            });
        });
    </script>
@@ -130,30 +125,52 @@
      
 
 
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
         $("#button_update").click(function(){
-            $("#button_area").load("update_userProfile.html");
+            $("#button_area").load("../../../utrance-railway/views/update_userProfile.php");
         });
     });
 </script>
 
 
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
         $("#button_changePassword").click(function(){
-            $("#button_area").load("user_change_password.html");
+            $("#button_area").load("../../../utrance-railway/views/user_change_password.php");
         });
     });
 </script>
 
 
 
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
         $("#button_update_Traindetails").click(function(){
-            $("#button_area").load("update_trainDetails.html");
+            $("#button_area").load("../../../utrance-railway/views/update_trainDetails.php");
         });
     });
 </script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#button_add_Traindetails").click(function(){
+            $("#button_area").load("../../../utrance-railway/views/add_train_details.php");
+        });
+    });
+</script>
+
+
+   
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#button_add_notices").click(function(){
+            $("#button_area").load("../../../utrance-railway/views/add_notices_admin.php");
+        });
+    });
+</script>
+
+
 </body>
+</html>

@@ -1,6 +1,7 @@
 #newsFeed{
-    width: 100%;
+    width: 1400px;
     padding-top: 30px;
+    padding-left: 30px;
 }
 .newsCollection{
     width: 250px;
