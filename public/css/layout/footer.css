@@ -1,0 +1,9 @@
+.footer {
+  margin-top: 10rem;
+  background-color: rgb(19, 0, 38);
+  flex: 1;
+  padding: 4rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}

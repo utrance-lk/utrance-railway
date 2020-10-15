@@ -48,30 +48,48 @@
 
         public function renderView($view, $params = [])
         {
-            $layoutContent = $this->layoutContent();
+            $base = $this->loadBase();
+            $header = $this->layoutContent('header');
+            $footer = $this->layoutContent('footer');
+            $main = $this->renderOnlyView($view, $params, true);
             $viewContent = $this->renderOnlyView($view, $params);
-            return str_replace('{{content}}', $viewContent, $layoutContent);
+
+            $base = str_replace('{{main}}', $main, $base);
+            $base = str_replace('{{header}}', $header, $base);
+            $base = str_replace('{{content}}', $viewContent, $base);
+
+            return str_replace('{{footer}}', $footer, $base);
+
         }
 
-        protected function layoutContent()
-        {
+        protected function loadBase() {
             ob_start();
-            include_once "../views/layouts/main.php";
-            include_once "../views/layouts/header.php";
-            include_once "../views/layouts/footer.php";
+            include_once "../views/base.php";
             return ob_get_clean();
         }
 
-        protected function renderOnlyView($view, $params)
+        protected function layoutContent($layout)
+        {
+            ob_start();
+            include_once "../views/layouts/$layout.php";
+            return ob_get_clean();
+        }
+
+        protected function renderOnlyView($view, $params, $isMain = false)
         {
 
-            foreach($params as $key => $value) {
-                $$key = $value;
+            if($isMain) {
+                ob_start();
+                include_once "../views/pages/$view/main.php";
+                return ob_get_clean();
+            } else {  
+                foreach($params as $key => $value) {
+                    $$key = $value;
+                }
+                ob_start();
+                include_once "../views/pages/$view/$view.php";
+                return ob_get_clean();
             }
-
-            ob_start();
-            include_once "../views/pages/$view.php";
-            return ob_get_clean();
         }
 
     }
