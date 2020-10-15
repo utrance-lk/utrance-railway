@@ -14,14 +14,20 @@ class ViewController extends Controller{
         $viewModel = new ViewModel();
         if($request->isPost()) {
             $viewModel->loadData($request->getBody());
-            
-            if($viewModel->getTours()) {
-                return 'Success';
-            }
 
-            else {
-                return 'Failed';
-            }
+            // var_dump($request->getBody());
+
+            $viewModel->getTours();
+            
+            // if($viewModel->getTours()) {
+            //     // return 'Success';
+            //     echo 'vade hari';
+            // }
+
+            // else {
+            //     echo 'upset';
+            //     return 'Failed';
+            // }
 
         }
 

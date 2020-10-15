@@ -4,32 +4,45 @@ include_once "../classes/core/Model.php";
 
 class ViewModel extends Model{
 
-    public $from;
-    public $to;
-    public $date;
+    public $from2;
+    public $to2;
+    public $when;
 
     public function getTours() {
 
-        $fromId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:from");
-        $toId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:to");
+        $fromSearchId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:from");
+        $toSearchId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:to");
 
-        $fromId->bindValue(":from", $this->from);
-        $toId->bindValue(":to", $this->to);
+        $fromSearchId->bindValue(":from", $this->from2);
+        $toSearchId->bindValue(":to", $this->to2);
 
-       $fromId = $fromId->execute();
-        $toId = $toId->execute();
+        $fromSearchId->execute();
+        $toSearchId->execute();
 
-        var_dump($fromId);
-        // print($fromId);
-        // var_dump($fromId);
-        // var_dump($toId);
 
-        // $fromRouteId = APP::$APP->db->pdo->prepare("SELECT route_id FROM stops WHERE station_id=:from");
+        $fromSearchId = $fromSearchId->fetchAll(PDO::FETCH_ASSOC);
+        $toSearchId = $toSearchId->fetchAll(PDO::FETCH_ASSOC);
 
-        // $fromRouteId->bindValue(":from", $fromId);
-        // $fromRouteId->execute();
+        $fromId;
+        $toId;
 
-        // var_dump($fromRouteId);
+        foreach($fromSearchId as $row) {
+            $fromId = $row['station_id'];
+        }
+        foreach($toSearchId as $row) {
+            $toId = $row['station_id'];
+        }
+
+        $fromSearchRouteId = APP::$APP->db->pdo->prepare("SELECT route_id FROM stops WHERE station_id=:from");
+
+        $fromSearchRouteId->bindValue(":from", $fromId);
+        $fromSearchRouteId->execute();
+
+        $fromSearchRouteId = $fromSearchRouteId->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($fromSearchRouteId as $row) {
+            var_dump($row);
+        }
 
     }
 
