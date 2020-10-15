@@ -17,10 +17,7 @@
     padding: 0px;  
    
 }
-@font-face{
-    src:url(fonts/Aldrich-Regular.ttf);
-    font-family: Aldrich;
-}
+
 #user_name{
     background-color:black;
     color: white;
@@ -78,8 +75,10 @@
     font-family: Aldrich;
 }
 .button_function:hover {
-   
-    color:grey;
+  
+    color:white;
+    background-color: gray;
+    opacity: 70%;
     }
 
 
