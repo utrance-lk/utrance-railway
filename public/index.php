@@ -43,6 +43,10 @@ $app->router->get('/utrance-railway/public/index.php/register/', [AuthController
 
 $app->router->post('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
 
+$app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
+
+// $app->router->post('/utrance-railway/public/index.php/hi/', [AjaxController::class, 'hi']);
+
 /* ROUTE HANDLING */
 
 $app->run();

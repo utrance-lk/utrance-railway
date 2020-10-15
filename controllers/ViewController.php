@@ -11,19 +11,25 @@ class ViewController extends Controller{
 
     public function search($request) {
 
-        // $viewModel = new ViewModel();
-        // if($request->isPost()) {
-        //     $viewModel->loadData($request->getBody());
+        $viewModel = new ViewModel();
+        if($request->isPost()) {
+            $viewModel->loadData($request->getBody());
+
+            // var_dump($request->getBody());
+
+            $viewModel->getTours();
             
-        //     if($viewModel->getTours()) {
-        //         return 'Success';
-        //     }
+            // if($viewModel->getTours()) {
+            //     // return 'Success';
+            //     echo 'vade hari';
+            // }
 
-        //     else {
-        //         return 'Failed';
-        //     }
+            // else {
+            //     echo 'upset';
+            //     return 'Failed';
+            // }
 
-        // }
+        }
 
     }
 

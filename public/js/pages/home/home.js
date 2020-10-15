@@ -99,7 +99,7 @@ let setDate = function() {
     let dd = String(today.getDate());
     let mm = String(today.getMonth() + 1);
     let yyyy = today.getFullYear();
-    today = formatDate(dd) + "/" + formatDate(mm) + "/" + yyyy;
+    today = formatDate(mm) + "/" + formatDate(dd) + "/" + yyyy;
 
     // console.log(document.querySelector('.js--input-date'));
 
