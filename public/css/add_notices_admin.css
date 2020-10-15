@@ -1,0 +1,114 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    width:100%;
+    height:100%;
+}
+
+#user_header{
+    width: 100%;
+    height: 40px;
+    background-image: linear-gradient(to right, #210340,#2EB1E6 );
+    font-family: Aldrich;
+    font-size: 24px;
+    margin: 0;
+    color:white;
+    padding-top: 14px;
+    
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+
+#add_notices_form{
+    margin-left: 250px;
+    margin-top: 40px;
+    align-content: center;
+    width: 790px;
+    height: 600px;
+    border-color: black;
+    border-style: groove;
+}
+.text_type{
+    float: left;
+    font-size: 20px;
+    font-family: Aldrich;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.input_notice_details{
+   
+    width: 350px;
+    height: 30px;
+    border-color: black;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+    
+  
+}
+.names{
+    margin-top: 30px;
+    margin-left: 35px;
+   
+}
+
+#textup_area{
+    width: 280px;
+    height: 120px;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    margin-left: 270px;
+    margin-top: 20px;
+    display: block;
+}
+
+
+
+
+#add_notice_button{
+    background-color:dodgerblue;
+    color: white;
+    font-size: 20px;
+    
+    width: 600px;
+    height: 40px;
+    font-weight: bold;
+    font-family: Aldrich;
+    border: none;
+    margin-top:30px;
+    
+}
+#add_notice_button:hover{
+    background-color: dimgrey;
+    color: white;
+}
+#image_file{
+   
+    margin-left: 339px;
+    border-radius: 4px;
+    border-color: black;
+    border-width: 2px;
+}
+#submit_button{
+    width: 120px;
+    height: 30px;
+    margin-left: 20px;
+    border-radius: 4px;
+    font-family: Aldrich;
+    font-size: 15px;
+    border-color: black;
+    border-width: 2px;  
+    cursor: pointer;
+}
+#input_image{
+    width: 250px;
+    font-family: Aldrich;
+    font-size: 15px;
+    border-radius: 4px;
+    border-color: black;
+    border-width: 2px;
+}
