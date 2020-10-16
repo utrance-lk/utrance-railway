@@ -1,9 +1,9 @@
 import {elements, items} from "./components.js";
 
-const from = document.getElementById("js--from");
-const to = document.getElementById("js--to");
-const when = document.querySelector(".input__when");
-const searchBtn = document.getElementById("js--search");
+// const from = document.getElementById("js--from");
+// const to = document.getElementById("js--to");
+// const when = document.querySelector(".input__when");
+// const searchBtn = document.getElementById("js--search");
 
 
 // console.log(items.from.textContent, items.to.textContent);

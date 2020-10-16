@@ -31,6 +31,11 @@ $app = new App(dirname(__DIR__), $config);
 
 // $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
 
+
+// $app->router->get('/utrance-railway/public/index.php/hey/', [SiteController::class, 'handleContact']);
+
+// $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
+
 $app->router->get('/utrance-railway/public/index.php', [ViewController::class, 'home']);
 
 $app->router->post('/utrance-railway/public/index.php/', [ViewController::class, 'search']);
@@ -45,7 +50,7 @@ $app->router->post('/utrance-railway/public/index.php/register/', [AuthControlle
 
 $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
-// $app->router->post('/utrance-railway/public/index.php/hi/', [AjaxController::class, 'hi']);
+// $app->router->post('/utrance-railway/public/index.php/hi/','hi');
 
 /* ROUTE HANDLING */
 
