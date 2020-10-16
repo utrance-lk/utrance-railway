@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add notices</title>
-    <link rel="stylesheet" type="text/css" href="../../../utrance-railway/public/css/add_notices.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../utrance-railway/public/css/admin/add_notices.css" />
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/script" src="../public/js/JQuery.js"></script>

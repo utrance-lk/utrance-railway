@@ -105,7 +105,6 @@ class ViewModel extends Model{
             var_dump($row);
             echo "</br>";
         }
-
     }
 
 
