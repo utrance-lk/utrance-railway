@@ -31,13 +31,14 @@ $app = new App(dirname(__DIR__), $config);
 
 // $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
 
-$app->router->get('/utrance-railway/public/index.php/', [ViewController::class, 'home']);
+
+// $app->router->get('/utrance-railway/public/index.php/hey/', [SiteController::class, 'handleContact']);
+
+// $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
+
+$app->router->get('/utrance-railway/public/index.php', [ViewController::class, 'home']);
 
 $app->router->post('/utrance-railway/public/index.php/', [ViewController::class, 'search']);
-
-
-
-
 
 $app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
@@ -46,6 +47,10 @@ $app->router->post('/utrance-railway/public/index.php/login/', [AuthController::
 $app->router->get('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
 
 $app->router->post('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
+
+$app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
+
+// $app->router->post('/utrance-railway/public/index.php/hi/', [AjaxController::class, 'hi']);
 
 /* ROUTE HANDLING */
 
