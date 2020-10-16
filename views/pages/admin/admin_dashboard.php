@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="../../../utrance-railway/public/css/admin_dashboard.css">
-    <link rel="stylesheet" type="text/css" href="../../../utrance-railway/public/css/dashboard_newsFeed.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../utrance-railway/public/css/admin/admin_dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../../../../utrance-railway/public/css/admin/dashboard_newsFeed.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,11 +15,11 @@
 </head>
 <body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
     <div id="logo_header" style="float: left;">
-       <img src="../../../utrance-railway/public/img/logo2.jpeg" style="width: 80px;height:80px;padding-left: 20px;float: left;">
+       <img src="../../../../utrance-railway/public/img/logo2.jpeg" style="width: 80px;height:80px;padding-left: 20px;float: left;">
 
      <!--img src="img/user1.jpg" class="img_role" style="width: 30px;height: 30px;padding-top: 10px;float: right;"!-->
       <div class="dropdown" style="float:right;">
-        <button  class="dropbtn" style="margin-top: 10px;"><img src="../../../utrance-railway/public/img/user1.jpg"  class="img_role" style="width: 30px;height: 30px;float: left;"><i class="far fa-bell-on"></i>&nbsp;&nbsp;&nbsp;<text id="first_name">Ashika&nbsp;&nbsp;&nbsp;</text><i class="fa fa-bars"></i></button>
+        <button  class="dropbtn" style="margin-top: 10px;"><img src="../../../../utrance-railway/public/img/user1.jpg"  class="img_role" style="width: 30px;height: 30px;float: left;"><i class="far fa-bell-on"></i>&nbsp;&nbsp;&nbsp;<text id="first_name">Ashika&nbsp;&nbsp;&nbsp;</text><i class="fa fa-bars"></i></button>
         <div class="dropdown-content">
           <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Dashboard</a>
           <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Update Profile</a>
@@ -117,7 +117,7 @@
    <script type="text/javascript">
        $(document).ready(function(){
            $("#button_dashboard").click(function(){
-               $("#button_area").load("../../../utrance-railway/views/dashboard_newsFeed.php");
+               $("#button_area").load("../../../../utrance-railway/views/pages/admin/dashboard_newsFeed.php");
            });
        });
    </script>
@@ -128,7 +128,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#button_update").click(function(){
-            $("#button_area").load("../../../utrance-railway/views/update_userProfile.php");
+            $("#button_area").load("../../../../utrance-railway/views/pages/admin/update_userProfile.php");
         });
     });
 </script>
@@ -137,7 +137,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#button_changePassword").click(function(){
-            $("#button_area").load("../../../utrance-railway/views/user_change_password.php");
+            $("#button_area").load("../../../../utrance-railway/views/pages/admin/user_change_password.php");
         });
     });
 </script>
@@ -147,7 +147,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#button_update_Traindetails").click(function(){
-            $("#button_area").load("../../../utrance-railway/views/update_trainDetails.php");
+            $("#button_area").load("../../../../utrance-railway/views/pages/admin/update_trainDetails.php");
         });
     });
 </script>
@@ -156,7 +156,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#button_add_Traindetails").click(function(){
-            $("#button_area").load("../../../utrance-railway/views/add_train_details.php");
+            $("#button_area").load("../../../../utrance-railway/views/pages/admin/add_train_details.php");
         });
     });
 </script>
@@ -166,7 +166,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#button_add_notices").click(function(){
-            $("#button_area").load("../../../utrance-railway/views/add_notices_admin.php");
+            $("#button_area").load("../../../../utrance-railway/views/pages/admin/add_notices_admin.php");
         });
     });
 </script>

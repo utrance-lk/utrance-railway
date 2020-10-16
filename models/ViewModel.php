@@ -43,7 +43,6 @@ class ViewModel extends Model{
         foreach($fromSearchRouteId as $row) {
             var_dump($row);
         }
-
     }
 
 
