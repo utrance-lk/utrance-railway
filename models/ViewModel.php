@@ -7,6 +7,7 @@ class ViewModel extends Model{
     public $from2;
     public $to2;
     public $when;
+    public $resultsArr;
 
     public function getTours() {
 
@@ -38,10 +39,12 @@ class ViewModel extends Model{
             }
             
             // 1) search for a direct path
-            // $this->searchForDirectPath($fromId, $toId);
+            $resultsArr['directPaths'] = $this->searchForDirectPath($fromId, $toId);
 
             // 2) search for an intersection
-            $this->searchForIntersection($fromId, $toId);
+            $resultsArr['intersections'] = $this->searchForIntersection($fromId, $toId);
+
+            return $resultsArr;
             
         } else {
             echo 'station not found!';
@@ -69,12 +72,12 @@ class ViewModel extends Model{
 
         $searchDirectPath->execute();
 
-        $searchDirectPath = $searchDirectPath->fetchAll(PDO::FETCH_ASSOC);
+        return $searchDirectPath->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($searchDirectPath as $row) {
-            var_dump($row);
-        echo "</br>";
-        }
+        // foreach ($searchDirectPath as $row) {
+        //     var_dump($row);
+        // echo "</br>";
+        // }
 
     }
 
@@ -102,20 +105,17 @@ class ViewModel extends Model{
             WHERE path_indexer_route_id IS NULL");
 
 
-
-
-
         $seachInterectionPath->bindValue(":from", $fromId);
         $seachInterectionPath->bindValue(":to", $toId);
 
         $seachInterectionPath->execute();
 
-        $seachInterectionPath = $seachInterectionPath->fetchAll(PDO::FETCH_ASSOC);
+        return $seachInterectionPath->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach($seachInterectionPath as $row) {
-            var_dump($row);
-            echo "</br>";
-        }
+        // foreach($seachInterectionPath as $row) {
+        //     // var_dump($row);
+        //     echo "</br>";
+        // }
     }
 
 
