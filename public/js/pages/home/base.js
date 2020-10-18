@@ -1,5 +1,4 @@
 import {elements, items} from "./components.js";
-import "./home";
 
 // const from = document.getElementById("js--from");
 // const to = document.getElementById("js--to");
@@ -14,11 +13,12 @@ import "./home";
 
 items.searchBtn.addEventListener('click', function() {
     $.ajax({
-      url: "../../utrance-railway/public/index.php/",
+      // url: "../../utrance-railway/public/index.php",
+      url: "register",
       method: "POST",
       data: {
-        from: items.from.textContent,
-        to: items.to.textContent,
+        firstname: items.from.textContent,
+        lastname: items.to.textContent,
         when: items.when.value,
       },
       success: function (data) {

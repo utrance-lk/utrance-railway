@@ -17,15 +17,15 @@ class AuthController extends Controller
                 return 'Success';
             }
 
-            return $this->render('register', [
-                'model' => $userModel,
-            ]);
+            // return $this->render('register', [
+            //     'model' => $userModel,
+            // ]);
 
         }
 
-        return $this->render('register', [
-            'model' => $userModel,
-        ]);
+        // return $this->render('register', [
+        //     'model' => $userModel,
+        // ]);
     }
 
     public function login()
@@ -70,7 +70,7 @@ class AuthController extends Controller
         // protect the route
     }
     public function cat(){
-        return cat;
+        
     }
 
 }

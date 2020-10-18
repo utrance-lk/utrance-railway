@@ -12,5 +12,5 @@ export const items = {
   cityList: document.getElementById("js--results__list"),
   valueboxFrom: document.getElementById("js--searchbar__valuebox-from"),
   searchboxInside: document.querySelector(".js--searchbox-search"),
-  resultsListRow: document.querySelectorAll("..results__list-inside"),
+  resultsListRow: document.querySelectorAll(".results__list-inside"),
 };

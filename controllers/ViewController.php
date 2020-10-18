@@ -5,19 +5,18 @@ include_once "../models/ViewModel.php";
 
 class ViewController extends Controller{
 
-    public function home() {
+    public function home($request) {
         return $this->render('home');
     }
 
     public function search($request) {
-           
+        
         $viewModel = new ViewModel();
         if($request->isPost()) {
-            $viewModel->loadData($request->getBody());
+            // $viewModel->loadData($request->getBody());
 
-            // var_dump($request->getBody());
 
-            $viewModel->getTours();
+            // $viewModel->getTours();
             
             // if($viewModel->getTours()) {
             //     // return 'Success';

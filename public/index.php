@@ -37,17 +37,17 @@ $app = new App(dirname(__DIR__), $config);
 
 // $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
 
-$app->router->get('/utrance-railway/public/index.php', [ViewController::class, 'home']);
+$app->router->get('/utrance-railway/public/index.php/home', [ViewController::class, 'home']);
 
-$app->router->post('/utrance-railway/public/index.php', [ViewController::class, 'search']);
+$app->router->post('/utrance-railway/public/index.php/home', [ViewController::class, 'search']);
 
 $app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
 $app->router->post('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
-$app->router->get('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
+$app->router->get('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
-$app->router->post('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
+$app->router->post('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
 // $app->router->get('/utrance-railway/public/index.php/cat', [ViewController::class, 'cat']);
 
@@ -63,9 +63,10 @@ $app->router->post('/utrance-railway/t/test.php', 'search');
 $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
 
-$app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
+$app->router->get('/utrance-railway/public/index.php/cat', [AddTrainDetailsController::class, 'addTrain']);
+// $app->router->get('/utrance-railway/public/index.php/cat', [AddTrainDetailsController::class, 'ashika']);
 
-$app->router->post('/utrance-railway/views/pages/admin/add_train_details', [AddTrainDetailsController::class, 'addTrainDetails']);
+$app->router->post('/utrance-railway/public/index.php/dog', [AddTrainDetailsController::class, 'addTrainDetails']);
 
 
 
