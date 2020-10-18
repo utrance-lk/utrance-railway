@@ -71,7 +71,7 @@ class ViewModel extends Model{
 
         foreach ($searchDirectPath as $row) {
             var_dump($row);
-        echo "</br>";
+            echo "</br>";
         }
 
     }
