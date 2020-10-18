@@ -17,18 +17,22 @@ export const searchStates = function(searchText) {
         matches.forEach(renderCity);
     }
 
+    selectCity();
+
 };
 
 export const selectCity = function () {
-  //  let v = document.querySelectorAll(".results__list .results__list-inside");
-  let v = items.resultsListRow;
+   let v = document.querySelectorAll(".results__list .results__list-inside");
+
+console.log(v);
 
   if (v.length > 0) {
     for (let i = 0; i < v.length; i++) {
-      v[i].addEventListener("click", function (e) {
-        //    selectedCity = e.target.textContent;
-        // I tested fromValueBox.style.display = 'none' here;
-      });
+        (function() {
+            v[i].addEventListener("click", function (e) {
+                items.from.textContent = e.target.textContent;
+              });
+        }());
     }
   }
 };

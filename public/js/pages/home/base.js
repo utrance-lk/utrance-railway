@@ -33,7 +33,7 @@ items.searchBtn.addEventListener('click', function() {
 items.searchFrom.addEventListener("input", function (e) {
   home.searchStates(items.searchFrom.value);
 
-  home.selectCity();
+  // home.selectCity();
 });
 
 items.valueboxFrom.addEventListener("click", function () {
@@ -44,3 +44,13 @@ items.valueboxFrom.addEventListener("click", function () {
 items.searchboxInside.addEventListener("click", function (e) {
   e.preventDefault();
 });
+
+document.addEventListener('click', function(e) {
+  // console.log(e);
+  if(e.target.id === 'js--from' || e.target.id === 'from') {
+    items.fromValueBox.style.display = 'block';
+  } else {
+    items.fromValueBox.style.display = 'none';
+  }
+})
+
