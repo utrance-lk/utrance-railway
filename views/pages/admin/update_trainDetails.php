@@ -33,7 +33,7 @@
         <select class="select_train_details" style="margin-left: 90px;">
             <option value="Available">Available</option>
             <option value="Not Available">Not Available</option>
-            
+
        </select>
     </div>
   <div class="names">
@@ -45,7 +45,7 @@
        </select>
     </div>
     <div id="name_train">
-          
+
            <text class="text_type" style="margin-left: 60px;">From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</text>
            <select class="select_train_details" id="select_from" style="margin-left: 85px;float: left;">
             <option value="Matara">Matara</option>
@@ -71,9 +71,9 @@
         <option value="Galle">Galle</option>
         <option value="Colombo">Colombo</option>
        </select!-->
-   
 
-   
+
+
     </div>
     <div id="train_stop_stations" style="display: block;">
         <text class="text_type"> Train Stop stations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </text>
@@ -110,13 +110,13 @@
         <input class="input_class" id="input_second_class_seats" placeholder="Second Class seats ">
         <input class="input_class" id="input_observation_class_seats" placeholder="Obeservation Class seats ">
         <input class="input_class" id="input_sleepingbirth_class_seats" placeholder="Sleeping births seats ">
-        
+
     </div>
     <div id="train_duration">
         <text class="text_type1" > Train Schedule Dates&nbsp;&nbsp;&nbsp;&nbsp;:</text>
         <text class="text_type" id="train_up_uration" style="margin-top: 15px;float: left;"> Mon&nbsp;&nbsp;: </text>
         <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
-        
+
         <text class="text_type" id="train_up_uration" style="margin-top: 15px;margin-left: 20px;">Tue&nbsp;&nbsp;:</text>
         <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
 
@@ -138,7 +138,7 @@
 
     <button id="update_button" style="cursor: pointer;margin-left: 150px;height:47px;">Update Train details</button>
 
-   
+
     </div>
 </body>
 </html>

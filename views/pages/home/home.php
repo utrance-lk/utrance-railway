@@ -57,6 +57,6 @@
 
       <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/home.js"></script>
+      <!-- <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/home.js"></script> -->
       <script type="module" src="../../../utrance-railway/public/js/pages/home/base.js"></script>
       <!-- <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/datepicker.js"></script> -->
