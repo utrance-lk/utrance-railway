@@ -43,4 +43,8 @@ class ViewController extends Controller{
         return 'Handling submitted data';
     }
 
+    public function cat() {
+        echo 'hello from cat!!';
+    }
+
 }

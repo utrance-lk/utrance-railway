@@ -1,17 +1,8 @@
-const searchFrom = document.querySelector(".js--searchbox-from");
-// const searchTo = document.querySelector(".js--searchbox-to").value;
+import {items} from "./components";
 
-// const searchButton = document.querySelector(".js--searchbox-search");
+const stationsArray = ['Matara', 'Colombo-Fort', 'Galle', 'Gampaha'];
 
-const fromValueBox = document.querySelector(".from__valuebox");
-const cityList = document.querySelector(".results__list");
-const inputFromField = document.querySelector(".input__from");
-
-const stationsArray = ['Matara', 'Colombo-Fort', 'Galle', 'Gampaha']
-
-// functions
-
-const searchStates = function(searchText) {
+export const searchStates = function(searchText) {
 
     clearResults();
 
@@ -33,24 +24,22 @@ const renderCity = function(city) {
         <li class="results__list-inside">${city}</li>
     `;
 
-    cityList.insertAdjacentHTML("beforeend", markup);
+    items.cityList.insertAdjacentHTML("beforeend", markup);
 }
 
 const clearResults = function() {
-    cityList.innerHTML = '';
+    items.cityList.innerHTML = '';
 }
 
-// const closeAllLists = function(e) {
-//     let 
-// }
 
-const selectCity = function() {
-     let v = document.querySelectorAll(".results__list .results__list-inside");
+export const selectCity = function() {
+    //  let v = document.querySelectorAll(".results__list .results__list-inside");
+    let v =  items.resultsListRow;
 
      if (v.length > 0) {
        for (let i = 0; i < v.length; i++) {
          v[i].addEventListener("click", function (e) {
-           selectedCity = e.target.textContent;
+        //    selectedCity = e.target.textContent;
            // I tested fromValueBox.style.display = 'none' here;
          });
        }
@@ -58,38 +47,25 @@ const selectCity = function() {
 
 }
 
-let selectedCity = '';
-
 
 // events
 
-searchFrom.addEventListener('input', function(e) {
+items.searchFrom.addEventListener('input', function(e) {
 
     searchStates(searchFrom.value);
 
-
     selectCity();
 
-    // if(selectedCity.length > 0) {
-
-    //     fromValueBox.style.display = "none";
-    //     document.querySelector(".selected__city-from").textContent = selectedCity;
-    // }
-
 });
 
-// if(selectedCity.length > 0) {
-//     fromValueBox.style.display = "none";
-// }
 
-
-document.querySelector(".searchbar__valuebox-from").addEventListener('click', function() {
-    fromValueBox.style.display = 'block';
-    document.querySelector(".input__from").focus();
+items.valueboxFrom.addEventListener('click', function() {
+    items.fromValueBox.style.display = 'block';
+    items.searchFrom.focus();
 });
 
-document.querySelector(".js--searchbox-search").addEventListener('click', function(e) {
-    e.preventDefault();
+items.searchboxInside.addEventListener("click", function (e) {
+  e.preventDefault();
 });
 
 // date picker
@@ -101,9 +77,7 @@ let setDate = function() {
     let yyyy = today.getFullYear();
     today = formatDate(mm) + "/" + formatDate(dd) + "/" + yyyy;
 
-    // console.log(document.querySelector('.js--input-date'));
-
-    document.querySelector(".js--input-date").value = today;
+    items.when.value = today;
 
 }
 
@@ -113,7 +87,5 @@ let formatDate = function(date) {
     }
     return date;
 }
-
-
 
 window.addEventListener('load', setDate);

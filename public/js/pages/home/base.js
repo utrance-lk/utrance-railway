@@ -1,4 +1,5 @@
 import {elements, items} from "./components.js";
+import "./home";
 
 // const from = document.getElementById("js--from");
 // const to = document.getElementById("js--to");

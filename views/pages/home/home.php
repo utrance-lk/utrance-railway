@@ -7,16 +7,16 @@
                 <form action="" method="POST" class="search-bar__form">
                   <div class="search-bar__form-1">
                     <label for="from" class="searchbar__label">From</label>
-                    <div class="searchbar__valuebox searchbar__valuebox-from">
+                    <div class="searchbar__valuebox searchbar__valuebox-from" id="js--searchbar__valuebox-from">
                       <span class="selected__city-from" id="js--from">Maradana</span>
-                      <div class="from__valuebox">
+                      <div class="from__valuebox" id="js--from__valuebox">
                         <div class="from__valuebox-inside">
                           <div class="valuebox-searchicon">
                             <i class="fas fa-search"></i>
                           </div>
                           <input type="text" id="from" name="from" class="input__from js--searchbox-from" />
                         </div>
-                        <ul class="results__list"></ul>
+                        <ul class="results__list" id="js--results__list"></ul>
                       </div>
                     </div>
                   </div>
@@ -57,7 +57,6 @@
 
       <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/home.js"></script>
+      <!-- <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/home.js"></script> -->
       <script type="module" src="../../../utrance-railway/public/js/pages/home/base.js"></script>
       <!-- <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/datepicker.js"></script> -->
-      <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/home.jq.js"></script>
