@@ -3,7 +3,7 @@
 include_once "../classes/core/Controller.php";
 
 
-class AddTrainDetailsController extends Controller {
+class Admin extends Controller {
 
     public function addTrainDetails(){
        
@@ -29,8 +29,17 @@ class AddTrainDetailsController extends Controller {
    
    }
 public function addTrain(){
-    return $this->render('admin');
+    return $this->render('addTrainDetails');
     echo "hy girl";
+}
+
+public function addNoticesByAdmin(){
+    return $this->render('addNoticesByAdmin');
+    echo "hy girl";
+}
+
+public function addNoticesByAdminNow(){
+    echo "Added Notices!!";
 }
 
 }
