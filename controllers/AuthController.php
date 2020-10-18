@@ -36,10 +36,12 @@ class AuthController extends Controller
     public function logout()
     {
         // logout
+       
     }
 
     public function isLoggedIn()
     {
+        
         // checks whether user is logged in or not
     }
 
@@ -66,6 +68,9 @@ class AuthController extends Controller
     public function protect()
     {
         // protect the route
+    }
+    public function cat(){
+        return cat;
     }
 
 }

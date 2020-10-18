@@ -3,6 +3,7 @@
 require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
+require_once "../controllers/AddTrainDetailsController.php";
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -48,13 +49,32 @@ $app->router->get('/utrance-railway/public/index.php/register/', [AuthController
 
 $app->router->post('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
 
-$app->router->get('/utrance-railway/public/index.php/cat', [ViewController::class, 'cat']);
+// $app->router->get('/utrance-railway/public/index.php/cat', [ViewController::class, 'cat']);
 
-$app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
+// $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
 $app->router->post('/utrance-railway/t/test.php', 'search');
 
 // $app->router->post('/utrance-railway/public/index.php/hi/','hi');
+//$app->router->post('/utrance-railway/public/index.php/cat', [AuthController::class, 'cat']);
+
+
+
+$app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
+
+
+$app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
+
+$app->router->post('/utrance-railway/views/pages/admin/add_train_details', [AddTrainDetailsController::class, 'addTrainDetails']);
+
+
+
+
+
+
+
+
+//$app->router->post('/utrance-railway/public/index.php/hi/','hi');
 
 /* ROUTE HANDLING */
 
