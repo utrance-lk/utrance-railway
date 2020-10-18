@@ -13,11 +13,12 @@ import {elements, items} from "./components.js";
 
 items.searchBtn.addEventListener('click', function() {
     $.ajax({
-      url: "../../utrance-railway/public/index.php/",
+      // url: "../../utrance-railway/public/index.php",
+      url: "register",
       method: "POST",
       data: {
-        from: items.from.textContent,
-        to: items.to.textContent,
+        firstname: items.from.textContent,
+        lastname: items.to.textContent,
         when: items.when.value,
       },
       success: function (data) {

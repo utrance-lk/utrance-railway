@@ -7,23 +7,23 @@
                 <form action="" method="POST" class="search-bar__form">
                   <div class="search-bar__form-1">
                     <label for="from" class="searchbar__label">From</label>
-                    <div class="searchbar__valuebox searchbar__valuebox-from">
-                      <span class="selected__city-from" id="js--from">Maradana</span>
-                      <div class="from__valuebox">
+                    <div class="searchbar__valuebox searchbar__valuebox-from" id="js--searchbar__valuebox-from">
+                      <span class="selected__city-from" id="js--from">Kurunegala</span>
+                      <div class="from__valuebox" id="js--from__valuebox">
                         <div class="from__valuebox-inside">
                           <div class="valuebox-searchicon">
                             <i class="fas fa-search"></i>
                           </div>
                           <input type="text" id="from" name="from" class="input__from js--searchbox-from" />
                         </div>
-                        <ul class="results__list"></ul>
+                        <ul class="results__list" id="js--results__list"></ul>
                       </div>
                     </div>
                   </div>
                   <div class="search-bar__form-2">
                     <label for="to" class="searchbar__label">To</label>
                     <div class="searchbar__valuebox searchbar__valuebox-to">
-                      <span class="selected__city-to" id="js--to">Matara</span>
+                      <span class="selected__city-to" id="js--to">Vavuniya</span>
                       <div class="to__valuebox">
                         <div class="to__valuebox-inside">
                           <div class="valuebox-searchicon">
@@ -60,4 +60,3 @@
       <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/home.js"></script>
       <script type="module" src="../../../utrance-railway/public/js/pages/home/base.js"></script>
       <!-- <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/datepicker.js"></script> -->
-      <script type="text/javascript" src="../../../utrance-railway/public/js/pages/home/home.jq.js"></script>
