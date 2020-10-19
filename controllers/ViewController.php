@@ -9,6 +9,10 @@ class ViewController extends Controller{
         return $this->render('home');
     }
 
+    public function home2() {
+        return $this->render('home2');
+    }
+
     public function search($request) {
         
         $viewModel = new ViewModel();

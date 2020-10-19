@@ -24,8 +24,6 @@ export const searchStates = function(searchText) {
 export const selectCity = function () {
    let v = document.querySelectorAll(".results__list .results__list-inside");
 
-console.log(v);
-
   if (v.length > 0) {
     for (let i = 0; i < v.length; i++) {
         (function() {
