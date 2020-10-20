@@ -1,12 +1,12 @@
 :root {
-  --color-primary: #EEEEEE;
+  --color-primary: #eeeeee;
   --color-primary-light: 27, 147, 194;
   --color-secondary-dark: 19, 0, 38;
-  
+
   --color-secondary-light: 74, 74, 74;
 
   --color-tertiary-light: 192, 196, 199;
-  --color-slight-gray: #ECF0F1;
+  --color-slight-gray: #ecf0f1;
 }
 
 *,
@@ -19,7 +19,7 @@
 
 html {
   font-size: 62.5%; /* 1rem = 10px */ /* 10px/16px */
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
 
 body {
