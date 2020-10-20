@@ -1,10 +1,10 @@
-*,
+/* *,
 *::after,
 *::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-}
+} */
 
 html {
     box-sizing: border-box;
@@ -194,7 +194,7 @@ body {
     background-color: rgb(73, 166, 252);
     color: #fff;
     cursor: pointer;
-    transition: transform .5s;
+    transition: top .5s;
     vertical-align: middle;
 }
 
@@ -236,10 +236,10 @@ body {
     transition: all .5s;
 }
 
-input {
+/* input {
     border: none;
     outline: none;
-}
+} */
 
 .heading-secondary {
     height: 50vh;

@@ -1,56 +1,48 @@
-import {elements, items} from "./components.js";
-import * as home from "./home.js";
-
-// const from = document.getElementById("js--from");
-// const to = document.getElementById("js--to");
-// const when = document.querySelector(".input__when");
-// const searchBtn = document.getElementById("js--search");
-
-
-// console.log(items.from.textContent, items.to.textContent);
-// console.log(items.when.getAttribute('value'));
-
-// Rendering DB resuslts
+import {items} from './components.js';
+import * as home from './home.js';
 
 window.addEventListener("load", home.setDate);
 
-items.searchBtn.addEventListener('click', function() {
-    $.ajax({
-      // url: "../../utrance-railway/public/index.php",
-      url: "home",
-      method: "POST",
-      data: {
-        from: items.from.textContent,
-        to: items.to.textContent,
-        when: items.when.value,
-      },
-      success: function (data) {
-        console.log(data);
-      },
-    });
+items.inputSearchFrom.addEventListener("input", function () {
+  home.searchStates(items.inputSearchFrom.value, "from");
 });
 
-items.searchFrom.addEventListener("input", function (e) {
-  home.searchStates(items.searchFrom.value);
-
-  // home.selectCity();
+items.inputSearchTo.addEventListener("input", function () {
+  home.searchStates(items.inputSearchTo.value, "to");
 });
 
-items.valueboxFrom.addEventListener("click", function () {
-  items.fromValueBox.style.display = "block";
-  items.searchFrom.focus();
-});
+// items.fromStationLabel.addEventListener("click", function () {
+//   items.searchDropdownFrom.style.display = "block";
+//   items.inputSearchFrom.focus();
+// });
 
-items.searchboxInside.addEventListener("click", function (e) {
-  e.preventDefault();
-});
-
-document.addEventListener('click', function(e) {
-  // console.log(e);
-  if(e.target.id === 'js--from' || e.target.id === 'from') {
-    items.fromValueBox.style.display = 'block';
+document.addEventListener("click", function (e) {
+  if (e.target === items.fromStationLabel || e.target === items.inputSearchFrom) {
+    items.inputSearchFrom.value = "";
+    items.searchDropdownFrom.style.display = "block";
+    items.cityListFrom.style.display = "block";
+    items.inputSearchFrom.focus();
   } else {
-    items.fromValueBox.style.display = 'none';
+    items.searchDropdownFrom.style.display = "none";
+    items.cityListFrom.style.display = "none";
+    home.searchStates("", 'from');
   }
-})
+});
 
+document.addEventListener("click", function (e) {
+  if (
+    e.target === items.toStationLabel ||
+    e.target === items.inputSearchTo
+  ) {
+    items.inputSearchTo.value = "";
+    items.searchDropdownTo.style.display = "block";
+    items.cityListTo.style.display = "block";
+    items.inputSearchTo.focus();
+  } else {
+    items.searchDropdownTo.style.display = "none";
+    items.cityListTo.style.display = "none";
+    home.searchStates("", 'to');
+  }
+});
+
+//  || e.target.id === "from"

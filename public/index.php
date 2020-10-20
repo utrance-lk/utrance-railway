@@ -39,7 +39,7 @@ $app = new App(dirname(__DIR__), $config);
 
 $app->router->get('/utrance-railway/public/index.php/home', [ViewController::class, 'home']);
 
-$app->router->get('/utrance-railway/public/index.php/home2', [ViewController::class, 'home2']);
+// $app->router->get('/utrance-railway/public/index.php/home2', [ViewController::class, 'home2']);
 
 $app->router->post('/utrance-railway/public/index.php/home', [ViewController::class, 'search']);
 
