@@ -61,8 +61,8 @@
 
 .search-bar {
   /* border: 1px solid orangered; */
-  height: 15vh;
-  transform: translateY(4rem);
+  height: 16vh;
+  transform: translateY(5rem);
   width: 70vw;
   margin: 0 auto;
   background-color: #fff;
@@ -96,7 +96,7 @@
   /* border: 1px solid salmon; */
   margin-left: 2rem;
   position: absolute;
-  top: 60%;
+  top: 52%;
   left: 0;
   transform: translateY(-50%);
   display: none;
@@ -180,7 +180,7 @@
 .from__station,
 .to__station,
 .when__date {
-  margin-top: 5.8px;
+  /* margin-top: 5.8px; */
   font-size: 3.5rem;
   font-family: "Sora", sans-serif;
   text-transform: capitalize;
