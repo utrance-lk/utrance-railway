@@ -1,55 +1,73 @@
-<div class="content">
-        <div class="primary-content">
-          <div class="primary-content--intro"></div>
-          <div class="primary-content--searchbar">
-            <div class="search-box">
-              <div class="search-box--inside">
-                <form action="" method="POST" class="search-bar__form">
-                  <div class="search-bar__form-1 js--formcontainer-1">
-                    <label for="from" class="searchbar__label">From</label>
-                    <div class="searchbar__valuebox searchbar__valuebox-from" id="js--searchbar__valuebox-from">
-                      <span class="selected__city-from" id="js--from">Matara</span>
-                      <div class="from__valuebox" id="js--from__valuebox">
-                        <div class="from__valuebox-inside">
-                          <div class="valuebox-searchicon">
-                            <i class="fas fa-search"></i>
-                          </div>
-                          <input type="text" id="from" name="from" class="input__from js--searchbox-from" />
-                        </div>
-                        <ul class="results__list" id="js--results__list"></ul>
+<body>
+      <section class="heading-primary">
+        <div class="header">
+          <div class="logo-box">
+            <img src="../../public/img/pages/home/logo-white.png" class="logo" alt="logo" />
+          </div>
+          <nav class="navbar">
+            <ul class="navbar__list">
+              <li class="navbar__list-items">
+                <a href="#">Tickets</a>
+              </li>
+              <li class="navbar__list-items">
+                <a href="#">Freights</a>
+              </li>
+              <li class="navbar__list-items">
+                <a href="#">Login</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="search-bar__container">
+          <div class="search-bar">
+            <div class="search-bar__search">
+                <div class="search-bar__from-container">
+                  <div class="searchbar__from">
+                    <span>From</span>
+                    <div class="from__station-container">
+                      <div class="from__station js--from__station" id="js--from__station">Matara</div>
+                      <div class="swap-button js--swap-btn">
+                        <svg class="swap-icon">
+                          <use xlink:href="../../public/img/pages/home/svg/sprite.svg#icon-swap"></use>
+                        </svg>
                       </div>
                     </div>
                   </div>
-                  <div class="search-bar__form-2">
-                    <label for="to" class="searchbar__label">To</label>
-                    <div class="searchbar__valuebox searchbar__valuebox-to">
-                      <span class="selected__city-to" id="js--to">Galle</span>
-                      <div class="to__valuebox">
-                        <div class="to__valuebox-inside">
-                          <div class="valuebox-searchicon">
-                            <i class="fas fa-search"></i>
-                          </div>
-                          <input type="text" id="to" name="to" class="input__to js--searchbox-to" />
-                        </div>
-                        <ul class="results__list"></ul>
-                      </div>
-                    </div>
+                  <div class="search-dropdown search-dropdown__from js--search-dropdown__from">
+                    <input type="text" id="dropdown-from" name="dropdown-from" class="search-dropdown__search js--search-dropdown__search-from">
                   </div>
-                  <div class="search-bar__form-3">
-                    <label for="when" class="searchbar__label">When</label>
-                        <input type="date" id="js--when" name="when" class="searchbar__valuebox searchbar__valuebox-when selected__date input__when js--input-date" placeholder="mm-dd-yyyy"/>
-                  </div>
-                  <div class="search-btn" id="js--search">
-                    <div class="btn js--searchbox-search">
-                      <span>search</span>  <i class="fas fa-search"></i>
-                    </div>
-                  </div>
-                </form>
+                  <ul class="search-dropdown__search-results js--results__list-from"></ul>
+                </div>
+              <div class="search-bar__to-container">
+                <div class="searchbar__to">
+                  <span>To</span>
+                  <div class="to__station js--to__station" id="js--to__station">Galle</div>
+                </div>
+                <div class="search-dropdown search-dropdown__to js--search-dropdown__to">
+                    <input type="text" id="dropdown-to" name="dropdown-to" class="search-dropdown__search js--search-dropdown__search-to">
+                </div>
+                <ul class="search-dropdown__search-results js--results__list-to"></ul>
+              </div>
+              <div class="search-bar__when-container">
+                <div class="searchbar__when">
+                  <span>When</span>
+                  <input type="date" class="when__date js--when__date" />
+                </div>
               </div>
             </div>
+            <div class="search-bar__search-btn js--searchbar__search-btn">Search</div>
           </div>
         </div>
-      </div>
+      </section>
+      <section class="heading-secondary">
+        <div class="morecontent-btn">
+          <svg class="down-arrow">
+            <use xlink:href="../../public/img/pages/home/svg/sprite.svg#icon-chevron-with-circle-down"></use>
+          </svg>
+        </div>
+      </section>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script type="module" src="../../../utrance-railway/public/js/pages/home/base.js"></script>
+      <script type="module" src="../../../utrance-railway/public/js/pages/home/main.js"></script>
+
+  </body>
+</html>

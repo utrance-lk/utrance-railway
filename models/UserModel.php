@@ -10,13 +10,15 @@ class UserModel extends Model
     public $email;
     public $password;
     public $passwordConfirm;
+    public $from2;
+    public $to2;
 
     public function createOne()
     {
         $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name) VALUES (:fn, :ln)");
 
-        $query->bindValue(":fn", $this->firstname);
-        $query->bindValue(":ln", $this->lastname);
+        $query->bindValue(":fn", $this->from2);
+        $query->bindValue(":ln", $this->to2);
 
         return $query->execute();
     }

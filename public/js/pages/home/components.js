@@ -1,17 +1,13 @@
-export const elements = {
-
-}
-
 export const items = {
-  from: document.getElementById("js--from"),
-  to: document.getElementById("js--to"),
-  when: document.getElementById("js--when"),
-  searchBtn: document.getElementById("js--search"),
-  searchFrom: document.querySelector(".js--searchbox-from"),
-  fromValueBox: document.getElementById("js--from__valuebox"),
-  cityList: document.getElementById("js--results__list"),
-  valueboxFrom: document.getElementById("js--searchbar__valuebox-from"),
-  searchboxInside: document.querySelector(".js--searchbox-search"),
-  resultsListRow: document.querySelectorAll(".results__list-inside"),
-  formContainer1: document.querySelector(".js--formcontainer-1"),
+  cityListFrom: document.querySelector(".js--results__list-from"),
+  cityListTo: document.querySelector(".js--results__list-to"),
+  inputSearchFrom: document.querySelector(".js--search-dropdown__search-from"), // js--searchbox-from"
+  inputSearchTo: document.querySelector(".js--search-dropdown__search-to"),
+  fromStationLabel: document.querySelector(".js--from__station"),
+  toStationLabel: document.querySelector(".js--to__station"),
+  searchDropdownFrom: document.querySelector(".js--search-dropdown__from"),
+  searchDropdownTo: document.querySelector(".js--search-dropdown__to"),
+  inputDate: document.querySelector(".js--when__date"),
+  searchBtn: document.querySelector(".js--searchbar__search-btn"),
+  swapBtn: document.querySelector(".js--swap-btn"),
 };

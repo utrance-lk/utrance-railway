@@ -69,8 +69,5 @@ class AuthController extends Controller
     {
         // protect the route
     }
-    public function cat(){
-        
-    }
 
 }

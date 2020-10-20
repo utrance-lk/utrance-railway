@@ -16,6 +16,8 @@ class ViewController extends Controller{
     public function search($request) {
         
         $viewModel = new ViewModel();
+
+        
         if($request->isPost()) {
             // $viewModel->loadData($request->getBody());
 
