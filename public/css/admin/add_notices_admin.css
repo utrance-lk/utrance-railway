@@ -9,28 +9,26 @@ body{
 
 #user_header{
     width: 100%;
-    height: 40px;
+    height: 6rem;
     background-image: linear-gradient(to right, #210340,#2EB1E6 );
     font-family: Aldrich;
-   
-    font-size: 24px;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
     margin: 0;
     color:white;
-    padding-top: 14px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     
     font-weight: bold;
-    border-radius: 4px;
-    margin-top: 10px;
+    border-radius: 0.4rem;
+    margin-top: 1rem;
 }
 
 
 #add_notices_form{
-    display: flex;
-    flex-direction: column;
-    align-items: left;
    
     margin-top: 4rem;
-    align-content: center;
+    
     width: 79rem;
     height: 60rem;
     border-color: black;
@@ -62,13 +60,13 @@ body{
 }
 
 #textup_area{
-    width: 280px;
-    height: 120px;
+    width: 28rem;
+    height: 12rem;
     border-color: black;
     border-style: solid;
-    border-width: 2px;
-    margin-left: 270px;
-    margin-top: 20px;
+    border-width: 0.2rem;
+    margin-left: 27rem;
+    margin-top: 2rem;
     display: block;
 }
 
@@ -78,14 +76,14 @@ body{
 #add_notice_button{
     background-color:dodgerblue;
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
     
-    width: 600px;
-    height: 40px;
+    width: 60rem;
+    height: 4rem;
     font-weight: bold;
     font-family: Aldrich;
     border: none;
-    margin-top:30px;
+    margin-top:3rem;
     
 }
 #add_notice_button:hover{
@@ -94,14 +92,14 @@ body{
 }
 #image_file{
    
-    margin-left: 339px;
-    border-radius: 4px;
+    margin-left: 33.9rem;
+    border-radius: 0.4rem;
     border-color: black;
-    border-width: 2px;
+    border-width: 0.2rem;
 }
 #submit_button{
-    width: 120px;
-    height: 30px;
+    width: 12rem;
+    height: 3rem;
     margin-left: 20px;
     border-radius: 4px;
     font-family: Aldrich;
@@ -117,4 +115,11 @@ body{
     border-radius: 4px;
     border-color: black;
     border-width: 2px;
+}
+
+#divMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }

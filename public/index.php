@@ -66,6 +66,10 @@ $app->router->get('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin:
 
 $app->router->post('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin::class, 'addNoticesByAdminNow']);
 
+$app->router->get('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboard']);
+
+$app->router->post('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboardNow']);
+
 
 
 

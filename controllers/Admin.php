@@ -42,6 +42,15 @@ public function addNoticesByAdminNow(){
     echo "Added Notices!!";
 }
 
+public function adminDashboard(){
+    return $this->render('adminDashboard');
+    echo "Hello Sri Lanka";
+}
+
+public function adminDashboardNow(){
+    echo "Hello my world";
+}
+
 }
 
 

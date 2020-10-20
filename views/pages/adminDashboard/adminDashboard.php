@@ -1,57 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="../../../../utrance-railway/public/css/admin/admin_dashboard.css">
-    <link rel="stylesheet" type="text/css" href="../../../../utrance-railway/public/css/admin/dashboard_newsFeed.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
-    <style>
-
-ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #140028;
-        font-family:Aldrich;
-        font-weight:bold;
-      }
-      
-      li {
-        float: left;
-      }
-      
-      li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        
-        
-      }
-      
-      li a:hover {
-        background-color:grey;
-      }
-      </style>
-    
-    
-
-
-
-    
-    
-</head>
-<body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
-    <div id="logo_header" style="float: left;">
+<!--div id="logo_header" style="float: left;">
        <img src="../../../../utrance-railway/public/img/logo2.jpeg" style="width: 80px;height:80px;padding-left: 20px;float: left;">
 
-     <!--img src="img/user1.jpg" class="img_role" style="width: 30px;height: 30px;padding-top: 10px;float: right;"!-->
+     <mg src="img/user1.jpg" class="img_role" style="width: 30px;height: 30px;padding-top: 10px;float: right;">
       <div class="dropdown" style="float:right;">
         <button  class="dropbtn" style="margin-top: 10px;"><img src="../../../../utrance-railway/public/img/user1.jpg"  class="img_role" style="width: 30px;height: 30px;float: left;"><i class="far fa-bell-on"></i>&nbsp;&nbsp;&nbsp;<text id="first_name">Ashika&nbsp;&nbsp;&nbsp;</text><i class="fa fa-bars"></i></button>
         <div class="dropdown-content">
@@ -70,7 +20,7 @@ ul {
        
         
            
-           </div>
+           </div!-->
     
 
 
@@ -79,7 +29,7 @@ ul {
         <br>
         <br>
         <br>
-        <text style="font-size: 40px; color: white;padding-left: 100px;font-weight: bold;">Hello, Ashika</text>
+        <text id="text_hello">Hello, Ashika</text>
         <div id="profileImage"></div>
 
 
@@ -93,9 +43,9 @@ ul {
             </script>
         
         <br><br><br>
-        <text style="color: white;font-size: 25px;padding-left: 100px;"> Account Email</text>
+        <text style="color: white;font-size: 2.5rem;padding-left: 10rem;"> Account Email</text>
         <br>
-        <text id="user_email" style="color: white;font-size: 19px;padding-left: 100px;font-weight: bold;">ashikaabeysuriya456@gmail.com</text>
+        <text id="user_email" style="color: white;font-size: 1.9rem;padding-left: 10rem;font-weight: bold;">ashikaabeysuriya456@gmail.com</text>
    </div>
 
    <!--div id="functions_body" >
@@ -110,8 +60,8 @@ ul {
        <button class="button_function" id="button_add_notices" style="float: left;margin-left: 15px;" value="7" onload="loadPage()">Add notices</button>
       </div>
    </div!-->
-   
-  <ul>
+ 
+   <ul>
   <li><a class="active" href="#home">Dashboard</a></li>
   <li><a href="#news">Update My Profile</a></li>
   <li><a href="#contact">Reset Password</a></li>
@@ -120,10 +70,10 @@ ul {
   <li><a href="#about">Update User Profile</a></li>
   <li><a href="#about">Add notices</a></li>
   </ul>
-            
+ 
    
    <div id="button_area_newsFeed" style="width: 100%;">
-       <div id="button_area"  style="margin-top: -10px;">
+       <div id="button_area"  >
        
         <!--div id="newsFeed" >
             <div class="newsCollection" style="float: left;font-weight: bold;">
@@ -215,7 +165,3 @@ ul {
         });
     });
 </script>
-
-
-</body>
-</html>

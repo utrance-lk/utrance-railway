@@ -7,23 +7,23 @@
     <div id="update_train_form">
     <div class="names">
         <text class="text_type">Train ID</text>
-       <input type="text" class="input_train_details" style="margin-left: 20rem;">
+       <input type="text" class="input_train_details" style="margin-left: 25rem;">
     </div>
     <div class="names">
         <text class="text_type">Route ID</text>
-       <input type="text" class="input_train_details" style="margin-left: 19.2rem;">
+       <input type="text" class="input_train_details" style="margin-left: 24rem;">
     </div>
     <div class="names">
         <text class="text_type"> Total Frieght Weight</text>
-       <input type="text" class="input_train_details" style="margin-left: 11.3rem;">
+       <input type="text" class="input_train_details" style="margin-left: 11.2rem;">
     </div>
     <div class="names">
         <text class="text_type">Train Name</text>
-       <input type="text" class="input_train_details" style="margin-left: 17.2rem;">
+       <input type="text" class="input_train_details" style="margin-left: 21rem;">
     </div>
     <div class="names">
         <text class="text_type">Train Available status</text>
-        <select class="select_train_details" style="margin-left: 10.8rem;">
+        <select class="select_train_details" style="margin-left: 10.4rem;">
             <option value="Available">Available</option>
             <option value="Not Available">Not Available</option>
             
@@ -31,7 +31,7 @@
     </div>
   <div class="names">
         <text class="text_type">Train Type</text>
-       <select class="select_train_details" style="margin-left: 17.8rem;">
+       <select class="select_train_details" style="margin-left: 22.5rem;">
             <option value="Express">Express</option>
             <option value="Suburban">Suburban</option>
             <option value="Night mail">Night mail</option>
