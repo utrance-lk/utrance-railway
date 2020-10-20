@@ -2,8 +2,8 @@ import {items} from './components.js';
 
 const stationsArray = ["Matara", "Colombo-Fort", "Galle", "Gampaha"];
 
-export const searchStates = function(searchText) {
-    clearResults();
+export const searchStates = function(searchText, direction) {
+    clearResults(direction);
 
     let matches = stationsArray.filter(function (state) {
       const regex = new RegExp(searchText, "gi");
@@ -13,20 +13,40 @@ export const searchStates = function(searchText) {
     if (searchText.length === 0) {
       matches = [];
     } else {
-      matches.forEach(renderCity);
+      matches.forEach(function(city) {
+        if(direction == 'from') {
+          if(city !== items.toStationLabel.textContent) {
+            renderCity(direction, city);
+          }
+        } else if(direction == 'to') {
+          if (city !== items.fromStationLabel.textContent) {
+            renderCity(direction, city);
+          }
+        }
+      });
     }
 
-    selectCity();
+    selectCity(direction);
 }
 
-export const selectCity = function () {
-  let v = document.querySelectorAll(".js--results__list .js--results__list-item");
+export const selectCity = function (direction) {
+    let v;
+    if(direction === 'from') {
+      v = document.querySelectorAll(".js--results__list-from .js--results__list-item");
+    } else {
+      v = document.querySelectorAll(".js--results__list-to .js--results__list-item");
+    }
 
   if (v.length > 0) {
     for (let i = 0; i < v.length; i++) {
       (function () {
         v[i].addEventListener("click", function (e) {
-          items.fromStationLabel.textContent = e.target.textContent;
+          if(direction === 'from') {
+            items.fromStationLabel.textContent = e.target.textContent;
+          } else {
+            items.toStationLabel.textContent = e.target.textContent;
+            items.searchBtn.style.visibility = 'visible';
+          }
         });
       })();
     }
@@ -51,14 +71,24 @@ let formatDate = function (date) {
   return date;
 };
 
-const clearResults = function () {
-  items.cityList.innerHTML = "";
+const clearResults = function (direction) {
+  if(direction === 'from') {
+    console.log('clear from from');
+    items.cityListFrom.innerHTML = "";
+  } else {
+    items.cityListTo.innerHTML = "";
+  }
 }
 
-const renderCity = function(city) {
-    const markup = `
+const renderCity = function (direction, city) {
+  const markup = `
         <li class="search-dropdown__search-results-item js--results__list-item">${city}</li>
     `;
 
-    items.cityList.insertAdjacentHTML("beforeend", markup);
-}
+  if (direction === "from") {
+    items.cityListFrom.insertAdjacentHTML("beforeend", markup);
+  } else if(direction === 'to') {
+    items.searchBtn.style.visibility = "hidden";
+    items.cityListTo.insertAdjacentHTML("beforeend", markup);
+  }
+};

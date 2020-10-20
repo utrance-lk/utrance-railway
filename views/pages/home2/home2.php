@@ -21,7 +21,6 @@
         <div class="search-bar__container">
           <div class="search-bar">
             <div class="search-bar__search">
-              <!-- <div class="search-bar__from-func"> -->
                 <div class="search-bar__from-container">
                   <div class="searchbar__from">
                     <span>From</span>
@@ -30,17 +29,20 @@
                   <div class="search-dropdown search-dropdown__from js--search-dropdown__from">
                     <input type="text" id="dropdown-from" name="dropdown-from" class="search-dropdown__search js--search-dropdown__search-from">
                   </div>
-                  <ul class="search-dropdown__search-results js--results__list">
+                  <ul class="search-dropdown__search-results js--results__list-from">
                       <!-- <li class="search-dropdown__search-results-item">Matara</li> -->
                       <!-- <li class="search-dropdown__search-results-item">Ambalangoda</li>  -->
-                    </ul>
+                  </ul>
                 </div>
-              <!-- </div> -->
               <div class="search-bar__to-container">
                 <div class="searchbar__to">
                   <span>To</span>
-                  <div class="to__station">Galle</div>
+                  <div class="to__station js--to__station" id="js--to__station">Galle</div>
                 </div>
+                <div class="search-dropdown search-dropdown__to js--search-dropdown__to">
+                    <input type="text" id="dropdown-to" name="dropdown-to" class="search-dropdown__search js--search-dropdown__search-to">
+                </div>
+                <ul class="search-dropdown__search-results js--results__list-to"></ul>
               </div>
               <div class="search-bar__when-container">
                 <div class="searchbar__when">
@@ -49,7 +51,7 @@
                 </div>
               </div>
             </div>
-            <div class="search-bar__search-btn">Search</div>
+            <div class="search-bar__search-btn js--searchbar__search-btn">Search</div>
           </div>
         </div>
       </section>
