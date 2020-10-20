@@ -73,7 +73,6 @@ let formatDate = function (date) {
 
 const clearResults = function (direction) {
   if(direction === 'from') {
-    console.log('clear from from');
     items.cityListFrom.innerHTML = "";
   } else {
     items.cityListTo.innerHTML = "";

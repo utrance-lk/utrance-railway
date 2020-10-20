@@ -9,4 +9,5 @@ export const items = {
   searchDropdownTo: document.querySelector(".js--search-dropdown__to"),
   inputDate: document.querySelector(".js--when__date"),
   searchBtn: document.querySelector(".js--searchbar__search-btn"),
+  swapBtn: document.querySelector(".js--swap-btn"),
 };

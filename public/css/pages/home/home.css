@@ -177,6 +177,11 @@
   flex-direction: column;
 }
 
+.from__station-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .from__station,
 .to__station,
 .when__date {
@@ -259,4 +264,15 @@ input::-webkit-datetime-edit-month-field:focus,
 input::-webkit-datetime-edit-year-field:focus {
   background-color: var(--color-primary);
   color: #000000;
+}
+
+.swap-button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.swap-icon {
+    height: 4rem;
+    /* border: 1px solid brown; */
+    width: 4rem;
 }

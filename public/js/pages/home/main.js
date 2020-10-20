@@ -11,6 +11,12 @@ items.inputSearchTo.addEventListener("input", function () {
   home.searchStates(items.inputSearchTo.value, "to");
 });
 
+items.swapBtn.addEventListener('click', function() {
+  let temp = items.fromStationLabel.textContent;
+  items.fromStationLabel.textContent = items.toStationLabel.textContent;
+  items.toStationLabel.textContent = temp;
+})
+
 document.addEventListener("click", function (e) {
   if (
     e.target === items.fromStationLabel ||

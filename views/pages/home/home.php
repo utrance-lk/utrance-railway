@@ -24,7 +24,14 @@
                 <div class="search-bar__from-container">
                   <div class="searchbar__from">
                     <span>From</span>
-                    <div class="from__station js--from__station" id="js--from__station">Matara</div>
+                    <div class="from__station-container">
+                      <div class="from__station js--from__station" id="js--from__station">Matara</div>
+                      <div class="swap-button js--swap-btn">
+                        <svg class="swap-icon">
+                          <use xlink:href="../../public/img/pages/home/svg/sprite.svg#icon-swap"></use>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                   <div class="search-dropdown search-dropdown__from js--search-dropdown__from">
                     <input type="text" id="dropdown-from" name="dropdown-from" class="search-dropdown__search js--search-dropdown__search-from">
