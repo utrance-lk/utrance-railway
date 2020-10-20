@@ -19,6 +19,6 @@
     />
 
     <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/home/style.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/home/home.css" />
 
   </head>
