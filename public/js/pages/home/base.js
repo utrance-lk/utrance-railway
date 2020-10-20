@@ -1,4 +1,5 @@
 import {elements, items} from "./components.js";
+import * as home from "./home.js";
 
 // const from = document.getElementById("js--from");
 // const to = document.getElementById("js--to");
@@ -11,14 +12,16 @@ import {elements, items} from "./components.js";
 
 // Rendering DB resuslts
 
+window.addEventListener("load", home.setDate);
+
 items.searchBtn.addEventListener('click', function() {
     $.ajax({
       // url: "../../utrance-railway/public/index.php",
-      url: "register",
+      url: "home",
       method: "POST",
       data: {
-        firstname: items.from.textContent,
-        lastname: items.to.textContent,
+        from: items.from.textContent,
+        to: items.to.textContent,
         when: items.when.value,
       },
       success: function (data) {
@@ -26,3 +29,28 @@ items.searchBtn.addEventListener('click', function() {
       },
     });
 });
+
+items.searchFrom.addEventListener("input", function (e) {
+  home.searchStates(items.searchFrom.value);
+
+  // home.selectCity();
+});
+
+items.valueboxFrom.addEventListener("click", function () {
+  items.fromValueBox.style.display = "block";
+  items.searchFrom.focus();
+});
+
+items.searchboxInside.addEventListener("click", function (e) {
+  e.preventDefault();
+});
+
+document.addEventListener('click', function(e) {
+  // console.log(e);
+  if(e.target.id === 'js--from' || e.target.id === 'from') {
+    items.fromValueBox.style.display = 'block';
+  } else {
+    items.fromValueBox.style.display = 'none';
+  }
+})
+

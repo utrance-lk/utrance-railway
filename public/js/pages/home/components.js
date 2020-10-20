@@ -13,4 +13,5 @@ export const items = {
   valueboxFrom: document.getElementById("js--searchbar__valuebox-from"),
   searchboxInside: document.querySelector(".js--searchbox-search"),
   resultsListRow: document.querySelectorAll(".results__list-inside"),
+  formContainer1: document.querySelector(".js--formcontainer-1"),
 };
