@@ -60,7 +60,7 @@
         </div>
       </section>
 
-      <script type="module" src="../../../utrance-railway/public/js/pages/home/base.js"></script>
+      <script type="module" src="../../../utrance-railway/public/js/pages/home/main.js"></script>
 
   </body>
 </html>
