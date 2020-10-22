@@ -3,7 +3,7 @@
 require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
-require_once "../controllers/Admin.php";
+require_once "../controllers/AdminController.php";
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -39,7 +39,7 @@ $app = new App(dirname(__DIR__), $config);
 
 $app->router->get('/utrance-railway/public/index.php/home', [ViewController::class, 'home']);
 
-$app->router->get('/utrance-railway/public/index.php/home2', [ViewController::class, 'home2']);
+// $app->router->get('/utrance-railway/public/index.php/home2', [ViewController::class, 'home2']);
 
 $app->router->post('/utrance-railway/public/index.php/home', [ViewController::class, 'search']);
 
@@ -68,17 +68,17 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 $app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
 
-$app->router->post('/utrance-railway/public/index.php/addTrainDetails', [Admin::class, 'addTrainDetails']);
+$app->router->post('/utrance-railway/public/index.php/addTrainDetails', [AdminController::class, 'addTrainDetails']);
 
-$app->router->get('/utrance-railway/public/index.php/addTrainDetails', [Admin::class, 'addTrain']);
+$app->router->get('/utrance-railway/public/index.php/addTrainDetails', [AdminController::class, 'addTrain']);
 
-$app->router->get('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin::class, 'addNoticesByAdmin']);
+$app->router->get('/utrance-railway/public/index.php/addNoticesByAdmin', [AdminController::class, 'addNoticesByAdmin']);
 
-$app->router->post('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin::class, 'addNoticesByAdminNow']);
+$app->router->post('/utrance-railway/public/index.php/addNoticesByAdmin', [AdminController::class, 'addNoticesByAdminNow']);
 
-$app->router->get('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboard']);
+$app->router->get('/utrance-railway/public/index.php/adminDashboard', [AdminController::class, 'adminDashboard']);
 
-$app->router->post('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboardNow']);
+$app->router->post('/utrance-railway/public/index.php/adminDashboard', [AdminController::class, 'adminDashboardNow']);
 
 
 

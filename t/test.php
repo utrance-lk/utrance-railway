@@ -41,7 +41,7 @@ $config = [
 
 $app2 = new App(dirname(__DIR__), $config);
 
-$app2->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
+$app2->router->post('/utrance-railway/t/test.php', [AuthController::class, 'register']);
 
 $app2->run();
 
