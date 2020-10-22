@@ -1,120 +1,127 @@
 body{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     width:100%;
-    height:100%;
+    height:110rem;
+    background-color: white !important;
 }
-
+#divAll{
+    
+    margin: auto;
+}
 #user_header{
     width: 100%;
-    height: 40px;
+    height: 6rem;
     background-image: linear-gradient(to right, #210340,#2EB1E6 );
     font-family: Aldrich;
-   
-    font-size: 24px;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
     margin: 0;
     color:white;
-    padding-top: 14px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     
     font-weight: bold;
-    border-radius: 4px;
-    margin-top: 10px;
+    border-radius: 0.4rem;
+    margin-top: 1rem;
 }
 .text_type{
     float: left;
-    font-size: 20px;
+    font-size: 2rem;
     font-family: Aldrich;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 #update_train_form{
-    margin-left: 250px;
-    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
     align-content: center;
-    width: 1090px;
-    height: 1100px;
+    width:78rem;
+    height: 93rem;
+    margin-top: 3rem;
     border-color: black;
     border-style: groove;
 }
 
 .input_train_details{
    
-    width: 350px;
-    height: 30px;
+    width: 25rem;
+    height: 3.5rem;
     border-color: black;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     border-style: solid;
-    border-width: 2px;
+    border-width: 0.1rem;
     
   
 }
 .names{
-    margin-top: 30px;
-    margin-left: 35px;
+    margin-top: 1.5rem;
+    margin-left: 3.5rem;
    
 }
 #train_stop_stations{
-    margin-top: 30px;
-    margin-left: 35px;
+    margin-top: 3rem;
+    margin-left: 3.5rem;
     border-color: black;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     border-style: solid;
-    border-width: 2px;
-    width: 850px;
-    padding: 10px;
-    height: 230px; 
+    border-width: 0.1rem;
+    width: 67rem;
+    padding: 1rem;
+    height: 20rem; 
 }
 
 #name_train{
-    margin-top: 30px;
-    margin-left: 35px;
+    margin-top: 1.9rem;
+    margin-left: 3.5rem;
     border-color: black;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     border-style: solid;
-    border-width: 2px;
-    width: 850px;
-    padding: 10px;
-    height: 60px;
+    border-width: 0.1rem;
+    width: 65rem;
+    padding: 1rem;
+    height: 6rem;
 }
 .select_train_details{
-    width: 350px;
-    height: 40px;
+    width: 25rem;
+    height: 3.5rem;
     font-family: Aldrich;
     border-color: black;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     border-style: solid;
-    border-width: 2px;
+    border-width: 0.1rem;
+    margin-top: 0.5rem;
 
     
 }
 #train_up{
-    margin-left: 50px;
+    margin-left: 3rem;
     float: left;
-    width: 150px;
+    width: 15rem;
 }
 #train_up1{
-    margin-left: 25px;
+    margin-left: 2.5rem;
     float: left;
-    width: 150px;
-    margin-top: 10px;
+    width: 15rem;
+    margin-top: 1rem;
 }
 
 #select_from{
-    width: 150px;
-    height: 40px;
+    width: 10rem;
+    height: 2.5rem;
 }
 
 #select_from1{
-    width: 150px;
-    height: 40px;
-    margin-top: 20px;
+    width: 10rem;
+    height: 2.5rem;
+    margin-top: 1.5rem;
    
 }
 .button_up{
-    width: 150px;
-    height:40px;
-    margin-left: 120px;
-    border-radius: 4px;
+    width: 15rem;
+    height:3.5rem;
+    margin-left: 5rem;
+    border-radius: 0.4rem;
     color: white;
     background-color: #210340;
     border-color: white;
@@ -124,95 +131,96 @@ body{
     
 }
 #textup_area{
-    width: 280px;
-    height: 120px;
+    width: 20rem;
+    height: 8rem;
     border-color: black;
     border-style: solid;
-    border-width: 2px;
-    margin-left: 270px;
-    margin-top: 20px;
+    border-width: 0.1rem;
+    margin-left: 27.5rem;
+    margin-top: 2rem;
     display: block;
 }
-#textup_area1{
-    width: 280px;
-    height: 120px;
-    border-color: black;
-    border-style: solid;
-    border-width: 2px;
-    margin-left: 270px;
-    margin-top: 20px;
-    display: block;
-}
+
 #select_to1{
-    width: 150px;
-    height: 40px;
-    margin-top: 20px;
+    width: 10rem;
+    height: 2rem;
+    margin-top: 1rem;
     
 }
     
 #select_to{
-    width: 150px;
-    height: 40px;
+    width: 10rem;
+    height: 2.5rem;
     
 }
 .input_class{
-    width: 150px;
-    margin-top: 20px;
-    height: 30px;
-    margin-left: 40px;
+    width: 10.5rem;
+    margin-top: 2.5rem;
+    height: 2rem;
+    margin-left: 2rem;
     border-color: black;
     border-style: solid;
-    border-width: 2px;
-    border-radius: 3px;
+    border-width: 0.1rem;
+    border-radius: 0.4rem;
     float: left;
 }
 #train_ticket_prices{
     display: block;
 }
 #train_duration{
-    margin-top: 80px;
-    margin-left: 35px;
+    margin-top: 6rem;
+    margin-left: 3.2rem;
     border-color: black;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     border-style: solid;
-    border-width: 2px;
-    width: 850px;
-    padding: 10px;
-    height: 100px; 
+    border-width: 0.1rem;
+    width: 71.5rem;
+    padding: 1rem;
+    height: 10rem; 
 }
 .text_type1{
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-family: Aldrich;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
 
-.time_select{
-    width: 60px;
-    height: 35px;
-    border-color: black;
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 2px;
-    margin-left: 20px;
-}
+
    
 
 #update_button{
     background-color:dodgerblue;
     color: white;
-    font-size: 20px;
+    font-size: 1.8rem;
     
-    width: 600px;
-    height: 40px;
+    width: 40rem;
+    height: 3rem;
     font-weight: bold;
     font-family: Aldrich;
     border: none;
+    cursor: pointer;
+   height:3.5rem;
+    margin-top: 3.5rem;
+    margin-left: 18rem;
 
 }
 #update_button:hover{
     background-color: dimgrey;
     color: white;
+}
+.train_up_uration{
+    margin-top: 1rem;
+    float: left;
+    margin-left: 2rem;
+
+}
+
+.checkbox{
+    float: left;
+    margin-top: 1rem;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 2rem;
 }

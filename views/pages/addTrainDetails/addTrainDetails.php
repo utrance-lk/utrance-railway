@@ -1,37 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update Profile</title>
-    <link rel="stylesheet" type="text/css" href="../../../../utrance-railway/public/css/admin/add_train_details.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
+
     <div id="user_header" >
         <tex style="padding-left: 20px;">Add Train Details</tex>
     </div>
+    <div id="divAll">
 <form action="" method="post">
     <div id="update_train_form">
     <div class="names">
         <text class="text_type">Train ID</text>
-       <input type="text" class="input_train_details" id="input_train_id">
+       <input type="text" class="input_train_details" style="margin-left: 25rem;">
     </div>
     <div class="names">
         <text class="text_type">Route ID</text>
-       <input type="text" class="input_train_details" id="input_route_id" >
+       <input type="text" class="input_train_details" style="margin-left: 24rem;">
     </div>
     <div class="names">
         <text class="text_type"> Total Frieght Weight</text>
-       <input type="text" class="input_train_details" id="input_train_weight" >
+       <input type="text" class="input_train_details" style="margin-left: 11.2rem;">
     </div>
     <div class="names">
         <text class="text_type">Train Name</text>
-       <input type="text" class="input_train_details" id="input_train_name">
+       <input type="text" class="input_train_details" style="margin-left: 21rem;">
     </div>
     <div class="names">
         <text class="text_type">Train Available status</text>
-        <select class="select_train_details" style=>
+        <select class="select_train_details" style="margin-left: 10.4rem;">
             <option value="Available">Available</option>
             <option value="Not Available">Not Available</option>
             
@@ -39,7 +31,7 @@
     </div>
   <div class="names">
         <text class="text_type">Train Type</text>
-       <select class="select_train_details" >
+       <select class="select_train_details" style="margin-left: 22.5rem;">
             <option value="Express">Express</option>
             <option value="Suburban">Suburban</option>
             <option value="Night mail">Night mail</option>
@@ -47,14 +39,14 @@
     </div>
     <div id="name_train">
           
-           <text class="text_type" >From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</text>
-           <select class="select_train_details" id="select_from" style="float: left;">
+           <text class="text_type" style="margin-left: 3rem;">From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</text>
+           <select class="select_train_details" id="select_from" style="margin-left: 7.5rem;float: left;">
             <option value="Matara">Matara</option>
             <option value="Galle">Galle</option>
             <option value="Colombo">Colombo</option>
        </select>
-       <text class="text_type"  >To &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
-       <select class="select_train_details" id="select_to" style="display: block;">
+       <text class="text_type"  style="margin-left: 8rem;">To &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+       <select class="select_train_details" id="select_to" style="margin-left: 3.5rem;display: block;">
         <option value="Matara">Matara</option>
         <option value="Galle">Galle</option>
         <option value="Colombo">Colombo</option>
@@ -106,7 +98,7 @@
     </div>
 
     <div id="train_ticket_prices">
-        <text class="text_type" style="margin-top: 20px;"> Number of Seats &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </text>
+        <text class="text_type" style="margin-left: 4rem;margin-top: 2rem;"> Number of Seats &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </text>
         <input class="input_class" id="input_first_class_seats" placeholder="First Class seats ">
         <input class="input_class" id="input_second_class_seats" placeholder="Second Class seats">
         <input class="input_class" id="input_observation_class_seats" placeholder="Obeservation Class seats ">
@@ -115,30 +107,29 @@
     </div>
     <div id="train_duration">
         <text class="text_type1" > Train Schedule Dates&nbsp;&nbsp;&nbsp;&nbsp;:</text>
-        <text class="text_type" id="train_up_uration" style="margin-top: 15px;float: left;"> Mon&nbsp;&nbsp;: </text>
-        <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
+        <text class="text_type" class="train_up_uration" > Mon&nbsp;&nbsp;: </text>
+        <input type="checkbox"   class="checkbox" >
         
-        <text class="text_type" id="train_up_uration" style="margin-top: 15px;margin-left: 20px;">Tue&nbsp;&nbsp;:</text>
-        <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
+        <text class="text_type" class="train_up_uration" >Tue&nbsp;&nbsp;:</text>
+        <input type="checkbox"  class="checkbox" >
 
-        <text class="text_type" id="train_up_uration" style="margin-top: 15px;margin-left: 20px;">Wen&nbsp;&nbsp;:</text>
-        <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
+        <text class="text_type" class="train_up_uration" >Wen&nbsp;&nbsp;:</text>
+        <input type="checkbox"  class="checkbox">
 
-        <text class="text_type" id="train_up_uration" style="margin-top: 15px;margin-left: 20px;">Thu&nbsp;&nbsp;:</text>
-        <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
+        <text class="text_type" class="train_up_uration" >Thu&nbsp;&nbsp;:</text>
+        <input type="checkbox"  class="checkbox">
 
-        <text class="text_type" id="train_up_uration" style="margin-top: 15px;margin-left: 20px;">Fri&nbsp;&nbsp;:</text>
-        <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
+        <text class="text_type" class="train_up_uration" >Fri&nbsp;&nbsp;:</text>
+        <input type="checkbox"  class="checkbox">
 
-        <text class="text_type" id="train_up_uration" style="margin-top: 15px;margin-left: 20px;">Sat&nbsp;&nbsp;:</text>
-        <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
+        <text class="text_type" class="train_up_uration" >Sat&nbsp;&nbsp;:</text>
+        <input type="checkbox"  class="checkbox">
 
-        <text class="text_type" id="train_up_uration" style="margin-top: 15px;margin-left: 20px;">Sun&nbsp;&nbsp;:</text>
-        <input type="checkbox" style="float: left;margin-top: 15px;width: 30px;height: 30px;">
-    </div!-->
+        <text class="text_type" class="train_up_uration" >Sun&nbsp;&nbsp;:</text>
+        <input type="checkbox"  class="checkbox">
+    </div>
     <button id="update_button" >Update details</button>
    
     </div>
     </form>
-</body>
-</html>
+</div>
