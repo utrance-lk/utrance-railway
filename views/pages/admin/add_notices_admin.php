@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
 </head>
-<body>
+
   
-</body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
+<body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
 <div id="user_header" >
     <tex style="padding-left: 20px;">Add notices</tex>
 </div>
@@ -49,4 +49,6 @@
     <button id="add_notice_button" style="cursor: pointer;margin-left: 90px;height:47px;margin-top: 80px;">Add notices</button>
 
 </div>
+</body>
+
 </html>

@@ -9,6 +9,40 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    <style>
+
+ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #140028;
+        font-family:Aldrich;
+        font-weight:bold;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        
+        
+      }
+      
+      li a:hover {
+        background-color:grey;
+      }
+      </style>
+    
+    
+
+
 
     
     
@@ -63,8 +97,9 @@
         <br>
         <text id="user_email" style="color: white;font-size: 19px;padding-left: 100px;font-weight: bold;">ashikaabeysuriya456@gmail.com</text>
    </div>
+   
 
-   <div id="functions_body" >
+   <!--div id="functions_body" >
        <div id="functions_body_button_set">
        <button id="button_dashboard" class="button_function" style="float: left;" value="1" onload="loadPage()" >Dashboard&nbsp;&nbsp;|</button>
        <button id="button_update" class="button_function" style="float: left;" value="2" onload="loadPage()">Update Own profile&nbsp;&nbsp;|</button>
@@ -75,7 +110,18 @@
       
        <button class="button_function" id="button_add_notices" style="float: left;margin-left: 15px;" value="7" onload="loadPage()">Add notices</button>
       </div>
-   </div>
+   </div!-->
+   
+  <!--ul>
+  <li><a class="active" href="#home">Dashboard</a></li>
+  <li><a href="#news">Update My Profile</a></li>
+  <li><a href="#contact">Reset Password</a></li>
+  <li><a href="#about">Update Train Details</a></li>
+  <li><a href="#about">Add Train Details</a></li>
+  <li><a href="#about">Update User Profile</a></li>
+  <li><a href="#about">Add notices</a></li>
+  </ul!-->
+            
    
    <div id="button_area_newsFeed" style="width: 100%;">
        <div id="button_area"  style="margin-top: -10px;">
