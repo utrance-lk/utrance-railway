@@ -3,45 +3,49 @@
 .body{
     width:100%;
     height:100%;
-    padding: 0px;  
-    margin: 0px;
-   
+    padding: 0;  
+    margin: 0;
+    background-color: white !important;
 }
 #user_header{
     width: 100%;
-    height: 40px;
+    height: 6rem;
     background-image: linear-gradient(to right, #210340,#2EB1E6 );
     font-family: Aldrich;
-   
-    font-size: 24px;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
     margin: 0;
     color:white;
-    padding-top: 14px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     
     font-weight: bold;
-    border-radius: 4px;
-    margin-top: 10px;
+    border-radius: 0.4rem;
+    margin-top: 1rem;
 
 }
 
 #update_form{
-    
-    width: 800px;
-    height: 700px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    width: 85rem;
+    height: 75rem;
     color: black;
-    font-size: 20px;
-    margin-left: 250px;
+    font-size: 2rem;
+    margin-left: 32rem;
     font-family: Aldrich;
-    border-width: 2px;
-    padding: 20px;
+    border-width: 0.2rem;
+    padding: 1.5rem;
     border-color:#140028;
-    margin-top: 40px;
+    margin-top: 4rem;
+    background-color: white;
+    border-radius: 0.8rem;
+    border-style: solid;
 }
 
 
 .input_text{
-    width: 310px;
-    height: 30px;
+    width: 28rem;
+    height: 3.5rem;
     border-color: black;
     border-top: none;
     border-right: none;
@@ -49,33 +53,48 @@
     text-shadow: none;
     outline:none;
     cursor: pointer;
+    background-color: white;
+    border-bottom: 0.4rem;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: 0.3rem;
     
 }
 
 
 .select_city{
-    width: 310px;
-    height: 35px;
-    border-radius: 4px;
+    width: 28rem;
+    height: 4rem;
+    border-radius: 0.4;
     border-color: black;
     cursor: pointer;
-    border-width: 2px;
+    border-width: 0.2rem;
+    border-color: black;
+    border-style: solid;
+    border-radius: 0.5rem;
 } 
 .city_values{
     background-color:lightgrey;
-    font-size:20px;
+    font-size:1.2rem;
+    color: black;
+    font-family: Aldrich;
+    width: 28rem;
+    height: 4rem;
 }
 #update_button{
     background-color:dodgerblue;
     color: white;
-    font-size: 20px;
+    font-size: 2.8rem;
     
-    width: 600px;
-    height: 40px;
+    width: 50rem;
+    height: 5rem;
     font-weight: bold;
     font-family: Aldrich;
     border: none;
-
+    cursor: pointer;
+   
+    margin-top: 3.5rem;
+    margin-left: 15rem;
 }
 #update_button:hover{
     background-color: dimgrey;

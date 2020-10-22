@@ -46,6 +46,14 @@ public function adminDashboardNow(){
     echo "Hello my world";
 }
 
+public function updateUserProfile(){
+    return $this->render('updateUserProfile');
+    echo " hello update user profile!!";
+}
+public function updateUserProfileNow(){
+    echo " hello Upload form" ;
+}
+
 }
 
 

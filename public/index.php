@@ -80,6 +80,10 @@ $app->router->get('/utrance-railway/public/index.php/adminDashboard', [AdminCont
 
 $app->router->post('/utrance-railway/public/index.php/adminDashboard', [AdminController::class, 'adminDashboardNow']);
 
+$app->router->get('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfile']);
+
+$app->router->post('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfileNow']);
+
 
 
 
