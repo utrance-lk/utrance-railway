@@ -4,7 +4,7 @@ include_once "../classes/core/Controller.php";
 
 
 
-class Admin extends Controller {
+class AdminController extends Controller {
 
     public function addTrainDetails() {
 
