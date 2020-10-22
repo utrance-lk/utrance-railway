@@ -67,6 +67,8 @@
         </div>
       </section>
 
+      <?php include 'newsfeed.php'; ?>
+
       <script type="module" src="../../../utrance-railway/public/js/pages/home/main.js"></script>
 
   </body>
