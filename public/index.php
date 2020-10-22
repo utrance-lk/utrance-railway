@@ -3,7 +3,7 @@
 require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
-require_once "../controllers/AddTrainDetailsController.php";
+require_once "../controllers/Admin.php";
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -65,10 +65,22 @@ $app->router->post('/utrance-railway/t/test.php', 'search');
 $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
 
-$app->router->get('/utrance-railway/public/index.php/cat', [AddTrainDetailsController::class, 'addTrain']);
-// $app->router->get('/utrance-railway/public/index.php/cat', [AddTrainDetailsController::class, 'ashika']);
 
-$app->router->post('/utrance-railway/public/index.php/dog', [AddTrainDetailsController::class, 'addTrainDetails']);
+$app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
+
+$app->router->post('/utrance-railway/public/index.php/addTrainDetails', [Admin::class, 'addTrainDetails']);
+
+$app->router->get('/utrance-railway/public/index.php/addTrainDetails', [Admin::class, 'addTrain']);
+
+$app->router->get('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin::class, 'addNoticesByAdmin']);
+
+$app->router->post('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin::class, 'addNoticesByAdminNow']);
+
+$app->router->get('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboard']);
+
+$app->router->post('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboardNow']);
+
+
 
 
 
