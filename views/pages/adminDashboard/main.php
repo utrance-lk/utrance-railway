@@ -11,6 +11,6 @@
    
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/footer.css" />
-    
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
 </head>
 <body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
