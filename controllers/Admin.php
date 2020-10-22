@@ -3,21 +3,16 @@
 include_once "../classes/core/Controller.php";
 
 
+
 class Admin extends Controller {
 
-    public function addTrainDetails(){
-       
-        echo "Hello World";
-       
-       
-        
+    public function addTrainDetails() {
 
-        /*if($request->isPost()) {
-            $trainModel->loadData($request->getBody());
+    
 
             // var_dump($request->getBody());
 
-            $trainModel->getTrainDetails();
+            //$trainModel->getTrainDetails();
             
        /* if($request->isPost()) {
             $adminModel->loadData($request->getBody());

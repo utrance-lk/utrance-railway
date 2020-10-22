@@ -1,17 +1,8 @@
-const searchFrom = document.querySelector(".js--searchbox-from");
-// const searchTo = document.querySelector(".js--searchbox-to").value;
+import {items} from "./components.js";
 
-// const searchButton = document.querySelector(".js--searchbox-search");
+const stationsArray = ['Matara', 'Colombo-Fort', 'Galle', 'Gampaha'];
 
-const fromValueBox = document.querySelector(".from__valuebox");
-const cityList = document.querySelector(".results__list");
-const inputFromField = document.querySelector(".input__from");
-
-const stationsArray = ['Matara', 'Colombo-Fort', 'Galle', 'Gampaha']
-
-// functions
-
-const searchStates = function(searchText) {
+export const searchStates = function(searchText) {
 
     clearResults();
 
@@ -26,6 +17,33 @@ const searchStates = function(searchText) {
         matches.forEach(renderCity);
     }
 
+    selectCity();
+
+};
+
+export const selectCity = function () {
+   let v = document.querySelectorAll(".results__list .results__list-inside");
+
+  if (v.length > 0) {
+    for (let i = 0; i < v.length; i++) {
+        (function() {
+            v[i].addEventListener("click", function (e) {
+                items.from.textContent = e.target.textContent;
+              });
+        }());
+    }
+  }
+};
+
+export let setDate = function () {
+
+  let today = new Date();
+  let dd = String(today.getDate());
+  let mm = String(today.getMonth() + 1);
+  let yyyy = today.getFullYear();
+  today = yyyy + "-" + formatDate(mm) + "-" + formatDate(dd);
+
+  items.when.value = today;
 };
 
 const renderCity = function(city) {
@@ -33,78 +51,11 @@ const renderCity = function(city) {
         <li class="results__list-inside">${city}</li>
     `;
 
-    cityList.insertAdjacentHTML("beforeend", markup);
+    items.cityList.insertAdjacentHTML("beforeend", markup);
 }
 
 const clearResults = function() {
-    cityList.innerHTML = '';
-}
-
-// const closeAllLists = function(e) {
-//     let 
-// }
-
-const selectCity = function() {
-     let v = document.querySelectorAll(".results__list .results__list-inside");
-
-     if (v.length > 0) {
-       for (let i = 0; i < v.length; i++) {
-         v[i].addEventListener("click", function (e) {
-           selectedCity = e.target.textContent;
-           // I tested fromValueBox.style.display = 'none' here;
-         });
-       }
-     }
-
-}
-
-let selectedCity = '';
-
-
-// events
-
-searchFrom.addEventListener('input', function(e) {
-
-    searchStates(searchFrom.value);
-
-
-    selectCity();
-
-    // if(selectedCity.length > 0) {
-
-    //     fromValueBox.style.display = "none";
-    //     document.querySelector(".selected__city-from").textContent = selectedCity;
-    // }
-
-});
-
-// if(selectedCity.length > 0) {
-//     fromValueBox.style.display = "none";
-// }
-
-
-document.querySelector(".searchbar__valuebox-from").addEventListener('click', function() {
-    fromValueBox.style.display = 'block';
-    document.querySelector(".input__from").focus();
-});
-
-document.querySelector(".js--searchbox-search").addEventListener('click', function(e) {
-    e.preventDefault();
-});
-
-// date picker
-
-let setDate = function() {
-    let today = new Date();
-    let dd = String(today.getDate());
-    let mm = String(today.getMonth() + 1);
-    let yyyy = today.getFullYear();
-    today = formatDate(mm) + "/" + formatDate(dd) + "/" + yyyy;
-
-    // console.log(document.querySelector('.js--input-date'));
-
-    document.querySelector(".js--input-date").value = today;
-
+    items.cityList.innerHTML = '';
 }
 
 let formatDate = function(date) {
@@ -113,7 +64,3 @@ let formatDate = function(date) {
     }
     return date;
 }
-
-
-
-window.addEventListener('load', setDate);

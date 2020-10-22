@@ -37,18 +37,27 @@ $app = new App(dirname(__DIR__), $config);
 
 // $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
 
-$app->router->get('/utrance-railway/public/index.php', [ViewController::class, 'home']);
+$app->router->get('/utrance-railway/public/index.php/home', [ViewController::class, 'home']);
 
-$app->router->post('/utrance-railway/public/index.php/', [ViewController::class, 'search']);
+$app->router->get('/utrance-railway/public/index.php/home2', [ViewController::class, 'home2']);
+
+$app->router->post('/utrance-railway/public/index.php/home', [ViewController::class, 'search']);
 
 $app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
 $app->router->post('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
-$app->router->get('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
+$app->router->get('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
-$app->router->post('/utrance-railway/public/index.php/register/', [AuthController::class, 'register']);
+$app->router->post('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
+// $app->router->get('/utrance-railway/public/index.php/cat', [ViewController::class, 'cat']);
+
+// $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
+
+$app->router->post('/utrance-railway/t/test.php', 'search');
+
+// $app->router->post('/utrance-railway/public/index.php/hi/','hi');
 //$app->router->post('/utrance-railway/public/index.php/cat', [AuthController::class, 'cat']);
 
 
@@ -56,7 +65,8 @@ $app->router->post('/utrance-railway/public/index.php/register/', [AuthControlle
 $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
 
-//$app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
+
+$app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
 
 $app->router->post('/utrance-railway/public/index.php/addTrainDetails', [Admin::class, 'addTrainDetails']);
 
@@ -69,6 +79,8 @@ $app->router->post('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin
 $app->router->get('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboard']);
 
 $app->router->post('/utrance-railway/public/index.php/adminDashboard', [Admin::class, 'adminDashboardNow']);
+
+
 
 
 

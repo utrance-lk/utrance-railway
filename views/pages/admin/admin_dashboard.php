@@ -97,6 +97,7 @@ ul {
         <br>
         <text id="user_email" style="color: white;font-size: 19px;padding-left: 100px;font-weight: bold;">ashikaabeysuriya456@gmail.com</text>
    </div>
+   
 
    <!--div id="functions_body" >
        <div id="functions_body_button_set">
@@ -111,7 +112,7 @@ ul {
       </div>
    </div!-->
    
-  <ul>
+  <!--ul>
   <li><a class="active" href="#home">Dashboard</a></li>
   <li><a href="#news">Update My Profile</a></li>
   <li><a href="#contact">Reset Password</a></li>
@@ -119,7 +120,7 @@ ul {
   <li><a href="#about">Add Train Details</a></li>
   <li><a href="#about">Update User Profile</a></li>
   <li><a href="#about">Add notices</a></li>
-  </ul>
+  </ul!-->
             
    
    <div id="button_area_newsFeed" style="width: 100%;">

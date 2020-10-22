@@ -49,13 +49,11 @@
         public function renderView($view, $params = [])
         {
             $base = $this->loadBase();
-            $header = $this->layoutContent('header');
             $footer = $this->layoutContent('footer');
             $main = $this->renderOnlyView($view, $params, true);
             $viewContent = $this->renderOnlyView($view, $params);
 
             $base = str_replace('{{main}}', $main, $base);
-            $base = str_replace('{{header}}', $header, $base);
             $base = str_replace('{{content}}', $viewContent, $base);
 
             return str_replace('{{footer}}', $footer, $base);
