@@ -51,6 +51,12 @@ $app->router->get('/utrance-railway/public/index.php/register', [AuthController:
 
 $app->router->post('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
+
+
+////////////////////////////////////////////////////////////
+$app->router->get('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPage']);
+$app->router->post('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPageNow']);
+
 // $app->router->get('/utrance-railway/public/index.php/cat', [ViewController::class, 'cat']);
 
 // $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
