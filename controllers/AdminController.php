@@ -54,6 +54,15 @@ public function updateUserProfileNow(){
     echo " hello Upload form" ;
 }
 
+public function viewUsers(){
+    return $this->render('viewUsers');
+    echo " View Users!!";
+}
+public function viewUsersNow(){
+    echo "Upload View Users form" ;
+}
+
+
 }
 
 

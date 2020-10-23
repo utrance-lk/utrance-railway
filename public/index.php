@@ -84,6 +84,10 @@ $app->router->get('/utrance-railway/public/index.php/updateUserProfile', [AdminC
 
 $app->router->post('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfileNow']);
 
+$app->router->get('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsers']);
+
+$app->router->post('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsersNow']);
+
 
 
 
