@@ -60,11 +60,11 @@
         </div>
       </section>
       <section class="heading-secondary">
-        <div class="morecontent-btn">
+        <a class="morecontent-btn" href="#newsfeed">
           <svg class="down-arrow">
             <use xlink:href="../../public/img/pages/home/svg/sprite.svg#icon-chevron-with-circle-down"></use>
           </svg>
-        </div>
+        </a>
       </section>
 
       <?php include 'newsfeed.php'; ?>
