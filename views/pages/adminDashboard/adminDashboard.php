@@ -17,7 +17,7 @@
                             <span id="profileImage" class="dropdown-flex"  style="float:left"></span>
                             <button id="btn-profileImage"style="margin-top:0.35rem;background-color:#3B3B98;width:3.5rem;height:3.5rem;outline:none"><img src="../../../../utrance-railway/public/img/chevron1.png" style="width:2rem;height:2rem">
 
-</button>
+                            </button>
                             
                             
                             
@@ -38,48 +38,16 @@
             <div class="divAllMain">
             <div class="divMainContainer">
             <div class="container-1">
-                <button class="box-button"><div class="box">
-                    <div  class="div-box" style="margin-top: 1rem;">
-                    <label class="text-label">Settings</label>
+                <div class="userfunctions">
+                    <div class="user__setting">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
                     </div>
+                    <div class="user__mybookings">my bookings</div>
                 </div>
-                </button>
-                <button class="box-button"><div class="box">
-                    <div  class="div-box" style="margin-top: 1rem;">
-                    <label class="text-label">Update my profile</label>
-                    </div>
-                </div>
-            </button>
-            <button class="box-button" id="button-Add">
-                <div class="box">
-                    <div class="div-box" style="margin-top: 1rem;">
-                    <label class="text-label">Add Train Details</label>
-                    </div>
-                </div>
-            </button>
-            <button class="box-button">
-                <div class="box">
-                    <div class="div-box" style="margin-top: 1rem;">
-                    <label class="text-label" >Update Train Details</label>
-                    </div>
-                </div>
-                </button>
-                <button class="box-button">
-                <div class="box">
-                    <div class="div-box" style="margin-top: 1rem;">
-                    <label class="text-label">Update User Details</label>
-                    </div>
-                </div>
-                
-                </button>
-                <button class="box-button">
-                <div class="box">
-                    <div class="div-box" style="margin-top: 1rem;">
-                    <label class="text-label">Add notices</label>
-                    </div>
-                </div>
-                </button>
-                </div>
+                <span>Admin</span>
+                <div class="adminfunctions">admin functions</div>
+            </div>
             </div>
             </div>
 
