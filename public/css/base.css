@@ -7,6 +7,7 @@
 
   --color-tertiary-light: 192, 196, 199;
   --color-slight-gray: #ecf0f1;
+  --color-brown: rgb(119, 119, 119);
 }
 
 *,
@@ -15,6 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  scroll-behavior: smooth !important;
 }
 
 html {

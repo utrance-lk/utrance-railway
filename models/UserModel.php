@@ -5,13 +5,19 @@ include_once "../classes/core/Model.php";
 class UserModel extends Model
 {
 
-    public $firstname;
-    public $lastname;
+    public $first_name;
+    public $last_name;
     public $email;
+    public $street_line1;
+    public $street_line2;
+    public $city;
+    public $contact_num;
     public $password;
+    public $email_id;
     public $passwordConfirm;
-    public $from2;
-    public $to2;
+    public $user_role;
+    public $user_image;
+    
 
     public function createOne()
     {
@@ -22,5 +28,11 @@ class UserModel extends Model
 
         return $query->execute();
     }
+
+    public function saveUser(){
+
+    }
+
+
 
 }
