@@ -76,13 +76,13 @@ $app->router->get('/utrance-railway/public/index.php/admin', [AdminController::c
 
 $app->router->post('/utrance-railway/public/index.php/admin', [AdminController::class, 'adminSettingsNow']);
 
-$app->router->get('/utrance-railway/public/index.php/addNoticesByAdmin', [AdminController::class, 'addNoticesByAdmin']);
+$app->router->get('/utrance-railway/public/index.php/manageUser', [AdminController::class, 'manageUser']);
 
-$app->router->post('/utrance-railway/public/index.php/addNoticesByAdmin', [AdminController::class, 'addNoticesByAdminNow']);
+$app->router->post('/utrance-railway/public/index.php/manageUser', [AdminController::class, 'manageUserNow']);
 
-$app->router->get('/utrance-railway/public/index.php/adminDashboard', [AdminController::class, 'adminDashboard']);
+$app->router->get('/utrance-railway/public/index.php/addUser', [AdminController::class, 'addUser']);
 
-$app->router->post('/utrance-railway/public/index.php/adminDashboard', [AdminController::class, 'adminDashboardNow']);
+$app->router->post('/utrance-railway/public/index.php/addUser', [AdminController::class, 'addUserNow']);
 
 $app->router->get('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfile']);
 

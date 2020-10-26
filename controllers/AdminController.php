@@ -27,12 +27,43 @@ class AdminController extends Controller {
 
    public function adminSettings(){
     return $this->render('admin');
-    echo "hy girl";
+    
    }
 
    public function adminSettingsNow(){
-    echo "hy girl";
+    echo "Admin settings page added Successfully";
    }
+
+
+   public function manageUser(){
+    return $this->render('manageUser');
+   
+    
+   }
+
+
+   public function manageUserNow(){
+       echo "Manage User Page added Successfully";
+
+   }
+
+   public function addUser(){
+    return $this->render('addUser');
+    
+   }
+
+   public function addUserNow(){
+    
+    echo "Add User Page added Successfully";
+   }
+
+
+
+
+
+
+
+
 public function addTrain(){
     return $this->render('addTrainDetails');
     echo "hy girl";
