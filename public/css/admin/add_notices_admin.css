@@ -44,8 +44,8 @@ body{
 
 .input_notice_details{
    
-    width: 21rem;
-    height: 2rem;
+    width: 25rem;
+    height: 3rem;
     border-color: black;
     border-radius: 0.4rem;
     border-style: solid;
@@ -61,7 +61,7 @@ body{
 
 #textup_area{
     width: 28rem;
-    height: 12rem;
+    height: 14rem;
     border-color: black;
     border-style: solid;
     border-width: 0.2rem;
@@ -107,7 +107,10 @@ body{
     border-color: black;
     border-width: 2px;  
     cursor: pointer;
+    background-color: gray;
+    color: white;
 }
+
 #input_image{
     width: 250px;
     font-family: Aldrich;

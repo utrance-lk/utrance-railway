@@ -1,0 +1,114 @@
+body{
+    background-color: #eeee;
+}
+.div-sub{
+    display: grid;
+    padding-top: 0.5rem;
+}
+
+
+
+.auth-content{
+    width:50%;
+   height: 75rem;
+    margin:5rem auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    background-color: white;
+    border-radius: 0.3rem;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.auth-content .form-title{
+    text-align: center;
+    padding-bottom: 1.3rem;
+    font-size: 1.8rem;
+    margin: auto;
+}
+
+.auth-content form div{
+    margin-bottom: 1rem;
+}
+.auth-content form p{
+    text-align: center;
+}
+
+.btn{
+    padding: .5rem;
+    background: #006669;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 30%;
+    height: 29%;
+    
+}
+
+.btn-big{
+    padding:.7rem 1.3rem;
+    line-height:1.3rem
+}
+.btn:hover{
+    color: white!important;
+    background: #005255;
+
+}
+.text-input{
+    padding:.7rem 1rem;
+    outline: none;
+    width: 50%;
+   height: 3.5rem;
+   border: none;
+
+    border-radius: 5px;
+    background-color: #E4E9EB ;
+}
+
+#user-first-name{
+    padding:.7rem 1rem;
+   float: left !important;
+    width: 80%;
+    border-radius: 0.4rem;
+}
+#city_values{
+    width:14.8rem;
+    height: 3rem;
+    border-color: black;
+    border-style: solid;
+    border-width: 0.12rem;
+    border-radius: 0.4rem;
+    background-color: #E4E9EB ;
+}
+.lbl-user{
+    font-weight: bold;
+    font-size: 1.4rem;
+    
+}
+
+.down-arrow {
+    height: 2rem;
+    margin: 0 auto;
+    padding-right: 1rem;
+    /* border: 1px solid red; */
+    width: 2rem;
+   /* animation: 1s moveDown infinite;*/
+    cursor: pointer;
+  }
+
+  #sign-in{
+      font-size: 1.4rem;
+      color: black;
+      font-weight: bold;
+     
+  }
+  #check1{
+      width: 1.2rem;
+      height: 1.2rem;
+      padding: 1rem;
+  }
+
