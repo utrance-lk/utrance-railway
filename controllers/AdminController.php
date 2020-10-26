@@ -23,6 +23,16 @@ class AdminController extends Controller {
 
    
    }
+
+
+   public function adminSettings(){
+    return $this->render('admin');
+    echo "hy girl";
+   }
+
+   public function adminSettingsNow(){
+    echo "hy girl";
+   }
 public function addTrain(){
     return $this->render('addTrainDetails');
     echo "hy girl";
@@ -45,6 +55,23 @@ public function adminDashboard(){
 public function adminDashboardNow(){
     echo "Hello my world";
 }
+
+public function updateUserProfile(){
+    return $this->render('updateUserProfile');
+    echo " hello update user profile!!";
+}
+public function updateUserProfileNow(){
+    echo " hello Upload form" ;
+}
+
+public function viewUsers(){
+    return $this->render('viewUsers');
+    echo " View Users!!";
+}
+public function viewUsersNow(){
+    echo "Upload View Users form" ;
+}
+
 
 }
 

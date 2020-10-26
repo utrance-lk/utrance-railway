@@ -51,6 +51,12 @@ $app->router->get('/utrance-railway/public/index.php/register', [AuthController:
 
 $app->router->post('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
+
+
+////////////////////////////////////////////////////////////
+$app->router->get('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPage']);
+$app->router->post('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPageNow']);
+
 // $app->router->get('/utrance-railway/public/index.php/cat', [ViewController::class, 'cat']);
 
 // $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
@@ -68,9 +74,9 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 $app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
 
-$app->router->post('/utrance-railway/public/index.php/addTrainDetails', [AdminController::class, 'addTrainDetails']);
+$app->router->get('/utrance-railway/public/index.php/admin', [AdminController::class, 'adminSettings']);
 
-$app->router->get('/utrance-railway/public/index.php/addTrainDetails', [AdminController::class, 'addTrain']);
+$app->router->post('/utrance-railway/public/index.php/admin', [AdminController::class, 'adminSettingsNow']);
 
 $app->router->get('/utrance-railway/public/index.php/addNoticesByAdmin', [AdminController::class, 'addNoticesByAdmin']);
 
@@ -79,6 +85,14 @@ $app->router->post('/utrance-railway/public/index.php/addNoticesByAdmin', [Admin
 $app->router->get('/utrance-railway/public/index.php/adminDashboard', [AdminController::class, 'adminDashboard']);
 
 $app->router->post('/utrance-railway/public/index.php/adminDashboard', [AdminController::class, 'adminDashboardNow']);
+
+$app->router->get('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfile']);
+
+$app->router->post('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfileNow']);
+
+$app->router->get('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsers']);
+
+$app->router->post('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsersNow']);
 
 
 
