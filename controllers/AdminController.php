@@ -23,6 +23,16 @@ class AdminController extends Controller {
 
    
    }
+
+
+   public function adminSettings(){
+    return $this->render('admin');
+    echo "hy girl";
+   }
+
+   public function adminSettingsNow(){
+    echo "hy girl";
+   }
 public function addTrain(){
     return $this->render('addTrainDetails');
     echo "hy girl";

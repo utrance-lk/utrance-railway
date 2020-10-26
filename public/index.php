@@ -74,9 +74,9 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 $app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
 
-$app->router->post('/utrance-railway/public/index.php/addTrainDetails', [AdminController::class, 'addTrainDetails']);
+$app->router->get('/utrance-railway/public/index.php/admin', [AdminController::class, 'adminSettings']);
 
-$app->router->get('/utrance-railway/public/index.php/addTrainDetails', [AdminController::class, 'addTrain']);
+$app->router->post('/utrance-railway/public/index.php/admin', [AdminController::class, 'adminSettingsNow']);
 
 $app->router->get('/utrance-railway/public/index.php/addNoticesByAdmin', [AdminController::class, 'addNoticesByAdmin']);
 
