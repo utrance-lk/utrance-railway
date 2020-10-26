@@ -1,7 +1,8 @@
 <section class="newsfeed">
     <div class="newscard__container">
         <div class="newscard__container-item-1">
-            <img src=../../public/img/pages/home/train3.jpg" alt="train-img">
+            <img src="../../public/img/pages/home/newsfeed/train3.jpg" alt="train-img">
+            
             <div class="newscard__textbox"></div>
         </div>
         <div class="newscard__container-item-2">

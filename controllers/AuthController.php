@@ -28,6 +28,17 @@ class AuthController extends Controller
         // ]);
     }
 
+    public function registerPage(){
+        return $this->render('register');
+    echo " View Users!!";
+    }
+
+
+    public function registerPageNow(){
+        
+    echo " View Users Register Page!!";
+    }
+
     public function login()
     {
         return $this->render('login');
