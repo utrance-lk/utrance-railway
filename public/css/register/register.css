@@ -38,14 +38,14 @@ body{
 
 .btn{
     padding: .5rem;
-    background: #006669;
+    background:#89c4f4;
     color: white;
     border: 1px solid transparent;
     border-radius: 0.25rem;
     font-size: 1.3rem;
     font-weight: bold;
     width: 30%;
-    height: 29%;
+    height: 35%;
     
 }
 
@@ -55,7 +55,7 @@ body{
 }
 .btn:hover{
     color: white!important;
-    background: #005255;
+    background: #59abe3;
 
 }
 .text-input{
