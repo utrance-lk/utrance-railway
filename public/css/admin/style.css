@@ -265,8 +265,8 @@ body {
     justify-content: flex-end;
 }
 
-.btn-settings {
-    width: 10rem;
+.btn__save {
+    width: 12rem;
     text-align: center;
     margin-top: 2rem;
     background-color: #89c4f4;
@@ -277,8 +277,8 @@ body {
     transition: all .5s;
 }
 
-.btn-settings:active,
-.btn-settings:focus {
+.btn__save:active,
+.btn__save:focus {
     transform: translateY(3px);
 }
 

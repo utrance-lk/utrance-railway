@@ -37,9 +37,9 @@ $app = new App(dirname(__DIR__), $config);
 
 // $app->router->post('/utrance-railway/public/index.php/home/', [SiteController::class, 'home']);
 
-$app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
+// $app->router->get('/utrance-railway/', [ViewController::class, 'home']);
 
-$app->router->post('/utrance-railway/public/index.php/home', [ViewController::class, 'search']);
+$app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
 
 $app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
@@ -48,6 +48,14 @@ $app->router->post('/utrance-railway/public/index.php/login/', [AuthController::
 $app->router->get('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
 $app->router->post('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
+
+
+// Admin routing
+$app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
+$app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
+$app->router->get('/utrance-railway/admin/manage-users', [AdminController::class, 'manageUsers']);
+
+
 
 
 
@@ -72,7 +80,6 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 $app->router->get('/utrance-railway/cat', [AddTrainDetailsController::class, 'addTrain']);
 
-$app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
 $app->router->post('/utrance-railway/public/index.php/admin', [AdminController::class, 'adminSettingsNow']);
 
@@ -91,11 +98,6 @@ $app->router->post('/utrance-railway/public/index.php/updateUserProfile', [Admin
 $app->router->get('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsers']);
 
 $app->router->post('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsersNow']);
-
-
-
-
-
 
 
 
