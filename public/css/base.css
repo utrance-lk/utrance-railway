@@ -36,6 +36,16 @@ input {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:active,
+a:visited {
+  color: #fff;
+}
+
 .btn {
   outline: none;
   cursor: pointer;

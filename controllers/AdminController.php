@@ -25,20 +25,22 @@ class AdminController extends Controller {
    }
 
 
-   public function adminSettings(){
-    return $this->render('admin');
-    
+   public function adminSettings($request){
+        if($request->isPost()) {
+            // form
+            return 'success';
+        }
+
+        return $this->render('admin');
    }
 
-   public function adminSettingsNow(){
-    echo "Admin settings page added Successfully";
-   }
+   public function manageUsers($request){
+        if($request->isPost()) {
+            // from
+            return 'success';
+        }
 
-
-   public function manageUser(){
-    return $this->render('manageUser');
-   
-    
+        return $this->render(['admin', 'manageUsers']);
    }
 
 

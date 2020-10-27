@@ -78,6 +78,9 @@
 
             if($isMain) {
                 ob_start();
+                if(is_array($view)) {
+                    $view = $view[0];
+                }
                 include_once "../views/pages/$view/main.php";
                 return ob_get_clean();
             } else {  
@@ -85,7 +88,12 @@
                     $$key = $value;
                 }
                 ob_start();
-                include_once "../views/pages/$view/$view.php";
+                if(is_array($view)) {
+                    $view = implode('/', $view);
+                    include_once "../views/pages/$view.php";
+                } else {
+                    include_once "../views/pages/$view/$view.php";
+                }
                 return ob_get_clean();
             }
         }
