@@ -69,12 +69,7 @@ body{
     background-color: #E4E9EB ;
 }
 
-#user-first-name{
-    padding:.7rem 1rem;
-   float: left !important;
-    width: 80%;
-    border-radius: 0.4rem;
-}
+
 #city_values{
     width:14.8rem;
     height: 3rem;
