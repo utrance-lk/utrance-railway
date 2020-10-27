@@ -103,6 +103,19 @@ $app->router->post('/utrance-railway/public/index.php/viewUsers', [AdminControll
 
 
 
+
+
+
+
+
+
+
+//hasani nimeshika
+
+$app->router->get('/utrance-railway/public/index.php/getUserDetails', [ViewController::class, 'getUserDetails']);
+
+
+
 //$app->router->post('/utrance-railway/public/index.php/hi/','hi');
 
 /* ROUTE HANDLING */
