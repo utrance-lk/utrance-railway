@@ -45,7 +45,4 @@ class Request {
         return $body;
 
     }
-
-
-
 }
