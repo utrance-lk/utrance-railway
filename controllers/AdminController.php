@@ -6,25 +6,6 @@ include_once "../classes/core/Controller.php";
 
 class AdminController extends Controller {
 
-    public function addTrainDetails() {
-
-    
-
-            // var_dump($request->getBody());
-
-            //$trainModel->getTrainDetails();
-            
-       /* if($request->isPost()) {
-            $adminModel->loadData($request->getBody());
-            $viewModel->getUserDEtails();
-
-        }*/
-   // }
-
-   
-   }
-
-
    public function adminSettings($request){
         if($request->isPost()) {
             // form
@@ -43,21 +24,24 @@ class AdminController extends Controller {
         return $this->render(['admin', 'manageUsers']);
    }
 
+   public function addUser($request) {
+       if($request->isPost()) {
+           //form
+           return 'success';
+       }
 
-   public function manageUserNow(){
-       echo "Manage User Page added Successfully";
-
+       return $this->render(['admin', 'addUser']);
    }
 
-   public function addUser(){
-    return $this->render('addUser');
-    
-   }
+   public function updateUser($request) {
+        if($request->isPost()) {
+            //form
+            return 'success';
+        }
 
-   public function addUserNow(){
-    
-    echo "Add User Page added Successfully";
+        return $this->render(['admin', 'updateUser']);
    }
+   
 
 
 
@@ -87,14 +71,6 @@ public function adminDashboard(){
 
 public function adminDashboardNow(){
     echo "Hello my world";
-}
-
-public function updateUserProfile(){
-    return $this->render('updateUserProfile');
-    echo " hello update user profile!!";
-}
-public function updateUserProfileNow(){
-    echo " hello Upload form" ;
 }
 
 public function viewUsers(){

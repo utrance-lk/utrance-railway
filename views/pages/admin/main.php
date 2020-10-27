@@ -68,7 +68,7 @@
               </svg>
               <span class="manage--route-name">Manage routes</span>
             </div>
-            <a href="/utrance-railway/admin/manage-users" class="sidebar__nav-manage--users sidebar__nav-item js--sidebar__nav-manage--users">
+            <a href="/utrance-railway/admin/users" class="sidebar__nav-manage--users sidebar__nav-item js--sidebar__nav-manage--users">
               <svg class="user-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-man"></use>
               </svg>

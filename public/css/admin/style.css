@@ -478,6 +478,7 @@ select {
   border-radius: 5px;
   cursor: pointer;
   transition: all .2s;
+  color: #000000;
 }
 
 .search__result-managebtn:active,
