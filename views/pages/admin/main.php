@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Utrance-account</title>
+    <title>Utrance Railway</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
@@ -56,12 +56,12 @@
           </div>
           <div class="userrole-name">Admin</div>
           <div class="sidebar__nav-role-items">
-            <div class="sidebar__nav-manage--trains sidebar__nav-item">
+            <a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
               </svg>
               <span class="manage--trains-name">Manage trains</span>
-            </div>
+            </a>
             <div class="sidebar__nav-manage--routes sidebar__nav-item">
               <svg class="route-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-location"></use>

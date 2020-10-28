@@ -20,16 +20,16 @@
                 </select>
               </div>
             </form>
-            <a href="/utrance-railway/admin/users/add" class="adduserbtn">
-              <div class="adduserbtn-text">Add User</div>
-              <svg class="adduserbtn-img">
+            <a href="/utrance-railway/admin/users/add" class="adduserbtn addbtn">
+              <div class="adduserbtn-text addbtn-text">Add User</div>
+              <svg class="adduserbtn-img addbtn-img">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus">
                 </use>
               </svg> 
             </a>
             <div class="search__results-container">
               <div class="search__result-card">
-                <div class="search__result-user-mainbox">
+                <div class="search__result-user-mainbox search__result-mainbox">
                   <div class="user-mainbox__img-box">
                     <img
                       src="/utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
@@ -56,7 +56,7 @@
                 </div>
               </div>
               <div class="search__result-card">
-                <div class="search__result-user-mainbox">
+                <div class="search__result-user-mainbox search__result-mainbox">
                   <div class="user-mainbox__img-box">
                     <img
                       src="/utrance-railway/public/img/pages/admin/user-2.png"

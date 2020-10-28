@@ -29,12 +29,18 @@ $app = new App(dirname(__DIR__), $config);
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
 $app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
-$app->router->get('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
+$app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
 
 $app->router->get('/utrance-railway/admin/users/add', [AdminController::class, 'addUser']);
 $app->router->get('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 
+$app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
+$app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
+
+
+////////////////////////////////////////////
+$app->router->get('/utrance-railway/addTrainDetails', [AdminController::class, 'addTrain']);
 
 
 

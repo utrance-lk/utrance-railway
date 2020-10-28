@@ -24,6 +24,15 @@ class AdminController extends Controller {
         return $this->render(['admin', 'manageUsers']);
    }
 
+   public function manageTrains($request) {
+       if($request->isPost()) {
+           // form
+           return 'success';
+       }
+
+       return $this->render(['admin', 'manageTrains']);
+   }
+
    public function addUser($request) {
        if($request->isPost()) {
            //form
@@ -31,6 +40,15 @@ class AdminController extends Controller {
        }
 
        return $this->render(['admin', 'addUser']);
+   }
+
+   public function addTrain($request) {
+       if($request->isPost()) {
+           //form
+           return 'success';
+       }
+
+       return $this->render(['admin', 'addTrain']);
    }
 
    public function updateUser($request) {
@@ -42,18 +60,20 @@ class AdminController extends Controller {
         return $this->render(['admin', 'updateUser']);
    }
    
+   public function updateTrain($request) {
+       if($request->isPost()) {
+           //form
+           return 'success';
+       }
+
+       return $this->render(['admin' ,'updateTrain']);
+   }
 
 
 
 
 
 
-
-
-public function addTrain(){
-    return $this->render('addTrainDetails');
-    echo "hy girl";
-}
 
 public function addNoticesByAdmin(){
     return $this->render('addNoticesByAdmin');
