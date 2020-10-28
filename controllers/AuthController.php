@@ -6,20 +6,24 @@ include_once "../models/UserModel.php";
 class AuthController extends Controller
 {
 
-    public function register($request)
+    public function registerPageNow($request)
     {
+        echo "Hwll";
 
         $userModel = new UserModel();
         if ($request->isPost()) {
+            echo "hy";
             $userModel->loadData($request->getBody());
+            $userModel->createOne();
 
-            if ($userModel->createOne()) {
+           /* if ($userModel->createOne()) {
+                echo "";
                 return 'Success';
             }
 
-            // return $this->render('register', [
-            //     'model' => $userModel,
-            // ]);
+          /*  return $this->render('register', [
+                'model' => $userModel,
+             ]);*/
 
         }
 
@@ -28,15 +32,12 @@ class AuthController extends Controller
         // ]);
     }
 
+    
+
+
     public function registerPage(){
         return $this->render('register');
-    echo " View Users!!";
-    }
-
-
-    public function registerPageNow(){
         
-    echo " View Users Register Page!!";
     }
 
     public function login()
