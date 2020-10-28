@@ -288,7 +288,8 @@ body {
     background-color: rgba(119, 119, 119, 0.2);
 }
 
-.btn__password {
+.btn__password,
+.btn__add-train {
     margin-bottom: 5rem;
 }
 
@@ -377,7 +378,7 @@ select {
     text-align: center; */
 }
 
-.adduserbtn {
+.addbtn {
   /* border: 1px solid black; */
   display: flex;
   align-items: center;
@@ -390,19 +391,19 @@ select {
   cursor: pointer;
 }
 
-.adduserbtn-text {
+.addbtn-text {
   margin-right: 2rem;
   font-size: 2rem;
 }
 
-.adduserbtn-img {
+.addbtn-img {
   fill: #fff;
   height: 2.5rem;
   width: 2.5rem;
 }
 
-.adduserbtn:active,
-.adduserbtn:focus {
+.addbtn:active,
+.addbtn:focus {
   transform: translateY(.2rem);
 }
 
@@ -432,7 +433,7 @@ select {
   text-align: center;
 }
 
-.search__result-user-mainbox {
+.search__result-mainbox {
   display: flex;
   height: 100%;
   align-items: center;
@@ -478,6 +479,11 @@ select {
   border-radius: 5px;
   cursor: pointer;
   transition: all .2s;
+  color: #000000;
+}
+
+.search__result-deletebtn {
+  color: #D64541;
 }
 
 .search__result-managebtn:active,
@@ -485,4 +491,108 @@ select {
 .search__result-deletebtn:active,
 .search__result-deletebtn:focus {
   transform: scale(0.97);
+}
+
+.number__input {
+  width: 30%;
+  height: 70%;
+}
+
+/* specially for trains  */
+.search__result-train-idbox {
+  flex: 0.5;
+}
+
+.search__result-train-namebox {
+  font-weight: 700;
+  padding: 0 2rem;
+  text-align: left;
+}
+
+.traintaveldays-box {
+  border: none;
+}
+
+.classess-box {
+  border: 1px solid rgba(119, 119, 119, .3);
+}
+
+.checkbox__horizontal {
+  display: flex;
+  /* border: 1px solid red; */
+  justify-content: space-between;
+}
+
+.checkbox__label {
+  margin-left: 1rem;
+}
+
+.content__fields > * { /*delete this */
+  /* border: 1px solid brown; */
+}
+
+.content__fields-item:not(:last-child) { /*delete this */
+  margin-bottom: 3rem;
+}
+
+.trainactive-box,
+.freightallowed-box {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form__label--active,
+.form__label--freights-allowed {
+  /* border: 1px solid blue; */
+  margin-bottom: 0;
+}
+
+.form__label--active + input,
+.form__label--freights-allowed + input {
+  margin-left: 2rem;
+}
+
+.reservation-categorybox__container > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.reservation__category-item {
+  display: flex;
+  /* border: 1px solid brown; */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reservation__category-item input {
+  /* border: 1px solid blueviolet; */
+}
+
+.seatbox-observation--saloon {
+  flex: 0.333333333333333;
+  margin-right: 1rem;
+  padding: 1rem 0;
+}
+
+.routeid-box {
+  /* border: 1px solid red; */
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
+  justify-content: space-between;
+}
+
+.routeid-box > * {
+  margin-bottom: 0;
+  /* border: 1px solid darkcyan; */
+}
+
+.route-id__number-input,
+.freights-quantity__number-input {
+  width: 4rem;
+  height: 3rem;
+  margin-left: 2rem;
+}
+
+.btn__add-train {
+  /* width: 80%; */
 }
