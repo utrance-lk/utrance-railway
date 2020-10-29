@@ -50,10 +50,10 @@
                 </div>
                 <div class="search__result-user-rolebox">Admin</div>
                 <a href="/utrance-railway/admin/users/update" class="search__result-user-managebtnbox">
-                  <div class="search__result-managebtn">Update</div>
+                  <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-user-deletebtnbox">
-                  <div class="search__result-deletebtn">Delete</div>
+                  <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div>
               <div class="search__result-card">
@@ -75,10 +75,10 @@
                 <div class="search__result-user-emailbox">matt@example.com</div>
                 <div class="search__result-user-rolebox">User</div>
                 <a href="/utrance-railway/admin/users/update" class="search__result-user-managebtnbox">
-                  <div class="search__result-managebtn">Update</div>
+                  <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-user-deletebtnbox">
-                  <div class="search__result-deletebtn">Delete</div>
+                  <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div>
             </div>

@@ -33,6 +33,15 @@ class AdminController extends Controller {
        return $this->render(['admin', 'manageTrains']);
    }
 
+   public function manageRoutes($request) {
+       if($request->isPost()) {
+           //from
+           return 'success';
+       }
+
+       return $this->render(['admin', 'manageRoutes']);
+   }
+
    public function addUser($request) {
        if($request->isPost()) {
            //form
@@ -49,6 +58,15 @@ class AdminController extends Controller {
        }
 
        return $this->render(['admin', 'addTrain']);
+   }
+
+   public function addRoute($request) {
+       if($request->isPost()) {
+           // form
+           return 'success';
+       }
+
+       return $this->render(['admin', 'addRoute']);
    }
 
    public function updateUser($request) {

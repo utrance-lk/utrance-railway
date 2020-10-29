@@ -31,29 +31,29 @@
               <div class="search__result-card">
                 
                 <div class="search__result-train-idbox">
-                  #<span class="user__id">1</span>
+                  #<span class="train__id">1</span>
                 </div>
                 <div class="search__result-train-namebox">Denuwara Menike</div>
-                <div class="search__result-tran-typebox">Express</div>
+                <div class="search__result-train-typebox">Express</div>
                 <a href="/utrance-railway/admin/trains/update" class="search__result-train-managebtnbox">
-                  <div class="search__result-managebtn">Update</div>
+                  <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-train-deletebtnbox">
-                  <div class="search__result-deletebtn">Delete</div>
+                  <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div>
               <div class="search__result-card">
                 
                 <div class="search__result-train-idbox">
-                  #<span class="user__id">2</span>
+                  #<span class="train__id">2</span>
                 </div>
                 <div class="search__result-train-namebox">Dakshiana Intercity</div>
-                <div class="search__result-tran-typebox">Express</div>
+                <div class="search__result-train-typebox">Express</div>
                 <a href="/utrance-railway/admin/trains/update" class="search__result-train-managebtnbox">
-                  <div class="search__result-managebtn">Update</div>
+                  <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-train-deletebtnbox">
-                  <div class="search__result-deletebtn">Delete</div>
+                  <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div>
             </div>
