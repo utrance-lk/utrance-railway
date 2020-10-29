@@ -20,16 +20,17 @@
                 </select>
               </div>
             </form>
-            <div class="adduserbtn">
-              <div class="adduserbtn-text">Add User</div>
-              <svg class="adduserbtn-img">
+
+            <a href="/utrance-railway/admin/users/add" class="adduserbtn addbtn">
+              <div class="adduserbtn-text addbtn-text">Add User</div>
+              <svg class="adduserbtn-img addbtn-img">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus">
                 </use>
               </svg> 
-            </div>
+            </a>
             <div class="search__results-container">
               <div class="search__result-card">
-                <div class="search__result-user-mainbox">
+                <div class="search__result-user-mainbox search__result-mainbox">
                   <div class="user-mainbox__img-box">
                     <img
                       src="/utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
@@ -48,15 +49,15 @@
                   chris@example.com
                 </div>
                 <div class="search__result-user-rolebox">Admin</div>
-                <div class="search__result-user-managebtnbox">
-                  <div class="search__result-managebtn">Manage</div>
-                </div>
+                <a href="/utrance-railway/admin/users/update" class="search__result-user-managebtnbox">
+                  <div class="search__result-managebtn">Update</div>
+                </a>
                 <div class="search__result-user-deletebtnbox">
                   <div class="search__result-deletebtn">Delete</div>
                 </div>
               </div>
               <div class="search__result-card">
-                <div class="search__result-user-mainbox">
+                <div class="search__result-user-mainbox search__result-mainbox">
                   <div class="user-mainbox__img-box">
                     <img
                       src="/utrance-railway/public/img/pages/admin/user-2.png"
@@ -73,9 +74,9 @@
                 </div>
                 <div class="search__result-user-emailbox">matt@example.com</div>
                 <div class="search__result-user-rolebox">User</div>
-                <div class="search__result-user-managebtnbox">
-                  <div class="search__result-managebtn">Manage</div>
-                </div>
+                <a href="/utrance-railway/admin/users/update" class="search__result-user-managebtnbox">
+                  <div class="search__result-managebtn">Update</div>
+                </a>
                 <div class="search__result-user-deletebtnbox">
                   <div class="search__result-deletebtn">Delete</div>
                 </div>
