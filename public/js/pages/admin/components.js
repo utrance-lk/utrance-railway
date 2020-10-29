@@ -1,5 +1,9 @@
 export const items = {
-  settings: document.querySelector(".js--sidebar__nav-settings"),
-  manageUsers: document.querySelector(".js--sidebar__nav-manage--users"),
-  content: document.querySelector(".js--load-content-container"),
+  addStopBtn: document.querySelector(".js--btn__addStop"),
+  addStopContainer: document.querySelector(".js--addStop-container"),
+  addedStopsCardContainer: document.getElementById(
+    "js--added_stops-card--container"
+  ),
+  addStopCard: document.getElementById("js--addStop-card"),
+  addBtn: document.getElementById("js--addstop-btn-box")
 };
