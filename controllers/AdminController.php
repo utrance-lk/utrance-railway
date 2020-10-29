@@ -5,7 +5,7 @@ include_once "../classes/core/Controller.php";
 
 
 class AdminController extends Controller {
-
+  
    public function adminSettings($request){
         if($request->isPost()) {
             // form
