@@ -37,19 +37,15 @@ class AuthController extends Controller
         return $this->render('register');
         
     }
+    
+   public function signIn(){
+    return $this->render('signIn');
+}
+   }
 
-    public function login()
-    {
-        return $this->render('login');
-    }
+   
 
-    public function logout()
-    {
-        // logout
-       
-    }
-
-    public function isLoggedIn()
+    /*public function isLoggedIn()
     {
         
         // checks whether user is logged in or not
@@ -78,6 +74,6 @@ class AuthController extends Controller
     public function protect()
     {
         // protect the route
-    }
+    }*/
 
-}
+
