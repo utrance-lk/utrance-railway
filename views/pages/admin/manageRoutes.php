@@ -5,7 +5,7 @@
               <input
                 type="text"
                 class="dashboard-searchbar"
-                placeholder="Search trains by name"
+                placeholder="Search routes by name"
               />
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
@@ -20,9 +20,9 @@
                 </select>
               </div>
             </form>
-            <a href="/utrance-railway/admin/trains/add" class="adduserbtn addbtn">
-              <div class="addtrainbtn-text addbtn-text">Add Train</div>
-              <svg class="addtrainbtn-img addbtn-img">
+            <a href="/utrance-railway/admin/routes/add" class="adduserbtn addbtn">
+              <div class="addroutebtn-text addbtn-text">Add Route</div>
+              <svg class="addroutebtn-img addbtn-img">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus">
                 </use>
               </svg> 
@@ -30,29 +30,29 @@
             <div class="search__results-container">
               <div class="search__result-card">
                 
-                <div class="search__result-train-idbox">
-                  #<span class="train__id">1</span>
+                <div class="search__result-route-idbox">
+                  #<span class="route__id">1</span>
                 </div>
-                <div class="search__result-train-namebox">Denuwara Menike</div>
-                <div class="search__result-train-typebox">Express</div>
-                <a href="/utrance-railway/admin/trains/update" class="search__result-train-managebtnbox">
+                <div class="search__result-route-start">Matara</div>
+                <div class="search__result-route-destination">Colombo Fort</div>
+                <a href="/utrance-railway/admin/routes/update" class="search__result-route-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
-                <div class="search__result-train-deletebtnbox">
+                <div class="search__result-route-deletebtnbox">
                   <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div>
               <div class="search__result-card">
                 
-                <div class="search__result-train-idbox">
-                  #<span class="train__id">2</span>
+                <div class="search__result-route-idbox">
+                  #<span class="route__id">2</span>
                 </div>
-                <div class="search__result-train-namebox">Dakshiana Intercity</div>
-                <div class="search__result-train-typebox">Express</div>
-                <a href="/utrance-railway/admin/trains/update" class="search__result-train-managebtnbox">
+                <div class="search__result-route-start">Matara</div>
+                <div class="search__result-route-destination">Kandy</div>
+                <a href="/utrance-railway/admin/route/update" class="search__result-route-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
-                <div class="search__result-train-deletebtnbox">
+                <div class="search__result-route-deletebtnbox">
                   <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div>

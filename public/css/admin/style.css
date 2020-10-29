@@ -1,11 +1,11 @@
-*,
+/* *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-}
+} */
 
-html {
+/* html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
@@ -13,7 +13,7 @@ html {
 body {
   font-size: 1.5rem;
   background-color: #eeeeee;
-}
+} */
 
 .nav-container {
   /* border: 1px solid maroon; */
@@ -470,10 +470,9 @@ select {
   /* padding: 0 1rem; */
 }
 
-.search__result-managebtn,
-.search__result-deletebtn {
+.btn-white {
   background-color: #fff;
-  width: fit-content;
+  width: 8rem;
   margin: 0 auto;
   padding: 1rem;
   border-radius: 5px;
@@ -486,10 +485,8 @@ select {
   color: #D64541;
 }
 
-.search__result-managebtn:active,
-.search__result-managebtn:focus,
-.search__result-deletebtn:active,
-.search__result-deletebtn:focus {
+.btn-white:focus,
+.btn-white:active {
   transform: scale(0.97);
 }
 
@@ -573,6 +570,8 @@ select {
   padding: 1rem 0;
 }
 
+/*special for routes*/
+
 .routeid-box {
   /* border: 1px solid red; */
   flex-direction: row;
@@ -593,6 +592,53 @@ select {
   margin-left: 2rem;
 }
 
-.btn__add-train {
-  /* width: 80%; */
+.search__result-route-idbox {
+  flex: 0.5;
+}
+
+/* special for routes */
+.btn__addStop {
+    display: flex;
+    align-items: center;
+    margin-top: 4rem;
+    width: max-content;
+    background-color: #fff;
+    padding: 1rem;
+    color: #89c4f4;
+    transition: all .2s;
+    cursor: pointer;
+    font-size: 2rem;
+    /* border: 1px solid red; */
+}
+
+.addroutebtn-img {
+  fill: #89c4f4;
+}
+
+.addStop-card {
+  margin-top: 3rem;
+  height: 10rem;
+}
+
+.addStop-card-item {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.addStop-card > * {
+  /* border: 1px solid purple; */
+}
+
+.addStop-card-item--input {
+  padding: 1rem;
+  width: 80%;
+}
+
+.addstop-btn-box {
+  flex: .25;
+  border: 1px solid #89c4f4;
+  margin: 0 2rem;
 }
