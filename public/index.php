@@ -37,63 +37,34 @@ $app->router->get('/utrance-railway/admin/users/update', [AdminController::class
 $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
+// $app->router->get('/utrance-railway/', [ViewController::class, 'home']);
 
+$app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
+
+$app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
+
+$app->router->post('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
+
+$app->router->get('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
+
+$app->router->post('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
 
 ////////////////////////////////////////////
 $app->router->get('/utrance-railway/addTrainDetails', [AdminController::class, 'addTrain']);
-
-
 
 ////////////////////////////////////////////////////////////
 $app->router->get('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPage']);
 $app->router->post('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPageNow']);
 
-// $app->router->get('/utrance-railway/public/index.php/cat', [ViewController::class, 'cat']);
 
-// $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
 $app->router->post('/utrance-railway/t/test.php', 'search');
-
-// $app->router->post('/utrance-railway/public/index.php/hi/','hi');
-//$app->router->post('/utrance-railway/public/index.php/cat', [AuthController::class, 'cat']);
-
-
 
 $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
 
 
 $app->router->post('/utrance-railway/addTrain', [AdminController::class, 'addTrain']);
-
-
-$app->router->post('/utrance-railway/public/index.php/admin', [AdminController::class, 'adminSettingsNow']);
-
-$app->router->get('/utrance-railway/public/index.php/manageUser', [AdminController::class, 'manageUser']);
-
-$app->router->post('/utrance-railway/public/index.php/manageUser', [AdminController::class, 'manageUserNow']);
-
-$app->router->get('/utrance-railway/public/index.php/addUser', [AdminController::class, 'addUser']);
-
-$app->router->post('/utrance-railway/public/index.php/addUser', [AdminController::class, 'addUserNow']);
-
-$app->router->get('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfile']);
-
-$app->router->post('/utrance-railway/public/index.php/updateUserProfile', [AdminController::class, 'updateUserProfileNow']);
-
-$app->router->get('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsers']);
-
-$app->router->post('/utrance-railway/public/index.php/viewUsers', [AdminController::class, 'viewUsersNow']);
-
-
-
-
-
-
-
-
-
-
-
 
 //hasani nimeshika
 

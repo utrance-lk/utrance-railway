@@ -9,6 +9,11 @@ class ViewModel extends Model{
     public $when;
     public $resultsArr;
 
+
+     public function rules(){
+      //implement this
+    }
+
     public function getTours() {
 
         $fromSearchId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:from");
