@@ -22,7 +22,7 @@ class UserModel extends Model
     
   public function register(){
       
-    echo $first_name;
+    echo $this->first_name;
         
     /*$query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role,user_image) VALUES (:uid1,:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us,:ui)");
     echo " displaydwef";
