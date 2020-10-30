@@ -27,6 +27,7 @@ $app = new App(dirname(__DIR__), $config);
 
 // Home page
 $app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
+$app->router->get('/utrance-railway/search', [ViewController::class, 'search']);
 
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
