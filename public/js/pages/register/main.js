@@ -3,20 +3,20 @@ import * as register from "./register.js";
 
 
 items.userRegisterButton.addEventListener("click",register.userRegistration);
-   /* register.userRegistration();
-    $.ajax(
+
+/*$.ajax(
         {
             type:"POST",
-            url:"/utrance-railway/public/index.php/registerPage",
+            url:"/utrance-railway/registerPage",
             data:{
-               first_name:items.firstName,
-               last_name:items.lastName,
-               street_line1:items.streetLine1,
-               street_line2:items.streetLine2,
+               first_name:items.first_name,
+               last_name:items.last_name,
+               street_line1:items.street_line1,
+               street_line2:items.street_line2,
                city:items.city,
-               contactnum:items.contactnum,
-               userpassword:items.userPassword,
-               email:items.email,
+               contact_num:items.contact_num,
+               user_password:items.user_password,
+               email_id:items.email_id,
 
 
                
@@ -29,8 +29,11 @@ items.userRegisterButton.addEventListener("click",register.userRegistration);
         }
     );
 
-});*/
+});
+}*/
+
    
+
 
 
     

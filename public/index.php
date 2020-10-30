@@ -4,6 +4,7 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
+
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -112,8 +113,16 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 //hasani nimeshika
 
-$app->router->get('/utrance-railway/public/index.php/getUserDetails', [ViewController::class, 'getUserDetails']);
+$app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
+$app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
 
+
+
+////////////////////////////////
+
+
+
+//$app->router->get('/utrance-railway/example', [AuthController::class, 'getMy']);
 
 
 //$app->router->post('/utrance-railway/public/index.php/hi/','hi');
