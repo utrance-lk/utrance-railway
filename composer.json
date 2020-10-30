@@ -1,10 +1,9 @@
 {
-    "name": "av/utrance-railway",
-    "description": "Ticket reservation system for railways",
+    "name": "acer/utrance-railway",
     "authors": [
         {
-            "name": "Asindu Vidanagamachchi",
-            "email": "ashvg.dev@gmail.com"
+            "name": "kanthi97",
+            "email": "65714939+kanthi97@users.noreply.github.com"
         }
     ],
     "require": {
