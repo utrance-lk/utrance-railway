@@ -2,35 +2,35 @@
 
 include_once "../classes/core/Model.php";
 
-class ViewModel extends Model{
+class ViewModel extends Model
+{
 
-    public $from2;
-    public $to2;
+    public $from;
+    public $to;
     public $when;
     public $resultsArr;
 
-
-     public function rules(){
-      //implement this
+    public function rules()
+    {
+        //implement this
     }
 
-    public function getTours() {
+    public function getTours()
+    {
 
         $fromSearchId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:from");
         $toSearchId = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:to");
 
-        $fromSearchId->bindValue(":from", $this->from2);
-        $toSearchId->bindValue(":to", $this->to2);
+        $fromSearchId->bindValue(":from", $this->from);
+        $toSearchId->bindValue(":to", $this->to);
 
         $fromSearchId->execute();
         $toSearchId->execute();
 
-
         $fromSearchId = $fromSearchId->fetchAll(PDO::FETCH_ASSOC);
         $toSearchId = $toSearchId->fetchAll(PDO::FETCH_ASSOC);
 
-        
-        if($fromSearchId && $toSearchId) {
+        if ($fromSearchId && $toSearchId) {
 
             $fromId;
             $toId;
@@ -42,15 +42,15 @@ class ViewModel extends Model{
             foreach ($toSearchId as $row) {
                 $toId = $row['station_id'];
             }
-            
+
             // 1) search for a direct path
-            $resultsArr['directPaths'] = $this->searchForDirectPath($fromId, $toId);
+            $this->resultsArr['directPaths'] = $this->searchForDirectPath($fromId, $toId);
 
             // 2) search for an intersection
-            $resultsArr['intersections'] = $this->searchForIntersection($fromId, $toId);
+            $this->resultsArr['intersections'] = $this->searchForIntersection($fromId, $toId);
 
-            return $resultsArr;
-            
+            return $this->resultsArr;
+
         } else {
             echo 'station not found!';
             return 'station not found!!';
@@ -58,19 +58,43 @@ class ViewModel extends Model{
 
     }
 
-    protected function searchForDirectPath($fromId, $toId) {
+    protected function searchForDirectPath($fromId, $toId)
+    {
+        // $searchDirectPath = APP::$APP->db->pdo->prepare(
+        //     "SELECT * FROM
+        //             (SELECT fromt.route_id AS route_id,
+        //                     fromt.station_id AS fssid, fromt.departure_time AS fssdt, fromt.path_id AS fsspi,
+        //                     tot.station_id AS tseid, tot.arrival_time AS tseat, tot.path_id AS tsepi
+        //             FROM
+        //                 (SELECT route_id, path_id, departure_time, station_id FROM stops WHERE station_id =:from) fromt
+        //             INNER JOIN
+        //                 (SELECT route_id, path_id, arrival_time, station_id FROM stops WHERE station_id =:to) tot
+        //             ON fromt.route_id = tot.route_id) AS matching_table
+        //         WHERE fsspi <= tsepi
+        //     ");
+
         $searchDirectPath = APP::$APP->db->pdo->prepare(
-                "SELECT * FROM
-                    (SELECT fromt.route_id AS route_id,
-                            fromt.station_id AS fssid, fromt.departure_time AS fssdt, fromt.path_id AS fsspi,
-                            tot.station_id AS tseid, tot.arrival_time AS tseat, tot.path_id AS tsepi
-                    FROM
-                        (SELECT route_id, path_id, departure_time, station_id FROM stops WHERE station_id =:from) fromt
-                    INNER JOIN
-                        (SELECT route_id, path_id, arrival_time, station_id FROM stops WHERE station_id =:to) tot
-                    ON fromt.route_id = tot.route_id) AS matching_table
-                WHERE fsspi <= tsepi
-            ");
+            "SELECT fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, tsen, train_name, timediff(tseat, fssdt) as total_time from
+                (select route_id, fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, station_name as tsen from
+                    (select route_id, fssid, fssdt, fsspi, tseid, tseat, tsepi, station_name as fssn from
+                        (select * from
+                            (select fromt.route_id as route_id,
+                                    fromt.station_id as fssid, fromt.departure_time as fssdt, fromt.path_id as fsspi,
+                                    tot.station_id as tseid, tot.arrival_time as tseat, tot.path_id as tsepi
+                            from
+                                (select route_id, path_id, departure_time, station_id from stops where station_id = :from) fromt
+                            inner join
+                                (select route_id, path_id, arrival_time, station_id from stops where station_id = :to) tot
+                            on fromt.route_id = tot.route_id) matching_table
+                        where fsspi <= tsepi) as basic_table
+                    inner join stations
+                    on basic_table.fssid = stations.station_id) from_station_name
+                inner join stations
+                on from_station_name.tseid = stations.station_id) to_station_name
+            inner join trains
+            on to_station_name.route_id = trains.route_id
+            order by fssdt"
+        );
 
         $searchDirectPath->bindValue(":from", $fromId);
         $searchDirectPath->bindValue(":to", $toId);
@@ -86,7 +110,8 @@ class ViewModel extends Model{
 
     }
 
-    protected function searchForIntersection($fromId, $toId) {
+    protected function searchForIntersection($fromId, $toId)
+    {
         $seachInterectionPath = APP::$APP->db->pdo->prepare(
             "SELECT * from
                 (SELECT * FROM
@@ -109,7 +134,6 @@ class ViewModel extends Model{
             ON path_indexer.path_indexer_route_id = big_table.from_route_id
             WHERE path_indexer_route_id IS NULL");
 
-
         $seachInterectionPath->bindValue(":from", $fromId);
         $seachInterectionPath->bindValue(":to", $toId);
 
@@ -122,6 +146,5 @@ class ViewModel extends Model{
         //     echo "</br>";
         // }
     }
-
 
 }

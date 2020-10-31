@@ -1,6 +1,7 @@
 import { items } from "./components.js";
 
 export const renderAddStation = function(stopsCount) {
+    items.addRouteBtn.style.display = "none";
     const markup = `
     <div class="search__result-card addStop-card" id="js--addStop-card">
         <div class="addstation-box addStop-card-item">
@@ -61,6 +62,8 @@ const displayAddedStop = function(inputValues, stopsCount) {
     items.addedStopsCardContainer.insertAdjacentHTML('beforeend', markup);
     const el = document.getElementById("js--addStop-card");
     el.parentNode.removeChild(el);
+    items.addRouteBtn.style.display = "block";
+
 
     document
       .getElementById("js--stop__delete-btn")

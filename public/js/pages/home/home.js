@@ -43,8 +43,10 @@ export const selectCity = function (direction) {
         v[i].addEventListener("click", function (e) {
           if(direction === 'from') {
             items.fromStationLabel.textContent = e.target.textContent;
+            items.inputSearchFrom.value = e.target.textContent;
           } else {
             items.toStationLabel.textContent = e.target.textContent;
+            items.inputSearchTo.value = e.target.textContent;
             items.searchBtn.style.visibility = 'visible';
           }
         });

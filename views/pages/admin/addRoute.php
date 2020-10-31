@@ -28,9 +28,12 @@
                 <div class="added_stops-card--container" id="js--added_stops-card--container"></div>
                 <div class="btn__addStop addbtn js--btn__addStop">
                     <div class="btn__addStop-text addbtn-text">Add Stop</div>
-                    <svg class="addroutebtn-img addbtn-img">
+                    <svg class="addstopbtn-img addbtn-img">
                         <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus"></use>
                     </svg>
+                </div>
+                <div class="btn__save-box">
+                  <div class="btn__save btn__add-route" id="js--btn__add-route">Add Route</div>
                 </div>
                 <!-- <div class="search__result-card addStop-card">
                    <div class="addstation-box addStop-card-item">

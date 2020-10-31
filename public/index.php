@@ -4,7 +4,11 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
+<<<<<<< HEAD
+require_once "../controllers/formdetailsController.php";
+=======
 
+>>>>>>> 692c308cd43f951d7a76112ec3215f59ac26ca4b
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -28,6 +32,8 @@ $app = new App(dirname(__DIR__), $config);
 
 // Home page
 $app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
+$app->router->post('/utrance-railway/home', [ViewController::class, 'home']);
+$app->router->get('/utrance-railway/search', [ViewController::class, 'search']);
 
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
@@ -109,6 +115,10 @@ $app->router->post('/utrance-railway/t/test.php', 'search');
 
 $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
+<<<<<<< HEAD
+$app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
+$app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'register']);
+=======
 
 
 //hasani nimeshika
@@ -121,6 +131,7 @@ $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::cla
 ////////////////////////////////
 
 
+>>>>>>> 692c308cd43f951d7a76112ec3215f59ac26ca4b
 
 //$app->router->get('/utrance-railway/example', [AuthController::class, 'getMy']);
 

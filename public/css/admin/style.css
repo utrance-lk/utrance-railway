@@ -613,6 +613,10 @@ select {
 }
 
 .addroutebtn-img {
+  fill: #fff;
+}
+
+.addstopbtn-img {
   fill: #89c4f4;
 }
 

@@ -49,14 +49,20 @@ class AuthController extends Controller
        ]);*/
        
     }
-}
 
-    public function registerPage(){
+    public function registerPage()
+    {
         return $this->render('register');
-        
+
     }
 
 
+<<<<<<< HEAD
+    public function logout()
+    {
+        // logout
+
+=======
     public function getMy($request) {
         if($request->isPost()) {
             //from
@@ -64,6 +70,7 @@ class AuthController extends Controller
         }
         return $this->render('admin');
  
+>>>>>>> 692c308cd43f951d7a76112ec3215f59ac26ca4b
     }
     
    public function signIn(){
@@ -75,7 +82,7 @@ class AuthController extends Controller
 
     /*public function isLoggedIn()
     {
-        
+
         // checks whether user is logged in or not
     }
 

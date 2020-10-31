@@ -14,7 +14,9 @@ items.inputSearchTo.addEventListener("input", function () {
 items.swapBtn.addEventListener('click', function() {
   let temp = items.fromStationLabel.textContent;
   items.fromStationLabel.textContent = items.toStationLabel.textContent;
+  items.inputSearchFrom.value = items.toStationLabel.textContent;
   items.toStationLabel.textContent = temp;
+  items.inputSearchTo.value = temp;
 })
 
 document.addEventListener("click", function (e) {
@@ -46,3 +48,5 @@ document.addEventListener("click", function (e) {
     home.searchStates("", "to");
   }
 });
+
+console.log(document.cookie['user']);
