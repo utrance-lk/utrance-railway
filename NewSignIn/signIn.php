@@ -1,41 +1,46 @@
 <?php
 session_start();
 
-require 'connect.php';
+$dsn = "mysql:host localhost;dbname=utrance";
+$username = "root";
+$password = "";
+$message = "";
 
-if(isset($_POST['login'])){
-    
-    $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
-    $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
-    
-    $sql = "SELECT id, username, password FROM users WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    
-    $stmt->bindValue(':username', $username);
-    
-    $stmt->execute();
-    
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    if($user === false){
-        die('Incorrect username / password combination!');
-    } else{
-        $validPassword = password_verify($passwordAttempt, $user['password']);
-        
-        if($validPassword){
-            
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['logged_in'] = time();
-            
-            header('Location: home.php');
-            exit;
-            
-        } else{
-            die('Incorrect username / password combination!');
-        }
-    }
-    
+try{
+    $db = new PDO($dsn,$username,$password);
+	echo "Connected!";
+	if(isset($_POST["login"])){
+		if(empty($_post["username"])||empty($_POST["password"])){
+			$message = '<label>All fields are required</label>';
+		}	
+		else{
+			$query = "SELECT * FROM users WHERE username = :username AND password = :password";
+			$statemet = $connect->prepare($query);
+			$statement->execute(
+				array(
+					'username' => $_POST["username"],
+					'password' => $_POST["password"]
+				)
+			);
+			$count = $statement->rowCount();
+			if($count>0)
+			{
+				$_SESSION["username"]=$_POST["username"];
+				header("location:login_success.php");
+			}
+			else{
+				$message='<label>Wrong Data</label>';
+			}
+
+		}
+	}
 } 
+
+catch(PDOException $e){
+    $error_message = $e->getMessage();
+    echo $error_message;
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +51,11 @@ if(isset($_POST['login'])){
 		<link rel="stylesheet" href="signIn.css">
 	</head>
 	<body>
+		<br/>
+		<?php
+		if(isset($message)){
+			echo '"test-danger"'.$message.'';
+		}
 		<div class="big_01">
 
 			<form action="signIn.php" method="post">
@@ -57,7 +67,7 @@ if(isset($_POST['login'])){
 					
 					<input type="text" placeholder="Username"  name="username" required>
 					<input type="text" placeholder="Password" name="password" required>
-					<button type="submit">Login</button>
+					<button type="submit" name = "login">Login</button>
 					<label>
 						<input type="checkbox" checked="checked" name="remember"> Remember me
 					</label>
