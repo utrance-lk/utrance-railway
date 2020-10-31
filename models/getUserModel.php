@@ -50,7 +50,7 @@ class getUserModel extends Model
     
  
 
-
+}
   
 //[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
 
@@ -61,6 +61,13 @@ class getUserModel extends Model
     
   
 
+/*public function createOne()
+{
+    $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name) VALUES (:fn, :ln)");
 
 
 }
+    return $query->execute();
+}*/
+
+
