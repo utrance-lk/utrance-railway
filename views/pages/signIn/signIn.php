@@ -14,7 +14,7 @@
 					
 					<input type="text"  class="container-input"  style=" background-color: #E4E9EB"placeholder="Username" name="username" required  >
 					<input type="text" class="container-input"  style=" background-color: #E4E9EB" placeholder="Password" name="user_password" required>
-					<button type="submit">Login</button>
+					<button type="submit" name="login">Login</button>
 					<label style="color:black;font-size:1.1rem">
 						<input type="checkbox" checked="checked" name="remember"> Remember me
 					</label>

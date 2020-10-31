@@ -52,7 +52,7 @@ class AuthController extends Controller
  
     }
     
-   public function signIn(){
+   public function signInPage(){
     return $this->render('signIn');
     }
 }
