@@ -14,29 +14,10 @@ class AuthController extends Controller
 
        if($request->isPost()){
          
-           $registerModel->loadData($request->getBody());
-          
-           
-          
-
-    if( $registerModel->register()){
-               return "Success";
-    }else{
-        
-        
-            switch($registerModel->valid()){
-                case 0: return "First Name is Required";
-                case 1: return "Last Name is required";
-                case 2: return "Street line 1 required";
-                case 3: return "street line 2 required";
-                case 4: return "City Required";
-                case 5: return "Contact Num";
-                
-            }
-
-        
-       
-        
+        $registerModel->loadData($request->getBody());
+        if( $registerModel->register()){
+                return "Success";
+        }
     }
            
      /*echo '<pre>';
@@ -57,12 +38,10 @@ class AuthController extends Controller
     }
 
 
-<<<<<<< HEAD
     public function logout()
     {
         // logout
-
-=======
+    }
     public function getMy($request) {
         if($request->isPost()) {
             //from
@@ -70,13 +49,12 @@ class AuthController extends Controller
         }
         return $this->render('admin');
  
->>>>>>> 692c308cd43f951d7a76112ec3215f59ac26ca4b
     }
     
    public function signIn(){
     return $this->render('signIn');
+    }
 }
-   }
 
    
 
