@@ -55,7 +55,7 @@ if(isset($_POST['login'])){
 
 				<div class="container">
 					
-					<input type="text" placeholder="Username" name="username" required>
+					<input type="text" placeholder="Username"  name="username" required>
 					<input type="text" placeholder="Password" name="password" required>
 					<button type="submit">Login</button>
 					<label>
@@ -63,9 +63,9 @@ if(isset($_POST['login'])){
 					</label>
 				</div>
 
-				<div class="container" style="background-color:#000000">
+				<div class="container">
 					<button type="button" class="cancelbtn">Cancel</button>
-					<span class="password"><a href="#">Forgot password?</a></span>
+					<span class="password"><a href="#"><b>Forgot password?</b></a></span>
 				</div>
 			</form>
 		<div>
