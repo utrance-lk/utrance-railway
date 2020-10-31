@@ -110,10 +110,6 @@ $app->router->post('/utrance-railway/t/test.php', 'search');
 
 $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'search']);
 
-<<<<<<< HEAD
-$app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
-$app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'register']);
-=======
 
 
 //hasani nimeshika
@@ -126,7 +122,6 @@ $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::cla
 ////////////////////////////////
 
 
->>>>>>> 692c308cd43f951d7a76112ec3215f59ac26ca4b
 
 //$app->router->get('/utrance-railway/example', [AuthController::class, 'getMy']);
 
