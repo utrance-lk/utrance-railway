@@ -46,42 +46,39 @@ class UserModel extends Model
     $query->bindValue(":us", $this->user_role);
       return $query->execute();
     }
+}
 
-  public function signIn(){
-          
-	if(isset($_POST["login"])){
-		if(empty($_POST["id"])||empty($_POST["user_password"])){
-			$message = 'All fields are required';
-		}	
-		else{
-			$query = "SELECT * FROM users WHERE id = :id AND user_password = :user_password";
-			$statement = $connect->prepare($query);
-			$statement->execute(
-				array(
-					'id' => $_POST["id"],
-					'user_password' => $_POST["user_password"]
-				)
-			);
-			$count = $statement->rowCount();
-			if($count>0)
-			{
-				$_SESSION["id"]=$_POST["id"];
-				header("location:home.php");
-			}
-			else{
-				$message='Wrong Data';
-			}
-
-		}
-	}
-            
-            
-
+public function signIn()
+{
+      
+if(isset($_POST["login"])){
+  if(empty($_POST["id"])||empty($_POST["user_password"])){
+    $message = 'All fields are required';
+  }	
+  else{
+    $query = "SELECT * FROM users WHERE id = :id AND user_password = :user_password";
+    $statement = $connect->prepare($query);
+    $statement->execute(
+      array(
+        'id' => $_POST["id"],
+        'user_password' => $_POST["user_password"]
+      )
+    );
+    $count = $statement->rowCount();
+    if($count>0)
+    {
+      $_SESSION["id"]=$_POST["id"];
+      header("location:home.php");
     }
-    
-   
-    
+    else{
+      $message='Wrong Data';
+    }
+
   }
+}
+          
+}
+  
 
    public function valid(){
      if($this->first_name == NULL){

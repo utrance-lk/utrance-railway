@@ -19,7 +19,7 @@ class AuthController extends Controller
                 return "Success";
         }
     }
-           
+       
      /*echo '<pre>';
     var_dump($registerModel->errors);
     echo '</pre>';
@@ -30,6 +30,19 @@ class AuthController extends Controller
        ]);*/
        
     }
+
+    public function signInPageNow($request)
+    {
+        $signInModel=new UserModel();
+
+       if($request->isPost()){
+         
+        $signInModel->loadData($request->getBody());
+        if( $signInModel->signIn()){
+                return "Success";
+        }
+    }
+}      
 
     public function registerPage()
     {
