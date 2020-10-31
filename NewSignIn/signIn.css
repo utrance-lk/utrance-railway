@@ -93,7 +93,7 @@ img.avatar
 }
 
 
-span.password 
+span.passwor
 {
   float: right;
   padding-top: 16px;
@@ -101,7 +101,7 @@ span.password
 
 @media screen and (max-width: 300px)
  {
-  span.password{
+  span.passwor{
     display: block;
     float: none;
   }

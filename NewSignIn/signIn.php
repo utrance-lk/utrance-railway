@@ -1,25 +1,27 @@
 <?php
 session_start();
 
-$dsn = "mysql:host localhost;dbname=utrance";
+$host="localhost";
+$database="utrance";
 $username = "root";
 $password = "";
 $message = "";
 
 try{
-    $db = new PDO($dsn,$username,$password);
-	echo "Connected!";
+    $connect = new PDO("mysql:host=$host;dbname=$database", $username,$password);
+	$connect-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	
 	if(isset($_POST["login"])){
-		if(empty($_post["username"])||empty($_POST["password"])){
+		if(empty($_POST["username"])||empty($_POST["passwor"])){
 			$message = 'All fields are required';
 		}	
 		else{
-			$query = "SELECT * FROM users WHERE username = :username AND password = :password";
-			$statemet = $connect->prepare($query);
+			$query = "SELECT * FROM users WHERE username = :username AND passwor = :passwor";
+			$statement = $connect->prepare($query);
 			$statement->execute(
 				array(
 					'username' => $_POST["username"],
-					'password' => $_POST["password"]
+					'passwor' => $_POST["passwor"]
 				)
 			);
 			$count = $statement->rowCount();
@@ -36,10 +38,8 @@ try{
 	}
 } 
 
-catch(PDOException $e){
-    $error_message = $e->getMessage();
-    echo $error_message;
-    exit();
+catch(PDOException $error){
+    $message = $error->getMessage();
 }
 ?>
 
@@ -56,17 +56,19 @@ catch(PDOException $e){
 		if(isset($message)){
 			echo '"test-danger"'.$message.'';
 		}
+		?>
+
 		<div class="big_01">
 
-			<form action="" method="post">
+			<form action="signIn.php" method="post">
 				<div class="imgcontainer">
 					<img src="avatar1.png" alt="Avatar" class="avatar">
 				</div>
 
 				<div class="container">
 					
-					<input type="text" placeholder="Username"  name="username" required>
-					<input type="text" placeholder="Password" name="password" required>
+					<input type="text" placeholder="Username"  name="username" >
+					<input type="text" placeholder="Password" name="passwor" >
 					<button type="submit" name = "login">Login</button>
 					<label>
 						<input type="checkbox" checked="checked" name="remember"> Remember me
@@ -75,7 +77,7 @@ catch(PDOException $e){
 
 				<div class="container">
 					<button type="button" class="cancelbtn">Cancel</button>
-					<span class="password"><a href="#"><b>Forgot password?</b></a></span>
+					<span class="passwor"><a href="#"><b>Forgot password?</b></a></span>
 				</div>
 			</form>
 		<div>
