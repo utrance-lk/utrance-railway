@@ -1,18 +1,15 @@
 <?php
+//login_success.php
 
-$dsn = "mysql:host localhost;dbname=utrance";
-$username = "root";
-$password = "";
+session_start();
 
-try{
-    $db = new PDO($dsn,$username,$password);
-    echo "Connected!";
-} catch(PDOException $e){
-    $error_message = $e->getMessage();
-    echo $error_message;
-    exit();
+if(isset($_SESSION["username"]))
+{
+ echo '<h3>Login Success, Welcome - '.$SESSION["username"].'</h3>'; 
+echo '<br /><br /><a href="logout.php">Logout</a>';
+}
+else{
+    header("location:pdo_login.php");
 }
 
 ?>
-
- 
