@@ -22,12 +22,13 @@ class UserModel extends Model
     public $email_id;
     public $user_role="user";
     public $user_confirmPassword;
+    public $resultArray;
     
   public function register(){
       
     
 
-    echo $this->first_name;
+    //echo $this->first_name;
 
         
     if($this->first_name == NULL || $this->last_name == NULL ||  $this->street_line1 == NULL || $this->contact_num  == NULL  || $this->user_password  == NULL || $this->email_id  == NULL){
@@ -51,6 +52,23 @@ class UserModel extends Model
     
   }
 
+
+  public function getUsers(){
+        $this->resultArray[0]=$this->first_name;
+        $this->resultArray[1]=$this->last_name;
+        $this->resultArray[2]=$this->street_line1;
+        $this->resultArray[2]=$this->street_line2;
+        $this->resultArray[4]=$this->city;
+        $this->resultArray[5]=$this->contact_num;
+        $this->resultArray[6]=$this->user_password;
+        $this->resultArray[7]=$this->email_id;
+        echo $this->resultArray[0];
+        echo $this->resultArray[1];
+        return $this->resultArray;
+
+
+
+  }
    public function valid(){
      if($this->first_name == NULL){
        return 0;

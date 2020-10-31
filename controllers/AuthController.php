@@ -15,29 +15,21 @@ class AuthController extends Controller
        if($request->isPost()){
          
            $registerModel->loadData($request->getBody());
+        
+
+          
           
            
           
 
     if( $registerModel->register()){
                return "Success";
-    }else{
-        
-        
-            switch($registerModel->valid()){
-                case 0: return "First Name is Required";
-                case 1: return "Last Name is required";
-                case 2: return "Street line 1 required";
-                case 3: return "street line 2 required";
-                case 4: return "City Required";
-                case 5: return "Contact Num";
-                
-            }
+    }
 
         
        
         
-    }
+    
            
      /*echo '<pre>';
     var_dump($registerModel->errors);
