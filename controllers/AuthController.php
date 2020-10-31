@@ -41,7 +41,7 @@ class AuthController extends Controller
     public function logout()
     {
         // logout
-        return $this->render('home');
+    
     }
     public function getMy($request) {
         if($request->isPost()) {
