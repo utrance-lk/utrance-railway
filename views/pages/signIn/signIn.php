@@ -13,7 +13,7 @@
 				<div class="container">
 					
 					<input type="text"  class="container-input"  style=" background-color: #E4E9EB"placeholder="Username" name="username" required  >
-					<input type="text" class="container-input"  style=" background-color: #E4E9EB" placeholder="Password" name="password" required>
+					<input type="text" class="container-input"  style=" background-color: #E4E9EB" placeholder="Password" name="user_password" required>
 					<button type="submit">Login</button>
 					<label style="color:black;font-size:1.1rem">
 						<input type="checkbox" checked="checked" name="remember"> Remember me
@@ -22,7 +22,7 @@
 
 				<div class="container" style="background-color:#fff">
 					<button type="button" class="cancelbtn">Cancel</button>
-					<span class="password"><a href="#" style="text-decoration:none;color:black">Forgot password?</a></span>
+					<span class="user_password"><a href="#" style="text-decoration:none;color:black">Forgot password?</a></span>
 				</div>
 			</form>
 		<div>
