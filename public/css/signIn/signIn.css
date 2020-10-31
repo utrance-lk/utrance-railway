@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Aldrich',sans-serif ;
+    color: #ffff;
+}
+
+.big_01{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("newI.jpg");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+
+form {
+	width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 3% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #E4E9EB;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #ffffff;
+  outline: none;
+  background: transparent;
+  
+}
+.container-input{
+    background-color: #E4E9EB;
+}
+
+button {
+  background-color: #59abe3;
+  color: white;
+  padding: 1rem 1.5rem;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.4rem;
+
+    font-weight: bold;
+}
+
+
+button:hover
+ {
+  opacity: 0.8;
+}
+
+
+.cancelbtn
+ {
+  width: auto;
+  padding: 0.8rem 1rem;
+  background-color:#E4E9EB;
+  color: black;
+}
+
+
+.imgcontainer
+ {
+  text-align: center;
+  margin: 24px 0 12px 0;
+ 
+}
+
+
+img.avatar 
+{
+  width: 40%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 9px #2eb1e6;
+  
+}
+
+
+.container
+{
+  padding: 10px;
+}
+
+
+span.password
+{
+  float: right;
+  padding-top: 16px;
+  background-color: #E4E9EB;
+  color: black;
+  height: 2rem;
+}
+
+@media screen and (max-width: 300px)
+ {
+  span.password{
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}

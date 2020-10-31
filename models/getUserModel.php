@@ -12,7 +12,7 @@ class getUserModel extends Model{
 
 }
 
-public function createOne()
+/*public function createOne()
 {
     $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name) VALUES (:fn, :ln)");
 
@@ -20,5 +20,5 @@ public function createOne()
     $query->bindValue(":ln", $this->to2);
 
     return $query->execute();
-}
+}*/
 ?>
