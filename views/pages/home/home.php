@@ -18,7 +18,7 @@
             </ul>
           </nav>
         </div>
-        <form class="search-bar__container" method="POST">
+        <form class="search-bar__container" method="POST" action="/utrance-railway/search">
           <div class="search-bar">
             <div class="search-bar__search">
                 <div class="search-bar__from-container">
@@ -56,7 +56,6 @@
               </div>
             </div>
             <input type="submit" class="search-bar__search-btn js--searchbar__search-btn">
-            <!-- <a href="/utrance-railway/search" class="search-bar__search-btn js--searchbar__search-btn">Search</a> -->
           </div>
         </form>
       </section>
