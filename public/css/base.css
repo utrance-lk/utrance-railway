@@ -36,6 +36,16 @@ input {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:active,
+a:visited {
+  color: #fff;
+}
+
 .btn {
   outline: none;
   cursor: pointer;
@@ -46,4 +56,16 @@ input {
   content: "";
   clear: both;
   display: table;
+}
+
+/* browser prefixes */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

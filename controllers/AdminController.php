@@ -5,56 +5,86 @@ include_once "../classes/core/Controller.php";
 
 
 class AdminController extends Controller {
+  
+   public function adminSettings($request){
+        if($request->isPost()) {
+            // form
+            return 'success';
+        }
 
-    public function addTrainDetails() {
+        return $this->render('admin');
+   }
 
-    
+   public function manageUsers($request){
+        if($request->isPost()) {
+            // from
+            return 'success';
+        }
 
-            // var_dump($request->getBody());
+        return $this->render(['admin', 'manageUsers']);
+   }
 
-            //$trainModel->getTrainDetails();
-            
-       /* if($request->isPost()) {
-            $adminModel->loadData($request->getBody());
-            $viewModel->getUserDEtails();
+   public function manageTrains($request) {
+       if($request->isPost()) {
+           // form
+           return 'success';
+       }
 
-        }*/
-   // }
+       return $this->render(['admin', 'manageTrains']);
+   }
 
+   public function manageRoutes($request) {
+       if($request->isPost()) {
+           //from
+           return 'success';
+       }
+
+       return $this->render(['admin', 'manageRoutes']);
+   }
+
+   public function addUser($request) {
+       if($request->isPost()) {
+           //form
+           return 'success';
+       }
+
+       return $this->render(['admin', 'addUser']);
+   }
+
+   public function addTrain($request) {
+       if($request->isPost()) {
+           //form
+           return 'success';
+       }
+
+       return $this->render(['admin', 'addTrain']);
+   }
+
+   public function addRoute($request) {
+       if($request->isPost()) {
+           // form
+           return 'success';
+       }
+
+       return $this->render(['admin', 'addRoute']);
+   }
+
+   public function updateUser($request) {
+        if($request->isPost()) {
+            //form
+            return 'success';
+        }
+
+        return $this->render(['admin', 'updateUser']);
+   }
    
-   }
+   public function updateTrain($request) {
+       if($request->isPost()) {
+           //form
+           return 'success';
+       }
 
-
-   public function adminSettings(){
-    return $this->render('admin');
-    
-   }
-
-   public function adminSettingsNow(){
-    echo "Admin settings page added Successfully";
-   }
-
-
-   public function manageUser(){
-    return $this->render('manageUser');
-   
-    
-   }
-
-
-   public function manageUserNow(){
-       echo "Manage User Page added Successfully";
-
-   }
-
-   public function addUser(){
-    return $this->render('addUser');
-    
-   }
-
-   public function addUserNow(){
-    
-    echo "Add User Page added Successfully";
+       return $this->render(['admin' ,'updateTrain']);
    }
 
 
@@ -62,12 +92,6 @@ class AdminController extends Controller {
 
 
 
-
-
-public function addTrain(){
-    return $this->render('addTrainDetails');
-    echo "hy girl";
-}
 
 public function addNoticesByAdmin(){
     return $this->render('addNoticesByAdmin');
@@ -85,14 +109,6 @@ public function adminDashboard(){
 
 public function adminDashboardNow(){
     echo "Hello my world";
-}
-
-public function updateUserProfile(){
-    return $this->render('updateUserProfile');
-    echo " hello update user profile!!";
-}
-public function updateUserProfileNow(){
-    echo " hello Upload form" ;
 }
 
 public function viewUsers(){

@@ -2,7 +2,7 @@
       <section class="heading-primary">
         <div class="header">
           <div class="logo-box">
-            <img src="../../public/img/pages/home/logo-white.png" class="logo" alt="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/home/logo-white.png" class="logo" alt="logo" />
           </div>
           <nav class="navbar">
             <ul class="navbar__list">
@@ -13,7 +13,7 @@
                 <a href="#">Freights</a>
               </li>
               <li class="navbar__list-items">
-                <a href="#">Login</a>
+                <a href="login">Login</a>
               </li>
             </ul>
           </nav>
@@ -28,7 +28,7 @@
                       <div class="from__station js--from__station" id="js--from__station">Matara</div>
                       <div class="swap-button js--swap-btn">
                         <svg class="swap-icon">
-                          <use xlink:href="../../public/img/pages/home/svg/sprite.svg#icon-swap"></use>
+                          <use xlink:href="../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-swap"></use>
                         </svg>
                       </div>
                     </div>
@@ -62,7 +62,7 @@
       <section class="heading-secondary">
         <a class="morecontent-btn" href="#newsfeed">
           <svg class="down-arrow">
-            <use xlink:href="../../public/img/pages/home/svg/sprite.svg#icon-chevron-with-circle-down"></use>
+            <use xlink:href="../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-chevron-with-circle-down"></use>
           </svg>
         </a>
       </section>
