@@ -36,6 +36,16 @@ input {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:active,
+a:visited {
+  /* color: black; */
+}
+
 .btn {
   outline: none;
   cursor: pointer;
@@ -46,4 +56,32 @@ input {
   content: "";
   clear: both;
   display: table;
+}
+
+/* browser prefixes */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+select {
+  outline: none;
+  border: none;
+  font-family: "Sora", sans-serif;
+}
+
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Sora", sans-serif;
+  /* transition: all .2s; */
 }

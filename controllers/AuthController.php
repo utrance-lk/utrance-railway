@@ -3,56 +3,64 @@
 include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
 
+
+
 class AuthController extends Controller
 {
 
-    public function register($request)
+    public function registerPageNow($request)
     {
+        $registerModel=new UserModel();
 
-        $userModel = new UserModel();
-        if ($request->isPost()) {
-            $userModel->loadData($request->getBody());
-
-            if ($userModel->createOne()) {
-                return 'Success';
-            }
-
-            // return $this->render('register', [
-            //     'model' => $userModel,
-            // ]);
-
+       if($request->isPost()){
+         
+        $registerModel->loadData($request->getBody());
+        if( $registerModel->register()){
+                return "Success";
         }
-
-        // return $this->render('register', [
-        //     'model' => $userModel,
-        // ]);
+    }
+           
+     /*echo '<pre>';
+    var_dump($registerModel->errors);
+    echo '</pre>';
+    exit; */
+ 
+       /*return $this->render('register',[
+           'model'=>$registerModel
+       ]);*/
+       
     }
 
-    public function registerPage(){
-        return $this->render('register');
-    echo " View Users!!";
-    }
-
-
-    public function registerPageNow(){
-        
-    echo " View Users Register Page!!";
-    }
-
-    public function login()
+    public function registerPage()
     {
-        return $this->render('login');
+        return $this->render('register');
+
     }
+
 
     public function logout()
     {
         // logout
-       
     }
+    public function getMy($request) {
+        if($request->isPost()) {
+            //from
+            return 'success';
+        }
+        return $this->render('admin');
+ 
+    }
+    
+   public function signIn(){
+    return $this->render('signIn');
+    }
+}
 
-    public function isLoggedIn()
+   
+
+    /*public function isLoggedIn()
     {
-        
+
         // checks whether user is logged in or not
     }
 
@@ -79,6 +87,6 @@ class AuthController extends Controller
     public function protect()
     {
         // protect the route
-    }
+    }*/
 
-}
+
