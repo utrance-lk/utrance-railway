@@ -56,8 +56,8 @@ $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 
 
 
 /////login Page Routing
-$app->router->get('/utrance-railway/signIn', [AuthController::class, 'signIn']);
-$app->router->post('/utrance-railway/signIn', [AuthController::class, 'signIn']);
+$app->router->get('/utrance-railway/signIn', [AuthController::class, 'signInPage']);
+$app->router->post('/utrance-railway/signIn', [AuthController::class, 'signInPage']);
 
 ///////////Register Page Routing
 $app->router->get('/utrance-railway/registerPage', [AuthController::class, 'registerPage']);
