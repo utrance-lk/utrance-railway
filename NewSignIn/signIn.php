@@ -11,7 +11,7 @@ try{
 	echo "Connected!";
 	if(isset($_POST["login"])){
 		if(empty($_post["username"])||empty($_POST["password"])){
-			$message = '<label>All fields are required</label>';
+			$message = 'All fields are required';
 		}	
 		else{
 			$query = "SELECT * FROM users WHERE username = :username AND password = :password";
@@ -58,7 +58,7 @@ catch(PDOException $e){
 		}
 		<div class="big_01">
 
-			<form action="signIn.php" method="post">
+			<form action="" method="post">
 				<div class="imgcontainer">
 					<img src="avatar1.png" alt="Avatar" class="avatar">
 				</div>

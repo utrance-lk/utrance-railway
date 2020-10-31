@@ -9,7 +9,7 @@ if(isset($_SESSION["username"]))
 echo '<br /><br /><a href="logout.php">Logout</a>';
 }
 else{
-    header("location:pdo_login.php");
+    header("location:pdo_signIn.php");
 }
 
 ?>
