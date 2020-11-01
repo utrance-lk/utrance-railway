@@ -1,5 +1,6 @@
       <div class="load-content-container">
         <div class="load-content">
+          
           <div class="load-content--manage-users">
             <form class="dashboard-searchbar--container">
               <input
@@ -28,6 +29,7 @@
                 </use>
               </svg> 
             </a>
+            <form method="POST"  name="manage_users"  id="manage_user_form" >
             <div class="search__results-container">
               <div class="search__result-card">
                 <div class="search__result-user-mainbox search__result-mainbox">
@@ -85,3 +87,10 @@
           </div>
         </div>
       </div>
+    </form>
+    <?php
+
+
+if(isset($manageUsers)){
+  ////
+}

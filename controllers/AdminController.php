@@ -16,12 +16,20 @@ class AdminController extends Controller {
    }
 
    public function manageUsers($request){
-        if($request->isPost()) {
-            // from
+    $manageUserModel=new UserModel();
+        if($request->isGet()) {
+
+           $manageUserModel->loadData($request->getBody());
+            $getUserArray=$manageUserModel->getManageUsers();
+            
+            var_dump($getUserArray);
+
+
+         
             return 'success';
         }
 
-        return $this->render(['admin', 'manageUsers']);
+        return $this->render(['admin', 'manageUsers'],$getUserArray);
    }
 
    public function manageTrains($request) {

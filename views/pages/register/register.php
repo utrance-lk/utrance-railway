@@ -7,7 +7,7 @@
 
 <div class="auth-content">
 
-    <form   method="post" name="register"  id="register_form"  onSubmit="return validateForm()">
+    <form   method="post" name="register"  id="register_form"  >
         
         <h2 class="form-title" style="font-size:2.2rem">Sign Up</h2>
         
@@ -82,7 +82,6 @@
     </form>
 </div>
 <!--script type="module" src="../../../utrance-railway/public/js/pages/register/main.js"></script!--> 
-
 
 
 

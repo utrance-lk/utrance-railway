@@ -4,7 +4,6 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
-
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -28,11 +27,14 @@ $app = new App(dirname(__DIR__), $config);
 
 // Home page
 $app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
+$app->router->post('/utrance-railway/home', [ViewController::class, 'home']);
+$app->router->get('/utrance-railway/search', [ViewController::class, 'search']);
 
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
 $app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
+//$app->router->post('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
 $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'manageRoutes']);
@@ -61,6 +63,9 @@ $app->router->post('/utrance-railway/signIn', [AuthController::class, 'signIn'])
 ///////////Register Page Routing
 $app->router->get('/utrance-railway/registerPage', [AuthController::class, 'registerPage']);
 $app->router->post('/utrance-railway/registerPage', [AuthController::class, 'registerPageNow']);
+$app->router->get('/utrance-railway/validate', [AuthController::class, 'validate']);
+
+
 
 
 
@@ -91,17 +96,8 @@ $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 
 
 
 
-$app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
-$app->router->post('/utrance-railway/public/index.php/login/', [AuthController::class, 'login']);
 
-$app->router->get('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
-
-$app->router->post('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
-
-////////////////////////////////////////////////////////////
-$app->router->get('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPage']);
-$app->router->post('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPageNow']);
 
 
 

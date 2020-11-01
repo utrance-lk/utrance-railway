@@ -20,16 +20,14 @@ class UserModel extends Model
     public $contact_num;
     public $user_password;
     public $email_id;
-    public $user_role="user";
+    public $user_role="User";
     public $user_confirmPassword;
     public $resultArray;
+    public $resultArray1;
     
   public function register(){
       
     
-
-    //echo $this->first_name;
-
         
     if($this->first_name == NULL || $this->last_name == NULL ||  $this->street_line1 == NULL || $this->contact_num  == NULL  || $this->user_password  == NULL || $this->email_id  == NULL){
          return false;
@@ -54,35 +52,45 @@ class UserModel extends Model
 
 
   public function getUsers(){
-        $this->resultArray[0]=$this->first_name;
-        $this->resultArray[1]=$this->last_name;
-        $this->resultArray[2]=$this->street_line1;
-        $this->resultArray[2]=$this->street_line2;
-        $this->resultArray[4]=$this->city;
-        $this->resultArray[5]=$this->contact_num;
-        $this->resultArray[6]=$this->user_password;
-        $this->resultArray[7]=$this->email_id;
-        echo $this->resultArray[0];
-        echo $this->resultArray[1];
+      
+       $this->resultArray['first_name']=$this->first_name;
+       $this->resultArray['last_name']=$this->last_name;
+       $this->resultArray['street_line1']=$this->street_line1;
+       $this->resultArray['street_line2']=$this->street_line2;
+       $this->resultArray['contact_num']=$this->contact_num;
+       $this->resultArray['city']=$this->city;
+       $this->resultArray['user_password']=$this->user_password;
+       $this->resultArray['email_id']=$this->email_id;
+       $this->resultArray['user_confirmPassword']=$this->user_confirmPassword;
         return $this->resultArray;
 
 
 
   }
    public function valid(){
-     if($this->first_name == NULL){
-       return 0;
-     }else if($this->last_name == NULL){
+     if($this->first_name == NULL || $this->last_name == NULL || $this ->street_line1 == NULL || $this->street_line2 == NULL || $this->city == NULL || $this->contact_num == NULL || $this->user_password ==NULL || $this->email_id == NULL){
+          return 0;
+     }else{
        return 1;
-     }else if($this ->street_line1 == NULL){
-       return 2;
-     }else if($this->street_line2 == NULL){
-       return 3;
-     }elseif($this->city == NULL){
-       return 4;
-     }else if($this->contact_num == NULL){
-       return 5;
      }
+   }
+
+
+
+   public function getManageUsers(){
+    $query = APP::$APP->db->pdo->prepare("SELECT id,email_id,user_role,first_name FROM users ");
+    $query->execute();
+  //  $count=0;
+    $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
+    /*foreach($query1 as $row){
+      $this->resultArray1[$count]['first_name']=$row['first_name'];
+      $this->resultArray1[$count]['id']=$row['id'];
+      $this->resultArray1[$count]['email_id']=$row['email_id'];
+      $this->resultArray1[$count]['user_role']=$row['user_role'];
+      $count++;
+    }*/
+    // echo $count;
+     return $this->resultArray;
    }
 
   

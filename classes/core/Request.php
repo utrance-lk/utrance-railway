@@ -26,6 +26,8 @@ class Request {
         return $this->method() == 'post';
     }
 
+  
+
     public function getBody() {
         $body = [];
         if($this->method() == 'get') {
