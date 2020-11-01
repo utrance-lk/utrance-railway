@@ -52,12 +52,6 @@ public function signIn()
 {
       
   session_start();
-
-  $host="localhost";
-  $database="utrance";
-  $username = "root";
-  $password = "";
-  $message = "";
   
   try{
     $connect = new PDO("mysql:host=$host;dbname=$database", $username,$password);
