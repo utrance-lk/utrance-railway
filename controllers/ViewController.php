@@ -10,6 +10,26 @@ class ViewController extends Controller
     {
 
         if ($request->isPost()) {
+            // $searchTourModel = new ViewModel();
+            // $searchTourModel->loadData($request->getBody());
+
+            // $pathArrays = $searchTourModel->getTours();
+
+            // return $this->render('searchResults', $pathArrays);
+        }
+
+        return $this->render('home');
+    }
+
+    public function search($request)
+    {
+
+        // var_dump($request->getBody());
+
+        if ($request->isPost()) {
+
+            // var_dump($request->getBody());
+
             $searchTourModel = new ViewModel();
             $searchTourModel->loadData($request->getBody());
 
@@ -25,31 +45,6 @@ class ViewController extends Controller
             // print_r($pathArrays['directPaths']);
             // return 'success';
             return $this->render('searchResults', $pathArrays);
-        }
-
-        return $this->render('home');
-    }
-
-    public function search($request)
-    {
-
-        $viewModel = new ViewModel();
-
-        if ($request->isPost()) {
-            // $viewModel->loadData($request->getBody());
-
-            // $viewModel->getTours();
-
-            // if($viewModel->getTours()) {
-            //     // return 'Success';
-            //     echo 'vade hari';
-            // }
-
-            // else {
-            //     echo 'upset';
-            //     return 'Failed';
-            // }
-            return 'success';
 
         }
 
