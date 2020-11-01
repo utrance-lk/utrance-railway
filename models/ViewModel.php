@@ -60,19 +60,6 @@ class ViewModel extends Model
 
     protected function searchForDirectPath($fromId, $toId)
     {
-        // $searchDirectPath = APP::$APP->db->pdo->prepare(
-        //     "SELECT * FROM
-        //             (SELECT fromt.route_id AS route_id,
-        //                     fromt.station_id AS fssid, fromt.departure_time AS fssdt, fromt.path_id AS fsspi,
-        //                     tot.station_id AS tseid, tot.arrival_time AS tseat, tot.path_id AS tsepi
-        //             FROM
-        //                 (SELECT route_id, path_id, departure_time, station_id FROM stops WHERE station_id =:from) fromt
-        //             INNER JOIN
-        //                 (SELECT route_id, path_id, arrival_time, station_id FROM stops WHERE station_id =:to) tot
-        //             ON fromt.route_id = tot.route_id) AS matching_table
-        //         WHERE fsspi <= tsepi
-        //     ");
-
         $searchDirectPath = APP::$APP->db->pdo->prepare(
             "SELECT fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, tsen, train_name, timediff(tseat, fssdt) as total_time from
                 (select route_id, fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, station_name as tsen from
@@ -112,27 +99,65 @@ class ViewModel extends Model
 
     protected function searchForIntersection($fromId, $toId)
     {
+        // $seachInterectionPath = APP::$APP->db->pdo->prepare(
+        //     "SELECT * from
+        //         (SELECT * FROM
+        //             (SELECT fromta.fsiid AS isid,
+        //                 fromta.route_id AS from_route_id, fromta.fssid AS fssid, fromta.fssdt AS fssdt, fromta.fsspi AS fsspi, fromta.fsiat AS fsiat, fromta.fsipi AS fsipi,
+        //                  tota.tsipi AS tsipi, tota.tsidt AS tsidt, tota.tsepi AS tsepi, tota.tseat AS tseat, tota.tseid AS tseid, tota.route_id AS to_route_id FROM
+        //                     (SELECT frt.route_id AS route_id, frt.station_id AS fssid, frt.path_id AS fsspi, frt.departure_time AS fssdt, s.station_id AS fsiid, s.path_id AS fsipi, s.arrival_time AS fsiat FROM
+        //                         (SELECT route_id, path_id, departure_time, station_id FROM stops WHERE station_id =:from) frt
+        //                     LEFT JOIN stops s
+        //                     ON frt.route_id = s.route_id) fromta
+        //             INNER JOIN
+        //                     (SELECT trt.route_id AS route_id, trt.station_id AS tseid, trt.path_id AS tsepi, trt.arrival_time AS tseat,  s.station_id AS tsiid, s.path_id AS tsipi, s.departure_time AS tsidt FROM
+        //                         (SELECT route_id, path_id, arrival_time, station_id FROM stops WHERE station_id =:to) trt
+        //                     LEFT JOIN stops s
+        //                     ON trt.route_id = s.route_id) tota
+        //             ON fromta.fsiid = tota.tsiid) matching_station
+        //         WHERE fsspi <= fsipi AND tsepi >= tsipi AND fsiat <= tsidt AND fssid != isid AND isid != tseid  AND (from_route_id != to_route_id)) AS big_table
+        //     LEFT JOIN
+        //         (SELECT route_id AS path_indexer_route_id, path_id AS fsdnppi FROM stops WHERE station_id =:to) path_indexer
+        //     ON path_indexer.path_indexer_route_id = big_table.from_route_id
+        //     WHERE path_indexer_route_id IS NULL");
+
         $seachInterectionPath = APP::$APP->db->pdo->prepare(
-            "SELECT * from
-                (SELECT * FROM
-                    (SELECT fromta.fsiid AS isid,
-                        fromta.route_id AS from_route_id, fromta.fssid AS fssid, fromta.fssdt AS fssdt, fromta.fsspi AS fsspi, fromta.fsiat AS fsiat, fromta.fsipi AS fsipi,
-                         tota.tsipi AS tsipi, tota.tsidt AS tsidt, tota.tsepi AS tsepi, tota.tseat AS tseat, tota.tseid AS tseid, tota.route_id AS to_route_id FROM
-                            (SELECT frt.route_id AS route_id, frt.station_id AS fssid, frt.path_id AS fsspi, frt.departure_time AS fssdt, s.station_id AS fsiid, s.path_id AS fsipi, s.arrival_time AS fsiat FROM
-                                (SELECT route_id, path_id, departure_time, station_id FROM stops WHERE station_id =:from) frt
-                            LEFT JOIN stops s
-                            ON frt.route_id = s.route_id) fromta
-                    INNER JOIN
-                            (SELECT trt.route_id AS route_id, trt.station_id AS tseid, trt.path_id AS tsepi, trt.arrival_time AS tseat,  s.station_id AS tsiid, s.path_id AS tsipi, s.departure_time AS tsidt FROM
-                                (SELECT route_id, path_id, arrival_time, station_id FROM stops WHERE station_id =:to) trt
-                            LEFT JOIN stops s
-                            ON trt.route_id = s.route_id) tota
-                    ON fromta.fsiid = tota.tsiid) matching_station
-                WHERE fsspi <= fsipi AND tsepi >= tsipi AND fsiat <= tsidt AND fssid != isid AND isid != tseid  AND (from_route_id != to_route_id)) AS big_table
-            LEFT JOIN
-                (SELECT route_id AS path_indexer_route_id, path_id AS fsdnppi FROM stops WHERE station_id =:to) path_indexer
-            ON path_indexer.path_indexer_route_id = big_table.from_route_id
-            WHERE path_indexer_route_id IS NULL");
+            "SELECT isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, frtn, train_name as trtn, timediff(tsidt, fsiat) as wait_time, timediff(fsiat, fssdt) as ftitt, timediff(tseat, tsidt) as iterr from
+                (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, train_name as frtn from
+                    (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, station_name as tsen from
+                        (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, station_name as fssn from
+                            (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, station_name as isn from
+                                (select * from
+                                    (select * from
+                                        (select fromta.fsiid as isid,
+                                                fromta.route_id as from_route_id, fromta.fssid as fssid, fromta.fssdt as fssdt, fromta.fsspi as fsspi, fromta.fsiat as fsiat, fromta.fsipi as fsipi,
+                                                tota.tsipi as tsipi, tota.tsidt as tsidt, tota.tsepi as tsepi, tota.tseat as tseat, tota.tseid as tseid, tota.route_id as to_route_id from
+                                                (select frt.route_id as route_id, frt.station_id as fssid, frt.path_id as fsspi, frt.departure_time as fssdt, s.station_id as fsiid, s.path_id as fsipi, s.arrival_time as fsiat from
+                                                    (select route_id, path_id, departure_time, station_id from stops where station_id =:from) frt
+                                                left join stops s
+                                                on frt.route_id = s.route_id) fromta
+                                            inner join
+                                                (select trt.route_id as route_id, trt.station_id as tseid, trt.path_id as tsepi, trt.arrival_time as tseat,  s.station_id as tsiid, s.path_id as tsipi, s.departure_time as tsidt from
+                                                    (select route_id, path_id, arrival_time, station_id from stops where station_id =:to) trt
+                                                left join stops s
+                                                on trt.route_id = s.route_id) tota
+                                            on fromta.fsiid = tota.tsiid) matching_station
+                                    where fsspi <= fsipi and tsepi >= tsipi and fsiat <= tsidt and fssid != isid and isid != tseid  and (from_route_id != to_route_id)) as big_table
+                                left join
+                                    (select route_id as path_indexer_route_id, path_id as fsdnppi from stops where station_id =:to) path_indexer
+                                on path_indexer.path_indexer_route_id = big_table.from_route_id
+                                where path_indexer_route_id is null) basic_table
+                            inner join stations
+                            on isid = stations.station_id) basic_table_2
+                        inner join stations
+                        on fssid = stations.station_id) basic_table_3
+                    inner join stations
+                    on tseid = stations.station_id) basic_table_4
+                inner join trains
+                on from_route_id = trains.route_id) basic_table_5
+            inner join trains
+            on to_route_id = trains.route_id
+            order by fssdt");
 
         $seachInterectionPath->bindValue(":from", $fromId);
         $seachInterectionPath->bindValue(":to", $toId);
