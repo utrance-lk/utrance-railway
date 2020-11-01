@@ -49,6 +49,7 @@ class ViewController extends Controller
         }
 
         // var_dump($request->getBody());
+       
 
         return $this->render('searchResults');
 

@@ -24,6 +24,8 @@ class UserModel extends Model
     public $user_confirmPassword;
     public $resultArray;
     public $resultArray1;
+    public $id;
+     
     
   public function register(){
       
@@ -78,20 +80,16 @@ class UserModel extends Model
 
 
    public function getManageUsers(){
-    $query = APP::$APP->db->pdo->prepare("SELECT id,email_id,user_role,first_name FROM users ");
+    $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,street_line1,street_line2,city,contact_num,email_id FROM users ");
     $query->execute();
-  //  $count=0;
-    $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
-    /*foreach($query1 as $row){
-      $this->resultArray1[$count]['first_name']=$row['first_name'];
-      $this->resultArray1[$count]['id']=$row['id'];
-      $this->resultArray1[$count]['email_id']=$row['email_id'];
-      $this->resultArray1[$count]['user_role']=$row['user_role'];
-      $count++;
-    }*/
-    // echo $count;
+  
+    $this->resultArray["users"]= $query->fetchAll(PDO::FETCH_ASSOC);
+    
+    //var_dump($this->resultArray);
      return $this->resultArray;
    }
+
+  
 
   
 

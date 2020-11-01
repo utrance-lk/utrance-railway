@@ -37,7 +37,7 @@ $app->router->post('/utrance-railway/search', [ViewController::class, 'search'])
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
 $app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
-//$app->router->post('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
+$app->router->post('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
 $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'manageRoutes']);

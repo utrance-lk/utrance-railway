@@ -5,6 +5,7 @@ include_once "../classes/core/Controller.php";
 
 
 class AdminController extends Controller {
+   
   
    public function adminSettings($request){
         if($request->isPost()) {
@@ -22,14 +23,22 @@ class AdminController extends Controller {
            $manageUserModel->loadData($request->getBody());
             $getUserArray=$manageUserModel->getManageUsers();
             
-            var_dump($getUserArray);
+            //var_dump($getUserArray);
 
 
          
-            return 'success';
+           
+            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+         return $this->render(['admin', 'manageUsers'],$getUserArray);
         }
+     
+        if($request->isPost()){
+            //return $this->render(['admin', 'manageUsers']);
+        }
+      //  return $this->render(['admin', 'manageUsers']);
+        
 
-        return $this->render(['admin', 'manageUsers'],$getUserArray);
+        
    }
 
    public function manageTrains($request) {
@@ -78,12 +87,32 @@ class AdminController extends Controller {
    }
 
    public function updateUser($request) {
-        if($request->isPost()) {
-            //form
-            return 'success';
-        }
+    $updateUserModel=new UserModel();
+        if($request->isGet()) {
 
-        return $this->render(['admin', 'updateUser']);
+           $updateUserModel->loadData($request->getBody());
+            $updateUserArray=$updateUserModel->getManageUsers();
+            
+            //var_dump($updateUserArray);
+
+
+         
+           
+            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+         return $this->render(['admin', 'updateUser'],$updateUserArray);
+        }
+     
+        if($request->isPost()){
+            //return $this->render(['admin', 'manageUsers']);
+        }
+      //  return $this->render(
+        
+    
+     
+   
+  
+
+        //return $this->render(['admin', 'updateUser']);
    }
    
    public function updateTrain($request) {

@@ -12,9 +12,7 @@
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
               <div class="dashboard-searchbar__dropdown">
-                <!-- <svg class="dropdown-btn">
-                            <use xlink:href="./icons/sprite.svg#icon-chevron-small-down"></use>
-                        </svg> -->
+               
                 <select name="catogory" id="" class="dropdown__list">
                   <option value="name">Name</option>
                   <option value="id">Id</option>
@@ -29,19 +27,78 @@
                 </use>
               </svg> 
             </a>
-            <form method="POST"  name="manage_users"  id="manage_user_form" >
+
+
+
+          <div method="POST"  name="manage_users"  id="manage_user_form" >
             <div class="search__results-container">
-              <div class="search__result-card">
+
+              <!--div class="search__result-card">
                 <div class="search__result-user-mainbox search__result-mainbox">
                   <div class="user-mainbox__img-box">
                     <img
-                      src="/utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
+                      src="/utrance-railway/public/img/pages/admin/Imali.jpg"
                       alt="profile-avatar"
                       class="profile__avatar"
                     />
                   </div>
-                  <div class="user-mainbox__other">
-                    <div class="user-mainbox__other-name">Chris</div>
+                  <div class="user-mainbox__other"!-->
+                  <?php
+                  if(isset($users)){
+                    foreach($users as $key=>$value){
+                      //echo $value['first_name'];
+                     $html =" <div class='search__result-card'>
+                             <div class='search__result-user-mainbox search__result-mainbox'>
+                             <div class='user-mainbox__img-box'>
+                             
+                               
+                  
+                  ";
+
+
+                     // $html .="<div class='search__result-card'>";
+                      //$html .="<div class='search__result-user-mainbox search__result-mainbox'>";
+                      //$html .="<div class='user-mainbox__img-box'>";
+                      $html .="<img src='/utrance-railway/public/img/pages/admin/".$value['first_name'].".jpg' alt='profile-avatar' class='profile__avatar'/></div>";
+                      $html .="<div class='user-mainbox__other'>";
+                      $html .= "<div class ='user-mainbox__other-name'> " .$value['first_name']. "</div>";
+                      $html .= "<div class ='user-mainbox__other-id'> # ";
+                      $html .="<span class='user__id'> ".$value['id'] . "</span></div></div></div>";
+                      $html .="<div class='search__result-user-emailbox'> " .$value['last_name'] ."</div>";
+                      $html .="<div class='search__result-user-rolebox'> " .$value['user_role'] ."</div>";
+                      $html .="<a href='/utrance-railway/admin/users/update' class='search__result-user-managebtnbox'>";
+                      $html .="<div class='search__result-managebtn btn-white'> View </div></a>";
+                      $html .="<div class='search__result-user-deletebtnbox'>";
+                      $html .="<div class='search__result-deletebtn btn-white'>Delete</div></div>";
+                   
+                      $dom = new DOMDocument();
+                      $dom->loadHTML($html);
+                      print_r($dom->saveHTML());
+
+
+                     
+                    
+                   
+                    }
+
+                  }
+                  ?>
+                  <!--a href="/utrance-railway/admin/users/update" class="search__result-user-managebtnbox">
+                  <div class="search__result-managebtn btn-white">View</div>
+                </a>
+                <div class="search__result-user-deletebtnbox">
+                  <div class="search__result-deletebtn btn-white">Delete</div>
+                </div>
+              </div!-->
+
+
+            
+
+              
+            
+           
+
+             <!--div class="user-mainbox__other-name">Chris</div>
                     <div class="user-mainbox__other-id">
                       #<span class="user__id">1</span>
                     </div>
@@ -57,8 +114,10 @@
                 <div class="search__result-user-deletebtnbox">
                   <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
-              </div>
-              <div class="search__result-card">
+              </div!-->
+
+
+              <!--div class="search__result-card">
                 <div class="search__result-user-mainbox search__result-mainbox">
                   <div class="user-mainbox__img-box">
                     <img
@@ -82,15 +141,12 @@
                 <div class="search__result-user-deletebtnbox">
                   <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
-              </div>
+              </div!-->
+
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </form>
-    <?php
-
-
-if(isset($manageUsers)){
-  ////
-}
+    
+    
