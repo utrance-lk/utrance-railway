@@ -91,7 +91,7 @@ $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'man
 
 
 $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
-$app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'register']);
+$app->router->post('/utrance-railway/getUserDetgitails', [formdetailsController::class, 'register']);
 $app->router->get('/utrance-railway/admin/trains', [formdetailsController::class, 'manageTrains']);
 $app->router->get('/utrance-railway/admin/users/add', [AdminController::class, 'addUser']);
 $app->router->get('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
