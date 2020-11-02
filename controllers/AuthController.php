@@ -10,48 +10,56 @@ class AuthController extends Controller
     public function registerPageNow($request)
     {
         $registerModel=new UserModel();
-       if($request->isPost()){
-          
-           $registerModel->loadData($request->getBody());
-          
-           
-          
 
-    if($registerModel->validate() && $registerModel->register()){
-               return "Success";
+       if($request->isPost()){
+         
+        $registerModel->loadData($request->getBody());
+        if( $registerModel->register()){
+                return "Success";
+        }
     }
            
-   echo '<pre>';
+     /*echo '<pre>';
     var_dump($registerModel->errors);
     echo '</pre>';
-    exit; 
+    exit; */
  
-       return $this->render('register',[
+       /*return $this->render('register',[
            'model'=>$registerModel
-       ]);
+       ]);*/
        
     }
-}
 
-    public function registerPage(){
-        return $this->render('register');
-        
-    }
-
-    public function login()
+    public function registerPage()
     {
-        return $this->render('login');
+        return $this->render('register');
+
     }
+
 
     public function logout()
     {
         // logout
-       
     }
+    public function getMy($request) {
+        if($request->isPost()) {
+            //from
+            return 'success';
+        }
+        return $this->render('admin');
+ 
+    }
+    
+   public function signIn(){
+    return $this->render('signIn');
+    }
+}
 
-    public function isLoggedIn()
+   
+
+    /*public function isLoggedIn()
     {
-        
+
         // checks whether user is logged in or not
     }
 
@@ -78,6 +86,6 @@ class AuthController extends Controller
     public function protect()
     {
         // protect the route
-    }
+    }*/
 
-}
+

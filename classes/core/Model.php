@@ -2,6 +2,7 @@
 
 include_once "App.php";
 
+
  abstract class Model {
 
     public const RULE_REQUIRED='required';
@@ -25,7 +26,7 @@ include_once "App.php";
         }
     } 
       
-    abstract public function rules();
+    /*abstract public function rules();
      
     public  $errors=[];
 
@@ -40,7 +41,8 @@ include_once "App.php";
                                }
 
                                if($ruleName === self::RULE_REQUIRED && !$value){
-                                          $this->addError($attribute,self::RULE_REQUIRED);   
+                                           
+                                    $this->addError($attribute,self::RULE_REQUIRED);   
                                }
 
                                if($ruleName === self::RULE_EMAIL && !filter_var($value,FILTER_VALIDATE_EMAIL)){
@@ -90,8 +92,12 @@ include_once "App.php";
     
 
 
+    */
+
+    
 
     
 
 
 }
+?>

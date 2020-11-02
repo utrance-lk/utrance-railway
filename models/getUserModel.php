@@ -56,9 +56,9 @@ class getUserModel extends Model
 
 
   
-//[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
+    //[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
 
-public function getTours()
+    public function getTours()
     {
 
         $query = APP::$APP->db->pdo->prepare("SELECT train_id, train_name, train_type FROM trains");
@@ -91,11 +91,12 @@ public function getTours()
 
 
 
+
+   
+
+ 
+
 }
-
-  
-     
-
   
 //[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
 

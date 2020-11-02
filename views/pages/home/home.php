@@ -18,7 +18,7 @@
             </ul>
           </nav>
         </div>
-        <div class="search-bar__container">
+        <form class="search-bar__container" method="POST" action="/utrance-railway/search">
           <div class="search-bar">
             <div class="search-bar__search">
                 <div class="search-bar__from-container">
@@ -34,7 +34,7 @@
                     </div>
                   </div>
                   <div class="search-dropdown search-dropdown__from js--search-dropdown__from">
-                    <input type="text" id="dropdown-from" name="dropdown-from" class="search-dropdown__search js--search-dropdown__search-from">
+                    <input type="text" id="dropdown-from" name="from" class="search-dropdown__search js--search-dropdown__search-from" value="Matara">
                   </div>
                   <ul class="search-dropdown__search-results js--results__list-from"></ul>
                 </div>
@@ -44,20 +44,20 @@
                   <div class="to__station js--to__station" id="js--to__station">Galle</div>
                 </div>
                 <div class="search-dropdown search-dropdown__to js--search-dropdown__to">
-                    <input type="text" id="dropdown-to" name="dropdown-to" class="search-dropdown__search js--search-dropdown__search-to">
+                    <input type="text" id="dropdown-to" name="to" class="search-dropdown__search js--search-dropdown__search-to" value="Galle">
                 </div>
                 <ul class="search-dropdown__search-results js--results__list-to"></ul>
               </div>
               <div class="search-bar__when-container">
                 <div class="searchbar__when">
                   <span>When</span>
-                  <input type="date" class="when__date js--when__date" />
+                  <input type="date" class="when__date js--when__date" name="when" />
                 </div>
               </div>
             </div>
-            <div class="search-bar__search-btn js--searchbar__search-btn">Search</div>
+            <input type="submit" class="search-bar__search-btn js--searchbar__search-btn">
           </div>
-        </div>
+        </form>
       </section>
       <section class="heading-secondary">
         <a class="morecontent-btn" href="#newsfeed">

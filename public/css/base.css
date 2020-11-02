@@ -44,6 +44,7 @@ a:link,
 a:active,
 a:visited {
   color: #fff;
+  /* color: black; */
 }
 
 .btn {
@@ -68,4 +69,20 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+select {
+  outline: none;
+  border: none;
+  font-family: "Sora", sans-serif;
+}
+
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Sora", sans-serif;
+  /* transition: all .2s; */
 }

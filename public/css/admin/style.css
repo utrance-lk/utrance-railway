@@ -116,6 +116,10 @@ body {
   color: #fff;
 }
 
+.sidebar a {
+  color: #fff;
+}
+
 .sidebar__nav-role-items {
     margin-bottom: 5rem;
 }
@@ -480,12 +484,21 @@ select {
   cursor: pointer;
   transition: all .2s;
   color: #000000;
+<<<<<<< HEAD
 }
 
 .search__result-deletebtn {
   color: #D64541;
 }
 
+=======
+}
+
+.search__result-deletebtn {
+  color: #D64541;
+}
+
+>>>>>>> 11a95d424b8d6d968baccb0860f7d325bd17b52f
 .btn-white:focus,
 .btn-white:active {
   transform: scale(0.97);
@@ -613,6 +626,13 @@ select {
 }
 
 .addroutebtn-img {
+<<<<<<< HEAD
+=======
+  fill: #fff;
+}
+
+.addstopbtn-img {
+>>>>>>> 11a95d424b8d6d968baccb0860f7d325bd17b52f
   fill: #89c4f4;
 }
 

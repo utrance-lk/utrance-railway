@@ -1,7 +1,12 @@
 import { items } from "./components.js";
 import * as home from "./home.js";
 
-window.addEventListener("load", home.setDate);
+// window.addEventListener("load", home.setDate);
+window.addEventListener("load", function() {
+  home.setDate();
+  // // items.fromStationLabel.textContent = inputSearchFrom.value;
+  // console.log(items.fromStationLabel.textContent);
+});
 
 items.inputSearchFrom.addEventListener("input", function () {
   home.searchStates(items.inputSearchFrom.value, "from");
@@ -14,7 +19,9 @@ items.inputSearchTo.addEventListener("input", function () {
 items.swapBtn.addEventListener('click', function() {
   let temp = items.fromStationLabel.textContent;
   items.fromStationLabel.textContent = items.toStationLabel.textContent;
+  items.inputSearchFrom.value = items.toStationLabel.textContent;
   items.toStationLabel.textContent = temp;
+  items.inputSearchTo.value = temp;
 })
 
 document.addEventListener("click", function (e) {
@@ -46,3 +53,4 @@ document.addEventListener("click", function (e) {
     home.searchStates("", "to");
   }
 });
+

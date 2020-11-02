@@ -1,6 +1,7 @@
 import { items } from "./components.js";
 
 export const renderAddStation = function(stopsCount) {
+    items.addRouteBtn.style.display = "none";
     const markup = `
     <div class="search__result-card addStop-card" id="js--addStop-card">
         <div class="addstation-box addStop-card-item">
