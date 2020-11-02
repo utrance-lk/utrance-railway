@@ -90,7 +90,10 @@ class AdminController extends Controller {
     $updateUserModel=new UserModel();
         if($request->isGet()) {
 
-           $updateUserModel->loadData($request->getBody());
+            // var_dump($request->getQueryParams());
+
+
+           $updateUserModel->loadData($request->getQueryParams());
             $updateUserArray=$updateUserModel->getManageUsers();
             
             //var_dump($updateUserArray);
