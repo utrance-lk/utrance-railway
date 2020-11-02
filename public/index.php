@@ -72,6 +72,7 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
 $app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'register']);
+$app->router->get('/utrance-railway/admin/trains', [formdetailsController::class, 'manageTrains']);
 
 
 

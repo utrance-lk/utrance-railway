@@ -28,62 +28,22 @@
               </svg> 
             </a>
             <div class="search__results-container">
-                 <?php
-                    if(isset($trains)){
-                      foreach($trains as $key => $value){
-                        $html ="<div class='search__result-card'>
-                          <div class='search__result-train-idbox'>#
-                      ";
-
-                      $html .= "<span class='train__id'>" .$value['train_id'] . "</span></div>";
-                    
-
-                      $html .= "<div class='search__result-train-namebox'>" .$value['train_name'] . "</div>";
-                      $html .= "<div class='search__result-train-typebox'>" .$value['train_type'] . "</div>";
-                      $html .= "<a href='/utrance-railway/admin/trains/update' class='search__result-train-managebtnbox'>";
-                      $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
-                      
-                      $html .= "<div class='search__result-train-deletebtnbox'>";
-                      $html .= "<div class='search__result-deletebtn btn-white'>Delete</div></div></div>";
-                      
-
-                      $dom = new DOMDocument();
-                      $dom->loadHTML($html);
-                      print_r($dom->saveHTML());
-                      
-
-
-                      }
-                    }
-
-
-                    
-                  ?>
-              
+              <div class="search__result-card">
+                
+                    <div class="search__result-train-idbox">
+                    #<span class="train__id">1</span>
+                    </div>
+                    <div class="search__result-train-namebox">Denuwara Menike</div>
+                    <div class="search__result-train-typebox">Express</div>
+                    <a href="/utrance-railway/admin/trains/update" class="search__result-train-managebtnbox">
+                    <div class="search__result-managebtn btn-white">View</div>
+                    </a>
+                    <div class="search__result-train-deletebtnbox">
+                    <div class="search__result-deletebtn btn-white">Delete</div>
+                    </div>
+              </div>
               
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

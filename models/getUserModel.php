@@ -21,6 +21,10 @@ class getUserModel extends Model
     public $user_confirmPassword;
     public $from2;
     public $to2;
+    public $train_name;
+    public $train_id;
+    public $train_type;
+
 
 
     public function createOne()
@@ -54,6 +58,30 @@ class getUserModel extends Model
   
 //[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
 
+public function getTours()
+    {
+
+        $query = APP::$APP->db->pdo->prepare("SELECT train_id, train_name, train_type FROM trains");
+       
+
+        $query->execute();
+        
+        $this->resultArray['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
+       
+        // var_dump($this->resultArray[0]['train_name']);  
+        return $this->resultArray;     
+
+        // if ($fromSearchId && $toSearchId) {
+
+            
+
+        // } else {
+            // echo 'station not found!';
+            // return 'station not found!!';
+        // }
+
+    }
+
    
 
 
@@ -64,3 +92,27 @@ class getUserModel extends Model
 
 
 }
+
+  
+     
+
+  
+//[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
+
+   
+
+
+        
+    
+  
+
+/*public function createOne()
+{
+    $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name) VALUES (:fn, :ln)");
+
+
+}
+    return $query->execute();
+}*/
+
+

@@ -34,6 +34,24 @@ class formdetailsController extends Controller {
         //     'model' => $userModel,
         // ]);
     }
+
+    public function manageTrains($request){
+        // var_dump($request->getBody());
+        if($request->isGet()) {
+            $searchModel = new getUserModel();
+            $searchModel->loadData($request->getBody());
+            
+
+            $trainArrays = $searchModel->getTours();
+            //  var_dump($trainArrays);
+         return $this->render(['admin', 'manageTrains'], $trainArrays);
+
+        }
+
+        return $this->render(['admin', 'manageTrains']);
+   }
+
+ 
 }
 
 ?>
