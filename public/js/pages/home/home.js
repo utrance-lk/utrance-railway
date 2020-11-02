@@ -1,6 +1,6 @@
 import {items} from './components.js';
 
-const stationsArray = ["Matara", "Colombo-Fort", "Galle", "Gampaha", "Kandy", "Puttalam"];
+const stationsArray = ["Matara", "Colombo-Fort", "Galle", "Gampaha", "Kandy", "Puttalam", "Aluthgama", "Midigama", "Weligama"];
 
 export const searchStates = function(searchText, direction) {
     clearResults(direction);

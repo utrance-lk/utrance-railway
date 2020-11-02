@@ -269,11 +269,18 @@ input::-webkit-datetime-edit-year-field:focus {
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
-    height: 35rem;
     margin-left: 1rem;
     margin-bottom: 1rem;
     background-color: #fff;
     /* border: 1px solid red; */
+}
+
+.search__results-card--small {
+  height: 18rem;
+}
+
+.search__results-card--big {
+    height: 35rem;
 }
 
 .search__results-card-main {
@@ -288,6 +295,7 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .search__results-card-sub {
   flex: 1;
+  align-self: stretch;
 }
 
 .search__results-card-primary {
@@ -381,7 +389,7 @@ input::-webkit-datetime-edit-year-field:focus {
 .search__card-classbox {
     padding: 1rem;
     background-color:rgba(119, 119, 119, 0.2);
-    /* height: 100%; */
+    height: 100%;
 }
 
 .search__card-classbox--form > *:not(:last-child) {
