@@ -20,15 +20,16 @@ class UserModel extends Model
     public $contact_num;
     public $user_password;
     public $email_id;
-    public $user_role="user";
+    public $user_role="User";
     public $user_confirmPassword;
+    public $resultArray;
+    public $resultArray1;
+    public $id;
+     
     
   public function register(){
       
     
-
-    echo $this->first_name;
-
         
     if($this->first_name == NULL || $this->last_name == NULL ||  $this->street_line1 == NULL || $this->contact_num  == NULL  || $this->user_password  == NULL || $this->email_id  == NULL){
          return false;
@@ -90,21 +91,44 @@ public function signIn()
 }
   
 
+
+  public function getUsers(){
+      
+       $this->resultArray['first_name']=$this->first_name;
+       $this->resultArray['last_name']=$this->last_name;
+       $this->resultArray['street_line1']=$this->street_line1;
+       $this->resultArray['street_line2']=$this->street_line2;
+       $this->resultArray['contact_num']=$this->contact_num;
+       $this->resultArray['city']=$this->city;
+       $this->resultArray['user_password']=$this->user_password;
+       $this->resultArray['email_id']=$this->email_id;
+       $this->resultArray['user_confirmPassword']=$this->user_confirmPassword;
+        return $this->resultArray;
+
+
+
+  }
    public function valid(){
-     if($this->first_name == NULL){
-       return 0;
-     }else if($this->last_name == NULL){
+     if($this->first_name == NULL || $this->last_name == NULL || $this ->street_line1 == NULL || $this->street_line2 == NULL || $this->city == NULL || $this->contact_num == NULL || $this->user_password ==NULL || $this->email_id == NULL){
+          return 0;
+     }else{
        return 1;
-     }else if($this ->street_line1 == NULL){
-       return 2;
-     }else if($this->street_line2 == NULL){
-       return 3;
-     }elseif($this->city == NULL){
-       return 4;
-     }else if($this->contact_num == NULL){
-       return 5;
      }
    }
+
+
+
+   public function getManageUsers(){
+    $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,street_line1,street_line2,city,contact_num,email_id FROM users ");
+    $query->execute();
+  
+    $this->resultArray["users"]= $query->fetchAll(PDO::FETCH_ASSOC);
+    
+    //var_dump($this->resultArray);
+     return $this->resultArray;
+   }
+
+  
 
   
 
