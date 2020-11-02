@@ -2,9 +2,13 @@ import { items } from "./components.js";
 import * as register from "./register.js";
 
 
-items.userRegisterButton.addEventListener("click",register.userRegistration);
+items.userRegisterButton.addEventListener('click',function(){
+   
+    
+    console.log("hy");
+    register.userRegistration();
 
-/*$.ajax(
+     $.ajax(
         {
             type:"POST",
             url:"/utrance-railway/registerPage",
@@ -30,7 +34,7 @@ items.userRegisterButton.addEventListener("click",register.userRegistration);
     );
 
 });
-}*/
+
 
    
 
