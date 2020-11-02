@@ -83,8 +83,6 @@
             }
           ?>
 
-          <div class="inter">intersections</div>
-
           <?php
             if(isset($intersections)) {
               foreach($intersections as $key => $value) {
@@ -95,39 +93,6 @@
               }
             }
           ?>
-          
-          <!--div class="switch-card">
-            <div class="switch-card__container">
-              <div class="switch-card__container-main">
-                <div class="switch-card__icon-text-container">
-                  <div class="swich-card__icon-box">
-                    <svg class="swap-icon swap-icon__switch-card">
-                      <use xlink:href="../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-swap"></use>
-                    </svg>
-                  </div>
-                  <div class="switch-card__content-box">
-                    <div class="switch-card__text-box">
-                      <span>switch at</span>
-                    </div>
-                    <div class="switch-card__station-box">
-                      Colombo Fort
-                    </div>
-                  </div>
-                </div>
-                <div class="switch-card__waittime-box">
-                  <div class="wait">
-                    wait approx. 7m
-                  </div>
-                </div>
-                <!-- <div class='btn-cta'>
-                  <button class='search__card-classbox--btnproceed'><p>Proceed</p></button>
-                </div> >
-              </div>
-              <div class="switch-card__container-sub">
-                sub
-              </div>
-            </div>
-          </div -->
         </div>
       </section>
 
@@ -140,7 +105,7 @@
   
   function renderCardDirect($value) {
       // foreach($pathCategory as $key => $value) {     
-        $html ="<div class='search__results-card'>
+        $html ="<div class='search__results-card search__results-card--small'>
                 <div class='search__results-card-main'>
                 <div class='search__results-card-primary'>
                 <div class='search__card-detailbox'>
@@ -203,7 +168,7 @@
     // }
 
       function renderCardIntersect($value) {
-        $html = "<div class='search__results-card'>
+        $html = "<div class='search__results-card search__results-card--big'>
                 <div class='search__results-card-main'>
                 <div class='search__results-card-primary'>
                 <div class='search__card-detailbox'>

@@ -43,11 +43,19 @@
                     />
                   </div>
                   <div class="user-mainbox__other"!-->
+
+                  <?php
+                    $dom = new DOMDocument;
+                    libxml_use_internal_errors(true);
+                    $dom->loadHTML('...');
+                    libxml_clear_errors();
+                  ?>
+
                   <?php
                   if(isset($users)){
                     foreach($users as $key=>$value){
                       //echo $value['first_name'];
-                     $html =" <div class='search__result-card'>
+                     $html =" <form class='search__result-card' method='get'>
                              <div class='search__result-user-mainbox search__result-mainbox'>
                              <div class='user-mainbox__img-box'>
                              
@@ -66,18 +74,15 @@
                       $html .="<span class='user__id'> ".$value['id'] . "</span></div></div></div>";
                       $html .="<div class='search__result-user-emailbox'> " .$value['last_name'] ."</div>";
                       $html .="<div class='search__result-user-rolebox'> " .$value['user_role'] ."</div>";
-                      $html .="<a href='/utrance-railway/admin/users/update' class='search__result-user-managebtnbox'>";
+                      $id = $value['id'];
+                      $html .="<a href='/utrance-railway/admin/users/update?id=$id' class='search__result-user-managebtnbox'>";
                       $html .="<div class='search__result-managebtn btn-white'> View </div></a>";
                       $html .="<div class='search__result-user-deletebtnbox'>";
-                      $html .="<div class='search__result-deletebtn btn-white'>Delete</div></div>";
+                      $html .="<div class='search__result-deletebtn btn-white'>Delete</div></div></form>";
                    
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
-                      print_r($dom->saveHTML());
-
-
-                     
-                    
+                      print_r($dom->saveHTML());      
                    
                     }
 
