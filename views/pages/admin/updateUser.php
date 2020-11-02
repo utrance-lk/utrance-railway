@@ -4,16 +4,16 @@
             <div class="content-title">
               <p>Chris's Account Settings</p>
             </div>
-            <form action="" class="form__user-data">
+          <form action="" class="form__user-data">
             <div class="content__fields">
-            <?php
+              <?php
                   if(isset($users)){
                     foreach($users as $key=>$value){
                      
                      $html =" 
                                
-                  
-                  ";
+                     ";
+                     
                     $html .="<div class='firstname-box content__fields-item'>";
                     $html .="<label for='firstname' class='form__label'>First Name</label>";
                     $html .="<input type='text' name='firstname' class='form_input' value=".$value['first_name']."></div>";
@@ -109,11 +109,10 @@
                 <div class="btn__save-box">
                   <div class="btn__save btn-settings">Save Settings</div>
                 </div>
-              </div>
-            </form!-->
-            </div>
+                </div>
+                 </form!-->
             </div>
            </form>
-        </div>
+          </div>
       </div>
     </div>

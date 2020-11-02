@@ -67,22 +67,24 @@
                       $html .="<div class='search__result-user-emailbox'> " .$value['last_name'] ."</div>";
                       $html .="<div class='search__result-user-rolebox'> " .$value['user_role'] ."</div>";
                       $html .="<a href='/utrance-railway/admin/users/update' class='search__result-user-managebtnbox'>";
-                      $html .="<div class='search__result-managebtn btn-white'> View </div></a>";
+                      $html .="<div class='search__result-managebtn btn-white' name='view'> View </div></a>";
                       $html .="<div class='search__result-user-deletebtnbox'>";
                       $html .="<div class='search__result-deletebtn btn-white'>Delete</div></div>";
                    
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
                       print_r($dom->saveHTML());
-
-
+                      
                      
                     
                    
                     }
-
+                   
                   }
                   ?>
+
+
+                  
                   <!--a href="/utrance-railway/admin/users/update" class="search__result-user-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
@@ -143,10 +145,10 @@
                 </div>
               </div!-->
 
-            </div>
-          </div>
-        </div>
-        </div>
+             </div>
+           </div>
+         </div>
       </div>
+    </div>
     
     

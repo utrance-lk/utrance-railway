@@ -22,18 +22,15 @@ class AdminController extends Controller {
 
            $manageUserModel->loadData($request->getBody());
             $getUserArray=$manageUserModel->getManageUsers();
-            
-            //var_dump($getUserArray);
-
-
-         
-           
-            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+           // var_dump($getUserArray);
+        
          return $this->render(['admin', 'manageUsers'],$getUserArray);
+        
+         
         }
      
         if($request->isPost()){
-            //return $this->render(['admin', 'manageUsers']);
+        
         }
       //  return $this->render(['admin', 'manageUsers']);
         
@@ -95,25 +92,29 @@ class AdminController extends Controller {
             
             //var_dump($updateUserArray);
 
-
+        }
          
            
             //return $this->render(['admin', 'manageUsers'],$getUserArray);
          return $this->render(['admin', 'updateUser'],$updateUserArray);
+         //dcdwsc
         }
      
-        if($request->isPost()){
-            //return $this->render(['admin', 'manageUsers']);
-        }
-      //  return $this->render(
-        
+       
+     
     
      
    
   
 
-        //return $this->render(['admin', 'updateUser']);
-   }
+       
+   
+
+
+
+    public function sample(){
+
+    }
    
    public function updateTrain($request) {
        if($request->isPost()) {
