@@ -1,12 +1,9 @@
 
 
+
+
+
 <body>
-
-
-
-</script>
-
-
 
 <div class="auth-content">
 
@@ -32,7 +29,7 @@
     </div>
     <div  class="div-sub">
         <label  class="lbl-user"><i class="fa fa-map-marker" aria-hidden="true" style="padding-right: 1rem;"></i>Address</label>
-        <input type="text"    id="street_line1 " class="text-input" name="street_line1" placeholder="Street First line"style="margin-bottom: 10px;">
+        <input type="text"    id="street_line1" class="text-input" name="street_line1" placeholder="Street First line"style="margin-bottom: 10px;">
         <input type="text"   id="street_line2"  class="text-input"  name="street_line2" placeholder="Street Second line" style="margin-bottom: 10px;">
     
     </div>
@@ -73,16 +70,19 @@
                 
 
                 <div id="btn-register">
-                    <button type="submit" id="register-button" name="register-btn" class="btn btn-big">Register</button>
+                    <!--button type="submit" id="register-button" name="register-btn" class="btn btn-big">Register</button!-->
+                    <input type="submit"  id="register-button" name="register-btn" class="btn btn-big" value="Submit">
                 </div>
                 <div class="div-sub1" style="display: inline;">
                 <input type="checkbox"  id="check1" >
                 <text id="sign-in">I agree with the Terms and Conditions and the privacy policy</p>
                 </div>
-                <p id="form-message"></p>
+               
     
     </form>
 </div>
+<!--script type="module" src="../../../utrance-railway/public/js/pages/register/main.js"></script!--> 
+
 
 
 </body>

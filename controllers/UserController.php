@@ -9,6 +9,7 @@ class UserController extends Controller {
     }
 
     public function updateMe() {
+        
         // update myself
     }
 
