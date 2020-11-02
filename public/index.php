@@ -52,7 +52,7 @@ $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 
 
 
 
-////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////
 $app->router->get('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPage']);
 $app->router->post('/utrance-railway/public/index.php/registerPage', [AuthController::class, 'registerPageNow']);
 
