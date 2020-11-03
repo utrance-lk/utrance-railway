@@ -72,7 +72,7 @@ class UserModel extends Model
         }
     }
     public function getUserDetails(){
-      $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num FROM users WHERE id=10 ");
+      $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num,user_password FROM users WHERE id=10 ");
       $query->execute();
 
       $this->detailsArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);

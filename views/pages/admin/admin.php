@@ -116,6 +116,10 @@
                   if(isset($users)){
                     foreach($users as $key=>$value)
                     {
+                      $html ="
+
+
+                      ";
             
                       $html .="<div class='firstname-box content__fields-item'>";
                       $html .="<label for='firstname' class='form__label'>First Name</label>";
@@ -136,7 +140,7 @@
                       $html .="<input type='text' name='street_line2' class='form__input' value=".$value['street_line2']."></div>";
                       $html .="<div class='city content__fields-item'>";
                       $html .="<label for='city' class='form__label'>City</label>";
-                      $html .="<input type='text' name='city' class='form__input' value=".$value['city']."></div></div>";
+                      $html .="<input type='text' name='city' class='form__input' value=".$value['city']."></div></div></div>";
                       $html .="<div class='contactno-box content__fields-item'>";
                       $html .="<label for='contactno' class='form__label'>Contact No</label>";
                       $html .="<input type='text' name='contact_num' class='form__input' value=".$value['contact_num']."></div>";
@@ -162,21 +166,35 @@
             </div>
             <form action="" class="password__change">
               <div class="content__fields">
-                <div class="currentpassword-box content__fields-item">
-                  <label for="currentpassword" class="form__label">Current Password</label>
-                  <input type="password" name="currentpassword" class="form__input" />
-                </div>
-                <div class="newpassword-box content__fields-item">
-                  <label for="newpassword" class="form__label">New Password</label>
-                  <input type="password" name="newpassword" class="form__input" />
-                </div>
-                <div class="confirmpassword-box content__fields-item">
-                  <label for="confirmpassword" class="form__label">Confirm Password</label>
-                  <input type="password" name="confirmpassword" class="form__input" />
-                </div>
-                <div class="btn__save-box">
-                  <div class="btn__save btn__password">Save Password</div>
-                </div>
+            <?php
+                if(isset($users)){
+                  foreach($users as $key=>$value)
+                {
+                $html ="
+                
+                ";
+                $html .="<div class='currentpassword-box content__fields-item'>";
+                $html .="<label for='currentpassword' class='form__label'>Current Password</label>";
+                $html .="<input type='password' name='user_password' class='form__input' value=".$value['user_password']."></div>";
+              
+                $html .="<div class='newpassword-box content__fields-item'>";
+                $html .="<label for='newpassword' class='form__label'>New Password</label>";
+                $html .="<input type='password' name='newpassword' class='form__input'></div>";
+               
+                $html .="<div class='confirmpassword-box content__fields-item'>";
+                $html .="<label for='confirmpassword' class='form__label'>Confirm Password</label>";
+                $html .="<input type='password' name='confirmpassword' class='form__input'></div>";
+              
+                $html .="<div class='btn__save-box'>";
+                $html .="<div class='btn__save btn__password'>Save Password</div></div>";
+
+                 
+                $dom = new DOMDocument();
+                $dom->loadHTML($html);
+                print_r($dom->saveHTML());  
+                  }
+                }
+            ?>
               </div>
             </form>
           </div>
