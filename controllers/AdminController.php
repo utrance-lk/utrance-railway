@@ -8,12 +8,17 @@ class AdminController extends Controller {
    
   
    public function adminSettings($request){
+       $adminSettingModel=new UserModel();
         if($request->isPost()) {
             // form
             return 'success';
         }
-
+        if($request->isGet()) {
+        $adminSettingModel->loadData($request->getBody());
+        $getUserDetailsArray=$adminSettingModel->getUserDetails();
+        //var_dump($getUserDetailsArray);
         return $this->render('admin');
+        }
    }
 
    public function manageUsers($request){

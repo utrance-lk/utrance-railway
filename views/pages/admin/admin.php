@@ -8,11 +8,11 @@
               <div class="content__fields">
                 <div class="firstname-box content__fields-item">
                   <label for="firstname" class="form__label">First Name</label>
-                  <input type="text" name="firstname" class="form__input" />
+                  <input type="text" name="first_name" class="form__input" />
                 </div>
                 <div class="lastname-box content__fields-item">
                   <label for="lastname" class="form__label">Last Name</label>
-                  <input type="text" name="lastname" class="form__input" />
+                  <input type="text" name="last_name" class="form__input" />
                 </div>
                 <div class="emai-box content__fields-item">
                   <label for="email" class="form__label">Email</label>

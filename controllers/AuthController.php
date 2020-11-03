@@ -12,13 +12,18 @@ class AuthController extends Controller
     {
         $registerModel=new UserModel();
 
-       if($request->isPost()){
+       if($request->isPost())
          
-<<<<<<< HEAD
         $registerModel->loadData($request->getBody());
-        if( $registerModel->register()){
+        $pathArray1=$registerModel->getUsers();
+          //  return  $this->render('validation',$pathArray1);
+        if( $registerModel->valid()){
+            if($registerModel->register()){
                 return "Success";
         }
+    }
+        else{return  $this->render('validation',$pathArray1);
+        } 
     }
        
      /*echo '<pre>';
@@ -29,50 +34,10 @@ class AuthController extends Controller
        /*return $this->render('register',[
            'model'=>$registerModel
        ]);*/
-=======
-
-           $registerModel->loadData($request->getBody());
-           $pathArray1=$registerModel->getUsers();
-          
-            
-         //  return  $this->render('validation',$pathArray1);
-           if($registerModel->valid()){
-                 if($registerModel->register()){
-                //   App::$APP->response->redirect('/');
-                  // header('Location : /');
-                    return "Success";
-                 }
-                 
-
-           }else{
-            return  $this->render('validation',$pathArray1);
-              
-           }
-        
-        
-
-       }
-
-      
->>>>>>> bdf2af3cecf53162a85a8bbfbdfd492d54dbca22
        
          
-    }
+    
 
-<<<<<<< HEAD
-    public function signInPageNow($request)
-    {
-        $signInModel=new UserModel();
-
-       if($request->isPost()){
-         
-        $signInModel->loadData($request->getBody());
-        if( $signInModel->signIn()){
-                return "Success";
-        }
-    }
-}      
-=======
     /*public function validate($request){
         $registerValidate=new UserModel();
         if($request->is_Post()){
@@ -88,7 +53,6 @@ class AuthController extends Controller
            
     
     
->>>>>>> bdf2af3cecf53162a85a8bbfbdfd492d54dbca22
 
     public function registerPage()
     {

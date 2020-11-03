@@ -18,7 +18,7 @@ class UserModel extends Model
     public $resultArray;
     public $resultArray1;
     public $id;
-<<<<<<< HEAD
+
      
     
   public function register(){
@@ -43,46 +43,7 @@ class UserModel extends Model
     }
 }
 
-public function signIn()
-{
-      
-  session_start();
-  
-  try{
-    $connect = new PDO("mysql:host=$host;dbname=$database", $username,$password);
-    $connect-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    if(isset($_POST["login"])){
-         if(empty($_POST["id"])||empty($_POST["user_password"])){
-             $message = 'All fields are required';
-         }	
-         else{
-             $query = "SELECT * FROM users WHERE id = :id AND user_password = :user_password";
-             $statement = $connect->prepare($query);
-             $statement->execute(
-                 array(
-                     'id' => $_POST["id"],
-                     'user_password' => $_POST["user_password"]
-                 )
-             );
-             $count = $statement->rowCount();
-             if($count>0)
-             {
-                 $_SESSION["id"]=$_POST["id"];
-                 header("location:home.php");
-             }
-             else{
-                 $message='Wrong Data';
-             }
-
-         }
-     }
-  }
-  catch(PDOException $error){
-      $message = $error->getMessage();
-  }
-          
-}
   
 
 
@@ -98,46 +59,9 @@ public function signIn()
        $this->resultArray['email_id']=$this->email_id;
        $this->resultArray['user_confirmPassword']=$this->user_confirmPassword;
         return $this->resultArray;
-=======
->>>>>>> b720c7848508b42f51a9c9ec59b9e164e5e4c33a
+  }
 
-    public function register()
-    {
 
-        if ($this->first_name == null || $this->last_name == null || $this->street_line1 == null || $this->contact_num == null || $this->user_password == null || $this->email_id == null) {
-            return false;
-        } else {
-            $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us)");
-
-            $query->bindValue(":fn", $this->first_name);
-            $query->bindValue(":ln", $this->last_name);
-            $query->bindValue(":st1", $this->street_line1);
-            $query->bindValue(":st2", $this->street_line2);
-            $query->bindValue(":city", $this->city);
-            $query->bindValue(":cn", $this->contact_num);
-            $query->bindValue(":up", $this->user_password);
-            $query->bindValue(":eid", $this->email_id);
-            $query->bindValue(":us", $this->user_role);
-            return $query->execute();
-        }
-
-    }
-
-    public function getUsers()
-    {
-
-        $this->resultArray['first_name'] = $this->first_name;
-        $this->resultArray['last_name'] = $this->last_name;
-        $this->resultArray['street_line1'] = $this->street_line1;
-        $this->resultArray['street_line2'] = $this->street_line2;
-        $this->resultArray['contact_num'] = $this->contact_num;
-        $this->resultArray['city'] = $this->city;
-        $this->resultArray['user_password'] = $this->user_password;
-        $this->resultArray['email_id'] = $this->email_id;
-        $this->resultArray['user_confirmPassword'] = $this->user_confirmPassword;
-        return $this->resultArray;
-
-    }
     public function valid()
     {
         if ($this->first_name == null || $this->last_name == null || $this->street_line1 == null || $this->street_line2 == null || $this->city == null || $this->contact_num == null || $this->user_password == null || $this->email_id == null) {
@@ -145,6 +69,15 @@ public function signIn()
         } else {
             return 1;
         }
+    }
+    public function getUserDetails(){
+      $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num FROM users WHERE id=10 ");
+      $query->execute();
+
+      $this->detailsArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        var_dump($this->detailsArray);
+        return $this->detailsArray;
     }
 
     public function getManageUsers()
