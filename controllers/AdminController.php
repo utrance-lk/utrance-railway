@@ -21,11 +21,11 @@ class AdminController extends Controller {
         if($request->isGet()) {
 
            $manageUserModel->loadData($request->getBody());
-            $getUserArray=$manageUserModel->getManageUsers();
+           $getUserArray=$manageUserModel->getManageUsers();
            // var_dump($getUserArray);
         
          return $this->render(['admin', 'manageUsers'],$getUserArray);
-        
+    
          
         }
      
@@ -87,16 +87,20 @@ class AdminController extends Controller {
     $updateUserModel=new UserModel();
         if($request->isGet()) {
 
-           $updateUserModel->loadData($request->getBody());
-            $updateUserArray=$updateUserModel->getManageUsers();
+            //var_dump($request->getQueryParams());
+
+
+          $updateUserModel->loadData($request->getQueryParams());
+           $updateUserModel->updateUserDetails();
+          //  $updateUserArray=$updateUserModel->updateUserDetails();
             
             //var_dump($updateUserArray);
-
+           //return $this->render(['admin', 'updateUser'],$updateUserArray);
         }
          
            
             //return $this->render(['admin', 'manageUsers'],$getUserArray);
-         return $this->render(['admin', 'updateUser'],$updateUserArray);
+         
          //dcdwsc
         }
      

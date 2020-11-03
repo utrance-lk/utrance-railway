@@ -26,6 +26,31 @@ class Request {
         return $this->method() == 'post';
     }
 
+    // new function
+    public function getQueryParams() {
+        $resultArray;
+        $url = $_SERVER['REQUEST_URI'];
+        $r = parse_url($url, PHP_URL_QUERY);
+        // foreach(explode("&", $r) as $key => $value) {
+        //     $temp = explode("=", $value);
+        //     // var_dump($value);
+        //     $resultArray[$temp[0]] = $temp[1];
+        // }
+
+        $list = (explode("&", $r));
+
+        foreach($list as $key => $value) {
+            $item = explode("=", $value);
+            $resultArray[$item[0]] = $item[1];
+        }
+       
+        return $resultArray;
+    }
+    
+
+   
+
+
   
 
     public function getBody() {
@@ -41,9 +66,10 @@ class Request {
             foreach ($_POST as $key => $value) {
                 // implement data sanitization part
                 $body[$key] = $value;
+                
             }
         }
-
+ 
         return $body;
 
     }
