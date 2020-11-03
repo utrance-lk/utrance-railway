@@ -1,5 +1,4 @@
 <body>
-  <!--?php echo $_SESSION['user'] ?-->
       <section class="heading-primary">
         <div class="header">
           <div class="logo-box">
@@ -13,10 +12,16 @@
               <li class="navbar__list-items">
                 <a href="#">Freights</a>
               </li>
-              <!-- <li class="navbar__list-items">
+
+              <?php if(!isset($_SESSION['user'])) : ?>
+              
+                <li class="navbar__list-items">
                 <a href="login">Login</a>
-              </li> -->
-              <li class="user__nav-box">
+              </li>
+
+              <?php else: ?>
+              
+                <li class="user__nav-box">
                 <div class="user__nav-box-dropdown">
                   <ul>
                     <li class="user-dropdown__items">
@@ -36,7 +41,7 @@
                       </a>
                     </li>
                     <li class="user-dropdown__items">
-                      <a href="#">
+                      <a href="/utrance-railway/logout">
                         <svg class="user-dropdown-icon">
                           <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-log-out"></use>
                         </svg>
@@ -48,8 +53,11 @@
                 <div class="user__nav-box-photo">  
                   <img src="/utrance-railway/public/img/pages/admin/Ashika.jpg" alt="user-photo">
                 </div>
-                <div class="user__nav-box-name">Asindu</div>
+                <div class="user__nav-box-name"><?php echo App::$APP->activeUser()['name']; ?></div>
               </li>
+
+              <?php endif; ?>
+            
             </ul>
           </nav>
         </div>

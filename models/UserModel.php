@@ -27,6 +27,13 @@ class UserModel extends Model
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function getUser($id) {
+        $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE id=:id");
+        $query->bindValue(":id", $id);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function register()
     {
 

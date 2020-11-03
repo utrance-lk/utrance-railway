@@ -12,7 +12,7 @@ $dotenv->load();
 
 // databse configuration (getting the details from the config.env)
 $config = [
-    // 'UserModelClass' => UserModel::class,
+    'userClass' => UserModel::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
@@ -37,6 +37,7 @@ $app->router->post('/utrance-railway/search', [ViewController::class, 'search'])
 /////login Page Routing
 $app->router->get('/utrance-railway/login', [AuthController::class, 'login']);
 $app->router->post('/utrance-railway/login', [AuthController::class, 'login']);
+$app->router->get('/utrance-railway/logout', [AuthController::class, 'logout']);
 
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);

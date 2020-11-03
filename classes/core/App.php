@@ -15,10 +15,11 @@ class App {
     public $response;
     public $session;
     public $db;
-    // public $userClass;
+    public $user;
+    public $userClass;
 
     public function __construct($rootPath, $config) {
-        // $this->userClass = $config['userClass'];
+        $this->userClass = $config['userClass'];
         self::$ROOT_DIR = $rootPath;
         self::$APP = $this;
         $this->request = new Request();
@@ -27,6 +28,18 @@ class App {
         $this->router = new Router($this->request, $this->response);
 
         $this->db = new Database($config['db']);
+
+        $activeUserId = $this->session->get('user');
+        if($activeUserId) {
+            $this->user = $this->userClass::getUser($activeUserId);
+        }
+
+    }
+
+    public function activeUser() {
+        return [
+            "name" => $this->user[0]["first_name"]
+        ];
     }
 
     public function run() {

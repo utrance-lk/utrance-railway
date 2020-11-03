@@ -25,9 +25,11 @@ class AuthController extends Controller
 
     }
 
-    public function logout()
+    public function logout($request, $response)
     {
+        App::$APP->user = null;
         App::$APP->session->remove('user');
+        return $response->redirect('/utrance-railway/home');
     }
 
     public function registerPageNow($request)
