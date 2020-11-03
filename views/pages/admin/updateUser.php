@@ -1,11 +1,3 @@
-<?php 
-// $url = $_SERVER['REQUEST_URI'];
-// echo parse_url($url, PHP_URL_QUERY);
-  // var_dump($_GET);
-  // var_dump(htmlspecialchars($_GET["id"]));
-
- ?>
-
 <div class="load-content-container">
         <div class="load-content">
           <div class="load-content--settings">

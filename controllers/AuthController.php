@@ -8,6 +8,20 @@ include_once "../models/UserModel.php";
 class AuthController extends Controller
 {
 
+    public function login($request) {
+        if($request->isPost()) {
+            // form
+        
+            return 'success';
+        }
+
+        return $this->render('login');
+
+
+    }
+
+
+
     public function registerPageNow($request)
     {
         $registerModel=new UserModel();
@@ -77,19 +91,8 @@ class AuthController extends Controller
         return $this->render('admin');
  
     }
-    
-   public function signIn(){
-    return $this->render('signIn');
-    }
-
 
    
-
-    public function isLoggedIn()
-    {
-
-        // checks whether user is logged in or not
-    }
 
     public function forgotPassword()
     {
