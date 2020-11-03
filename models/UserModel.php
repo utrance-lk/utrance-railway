@@ -18,6 +18,7 @@ class UserModel extends Model
     public $resultArray;
     public $resultArray1;
     public $id;
+    public $detailsArray;
 
      
     
@@ -76,7 +77,7 @@ class UserModel extends Model
 
       $this->detailsArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        var_dump($this->detailsArray);
+        //var_dump($this->detailsArray);
         return $this->detailsArray;
     }
 

@@ -17,7 +17,7 @@ class AdminController extends Controller {
         $adminSettingModel->loadData($request->getBody());
         $getUserDetailsArray=$adminSettingModel->getUserDetails();
         //var_dump($getUserDetailsArray);
-        return $this->render('admin');
+        return $this->render('admin',$getUserDetailsArray);
         }
    }
 
