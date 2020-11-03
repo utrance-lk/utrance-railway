@@ -7,8 +7,10 @@
                     $html ="<div class='load-content--settings'> 
                     <div class='content-title'>      
                 
+
+
                     ";
-                    $html .="<p>" .$value['train_id'] . "</p>";
+                    $html .="<p>" .$value['train_name'] . "''</p>";
                 }
             }  
 

@@ -35,7 +35,7 @@
                           <div class='search__result-train-idbox'>#
                       ";
 
-                      $html .= "<span class='train__id'>" .$value['train_id'] . "</span></div>";
+                      $html .= "<span class='train__id ' name='id'>" .$value['train_id'] . "</span></div>";
                     
 
                       $html .= "<div class='search__result-train-namebox'>" .$value['train_name'] . "</div>";

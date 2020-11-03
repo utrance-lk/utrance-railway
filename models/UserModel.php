@@ -68,6 +68,7 @@ class UserModel extends Model
     public function getManageUsers()
     {
         $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,street_line1,street_line2,city,contact_num,email_id FROM users ");
+        $query->bindValue(":id", $this->id);
         $query->execute();
 
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -95,7 +96,8 @@ class UserModel extends Model
 
 public function getManagTrains()
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT train_name, train_type,route_id, train_traval_days, train_active_status, train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths FROM trains ");
+        $query = APP::$APP->db->pdo->prepare("SELECT train_name, train_type,route_id, train_traval_days, train_active_status, train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths FROM trains WHERE train_id=:id  ");
+        $query->bindValue(":id", $this->id);
         $query->execute();
 
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);

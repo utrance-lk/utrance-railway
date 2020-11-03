@@ -123,7 +123,7 @@ class AdminController extends Controller {
         $updateTrainModel->loadData($request->getQueryParams());
         $updateTrainArray=$updateTrainModel->getManagTrains();
         
-    //     // var_dump($updateUserArray);
+         var_dump($updateUserArray);
 
 
      
