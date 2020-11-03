@@ -3,74 +3,68 @@
 include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
 
-
-
 class AuthController extends Controller
 {
 
-    public function login($request) {
-        if($request->isPost()) {
-            // form
-        
-            return 'success';
+    public function login($request, $response)
+    {
+        if ($request->isPost()) {
+            $loginUser = new UserModel();
+            $loginUser->loadData($request->getBody());
+            $result = $loginUser->findOne();
+            if ($result) {
+                App::$APP->session->set('user', $result[0]['id']);
+                return $response->redirect('/utrance-railway/home');
+                // var_dump(App::$APP->session->get('user'));
+            }
+
+            return 'invalid username or password';
         }
 
         return $this->render('login');
 
-
     }
 
-
+    public function logout()
+    {
+        App::$APP->session->remove('user');
+    }
 
     public function registerPageNow($request)
     {
-        $registerModel=new UserModel();
+        $registerModel = new UserModel();
 
-       if($request->isPost()){
-         
+        if ($request->isPost()) {
 
-           $registerModel->loadData($request->getBody());
-           $pathArray1=$registerModel->getUsers();
-          
-            
-         //  return  $this->render('validation',$pathArray1);
-           if($registerModel->valid()){
-                 if($registerModel->register()){
-                //   App::$APP->response->redirect('/');
-                  // header('Location : /');
+            //    $registerModel->loadData($request->getBody());
+            //    $pathArray1=$registerModel->getUsers();
+
+            //    App::$APP->session->setFlash('success', 'Thanks for registering');
+            //     exit;
+            //  return  $this->render('validation',$pathArray1);
+            if ($registerModel->valid()) {
+                if ($registerModel->register()) {
+                    //   App::$APP->response->redirect('/');
+                    // header('Location : /');
                     return "Success";
-                 }
-                 
+                }
 
-           }else{
-            return  $this->render('validation',$pathArray1);
-              
-           }
-        
-        
+            } else {
+                return $this->render('validation', $pathArray1);
 
-       }
+            }
 
-      
-       
-         
+        }
+
     }
 
     /*public function validate($request){
-        $registerValidate=new UserModel();
-        if($request->is_Post()){
-            $registerValidate->loadData($request->getBody());
-            $pathArray=$registerModel->getUsers();
-            var_dump($pathArray);
-        }*/
-
-        
-    
-    
-
-           
-    
-    
+    $registerValidate=new UserModel();
+    if($request->is_Post()){
+    $registerValidate->loadData($request->getBody());
+    $pathArray=$registerModel->getUsers();
+    var_dump($pathArray);
+    }*/
 
     public function registerPage()
     {
@@ -78,21 +72,16 @@ class AuthController extends Controller
 
     }
 
-
-    public function logout()
+    
+    public function getMy($request)
     {
-        // logout
-    }
-    public function getMy($request) {
-        if($request->isPost()) {
+        if ($request->isPost()) {
             //from
             return 'success';
         }
         return $this->render('admin');
- 
-    }
 
-   
+    }
 
     public function forgotPassword()
     {
@@ -119,5 +108,3 @@ class AuthController extends Controller
         // protect the route
     }
 }
-
-

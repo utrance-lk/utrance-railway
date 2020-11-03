@@ -19,6 +19,14 @@ class UserModel extends Model
     public $resultArray1;
     public $id;
 
+    public function findOne() {
+        $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email AND user_password=:password LIMIT 1");
+        $query->bindValue(":email", $this->email_id);
+        $query->bindValue(":password", $this->user_password);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function register()
     {
 

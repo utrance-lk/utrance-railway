@@ -12,6 +12,7 @@ $dotenv->load();
 
 // databse configuration (getting the details from the config.env)
 $config = [
+    // 'UserModelClass' => UserModel::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
