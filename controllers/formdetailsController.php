@@ -51,6 +51,8 @@ class formdetailsController extends Controller {
         return $this->render(['admin', 'manageTrains']);
    }
 
+   
+
  
 }
 

@@ -13,22 +13,49 @@ class AuthController extends Controller
 
        if($request->isPost()){
          
-        $registerModel->loadData($request->getBody());
-        if( $registerModel->register()){
-                return "Success";
-        }
-    }
-           
-     /*echo '<pre>';
-    var_dump($registerModel->errors);
-    echo '</pre>';
-    exit; */
- 
-       /*return $this->render('register',[
-           'model'=>$registerModel
-       ]);*/
+
+           $registerModel->loadData($request->getBody());
+           $pathArray1=$registerModel->getUsers();
+          
+            
+         //  return  $this->render('validation',$pathArray1);
+           if($registerModel->valid()){
+                 if($registerModel->register()){
+                //   App::$APP->response->redirect('/');
+                  // header('Location : /');
+                    return "Success";
+                 }
+                 
+
+           }else{
+            return  $this->render('validation',$pathArray1);
+              
+           }
+        
+        
+
+       }
+
+      
        
+         
     }
+
+    /*public function validate($request){
+        $registerValidate=new UserModel();
+        if($request->is_Post()){
+            $registerValidate->loadData($request->getBody());
+            $pathArray=$registerModel->getUsers();
+            var_dump($pathArray);
+        }*/
+
+        
+    
+    
+
+           
+    
+    
 
     public function registerPage()
     {
@@ -53,11 +80,11 @@ class AuthController extends Controller
    public function signIn(){
     return $this->render('signIn');
     }
-}
+
 
    
 
-    /*public function isLoggedIn()
+    public function isLoggedIn()
     {
 
         // checks whether user is logged in or not
@@ -86,6 +113,7 @@ class AuthController extends Controller
     public function protect()
     {
         // protect the route
-    }*/
+    }
+}
 
 

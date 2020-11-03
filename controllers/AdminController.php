@@ -1,10 +1,12 @@
 <?php
 
 include_once "../classes/core/Controller.php";
+include_once "../models/UserModel.php";
 
 
 
 class AdminController extends Controller {
+   
   
    public function adminSettings($request){
         if($request->isPost()) {
@@ -16,12 +18,28 @@ class AdminController extends Controller {
    }
 
    public function manageUsers($request){
-        if($request->isPost()) {
-            // from
-            return 'success';
-        }
+    $manageUserModel=new UserModel();
+        if($request->isGet()) {
 
-        return $this->render(['admin', 'manageUsers']);
+           $manageUserModel->loadData($request->getBody());
+            $getUserArray=$manageUserModel->getManageUsers();
+            
+            //var_dump($getUserArray);
+
+
+         
+           
+            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+         return $this->render(['admin', 'manageUsers'],$getUserArray);
+        }
+     
+        if($request->isPost()){
+            //return $this->render(['admin', 'manageUsers']);
+        }
+      //  return $this->render(['admin', 'manageUsers']);
+        
+
+        
    }
 
    public function manageTrains($request) {
@@ -70,22 +88,56 @@ class AdminController extends Controller {
    }
 
    public function updateUser($request) {
-        if($request->isPost()) {
-            //form
-            return 'success';
-        }
+    $updateUserModel=new UserModel();
+        if($request->isGet()) {
 
-        return $this->render(['admin', 'updateUser']);
+             var_dump($request->getQueryParams());
+
+
+           $updateUserModel->loadData($request->getQueryParams());
+            $updateUserArray=$updateUserModel->getManageUsers();
+            
+            //var_dump($updateUserArray);
+
+
+         
+           
+            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+         return $this->render(['admin', 'updateUser'],$updateUserArray);
+        }
+     
+        if($request->isPost()){
+            //return $this->render(['admin', 'manageUsers']);
+        }
+      //  return $this->render(
+        //return $this->render(['admin', 'updateUser']);
+   }
+
+   public function updateTrain($request) {
+     $updateTrainModel=new UserModel();
+     if($request->isGet()) {
+
+        var_dump($request->getQueryParams());
+
+
+        $updateTrainModel->loadData($request->getQueryParams());
+        $updateTrainArray=$updateTrainModel->getManagTrains();
+        
+    //     // var_dump($updateUserArray);
+
+
+     
+       
+         //return $this->render(['admin', 'manageUsers'],$getUserArray);
+      return $this->render(['admin', 'updateTrain'],$updateTrainArray);
+     }
+ 
+    
+  //  return $this->render(
+    // return $this->render(['admin', 'updateTrain']);
    }
    
-   public function updateTrain($request) {
-       if($request->isPost()) {
-           //form
-           return 'success';
-       }
-
-       return $this->render(['admin' ,'updateTrain']);
-   }
+   
 
 
 
@@ -93,31 +145,31 @@ class AdminController extends Controller {
 
 
 
-public function addNoticesByAdmin(){
-    return $this->render('addNoticesByAdmin');
-    echo "hy girl";
-}
+    public function addNoticesByAdmin(){
+        return $this->render('addNoticesByAdmin');
+        echo "hy girl";
+    }
 
-public function addNoticesByAdminNow(){
-    echo "Added Notices!!";
-}
+    public function addNoticesByAdminNow(){
+        echo "Added Notices!!";
+    }
 
-public function adminDashboard(){
-    return $this->render('adminDashboard');
-    echo "Hello Sri Lanka";
-}
+    public function adminDashboard(){
+        return $this->render('adminDashboard');
+        echo "Hello Sri Lanka";
+    }
 
-public function adminDashboardNow(){
-    echo "Hello my world";
-}
+    public function adminDashboardNow(){
+        echo "Hello my world";
+    }
 
-public function viewUsers(){
-    return $this->render('viewUsers');
-    echo " View Users!!";
-}
-public function viewUsersNow(){
-    echo "Upload View Users form" ;
-}
+    public function viewUsers(){
+        return $this->render('viewUsers');
+        echo " View Users!!";
+    }
+    public function viewUsersNow(){
+        echo "Upload View Users form" ;
+    }
 
 
 }
