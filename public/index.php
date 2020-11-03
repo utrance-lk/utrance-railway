@@ -99,14 +99,6 @@ $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 
 
 
 
-<<<<<<< HEAD
-$app->router->get('/utrance-railway/public/index.php/login/', [AuthController::class, 'signIn']);
-
-$app->router->post('/utrance-railway/public/index.php/login/', [AuthController::class, 'signIn']);
-
-$app->router->get('/utrance-railway/public/index.php/register', [AuthController::class, 'register']);
-=======
->>>>>>> bdf2af3cecf53162a85a8bbfbdfd492d54dbca22
 
 
 
