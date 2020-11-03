@@ -25,8 +25,8 @@ class AuthController extends Controller
         else{return  $this->render('validation',$pathArray1);
         } 
     }
-       
-     /*echo '<pre>';
+
+    /*echo '<pre>';
     var_dump($registerModel->errors);
     echo '</pre>';
     exit; */

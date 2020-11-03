@@ -64,14 +64,24 @@ class AdminController extends Controller {
        return $this->render(['admin', 'manageRoutes']);
    }
 
-   public function addUser($request) {
-       if($request->isPost()) {
-           //form
-           return 'success';
-       }
+   public function addUserNow($request) {
+       $addUserModel=new UserModel();
+       if($request->isPost()) 
+           $addUserModel->loadData($request->getBody());
+           $addUserArray=$addUserModel->getUsers();
 
+           if($addUserModel->valid()){
+               if($addUserModel->register()){
+                   return "Success";
+               }
+           }
+           else{return  $this->render('validation',$pathArray1);
+        }
+    }
+    public function addUser(){
        return $this->render(['admin', 'addUser']);
-   }
+    }
+   
 
    public function addTrain($request) {
        if($request->isPost()) {

@@ -23,9 +23,7 @@ class UserModel extends Model
      
     
   public function register(){
-      
-    
-        
+         
     if($this->first_name == NULL || $this->last_name == NULL ||  $this->street_line1 == NULL || $this->contact_num  == NULL  || $this->user_password  == NULL || $this->email_id  == NULL){
          return false;
     }else{
@@ -43,11 +41,6 @@ class UserModel extends Model
       return $query->execute();
     }
 }
-
-
-  
-
-
   public function getUsers(){
       
        $this->resultArray['first_name']=$this->first_name;
