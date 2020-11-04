@@ -34,21 +34,21 @@ class AuthController extends Controller
 
     public function registerPageNow($request)
     {
-        $registerModel=new UserModel();
+        $registerModel = new UserModel();
 
-       if($request->isPost()){
-         
-      $registerModel->loadData($request->getBody());
-      if($registerModel->valid()){
-          $registerModel->registerUser();
-            return "Succes";
-      }else{
-          return "Added Fail";
-      }
-      
+        if ($request->isPost()) {
+            
+            $registerModel->loadData($request->getBody());
+            if ($registerModel->valid()) {
+                $registerModel->registerUser();
+                return "Succes";
+            } else {
+                return "Added Fail";
+            }
+
+        }
+
     }
-
-}
 
     public function registerPage()
     {
@@ -56,7 +56,6 @@ class AuthController extends Controller
 
     }
 
-    
     public function getMy($request)
     {
         if ($request->isPost()) {

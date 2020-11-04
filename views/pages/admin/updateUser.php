@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 5bfcaf78b0caea07d791dd338c073acbbc3811ef
 <div class="load-content-container">
       <div class="load-content">
         <div class="load-content--settings" >
