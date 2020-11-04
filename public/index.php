@@ -12,6 +12,7 @@ $dotenv->load();
 
 // databse configuration (getting the details from the config.env)
 $config = [
+    'userClass' => UserModel::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
@@ -33,6 +34,11 @@ $app->router->post('/utrance-railway/home', [ViewController::class, 'home']);
 $app->router->get('/utrance-railway/search', [ViewController::class, 'search']);
 $app->router->post('/utrance-railway/search', [ViewController::class, 'search']);
 
+/////login Page Routing
+$app->router->get('/utrance-railway/login', [AuthController::class, 'login']);
+$app->router->post('/utrance-railway/login', [AuthController::class, 'login']);
+$app->router->get('/utrance-railway/logout', [AuthController::class, 'logout']);
+
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
@@ -51,18 +57,6 @@ $app->router->get('/utrance-railway/admin/trains/update', [AdminController::clas
 
 $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 
-
-
-
-
-
-
-
-
-
-/////login Page Routing
-$app->router->get('/utrance-railway/signIn', [AuthController::class, 'signIn']);
-$app->router->post('/utrance-railway/signIn', [AuthController::class, 'signIn']);
 
 ///////////Register Page Routing
 $app->router->get('/utrance-railway/registerPage', [AuthController::class, 'registerPage']);

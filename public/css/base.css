@@ -38,12 +38,17 @@ input {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:link,
 a:active,
 a:visited {
-  /* color: black; */
+  color: black;
+}
+
+li {
+  list-style: none;
 }
 
 .btn {
