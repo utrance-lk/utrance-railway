@@ -22,6 +22,7 @@ include_once "App.php";
         foreach($data as $key => $value) {
             if(property_exists($this, $key)) {
                 $this->{$key} = $value; // asigning the values for properties of the UserModel class
+                
             }
         }
     } 
