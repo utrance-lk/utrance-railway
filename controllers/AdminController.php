@@ -21,19 +21,16 @@ class AdminController extends Controller {
         if($request->isGet()) {
 
            $manageUserModel->loadData($request->getBody());
-            $getUserArray=$manageUserModel->getManageUsers();
-            
-            //var_dump($getUserArray);
-
-
+           $getUserArray=$manageUserModel->getManageUsers();
          
-           
-            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+        
          return $this->render(['admin', 'manageUsers'],$getUserArray);
+    
+         
         }
      
         if($request->isPost()){
-            //return $this->render(['admin', 'manageUsers']);
+        
         }
       //  return $this->render(['admin', 'manageUsers']);
         
@@ -87,37 +84,40 @@ class AdminController extends Controller {
    }
 
    public function updateUser($request) {
-    $updateUserModel=new UserModel();
+    
         if($request->isGet()) {
+            $updateUserModel=new UserModel();
+          $updateUserModel->loadData($request->getQueryParams());
+           $updateUserArray=$updateUserModel->getUserDetails();
+          return $this->render(['admin', 'updateUser'],$updateUserArray);
+        }
+        
+        
+       
+        if($request->isPost()){
+          
+            $saveDetailsModel=new UserModel();
+            var_dump($request->getBody());
+            $saveDetailsModel->loadData($request->getBody());
+            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
+            //var_dump($saveDetailsModel->updateUserDetails());
+            $saveDetailsModel->updateUserDetails();
 
-            // var_dump($request->getQueryParams());
+            return;
 
-
-           $updateUserModel->loadData($request->getQueryParams());
-            $updateUserArray=$updateUserModel->getManageUsers();
             
-            //var_dump($updateUserArray);
+        }
 
-
+        
          
            
-            //return $this->render(['admin', 'manageUsers'],$getUserArray);
-         return $this->render(['admin', 'updateUser'],$updateUserArray);
+         
         }
-     
-        if($request->isPost()){
-            //return $this->render(['admin', 'manageUsers']);
-        }
-      //  return $this->render(
-        
-    
-     
-   
-  
 
-        //return $this->render(['admin', 'updateUser']);
-   }
-   
+
+        
+
+     
    public function updateTrain($request) {
        if($request->isPost()) {
            //form
