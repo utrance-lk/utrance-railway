@@ -7,7 +7,7 @@
 
 			<form action="signIn.php" method="post">
 				<div class="imgcontainer">
-					<img src="../../../../utrance-railway/public/img/pages/login/avatar1.png" alt="Avatar" class="avatar">
+					<img src="../../../../utrance-railway/public/img/pages/login/avatar.png" alt="Avatar1" class="avatar">
 				</div>
 
 				<div class="container">
@@ -21,11 +21,11 @@
 				</div>
 
 				<div class="container" style="background-color:#fff">
-					<button type="button" class="cancelbtn">Cancel</button>
+					<button type="button" class="cancelbtn" >Cancel</button>
 					<span class="user_password"><a href="#" style="text-decoration:none;color:black">Forgot password?</a></span>
 				</div>
 			</form>
-		<div>
+		</div>
 		
 	</body>
 </html>
