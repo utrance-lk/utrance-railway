@@ -75,9 +75,10 @@ class AdminController extends Controller {
                    return "Success";
                }
            }
-           else{return  $this->render('validation',$pathArray1);
+           else{return  $this->render('validation',$addUserArray);
         }
     }
+    
     public function addUser(){
        return $this->render(['admin', 'addUser']);
     }
