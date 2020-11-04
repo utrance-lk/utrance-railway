@@ -1,6 +1,5 @@
-      <div class="load-content-container">
+    <div class="load-content-container">
         <div class="load-content">
-          
           <div class="load-content--manage-users">
             <form class="dashboard-searchbar--container">
               <input
@@ -64,9 +63,9 @@
                   ";
 
 
-                     // $html .="<div class='search__result-card'>";
-                      //$html .="<div class='search__result-user-mainbox search__result-mainbox'>";
-                      //$html .="<div class='user-mainbox__img-box'>";
+                     //$html .="<div class='search__result-card'>";
+                     // $html .="<div class='search__result-user-mainbox search__result-mainbox'>";
+                     // $html .="<div class='user-mainbox__img-box'>";
                       $html .="<img src='/utrance-railway/public/img/pages/admin/".$value['first_name'].".jpg' alt='profile-avatar' class='profile__avatar'/></div>";
                       $html .="<div class='user-mainbox__other'>";
                       $html .= "<div class ='user-mainbox__other-name'> " .$value['first_name']. "</div>";
@@ -74,20 +73,30 @@
                       $html .="<span class='user__id'> ".$value['id'] . "</span></div></div></div>";
                       $html .="<div class='search__result-user-emailbox'> " .$value['last_name'] ."</div>";
                       $html .="<div class='search__result-user-rolebox'> " .$value['user_role'] ."</div>";
+
+                      //$html .="<a href='/utrance-railway/admin/users/update' class='search__result-user-managebtnbox'>";
+                    //  $html .="<div class='search__result-managebtn btn-white' name='view'> View </div></a>";
                       $id = $value['id'];
                       $html .="<a href='/utrance-railway/admin/users/update?id=$id' class='search__result-user-managebtnbox'>";
                       $html .="<div class='search__result-managebtn btn-white'> View </div></a>";
+
                       $html .="<div class='search__result-user-deletebtnbox'>";
                       $html .="<div class='search__result-deletebtn btn-white'>Delete</div></div></form>";
                    
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
-                      print_r($dom->saveHTML());      
+
+                      print_r($dom->saveHTML());
+                      
+                     
                    
                     }
-
+                   
                   }
                   ?>
+
+
+                  
                   <!--a href="/utrance-railway/admin/users/update" class="search__result-user-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
@@ -147,11 +156,11 @@
                   <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div!-->
-
-            </div>
-          </div>
-        </div>
-        </div>
+               
+             </div>
+           </div>
+         </div>
       </div>
+    </div>
     
     

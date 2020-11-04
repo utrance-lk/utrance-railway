@@ -2,6 +2,9 @@
 
 include_once "../classes/core/Controller.php";
 
+class AdminController extends Controller
+{
+
 
 
 class AdminController extends Controller {
@@ -21,24 +24,16 @@ class AdminController extends Controller {
         }
    }
 
-   public function manageUsers($request){
-    $manageUserModel=new UserModel();
-        if($request->isGet()) {
+    public function manageUsers($request)
+    {
+        $manageUserModel = new UserModel();
+        if ($request->isGet()) {
 
-           $manageUserModel->loadData($request->getBody());
-            $getUserArray=$manageUserModel->getManageUsers();
-            
-            //var_dump($getUserArray);
+            $manageUserModel->loadData($request->getBody());
+            $getUserArray = $manageUserModel->getManageUsers();
 
+            return $this->render(['admin', 'manageUsers'], $getUserArray);
 
-         
-           
-            //return $this->render(['admin', 'manageUsers'],$getUserArray);
-         return $this->render(['admin', 'manageUsers'],$getUserArray);
-        }
-     
-        if($request->isPost()){
-            //return $this->render(['admin', 'manageUsers']);
         }
       //  return $this->render(['admin', 'manageUsers']);
         
@@ -81,102 +76,119 @@ class AdminController extends Controller {
     
     public function addUser(){
        return $this->render(['admin', 'addUser']);
+       if ($request->isPost()) {
+
+        }
+        //  return $this->render(['admin', 'manageUsers']);
+
     }
-   
 
-   public function addTrain($request) {
-       if($request->isPost()) {
-           //form
-           return 'success';
-       }
-
-       return $this->render(['admin', 'addTrain']);
-   }
-
-   public function addRoute($request) {
-       if($request->isPost()) {
-           // form
-           return 'success';
-       }
-
-       return $this->render(['admin', 'addRoute']);
-   }
-
-   public function updateUser($request) {
-    $updateUserModel=new UserModel();
-        if($request->isGet()) {
-
-            // var_dump($request->getQueryParams());
-
-
-           $updateUserModel->loadData($request->getQueryParams());
-            $updateUserArray=$updateUserModel->getManageUsers();
-            
-            //var_dump($updateUserArray);
-
-
-         
-           
-            //return $this->render(['admin', 'manageUsers'],$getUserArray);
-         return $this->render(['admin', 'updateUser'],$updateUserArray);
+    public function manageTrains($request)
+    {
+        if ($request->isPost()) {
+            // form
+            return 'success';
         }
-     
-        if($request->isPost()){
-            //return $this->render(['admin', 'manageUsers']);
+
+        return $this->render(['admin', 'manageTrains']);
+    }
+
+    public function manageRoutes($request)
+    {
+        if ($request->isPost()) {
+            //from
+            return 'success';
         }
-      //  return $this->render(
-        
-    
-     
-   
-  
 
-        //return $this->render(['admin', 'updateUser']);
-   }
-   
-   public function updateTrain($request) {
-       if($request->isPost()) {
-           //form
-           return 'success';
-       }
+        return $this->render(['admin', 'manageRoutes']);
+    }
 
-       return $this->render(['admin' ,'updateTrain']);
-   }
+    public function addTrain($request)
+    {
+        if ($request->isPost()) {
+            //form
+            return 'success';
+        }
 
+        return $this->render(['admin', 'addTrain']);
+    }
 
+    public function addRoute($request)
+    {
+        if ($request->isPost()) {
+            // form
+            return 'success';
+        }
 
+        return $this->render(['admin', 'addRoute']);
+    }
 
+    public function updateUser($request)
+    {
 
+        if ($request->isGet()) {
+            $updateUserModel = new UserModel();
+            $updateUserModel->loadData($request->getQueryParams());
+            $updateUserArray = $updateUserModel->getUserDetails();
+            return $this->render(['admin', 'updateUser'], $updateUserArray);
+        }
 
+        if ($request->isPost()) {
 
-public function addNoticesByAdmin(){
-    return $this->render('addNoticesByAdmin');
-    echo "hy girl";
+            $saveDetailsModel = new UserModel();
+            $tempBody = $request->getBody();
+            $tempBody['id'] = $request->getQueryParams()['id'];
+            $saveDetailsModel->loadData($tempBody);
+            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
+            //var_dump($saveDetailsModel->updateUserDetails());
+            $saveDetailsModel->updateUserDetails();
+
+            return;
+
+        }
+
+    }
+
+    public function updateTrain($request)
+    {
+        if ($request->isPost()) {
+            //form
+            return 'success';
+        }
+
+        return $this->render(['admin', 'updateTrain']);
+    }
+
+    public function addNoticesByAdmin()
+    {
+        return $this->render('addNoticesByAdmin');
+        echo "hy girl";
+    }
+
+    public function addNoticesByAdminNow()
+    {
+        echo "Added Notices!!";
+    }
+
+    public function adminDashboard()
+    {
+        return $this->render('adminDashboard');
+        echo "Hello Sri Lanka";
+    }
+
+    public function adminDashboardNow()
+    {
+        echo "Hello my world";
+    }
+
+    public function viewUsers()
+    {
+        return $this->render('viewUsers');
+        echo " View Users!!";
+    }
+    public function viewUsersNow()
+    {
+        echo "Upload View Users form";
+    }
+
 }
-
-public function addNoticesByAdminNow(){
-    echo "Added Notices!!";
-}
-
-public function adminDashboard(){
-    return $this->render('adminDashboard');
-    echo "Hello Sri Lanka";
-}
-
-public function adminDashboardNow(){
-    echo "Hello my world";
-}
-
-public function viewUsers(){
-    return $this->render('viewUsers');
-    echo " View Users!!";
-}
-public function viewUsersNow(){
-    echo "Upload View Users form" ;
-}
-
-
-}
-
-
-?>
