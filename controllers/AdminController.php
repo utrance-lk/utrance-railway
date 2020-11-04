@@ -22,7 +22,7 @@ class AdminController extends Controller {
 
            $manageUserModel->loadData($request->getBody());
            $getUserArray=$manageUserModel->getManageUsers();
-           // var_dump($getUserArray);
+         
         
          return $this->render(['admin', 'manageUsers'],$getUserArray);
     
@@ -84,42 +84,40 @@ class AdminController extends Controller {
    }
 
    public function updateUser($request) {
-    $updateUserModel=new UserModel();
+    
         if($request->isGet()) {
-
-            //var_dump($request->getQueryParams());
-
-
+            $updateUserModel=new UserModel();
           $updateUserModel->loadData($request->getQueryParams());
-           $updateUserModel->updateUserDetails();
-          //  $updateUserArray=$updateUserModel->updateUserDetails();
-            
-            //var_dump($updateUserArray);
-           //return $this->render(['admin', 'updateUser'],$updateUserArray);
+           $updateUserArray=$updateUserModel->getUserDetails();
+          return $this->render(['admin', 'updateUser'],$updateUserArray);
         }
+        
+        
+       
+        if($request->isPost()){
+          
+            $saveDetailsModel=new UserModel();
+            var_dump($request->getBody());
+            $saveDetailsModel->loadData($request->getBody());
+            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
+            //var_dump($saveDetailsModel->updateUserDetails());
+            $saveDetailsModel->updateUserDetails();
+
+            return;
+
+            
+        }
+
+        
          
            
-            //return $this->render(['admin', 'manageUsers'],$getUserArray);
          
-         //dcdwsc
         }
+
+
+        
+
      
-       
-     
-    
-     
-   
-  
-
-       
-   
-
-
-
-    public function sample(){
-
-    }
-   
    public function updateTrain($request) {
        if($request->isPost()) {
            //form

@@ -14,49 +14,20 @@ class AuthController extends Controller
 
        if($request->isPost()){
          
-
-           $registerModel->loadData($request->getBody());
-           $pathArray1=$registerModel->getUsers();
-          
-            
-         //  return  $this->render('validation',$pathArray1);
-           if($registerModel->valid()){
-                 if($registerModel->register()){
-                //   App::$APP->response->redirect('/');
-                  // header('Location : /');
-                    return "Success";
-                 }
-                 
-
-           }else{
-            return  $this->render('validation',$pathArray1);
-              
-           }
-        
-        
-
-       }
-
+      $registerModel->loadData($request->getBody());
+      if($registerModel->valid()){
+          $registerModel->registerUser();
+            return "Succes";
+      }else{
+          return "Added Fail";
+      }
       
-       
-         
     }
 
-    /*public function validate($request){
-        $registerValidate=new UserModel();
-        if($request->is_Post()){
-            $registerValidate->loadData($request->getBody());
-            $pathArray=$registerModel->getUsers();
-            var_dump($pathArray);
-        }*/
+}
 
+  
         
-    
-    
-
-           
-    
-    
 
     public function registerPage()
     {
