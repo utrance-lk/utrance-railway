@@ -167,7 +167,7 @@ class AdminController extends Controller
 
     public function aboutUs()
     {
-        echo "Hello world";
+        
         return $this->render('aboutUs');
         
 

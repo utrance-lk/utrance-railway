@@ -59,8 +59,8 @@ $app->router->get('/utrance-railway/admin/trains/update', [AdminController::clas
 
 $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 
-$app->router->post('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
-$app->router->get('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
+$app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
+$app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
 
 
 
