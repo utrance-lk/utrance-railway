@@ -21,9 +21,30 @@ class AuthController extends Controller
             return 'invalid username or password';
         }
 
-        return $this->render('login');
-
+       if($request->isPost())
+         
+        $registerModel->loadData($request->getBody());
+        $pathArray1=$registerModel->getUsers();
+          //  return  $this->render('validation',$pathArray1);
+        if( $registerModel->valid()){
+            if($registerModel->register()){
+                return "Success";
+        }
     }
+        else{return  $this->render('validation',$pathArray1);
+        } 
+    }
+
+    /*echo '<pre>';
+    var_dump($registerModel->errors);
+    echo '</pre>';
+    exit; */
+ 
+       /*return $this->render('register',[
+           'model'=>$registerModel
+       ]);*/
+
+
 
     public function logout($request, $response)
     {
@@ -56,15 +77,21 @@ class AuthController extends Controller
 
     }
 
-    public function getMy($request)
-    {
-        if ($request->isPost()) {
+    public function getMy($request) {
+        if($request->isPost()) {
+
             //from
             return 'success';
         }
         return $this->render('admin');
-
+ 
     }
+    
+   public function signInPage(){
+    return $this->render('signIn');
+    }
+
+    
 
     public function forgotPassword()
     {

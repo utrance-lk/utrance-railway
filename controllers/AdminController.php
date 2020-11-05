@@ -5,15 +5,20 @@ include_once "../classes/core/Controller.php";
 class AdminController extends Controller
 {
 
-    public function adminSettings($request)
-    {
-        if ($request->isPost()) {
+   
+   public function adminSettings($request){
+       $adminSettingModel=new UserModel();
+        if($request->isPost()) {
             // form
             return 'success';
         }
-
-        return $this->render('admin');
-    }
+        if($request->isGet()) {
+        $adminSettingModel->loadData($request->getBody());
+        $getUserDetailsArray=$adminSettingModel->getUserDetails1();
+        //var_dump($getUserDetailsArray);
+        return $this->render('admin',$getUserDetailsArray);
+        }
+   }
 
     public function manageUsers($request)
     {
@@ -26,14 +31,32 @@ class AdminController extends Controller
             return $this->render(['admin', 'manageUsers'], $getUserArray);
 
         }
+      //  return $this->render(['admin', 'manageUsers']);
+        
 
-        if ($request->isPost()) {
+        
+   }
+   public function addUserNow($request){
+      
+       $addUserModel=new UserModel();
 
+       if ($request->isPost()) {
+
+        $addUserModel->loadData($request->getBody());
+        if($addUserModel->valid()){
+            $addUserModel->addUser();
+            return "Success";
+        }else{
+            return "Added Fail";
         }
-        //  return $this->render(['admin', 'manageUsers']);
 
     }
+}
 
+   public function addUser(){
+    
+        return $this->render(['admin', 'addUser']);
+}
     public function manageTrains($request)
     {
         if ($request->isPost()) {
@@ -52,16 +75,6 @@ class AdminController extends Controller
         }
 
         return $this->render(['admin', 'manageRoutes']);
-    }
-
-    public function addUser($request)
-    {
-        if ($request->isPost()) {
-            //form
-            return 'success';
-        }
-
-        return $this->render(['admin', 'addUser']);
     }
 
     public function addTrain($request)
@@ -151,5 +164,14 @@ class AdminController extends Controller
     {
         echo "Upload View Users form";
     }
+
+    public function aboutUs()
+    {
+        echo "Hello world";
+        return $this->render('aboutUs');
+        
+
+    }
+
 
 }
