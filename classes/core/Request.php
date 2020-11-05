@@ -43,10 +43,9 @@ class Request {
             $item = explode("=", $value);
             $resultArray[$item[0]] = $item[1];
         }
-        
+       
         return $resultArray;
-    }
-  
+    }  
 
     public function getBody() {
         $body = [];
@@ -61,9 +60,10 @@ class Request {
             foreach ($_POST as $key => $value) {
                 // implement data sanitization part
                 $body[$key] = $value;
+                
             }
         }
-
+ 
         return $body;
 
     }

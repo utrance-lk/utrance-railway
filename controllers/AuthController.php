@@ -7,55 +7,49 @@ include_once "../models/UserModel.php";
 class AuthController extends Controller
 {
 
-    public function registerPageNow($request)
+    public function login($request, $response)
     {
-        $registerModel=new UserModel();
+        if ($request->isPost()) {
+            $loginUser = new UserModel();
+            $loginUser->loadData($request->getBody());
+            $result = $loginUser->findOne();
+            if ($result) {
+                App::$APP->session->set('user', $result[0]['id']);
+                return $response->redirect('/utrance-railway/home');
+                // var_dump(App::$APP->session->get('user'));
+            }
 
-       if($request->isPost()){
-         
+            return 'invalid username or password';
+        }
 
-           $registerModel->loadData($request->getBody());
-           $pathArray1=$registerModel->getUsers();
-          
-            
-         //  return  $this->render('validation',$pathArray1);
-           if($registerModel->valid()){
-                 if($registerModel->register()){
-                //   App::$APP->response->redirect('/');
-                  // header('Location : /');
-                    return "Success";
-                 }
-                 
+        return $this->render('login');
 
-           }else{
-            return  $this->render('validation',$pathArray1);
-              
-           }
-        
-        
-
-       }
-
-      
-       
-         
     }
 
-    /*public function validate($request){
-        $registerValidate=new UserModel();
-        if($request->is_Post()){
-            $registerValidate->loadData($request->getBody());
-            $pathArray=$registerModel->getUsers();
-            var_dump($pathArray);
-        }*/
+    public function logout($request, $response)
+    {
+        App::$APP->user = null;
+        App::$APP->session->remove('user');
+        return $response->redirect('/utrance-railway/home');
+    }
 
-        
-    
-    
+    public function registerPageNow($request)
+    {
+        $registerModel = new UserModel();
 
-           
-    
-    
+        if ($request->isPost()) {
+            
+            $registerModel->loadData($request->getBody());
+            if ($registerModel->valid()) {
+                $registerModel->registerUser();
+                return "Succes";
+            } else {
+                return "Added Fail";
+            }
+
+        }
+
+    }
 
     public function registerPage()
     {
@@ -63,31 +57,14 @@ class AuthController extends Controller
 
     }
 
-
-    public function logout()
+    public function getMy($request)
     {
-        // logout
-    }
-    public function getMy($request) {
-        if($request->isPost()) {
+        if ($request->isPost()) {
             //from
             return 'success';
         }
         return $this->render('admin');
- 
-    }
-    
-   public function signIn(){
-    return $this->render('signIn');
-    }
 
-
-   
-
-    public function isLoggedIn()
-    {
-
-        // checks whether user is logged in or not
     }
 
     public function forgotPassword()
@@ -115,5 +92,3 @@ class AuthController extends Controller
         // protect the route
     }
 }
-
-

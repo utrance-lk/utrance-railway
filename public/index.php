@@ -13,6 +13,7 @@ $dotenv->load();
 
 // databse configuration (getting the details from the config.env)
 $config = [
+    'userClass' => UserModel::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
@@ -29,6 +30,11 @@ $app = new App(dirname(__DIR__), $config);
 // Home page
 $app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
 
+/////login Page Routing
+$app->router->get('/utrance-railway/login', [AuthController::class, 'login']);
+$app->router->post('/utrance-railway/login', [AuthController::class, 'login']);
+$app->router->get('/utrance-railway/logout', [AuthController::class, 'logout']);
+
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
@@ -40,6 +46,7 @@ $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'man
 
 $app->router->get('/utrance-railway/admin/users/add', [AdminController::class, 'addUser']);
 $app->router->get('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
+$app->router->post('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 
 $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 // $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
@@ -69,7 +76,7 @@ $app->router->post('/utrance-railway/signIn', [AuthController::class, 'signIn'])
 ///////////Register Page Routing
 $app->router->get('/utrance-railway/registerPage', [AuthController::class, 'registerPage']);
 $app->router->post('/utrance-railway/registerPage', [AuthController::class, 'registerPageNow']);
-$app->router->get('/utrance-railway/validate', [AuthController::class, 'validate']);
+
 
 
 
