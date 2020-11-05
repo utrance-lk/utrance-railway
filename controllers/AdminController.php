@@ -44,7 +44,7 @@ class AdminController extends Controller
 
         $addUserModel->loadData($request->getBody());
         if($addUserModel->valid()){
-            $addUserModel->registerUser();
+            $addUserModel->addUser();
             return "Success";
         }else{
             return "Added Fail";
@@ -167,7 +167,7 @@ class AdminController extends Controller
 
     public function aboutUs()
     {
-        echo "Hello my world";
+        echo "Hello world";
         return $this->render('aboutUs');
         
 

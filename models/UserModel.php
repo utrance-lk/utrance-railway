@@ -90,6 +90,24 @@ class UserModel extends Model
 
     }
 
+    public function addUser()
+    {
+
+        echo "hello";
+        $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us)");
+        $query->bindValue(":fn", $this->first_name);
+        $query->bindValue(":ln", $this->last_name);
+        $query->bindValue(":st1", $this->street_line1);
+        $query->bindValue(":st2", $this->street_line2);
+        $query->bindValue(":city", $this->city);
+        $query->bindValue(":cn", $this->contact_num);
+        $query->bindValue(":up", $this->user_password);
+        $query->bindValue(":eid", $this->email_id);
+        $query->bindValue(":us", $this->user_role);
+        $query->execute();
+
+    }
+
     /*  public function getUsers()
     {
 
