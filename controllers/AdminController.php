@@ -165,4 +165,13 @@ class AdminController extends Controller
         echo "Upload View Users form";
     }
 
+    public function aboutUs()
+    {
+        echo "Hello my world";
+        return $this->render('aboutUs');
+        
+
+    }
+
+
 }
