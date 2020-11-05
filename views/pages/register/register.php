@@ -6,12 +6,16 @@
 <body>
 
 <div class="auth-content">
-
+  <!--?php
+     if(isset($model)){
+         var_dump($model);
+     }
+  ?!-->
     <form   method="post" name="register"  id="register_form"  >
-        <h2 class="form-title" style="font-size:2.2rem">Sign Up</h2>
+        <h2 class="form-title" style="font-size:2.7rem">Sign Up</h2>
     <div class="div-sub">
         <label class="lbl-user"><i class="fa fa-user" aria-hidden="true" style="padding-right: 1.5rem;"></i>User Name</label>
-        <input type="text" id="first_name" name="first_name"  class="text-input" placeholder="First name" style="margin-bottom: 10px;" >
+        <input type="text"  placeholder="First name" style="margin-bottom: 10px" id="first_name" name="first_name" value="<?php echo $model->first_name;?>"    class="text-input">
         <input type="text"    id="last_name"  name="last_name" class="text-input" placeholder="Last name">
     </div>
 
@@ -43,10 +47,7 @@
         <input type="text"   id="contact_num" class="text-input" placeholder="Ex:071-1234567" name="contact_num">
     </div>
 
-    <div class="div-sub">
-            <label  class="lbl-user" ><i class="fa fa-picture-o" aria-hidden="true" style="padding-right: 1rem;"></i>Choose profile photo</label>
-            <input type="file"  id="user-profile-image" name="user_image">
-    </div>
+    
 
         <div class="div-sub">
             <label  class="lbl-user"><i class="fa fa-key" aria-hidden="true" style="padding-right: 1rem;"></i>Password</label>

@@ -17,6 +17,24 @@ class UserModel extends Model
     public $user_confirmPassword;
     public $resultArray;
     public $id;
+     
+
+    public function rules(){
+        return[
+            'first_name'           => [self::RULE_REQUIRED],
+            'last_name'            => [self::RULE_REQUIRED],
+            'street_line1'         => [self::RULE_REQUIRED],
+            'street_line2'         => [self::RULE_REQUIRED],
+            'city'                 =>[self::RULE_REQUIRED],
+            'contact_num'          => [self::RULE_REQUIRED],
+            'user_password'        =>[self::RULE_REQUIRED],
+            'user_confirmPassword' =>[self::RULE_REQUIRED,[self::RULE_MATCH,'match' => 'user_password']],
+            'email_id'             =>[self::RULE_REQUIRED,self::RULE_EMAIL]
+
+        ];
+
+    }
+
 
     public function findOne()
     {
@@ -35,7 +53,7 @@ class UserModel extends Model
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function registerUser()
+    public function register()
     {
 
         echo "helo";

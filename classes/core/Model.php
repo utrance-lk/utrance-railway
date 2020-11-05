@@ -27,7 +27,7 @@ include_once "App.php";
         }
     } 
       
-    /*abstract public function rules();
+    abstract public function rules();
      
     public  $errors=[];
 
@@ -50,11 +50,11 @@ include_once "App.php";
                                    $this->addError($attribute,self::RULE_EMAIL);
                                }
 
-                               if($ruleName === self::RULE_MIN && strlen($value)<$rule['min']){
+                               if($ruleName === self::RULE_MIN && strlen($value) < $rule['min']){
                                 $this->addError($attribute,self::RULE_MIN,$rule);
                                }
 
-                               if($ruleName === self::RULE_MAX && strlen($value)>$rule['max']){
+                               if($ruleName === self::RULE_MAX && strlen($value) > $rule['max']){
                                 $this->addError($attribute,self::RULE_MAX,$rule);
                                }
 
@@ -90,8 +90,10 @@ include_once "App.php";
         ];
     }
 
-    */
-
+    
+  public function hasError($attribute){
+      return $this->errors[$attribute] ?? false; 
+  }
     
 
     
