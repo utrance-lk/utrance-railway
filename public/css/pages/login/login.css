@@ -29,6 +29,20 @@
   color: rgb(119, 119, 119);
 }
 
+.new-account-box--2:link,
+.new-account-box--2:active {
+  color: #000000;
+  transition: all .5s;
+}
+
+.new-account-box--2:hover {
+  color: #1F3A93;
+}
+
+.login-form-box {
+  font-family: 'Roboto', sans-serif;
+}
+
 .login-text {
   font-size: 4rem;
   text-transform: capitalize;
@@ -37,10 +51,11 @@
 
 .login__img-box {
   flex: 1;
-  background-color: #fff;
+  /* background-color: #fff; */
   /* border: 1px solid red; */
   height: 100%;
   width: 100%;
+  background-color: #fff;
   background-repeat: no-repeat;
   background-size:  cover;
   background-position: center;
@@ -50,7 +65,7 @@
 .form__container {
   color: #1F3A93;
   letter-spacing: 1px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   height: 70vh;
   width: 70%;
@@ -96,11 +111,18 @@
 
 .login-btn {
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 1.2rem;
   border: 1px solid #1F3A93;
-  width: 8rem;
+  width: 11rem;
   text-align: center;
   border-radius: 10rem;
   align-self: flex-end;
-  font-family: "Lato", sans-serif;
+  font-size: 1.75rem;
+  font-family: "Poppins", sans-serif;
+  transition: all .2s;
+}
+
+.login-btn:hover {
+  background-color: #1F3A93;
+  color: #fff;
 }

@@ -25,8 +25,8 @@
 				<button type="submit" class="login-btn form__container-item" formaction="#">
 						Login
 				</button>
-				</div>
 			</form>
+		</div>
 		</div>
 	</div>
 </body>
