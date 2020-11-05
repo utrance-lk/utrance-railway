@@ -21,7 +21,7 @@ class AuthController extends Controller
             return 'invalid username or password';
         }
 
-       if($request->isPost())
+       if($request->isPost()){
          
         $registerModel->loadData($request->getBody());
         $pathArray1=$registerModel->getUsers();
@@ -43,7 +43,7 @@ class AuthController extends Controller
        /*return $this->render('register',[
            'model'=>$registerModel
        ]);*/
-
+}
 
 
     public function logout($request, $response)
