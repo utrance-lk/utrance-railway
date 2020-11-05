@@ -5,11 +5,7 @@ include_once "../classes/core/Controller.php";
 class AdminController extends Controller
 {
 
-
-
-class AdminController extends Controller {
    
-  
    public function adminSettings($request){
        $adminSettingModel=new UserModel();
         if($request->isPost()) {
@@ -18,7 +14,7 @@ class AdminController extends Controller {
         }
         if($request->isGet()) {
         $adminSettingModel->loadData($request->getBody());
-        $getUserDetailsArray=$adminSettingModel->getUserDetails();
+        $getUserDetailsArray=$adminSettingModel->getUserDetails1();
         //var_dump($getUserDetailsArray);
         return $this->render('admin',$getUserDetailsArray);
         }
@@ -40,49 +36,27 @@ class AdminController extends Controller {
 
         
    }
-
-   public function manageTrains($request) {
-       if($request->isPost()) {
-           // form
-           return 'success';
-       }
-
-       return $this->render(['admin', 'manageTrains']);
-   }
-
-   public function manageRoutes($request) {
-       if($request->isPost()) {
-           //from
-           return 'success';
-       }
-
-       return $this->render(['admin', 'manageRoutes']);
-   }
-
-   public function addUserNow($request) {
+   public function addUserNow($request){
+      
        $addUserModel=new UserModel();
-       if($request->isPost()) 
-           $addUserModel->loadData($request->getBody());
-           $addUserArray=$addUserModel->getUsers();
 
-           if($addUserModel->valid()){
-               if($addUserModel->register()){
-                   return "Success";
-               }
-           }
-           else{return  $this->render('validation',$addUserArray);
-        }
-    }
-    
-    public function addUser(){
-       return $this->render(['admin', 'addUser']);
        if ($request->isPost()) {
 
+        $addUserModel->loadData($request->getBody());
+        if($addUserModel->valid()){
+            $addUserModel->registerUser();
+            return "Success";
+        }else{
+            return "Added Fail";
         }
-        //  return $this->render(['admin', 'manageUsers']);
 
     }
+}
 
+   public function addUser(){
+    
+        return $this->render(['admin', 'addUser']);
+}
     public function manageTrains($request)
     {
         if ($request->isPost()) {

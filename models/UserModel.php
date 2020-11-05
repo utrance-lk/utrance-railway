@@ -17,7 +17,6 @@ class UserModel extends Model
     public $user_confirmPassword;
     public $resultArray;
     public $id;
-<<<<<<< HEAD
     public $detailsArray;
 
      
@@ -55,8 +54,6 @@ class UserModel extends Model
         return $this->resultArray;
   }
 
-
-=======
 
     public function findOne()
     {
@@ -108,7 +105,6 @@ class UserModel extends Model
     return $this->resultArray;
 
     }*/
->>>>>>> 0104de12a94334e7d4146291840f6e8c26687ac3
     public function valid()
     {
         if ($this->first_name == null || $this->last_name == null || $this->street_line1 == null || $this->street_line2 == null || $this->city == null || $this->contact_num == null || $this->user_password == null || $this->email_id == null) {
@@ -117,7 +113,7 @@ class UserModel extends Model
             return 1;
         }
     }
-    public function getUserDetails(){
+    public function getUserDetails1(){
       $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num,user_password FROM users WHERE id=10 ");
       $query->execute();
 

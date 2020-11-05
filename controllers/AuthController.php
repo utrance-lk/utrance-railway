@@ -21,7 +21,6 @@ class AuthController extends Controller
             return 'invalid username or password';
         }
 
-<<<<<<< HEAD
        if($request->isPost())
          
         $registerModel->loadData($request->getBody());
@@ -44,14 +43,8 @@ class AuthController extends Controller
        /*return $this->render('register',[
            'model'=>$registerModel
        ]);*/
-       
-         
-    
-=======
-        return $this->render('login');
 
-    }
->>>>>>> 0104de12a94334e7d4146291840f6e8c26687ac3
+
 
     public function logout($request, $response)
     {
@@ -84,32 +77,21 @@ class AuthController extends Controller
 
     }
 
-    public function getMy($request)
-    {
-<<<<<<< HEAD
-        // logout
-    
-    }
     public function getMy($request) {
         if($request->isPost()) {
-=======
-        if ($request->isPost()) {
->>>>>>> 0104de12a94334e7d4146291840f6e8c26687ac3
+
             //from
             return 'success';
         }
         return $this->render('admin');
-<<<<<<< HEAD
  
     }
     
    public function signInPage(){
     return $this->render('signIn');
     }
-=======
->>>>>>> 0104de12a94334e7d4146291840f6e8c26687ac3
 
-    }
+    
 
     public function forgotPassword()
     {
