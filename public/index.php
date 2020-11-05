@@ -49,6 +49,8 @@ $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'man
 $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'manageRoutes']);
 
 $app->router->get('/utrance-railway/admin/users/add', [AdminController::class, 'addUser']);
+$app->router->post('/utrance-railway/admin/users/add', [AdminController::class, 'addUserNow']);
+
 $app->router->get('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 $app->router->post('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 
@@ -57,6 +59,21 @@ $app->router->get('/utrance-railway/admin/trains/update', [AdminController::clas
 
 $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 
+$app->router->post('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
+$app->router->get('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
+
+
+
+
+
+
+
+
+
+
+/////login Page Routing
+$app->router->get('/utrance-railway/signIn', [AuthController::class, 'signInPage']);
+$app->router->post('/utrance-railway/signIn', [AuthController::class, 'signInPageNow']);
 
 ///////////Register Page Routing
 $app->router->get('/utrance-railway/registerPage', [AuthController::class, 'registerPageNow']);

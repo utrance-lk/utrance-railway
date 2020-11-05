@@ -21,9 +21,19 @@ class AuthController extends Controller
             return 'invalid username or password';
         }
 
-        return $this->render('login');
-
+       
     }
+
+    /*echo '<pre>';
+    var_dump($registerModel->errors);
+    echo '</pre>';
+    exit; */
+ 
+       /*return $this->render('register',[
+           'model'=>$registerModel
+       ]);*/
+
+
 
     public function logout($request, $response)
     {
@@ -80,15 +90,21 @@ class AuthController extends Controller
 
     }
 
-    public function getMy($request)
-    {
-        if ($request->isPost()) {
+    public function getMy($request) {
+        if($request->isPost()) {
+
             //from
             return 'success';
         }
         return $this->render('admin');
-
+ 
     }
+    
+   public function signInPage(){
+    return $this->render('signIn');
+    }
+
+    
 
     public function forgotPassword()
     {
