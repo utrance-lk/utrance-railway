@@ -51,6 +51,27 @@ class formdetailsController extends Controller {
         return $this->render(['admin', 'manageTrains']);
    }
 
+   public function updateTrain($request) {
+    $updateTrainModel=new getUserModel();
+    if($request->isGet()) {
+
+       var_dump($request->getQueryParams());
+
+
+       $updateTrainModel->loadData($request->getQueryParams());
+       $updateTrainArray=$updateTrainModel->getManagTrains();
+       
+         var_dump($updateTrainArray);
+      
+        //return $this->render(['admin', 'manageUsers'],$getUserArray);
+     return $this->render(['admin', 'updateTrain'],$updateTrainArray);
+    }
+
+   
+ //  return $this->render(
+   // return $this->render(['admin', 'updateTrain']);
+  }
+
    
 
  

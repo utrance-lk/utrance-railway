@@ -1,8 +1,6 @@
 <?php
 
 include_once "../classes/core/Controller.php";
-include_once "../models/UserModel.php";
-
 
 
 class AdminController extends Controller {
@@ -91,7 +89,7 @@ class AdminController extends Controller {
     $updateUserModel=new UserModel();
         if($request->isGet()) {
 
-             var_dump($request->getQueryParams());
+            //  var_dump($request->getQueryParams());
 
 
            $updateUserModel->loadData($request->getQueryParams());
@@ -113,29 +111,7 @@ class AdminController extends Controller {
         //return $this->render(['admin', 'updateUser']);
    }
 
-   public function updateTrain($request) {
-     $updateTrainModel=new UserModel();
-     if($request->isGet()) {
 
-        var_dump($request->getQueryParams());
-
-
-        $updateTrainModel->loadData($request->getQueryParams());
-        $updateTrainArray=$updateTrainModel->getManagTrains();
-        
-         var_dump($updateUserArray);
-
-
-     
-       
-         //return $this->render(['admin', 'manageUsers'],$getUserArray);
-      return $this->render(['admin', 'updateTrain'],$updateTrainArray);
-     }
- 
-    
-  //  return $this->render(
-    // return $this->render(['admin', 'updateTrain']);
-   }
    
    
 

@@ -19,6 +19,10 @@ class UserModel extends Model
     public $resultArray1;
     public $id;
 
+  
+    
+
+
     public function register()
     {
 
@@ -94,17 +98,6 @@ class UserModel extends Model
     }*/
 //[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
 
-public function getManagTrains()
-    {
-        $query = APP::$APP->db->pdo->prepare("SELECT train_name, train_type,route_id, train_traval_days, train_active_status, train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths FROM trains WHERE train_id=:id  ");
-        $query->bindValue(":id", $this->id);
-        $query->execute();
-
-        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-
-        var_dump($this->resultArray);
-        return $this->resultArray;
-    }
 
 
 }

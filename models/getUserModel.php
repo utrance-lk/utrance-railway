@@ -21,9 +21,18 @@ class getUserModel extends Model
     public $user_confirmPassword;
     public $from2;
     public $to2;
+  
+
     public $train_name;
-    public $train_id;
     public $train_type;
+    public $train_id;
+    public $train_traval_days;
+    public $train_active_status;
+    public $train_freights_allowed;
+    public $train_fc_seats;
+    public $train_sc_seats;
+    public $train_observation_seats;
+    public $train_sleeping_berths;
 
 
 
@@ -82,21 +91,23 @@ class getUserModel extends Model
 
     }
 
-    
-   
+
+    public function getManagTrains()
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_id = :train_id ");
+        $query->bindValue(":train_id", $this->train_id);
+        $query->execute();
+
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
+var_dump( $this->resultArray["trains"]);
+       
+        return $this->resultArray;
+    }
 
 
-        
     
+     
   
-
-
-
-
-   
-
- 
-
 }
   
 //[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]

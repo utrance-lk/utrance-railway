@@ -35,14 +35,14 @@ $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSetti
 $app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
 $app->router->post('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
-$app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
+// $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
 $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'manageRoutes']);
 
 $app->router->get('/utrance-railway/admin/users/add', [AdminController::class, 'addUser']);
 $app->router->get('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 
 $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
-$app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
+// $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
 $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 
@@ -97,12 +97,18 @@ $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'man
 $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
 $app->router->post('/utrance-railway/getUserDetgitails', [formdetailsController::class, 'register']);
 $app->router->get('/utrance-railway/admin/trains', [formdetailsController::class, 'manageTrains']);
+ $app->router->get('/utrance-railway/admin/trains/update', [formdetailsController::class, 'updateTrain']);
+$app->router->get('/utrance-railway/admin/trains/update?train_id=$train_id', [formdetailsController::class, 'updateTrain']);
+
+
+
 
 $app->router->get('/utrance-railway/admin/users/add', [AdminController::class, 'addUser']);
 $app->router->get('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 
 $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
-$app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
+// $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
+// $app->router->post('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
 $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 

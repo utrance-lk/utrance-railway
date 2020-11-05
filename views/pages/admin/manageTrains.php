@@ -20,6 +20,7 @@
                 </select>
               </div>
             </form>
+
             <a href="/utrance-railway/admin/trains/add" class="adduserbtn addbtn">
               <div class="addtrainbtn-text addbtn-text">Add Train</div>
               <svg class="addtrainbtn-img addbtn-img">
@@ -28,6 +29,12 @@
               </svg> 
             </a>
             <div class="search__results-container">
+            <?php
+                    $dom = new DOMDocument;
+                    libxml_use_internal_errors(true);
+                    $dom->loadHTML('...');
+                    libxml_clear_errors();
+                  ?>
                  <?php
                     if(isset($trains)){
                       foreach($trains as $key => $value){
@@ -40,7 +47,8 @@
 
                       $html .= "<div class='search__result-train-namebox'>" .$value['train_name'] . "</div>";
                       $html .= "<div class='search__result-train-typebox'>" .$value['train_type'] . "</div>";
-                      $html .= "<a href='/utrance-railway/admin/trains/update' class='search__result-train-managebtnbox'>";
+                      $train_id=$value['train_id'];
+                      $html .= "<a href='/utrance-railway/admin/trains/update?train_id=$train_id' class='search__result-train-managebtnbox'>";
                       $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
                       
                       $html .= "<div class='search__result-train-deletebtnbox'>";
