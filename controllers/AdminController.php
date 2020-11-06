@@ -9,13 +9,13 @@ class AdminController extends Controller
     public function validateUser()
     {
         $currentUser = new AuthController();
-        
-        if(!$currentUser->isLoggedIn()) {
+
+        if (!$currentUser->isLoggedIn()) {
             echo 'You are not logged in!!';
             return false;
         }
 
-        if(!$currentUser->restrictTo('admin')) {
+        if (!$currentUser->restrictTo('admin')) {
             echo 'You are unorthorized to perform this action!!';
             return false;
         }
@@ -41,19 +41,19 @@ class AdminController extends Controller
     public function manageUsers($request)
     {
 
-        if($this->validateUser()) {
+        if ($this->validateUser()) {
             $manageUserModel = new UserModel();
             if ($request->isGet()) {
-    
+
                 $manageUserModel->loadData($request->getBody());
                 $getUserArray = $manageUserModel->getManageUsers();
-    
+
                 return $this->render(['admin', 'manageUsers'], $getUserArray);
-    
+
             }
-    
+
             if ($request->isPost()) {
-    
+
             }
         }
 
@@ -64,12 +64,12 @@ class AdminController extends Controller
     public function manageTrains($request)
     {
 
-        if($this->validateUser()) {
+        if ($this->validateUser()) {
             if ($request->isPost()) {
                 // form
                 return 'success';
             }
-    
+
             return $this->render(['admin', 'manageTrains']);
         }
 
