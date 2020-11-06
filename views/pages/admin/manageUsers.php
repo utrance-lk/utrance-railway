@@ -16,6 +16,7 @@
                   <option value="name">Name</option>
                   <option value="id">Id</option>
                 </select>
+
               </div>
             </form>
 
@@ -73,14 +74,13 @@
                     //  $html .="<div class='search__result-managebtn btn-white' name='view'> View </div></a>";
                       $id = $value['id'];
                       $html .="<a href='/utrance-railway/admin/users/update?id=$id' class='search__result-user-managebtnbox'>";
-                      $html .="<div class='search__result-managebtn btn-white'> View </div></a>";
+                      $html .="<div class='search__result-managebtn btn-white'> View</div></a>";
 
                       $html .="<div class='search__result-user-deletebtnbox'>";
                       $html .="<div class='search__result-deletebtn btn-white'>Delete</div></div></form>";
                    
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
-
                       print_r($dom->saveHTML());
                                  
                     }
@@ -90,9 +90,9 @@
 
                 </div>      
              </div>
-         </div>
+          </div>
       </div>
-    </div>
+    
 
 
                   
