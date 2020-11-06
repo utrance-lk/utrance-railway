@@ -55,7 +55,7 @@ class AuthController extends Controller
            
             $registerModel->loadData($request->getBody());
 
-<<<<<<< HEAD
+
            
 
             if($registerModel->validate() && $registerModel->register()){
@@ -78,10 +78,10 @@ class AuthController extends Controller
 
         /*if ($request->isPost()) {
             
-=======
+
         if ($request->isPost()) {
 
->>>>>>> 1b282de63afc4f47827ad0d0f71853e1195a8913
+
             $registerModel->loadData($request->getBody());
             if ($registerModel->valid()) {
                 $registerModel->registerUser();
