@@ -8,7 +8,7 @@
 .big_01{
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("newI.jpg");
+    background-color:#59abe3;
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -67,7 +67,7 @@ button:hover
   width: auto;
   padding: 0.8rem 1rem;
   background-color:#E4E9EB;
-  color: black;
+  color: white;
 }
 
 

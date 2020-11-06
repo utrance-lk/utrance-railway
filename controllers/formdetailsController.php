@@ -1,16 +1,18 @@
 <?php
 include_once "../classes/core/Controller.php";
 include_once "../models/getUserModel.php";
-class formdetailsController extends Controller {
-  
-    public function form($request){
-         if($request->isPost()) {
-             // form
-              return 'success';
-            
-         }
- 
-         return $this->render('getUserDetails');
+class formdetailsController extends Controller
+{
+
+    public function form($request)
+    {
+        if ($request->isPost()) {
+            // form
+            return 'success';
+
+        }
+
+        return $this->render('getUserDetails');
     }
 
     public function register($request)
@@ -95,7 +97,3 @@ class formdetailsController extends Controller {
 
  
 }
-
-?>
-
-

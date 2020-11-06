@@ -1,47 +1,99 @@
 <?php
 
 include_once "../classes/core/Controller.php";
+include_once "../controllers/AuthController.php";
 
 class AdminController extends Controller
 {
+    public function validateUser()
+    {
+        $currentUser = new AuthController();
+
+        if (!$currentUser->isLoggedIn()) {
+            echo 'You are not logged in!!';
+            return false;
+        }
+
+        if (!$currentUser->restrictTo('admin')) {
+            echo 'You are unorthorized to perform this action!!';
+            return false;
+        }
+
+        return true;
+
+    }
 
     public function adminSettings($request)
     {
-        if ($request->isPost()) {
-            // form
-            return 'success';
+
+        if ($this->validateUser()) {
+            if ($request->isPost()) {
+                // form
+                return 'success';
+            }
+
+            return $this->render('admin');
         }
 
-        return $this->render('admin');
     }
 
     public function manageUsers($request)
     {
-        $manageUserModel = new UserModel();
-        if ($request->isGet()) {
 
-            $manageUserModel->loadData($request->getBody());
-            $getUserArray = $manageUserModel->getManageUsers();
+        if ($this->validateUser()) {
+            $manageUserModel = new UserModel();
+            if ($request->isGet()) {
 
-            return $this->render(['admin', 'manageUsers'], $getUserArray);
+                $manageUserModel->loadData($request->getBody());
+                $getUserArray = $manageUserModel->getManageUsers();
 
+                return $this->render(['admin', 'manageUsers'], $getUserArray);
+
+            }
+
+            if ($request->isPost()) {
+
+            }
         }
 
-        if ($request->isPost()) {
-
-        }
         //  return $this->render(['admin', 'manageUsers']);
+        
+
+        
+   }
+   public function addUserNow($request){
+      
+       $addUserModel=new UserModel();
+
+       if ($request->isPost()) {
+
+        $addUserModel->loadData($request->getBody());
+        if($addUserModel->valid()){
+            $addUserModel->addUser();
+            return "Success";
+        }else{
+            return "Added Fail";
+        }
 
     }
+}
 
+   public function addUser(){
+    
+        return $this->render(['admin', 'addUser']);
+}
     public function manageTrains($request)
     {
-        if ($request->isPost()) {
-            // form
-            return 'success';
+
+        if ($this->validateUser()) {
+            if ($request->isPost()) {
+                // form
+                return 'success';
+            }
+
+            return $this->render(['admin', 'manageTrains']);
         }
 
-        return $this->render(['admin', 'manageTrains']);
     }
 
     public function manageRoutes($request)
@@ -52,16 +104,6 @@ class AdminController extends Controller
         }
 
         return $this->render(['admin', 'manageRoutes']);
-    }
-
-    public function addUser($request)
-    {
-        if ($request->isPost()) {
-            //form
-            return 'success';
-        }
-
-        return $this->render(['admin', 'addUser']);
     }
 
     public function addTrain($request)
@@ -151,5 +193,14 @@ class AdminController extends Controller
     {
         echo "Upload View Users form";
     }
+
+    public function aboutUs()
+    {
+        echo "Hello world";
+        return $this->render('aboutUs');
+        
+
+    }
+
 
 }

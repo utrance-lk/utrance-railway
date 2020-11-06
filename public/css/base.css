@@ -44,8 +44,16 @@ a {
 a:link,
 a:active,
 a:visited {
+<<<<<<< HEAD
   color: #fff;
   /* color: black; */
+=======
+  /* color: black; */
+}
+
+li {
+  list-style: none;
+>>>>>>> 1b282de63afc4f47827ad0d0f71853e1195a8913
 }
 
 .btn {
