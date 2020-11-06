@@ -59,6 +59,8 @@ $app->router->get('/utrance-railway/admin/trains/update', [AdminController::clas
 
 $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 
+//aboutUs routing Daranya
+
 $app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
 $app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
 
@@ -126,6 +128,14 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 $app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
 $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
+
+
+// source routing daranya
+
+$app->router->get('/utrance-railway/source', [AdminController::class, 'sourceSettings']);
+
+$app->router->get('/utrance-railway/source/settings', [AdminController::class, 'sourceSettings']);
+
 
 
 

@@ -173,5 +173,86 @@ class AdminController extends Controller
 
     }
 
+////////////////////////////////////////////////////////////////////////////////
+//source functionalities daranya
+
+public function sourceSettings($request){
+    $sourceSettingModel=new UserModel();
+     if($request->isPost()) {
+         // form
+         return 'success';
+     }
+     if($request->isGet()) {
+     $sourceSettingModel->loadData($request->getBody());
+     $getUserDetailsArray=$sourceSettingModel->getUserDetails1();
+     return $this->render('source',$getUserDetailsArray);
+     }
+}
+
+ public function functionality01($request)
+ {
+     
+
+}
+
+
+public function functionality02($request){
+   
+   
+ 
+}
+
+public function fnuctionality03(){
+ 
+     
+}
+
+ public function functionality04($request)
+ {
+     
+ }
+
+ public function functionality05($request)
+ {
+     
+ }
+
+ 
+ public function addNoticesBySource()
+ {
+     return $this->render('addNoticesBySource');
+     echo "hy girl";
+ }
+
+ public function addNoticesBySourceNow()
+ {
+     echo "Added Notices!!";
+ }
+
+ public function sourceDashboard()
+ {
+     return $this->render('sourceDashboard');
+     echo "Hello Sri Lanka";
+ }
+
+ public function sourceDashboardNow()
+ {
+     echo "Hello my world";
+ }
+
+ public function viewUsers2()
+ {
+     return $this->render('viewUsers');
+     echo " View Users!!";
+ }
+ public function viewUsersNow2()
+ {
+     echo "Upload View Users form";
+ }
+
+ 
+
+
+
 
 }
