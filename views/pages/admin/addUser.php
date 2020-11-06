@@ -68,7 +68,7 @@
                 <!-- <div class="btn__save-box">
                   <div class="btn__save btn-settings">Save Settings</div>
                 </div> -->
-              </div>
+              
             <!-- </form> -->
             <div class="seperator"></div>
             <div class="content-title">
