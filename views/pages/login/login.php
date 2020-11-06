@@ -13,11 +13,11 @@
 				</div>
 				<div class="username-box form__container-item">
 					<label for="username">Username</label>
-					<input type="email" id="username" name="email_id" placeholder="john@example.com">
+					<input type="email" id="username" name="email_id" placeholder="john@example.com" required>
 				</div>
 				<div class="password-box form__container-item">
 					<label for="password">Password</label>
-					<input type="password" id="password" name="user_password" placeholder="*****************">
+					<input type="password" id="password" name="user_password" placeholder="*****************" required>
 				</div>
 				<div class="forgot-password-box form__container-item">
 					<a href="#" class="forgort-password-box">Forgot Password?</a>

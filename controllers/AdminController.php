@@ -1,47 +1,78 @@
 <?php
 
 include_once "../classes/core/Controller.php";
+include_once "../controllers/AuthController.php";
 
 class AdminController extends Controller
 {
 
-    public function adminSettings($request)
+    public function validateUser()
     {
-        if ($request->isPost()) {
-            // form
-            return 'success';
+        $currentUser = new AuthController();
+        
+        if(!$currentUser->isLoggedIn()) {
+            echo 'You are not logged in!!';
+            return false;
         }
 
-        return $this->render('admin');
+        if(!$currentUser->restrictTo('admin')) {
+            echo 'You are unorthorized to perform this action!!';
+            return false;
+        }
+
+        return true;
+
+    }
+
+    public function adminSettings($request)
+    {
+
+        if ($this->validateUser()) {
+            if ($request->isPost()) {
+                // form
+                return 'success';
+            }
+
+            return $this->render('admin');
+        }
+
     }
 
     public function manageUsers($request)
     {
-        $manageUserModel = new UserModel();
-        if ($request->isGet()) {
 
-            $manageUserModel->loadData($request->getBody());
-            $getUserArray = $manageUserModel->getManageUsers();
-
-            return $this->render(['admin', 'manageUsers'], $getUserArray);
-
+        if($this->validateUser()) {
+            $manageUserModel = new UserModel();
+            if ($request->isGet()) {
+    
+                $manageUserModel->loadData($request->getBody());
+                $getUserArray = $manageUserModel->getManageUsers();
+    
+                return $this->render(['admin', 'manageUsers'], $getUserArray);
+    
+            }
+    
+            if ($request->isPost()) {
+    
+            }
         }
 
-        if ($request->isPost()) {
-
-        }
         //  return $this->render(['admin', 'manageUsers']);
 
     }
 
     public function manageTrains($request)
     {
-        if ($request->isPost()) {
-            // form
-            return 'success';
+
+        if($this->validateUser()) {
+            if ($request->isPost()) {
+                // form
+                return 'success';
+            }
+    
+            return $this->render(['admin', 'manageTrains']);
         }
 
-        return $this->render(['admin', 'manageTrains']);
     }
 
     public function manageRoutes($request)

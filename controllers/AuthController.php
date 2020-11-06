@@ -6,6 +6,11 @@ include_once "../models/UserModel.php";
 class AuthController extends Controller
 {
 
+    public function __construct()
+    {
+        // $this->registerMiddleware(new AuthMiddleware());
+    }
+
     public function login($request, $response)
     {
         if ($request->isPost()) {
@@ -15,7 +20,6 @@ class AuthController extends Controller
             if ($result) {
                 App::$APP->session->set('user', $result[0]['id']);
                 return $response->redirect('/utrance-railway/home');
-                // var_dump(App::$APP->session->get('user'));
             }
 
             return 'invalid username or password';
@@ -37,7 +41,7 @@ class AuthController extends Controller
         $registerModel = new UserModel();
 
         if ($request->isPost()) {
-            
+
             $registerModel->loadData($request->getBody());
             if ($registerModel->valid()) {
                 $registerModel->registerUser();
@@ -81,9 +85,23 @@ class AuthController extends Controller
         // updates the password
     }
 
-    public function restricTo()
-    {
-        // grant permission
+    public function restrictTo($role)
+    { // asindu
+        if(App::$APP->activeUser()['role'] === $role) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isLoggedIn()
+    { // asindu
+        if (App::$APP->user) {
+            return true;
+        }
+
+        return false;
+
     }
 
     public function protect()
