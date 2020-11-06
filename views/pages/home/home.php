@@ -28,12 +28,20 @@
         </div>
         <div class="user__nav">
           <div class="userdetails-box">
-            <img
-              src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
-              alt="profile picture"
-              class="user-img"
-            />
-            <span class="user-name">Chris</span>
+             <?php if(isset($_SESSION['user'])) : ?>
+              <img
+                src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
+                alt="profile picture"
+                class="user-img"
+              />
+              <a href="/utrance-railway/logout" class="user-name"><?php echo App::$APP->activeUser()['name'];?></a>
+              
+             <?php else: ?>
+              <svg class="guest-user user-img">
+                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-user"></use>
+              </svg>
+              <a href="/utrance-railway/login" class="user-name">Login</a>
+             <?php endif; ?>  
           </div>
         </div>
       </div>

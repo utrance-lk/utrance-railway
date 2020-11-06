@@ -67,6 +67,13 @@
 .userdetails-box {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.guest-user {
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid rgb(73, 166, 252);
 }
 
 .userdetails-box > * {
