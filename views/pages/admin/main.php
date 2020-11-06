@@ -10,17 +10,41 @@
     />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/admin/style.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/header.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
   </head>
 
   <body>
     <div class="nav-container">
       <div class="navbar">
-        <div class="logobox">
-          <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+        <div class="main__nav">
+          <div class="logobox">
+            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+          </div>
+          <div class="main__nav-items">
+            <a href="/utrance-railway/home" class="home-box nav-items-little">
+              <svg class="home__icon navbar__icon">
+                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-home"></use>
+              </svg>
+              <span class="nav__items-text-box">Home</span>
+            </a>
+            <div class="ticket-box nav-items-little">
+              <svg class="ticket__icon navbar__icon">
+                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
+              </svg>
+              <span class="nav__items-text-box">Tickets</span>
+            </div>
+            <div class="news-box nav-items-little">
+              <svg class="news__icon navbar__icon">
+                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
+              </svg>
+              <span class="nav__items-text-box">News</span>
+            </div>
+          </div>
         </div>
         <div class="user__nav">
           <div class="notification-box">
-            <svg class="notification__icon">
+            <svg class="notification__icon navbar__icon">
               <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chat"></use>
             </svg>
             <span class="notification__numbers">13</span>
