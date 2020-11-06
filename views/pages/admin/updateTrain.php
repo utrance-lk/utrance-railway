@@ -178,7 +178,7 @@
                     {
                     $html .="<input type='checkbox' name='train_observation_seats' id='observation-saloon' value='1'></div></div></fieldset>";    
                     }
-                    
+
                     $html .="<div class='btn__save-box'>";
                     // $html .="<div class='btn__save btn__add-train' type='submit'>Update Train</div></div></div></form></div>";
                     $html .="<button class='btn__save btn-settings' type='submit'>Update Train</button></div></div></form></div>";        
@@ -197,5 +197,5 @@
 
         ?>
           
-    </div>
-</div>
+ </div>
+<!-- </div> -->
