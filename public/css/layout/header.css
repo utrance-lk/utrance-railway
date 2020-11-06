@@ -1,39 +1,111 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+.nav-container {
+  /* border: 1px solid maroon; */
+  /* background-color: #eeeeee; */
+  border-bottom: 1px solid rgba(119, 119, 119, 0.1);
+  font-family: "Lato", sans-serif;
 }
 
-.header {
-  /* background-color: blueviolet; */
-  height: 10vh;
+.navbar {
+  border-bottom: 1px solid rgba(31, 58, 147, 0.8);
+  background-color: #fff;
+  height: 14vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* border: 1px solid pink; */
+  height: 100%;
+}
+
+.main__nav-items {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid green; */
+  margin-left: 3rem;
+}
+
+.nav-items-little {
+  /* border: 1px solid red; */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: rgb(19, 0, 38);
+  cursor: pointer;
+  margin-right: 2rem;
 }
 
-.user-nav {
-  display: flex;
-  /* border: 1px solid salmon; */
-  margin-right: 19rem;
+.nav__items-text-box {
+  margin-left: 3px;
 }
 
-.user-nav div {
-  /* border: 2px dotted pink; */
-  margin-left: 2rem;
-  padding: 2rem;
-  color: #fff;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-.user-nav a {
-  text-decoration: none;
-  color: #fff;
+.logobox {
+  margin-left: 10vw;
+  /* border: 1px dotted darkcyan; */
 }
 
 .logo {
-  height: 4rem;
-  margin-left: 19rem;
+  height: 8rem;
+}
+
+.user__nav {
+  margin-right: 10vw;
+  display: flex;
+  align-items: center;
+}
+
+.user__nav > * {
+  /* border: 1px solid slateblue; */
+}
+
+.user__nav > *:not(:first-child) {
+  margin-left: 3rem;
+}
+
+.userdetails-box {
+  display: flex;
+  align-items: center;
+}
+
+.userdetails-box > * {
+  /* border: 1px solid blanchedalmond; */
+}
+
+.user-name {
+  margin-left: 1rem;
+}
+
+.notification-box {
+  position: relative;
+}
+
+.navbar__icon {
+  height: 3rem;
+  width: 4rem;
+  fill: rgb(119, 119, 119);
+  cursor: pointer;
+}
+
+.notification__numbers {
+  position: absolute;
+  top: -20%;
+  left: 70%;
+  font-size: 1rem;
+  /* background-color: #89c4f4; */
+  background-color: rgb(31, 58, 147);
+  border-radius: 50%;
+  height: 1.75rem;
+  width: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.user-img {
+  height: 5rem;
+  border-radius: 50%;
+  cursor: pointer;
 }
