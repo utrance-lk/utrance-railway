@@ -6,14 +6,19 @@ class RegisterUserController extends Controller
 {
 
 
-    public function registeredUser($request){
+    public function registeredUserSettings($request){
          
-        if ($request->isPost()) {
-            return $this->render('registeredUser');
+        $registerUserSettingModel=new UserModel();
+        if($request->isPost()) {
+            // form
+            return 'success';
         }
-
-       
-        return $this->render('registeredUser');
+        if($request->isGet()) {
+        $registerUserSettingModel->loadData($request->getBody());
+        $getUserDetailsArray=$registerUserSettingModel->getUserDetails1();
+        //var_dump($getUserDetailsArray);
+        return $this->render('registeredUser',$getUserDetailsArray);
+        }
     }
 
 

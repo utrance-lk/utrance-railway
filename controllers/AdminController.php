@@ -36,27 +36,23 @@ class AdminController extends Controller
 
         
    }
-   public function addUserNow($request){
+   public function addUser($request){
       
        $addUserModel=new UserModel();
 
        if ($request->isPost()) {
 
         $addUserModel->loadData($request->getBody());
-        if($addUserModel->valid()){
-            $addUserModel->addUser();
-            return "Success";
-        }else{
-            return "Added Fail";
+        if($addUserModel->addUser()){
+                return "Success";
         }
 
     }
+
+    return $this->render(['admin', 'addUser']);
 }
 
-   public function addUser(){
-    
-        return $this->render(['admin', 'addUser']);
-}
+   
     public function manageTrains($request)
     {
         if ($request->isPost()) {
@@ -116,7 +112,7 @@ class AdminController extends Controller
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             //var_dump($saveDetailsModel->updateUserDetails());
             $saveDetailsModel->updateUserDetails();
-
+            
             return;
 
         }

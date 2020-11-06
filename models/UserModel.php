@@ -17,6 +17,7 @@ class UserModel extends Model
     public $user_confirmPassword;
     public $resultArray;
     public $detailsArray;
+    public $defaultPassword;
     public $id;
 
      
@@ -96,7 +97,8 @@ class UserModel extends Model
 
     public function register(){////Ashika
 
-       
+        $defaultPassword=$this->first_name+"utrance@123";
+        $this->user_password=$defaultPassword;
         $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us)");
         $query->bindValue(":fn", $this->first_name);
         $query->bindValue(":ln", $this->last_name);
@@ -114,7 +116,7 @@ class UserModel extends Model
     public function addUser()//Daranya
     {
 
-        echo "hello";
+       
         $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us)");
         $query->bindValue(":fn", $this->first_name);
         $query->bindValue(":ln", $this->last_name);
