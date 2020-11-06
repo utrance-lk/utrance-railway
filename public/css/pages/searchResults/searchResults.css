@@ -1,11 +1,11 @@
 .heading-primary {
-  height: 40vh;
+  height: 42vh;
   /* background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
     ); */
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(31, 58, 147, 0.8);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -127,13 +127,16 @@
 .search-bar {
   /* border: 1px solid orangered; */
   height: 16vh;
-  /* transform: translateY(-5rem); */
   width: 70vw;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   position: relative;
+}
+
+.search-bar__container {
+  transform: translateY(-5rem);
 }
 
 .search-bar__search {
@@ -188,7 +191,6 @@
   border-radius: 5px;
   width: 100% - 2rem;
   z-index: 90;
-  /* transform: translateY(-50%); */
   /* border: 1px solid goldenrod; */
 }
 

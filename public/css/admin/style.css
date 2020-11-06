@@ -31,6 +31,33 @@ body {
   align-items: center;
 }
 
+.main__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* border: 1px solid pink; */
+  height: 100%;
+}
+
+.main__nav-items {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid green; */
+  margin-left: 3rem;
+}
+
+.nav-items-little {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.nav__items-text-box {
+  margin-left: 3px;
+}
+
 .logobox {
   margin-left: 10vw;
   /* border: 1px dotted darkcyan; */
@@ -71,7 +98,7 @@ body {
   position: relative;
 }
 
-.notification__icon {
+.navbar__icon {
   height: 3rem;
   width: 4rem;
   fill: rgb(119, 119, 119);
@@ -248,6 +275,10 @@ body {
   margin-top: 4rem;
   height: 10rem;
   border-radius: 50%;
+}
+
+.adduserbtn {
+  color: #fff;
 }
 
 .form__upload {
