@@ -1,5 +1,5 @@
-    <div class="load-content-container">
-        <div class="load-content">
+  <div class="load-content-container">
+      <div class="load-content">
           <div class="load-content--manage-users">
             <form class="dashboard-searchbar--container">
               <input
@@ -29,11 +29,10 @@
 
 
 
-          <div method="POST"  name="manage_users"  id="manage_user_form" >
-            <div class="search__results-container">
-
-              <!--div class="search__result-card">
-                <div class="search__result-user-mainbox search__result-mainbox">
+           <div method="POST"  name="manage_users"  id="manage_user_form" >
+                <div class="search__results-container">
+                     <!--div class="search__result-card">
+                  <div class="search__result-user-mainbox search__result-mainbox">
                   <div class="user-mainbox__img-box">
                     <img
                       src="/utrance-railway/public/img/pages/admin/Imali.jpg"
@@ -49,18 +48,14 @@
                     $dom->loadHTML('...');
                     libxml_clear_errors();
                   ?>
-    v
+    
                   <?php
                   if(isset($users)){
                     foreach($users as $key=>$value){
                       //echo $value['first_name'];
                      $html =" <form class='search__result-card' method='get'>
                              <div class='search__result-user-mainbox search__result-mainbox'>
-                             <div class='user-mainbox__img-box'>
-                             
-                               
-                  
-                  ";
+                             <div class='user-mainbox__img-box'>";
 
 
                      //$html .="<div class='search__result-card'>";
@@ -94,6 +89,12 @@
                    
                   }
                   ?>
+
+                </div>      
+             </div>
+         </div>
+      </div>
+    </div>
 
 
                   
@@ -156,11 +157,6 @@
                   <div class="search__result-deletebtn btn-white">Delete</div>
                 </div>
               </div!-->
-               
-             </div>
-           </div>
-         </div>
-      </div>
-    </div>
+           
     
     

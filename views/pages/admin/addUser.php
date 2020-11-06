@@ -50,7 +50,7 @@
                     
                   </select>
                 </div>
-                <div class="userpicture-box">
+                <!--div class="userpicture-box">
                   <img
                     src="/utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
                     alt="user-profile-picture"
@@ -64,7 +64,7 @@
                     id="photo"
                   />
                   <label for="photo">Choose New Photo</label>
-                </div>
+                </div!-->
                 <!-- <div class="btn__save-box">
                   <div class="btn__save btn-settings">Save Settings</div>
                 </div> -->

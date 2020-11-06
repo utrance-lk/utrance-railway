@@ -48,8 +48,9 @@ class AdminController extends Controller
         }
 
     }
-
     return $this->render(['admin', 'addUser']);
+
+    
 }
 
    
@@ -117,6 +118,10 @@ class AdminController extends Controller
 
         }
 
+    }
+
+    public function deleteUser(){
+        
     }
 
     public function updateTrain($request)
