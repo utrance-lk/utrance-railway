@@ -623,6 +623,10 @@ body {
   .addstopbtn-img {
     fill: #89c4f4;
   }
+
+  .textarea{
+    border:3px solid #89c4f4;
+  }
   
   .addStop-card {
     margin-top: 3rem;

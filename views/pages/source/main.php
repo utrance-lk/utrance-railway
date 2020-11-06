@@ -41,7 +41,7 @@
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
-            <a href="/utrance-railway/admin" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
+            <a href="/utrance-railway/source" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
               <svg class="settings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
               </svg>
@@ -56,18 +56,13 @@
           </div>
           <div class="userrole-name">Source</div>
           <div class="sidebar__nav-role-items">
-            <a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
+            <a href="/utrance-railway/source/contactAdmin" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
               </svg>
-              <span class="manage--trains-name">Functionality 01</span>
+              <span class="manage--trains-name">Contact Admin</span>
             </a>
-            <a href="/utrance-railway/admin/routes" class="sidebar__nav-manage--routes sidebar__nav-item">
-              <svg class="route-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-location"></use>
-              </svg>
-              <span class="manage--route-name">Functionality 02</span>
-            </a>
+          
             <a href="/utrance-railway/admin/users" class="sidebar__nav-manage--users sidebar__nav-item js--sidebar__nav-manage--users">
               <svg class="user-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-man"></use>

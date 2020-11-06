@@ -133,8 +133,8 @@ $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::cla
 // source routing daranya
 
 $app->router->get('/utrance-railway/source', [AdminController::class, 'sourceSettings']);
-
 $app->router->get('/utrance-railway/source/settings', [AdminController::class, 'sourceSettings']);
+$app->router->get('/utrance-railway/source/contactAdmin', [AdminController::class, 'contactAdmin']);
 
 
 

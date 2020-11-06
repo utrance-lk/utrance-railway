@@ -189,8 +189,14 @@ public function sourceSettings($request){
      }
 }
 
- public function functionality01($request)
+ public function contactAdmin($request)
  {
+    if ($request->isPost()) {
+        // form
+        return 'success';
+    }
+
+    return $this->render(['source', 'contactAdmin']);
      
 
 }
