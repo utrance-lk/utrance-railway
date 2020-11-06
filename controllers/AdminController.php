@@ -5,7 +5,6 @@ include_once "../controllers/AuthController.php";
 
 class AdminController extends Controller
 {
-
     public function validateUser()
     {
         $currentUser = new AuthController();
@@ -58,9 +57,31 @@ class AdminController extends Controller
         }
 
         //  return $this->render(['admin', 'manageUsers']);
+        
+
+        
+   }
+   public function addUserNow($request){
+      
+       $addUserModel=new UserModel();
+
+       if ($request->isPost()) {
+
+        $addUserModel->loadData($request->getBody());
+        if($addUserModel->valid()){
+            $addUserModel->addUser();
+            return "Success";
+        }else{
+            return "Added Fail";
+        }
 
     }
+}
 
+   public function addUser(){
+    
+        return $this->render(['admin', 'addUser']);
+}
     public function manageTrains($request)
     {
 
@@ -83,16 +104,6 @@ class AdminController extends Controller
         }
 
         return $this->render(['admin', 'manageRoutes']);
-    }
-
-    public function addUser($request)
-    {
-        if ($request->isPost()) {
-            //form
-            return 'success';
-        }
-
-        return $this->render(['admin', 'addUser']);
     }
 
     public function addTrain($request)
@@ -182,5 +193,14 @@ class AdminController extends Controller
     {
         echo "Upload View Users form";
     }
+
+    public function aboutUs()
+    {
+        echo "Hello world";
+        return $this->render('aboutUs');
+        
+
+    }
+
 
 }
