@@ -15,7 +15,7 @@ class App {
     public $response;
     public $session;
     public $db;
-    private $user;
+    public $user;
     public $userClass;
 
     public function __construct($rootPath, $config) {

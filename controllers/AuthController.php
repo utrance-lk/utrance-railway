@@ -20,6 +20,7 @@ class AuthController extends Controller
 
             return 'invalid username or password';
         }
+        return $this->render('login');
 
        
     }

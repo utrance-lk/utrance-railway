@@ -27,7 +27,7 @@ include_once "App.php";
         }
     } 
       
-    abstract public function rules();
+   /* abstract public function rules();
      
     public  $errors=[];
 
@@ -92,11 +92,17 @@ include_once "App.php";
 
     
   public function hasError($attribute){
+      
       return $this->errors[$attribute] ?? false; 
+  }
+
+  public function getFirstError($attribute){
+
+    return $this->errors[$attribute][0]  ?? false;
   }
     
 
-    
+   */ 
 
 
 }

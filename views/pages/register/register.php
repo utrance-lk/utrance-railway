@@ -6,22 +6,27 @@
 <body>
 
 <div class="auth-content">
-  <!--?php
-     if(isset($model)){
-         var_dump($model);
-     }
-  ?!-->
+  
+  
     <form   method="post" name="register"  id="register_form"  >
         <h2 class="form-title" style="font-size:2.7rem">Sign Up</h2>
     <div class="div-sub">
         <label class="lbl-user"><i class="fa fa-user" aria-hidden="true" style="padding-right: 1.5rem;"></i>User Name</label>
-        <input type="text"  placeholder="First name" style="margin-bottom: 10px" id="first_name" name="first_name" value="<?php echo $model->first_name;?>"    class="text-input">
-        <input type="text"    id="last_name"  name="last_name" class="text-input" placeholder="Last name">
+        <input type="text"  placeholder="First name" style="margin-bottom: 10px" id="first_name" name="first_name" value="<?php echo $model->first_name;?>"    class="text-input<?php echo $model->hasError('first_name') ? ' is-invalid' : ''?>">
+        
+
+
+        <input type="text"    id="last_name"  name="last_name" value="<?php echo $model->last_name;?>" class="text-input" placeholder="Last name">
+        
+    
     </div>
 
     <div class="div-sub">
         <label  class="lbl-user"><i class="fa fa-envelope" aria-hidden="true" style="padding-right: 1rem;"></i>Email</label>
-        <input type="email"   class="text-input" id="email_id" name="email_id">
+        <input type="email"   class="text-input" id="email_id" name="email_id" value="<?php echo $model->last_name;?>">
+        <div class="invalid-feedback" style="color:red">
+        <?php echo $model->getFirstError('last_name')?>
+        </div>
     </div>
 
     <div  class="div-sub">
@@ -61,7 +66,7 @@
             </div>
 
                <div id="btn-register">
-                    <!--button type="submit" id="register-button" name="register-btn" class="btn btn-big">Register</button!-->
+                   
                     <input type="submit"  id="register-button" name="register-btn" class="btn btn-big" value="Submit">
                </div>
                 <div class="div-sub1" style="display: inline;">
@@ -72,7 +77,7 @@
     
     </form>
 </div>
-<!--script type="module" src="../../../utrance-railway/public/js/pages/register/main.js"></script!--> 
+
 
 
 
