@@ -4,6 +4,7 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
+require_once "../controllers/RegisterUserController.php";
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -38,6 +39,11 @@ $app->router->post('/utrance-railway/search', [ViewController::class, 'search'])
 $app->router->get('/utrance-railway/login', [AuthController::class, 'login']);
 $app->router->post('/utrance-railway/login', [AuthController::class, 'login']);
 $app->router->get('/utrance-railway/logout', [AuthController::class, 'logout']);
+
+
+////////Registered User Routing
+$app->router->get('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUser']);
+$app->router->post('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUser']);
 
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);

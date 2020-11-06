@@ -54,9 +54,11 @@
               <span class="mybookings-name">My bookings</span>
             </div>
           </div>
-          <div class="userrole-name">Admin</div>
-          <div class="sidebar__nav-role-items">
-            <a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
+          <div class="userrole-name">User</div>
+
+
+          <div class="sidebar__nav-role-items" style="height:6">
+            <!--a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
               </svg>
@@ -85,7 +87,7 @@
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-shopping-cart"></use>
               </svg>
               <span class="manage--freights-name">Manage freights</span>
-            </div>
+            </div!-->
           </div>
         </div>
       </div>
