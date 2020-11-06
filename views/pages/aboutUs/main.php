@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
+    
   <!-- <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css"/>-->
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/aboutUs/aboutUs.css" />
 </head>
