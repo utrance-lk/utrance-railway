@@ -87,9 +87,7 @@
                       $dom->loadHTML($html);
 
                       print_r($dom->saveHTML());
-                      
-                     
-                   
+                                 
                     }
                    
                   }

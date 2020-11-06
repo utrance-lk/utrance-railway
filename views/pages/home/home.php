@@ -47,67 +47,6 @@
       </div>
     </nav>
       <section class="heading-primary">
-        <!--div class="header">
-          <div class="logo-box">
-            <img src="../../../../utrance-railway/public/img/pages/home/logo-white.png" class="logo" alt="logo" />
-          </div>
-          <nav class="navbar">
-            <ul class="navbar__list">
-              <li class="navbar__list-items">
-                <a href="#">Tickets</a>
-              </li>
-              <li class="navbar__list-items">
-                <a href="#">Freights</a>
-              </li>
-
-              <?php if(!isset($_SESSION['user'])) : ?>
-              
-                <li class="navbar__list-items">
-                <a href="login">Login</a>
-              </li>
-
-              <?php else: ?>
-              
-                <li class="user__nav-box">
-                <div class="user__nav-box-dropdown">
-                  <ul>
-                    <li class="user-dropdown__items">
-                      <a href="#">
-                        <svg class="user-dropdown-icon">
-                          <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-tools"></use>
-                        </svg>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li class="user-dropdown__items">
-                      <a href="#">
-                        <svg class="user-dropdown-icon">
-                          <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-briefcase"></use>
-                        </svg>
-                        <span>My bookings</span>
-                      </a>
-                    </li>
-                    <li class="user-dropdown__items">
-                      <a href="/utrance-railway/logout">
-                        <svg class="user-dropdown-icon">
-                          <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-log-out"></use>
-                        </svg>
-                        <span>Logout</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="user__nav-box-photo">  
-                  <img src="/utrance-railway/public/img/pages/admin/Ashika.jpg" alt="user-photo">
-                </div>
-                <div class="user__nav-box-name"><?php echo App::$APP->activeUser()['name']; ?></div>
-              </li>
-
-              <?php endif; ?>
-            
-            </ul>
-          </nav>
-        </div-->
         <form class="search-bar__container" method="POST" action="/utrance-railway/search">
           <div class="search-bar">
             <div class="search-bar__search">
@@ -148,13 +87,6 @@
             <input type="submit" value="Search" class="search-bar__search-btn js--searchbar__search-btn">
           </div>
         </form>
-        <!--div class="morecontent-container">
-        <a class="morecontent-btn" href="#newsfeed">
-          <svg class="down-arrow">
-            <use xlink:href="../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-chevron-with-circle-down"></use>
-          </svg>
-        </a>
-        </div-->
       </section>
 
       <?php include 'newsfeed.php'; ?>

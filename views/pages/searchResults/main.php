@@ -25,5 +25,6 @@
     <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/header.css" />
     <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/searchResults/searchResults.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
 
   </head>
