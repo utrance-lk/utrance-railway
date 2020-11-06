@@ -4,29 +4,29 @@
             <div class="content-title">
               <p>New User Account Settings</p>
             </div>
-            <form action="" class="form__user-data">
+            <form action="" class="form__user-data" method="POST">
               <div class="content__fields">
                 <div class="firstname-box content__fields-item">
                   <label for="firstname" class="form__label">First Name</label>
-                  <input type="text" name="firstname" class="form__input" />
+                  <input type="text" name="first_name" class="form__input" />
                 </div>
                 <div class="lastname-box content__fields-item">
                   <label for="lastname" class="form__label">Last Name</label>
-                  <input type="text" name="lastname" class="form__input" />
+                  <input type="text" name="last_name" class="form__input" />
                 </div>
                 <div class="emai-box content__fields-item">
                   <label for="email" class="form__label">Email</label>
-                  <input type="email" name="email" class="form__input" />
+                  <input type="email" name="email_id" class="form__input" />
                 </div>
                 <div class="address-box content__fields-item">
                   <span class="adress-box__title">Address</span>
                   <div class="streetline-1 content__fields-item">
                     <label for="stl1" class="form__label">Street Line 1</label>
-                    <input type="text" name="strl1" class="form__input" />
+                    <input type="text" name="street_line1" class="form__input" />
                   </div>
                   <div class="streetline-2 content__fields-item">
                     <label for="stl2" class="form__label">Street Line 2</label>
-                    <input type="text" name="strl2" class="form__input" />
+                    <input type="text" name="street_line2" class="form__input" />
                   </div>
                   <div class="city content__fields-item">
                     <label for="city" class="form__label">City</label>
@@ -35,12 +35,12 @@
                 </div>
                 <div class="contactno-box content__fields-item">
                   <label for="contactno" class="form__label">Contact No</label>
-                  <input type="text" name="contactno" class="form__input" />
+                  <input type="text" name="contact_num" class="form__input" />
                 </div>
                 <div class="role-box content__fields-item">
                   <label for="role" class="form__label">Role</label>
                   <!-- <input type="text" name="role" class="form__input" /> -->
-                  <select name="role" id="role" class="form__input">
+                  <select name="user_role" id="role" class="form__input">
                     <option value="admin">Admin</option>
                     <option value="detailsProvider">Details Provider</option>
                     <option value="user">User</option>
@@ -88,7 +88,7 @@
                   >
                   <input
                     type="password"
-                    name="newpassword"
+                    name="user_password"
                     class="form__input"
                   />
                 </div>
@@ -98,12 +98,12 @@
                   >
                   <input
                     type="password"
-                    name="confirmpassword"
+                    name="user_confirmpassword"
                     class="form__input"
                   />
                 </div>
                 <div class="btn__save-box">
-                  <div class="btn__save btn__password">Add User</div>
+                  <button class="btn__save btn__password" type="Submit">Add User</button>
                 </div>
               </div>
             </form>
