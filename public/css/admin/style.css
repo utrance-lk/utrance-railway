@@ -423,21 +423,12 @@ select {
   cursor: pointer;
   transition: all 0.2s;
   color: #000000;
-<<<<<<< HEAD
 }
 
 .search__result-deletebtn {
   color: #d64541;
 }
 
-=======
-}
-
-.search__result-deletebtn {
-  color: #D64541;
-}
-
->>>>>>> 11a95d424b8d6d968baccb0860f7d325bd17b52f
 .btn-white:focus,
 .btn-white:active {
   transform: scale(0.97);
@@ -567,18 +558,16 @@ select {
 }
 
 .addroutebtn-img {
-<<<<<<< HEAD
-=======
+
   fill: #fff;
 }
 
 .addstopbtn-img {
-<<<<<<< HEAD
->>>>>>> 11a95d424b8d6d968baccb0860f7d325bd17b52f
+
   fill: #89c4f4;
-=======
+
   fill: rgba(31, 58, 147, 0.8);
->>>>>>> 1b282de63afc4f47827ad0d0f71853e1195a8913
+
 }
 
 .addStop-card {
