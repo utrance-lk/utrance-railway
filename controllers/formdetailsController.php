@@ -35,42 +35,61 @@ class formdetailsController extends Controller {
         // ]);
     }
 
-    public function manageTrains($request){
+    public function manageTrains($request)
+    {
         // var_dump($request->getBody());
-        if($request->isGet()) {
+        if($request->isGet()) 
+        {
             $searchModel = new getUserModel();
             $searchModel->loadData($request->getBody());
             
 
             $trainArrays = $searchModel->getTours();
             //  var_dump($trainArrays);
-         return $this->render(['admin', 'manageTrains'], $trainArrays);
+            return $this->render(['admin', 'manageTrains'], $trainArrays);
 
         }
 
         return $this->render(['admin', 'manageTrains']);
    }
 
-   public function updateTrain($request) {
-    $updateTrainModel=new getUserModel();
-    if($request->isGet()) {
+   public function updateTrain($request) 
+    {
+    
+        if($request->isGet()) 
+        {
+            $updateTrainModel=new getUserModel();
+            // var_dump($request->getQueryParams());
 
-       var_dump($request->getQueryParams());
 
+        $updateTrainModel->loadData($request->getQueryParams());
+        $updateTrainArray=$updateTrainModel->getManagTrains();
+        
+            
+        
+            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+        return $this->render(['admin', 'updateTrain'],$updateTrainArray);
+        }
 
-       $updateTrainModel->loadData($request->getQueryParams());
-       $updateTrainArray=$updateTrainModel->getManagTrains();
-       
-         
-      
-        //return $this->render(['admin', 'manageUsers'],$getUserArray);
-     return $this->render(['admin', 'updateTrain'],$updateTrainArray);
-    }
+        if ($request->isPost()) 
+        {
+
+            $saveDetailsModel = new getUserModel();
+            $tempBody = $request->getBody();
+            $tempBody['train_id'] = $request->getQueryParams()['train_id'];
+            $saveDetailsModel->loadData($tempBody);
+            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
+            //var_dump($saveDetailsModel->updateUserDetails());
+            $saveDetailsModel->updateTrainDetails();
+            
+            return 'success';
+
+        }
 
    
- //  return $this->render(
-   // return $this->render(['admin', 'updateTrain']);
-  }
+            //  return $this->render(
+            // return $this->render(['admin', 'updateTrain']);
+    }
 
    
 

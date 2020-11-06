@@ -26,14 +26,16 @@ class getUserModel extends Model
     public $train_name;
     public $train_type;
     public $train_id;
-    public $train_traval_days;
+    public $route_id;
+    public $train_travel_days;
     public $train_active_status;
     public $train_freights_allowed;
     public $train_fc_seats;
     public $train_sc_seats;
     public $train_observation_seats;
     public $train_sleeping_berths;
-
+    public $train_total_weight;
+    
 
 
     public function createOne()
@@ -99,9 +101,40 @@ class getUserModel extends Model
         $query->execute();
 
         $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
-var_dump( $this->resultArray["trains"]);
+        // var_dump( $this->resultArray["trains"]);
        
         return $this->resultArray;
+    }
+
+    public function updateTrainDetails()
+    {
+        $query = App::$APP->db->pdo->prepare("UPDATE trains SET train_name =:train_name, route_id=:route_id, train_type=:train_type, train_active_status=:train_active_status,train_travel_days=:train_travel_days,train_freights_allowed=:train_freights_allowed,train_fc_seats=:train_fc_seats,train_sc_seats=:train_sc_seats,train_observation_seats=:train_observation_seats,train_sleeping_berths=:train_sleeping_berths,train_total_weight=:train_total_weight WHERE train_id=:train_id");
+
+        $query->bindValue(":train_id", $this->train_id);
+        $query->bindValue(":train_name", $this->train_name);
+        $query->bindValue(":route_id", $this->route_id);
+        $query->bindValue(":train_type", $this->train_type);
+        // $int = (int)$this->train_active_status;
+        $query->bindValue(":train_active_status",$this->train_active_status);
+
+        // $checkbox1=$_POST['techno'];  $int = (int)$num;
+        //     $chk="";  
+        //     foreach($checkbox1 as $chk1)  
+        //     {  
+        //         $chk .= $chk1.",";  
+        //     } 
+
+        // $trinTravalDays=implode(' ',$this->train_travel_days);
+        $query->bindValue(":train_travel_days", implode(" ",$this->train_travel_days));
+             
+        $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
+        $query->bindValue(":train_fc_seats", $this->train_fc_seats);
+        $query->bindValue(":train_sc_seats", $this->train_sc_seats);
+        $query->bindValue(":train_observation_seats", $this->train_observation_seats);
+        $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
+        $query->bindValue(":train_total_weight", $this->train_total_weight);
+
+        $query->execute();
     }
 
 
