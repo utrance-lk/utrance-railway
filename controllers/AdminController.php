@@ -1,37 +1,62 @@
 <?php
 
 include_once "../classes/core/Controller.php";
+include_once "../controllers/AuthController.php";
 
 class AdminController extends Controller
 {
+    public function validateUser()
+    {
+        $currentUser = new AuthController();
 
-   
-   public function adminSettings($request){
-       $adminSettingModel=new UserModel();
-        if($request->isPost()) {
-            // form
-            return 'success';
+        if (!$currentUser->isLoggedIn()) {
+            echo 'You are not logged in!!';
+            return false;
         }
-        if($request->isGet()) {
-        $adminSettingModel->loadData($request->getBody());
-        $getUserDetailsArray=$adminSettingModel->getUserDetails1();
-        //var_dump($getUserDetailsArray);
-        return $this->render('admin',$getUserDetailsArray);
+
+        if (!$currentUser->restrictTo('admin')) {
+            echo 'You are unorthorized to perform this action!!';
+            return false;
         }
-   }
+
+        return true;
+
+    }
+
+    public function adminSettings($request)
+    {
+
+        if ($this->validateUser()) {
+            if ($request->isPost()) {
+                // form
+                return 'success';
+            }
+
+            return $this->render('admin');
+        }
+
+    }
 
     public function manageUsers($request)
     {
-        $manageUserModel = new UserModel();
-        if ($request->isGet()) {
 
-            $manageUserModel->loadData($request->getBody());
-            $getUserArray = $manageUserModel->getManageUsers();
+        if ($this->validateUser()) {
+            $manageUserModel = new UserModel();
+            if ($request->isGet()) {
 
-            return $this->render(['admin', 'manageUsers'], $getUserArray);
+                $manageUserModel->loadData($request->getBody());
+                $getUserArray = $manageUserModel->getManageUsers();
 
+                return $this->render(['admin', 'manageUsers'], $getUserArray);
+
+            }
+
+            if ($request->isPost()) {
+
+            }
         }
-      //  return $this->render(['admin', 'manageUsers']);
+
+        //  return $this->render(['admin', 'manageUsers']);
         
 
         
@@ -56,12 +81,16 @@ class AdminController extends Controller
    
     public function manageTrains($request)
     {
-        if ($request->isPost()) {
-            // form
-            return 'success';
+
+        if ($this->validateUser()) {
+            if ($request->isPost()) {
+                // form
+                return 'success';
+            }
+
+            return $this->render(['admin', 'manageTrains']);
         }
 
-        return $this->render(['admin', 'manageTrains']);
     }
 
     public function manageRoutes($request)

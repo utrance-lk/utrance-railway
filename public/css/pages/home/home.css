@@ -1,35 +1,41 @@
 .heading-primary {
-  height: 100vh;
-  background-image: linear-gradient(
+  height: 40vh;
+  /* background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
     ),
-    url("../../../img/pages/home/train.jpg");
+    url("../../../img/pages/home/train.jpg"); */
   background-size: cover;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  justify-content: center;
+  background-color: rgba(31, 58, 147, 0.8);
 }
 
 .heading-primary > * {
-  margin: 0 15vh;
+  margin: 0 15vw;
   /* border: 1px solid lightgreen; */
 }
 
-.header {
-  /* height: 10vh; */
-  /* background-color: #fff; */
-  /* border: 1px solid #fff; */
+.navbar {
   color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2rem;
+  background-color: rgba(31, 58, 147, 0.8);
+  border: none;
+  font-family: "Lato", sans-serif;
 }
 
-.logo {
-  height: 8rem;
+.nav-container {
+  border: none;
+}
+
+.navbar__icon {
+  fill: rgb(242, 242, 242);
+}
+
+.navbar a:link,
+.navbar a:visited {
+  color: #fff;
 }
 
 .navbar__list {
@@ -126,7 +132,7 @@
 }
 
 .search-bar__container {
-  margin-top: 15rem;
+  /* margin-top: 15rem; */
 }
 
 .search-bar {
@@ -263,11 +269,6 @@
   cursor: pointer;
   transition: all 0.5s;
 }
-
-/* .heading-secondary {
-  height: 50vh;
-  border: 1px solid transparent;
-} */
 
 .morecontent-container {
   display: flex;

@@ -39,7 +39,8 @@ class App {
     public function activeUser() {
         return [
             "name" => $this->user[0]["first_name"],
-            "id" => $this->user[0]["id"]
+            "id" => $this->user[0]["id"],
+            "role" => $this->user[0]["user_role"]
         ];
     }
 

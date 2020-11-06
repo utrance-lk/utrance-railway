@@ -24,32 +24,16 @@ class ViewController extends Controller
     public function search($request)
     {
 
-        // var_dump($request->getBody());
-
         if ($request->isPost()) {
-
-            // var_dump($request->getBody());
 
             $searchTourModel = new ViewModel();
             $searchTourModel->loadData($request->getBody());
 
             $pathArrays = $searchTourModel->getTours();
 
-            // foreach ($pathArrays as $key => $value) {
-            //     $$key = $value;
-            //     var_dump($$key);
-            //     // var_dump($array(0));
-            // }
-
-            // var_dump($searchTourModel['resultsArr']);
-            // print_r($pathArrays['directPaths']);
-            // return 'success';
             return $this->render('searchResults', $pathArrays);
 
         }
-
-        // var_dump($request->getBody());
-       
 
         return $this->render('searchResults');
 
