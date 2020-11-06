@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap"
     rel="stylesheet"

@@ -1,4 +1,4 @@
-<section class="newsfeed" id="newsfeed">
+<!-- <section class="newsfeed" id="newsfeed">
     <div class="newscard__container">
         <div class="newscard__container-item-1">
             <img src="../../../../utrance-railway/public/img/pages/home/newsfeed/train3.jpg" class="newscard-img" alt="train-img">
@@ -34,6 +34,39 @@
             <img src="../../../../utrance-railway/public/img/pages/home/newsfeed/train3.jpg" class="newscard-img" alt="train-img">
             <div class="newscard__textbox">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, harum laborum officiis nisi quod in sed quasi esse unde quas labore sit eaque autem perferendis vero! Quae eum fuga doloremque?
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section class="newsfeed">
+    <div class="newsfeed__container">
+        <div class="newscard">
+            <div class="newscard__img-box">
+                <img src="/utrance-railway/public/img/pages/home/newsfeed/train3.jpg" class="newscard__img" alt="news-img">
+                <div class="newsview-btn">
+                    <span>View</span>
+                    <svg class="newsview-icon">
+                        <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="newscard__content-box">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos nisi dolores cumque praesentium dolore iure ut, ratione quo suscipit perferendis laudantium alias rerum molestiae corporis earum magni eveniet distinctio assumenda!
+            </div>
+        </div>
+        <div class="newscard">
+            <div class="newscard__img-box">
+                <img src="/utrance-railway/public/img/pages/home/newsfeed/train3.jpg" class="newscard__img" alt="news-img">
+                <div class="newsview-btn">
+                    <span>View</span>
+                    <svg class="newsview-icon">
+                        <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chevron-right"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="newscard__content-box">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non amet velit aperiam molestiae est temporibus. Optio voluptatum fugit cupiditate. Nobis doloribus quae minima, molestiae vero aut tenetur error quibusdam esse!
             </div>
         </div>
     </div>

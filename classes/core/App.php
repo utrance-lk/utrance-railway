@@ -15,7 +15,7 @@ class App {
     public $response;
     public $session;
     public $db;
-    private $user;
+    public $user;
     public $userClass;
 
     public function __construct($rootPath, $config) {
@@ -39,7 +39,8 @@ class App {
     public function activeUser() {
         return [
             "name" => $this->user[0]["first_name"],
-            "id" => $this->user[0]["id"]
+            "id" => $this->user[0]["id"],
+            "role" => $this->user[0]["user_role"]
         ];
     }
 
