@@ -62,8 +62,6 @@ const displayAddedStop = function(inputValues, stopsCount) {
     items.addedStopsCardContainer.insertAdjacentHTML('beforeend', markup);
     const el = document.getElementById("js--addStop-card");
     el.parentNode.removeChild(el);
-    items.addRouteBtn.style.display = "block";
-
 
     document
       .getElementById("js--stop__delete-btn")

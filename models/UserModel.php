@@ -143,7 +143,8 @@ class UserModel extends Model
 
     public function getManageUsers()
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name FROM users ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,street_line1,street_line2,city,contact_num,email_id FROM users ");
+        $query->bindValue(":id", $this->id);
         $query->execute();
 
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -189,5 +190,7 @@ class UserModel extends Model
         $query->bindValue(":email_id", $this->email_id);
         $query->execute();
     }
+
+
 
 }
