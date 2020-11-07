@@ -101,7 +101,7 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 $app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
 $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
 
-<<<<<<< HEAD
+
 
 // source routing daranya
 
@@ -121,8 +121,7 @@ $app->router->get('/utrance-railway/source/contactAdmin', [AdminController::clas
 
 //$app->router->post('/utrance-railway/public/index.php/hi/','hi');
 
-=======
->>>>>>> 1b282de63afc4f47827ad0d0f71853e1195a8913
+
 /* ROUTE HANDLING */
 
 $app->run();

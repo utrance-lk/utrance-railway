@@ -10,5 +10,8 @@
     />
     
   <!-- <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css"/>-->
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/header.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/aboutUs/aboutUs.css" />
 </head>

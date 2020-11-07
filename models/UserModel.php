@@ -90,6 +90,7 @@ class UserModel extends Model
 
     }
 
+    //daranya
     public function addUser()
     {
 
@@ -131,6 +132,9 @@ class UserModel extends Model
             return 1;
         }
     }
+
+
+    //daranya
     public function getUserDetails1(){
       $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num,user_password FROM users WHERE id=10 ");
       $query->execute();

@@ -3,8 +3,9 @@
 <div class="about-section">
   <h1>About Us </h1>
 </div>
-
+<br>
 <h2 style="text-align:center">We're Utrance</h2>
+<br>
 <div class="row">
   <div class="column">
     <div class="card">

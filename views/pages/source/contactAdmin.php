@@ -8,7 +8,7 @@
           <p>To admin,</p>
           <br>
           <div class="textarea">
-              <textarea rows="20" cols="75" name="message" form="messageform" >Enter the message here...</textarea>
+              <textarea rows="50" cols="75" name="message" form="messageform" >Enter the message here...</textarea>
           </div>
               <br>
               <div class="btn__save-box">

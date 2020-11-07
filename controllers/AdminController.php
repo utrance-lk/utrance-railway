@@ -25,14 +25,15 @@ class AdminController extends Controller
 
     public function adminSettings($request)
     {
-
-        if ($this->validateUser()) {
-            if ($request->isPost()) {
-                // form
-                return 'success';
-            }
-
-            return $this->render('admin');
+        $adminSettingModel=new UserModel();
+        if($request->isPost()) {
+            // form
+            return 'success';
+        }
+        if($request->isGet()) {
+        $adminSettingModel->loadData($request->getBody());
+        $getUserDetailsArray=$adminSettingModel->getUserDetails1();
+        return $this->render('admin',$getUserDetailsArray);
         }
 
     }
