@@ -49,56 +49,21 @@ class AuthController extends Controller
 
     public function registerPageNow($request)
     {
+        
         $registerModel=new UserModel();
         if($request->isPost()){
-          //  echo "Hello world";
-           
-            $registerModel->loadData($request->getBody());
-
-
-           
-
-            if($registerModel->validate() && $registerModel->register()){
-                return 'Success';
-            }
-           
-          
-            return $this->render('register',[
-                'model' =>$registerModel
-            ]);
-        }
-
-        return $this->render('register',[
-            'model' =>$registerModel
-        ]);
-       
-
-       // $registerModel = new UserModel();
-
-
-        /*if ($request->isPost()) {
+            //var_dump("hello");
+            return;
             
+        
+        }
+        //var_dump("heo");
+        return $this->render('register');
 
-        if ($request->isPost()) {
-
-
-            $registerModel->loadData($request->getBody());
-            if ($registerModel->valid()) {
-                $registerModel->registerUser();
-                return "Succes";
-            } else {
-                return "Added Fail";
-            }
-
-        }*/
-
+      
     }
 
-    public function registerPage()
-    {
-        //return $this->render('register');
-
-    }
+    
 
     public function getMy($request) {
         if($request->isPost()) {

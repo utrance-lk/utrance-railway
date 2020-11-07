@@ -1,0 +1,14 @@
+
+section {
+    width: 200px;
+    border: 1px solid #2d2d2d;
+    display: flex;
+    justify-content: center;
+  }
+  
+  div {
+    color: #fff;
+    background: #1F3A93;
+    padding: 12px;
+    display: inline-block;
+  }
