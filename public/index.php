@@ -60,6 +60,9 @@ $app->router->post('/utrance-railway/admin/users/add', [AdminController::class, 
 $app->router->get('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 $app->router->post('/utrance-railway/admin/users/update', [AdminController::class, 'updateUser']);
 
+$app->router->get('/utrance-railway/admin/users/delete', [AdminController::class, 'deleteUser']);
+$app->router->post('/utrance-railway/admin/users/delete', [AdminController::class, 'deleteUser']);
+
 $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 

@@ -54,7 +54,7 @@
                   if(isset($users)){
                     foreach($users as $key=>$value){
                       //echo $value['first_name'];
-                     $html =" <form class='search__result-card' method='get'>
+                     $html =" <form class='search__result-card' id='form-card' method='get'>
                              <div class='search__result-user-mainbox search__result-mainbox'>
                              <div class='user-mainbox__img-box'>";
 
@@ -76,8 +76,9 @@
                       $html .="<a href='/utrance-railway/admin/users/update?id=$id' class='search__result-user-managebtnbox'>";
                       $html .="<div class='search__result-managebtn btn-white'> View</div></a>";
 
-                      $html .="<div class='search__result-user-deletebtnbox'>";
-                      $html .="<div class='search__result-deletebtn btn-white'>Delete</div></div></form>";
+                     //$html .="<div class='search__result-user-deletebtnbox'>";
+                     $html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
+                      $html .="<div class='search__result-deletebtn btn-white' id='delete-btn'>Delete</div></a></form>";
                    
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
@@ -92,6 +93,7 @@
              </div>
           </div>
       </div>
+      <script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
     
 
 

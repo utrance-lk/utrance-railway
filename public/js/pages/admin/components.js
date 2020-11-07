@@ -7,4 +7,6 @@ export const items = {
   addStopCard: document.getElementById("js--addStop-card"),
   addBtn: document.getElementById("js--addstop-btn-box"),
   addRouteBtn: document.getElementById("js--btn__add-route"),
+  deleteUserBtn:document.getElementById("delete-btn"),
+  deleteUserFormCard:document.getElementById("form-card");
 };

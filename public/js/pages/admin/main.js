@@ -27,3 +27,12 @@ window.addEventListener('load', function() {
         items.addRouteBtn.style.display = 'none';
     }
 })
+
+items.deleteUserBtn.addEventListener("click",function () {
+
+
+var myobj=document.getElementById("form-card");
+ myobj.remove();
+  
+})
+

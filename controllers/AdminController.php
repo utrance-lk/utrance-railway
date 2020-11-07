@@ -123,6 +123,18 @@ class AdminController extends Controller
         return $this->render(['admin', 'addRoute']);
     }
 
+
+    public function deleteUser($request){
+        if($request->isGet()){
+            $deleteUserModel=new UserModel();
+            $deleteUserModel->loadData($request->getQueryParams());
+            $deleteUserModel->deleteUserDetails();
+            
+
+        }
+        return $this->render(['admin','manageUsers']);
+    }
+
     public function updateUser($request)
     {
 
@@ -149,10 +161,7 @@ class AdminController extends Controller
 
     }
 
-    public function deleteUser(){
-        
-
-    }
+   
 
     public function updateTrain($request)
     {
