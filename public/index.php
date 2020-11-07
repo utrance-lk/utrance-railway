@@ -4,11 +4,11 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
-<<<<<<< HEAD
+
 require_once "../controllers/RegisterUserController.php";
-=======
+
 require_once "../controllers/FormDetailsController.php";
->>>>>>> 74bfd93f9562e71b9ebff069a04b5f413b66b96c
+
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
