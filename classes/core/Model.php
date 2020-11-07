@@ -90,28 +90,16 @@ include_once "App.php";
         ];
     }
 
-<<<<<<< HEAD
-=======
+
+
     
 
 
     */
 
->>>>>>> 74bfd93f9562e71b9ebff069a04b5f413b66b96c
+
     
-  public function hasError($attribute){
-      
-      return $this->errors[$attribute] ?? false; 
-  }
-
-  public function getFirstError($attribute){
-
-    return $this->errors[$attribute][0]  ?? false;
-  }
-    
-
-   */ 
-
+  
 
 }
 ?>
