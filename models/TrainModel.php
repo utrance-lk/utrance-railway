@@ -5,7 +5,7 @@ include_once "../classes/core/Model.php";
 
 
 
-class getUserModel extends Model
+class TrainModel extends Model
 {
 
     public $first_name;

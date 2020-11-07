@@ -4,7 +4,7 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
-require_once "../controllers/formdetailsController.php";
+require_once "../controllers/FormDetailsController.php";
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -103,13 +103,13 @@ $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'man
 
 
 
-$app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
-$app->router->post('/utrance-railway/getUserDetgitails', [formdetailsController::class, 'register']);
-$app->router->get('/utrance-railway/admin/trains', [formdetailsController::class, 'manageTrains']);
-$app->router->get('/utrance-railway/admin/trains/update', [formdetailsController::class, 'updateTrain']);
-$app->router->post('/utrance-railway/admin/trains/update', [formdetailsController::class, 'updateTrain']);
+$app->router->get('/utrance-railway/getUserDetails', [FormDetailsController::class, 'form']);
+$app->router->post('/utrance-railway/getUserDetgitails', [FormDetailsController::class, 'register']);
+$app->router->get('/utrance-railway/admin/trains', [FormDetailsController::class, 'manageTrains']);
+$app->router->get('/utrance-railway/admin/trains/update', [FormDetailsController::class, 'updateTrain']);
+$app->router->post('/utrance-railway/admin/trains/update', [FormDetailsController::class, 'updateTrain']);
 
-// $app->router->get('/utrance-railway/admin/trains/update?train_id=$train_id', [formdetailsController::class, 'updateTrain']);
+
 
 
 
@@ -144,10 +144,8 @@ $app->router->post('/utrance-railway/t/test.php', [ViewController::class, 'searc
 
 
 
-//hasani nimeshika
 
-$app->router->post('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
-$app->router->get('/utrance-railway/getUserDetails', [formdetailsController::class, 'form']);
+
 
 /* ROUTE HANDLING */
 

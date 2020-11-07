@@ -1,7 +1,7 @@
 <?php
 include_once "../classes/core/Controller.php";
-include_once "../models/getUserModel.php";
-class formdetailsController extends Controller
+include_once "../models/TrainModel.php";
+class FormDetailsController extends Controller
 {
 
     public function form($request)
@@ -18,7 +18,7 @@ class formdetailsController extends Controller
     public function register($request)
     {
 
-        $userModel = new getUserModel();
+        $userModel = new TrainModel();
         if ($request->isPost()) {
             $userModel->loadData($request->getBody());
 
@@ -42,7 +42,7 @@ class formdetailsController extends Controller
         // var_dump($request->getBody());
         if($request->isGet()) 
         {
-            $searchModel = new getUserModel();
+            $searchModel = new TrainModel();
             $searchModel->loadData($request->getBody());
             
 
@@ -60,7 +60,7 @@ class formdetailsController extends Controller
     
         if($request->isGet()) 
         {
-            $updateTrainModel=new getUserModel();
+            $updateTrainModel=new TrainModel();
             // var_dump($request->getQueryParams());
 
 
@@ -76,7 +76,7 @@ class formdetailsController extends Controller
         if ($request->isPost()) 
         {
 
-            $saveDetailsModel = new getUserModel();
+            $saveDetailsModel = new TrainModel();
             $tempBody = $request->getBody();
             $tempBody['train_id'] = $request->getQueryParams()['train_id'];
             $saveDetailsModel->loadData($tempBody);
