@@ -169,12 +169,12 @@ class UserModel extends Model
 
     public function getManageUsers()//Ashika
     {
-<<<<<<< HEAD
+
         $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name FROM users WHERE user_active_status=1 ");
-=======
+
         $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,street_line1,street_line2,city,contact_num,email_id FROM users ");
         $query->bindValue(":id", $this->id);
->>>>>>> 74bfd93f9562e71b9ebff069a04b5f413b66b96c
+
         $query->execute();
 
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -222,7 +222,7 @@ class UserModel extends Model
     }
 
 
-<<<<<<< HEAD
+
     public function deleteUserDetails(){
         $this->user_active_status=0;
         $query = App::$APP->db->pdo->prepare("UPDATE users SET user_active_status=:ua WHERE id=:id");
@@ -230,7 +230,6 @@ class UserModel extends Model
         $query->bindValue(":ua",$this->user_active_status);
         $query->execute();
     }
-=======
->>>>>>> 74bfd93f9562e71b9ebff069a04b5f413b66b96c
+
 
 }
