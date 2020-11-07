@@ -2,25 +2,21 @@ import { items } from "./components.js";
 import * as register from "./register.js";
 
 
-items.userRegisterButton.addEventListener('click',function(){
-   
-    
-    console.log("hy");
-    register.userRegistration();
-
-     $.ajax(
+items.userRegisterButton.addEventListener("click",register.userRegistration);
+   /* register.userRegistration();
+    $.ajax(
         {
             type:"POST",
-            url:"/utrance-railway/registerPage",
+            url:"/utrance-railway/public/index.php/registerPage",
             data:{
-               first_name:items.first_name,
-               last_name:items.last_name,
-               street_line1:items.street_line1,
-               street_line2:items.street_line2,
+               first_name:items.firstName,
+               last_name:items.lastName,
+               street_line1:items.streetLine1,
+               street_line2:items.streetLine2,
                city:items.city,
-               contact_num:items.contact_num,
-               user_password:items.user_password,
-               email_id:items.email_id,
+               contactnum:items.contactnum,
+               userpassword:items.userPassword,
+               email:items.email,
 
 
                
@@ -33,11 +29,8 @@ items.userRegisterButton.addEventListener('click',function(){
         }
     );
 
-});
-
-
+});*/
    
-
 
 
     

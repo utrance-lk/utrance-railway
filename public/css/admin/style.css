@@ -558,11 +558,16 @@ select {
 }
 
 .addroutebtn-img {
+
   fill: #fff;
 }
 
 .addstopbtn-img {
+
+  fill: #89c4f4;
+
   fill: rgba(31, 58, 147, 0.8);
+
 }
 
 .addStop-card {
