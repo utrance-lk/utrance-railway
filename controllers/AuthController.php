@@ -13,7 +13,7 @@ class AuthController extends Controller
 
     public function login($request, $response)
     {
-        if ($request->isPost()) {
+        if ($request->isPost()){
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
             $result = $loginUser->findOne();

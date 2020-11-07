@@ -151,6 +151,7 @@ class AdminController extends Controller
 
     public function deleteUser(){
         
+
     }
 
     public function updateTrain($request)
