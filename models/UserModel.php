@@ -189,5 +189,28 @@ class UserModel extends Model
         $query->execute();
     }
 
+    // asindu - validation
+    public function sanitizeFormString($inputText) {
+        $inputText = strip_tags($inputText); //remove html tags
+        $inputText = str_replace(" ", "", $inputText); // remove white spaces
+        $inputText = strtolower($inputText); // lowering the text
+        return ucfirst($inputText); // capitalize first letter
+    }
+
+    public function sanitizeFormUsername($inputText) {
+        $inputText = strip_tags($inputText); //remove html tags
+        return str_replace(" ", "", $inputText); // remove white spaces
+    }
+
+    public function sanitizeFormPassword($inputText) {
+        return strip_tags($inputText); //remove html tags
+    }
+
+    public function sanitizeFormEmail($inputText) {
+        $inputText = strip_tags($inputText); //remove html tags
+        return str_replace(" ", "", $inputText); // remove white spaces
+    }
+
+
 
 }
