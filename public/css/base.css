@@ -27,7 +27,6 @@ html {
 body {
   box-sizing: border-box;
   font-size: 1.5rem;
-  color: black;
   background-color: var(--color-primary);
 }
 
