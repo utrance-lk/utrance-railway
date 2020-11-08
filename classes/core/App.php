@@ -38,9 +38,15 @@ class App {
 
     public function activeUser() {
         return [
-            "name" => $this->user[0]["first_name"],
+            "first_name" => $this->user[0]["first_name"],
+            "last_name" => $this->user[0]["last_name"],
             "id" => $this->user[0]["id"],
-            "role" => $this->user[0]["user_role"]
+            "email_id" => $this->user[0]["email_id"],
+            "street_line1" => $this->user[0]["street_line1"],
+            "street_line2" => $this->user[0]["street_line2"],
+            "city" => $this->user[0]["city"],
+            "contact_num" => $this->user[0]["contact_num"],
+            "role" => $this->user[0]["user_role"],
         ];
     }
 

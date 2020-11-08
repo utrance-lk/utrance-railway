@@ -10,14 +10,18 @@
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
-              <div class="dashboard-searchbar__dropdown">
+              <!-- <div class="dashboard-searchbar__dropdown">
                
                 <select name="catogory" id="" class="dropdown__list">
                   <option value="name">Name</option>
                   <option value="id">Id</option>
                 </select>
 
+
               </div>
+
+              </div> -->
+
             </form>
 
             <a href="/utrance-railway/admin/users/add" class="adduserbtn addbtn">
@@ -53,7 +57,7 @@
                       $html .="<img src='/utrance-railway/public/img/pages/admin/".$value['first_name'].".jpg' alt='profile-avatar' class='profile__avatar'/></div>";
                       $html .="<div class='user-mainbox__other'>";
                       $html .= "<div class ='user-mainbox__other-name'> " .$value['first_name']. "</div>";
-                      $html .= "<div class ='user-mainbox__other-id'> # ";
+                      $html .= "<div class ='user-mainbox__other-id'><span>#<span>";
                       $html .="<span class='user__id'> ".$value['id'] . "</span></div></div></div>";
                       if($value['user_active_status']==1){
                         $status="Deactivated";

@@ -7,18 +7,13 @@ include_once "../models/UserModel.php";
 class AuthController extends Controller
 {
 
-    public function __construct()
-    {
-        // $this->registerMiddleware(new AuthMiddleware());
-    }
-
     public function login($request, $response)
     {
         if ($request->isPost()){
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
             $result = $loginUser->findOne();
-            if ($result) {
+            if($result) {
                 App::$APP->session->set('user', $result[0]['id']);
                 return $response->redirect('/utrance-railway/home');
             }
@@ -29,6 +24,19 @@ class AuthController extends Controller
 
        
     }
+
+    //    if($request->isPost())
+         
+    //     $registerModel->loadData($request->getBody());
+    //     $pathArray1=$registerModel->getUsers();
+    //       //  return  $this->render('validation',$pathArray1);
+    //     if( $registerModel->valid()){
+    //         if($registerModel->register()){
+    //             return "Success";
+    //     }
+    
+        // else{return  $this->render('validation',$pathArray1);
+        // } 
 
     /*echo '<pre>';
     var_dump($registerModel->errors);
