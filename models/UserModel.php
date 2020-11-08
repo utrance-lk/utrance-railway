@@ -28,25 +28,7 @@ class UserModel extends Model
 
      
     
- /* public function register(){
-         
-    if($this->first_name == NULL || $this->last_name == NULL ||  $this->street_line1 == NULL || $this->contact_num  == NULL  || $this->user_password  == NULL || $this->email_id  == NULL){
-         return false;
-    }else{
-      $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us)");
-
-    $query->bindValue(":fn", $this->first_name);
-    $query->bindValue(":ln", $this->last_name);
-    $query->bindValue(":st1", $this->street_line1);
-    $query->bindValue(":st2", $this->street_line2);
-    $query->bindValue(":city", $this->city);
-    $query->bindValue(":cn", $this->contact_num);
-    $query->bindValue(":up", $this->user_password);
-    $query->bindValue(":eid", $this->email_id);
-    $query->bindValue(":us", $this->user_role);
-      return $query->execute();
-    }
-}*/
+ 
 
   /*public function getUsers(){
       
@@ -82,10 +64,9 @@ class UserModel extends Model
     }
 
     public function register(){////Ashika
-        $user_active_status=1;
-        //$defaultPassword=$this->first_name+"utrance@123";
-        //$this->user_password=$defaultPassword;
-        $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role,user_active_status) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us,ua)");
+        $this->user_active_status=1;
+       
+        $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role,user_active_status) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us,:ua)");
         $query->bindValue(":fn", $this->first_name);
         $query->bindValue(":ln", $this->last_name);
         $query->bindValue(":st1", $this->street_line1);
@@ -147,7 +128,6 @@ class UserModel extends Model
     public function getUserDetails1(){//Daranya
       $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num,user_password FROM users WHERE id=10 ");
       $query->execute();
-
       $this->detailsArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
       return $this->detailsArray;
     }
@@ -155,16 +135,9 @@ class UserModel extends Model
     public function getManageUsers()//Ashika
     {
 
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name FROM users WHERE user_active_status=1 ");
-
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,street_line1,street_line2,city,contact_num,email_id FROM users ");
-        $query->bindValue(":id", $this->id);
-
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  ");
         $query->execute();
-
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-
-        //var_dump($this->resultArray);
         return $this->resultArray;
     }
 
@@ -173,9 +146,9 @@ class UserModel extends Model
 
         $query = APP::$APP->db->pdo->prepare("SELECT last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
+        
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        // var_dump($resultArray);
         return $this->resultArray;
 
     }

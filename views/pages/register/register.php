@@ -1,22 +1,28 @@
-
 <body>
+
 <?php
 
 $first_name_error=$last_name_error=$street_line1_error=$street_line2_error=$city_error=$contact_num_error=$email_id_error=$user_password_error=$user_confirm_password_error="";
 $first_name=$last_name=$street_line1=$street_line2=$city=$contact_num=$email_id=$user_password=$user_confirm_password=" ";
-var_dump("hello");
-var_dump($_SERVER["REQUEST_METHOD"]);
+$errorFirstName=$errorLastName=$errorStreet_line1=$errorStreet_line2=$errorCity=$errorContactnum=$erroremail_id=$errorUser_password=$errorUser_confirm_password=1;
+$error="";
+$userError=0;
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    var_dump("srilanka");
+    
  
     
     if(empty($_POST["first_name"])){
         $first_name_error="First Name is required";
+        
+        $userError=1;
+        
     }else{
         $first_name=input_data($_POST["first_name"]);
 
         if(!preg_match("/^[a-zA-Z ]*$/",$first_name)){
             $first_name_error="Only alphabets and white space are allowed";
+           $userError=1;
         }
     }
 
@@ -24,81 +30,134 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if(empty($_POST["last_name"])){
         $last_name_error="last name is required";
+        
+        $userError=2;
     }else{
         $last_name=input_data($_POST["last_name"]);
         if(!preg_match("/^[a-zA-Z ]*$/",$last_name)){
             $last_name_error="Only alphabets and white space are allowed";
+            
+           
+            $userError=2;
+        }
+    }
+
+    if(empty($_POST["email_id"])){
+        $email_id_error="Email is Required";
+       
+       $userError=3;
+    }else{
+        $email_id=input_data($_POST["email_id"]);
+        if(!filter_var($email_id,FILTER_VALIDATE_EMAIL)){
+            $email_id_error="Invalid email format";
+          
+           $userError=3;
+
         }
     }
 
     if(empty($_POST["street_line1"])){
         $street_line1_error="Street line1 is required";
+        
+        $userError=4;
     }else{
         $street_line1=input_data($_POST["street_line1"]);
         if(!preg_match("/^[a-zA-Z ]*$/",$street_line1)){
-            $street_line1_error="Only alphabets and white space are allowed"; 
+            $street_line1_error="Only alphabets and white space are allowed";
+          
+           
+            $userError=4;
         }
     }
 
     if(empty($_POST["street_line2"])){
         $street_line2_error="Street line2 is required";
+      
+       $userError=5;
     }else{
         $street_line2=input_data($_POST["street_line2"]);
         if(!preg_match("/^[a-zA-Z ]*$/",$street_line2)){
             $street_line2_error="Only alphabets and white space are allowed"; 
+           $userError=5;
         }
     }
 
     if(empty($_POST["city"])){
         $city_error="City is required";
+        $userError=6;
     }else{
         $city=input_data($_POST["city"]);
         if(!preg_match("/^[a-zA-Z ]*$/",$city)){
             $city_error="Only alphabets and white space are allowed"; 
+            $userError=6;
         }
     }
-
-
-    if(empty($_POST["user_password"])){
-        $user_password_error="User password is required";
-    }else{
-        $user_password=input_data($_POST["user_password"]);
-        if(!preg_match("/^[a-zA-Z ]*$/",$user_password)){
-            $user_password_error="Only alphabets and white space are allowed"; 
-        }
-    }
-
-    if(empty($_POST["user_confirm_password"])){
-        $user_confirm_password_error="User confirm password is required";
-    }else{
-        $user_confirm_password=input_data($_POST["user_confirm_password"]);
-        if(!preg_match("/^[a-zA-Z ]*$/",$user_confirm_password)){
-            $user_confirm_password_error="Only alphabets and white space are allowed"; 
-        }
-    }
-
-
-
-    if(empty($_POST["email_id"])){
-        $email_id_error="Email is Required";
-    }else{
-        $email_id=input_data($_POST["email_id"]);
-        if(!filter_var($email_id,FILTER_VALIDATE_EMAIL)){
-            $email_id_error="Invalid email format";
-
-        }
-    }
+     
 
     if(empty($_POST["contact_num"])){
         $contact_num_error="Mobile no is required";
+       
+       $userError=7;
     }else{
         $contact_num=input_data($_POST["contact_num"]);
         if(!preg_match("/^[0-9]*$/",$contact_num)){
             $contact_num_error="Only numeric value is allowed";
+          
+           $userError=7;
         }
         if(strlen($contact_num)!=10){
-            $contact_num="Mobile no must contain 10 digits";
+            $contact_num_error="Mobile no must contain 10 digits";
+            
+            $userError=7;
         }
+
+   /* if(empty($_POST["user_password"])){
+        $user_password_error="User password is required";
+        //$errorUser_password=0;
+        $userError=8;
+
+    }else{
+        $user_password=input_data($_POST["user_password"]);
+        if(!preg_match("/^[a-zA-Z ]*$/",$user_password)){
+            $user_password_error="Only alphabets and white space are allowed"; 
+            
+            //$errorUser_password=0;
+            $userError=8;
+        }
+    }*/
+
+    /*if(empty($_POST["user_confirm_password"])){
+        $user_confirm_password_error="User confirm password is required";
+      //  $errorUser_confirm_password=0;
+      $userError=8;
+    }else{*/
+        /*$user_confirm_password=input_data($_POST["user_confirm_password"]);
+        if(!preg_match("/^[a-zA-Z ]*$/",$user_confirm_password)){
+            $user_confirm_password_error="Only alphabets and white space are allowed!!!!";
+           
+           // $errorUser_confirm_password=0; 
+           $userError=9;
+        }*/
+        $user_password=input_data($_POST["user_password"]);
+        $user_confirm_password=input_data($_POST["user_confirm_password"]);
+        var_dump($user_password);
+        if($user_password!=$user_confirm_password){
+           
+            $user_confirm_password_error="Your password both does not match!!!";
+            $userError=8;
+
+        }
+
+        
+        
+    
+    
+
+
+
+    
+
+    
     }
 
 
@@ -113,144 +172,109 @@ function input_data($data){
 ?>
 
 
-<div class="auth-content">
-  <form   method="POST" name="register"  id="register_form" action="" >
-  <?php
-  var_dump($_SERVER["REQUEST_METHOD"]);
-  ?>
-        <h2 class="form-title" style="font-size:2.7rem">Sign Up</h2>
-    <div class="div-sub">
-        <label class="lbl-user"><i class="fa fa-user" aria-hidden="true" style="padding-right: 1.5rem;"></i>User Name</label>
-        <input type="text"  placeholder="First name" style="margin-bottom: 10px;float:left" id="first_name" name="first_name"     class="text-input" value="<?php echo $first_name?>" >
-        <span class="error">*<?php echo $first_name_error;?></span>
-        <input type="text"    id="last_name"  name="last_name" class="text-input" placeholder="Last name" value="<?php echo $last_name?>">
-        <span class="error">*<?php echo $last_name_error;?></span>
+
+
+
+	<div class="register__container">
+		<div class="register__img-box register__container-item">
+        
         </div>
-    
-
-
-        
-
-        
-
-    <div class="div-sub">
-        <label  class="lbl-user"><i class="fa fa-envelope" aria-hidden="true" style="padding-right: 1rem;"></i>Email</label>
-
-        <input type="email"   class="text-input" id="email_id" name="email_id" value="<?php echo $email_id?>" >
-        <span class="error">*<?php echo $email_id_error;?></span>
-
-        <input type="email" class="text-input" id="user-email" name="email_id">
-
-    </div>
-    <div  class="div-sub">
-        <label  class="lbl-user"><i class="fa fa-map-marker" aria-hidden="true" style="padding-right: 1rem;"></i>Address</label>
-
-        <input type="text"    id="street_line1" class="text-input" name="street_line1" placeholder="Street First line"style="margin-bottom: 10px;">
-        <span class="error">*<?php echo $street_line1_error;?></span>
-        <input type="text"   id="street_line2"  class="text-input"  name="street_line2" placeholder="Street Second line" style="margin-bottom: 10px;">
-        <span class="error">*<?php echo $street_line2_error;?></span>
-
-       
-    
-
-    </div>
-
-    <div  class="div-sub">
-        <label  class="lbl-user" style="display: block;"><i class="fas fa-city"></i>
-            <i class="fa fa-home" aria-hidden="true"  style="padding-right: 1rem;"></i>City</label>
-        <select  id="city_values"  name="city" >
-            <option class="cityvalues">Matara</option>
-            <option class="cityvalues">Galle</option>
-            <option class="cityvalues">Colombo</option>
-        </select>
-    </div>
-    
-
-    <div class="div-sub">
-        <label  class="lbl-user" ><i class="fa fa-phone" aria-hidden="true" style="padding-right: 1rem;"></i>Contact number</label>
-
-        <input type="text" id="user-contact-number" class="text-input" placeholder="Ex:071-1234567" name="contact_num">
-      <span class="error">*<?php echo $contact_num_error;?></span>
-    </div>
-
-    
-
-
-    
-
-
-          <div class="div-sub">
-                <label  class="lbl-user"><i class="fa fa-key" aria-hidden="true" style="padding-right: 1rem;"></i>Password</label>
-
-                <input type="password"  id="user-password" class="text-input" name="user_password" >
-                <span class="error">*<?php echo $user_password_error;?></span>
-
-
-            </div>
-
-
-        
-
-
-
-             <div class="div-sub">
-                <label  class="lbl-user"><i class="fa fa-check-circle" aria-hidden="true" style="padding-right: 1rem;"></i>Confirm Password</label>
-
-                <input type="password"  id="user-confirm-password" name="user_confirmPassword" class="text-input" >
-                
-
-                <span class="error">*<?php echo $user_confirm_password_error;?></span>
-            </div>
-
-                <div id="btn-register">
+		<div class="register__form-box register__container-item">
+			<form class="form__container" method="POST">
+				<div class="new-account-box-container form__container-item">
+					<div class="register-text">
+						Sign up
+					</div>
+					<div class="new-account-box">
+						<span class="new-account-box--1">Already have an account?</span>&nbsp;<a href="#" class="new-account-box--2">Login here</a>
+					</div>
+				</div>
+				<div class="firstname-box form__container-item register__form--inputs">
+					<label for="first_name">First name</label>
+                    <input type="text" id="first_name" name="first_name" placeholder="Steven" value="<?php echo $first_name?>" required  >
+                    
+                    
+                  
                    
-                    <input type="submit"  id="register-button" name="submit" class="btn btn-big" value="Submit">
-               </div>
-
-                <div class="div-sub1" style="display: inline;">
-                    <input type="checkbox"  id="check1" >
-                    <text id="sign-in">I agree with the Terms and Conditions and the privacy policy</p>
+				</div>
+                
+                
+                
+				<div class="lastname-box form__container-item register__form--inputs">
+					<label for="last_name">Last name</label>
+					<input type="text" id="last_name" name="last_name" placeholder="Smith" required>
+                   
+                    
+				</div>
+				<div class="email-box form__container-item register__form--inputs">
+					<label for="email_id">Email</label>
+					<input type="email" id="email_id" name="email_id" placeholder="stevensmith@example.com" required>
+                   
+				</div>
+				<div class="streetline1-box form__container-item register__form--inputs">
+					<label for="streetline1">Street line 1</label>
+					<input type="text" id="streetline1" name="street_line1" placeholder="22/50, Agathuduwa Watta" required>
+                    
+				</div>
+				<div class="streetline2-box form__container-item register__form--inputs">
+					<label for="streetline2">Street line 2</label>
+					<input type="text" id="streetline2" name="street_line2" placeholder="Godagama West" required>
+                    
+				</div>
+				<div class="city-box form__container-item register__form--inputs">
+                    <label for="city">City</label>
+                    <select name="city" id="city">
+                        <option value="matara">Matara</option>
+                        <option value="matara">Galle</option>
+                        <option value="matara">Colombo</option>
+                    </select>
+				</div>
+                <div class="contactno-box form__container-item register__form--inputs">
+                    <label for="contactno">Contact No</label>
+                    <input type="text" id="contactno" name="contact_num" placeholder="07*1234567" required>
+                   
                 </div>
+                <div class="password-box form__container-item register__form--inputs">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="user_password" placeholder="**********" required>
+                   
+                </div>
+                <div class="password-confirm-box form__container-item register__form--inputs">
+                    <label for="password-confirm">Password Confirm</label>
+                    <input type="password" id="password-confirm" name="user_confirm_password" placeholder="**********" required>
+                   
+
+                   
+                </div>
+                <?php
                
-    
-    </form>
-</div>
-    <?php  
-    if(isset($_POST['submit'])) {  
-        echo "hello123";
-    /*if($first_name_error == "" && $last_name_error == "" && $street_line1_error == "" && $street_line2_error == "" && $email_id_error == "" && $contact_num_error == "" && $user_password_error =="" && $user_confirm_password_error =="") {  
-        echo "<h3 color = #FF0001> <b>You have sucessfully registered.</b> </h3>";  
-        echo "<h2>Your Input:</h2>";  
-        echo "Name: " .$first_name;  
-        echo "<br>";  
-        echo "Email: " .$email_id;  
-        echo "<br>";  
-        echo "Mobile No: " .$contact_num;  
-        echo "<br>";  
-        echo "Street Line 1: " .$street_line1;  
-        echo "<br>";  
-        echo "street line 2: " .$street_line2;  
-    } else {  
-        echo "<h3> <b>You didn't filled up the form correctly.</b> </h3>";  
-    }*/  
-    }  
-?>  
+                var_dump($userError);
+                   switch($userError){
+                      
+                       case 1:echo "<script>alert('$first_name_error');</script>";break;
+                       case 2:echo "<script>alert('$last_name_error');</script>";break;
+                       case 3:echo "<script>alert('$email_id_error');</script>";break;
+                       case 4:echo "<script>alert('$street_line1_error');</script>";break;
+                       case 5:echo "<script>alert('$street_line2_error');</script>";break;
+                       case 6:echo "<script>alert('$city_error');</script>";break;
+                       case 7:echo "<script>alert('$contact_num_error');</script>";break;
+                       case 8:echo "<script>alert('$user_confirm_password_error');</script>";
+                         
 
+                   }
+                   ?>
 
-
-
-
-
-
-
-
+				<!-- <div class="forgot-password-box form__container-item">
+					<a href="#" class="forgort-password-box">Forgot Password?</a>
+				</div> -->
+				<button type="submit" class="register-btn form__container-item" formaction="#" onclick="myFunction()">
+						Register
+				</button>
+			</form>
+		</div>
+		</div>
+	</div>
 </body>
 
 
-
-      </html>
-        
-
-
-
-
+</html>

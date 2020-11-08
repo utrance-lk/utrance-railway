@@ -1,129 +1,138 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Dosis&display=swap');
-
-body{
-    background-color: #59abe3;
-    
-    
-}
-.div-sub{
-    display: grid;
-    padding-top: 0.5rem;
+.register__container {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
 }
 
-
-
-.auth-content{
-    width:50%;
-   height: 100rem;
-    margin:5rem auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 1rem;
-    background-color: white;
-    border-radius: 0.3rem;
-    border-color: black;
-    border-style: solid;
-    font-family: 'Cairo', sans-serif !important;
-    border-width: 1px;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
-.auth-content .form-title{
-    text-align: center;
-    padding-bottom: 1.3rem;
-    font-size: 1.8rem;
-    margin: auto;
+.register__container-item {
+  /* border: 1px solid green; */
+  font-family: "Lato", sans-serif;
 }
 
-.auth-content form div{
-    margin-bottom: 1rem;
-}
-.auth-content form p{
-    text-align: center;
-}
-
-.btn{
-    padding: .5rem;
-    background:#89c4f4;
-    color: white;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-    font-size: 1.3rem;
-    font-weight: bold;
-    width: 30%;
-    height: 35%;
-    
+.register__form-box {
+  flex: 1;
+  position: relative;
+  background-color: #fff;
+  /* background-color: rgb(224, 235, 253); */
 }
 
-.btn-big{
-    padding:.7rem 1.3rem;
-    line-height:1.3rem
-}
-.btn:hover{
-    color: white!important;
-    background: #59abe3;
-
-}
-.text-input{
-    padding:.7rem 1rem;
-    outline: none;
-    width: 50%;
-   height: 3.5rem;
-   border: none;
-
-    border-radius: 5px;
-    background-color: #E4E9EB ;
+.new-account-box-container {
+  height: 10rem;
 }
 
 
 
-
-#city_values{
-    width:14.8rem;
-    height: 3rem;
-    border-color: black;
-    border-style: solid;
-    border-width: 0.12rem;
-    border-radius: 0.4rem;
-    background-color: #E4E9EB ;
-}
-.lbl-user{
-    font-weight: bold;
-    font-size: 1.4rem;
-    font-family: 'Cairo', sans-serif !important;
-    
+.new-account-box--1 {
+  color: rgb(119, 119, 119);
 }
 
-.down-arrow {
-    height: 2rem;
-    margin: 0 auto;
-    padding-right: 1rem;
+.new-account-box--2:link,
+.new-account-box--2:active {
+  color: #000000;
+  transition: all .5s;
+}
+
+.new-account-box--2:hover {
+  color: #1F3A93;
+}
+
+.register-text {
+  font-size: 4rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.register__img-box {
+  flex: 1;
+  /* background-color: #fff; */
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size:  cover;
+  background-position: center;
+  background-image: url("/utrance-railway/public/img/pages/register/train-cover.jpg");
+}
+
+.form__container {
+  color: #1F3A93;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  /* height: 70vh; */
+  width: 70%;
+  /* border: 1px solid greenyellow; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form__container-item {
+  /* border: 1px solid maroon; */
+  padding: 1.5rem;
+}
+
+.firstname-box {
+    margin-top: 2.5rem;
+}
+
+.register__form--inputs {
+  display: flex;
+  /* flex-direction: column; */
+  /* height: 8rem; */
+  /* justify-content: space-around; */
+  font-size: 1.5rem;
+  align-items: center;
+  /* border: 1px solid violet; */
+}
+
+.register__form--inputs label {
+    margin-right: 3rem;
+    width: 32%;
+}
+
+/*.register__form--inputs > * {
     /* border: 1px solid red; */
-    width: 2rem;
-   /* animation: 1s moveDown infinite;*/
-    cursor: pointer;
-  }
 
-  #sign-in{
-      font-size: 1.4rem;
-      color: black;
-      font-weight: bold;
-     
-  }
-  #check1{
-      width: 1.2rem;
-      height: 1.2rem;
-      padding: 1rem;
-  }
 
-  .form-error{
-      color:red;
-  }
+.username-box {
+  margin-bottom: 1rem;
+}
 
-  .form-success{
-      color:green;
-  }
-  .input-error{
-      box-shadow: 0 0 5px red;
-  }
+.form__container-item input {
+  border-bottom: 1px solid #1F3A93;
+  width: 60%;
+  /* padding: 1rem 0; */
+  /* border-radius: 10rem; */
+  /* background-color: rgba(119, 119, 119, 0.2); */
+  font-family: "Noto Sans JP", sans-serif;
+}
 
+.forgot-password-box {
+  margin-top: 1rem;
+}
+
+.register-btn {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border: 1px solid #1F3A93;
+  width: 11rem;
+  text-align: center;
+  border-radius: 10rem;
+  align-self: flex-end;
+  font-size: 1.75rem;
+  font-family: "Poppins", sans-serif;
+  transition: all .2s;
+}
+
+.register-btn:hover {
+  background-color: #1F3A93;
+  color: #fff;
+}
