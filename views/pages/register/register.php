@@ -8,7 +8,7 @@ $errorFirstName=$errorLastName=$errorStreet_line1=$errorStreet_line2=$errorCity=
 $error="";
 $userError=0;
 
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if($_SERVER["REQUEST_METHOD"]=="POST" ){
     
  
     
@@ -148,16 +148,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         }
 
-        
-        
-    
-    
-
-
-
-    
-
-    
     }
 
 
