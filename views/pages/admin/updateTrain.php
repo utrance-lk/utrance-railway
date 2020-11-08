@@ -27,7 +27,7 @@
                     $html .="<div class='traintype-box content__fields-item'>";
                     $html .="<label for='traintype' class='form__label'>Train Type</label>";
                     $train_type = $value['train_type'];
-                    echo  $train_type;
+                   
                     $html .="<select name='train_type' id='traintype' class='form__input'>";
                 
                     if($train_type=='Express' || $train_type=='express'){

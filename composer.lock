@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "_readme": [
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
@@ -220,7 +219,6 @@
                 }
             ],
             "time": "2020-10-23T14:02:19+00:00"
-=======
   "_readme": [
     "This file locks the dependencies of your project to a known state",
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
@@ -379,7 +377,6 @@
       "autoload": {
         "psr-4": {
           "Symfony\\Polyfill\\Ctype\\": ""
->>>>>>> 11a95d424b8d6d968baccb0860f7d325bd17b52f
         },
         "files": ["bootstrap.php"]
       },
@@ -387,7 +384,6 @@
       "license": ["MIT"],
       "authors": [
         {
-<<<<<<< HEAD
             "name": "symfony/polyfill-mbstring",
             "version": "v1.20.0",
             "source": {
@@ -640,7 +636,6 @@
     "platform": [],
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
-=======
           "name": "Gert de Pagter",
           "email": "BackEndTea@gmail.com"
         },
@@ -884,5 +879,4 @@
   "platform": [],
   "platform-dev": [],
   "plugin-api-version": "1.1.0"
->>>>>>> 11a95d424b8d6d968baccb0860f7d325bd17b52f
 }
