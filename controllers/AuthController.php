@@ -9,7 +9,7 @@ class AuthController extends Controller
 
     public function login($request, $response)
     {
-        if ($request->isPost()) {
+        if ($request->isPost()){
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
             $result = $loginUser->findOne();
@@ -20,9 +20,9 @@ class AuthController extends Controller
 
             return 'invalid username or password';
         }
-
         return $this->render('login');
 
+       
     }
 
     //    if($request->isPost())
@@ -58,27 +58,22 @@ class AuthController extends Controller
 
     public function registerPageNow($request)
     {
-        $registerModel = new UserModel();
-
-        if ($request->isPost()) {
-
-            $registerModel->loadData($request->getBody());
-            if ($registerModel->valid()) {
-                $registerModel->registerUser();
-                return "Succes";
-            } else {
-                return "Added Fail";
-            }
-
+        
+        $registerModel=new UserModel();
+        if($request->isPost()){
+         $registerModel->loadData($request->getBody());
+         $registerModel->register();
+        // return $this->render('register');
+            
+        
         }
-
-    }
-
-    public function registerPage()
-    {
+        //var_dump("heo");
         return $this->render('register');
 
+      
     }
+
+    
 
     public function getMy($request) {
         if($request->isPost()) {

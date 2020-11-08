@@ -27,3 +27,15 @@ window.addEventListener('load', function() {
         items.addRouteBtn.style.display = 'none';
     }
 })
+<<<<<<< HEAD
+
+items.deleteUserBtn.addEventListener("click",function () {
+
+
+var myobj=document.getElementById("form-card");
+ myobj.remove();
+  
+})
+
+=======
+>>>>>>> 74bfd93f9562e71b9ebff069a04b5f413b66b96c
