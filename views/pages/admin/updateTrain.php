@@ -1,4 +1,5 @@
 <div class="load-content-container">
+
     <div class="load-content">
         <?php
             $dom = new DOMDocument;
@@ -217,4 +218,7 @@
           
     </div>
   </div>
-</div>
+   </div>
+ </div>
+<!-- </div> -->
+

@@ -48,7 +48,7 @@
                             $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
                             
                             $html .= "<div class='search__result-train-deletebtnbox'>";
-                            $html .= "<div class='search__result-deletebtn btn-white'>Delete</div></div></div>";
+                            $html .= "<div class='search__result-deletebtn btn-white'>Delete</div></div></div></div>";
                             
 
                             $dom = new DOMDocument();
@@ -63,8 +63,8 @@
 
                         
                   ?>
-                  
-                </div>
+                  </div>
+                
                </div>
            </div>
        </div>

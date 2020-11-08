@@ -82,11 +82,7 @@
                     $html .="<label for='contactno' class='form__label'>Contact No</label>";
                     $html .="<input type='text' name='contact_num' class='form__input' value=".$value['contact_num']." ></div>";
 
-                    $html .=" <div class='userpicture-box'>";
-                    $html .="<img src='/utrance-railway/public/img/pages/admin/".$value['first_name'].".jpg' alt='user-profile-picture' class='' />";
-                    $html .="<input type='file' name='photo'  accept='image/*' class='form__upload'  id='photo'/>";
-                    $html .="<label for='photo'>Choose New Photo</label></div>";
-
+                    
                     $html .="<div class='btn__save-box'>";
                    // $id=$value['id'];
                     $html .="<button class='btn__save btn-settings' type='submit'>Save Settings</button></div>";
