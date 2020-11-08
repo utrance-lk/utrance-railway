@@ -186,7 +186,7 @@ class UserModel extends Model
     public function getUserDetails()///Ashika
     {
 
-        $query = APP::$APP->db->pdo->prepare("SELECT last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id AND user_active_status=1");
+        $query = APP::$APP->db->pdo->prepare("SELECT last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
