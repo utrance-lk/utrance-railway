@@ -23,22 +23,7 @@ class UserModel extends Model
 
      
 
-    public function rules(){ //////Ashika
-        return[
-            'first_name'           => [self::RULE_REQUIRED],
-            'last_name'            => [self::RULE_REQUIRED],
-            'street_line1'         => [self::RULE_REQUIRED],
-            'street_line2'         => [self::RULE_REQUIRED],
-            'city'                 =>[self::RULE_REQUIRED],
-            'contact_num'          => [self::RULE_REQUIRED],
-            'user_password'        =>[self::RULE_REQUIRED],
-            'user_confirmPassword' =>[self::RULE_REQUIRED,[self::RULE_MATCH,'match' => 'user_password']],
-            'email_id'             =>[self::RULE_REQUIRED,self::RULE_EMAIL]
-
-        ];
-
-    }
-
+    
     
 
      
