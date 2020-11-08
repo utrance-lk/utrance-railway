@@ -22,6 +22,7 @@
                 </select>
               </div>
             </form>
+
             <div class="adduserbtn">
               <div class="adduserbtn-text">Add User</div>
               <svg class="adduserbtn-img">
@@ -29,7 +30,9 @@
                 </use>
               </svg> 
             </div>
+
             <div class="search__results-container">
+
               <div class="search__result-card">
                 <div class="search__result-user-mainbox">
                   <div class="user-mainbox__img-box">
@@ -39,6 +42,7 @@
                       class="profile__avatar"
                     />
                   </div>
+
                   <div class="user-mainbox__other">
                     <div class="user-mainbox__other-name">Chris</div>
                     <div class="user-mainbox__other-id">
@@ -53,10 +57,12 @@
                 <div class="search__result-user-managebtnbox">
                   <div class="search__result-managebtn">Manage</div>
                 </div>
-                <div class="search__result-user-deletebtnbox">
+
+               <div class="search__result-user-deletebtnbox">
                   <div class="search__result-deletebtn">Delete</div>
                 </div>
               </div>
+
               <div class="search__result-card">
                 <div class="search__result-user-mainbox">
                   <div class="user-mainbox__img-box">
@@ -66,6 +72,7 @@
                       class="profile__avatar"
                     />
                   </div>
+
                   <div class="user-mainbox__other">
                     <div class="user-mainbox__other-name">Matt</div>
                     <div class="user-mainbox__other-id">
@@ -73,6 +80,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="search__result-user-emailbox">matt@example.com</div>
                 <div class="search__result-user-rolebox">User</div>
                 <div class="search__result-user-managebtnbox">
@@ -82,7 +90,9 @@
                   <div class="search__result-deletebtn">Delete</div>
                 </div>
               </div>
-            </div>
+            </div>//search result container
           </div>
+          </div>
+
         </div>
       </div>
