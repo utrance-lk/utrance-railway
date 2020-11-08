@@ -1,21 +1,14 @@
 
-
-
-
-
-
-
-
-
-
 <body>
 <?php
 
 $first_name_error=$last_name_error=$street_line1_error=$street_line2_error=$city_error=$contact_num_error=$email_id_error=$user_password_error=$user_confirm_password_error="";
 $first_name=$last_name=$street_line1=$street_line2=$city=$contact_num=$email_id=$user_password=$user_confirm_password=" ";
 var_dump("hello");
+var_dump($_SERVER["REQUEST_METHOD"]);
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    var_dump("hy");
+    var_dump("srilanka");
+ 
     
     if(empty($_POST["first_name"])){
         $first_name_error="First Name is required";
@@ -121,42 +114,29 @@ function input_data($data){
 
 
 <div class="auth-content">
-  
-  
-    <form   method="POST" name="register"  id="register_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
+  <form   method="POST" name="register"  id="register_form" action="" >
+  <?php
+  var_dump($_SERVER["REQUEST_METHOD"]);
+  ?>
         <h2 class="form-title" style="font-size:2.7rem">Sign Up</h2>
     <div class="div-sub">
         <label class="lbl-user"><i class="fa fa-user" aria-hidden="true" style="padding-right: 1.5rem;"></i>User Name</label>
-        <input type="text"  placeholder="First name" style="margin-bottom: 10px;float:left" id="first_name" name="first_name"     class="text-input" >
+        <input type="text"  placeholder="First name" style="margin-bottom: 10px;float:left" id="first_name" name="first_name"     class="text-input" value="<?php echo $first_name?>" >
         <span class="error">*<?php echo $first_name_error;?></span>
-        <input type="text"    id="last_name"  name="last_name" class="text-input" placeholder="Last name">
+        <input type="text"    id="last_name"  name="last_name" class="text-input" placeholder="Last name" value="<?php echo $last_name?>">
         <span class="error">*<?php echo $last_name_error;?></span>
-    <form   method="post" name="register"  id="register_form"  >
+        </div>
+    
 
 
         
 
-        <h2 class="form-title" style="font-size:2.2rem">Sign Up</h2>
-    <div class="div-sub">
-        <label class="lbl-user"><i class="fa fa-user" aria-hidden="true" style="padding-right: 1.5rem;"></i>User Name</label>
-
-        <input type="text" id="user-first-name" name="first_name"  class="text-input" placeholder="First name" style="margin-bottom: 10px;"  >
         
-        <input type="text"  id="user-last-name"  name="last_name" class="text-input" placeholder="Last name">
-
-        <input type="text" id="first_name" name="first_name"  class="text-input" placeholder="First name" style="margin-bottom: 10px;" >
-        <input type="text"    id="last_name"  name="last_name" class="text-input" placeholder="Last name">
-
-
-       
-     
-
-    </div>
 
     <div class="div-sub">
         <label  class="lbl-user"><i class="fa fa-envelope" aria-hidden="true" style="padding-right: 1rem;"></i>Email</label>
 
-        <input type="email"   class="text-input" id="email_id" name="email_id" >
+        <input type="email"   class="text-input" id="email_id" name="email_id" value="<?php echo $email_id?>" >
         <span class="error">*<?php echo $email_id_error;?></span>
 
         <input type="email" class="text-input" id="user-email" name="email_id">
@@ -170,8 +150,7 @@ function input_data($data){
         <input type="text"   id="street_line2"  class="text-input"  name="street_line2" placeholder="Street Second line" style="margin-bottom: 10px;">
         <span class="error">*<?php echo $street_line2_error;?></span>
 
-        <input type="text"   class="text-input" name="street_line1" placeholder="Street First line"style="margin-bottom: 10px;">
-        <input type="text"  class="text-input"  name="street_line2" placeholder="Street Second line" style="margin-bottom: 10px;">
+       
     
 
     </div>
@@ -191,71 +170,46 @@ function input_data($data){
         <label  class="lbl-user" ><i class="fa fa-phone" aria-hidden="true" style="padding-right: 1rem;"></i>Contact number</label>
 
         <input type="text" id="user-contact-number" class="text-input" placeholder="Ex:071-1234567" name="contact_num">
-
-        <input type="text"   id="contact_num" class="text-input" placeholder="Ex:071-1234567" name="contact_num">
-        <span class="error">*<?php echo $contact_num_error;?></span>
- </div>
+      <span class="error">*<?php echo $contact_num_error;?></span>
+    </div>
 
     
 
 
-        </div>
-        <div class="div-sub">
-
-    </div>
-
-    <div class="div-sub">
-
-            <label  class="lbl-user" ><i class="fa fa-picture-o" aria-hidden="true" style="padding-right: 1rem;"></i>Choose profile photo</label>
-            <input type="file"  id="user-profile-image" name="user_image">
-    </div>
+    
 
 
-        <div class="div-sub">
-            <label  class="lbl-user"><i class="fa fa-key" aria-hidden="true" style="padding-right: 1rem;"></i>Password</label>
+          <div class="div-sub">
+                <label  class="lbl-user"><i class="fa fa-key" aria-hidden="true" style="padding-right: 1rem;"></i>Password</label>
 
-            <input type="password"  id="user-password" class="text-input" name="user_password" >
-
-            <input type="password"   id="user_password" class="text-input" name="user_password" >
-
-            <span class="error">*<?php echo $user_password_error;?></span>
+                <input type="password"  id="user-password" class="text-input" name="user_password" >
+                <span class="error">*<?php echo $user_password_error;?></span>
 
 
             </div>
 
 
-        </div>
+        
 
 
 
-            <div class="div-sub">
+             <div class="div-sub">
                 <label  class="lbl-user"><i class="fa fa-check-circle" aria-hidden="true" style="padding-right: 1rem;"></i>Confirm Password</label>
 
                 <input type="password"  id="user-confirm-password" name="user_confirmPassword" class="text-input" >
-
-                <input type="password" id="user_confirmPassword" name="user_confirmPassword" class="text-input" >
-
-                <span class="error">*<?php echo $user_confirm_password_error;?></span>
-
-
-
-                </div>
-
-
-
                 
 
-
+                <span class="error">*<?php echo $user_confirm_password_error;?></span>
             </div>
 
-
-               <div id="btn-register">
+                <div id="btn-register">
                    
                     <input type="submit"  id="register-button" name="submit" class="btn btn-big" value="Submit">
                </div>
+
                 <div class="div-sub1" style="display: inline;">
-                <input type="checkbox"  id="check1" >
-                <text id="sign-in">I agree with the Terms and Conditions and the privacy policy</p>
+                    <input type="checkbox"  id="check1" >
+                    <text id="sign-in">I agree with the Terms and Conditions and the privacy policy</p>
                 </div>
                
     

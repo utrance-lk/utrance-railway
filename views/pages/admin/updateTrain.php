@@ -1,5 +1,5 @@
 <div class="load-content-container">
-<<<<<<< HEAD
+
         <div class="load-content">
           <div class="load-content--settings">
             <div class="content-title">
@@ -95,7 +95,7 @@
             </form>
           </div>
         </div>
-=======
+
     <div class="load-content">
         <?php
             $dom = new DOMDocument;

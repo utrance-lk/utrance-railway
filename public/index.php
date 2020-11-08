@@ -139,8 +139,8 @@ $app->router->get('/utrance-railway/signIn', [AuthController::class, 'signInPage
 $app->router->post('/utrance-railway/signIn', [AuthController::class, 'signInPageNow']);
 
 ///////////Register Page Routing
-$app->router->get('/utrance-railway/registerPage', [AuthController::class, 'registerPageNow']);
-$app->router->post('/utrance-railway/registerPage', [AuthController::class, 'registerPageNow']);
+$app->router->get('/utrance-railway/register', [AuthController::class, 'registerPageNow']);
+$app->router->post('/utrance-railway/register', [AuthController::class, 'registerPageNow']);
 
 
 

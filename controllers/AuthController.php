@@ -53,8 +53,8 @@ class AuthController extends Controller
         
         $registerModel=new UserModel();
         if($request->isPost()){
-            //var_dump("hello");
-            return;
+         $registerModel->loadData($request->getBody());
+         return $this->render('register');
             
         
         }
