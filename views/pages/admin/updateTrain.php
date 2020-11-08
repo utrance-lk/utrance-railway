@@ -26,13 +26,31 @@
                     $html .="<input type='text' name='train_name' class='form__input' value='$train_name' /></div>";
                     $html .="<div class='traintype-box content__fields-item'>";
                     $html .="<label for='traintype' class='form__label'>Train Type</label>";
-                    $html .="<select name='train_type' id='traintype' class='form__input' value=".$value['train_type']." >";
-                    $html .="<option value='express'>Express</option>";
-                    $html .="<option value='Slow'>Slow</option>";
-                    $html .=" <option value='Intercity'>Intercity</option></select></div>";
+                    $train_type = $value['train_type'];
+                    echo  $train_type;
+                    $html .="<select name='train_type' id='traintype' class='form__input'>";
+                
+                    if($train_type=='Express' || $train_type=='express'){
+                        $html .="<option value='Express' selected>Express</option>";
+                    }else{
+                        $html .="<option value='Express'>Express</option>";
+                    }
+                    if($train_type=='Slow'){
+                        $html .="<option value='Slow' selected>Slow</option>";
+                    }else{
+                        $html .="<option value='Slow'>Slow</option>";
+                    }
+                    if($train_type=='Intercity'){
+                        $html .="<option value='Intercity' selected>Intercity</option></select></div>";
+                    }else{
+                        $html .="<option value='Intercity'>Intercity</option></select></div>";
+                    }
+                    // $html .="<option value='Express'  <?php echo if(".$train_type." == 'Express') ? selected='selected' : ''; >Express</option>";
+                    // $html .="<option value='Slow' <?php echo if(".$train_type." == 'Slow') ?  selected='selected' : ''; >Slow</option>";
+                    // $html .=" <option value='Intercity' <?php echo if(".$train_type." == 'Intercity') ?  selected='selected' : ''; >Intercity</option></select></div>";
                     $html .="<div class='routeid-box content__fields-item'>";
                     $html .="<label for='routeid' class='form__label'>Route Id</label>";
-                    $html .="<input type='number' min='0' value=".$value['route_id']." name='route_id' id='routeid' class='form__input number__input route-id__number-input'></div>";
+                    $html .="<input type='number' min='0' value=".$value['route_id']." name='route_id' id='routeid' class='form__input number__input route-id__number-input' readonly></div>";
 
                     $html .="<fieldset class='traintaveldays-box content__fields-item'>";
                     $html .="<legend class='form__label'>Train Travel Days</legend>";
@@ -197,5 +215,6 @@
 
         ?>
           
- </div>
-<!-- </div> -->
+    </div>
+  </div>
+</div>
