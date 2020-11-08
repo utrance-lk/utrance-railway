@@ -34,7 +34,7 @@
                 alt="profile picture"
                 class="user-img"
               />
-              <a href="/utrance-railway/logout" class="user-name"><?php echo App::$APP->activeUser()['name'];?></a>
+              <a href="/utrance-railway/logout" class="user-name"><?php echo App::$APP->activeUser()['first_name'];?></a>
               
              <?php else: ?>
               <svg class="guest-user user-img">

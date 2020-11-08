@@ -406,6 +406,10 @@ select {
   font-weight: 700;
 }
 
+.user-mainbox__other-id {
+  display: flex;
+}
+
 .user-mainbox__other > * {
   /* border: 1px solid brown; */
 }
