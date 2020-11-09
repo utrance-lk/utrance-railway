@@ -37,6 +37,10 @@ class AdminController extends Controller
 
     }
 
+    public function searchManageUsers($request){
+        
+    }
+
     public function manageUsers($request)
     {
 

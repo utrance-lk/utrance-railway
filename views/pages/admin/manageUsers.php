@@ -1,7 +1,7 @@
   <div class="load-content-container">
       <div class="load-content">
           <div class="load-content--manage-users">
-            <form class="dashboard-searchbar--container">
+            <form class="dashboard-searchbar--container" method='get'>
               <input
                 type="text"
                 class="dashboard-searchbar"
@@ -74,7 +74,13 @@
 
                      
                      $html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
-                      $html .="<div class='search__result-deletebtn btn-white' id='delete-btn'>Delete</div></a></form>";
+                      $user_active_status=$value['user_active_status'];
+                      if($user_active_status == 0){
+                        $html .="<div class='search__result-deletebtn btn-white' id='delete-btn'>Deactive</div></a></form>";
+                      }else{
+                        $html .="<div class='search__result-deletebtn btn-white' id='delete-btn'>Active</div></a></form>";
+                      }
+                      
                    
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
