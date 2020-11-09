@@ -89,6 +89,12 @@ class UserModel extends Model
         if(empty($registerSetValueArray['contactNumError'])){
             $registerSetValueArray['contact_num']=$this->contact_num;
         }
+        if(empty($registerSetValueArray['emailIdError'])){
+            $registerSetValueArray['email_id']=$this->email_id;
+        }
+        if(empty($registerSetValueArray['cityError'])){
+            $registerSetValueArray['city']=$this->city;
+        }
         return $registerSetValueArray;
 
         
@@ -225,6 +231,7 @@ class UserModel extends Model
         $this->validateStreetLine2($this->street_line2);//Ashika
         $this->validateCity($this->city);//Ashika
         $this->validateContactNumber($this->contact_num);//Ashika
+        $this->validateEmailId($this->email_id);//Ashika
     }
 
     private function validateFirstName($fn)//Asindu
@@ -265,6 +272,10 @@ class UserModel extends Model
         if(is_numeric($str1) ){
             $this->errorArray['streetLine1Error'] = 'Street Line only letters required';
         }
+
+        if(!(ctype_alpha($str1))){
+            $this->errorArray['streetLine1Error'] = 'Street Line 1  only letters  required';
+        }
     }
 
     private function validateStreetLine2($str2){//Ashika
@@ -275,11 +286,19 @@ class UserModel extends Model
         if(is_numeric($str2) ){
             $this->errorArray['streetLine2Error'] = 'Street Line 2 only letters required';
         }
+
+        if(!(ctype_alpha($str2))){
+            $this->errorArray['streetLine2Error'] = 'Street Line 2  only letters  required';
+        }
     }
 
     private function validateCity($city){//Ashika
         if(strlen($city) <2 || strlen($city) >25){
             $this->errorArray['cityError'] = 'City  wrong length';
+        }
+
+        if(!(ctype_alpha($city))){
+            $this->errorArray['cityError'] = 'City  only letters  required';
         }
     }
     private function validateContactNumber($cnum){//Ashika
@@ -301,11 +320,15 @@ class UserModel extends Model
         if(!(ctype_digit($cnum))){
             $this->errorArray['contactNumError']="Contact Num has only digits";
         }
+   
+    }
 
-        
 
-        
-        
+    private function validateEmailId($email_id){ //Ashika
+        if(!filter_var($email_id,FILTER_VALIDATE_EMAIL)){
+            $this->errorArray['emailIdError']="Invalid email format";
+        }
+
     }
 
     // public function getError($error)

@@ -193,7 +193,7 @@ function input_data($data){
 				</div>
 				<div class="email-box form__container-item register__form--inputs">
 					<label for="email_id">Email</label>
-					<input type="email" id="email_id" name="email_id" placeholder="stevensmith@example.com"  required>
+					<input type="email" id="email_id" name="email_id" placeholder="stevensmith@example.com"   value="<?php echo isset($email_id) ? $email_id : '';?>"required>
                    
 				</div>
 				<div class="streetline1-box form__container-item register__form--inputs">
