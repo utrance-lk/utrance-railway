@@ -164,7 +164,7 @@ class UserModel extends Model
         $this->user_password = $this->sanitizeFormPassword($this->user_password);
     }
 
-    private function sanitizeFormString($inputText)
+    private function sanitizeFormString($inputText)//Asindu
     {
         $inputText = strip_tags($inputText); //remove html tags
         $inputText = str_replace(" ", "", $inputText); // remove white spaces
@@ -172,7 +172,7 @@ class UserModel extends Model
         return ucfirst($inputText); // capitalize first letter
     }
 
-    private function sanitizeFormUsername($inputText)
+    private function sanitizeFormUsername($inputText)//Asindu~
     {
         $inputText = strip_tags($inputText); //remove html tags
         return str_replace(" ", "", $inputText); // remove white spaces
@@ -183,7 +183,7 @@ class UserModel extends Model
         return strip_tags($inputText); //remove html tags
     }
 
-    private function sanitizeFormEmail($inputText)
+    private function sanitizeFormEmail($inputText)//Asindu
     {
         $inputText = strip_tags($inputText); //remove html tags
         return str_replace(" ", "", $inputText); // remove white spaces
@@ -193,14 +193,93 @@ class UserModel extends Model
 
     private function runValidators()
     {
-        $this->validateFirstName($this->first_name);
+        $this->validateFirstName($this->first_name);//Asindu
+        $this->validateLastName($this->last_name);//Ashika
+        $this->validateStreetLine1($this->street_line1);//Ashika
+        $this->validateStreetLine2($this->street_line2);//Ashika
+        $this->validateCity($this->city);//Ashika
+        $this->validateContactNumber($this->contact_num);//Ashika
     }
 
-    private function validateFirstName($fn)
+    private function validateFirstName($fn)//Asindu
     {
-        if (strlen($fn) < 2 || strlen($fn) > 25) {
+        if (strlen($fn) < 2 || strlen($fn) > 25 ) {
             $this->errorArray['firstNameError'] = 'first name wrong length';
         }
+
+        if(is_numeric($fn) ){
+            $this->errorArray['firstNameError'] = 'first name only letters required';
+        }
+
+        if(!(ctype_alpha($fn))){
+            $this->errorArray['firstNameError'] = 'First name only letters 1 required';
+        }
+        
+    }
+
+    private function validateLastName($ln){//Ashika
+        if(strlen($ln) <2 || strlen($ln) >25){
+            $this->errorArray['lastNameError'] = 'last name wrong length';
+        }
+
+        if(is_numeric($ln) ){
+            $this->errorArray['lastNameError'] = 'last name only letters required';
+        }
+
+        if(!(ctype_alpha($ln))){
+            $this->errorArray['lastNameError'] = 'last name only letters 1 required';
+        }
+    }
+
+    private function validateStreetLine1($str1){//Ashika
+        if(strlen($str1) <5 || strlen($str1) >30){
+            $this->errorArray['streetLine1Error'] = 'Street Line 1  wrong length';
+        }
+
+        if(is_numeric($str1) ){
+            $this->errorArray['streetLine1Error'] = 'Street Line only letters required';
+        }
+    }
+
+    private function validateStreetLine2($str2){//Ashika
+        if(strlen($str2) <5 || strlen($str2) >30){
+            $this->errorArray['streetLine2Error'] = 'Street Line 2  wrong length';
+        }
+
+        if(is_numeric($str2) ){
+            $this->errorArray['streetLine2Error'] = 'Street Line 2 only letters required';
+        }
+    }
+
+    private function validateCity($city){//Ashika
+        if(strlen($city) <2 || strlen($city) >25){
+            $this->errorArray['cityError'] = 'City  wrong length';
+        }
+    }
+    private function validateContactNumber($cnum){//Ashika
+        $num="";
+        $num= substr($cnum,0,3);
+        if(strlen($cnum) == 10 && is_numeric($cnum) ){
+            if($num !="070" || $num !="071" || $num !="072" || $num !="075" || $num !="076" || $num !="077" || $num !="078" || $num!="063"){
+                $this->errorArray['contactNumError']='Contact Num in Invalid Format';
+            }
+
+        }else{
+            if(strlen($cnum) !=10 && is_numeric($num)){
+                $this->errorArray['contactNumError']='Contact Num Wrong length'; 
+            }elseif(!(is_numeric($num)) && strlen($cnum) !=10 ){
+                $this->errorArray['contactNumError']='Contact Num has only digits'; 
+            }
+            
+        }
+        if(!(ctype_digit($cnum))){
+            $this->errorArray['contactNumError']="Contact Num has only digits";
+        }
+
+        
+
+        
+        
     }
 
     // public function getError($error)
