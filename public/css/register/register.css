@@ -22,8 +22,6 @@
   height: 10rem;
 }
 
-
-
 .new-account-box--1 {
   color: rgb(119, 119, 119);
 }
@@ -91,6 +89,10 @@
   font-size: 1.5rem;
   align-items: center;
   /* border: 1px solid violet; */
+}
+
+.register__form--inputs > *::placeholder {
+  /* color: red; */
 }
 
 .register__form--inputs label {
