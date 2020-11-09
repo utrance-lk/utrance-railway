@@ -56,15 +56,25 @@ class AdminController extends Controller
             }
 
             if ($request->isPost()) {
+                $searchUser=new UserModel();
+                $searchUser->loadData($request->getBody());
+                //var_dump($request->getBody());
+                $getSearchREsult=$searchUser->getSearchUserResult();
+                //var_dump($getSearchREsult);
+                return $this->render(['admin', 'manageUsers'], $getSearchREsult);
 
             }
+            //return $this->render(['admin', 'manageUsers']);
         }
 
-        //  return $this->render(['admin', 'manageUsers']);
-        
+         return $this->render(['admin', 'manageUsers']);
+    }
 
-        
-   }
+             
+
+
+
+
    public function addUser($request){
       
        $addUserModel=new UserModel();

@@ -14,6 +14,7 @@ class UserModel extends Model
     public $email_id;
     public $user_role = "User";
     public $user_confirmPassword;
+    public $searchUserByNameOrId;
 
     public $resultArray;
     public $detailsArray;
@@ -137,6 +138,18 @@ class UserModel extends Model
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
+    }
+
+    public function getSearchUserResult(){//Ashika
+        $this->id=$this->searchUserByNameOrId;
+        $this->first_name=$this->searchUserByNameOrId;
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  WHERE id=:id OR first_name=:fn ");
+        $query->bindValue(":id", $this->id);
+        $query->bindValue(":fn", $this->first_name);
+        $query->execute();
+        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+
     }
 
     public function getUserDetails() ///Ashika
