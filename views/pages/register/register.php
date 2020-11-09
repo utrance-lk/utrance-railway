@@ -1,6 +1,6 @@
 <body>
 
-<?php
+<!--?php
 
 $first_name_error=$last_name_error=$street_line1_error=$street_line2_error=$city_error=$contact_num_error=$email_id_error=$user_password_error=$user_confirm_password_error="";
 $first_name=$last_name=$street_line1=$street_line2=$city=$contact_num=$email_id=$user_password=$user_confirm_password=" ";
@@ -159,11 +159,7 @@ function input_data($data){
     $data=htmlspecialchars($data);
     return $data;
 }
-?>
-
-
-
-
+?-->
 
 	<div class="register__container">
 		<div class="register__img-box register__container-item">
@@ -181,8 +177,7 @@ function input_data($data){
 				</div>
 				<div class="firstname-box form__container-item register__form--inputs">
 					<label for="first_name">First name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="Steven" value="<?php echo $first_name?>" required  >
-                    
+                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Steven';?>" required>
                     
                   
                    
@@ -236,7 +231,7 @@ function input_data($data){
 
                    
                 </div>
-                <?php
+                <!--?php
                
                 var_dump($userError);
                    switch($userError){
@@ -252,7 +247,7 @@ function input_data($data){
                          
 
                    }
-                   ?>
+                   ?-->
 
 				<!-- <div class="forgot-password-box form__container-item">
 					<a href="#" class="forgort-password-box">Forgot Password?</a>

@@ -22,7 +22,7 @@ class TrainModel extends Model
     public $from2;
     public $to2;
   
-
+    public $id;
     public $train_name;
     public $train_type;
     public $train_id;
@@ -35,6 +35,7 @@ class TrainModel extends Model
     public $train_observation_seats;
     public $train_sleeping_berths;
     public $train_total_weight;
+
     
 
 
@@ -97,7 +98,7 @@ class TrainModel extends Model
     public function getManagTrains()
     {
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_id = :train_id ");
-        $query->bindValue(":train_id", $this->train_id);
+        $query->bindValue(":train_id", $this->id);
         $query->execute();
 
         $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -110,7 +111,7 @@ class TrainModel extends Model
     {
         $query = App::$APP->db->pdo->prepare("UPDATE trains SET train_name =:train_name, route_id=:route_id, train_type=:train_type, train_active_status=:train_active_status,train_travel_days=:train_travel_days,train_freights_allowed=:train_freights_allowed,train_fc_seats=:train_fc_seats,train_sc_seats=:train_sc_seats,train_observation_seats=:train_observation_seats,train_sleeping_berths=:train_sleeping_berths,train_total_weight=:train_total_weight WHERE train_id=:train_id");
 
-        $query->bindValue(":train_id", $this->train_id);
+        $query->bindValue(":train_id", $this->id);
         $query->bindValue(":train_name", $this->train_name);
         $query->bindValue(":route_id", $this->route_id);
         $query->bindValue(":train_type", $this->train_type);
