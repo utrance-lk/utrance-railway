@@ -54,7 +54,7 @@ class AuthController extends Controller
 
     public function registerPageNow($request)
     {
-
+        
         $registerModel = new UserModel();
         if ($request->isPost()) {
             $registerModel->loadData($request->getBody());
@@ -62,8 +62,12 @@ class AuthController extends Controller
             if($registrationState === 'success') {
                 // return $this->render('register');
                 return 'successfully registered!!';
+            }else{
+                $registerSetValue=$registerModel->registerSetValue($registrationState);//Ashika
+               
             }
-            return $this->render('register', $registrationState);
+            return $this->render('register', $registerSetValue);//Ashika
+          //  return $this->render('register', $registrationState);
 
         }
         // //var_dump("heo");

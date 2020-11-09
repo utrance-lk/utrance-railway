@@ -21,6 +21,7 @@ class UserModel extends Model
     public $id;
     public $user_active_status;
     private $errorArray = [];
+    private $registerSetValueArray=[];
 
     public function findOne() ///Asindu
 
@@ -69,9 +70,34 @@ class UserModel extends Model
 
     }
 
-    public function addUser() //Daranya
 
-    {
+    public function registerSetValue($registerSetValueArray){//Ashika
+        if(empty($registerSetValueArray['firstNameError'])){
+            $registerSetValueArray['first_name']=$this->first_name;
+        }
+        if(empty($registerSetValueArray['lastNameError'])){
+            $registerSetValueArray['last_name']=$this->last_name; 
+        }
+        if(empty($registerSetValueArray['streetLine1Error'])){
+            $registerSetValueArray['street_line1']=$this->street_line1;
+        }
+
+        if(empty($registerSetValueArray['streetLine2Error'])){
+            $registerSetValueArray['street_line2']=$this->street_line2;
+        }
+
+        if(empty($registerSetValueArray['contactNumError'])){
+            $registerSetValueArray['contact_num']=$this->contact_num;
+        }
+        return $registerSetValueArray;
+
+        
+
+    }
+
+    public function addUser(){ //Daranya
+
+    
 
         $this->user_active_status = 1;
         $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role,user_active_status) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us,:ua)");
