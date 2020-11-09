@@ -3,17 +3,16 @@
 include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
 
-
 class AuthController extends Controller
 {
 
     public function login($request, $response)
     {
-        if ($request->isPost()){
+        if ($request->isPost()) {
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
             $result = $loginUser->findOne();
-            if($result) {
+            if ($result) {
                 App::$APP->session->set('user', $result[0]['id']);
                 return $response->redirect('/utrance-railway/home');
             }
@@ -22,11 +21,10 @@ class AuthController extends Controller
         }
         return $this->render('login');
 
-       
     }
 
     //    if($request->isPost())
-         
+
     //     $registerModel->loadData($request->getBody());
     //     $pathArray1=$registerModel->getUsers();
     //       //  return  $this->render('validation',$pathArray1);
@@ -34,20 +32,18 @@ class AuthController extends Controller
     //         if($registerModel->register()){
     //             return "Success";
     //     }
-    
-        // else{return  $this->render('validation',$pathArray1);
-        // } 
+
+    // else{return  $this->render('validation',$pathArray1);
+    // }
 
     /*echo '<pre>';
     var_dump($registerModel->errors);
     echo '</pre>';
     exit; */
- 
-       /*return $this->render('register',[
-           'model'=>$registerModel
-       ]);*/
 
-
+    /*return $this->render('register',[
+    'model'=>$registerModel
+    ]);*/
 
     public function logout($request, $response)
     {
@@ -58,38 +54,38 @@ class AuthController extends Controller
 
     public function registerPageNow($request)
     {
-        
-        $registerModel=new UserModel();
-        if($request->isPost()){
-         $registerModel->loadData($request->getBody());
-         $registerModel->register();
-        // return $this->render('register');
-            
-        
+
+        $registerModel = new UserModel();
+        if ($request->isPost()) {
+            $registerModel->loadData($request->getBody());
+            $registrationState = $registerModel->register();
+            if($registrationState === 'success') {
+                // return $this->render('register');
+                return 'successfully registered!!';
+            }
+            return $this->render('register', $registrationState);
+
         }
-        //var_dump("heo");
+        // //var_dump("heo");
         return $this->render('register');
 
-      
     }
 
-    
-
-    public function getMy($request) {
-        if($request->isPost()) {
+    public function getMy($request)
+    {
+        if ($request->isPost()) {
 
             //from
             return 'success';
         }
         return $this->render('admin');
- 
-    }
-    
-   public function signInPage(){
-    return $this->render('signIn');
+
     }
 
-    
+    public function signInPage()
+    {
+        return $this->render('signIn');
+    }
 
     public function forgotPassword()
     {
@@ -108,7 +104,7 @@ class AuthController extends Controller
 
     public function restrictTo($role)
     { // asindu
-        if(App::$APP->activeUser()['role'] === $role) {
+        if (App::$APP->activeUser()['role'] === $role) {
             return true;
         }
 

@@ -43,8 +43,7 @@ a {
 a:link,
 a:active,
 a:visited {
-  color: #fff;
-  /* color: black; */
+  color: black;
 }
 
 .btn {
