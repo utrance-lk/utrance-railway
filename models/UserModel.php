@@ -205,8 +205,9 @@ class UserModel extends Model
     private function runSanitization()
     {
         $this->first_name = $this->sanitizeFormUsername($this->first_name);
+        $this->last_name=$this->sanitizeFormUsername($this->last_name);
         $this->email_id = $this->sanitizeFormPassword($this->email_id);
-        $this->user_password = $this->sanitizeFormPassword($this->user_password);
+        $this->user_password = password_hash($this->sanitizeFormPassword($this->user_password),PASSWORD_DEFAULT);
     }
 
     private function sanitizeFormString($inputText)//Asindu
@@ -220,6 +221,7 @@ class UserModel extends Model
     private function sanitizeFormUsername($inputText)//Asindu~
     {
         $inputText = strip_tags($inputText); //remove html tags
+        $inputText=ucfirst($inputText);
         return str_replace(" ", "", $inputText); // remove white spaces
     }
 
@@ -282,13 +284,9 @@ class UserModel extends Model
             $this->errorArray['streetLine1Error'] = 'Street Line 1  wrong length';
         }
 
-        if(is_numeric($str1) ){
-            $this->errorArray['streetLine1Error'] = 'Street Line only letters required';
-        }
+       
 
-        if(!(ctype_alpha($str1))){
-            $this->errorArray['streetLine1Error'] = 'Street Line 1  only letters  required';
-        }
+        
     }
 
     private function validateStreetLine2($str2){//Ashika
@@ -296,13 +294,9 @@ class UserModel extends Model
             $this->errorArray['streetLine2Error'] = 'Street Line 2  wrong length';
         }
 
-        if(is_numeric($str2) ){
-            $this->errorArray['streetLine2Error'] = 'Street Line 2 only letters required';
-        }
+        
 
-        if(!(ctype_alpha($str2))){
-            $this->errorArray['streetLine2Error'] = 'Street Line 2  only letters  required';
-        }
+        
     }
 
     private function validateCity($city){//Ashika
@@ -318,7 +312,7 @@ class UserModel extends Model
         $num="";
         $num= substr($cnum,0,3);
         if(strlen($cnum) == 10 && is_numeric($cnum) ){
-            if($num !="070" || $num !="071" || $num !="072" || $num !="075" || $num !="076" || $num !="077" || $num !="078" || $num!="063"){
+            if($num !="070" && $num !="071" && $num !="072" && $num !="075" && $num !="076" && $num !="077" && $num !="078" && $num!="063"){
                 $this->errorArray['contactNumError']='Contact Num in Invalid Format';
             }
 
