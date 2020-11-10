@@ -78,7 +78,7 @@ class FormDetailsController extends Controller
 
             $saveDetailsModel = new TrainModel();
             $tempBody = $request->getBody();
-            $tempBody['train_id'] = $request->getQueryParams()['train_id'];
+            $tempBody['id'] = $request->getQueryParams()['id'];
             $saveDetailsModel->loadData($tempBody);
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             //var_dump($saveDetailsModel->updateUserDetails());
