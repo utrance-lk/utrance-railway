@@ -134,7 +134,7 @@ class UserModel extends Model
 
     {
 
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  ORDER BY user_active_status ASC");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  ORDER BY user_active_status DESC");
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
@@ -176,6 +176,24 @@ class UserModel extends Model
         return $this->resultArray;
     }
 
+
+    public function changeUserStatusDetails(){//Ashika
+        if($this->user_active_status==0){
+            $this->user_active_status=1;
+        }else{
+            $this->user_active_status=0;  
+        }
+        //var_dump($this->user_active_status);
+        $query=App::$APP->db->pdo->prepare("UPDATE users SET user_active_status=:uas WHERE id=:id");
+        $query->bindValue(":id",$this->id);
+        $query->bindValue(":uas",$this->user_active_status);
+        $query->execute();
+       
+        
+       // $resultArray=$this->getManageUsers();
+       // return $resultArray;
+    }
+
     public function updateUserDetails() ////Ashika
 
     {
@@ -191,14 +209,7 @@ class UserModel extends Model
         $query->execute();
     }
 
-    public function deleteUserDetails()
-    {
-        $this->user_active_status = 0;
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET user_active_status=:ua WHERE id=:id");
-        $query->bindValue(":id", $this->id);
-        $query->bindValue(":ua", $this->user_active_status);
-        $query->execute();
-    }
+    
 
     // asindu - sanitization
 

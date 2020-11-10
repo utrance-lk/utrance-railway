@@ -41,7 +41,7 @@ class AdminController extends Controller
         
     }
 
-    public function manageUsers($request)
+    public function manageUsers($request)//Ashika
     {
 
         if ($this->validateUser()) {
@@ -138,18 +138,20 @@ class AdminController extends Controller
     }
 
 
-    public function deleteUser($request){
+    public function changeUserStatus($request){//Ashika
         if($request->isGet()){
-            $deleteUserModel=new UserModel();
-            $deleteUserModel->loadData($request->getQueryParams());
-            $deleteUserModel->deleteUserDetails();
-            
+            $changeUserStatusModel=new UserModel();
+            $changeUserStatusModel->loadData($request->getQueryParams());
+            //var_dump($request->getQueryParams());
+            $changeUserStatusModel->changeUserStatusDetails();
+            $changeStatusArray=$changeUserStatusModel->getManageUsers();
+          
 
         }
-        return $this->render(['admin','manageUsers']);
+       return $this->render(['admin','manageUsers'],$changeStatusArray);
     }
 
-    public function updateUser($request)
+    public function updateUser($request)//Ashika
     {
 
         if ($request->isGet()) {

@@ -612,3 +612,13 @@ select {
 .stop__delete-btn:focus {
   transform: scale(0);
 }
+
+#deactivate-btn{
+  
+  color: red;
+}
+
+#activate-btn{ 
+ 
+  color: green;
+}

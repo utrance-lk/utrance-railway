@@ -63,7 +63,7 @@
                       $html .= "<div class ='user-mainbox__other-id'><span>#<span>";
                       $html .="<span class='user__id'> ".$value['id'] . "</span></div></div></div>";
 
-                      if($value['user_active_status']==1){
+                      if($value['user_active_status']==0){
                         $status="Deactivated";
                       }else{
                         $status="Active";
@@ -78,12 +78,14 @@
                       $html .="<div class='search__result-managebtn btn-white'> View</div></a>";
 
                      
-                     $html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
+                     //$html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
                       $user_active_status=$value['user_active_status'];
-                      if($user_active_status == 0){
-                        $html .="<div class='search__result-deletebtn btn-white' id='delete-btn'>Deactive</div></a></form>";
+                      if($user_active_status == 1){
+                        $html .="<a href='/utrance-railway/admin/users/deactivate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
+                        $html .="<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactive</div></a></form>";
                       }else{
-                        $html .="<div class='search__result-deletebtn btn-white' id='delete-btn'>Active</div></a></form>";
+                        $html .="<a href='/utrance-railway/admin/users/activate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
+                        $html .="<div class='search__result-activatebtn btn-white' id='activate-btn'>Active</div></a></form>";
                       }
                       
                    
