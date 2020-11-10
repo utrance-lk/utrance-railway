@@ -47,8 +47,8 @@
                             $html .= "<a href='/utrance-railway/admin/trains/update?id=$train_id' class='search__result-train-managebtnbox'>";
                             $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
                             
-                            $html .= "<div class='search__result-train-deletebtnbox'>";
-                            $html .= "<div class='search__result-deletebtn btn-white'>Delete</div></div></div></div>";
+                            $html .= "<a href='/utrance-railway/admin/trains/update?id=$train_id' class='search__result-train-deletebtnbox'>";
+                            $html .= "<div class='search__result-deletebtn btn-white'>Delete</div></a></div></div>";
                             
 
                             $dom = new DOMDocument();

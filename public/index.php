@@ -120,6 +120,11 @@ $app->router->post('/utrance-railway/getUserDetgitails', [FormDetailsController:
 $app->router->get('/utrance-railway/admin/trains', [FormDetailsController::class, 'manageTrains']);
 $app->router->get('/utrance-railway/admin/trains/update', [FormDetailsController::class, 'updateTrain']);
 $app->router->post('/utrance-railway/admin/trains/update', [FormDetailsController::class, 'updateTrain']);
+$app->router->get('/utrance-railway/admin/trains/delete', [FormDetailsController::class, 'deleteTrain']);
+$app->router->post('/utrance-railway/admin/trains/delete', [FormDetailsController::class, 'deleteTrain']);
+
+$app->router->get('/utrance-railway/admin/trains/add', [FormDetailsController::class, 'addTrain']);
+$app->router->get('/utrance-railway/admin/trains/add', [FormDetailsController::class, 'addTrain']);
 
 
 
