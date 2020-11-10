@@ -52,7 +52,7 @@ class FormDetailsController extends Controller
 
         }
 
-        return $this->render(['admin', 'manageTrains']);
+         return $this->render(['admin', 'manageTrains']);
    }
 
    public function updateTrain($request) 
@@ -91,6 +91,30 @@ class FormDetailsController extends Controller
    
             //  return $this->render(
             // return $this->render(['admin', 'updateTrain']);
+    }
+
+
+
+    public function deleteTrain($request) 
+    {
+    
+        if($request->isGet()) 
+        {
+        $deleteTrainModel=new TrainModel();
+            // var_dump($request->getQueryParams());
+
+
+        $deleteTrainModel->loadData($request->getQueryParams());
+        $deleteTrainModel->deleteTrains();
+        $trainArrays=$deleteTrainModel->getTours();
+        
+            
+    
+        return $this->render(['admin', 'manageTrains'],$trainArrays);
+        return succsee;
+        }
+
+        
     }
 
    

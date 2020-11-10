@@ -73,7 +73,7 @@ class TrainModel extends Model
     public function getTours()
     {
 
-        $query = APP::$APP->db->pdo->prepare("SELECT train_id, train_name, train_type FROM trains");
+        $query = APP::$APP->db->pdo->prepare("SELECT train_id, train_name, train_type, train_active_status FROM trains");
        
 
         $query->execute();
@@ -137,6 +137,14 @@ class TrainModel extends Model
 
         $query->execute();
     }
+
+    public function deleteTrains(){
+        $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=:train_active_status WHERE train_id = :train_id ");
+        $query->bindValue(":train_id", $this->id);
+         $query->bindValue(":train_active_status",$this->train_active_status);
+        $query->execute();
+    }
+
 
 
     
