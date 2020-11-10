@@ -117,6 +117,14 @@ class FormDetailsController extends Controller
         
     }
 
+    public function addTrain($request) 
+    {
+      
+            return $this->render(['admin', 'addTrain']);
+        
+
+    }
+
    
 
  
