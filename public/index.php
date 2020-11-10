@@ -62,7 +62,7 @@ $app->router->post('/utrance-railway/admin/users/update', [AdminController::clas
 $app->router->get('/utrance-railway/admin/users/delete', [AdminController::class, 'deleteUser']);
 $app->router->post('/utrance-railway/admin/users/delete', [AdminController::class, 'deleteUser']);
 
-$app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
+// $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 // $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
 $app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);

@@ -77,9 +77,14 @@ class FormDetailsController extends Controller
         {
 
             $saveDetailsModel = new TrainModel();
-            $tempBody = $request->getBody();
-            $tempBody['id'] = $request->getQueryParams()['id'];
-            $saveDetailsModel->loadData($tempBody);
+
+       
+
+             $tempBody = $request->getBody();
+             $tempBody['id'] = $request->getQueryParams()['id'];
+             $saveDetailsModel->loadData($tempBody);
+
+
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             //var_dump($saveDetailsModel->updateUserDetails());
             $saveDetailsModel->updateTrainDetails();
@@ -119,6 +124,25 @@ class FormDetailsController extends Controller
 
     public function addTrain($request) 
     {
+        $saveTrainDetails = new TrainModel();
+        
+        if ($request->isPost()) 
+        {
+            
+
+           echo "hello";
+
+            $saveTrainDetails->loadData($request->getBody());
+            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
+            //var_dump($saveDetailsModel->updateUserDetails());
+            if($saveTrainDetails->addNewTrainDetails()){
+                return 'success';
+                echo "hihih";
+            }
+            
+           
+
+        }
       
             return $this->render(['admin', 'addTrain']);
         

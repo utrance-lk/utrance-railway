@@ -48,21 +48,21 @@ class TrainModel extends Model
 
         return $query->execute();
     }
-    public function rules():array{
-        return[
-            'first_name' => [self::RULE_REQUIRED],
-            'last_name' =>[self::RULE_REQUIRED],
-            'street_line1' =>[self::RULE_REQUIRED],
-            'street_line2'=>[self::RULE_REQUIRED],
-            'city' => [self::RULE_REQUIRED],
-            'contact_num' =>[self::RULE_REQUIRED],
-            'user_password' =>[self::RULE_REQUIRED],
-             'user_confirmPassword'=>[self::RULE_REQUIRED,[self::RULE_MATCH,'match'=>'user_password']],
-            'email_id' =>[self::RULE_REQUIRED,self::RULE_EMAIL],
-            'user_role' =>[self::RULE_REQUIRED],
-            'user_image'=>[self::RULE_REQUIRED],
-        ];
-    }
+    // public function rules():array{
+    //     return[
+    //         'first_name' => [self::RULE_REQUIRED],
+    //         'last_name' =>[self::RULE_REQUIRED],
+    //         'street_line1' =>[self::RULE_REQUIRED],
+    //         'street_line2'=>[self::RULE_REQUIRED],
+    //         'city' => [self::RULE_REQUIRED],
+    //         'contact_num' =>[self::RULE_REQUIRED],
+    //         'user_password' =>[self::RULE_REQUIRED],
+    //          'user_confirmPassword'=>[self::RULE_REQUIRED,[self::RULE_MATCH,'match'=>'user_password']],
+    //         'email_id' =>[self::RULE_REQUIRED,self::RULE_EMAIL],
+    //         'user_role' =>[self::RULE_REQUIRED],
+    //         'user_image'=>[self::RULE_REQUIRED],
+    //     ];
+    // }
     
  
 
@@ -141,8 +141,43 @@ class TrainModel extends Model
     public function deleteTrains(){
         $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=:train_active_status WHERE train_id = :train_id ");
         $query->bindValue(":train_id", $this->id);
-         $query->bindValue(":train_active_status",$this->train_active_status);
+        $query->bindValue(":train_active_status",$this->train_active_status);
         $query->execute();
+    }
+
+
+    public function addNewTrainDetails()
+    {
+         $query = App::$APP->db->pdo->prepare("INSERT INTO trains (train_name, route_id, train_type, train_active_status, train_travel_days,
+         train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths, train_total_weight) VALUES (:train_name, :route_id, :train_type, :train_active_status, :train_travel_days, :train_freights_allowed,
+         :train_fc_seats, :train_sc_seats, :train_observation_seats, :train_sleeping_berths, :train_total_weight)");
+        //  $query->bindValue(":train_id", $this->id);
+          $query->bindValue(":train_name", $this->train_name);
+          $query->bindValue(":route_id", $this->route_id);
+          $query->bindValue(":train_type", $this->train_type);
+        // // // $int = (int)$this->train_active_status;
+          $query->bindValue(":train_active_status",$this->train_active_status);
+
+        
+
+      $trinTravalDays=implode(' ',$this->train_travel_days);
+          $query->bindValue(":train_travel_days", $trinTravalDays);
+             
+          $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
+          $query->bindValue(":train_fc_seats", $this->train_fc_seats);
+          $query->bindValue(":train_sc_seats", $this->train_sc_seats);
+          $query->bindValue(":train_observation_seats", $this->train_observation_seats);
+          $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
+          $query->bindValue(":train_total_weight", $this->train_total_weight);
+         
+
+          $query->execute();
+         echo $this->train_name , $this->route_id, $this->train_type, $this->train_active_status, $trinTravalDays;
+        echo $this->train_travel_days;
+        echo $trinTravalDays;
+        var_dump($this->train_travel_days);
+
+        echo "helo";
     }
 
 
