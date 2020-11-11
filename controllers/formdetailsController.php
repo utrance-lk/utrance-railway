@@ -39,20 +39,43 @@ class FormDetailsController extends Controller
 
     public function manageTrains($request)
     {
+        $searchModel = new TrainModel();
         // var_dump($request->getBody());
         if($request->isGet()) 
         {
-            $searchModel = new TrainModel();
+           
             $searchModel->loadData($request->getBody());
             
 
-            $trainArrays = $searchModel->getTours();
+            $trainArrays = $searchModel->getTrains();
             //  var_dump($trainArrays);
             return $this->render(['admin', 'manageTrains'], $trainArrays);
 
         }
 
-         return $this->render(['admin', 'manageTrains']);
+        if ($request->isPost()) 
+        {
+
+            $searchModel->loadData($request->getBody());
+            $resultArray=$searchModel->searchTrainDetails();
+
+            if(empty($resultArray)){
+            return $this->render(['admin', 'manageTrains'], $resultArray);
+
+            }else{
+                return $this->render(['admin', 'manageTrains']);
+                echo "not found";
+            }
+            
+
+            // if($searchModel->searchTrainDetails()){
+            //     return 'success';
+                
+            // }  
+
+        }
+
+        //  return $this->render(['admin', 'manageTrains']);
    }
 
    public function updateTrain($request) 

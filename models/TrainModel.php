@@ -70,7 +70,7 @@ class TrainModel extends Model
   
     //[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
 
-    public function getTours()
+    public function getTrains()
     {
 
         $query = APP::$APP->db->pdo->prepare("SELECT train_id, train_name, train_type, train_active_status FROM trains");
@@ -177,6 +177,25 @@ class TrainModel extends Model
         
     }
 
+    public function searchTrainDetails()
+    {
+
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name = :train_name");
+        $query->bindValue(":train_name", $this->train_name);
+
+        $query->execute();
+        
+        $this->resultArray['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
+       
+        // var_dump($this->resultArray[0]['train_name']);  
+        return $this->resultArray; 
+        
+        echo $this->resultArray;
+
+        var_dump($this->resultArray);
+
+    }
+
 
 
     
@@ -184,22 +203,6 @@ class TrainModel extends Model
   
 }
   
-//[self::RULE_MIN,'min=>8'],[self::RULE_MAX,'max'<=24]
 
-   
-
-
-        
-    
-  
-
-/*public function createOne()
-{
-    $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name) VALUES (:fn, :ln)");
-
-
-}
-    return $query->execute();
-}*/
 
 

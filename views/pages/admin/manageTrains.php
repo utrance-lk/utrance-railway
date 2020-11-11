@@ -1,11 +1,13 @@
 <div class="load-content-container">
     <div class="load-content">
         <div class="load-content--manage-trains">
-              <form class="dashboard-searchbar--container">
-                <input type="text" class="dashboard-searchbar" placeholder="Search trains by name"/>
+              <form class="dashboard-searchbar--container" method = "post">
+                <input type="text" class="dashboard-searchbar" placeholder="Search trains by name" name="train_name"/>
+                <button>
                 <svg class="search-icon__btn">
                   <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
                 </svg>
+                </button>
                 <div class="dashboard-searchbar__dropdown">
                   <!-- <svg class="dropdown-btn">
                               <use xlink:href="./icons/sprite.svg#icon-chevron-small-down"></use>
