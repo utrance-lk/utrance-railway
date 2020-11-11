@@ -4,8 +4,8 @@
             <div class="content-title">
               <p>Your Account Settings</p>
             </div>
-            <form action="" class="form__user-data">
-            <div class="content__fields">
+            <!--form action="/utrance-railway/admin?id=$id" class="form__user-data" method="post">
+            <div class="content__fields"!-->
             <?php
               $dom = new DOMDocument;
               libxml_use_internal_errors(true);
@@ -16,6 +16,9 @@
             <?php
               if (isset($_SESSION['user'])) {
                 $html = "";
+                $id = App::$APP->activeUser()['id'];
+                $html .="<form action='/utrance-railway/admin?id=$id' class='form__user-data' method='post'>";
+                $html .="<div class='content__fields'>";
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";
                 $html .= "<input type='text' name='first_name' class='form__input' value=" . App::$APP->activeUser()['first_name'] . "></div>";
@@ -35,7 +38,7 @@
                 $html .= "<input type='text' name='street_line2' class='form__input' value=" . App::$APP->activeUser()['street_line2'] . "></div>";
                 $html .= "<div class='city content__fields-item'>";
                 $html .= "<label for='city' class='form__label'>City</label>";
-                $html .= "<input type='text' name='city' class='form__input' value=" . App::$APP->activeUser()['city'] . "></div></div></div>";
+                $html .= "<input type='text' name='city' class='form__input' value=" . App::$APP->activeUser()['city'] . "></div>";
                 $html .= "<div class='contactno-box content__fields-item'>";
                 $html .= "<label for='contactno' class='form__label'>Contact No</label>";
                 $html .= "<input type='text' name='contact_num' class='form__input' value=" . App::$APP->activeUser()['contact_num'] . "></div>";
@@ -43,16 +46,19 @@
                 $html .= "<img src='../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg' alt='user-profile-picture' class=''/>";
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo' />";
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
+                $id = App::$APP->activeUser()['id'];
+                var_dump($id); 
+                $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
-                $html .= "<div class='btn__save btn-settings'>Save Settings</div></div>";
+                $html .= "<input type='submit' class='btn__save btn-settings'  name='submit' value='Save Settings'></div></div></div></form>";
 
                 $dom = new DOMDocument();
                 $dom->loadHTML($html);
                 print_r($dom->saveHTML());
               }
             ?>
-              </div>
-              </form>
+              <!--/div>
+              </form!-->
 
             <div class="seperator"></div>
             <div class="content-title">
@@ -91,6 +97,42 @@
 
 <script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
 
+<!--?php
+  if(isset($_POST['submit'])){
+    $file=$_FILES['photo'];
+    //print_r($file);
+    var_dump($file);
+    $fileName=$_FILES['file']['name'];
+    $fileTempName=$_FILES['file']['temp_name'];
+    $fileSize=$_FILES['file']['size'];
+    $fileError=$_FILES['file']['error'];
+    $fileType=$_FILES['file']['type'];
 
+    $fileExt=explode('.',$fileName);
+    $fileActualExt=strtolower(end($fileExt));
+    $allowed=array('jpg','jpeg','png','pdf');
+
+    if(in_array($fileActualExt,$allowed)){
+      if($fileError === 0){
+        if($fileSize < 1000000){
+              $fileNameNew=uniqid('',true).".".$fileActualExt;
+              $fileDestination='uploads/'.$fileNameNew;
+              move_uploaded_file($fileTempName,$fileDestination);
+              header("Location:index.php?uploadsuccess");     
+        }else{
+          echo "Your file is too big!!!";
+        }
+            
+      }else{
+        echo "There was an error uploading your file!!";
+      }
+
+    }else{
+      echo "You can not upload files of this type!!!";
+    }
+  }
+
+
+?!-->
 </body>
 </html>

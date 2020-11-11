@@ -52,7 +52,7 @@ class AuthController extends Controller
         return $response->redirect('/utrance-railway/home');
     }
 
-    public function registerPageNow($request)
+    public function register($request)
     {
         
         $registerModel = new UserModel();

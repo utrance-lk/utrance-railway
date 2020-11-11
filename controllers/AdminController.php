@@ -25,14 +25,28 @@ class AdminController extends Controller
 
     public function adminSettings($request)
     {
-
+     
         if ($this->validateUser()) {
-            if ($request->isPost()) {
-                // form
-                return 'success';
+            
+            $updateUserDetailsModel=new UserModel();
+            
+            if ($request->isPost()){
+                 
+                $tempUpdateUserBody = $request->getBody();
+                
+              
+                $tempUpdateUserBody['id'] = $request->getQueryParams()['id'];
+                
+                $updateUserDetailsModel->loadData($tempUpdateUserBody);
+                
+                $updateUserDetailsModel->updateUserSettingsDetails();
+                return $this->render('admin');
             }
+          
 
             return $this->render('admin');
+
+            
         }
 
     }
@@ -71,11 +85,24 @@ class AdminController extends Controller
     }
 
              
+   /* public function updateUserAdmin($request){ //daranya
+      
+        $updateUserModel=new UserModel();
+ 
+        if ($request->isPost()) {
+ 
+         $updateUserModel->loadData($request->getBody());
+         if($updateUserModel->updateUserAdmin()){
+             return "Success";
+         }
+ 
+     }
+     return $this->render(['admin']);
+ }*/
 
 
 
-
-   public function addUser($request){
+   public function addUser($request){//daranya
       
        $addUserModel=new UserModel();
 

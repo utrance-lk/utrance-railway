@@ -30,6 +30,8 @@ class Request {
     public function getQueryParams() {
         $resultArray;
         $url = $_SERVER['REQUEST_URI'];
+       // var_dump($_SERVER);
+        
         $r = parse_url($url, PHP_URL_QUERY);
         // foreach(explode("&", $r) as $key => $value) {
         //     $temp = explode("=", $value);

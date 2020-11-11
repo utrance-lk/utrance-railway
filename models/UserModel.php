@@ -15,6 +15,7 @@ class UserModel extends Model
     public $user_role = "User";
     public $user_confirmPassword;
     public $searchUserByNameOrId;
+    public $addUserImage="Chris-user-profile.jpg";
 
     public $resultArray;
     public $detailsArray;
@@ -121,14 +122,30 @@ class UserModel extends Model
         $query->execute();
 
     }
+     
 
-    public function getUserDetails1()
+    public function updateUserSettingsDetails(){//Daranya
+       // var_dump("Hello");
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
+        $query->bindValue(":id", $this->id);
+        $query->bindValue(":first_name", $this->first_name);
+        $query->bindValue(":last_name", $this->last_name);
+        $query->bindValue(":street_line1", $this->street_line1);
+        $query->bindValue(":street_line2", $this->street_line2);
+        $query->bindValue(":city", $this->city);
+        $query->bindValue(":contact_num", $this->contact_num);
+        $query->bindValue(":email_id", $this->email_id);
+        $query->execute();
+    
+        //var_dump($query->execute());
+    }
+    /*public function getUserDetails1()
     { //Daranya
         $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num,user_password FROM users WHERE id=10 ");
         $query->execute();
         $this->detailsArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->detailsArray;
-    }
+    }*/
 
     public function getManageUsers() //Ashika
 
