@@ -8,7 +8,7 @@
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
-                        <input type="text" name="train_name" class="form__input" />
+                        <input type="text" name="train_name" class="form__input" value=" " />
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>
@@ -57,11 +57,11 @@
                     </fieldset>
                     <div class="trainactive-box content__fields-item">
                         <label for="trainactive" class="form__label form__label--active">Active Status</label>
-                        <input type="checkbox" name="train_active_status" id="trainactive" value="1">
+                        <input type="checkbox" name="train_active_status" id="trainactive" value="0">
                     </div>
                     <div class="freightallowed-box content__fields-item">
                         <label for="freightsallowed" class="form__label form__label--freights-allowed">Freights Allowed (Kg)</label>
-                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed">
+                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed" value="0">
                         <input type="number" min="0" value="0" name="train_total_weight" id="freights-quantity" class="form__input number__input freights-quantity__number-input">
                     </div>
                     <fieldset class="classess-box content__fields-item">
@@ -83,7 +83,7 @@
                         <div class="reservation-categorybox__container checkbox__horizontal">
                             <div class="seatbox-observation--saloon reservation__category-item">
                                 <label for="observation-saloon">Observation Saloon</label>
-                                <input type="checkbox" name="train_observation_seats" id="observation-saloon">
+                                <input type="checkbox" name="train_observation_seats" id="observation-saloon" value="0">
                             </div> 
                         </div>          
                     </fieldset>
