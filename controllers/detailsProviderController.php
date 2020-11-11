@@ -3,9 +3,9 @@
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
 
-class AdminController extends Controller
+class detailsProviderController extends Controller
 {
-    public function validateUser()
+   /* public function validateUser()
     {
         $currentUser = new AuthController();
 
@@ -213,11 +213,11 @@ public function manageTrains($request)
         return $this->render('aboutUs');
         
 
-    }
+    }*/
 
 ////////////////////////////////////////////////////////////////////////////////
-//source functionalities daranya
-/*
+//details provider functionalities daranya
+
 public function sourceSettings($request){
     $sourceSettingModel=new UserModel();
      if($request->isPost()) {
@@ -226,7 +226,7 @@ public function sourceSettings($request){
      }
      if($request->isGet()) {
      $sourceSettingModel->loadData($request->getBody());
-     $getUserDetailsArray=$sourceSettingModel->getUserDetails1();
+     $getUserDetailsArray=$sourceSettingModel->getUserDetailsAdmin();
      return $this->render('source',$getUserDetailsArray);
      }
 }
@@ -299,7 +299,7 @@ public function fnuctionality03(){
  }
 
  
-*/
+
 
 
 

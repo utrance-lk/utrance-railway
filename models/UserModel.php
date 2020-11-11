@@ -109,6 +109,25 @@ class UserModel extends Model
 
     }
 
+    //daranya
+    public function updateUserAdmin()
+    {
+
+        echo "hello";
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:fn, last_name=:ln, email_id=:eid, city=:city,street_line1=:st1,street_line2=:st2,contact_num=:cn,user_password=:up,user_role=:us WHERE id=:10");
+        $query->bindValue(":fn", $this->first_name);
+        $query->bindValue(":ln", $this->last_name);
+        $query->bindValue(":st1", $this->street_line1);
+        $query->bindValue(":st2", $this->street_line2);
+        $query->bindValue(":city", $this->city);
+        $query->bindValue(":cn", $this->contact_num);
+        $query->bindValue(":up", $this->user_password);
+        $query->bindValue(":eid", $this->email_id);
+        $query->bindValue(":us", $this->user_role);
+        $query->execute();
+
+    }
+
     /*  public function getUsers()
     {
 
@@ -135,7 +154,7 @@ class UserModel extends Model
 
 
     //daranya
-    public function getUserDetails1(){
+    public function getUserDetailsAdmin(){
       $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num,user_password FROM users WHERE id=10 ");
       $query->execute();
 

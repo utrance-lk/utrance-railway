@@ -1,12 +1,16 @@
 <div class="load-content-container">
         <div class="load-content">
           <div class="load-content--manage-trains">
-          <h1> </h1>
+            <div class="content-title">
+              <p> Contact Admin</p>
+            </div>
          <br>
           <br>
           <br>
           <p>To admin,</p>
           <br>
+          <form action="" class="form__train-data">
+          <div class="content__fields">
           <div class="textarea">
               <textarea rows="50" cols="75" name="message" form="messageform" >Enter the message here...</textarea>
           </div>
@@ -14,6 +18,8 @@
               <div class="btn__save-box">
                         <div class="btn__save btn__add-train">Send</div>
               </div>
+          </div>
+          </form>
             
           <!--  <a href="/utrance-railway/admin/trains/add" class="adduserbtn addbtn">
               <div class="addtrainbtn-text addbtn-text">Add Train</div>

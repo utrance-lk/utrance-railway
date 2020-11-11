@@ -103,7 +103,7 @@
             <div class="content-title">
               <p>Your Account Settings</p>
             </div>
-            <form action="" class="form__user-data">
+            <form action="" method="POST" class="form__user-data">
             <div class="content__fields">
             <?php
               $dom = new DOMDocument;
@@ -164,7 +164,7 @@
             <div class="content-title">
               <p>Password Change</p>
             </div>
-            <form action="" class="password__change">
+            <form action="" method="POST" class="password__change">
               <div class="content__fields">
             <?php
                 if(isset($users)){

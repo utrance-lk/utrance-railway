@@ -43,6 +43,7 @@ $app->router->get('/utrance-railway/logout', [AuthController::class, 'logout']);
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
 $app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
+$app->router->post('/utrance-railway/admin/settings', [AdminController::class, 'updateUserAdmin']);
 $app->router->post('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
@@ -105,9 +106,9 @@ $app->router->get('/utrance-railway/getUserDetails', [formdetailsController::cla
 
 // source routing daranya
 
-$app->router->get('/utrance-railway/source', [AdminController::class, 'sourceSettings']);
-$app->router->get('/utrance-railway/source/settings', [AdminController::class, 'sourceSettings']);
-$app->router->get('/utrance-railway/source/contactAdmin', [AdminController::class, 'contactAdmin']);
+$app->router->get('/utrance-railway/source', [detailsProviderController::class, 'sourceSettings']);
+$app->router->get('/utrance-railway/source/settings', [detailsProviderController::class, 'sourceSettings']);
+$app->router->get('/utrance-railway/source/contactAdmin', [detailsProviderController::class, 'contactAdmin']);
 
 
 
