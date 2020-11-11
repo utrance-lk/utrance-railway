@@ -10,7 +10,7 @@
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
-                        <input type="text" name="train_name" class="form__input" value=" " />
+                        <input type="text" name="train_name" class="form__input" value=" " required/>
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>
@@ -28,42 +28,51 @@
                         <legend class="form__label">Train Travel Days</legend>
                         <div class="traveldaysbox__container checkbox__horizontal">
                             <div class="">
-                                <input type="checkbox" id="monday" name="train_travel_days[]" value="monday">
+                                <input type="hidden" name="train_travel_days[]" value="">
+                                <input type="checkbox" id="monday" name="train_travel_days[]" value="monday" >
                                 <label for="monday" class="checkbox__label">Mon</label>
                             </div>
                             <div class="">
-                                <input type="checkbox" id="tuesday" name="train_travel_days[]" value="tuesday">
+                                <input type="hidden" name="train_travel_days[]" value="">
+                                <input type="checkbox" id="tuesday" name="train_travel_days[]" value="tuesday" >
                                 <label for="tuesday" class="checkbox__label">Tue</label>
                             </div>
                             <div class="">
-                                <input type="checkbox" id="wednesday" name="train_travel_days[]" value="wednesday">
+                                <input type="hidden" name="train_travel_days[]" value="">
+                                <input type="checkbox" id="wednesday" name="train_travel_days[]" value="wednesday" >
                                 <label for="wednesday" class="checkbox__label">Wed</label>
                             </div>
                             <div class="">
-                                <input type="checkbox" id="thursday" name="train_travel_days[]" value="thursday">
+                                <input type="hidden" name="train_travel_days[]" value="">
+                                <input type="checkbox" id="thursday" name="train_travel_days[]" value="thursday" >
                                 <label for="thursday" class="checkbox__label">Thurs</label>
                             </div>
                             <div class="">
-                                <input type="checkbox" id="friday" name="train_travel_days[]" value="friday">
+                                <input type="hidden" name="train_travel_days[]" value="">
+                                <input type="checkbox" id="friday" name="train_travel_days[]" value="friday" >
                                 <label for="friday" class="checkbox__label">Fri</label>
                             </div>
                             <div class="">
-                                <input type="checkbox" id="saturday" name="train_travel_days[]" value="saturday">
+                                <input type="hidden" name="train_travel_days[]" value="">
+                                <input type="checkbox" id="saturday" name="train_travel_days[]" value="saturday" >
                                 <label for="saturday" class="checkbox__label">Sat</label>
                             </div>
                             <div class="">
-                                <input type="checkbox" id="sunday" name="train_travel_days[]" value="sunday">
+                                <input type="hidden" name="train_travel_days[]" value="">
+                                <input type="checkbox" id="sunday" name="train_travel_days[]" value="sunday" >
                                 <label for="sunday" class="checkbox__label">Sun</label>
                             </div>
                         </div>
                     </fieldset>
                     <div class="trainactive-box content__fields-item">
                         <label for="trainactive" class="form__label form__label--active">Active Status</label>
-                        <input type="checkbox" name="train_active_status" id="trainactive" value="0">
+                        <input type="hidden" name="train_active_status" value="0">
+                        <input type="checkbox" name="train_active_status" id="trainactive" value="1" >
                     </div>
                     <div class="freightallowed-box content__fields-item">
                         <label for="freightsallowed" class="form__label form__label--freights-allowed">Freights Allowed (Kg)</label>
-                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed" value="0">
+                        <input type="hidden" name="train_freights_allowed" value="0">
+                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed" value="1" >
                         <input type="number" min="0" value="0" name="train_total_weight" id="freights-quantity" class="form__input number__input freights-quantity__number-input">
                     </div>
                     <fieldset class="classess-box content__fields-item">
@@ -86,7 +95,7 @@
                             <div class="seatbox-observation--saloon reservation__category-item">
                                 <label for="observation-saloon">Observation Saloon</label>
                                 <input type="hidden" name="train_observation_seats" value="0">
-                                <input type="checkbox" name="train_observation_seats" id="observation-saloon" value="1" checked } >
+                                <input type="checkbox" name="train_observation_seats" id="observation-saloon" value="1"   >
                             </div> 
                         </div>          
                     </fieldset>
