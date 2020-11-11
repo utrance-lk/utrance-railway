@@ -1,15 +1,18 @@
   <div class="load-content-container">
       <div class="load-content">
           <div class="load-content--manage-users">
-            <form class="dashboard-searchbar--container">
+            <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/admin/users">
+            
               <input
                 type="text"
                 class="dashboard-searchbar"
-                placeholder="Search users by name"
+                placeholder="Search users by name"  name="searchUserByNameOrId"
               />
+              <button>
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
+              </button>
               <!-- <div class="dashboard-searchbar__dropdown">
                
                 <select name="catogory" id="" class="dropdown__list">
@@ -59,11 +62,13 @@
                       $html .= "<div class ='user-mainbox__other-name'> " .$value['first_name']. "</div>";
                       $html .= "<div class ='user-mainbox__other-id'><span>#<span>";
                       $html .="<span class='user__id'> ".$value['id'] . "</span></div></div></div>";
-                      if($value['user_active_status']==1){
+
+                      if($value['user_active_status']==0){
                         $status="Deactivated";
                       }else{
                         $status="Active";
                       }
+
                       $html .="<div class='search__result-user-emailbox'> $status</div>";
                       $html .="<div class='search__result-user-rolebox'> " .$value['user_role'] ."</div>";
 
@@ -73,8 +78,16 @@
                       $html .="<div class='search__result-managebtn btn-white'> View</div></a>";
 
                      
-                     $html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
-                      $html .="<div class='search__result-deletebtn btn-white' id='delete-btn'>Delete</div></a></form>";
+                     //$html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
+                      $user_active_status=$value['user_active_status'];
+                      if($user_active_status == 1){
+                        $html .="<a href='/utrance-railway/admin/users/deactivate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
+                        $html .="<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactive</div></a></form>";
+                      }else{
+                        $html .="<a href='/utrance-railway/admin/users/activate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
+                        $html .="<div class='search__result-activatebtn btn-white' id='activate-btn'>Active</div></a></form>";
+                      }
+                      
                    
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
