@@ -20,7 +20,7 @@
                 </select>
               </div>
             </form>
-            <a href="/utrance-railway/admin/routes/add" class="adduserbtn addbtn">
+            <a href="/utrance-railway/routes/add" class="adduserbtn addbtn">
               <div class="addroutebtn-text addbtn-text">Add Route</div>
               <svg class="addroutebtn-img addbtn-img">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="search__result-route-start">Matara</div>
                 <div class="search__result-route-destination">Colombo Fort</div>
-                <a href="/utrance-railway/admin/routes/update" class="search__result-route-managebtnbox">
+                <a href="/utrance-railway/routes/update" class="search__result-route-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-route-deletebtnbox">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="search__result-route-start">Matara</div>
                 <div class="search__result-route-destination">Kandy</div>
-                <a href="/utrance-railway/admin/route/update" class="search__result-route-managebtnbox">
+                <a href="/utrance-railway/route/update" class="search__result-route-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-route-deletebtnbox">

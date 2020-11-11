@@ -29,13 +29,50 @@
         <div class="user__nav">
           <div class="userdetails-box">
              <?php if(isset($_SESSION['user'])) : ?>
-              <img
-                src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
-                alt="profile picture"
-                class="user-img"
-              />
-              <a href="/utrance-railway/logout" class="user-name"><?php echo App::$APP->activeUser()['first_name'];?></a>
-              
+              <a href="#">
+                <img
+                  src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
+                  alt="profile picture"
+                  class="user-img"
+                />
+              </a>
+              <a href="#" class="user-name"><?php echo App::$APP->activeUser()['first_name'];?></a>
+              <div class="userdetails-box--dropdown">
+               <ul>
+                 <li>
+                   <a href="/utrance-railway/profile">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-gauge"></use>
+                    </svg>
+                    <span>Dashboard</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-suitcase"></use>
+                    </svg>
+                    <span>My Bookings</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="/utrance-railway/settings">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
+                    </svg>
+                    <span>Settings</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="/utrance-railway/logout">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-log-out"></use>
+                    </svg>
+                    <span>Logout</span>
+                   </a>
+                 </li>
+               </ul>
+             </div>
              <?php else: ?>
               <svg class="guest-user user-img">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-user"></use>
