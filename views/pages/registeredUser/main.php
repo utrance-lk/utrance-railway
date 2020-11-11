@@ -9,42 +9,18 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/header.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/admin/style.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
   </head>
 
   <body>
     <div class="nav-container">
       <div class="navbar">
-        <div class="main__nav">
-          <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
-          </div>
-          <div class="main__nav-items">
-            <a href="/utrance-railway/home" class="home-box nav-items-little">
-              <svg class="home__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-home"></use>
-              </svg>
-              <span class="nav__items-text-box">Home</span>
-            </a>
-            <div class="ticket-box nav-items-little">
-              <svg class="ticket__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
-              </svg>
-              <span class="nav__items-text-box">Tickets</span>
-            </div>
-            <div class="news-box nav-items-little">
-              <svg class="news__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
-              </svg>
-              <span class="nav__items-text-box">News</span>
-            </div>
-          </div>
+        <div class="logobox">
+          <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
         </div>
         <div class="user__nav">
           <div class="notification-box">
-            <svg class="notification__icon navbar__icon">
+            <svg class="notification__icon">
               <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chat"></use>
             </svg>
             <span class="notification__numbers">13</span>
@@ -65,7 +41,7 @@
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
-            <a href="/utrance-railway/admin" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
+            <a href="/utrance-railway/registeredUser" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
               <svg class="settings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
               </svg>
@@ -78,9 +54,11 @@
               <span class="mybookings-name">My bookings</span>
             </div>
           </div>
-          <div class="userrole-name">Admin</div>
-          <div class="sidebar__nav-role-items">
-            <a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
+          <div class="userrole-name">User</div>
+
+
+          <div class="sidebar__nav-role-items" style="height:6">
+            <!--a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
               </svg>
@@ -109,7 +87,7 @@
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-shopping-cart"></use>
               </svg>
               <span class="manage--freights-name">Manage freights</span>
-            </div>
+            </div!-->
           </div>
         </div>
       </div>

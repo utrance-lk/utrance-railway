@@ -23,8 +23,8 @@ class AdminController extends Controller
 
     }
 
-//daranya
-    public function adminSettings($request)
+
+    public function adminSettings($request) //daranya
     {
         $adminSettingModel=new UserModel();
         if($request->isPost()) {
@@ -38,8 +38,8 @@ class AdminController extends Controller
         }
 
     }
-//daranya
-    public function updateUserAdmin($request){
+
+    public function updateUserAdmin($request){ //daranya
       
         $updateUserModel=new UserModel();
  
@@ -54,7 +54,11 @@ class AdminController extends Controller
      return $this->render(['admin']);
  }
 
-    public function manageUsers($request)
+    public function searchManageUsers($request){
+        
+    }
+
+    public function manageUsers($request)//Ashika
     {
 
         if ($this->validateUser()) {
@@ -69,16 +73,23 @@ class AdminController extends Controller
             }
 
             if ($request->isPost()) {
+                $searchUser=new UserModel();
+                $searchUser->loadData($request->getBody());
+                //var_dump($request->getBody());
+                $getSearchREsult=$searchUser->getSearchUserResult();
+                //var_dump($getSearchREsult);
+                return $this->render(['admin', 'manageUsers'], $getSearchREsult);
 
             }
+            //return $this->render(['admin', 'manageUsers']);
         }
 
+
         //  return $this->render(['admin', 'manageUsers']);
-}
+    }
 
-
-//daranya
-   public function addUser($request){
+             
+   public function addUser($request){ //daranya
       
        $addUserModel=new UserModel();
 
@@ -86,6 +97,7 @@ class AdminController extends Controller
 
         $addUserModel->loadData($request->getBody());
         if($addUserModel->addUser()){
+
             return "Success";
         }
 
@@ -95,7 +107,10 @@ class AdminController extends Controller
 
    
 
-public function manageTrains($request)
+
+
+   
+    public function manageTrains($request)
     {
 
         if ($this->validateUser()) {
@@ -139,7 +154,21 @@ public function manageTrains($request)
         return $this->render(['admin', 'addRoute']);
     }
 
-    public function updateUser($request)
+
+    public function changeUserStatus($request){//Ashika
+        if($request->isGet()){
+            $changeUserStatusModel=new UserModel();
+            $changeUserStatusModel->loadData($request->getQueryParams());
+            //var_dump($request->getQueryParams());
+            $changeUserStatusModel->changeUserStatusDetails();
+            $changeStatusArray=$changeUserStatusModel->getManageUsers();
+          
+
+        }
+       return $this->render(['admin','manageUsers'],$changeStatusArray);
+    }
+
+    public function updateUser($request)//Ashika
     {
 
         if ($request->isGet()) {
@@ -158,12 +187,14 @@ public function manageTrains($request)
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             //var_dump($saveDetailsModel->updateUserDetails());
             $saveDetailsModel->updateUserDetails();
-
+            
             return;
 
         }
 
     }
+
+   
 
     public function updateTrain($request)
     {

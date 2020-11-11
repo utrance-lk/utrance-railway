@@ -30,7 +30,11 @@
                   </div>
                   <div class="city content__fields-item">
                     <label for="city" class="form__label">City</label>
-                    <input type="text" name="city" class="form__input" />
+                    <select name="city" id="city" class="form__input">
+                    <option value="Matara">Matara</option>
+                    <option value="Colombo">Colombo</option>
+                    
+                  </select>
                   </div>
                 </div>
                 <div class="contactno-box content__fields-item">
@@ -43,10 +47,10 @@
                   <select name="user_role" id="role" class="form__input">
                     <option value="admin">Admin</option>
                     <option value="detailsProvider">Details Provider</option>
-                    <option value="user">User</option>
+                    
                   </select>
                 </div>
-                <div class="userpicture-box">
+                <!--div class="userpicture-box">
                   <img
                     src="/utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
                     alt="user-profile-picture"
@@ -60,11 +64,11 @@
                     id="photo"
                   />
                   <label for="photo">Choose New Photo</label>
-                </div>
+                </div!-->
                 <!-- <div class="btn__save-box">
                   <div class="btn__save btn-settings">Save Settings</div>
                 </div> -->
-              </div>
+              
             <!-- </form> -->
             <div class="seperator"></div>
             <div class="content-title">
@@ -98,7 +102,11 @@
                   >
                   <input
                     type="password"
+<<<<<<< HEAD
                     name="user_confirmpassword"
+=======
+                    name="user_confirmPassword"
+>>>>>>> 68b3619cd300cea886ac7716b4ffd4de03d7c10a
                     class="form__input"
                   />
                 </div>

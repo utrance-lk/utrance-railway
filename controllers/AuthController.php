@@ -6,11 +6,6 @@ include_once "../models/UserModel.php";
 class AuthController extends Controller
 {
 
-    public function __construct()
-    {
-        // $this->registerMiddleware(new AuthMiddleware());
-    }
-
     public function login($request, $response)
     {
         if ($request->isPost()) {
@@ -24,6 +19,8 @@ class AuthController extends Controller
 
             return 'invalid username or password';
         }
+        return $this->render('login');
+
 
        if($request->isPost()){
          
@@ -37,18 +34,37 @@ class AuthController extends Controller
     }
         else{return  $this->render('validation',$pathArray1);
         } 
+
     }
+
+    //    if($request->isPost())
+
+    //     $registerModel->loadData($request->getBody());
+    //     $pathArray1=$registerModel->getUsers();
+    //       //  return  $this->render('validation',$pathArray1);
+    //     if( $registerModel->valid()){
+    //         if($registerModel->register()){
+    //             return "Success";
+    //     }
+
+    // else{return  $this->render('validation',$pathArray1);
+    // }
 
     /*echo '<pre>';
     var_dump($registerModel->errors);
     echo '</pre>';
     exit; */
+
  
        /*return $this->render('register',[
            'model'=>$registerModel
        ]);*/
 }
 
+
+    /*return $this->render('register',[
+    'model'=>$registerModel
+    ]);*/
 
     public function logout($request, $response)
     {
@@ -59,43 +75,42 @@ class AuthController extends Controller
 
     public function registerPageNow($request)
     {
+        
         $registerModel = new UserModel();
-
         if ($request->isPost()) {
-
             $registerModel->loadData($request->getBody());
-            if ($registerModel->valid()) {
-                $registerModel->registerUser();
-                return "Succes";
-            } else {
-                return "Added Fail";
+            $registrationState = $registerModel->register();
+            if($registrationState === 'success') {
+                // return $this->render('register');
+                return 'successfully registered!!';
+            }else{
+                $registerSetValue=$registerModel->registerSetValue($registrationState);//Ashika
+               
             }
+            return $this->render('register', $registerSetValue);//Ashika
+          //  return $this->render('register', $registrationState);
 
         }
-
-    }
-
-    public function registerPage()
-    {
+        // //var_dump("heo");
         return $this->render('register');
 
     }
 
-    public function getMy($request) {
-        if($request->isPost()) {
+    public function getMy($request)
+    {
+        if ($request->isPost()) {
 
             //from
             return 'success';
         }
         return $this->render('admin');
- 
-    }
-    
-   public function signInPage(){
-    return $this->render('signIn');
+
     }
 
-    
+    public function signInPage()
+    {
+        return $this->render('signIn');
+    }
 
     public function forgotPassword()
     {
@@ -114,7 +129,7 @@ class AuthController extends Controller
 
     public function restrictTo($role)
     { // asindu
-        if(App::$APP->activeUser()['role'] === $role) {
+        if (App::$APP->activeUser()['role'] === $role) {
             return true;
         }
 
