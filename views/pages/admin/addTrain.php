@@ -1,3 +1,5 @@
+
+
 <div class="load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -83,7 +85,8 @@
                         <div class="reservation-categorybox__container checkbox__horizontal">
                             <div class="seatbox-observation--saloon reservation__category-item">
                                 <label for="observation-saloon">Observation Saloon</label>
-                                <input type="checkbox" name="train_observation_seats" id="observation-saloon" value="0">
+                                <input type="hidden" name="train_observation_seats" value="0">
+                                <input type="checkbox" name="train_observation_seats" id="observation-saloon" value="1" checked } >
                             </div> 
                         </div>          
                     </fieldset>
@@ -97,3 +100,5 @@
         </div>
         </div>
 </div>
+
+
