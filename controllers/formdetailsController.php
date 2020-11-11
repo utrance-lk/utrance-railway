@@ -39,11 +39,11 @@ class FormDetailsController extends Controller
 
     public function manageTrains($request)
     {
-        $searchModel = new TrainModel();
+       
         // var_dump($request->getBody());
         if($request->isGet()) 
         {
-           
+            $searchModel = new TrainModel();
             $searchModel->loadData($request->getBody());
             
 
@@ -55,16 +55,21 @@ class FormDetailsController extends Controller
 
         if ($request->isPost()) 
         {
+            $searModel = new TrainModel();
 
-            $searchModel->loadData($request->getBody());
-            $resultArray=$searchModel->searchTrainDetails();
+            $searModel->loadData($request->getBody());
+           
+            $resultArray=$searModel->searchTrainDetails();
+           
 
-            if(empty($resultArray)){
-            return $this->render(['admin', 'manageTrains'], $resultArray);
+            if($resultArray){
+                
+             return $this->render(['admin', 'manageTrains'], $resultArray);
 
             }else{
-                return $this->render(['admin', 'manageTrains']);
-                echo "not found";
+                 return $this->render(['admin', 'manageTrains'] );
+                
+               
             }
             
 

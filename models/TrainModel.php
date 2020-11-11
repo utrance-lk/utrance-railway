@@ -35,6 +35,7 @@ class TrainModel extends Model
     public $train_observation_seats;
     public $train_sleeping_berths;
     public $train_total_weight;
+    public $searchTrain;
 
     
 
@@ -180,19 +181,19 @@ class TrainModel extends Model
     public function searchTrainDetails()
     {
 
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name = :train_name");
-        $query->bindValue(":train_name", $this->train_name);
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name = :train_name OR train_id = :id");
+        $query->bindValue(":train_name", $this->searchTrain);
+        $query->bindValue(":id", $this->searchTrain);
+
 
         $query->execute();
         
-        $this->resultArray['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
        
         // var_dump($this->resultArray[0]['train_name']);  
         return $this->resultArray; 
         
-        echo $this->resultArray;
-
-        var_dump($this->resultArray);
+       
 
     }
 
