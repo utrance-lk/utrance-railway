@@ -108,8 +108,8 @@ $app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
 // Admin routing
 $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
-$app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
-$app->router->get('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
+// $app->router->get('/utrance-railway/admin/settings', [AdminController::class, 'adminSettings']);
+// $app->router->get('/utrance-railway/admin/users', [AdminController::class, 'manageUsers']);
 // $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
 $app->router->get('/utrance-railway/admin/routes', [AdminController::class, 'manageRoutes']);
 
