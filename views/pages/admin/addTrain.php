@@ -6,11 +6,11 @@
             <div class="content-title">
               <p>New Train Profile Settings</p>
             </div>
-            <form action="" class="form__train-data" method='post' enctype="multipart/form-data">
+            <form action="" class="form__train-data" method='post' enctype="multipart/form-data" onsubmit="return validateForm()">
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
-                        <input type="text" name="train_name" class="form__input" value=" " required/>
+                        <input type="text" name="train_name" class="form__input" value=" " required>
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>

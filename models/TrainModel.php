@@ -171,13 +171,10 @@ class TrainModel extends Model
           $query->bindValue(":train_total_weight", $this->train_total_weight);
          
 
-          $query->execute();
-         echo $this->train_name , $this->route_id, $this->train_type, $this->train_active_status, $trinTravalDays;
-        echo $this->train_travel_days;
-        echo $trinTravalDays;
-        var_dump($this->train_travel_days);
+          return $query->execute();
+         
 
-        echo "helo";
+        
     }
 
 

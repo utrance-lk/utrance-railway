@@ -130,14 +130,14 @@ class FormDetailsController extends Controller
         {
             
 
-           echo "hello";
+          
 
             $saveTrainDetails->loadData($request->getBody());
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             //var_dump($saveDetailsModel->updateUserDetails());
             if($saveTrainDetails->addNewTrainDetails()){
                 return 'success';
-                echo "hihih";
+                
             }
             
            
