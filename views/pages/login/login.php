@@ -8,7 +8,7 @@
 						Log in
 					</div>
 					<div class="new-account-box">
-						<span class="new-account-box--1">Don't have an account?</span>&nbsp;<a href="#" class="new-account-box--2">Create account</a>
+						<span class="new-account-box--1">Don't have an account?</span>&nbsp;<a href="/utrance-railway/register" class="new-account-box--2">Create account</a>
 					</div>
 				</div>
 				<div class="username-box form__container-item">

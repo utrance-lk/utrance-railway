@@ -2,6 +2,8 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
+include_once "AdminController.php";
+include_once "RegisterUserController.php";
 
 class AuthController extends Controller
 {
@@ -10,7 +12,10 @@ class AuthController extends Controller
     {
         if ($request->isPost()) {
             $loginUser = new UserModel();
-            $loginUser->loadData($request->getBody());
+            $tempBody = $request->getBody();
+            $tempBody['user_password'] = hash('sha256', $request->getBody()['user_password']);
+            // $loginUser->loadData($request->getBody()); // for earlier created users
+            $loginUser->loadData($tempBody);
             $result = $loginUser->findOne();
             if ($result) {
                 App::$APP->session->set('user', $result[0]['id']);
@@ -23,28 +28,6 @@ class AuthController extends Controller
 
     }
 
-    //    if($request->isPost())
-
-    //     $registerModel->loadData($request->getBody());
-    //     $pathArray1=$registerModel->getUsers();
-    //       //  return  $this->render('validation',$pathArray1);
-    //     if( $registerModel->valid()){
-    //         if($registerModel->register()){
-    //             return "Success";
-    //     }
-
-    // else{return  $this->render('validation',$pathArray1);
-    // }
-
-    /*echo '<pre>';
-    var_dump($registerModel->errors);
-    echo '</pre>';
-    exit; */
-
-    /*return $this->render('register',[
-    'model'=>$registerModel
-    ]);*/
-
     public function logout($request, $response)
     {
         App::$APP->user = null;
@@ -52,43 +35,51 @@ class AuthController extends Controller
         return $response->redirect('/utrance-railway/home');
     }
 
-    public function registerPageNow($request)
+    public function register($request, $response)
     {
-        
+
         $registerModel = new UserModel();
         if ($request->isPost()) {
             $registerModel->loadData($request->getBody());
             $registrationState = $registerModel->register();
-            if($registrationState === 'success') {
-                // return $this->render('register');
-                return 'successfully registered!!';
-            }else{
-                $registerSetValue=$registerModel->registerSetValue($registrationState);//Ashika
-               
+            if ($registrationState === 'success') {
+                return $this->login($request, $response);
+            } else {
+                $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika
+
             }
-            return $this->render('register', $registerSetValue);//Ashika
-          //  return $this->render('register', $registrationState);
+            return $this->render('register', $registerSetValue); //Ashika
+            //  return $this->render('register', $registrationState);
 
         }
-        // //var_dump("heo");
         return $this->render('register');
 
     }
 
-    public function getMy($request)
+    public function getMyProfile($request)
     {
         if ($request->isPost()) {
 
             //from
             return 'success';
         }
-        return $this->render('admin');
 
-    }
+        $role = App::$APP->activeUser()['role'];
 
-    public function signInPage()
-    {
-        return $this->render('signIn');
+        if (!$this->isLoggedIn()) {
+            return 'You are not logged in!';
+        }
+
+        if ($role === 'admin') {
+            $admin = new AdminController();
+            return $admin->adminSettings($request);
+        }
+        if ($role === 'User') {
+            $regUser = new RegisterUserController();
+            return $regUser->registeredUserSettings($request);
+        }
+        return 'hacker';
+
     }
 
     public function forgotPassword()

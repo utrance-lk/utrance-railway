@@ -19,7 +19,7 @@
                 </div>
               </form>
 
-              <a href="/utrance-railway/admin/trains/add" class="adduserbtn addbtn">
+              <a href="/utrance-railway/trains/add" class="adduserbtn addbtn">
                 <div class="addtrainbtn-text addbtn-text">Add Train</div>
                 <svg class="addtrainbtn-img addbtn-img">
                   <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus"></use>
@@ -48,7 +48,7 @@
                             $train_id=$value['train_id'];
                             // $train_active_status=$value['train_active_status'];
 
-                            $html .= "<a href='/utrance-railway/admin/trains/update?id=$train_id' class='search__result-train-managebtnbox'>";
+                            $html .= "<a href='/utrance-railway/trains/update?id=$train_id' class='search__result-train-managebtnbox'>";
                             $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
                             
                             $html .= "<a href='/utrance-railway/admin/trains/delete?id=$train_id' class='search__result-train-deletebtnbox' >";

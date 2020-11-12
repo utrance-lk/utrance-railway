@@ -6,7 +6,7 @@ export const searchStates = function(searchText, direction) {
     clearResults(direction);
 
     let matches = stationsArray.filter(function (state) {
-      const regex = new RegExp(searchText, "gi");
+      const regex = new RegExp(`^${searchText}`, "gi");
       return state.match(regex);
     });
 

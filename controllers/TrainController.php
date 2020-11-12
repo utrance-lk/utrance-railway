@@ -1,7 +1,7 @@
 <?php
 include_once "../classes/core/Controller.php";
 include_once "../models/TrainModel.php";
-class FormDetailsController extends Controller
+class TrainController extends Controller
 {
 
     public function form($request)
@@ -139,7 +139,7 @@ class FormDetailsController extends Controller
 
         $deleteTrainModel->loadData($request->getQueryParams());
         $deleteTrainModel->deleteTrains();
-        $trainArrays=$deleteTrainModel->getTours();
+        $trainArrays=$deleteTrainModel->getTrains();
         
             
     

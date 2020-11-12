@@ -140,9 +140,9 @@ class TrainModel extends Model
     }
 
     public function deleteTrains(){
-        $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=:train_active_status WHERE train_id = :train_id ");
+        $query = APP::$APP->db->pdo->prepare("DELETE * FROM trains WHERE train_id = :train_id ");
         $query->bindValue(":train_id", $this->id);
-        $query->bindValue(":train_active_status",$this->train_active_status);
+        // $query->bindValue(":train_active_status",$this->train_active_status);
         $query->execute();
     }
 
