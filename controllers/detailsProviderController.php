@@ -8,16 +8,16 @@ class detailsProviderController extends Controller
   
 //details provider functionalities daranya
 
-public function sourceSettings($request){
-    $sourceSettingModel=new UserModel();
+public function detailsProviderSettings($request){
+    $detailsProviderSettingModel=new UserModel();
      if($request->isPost()) {
          // form
          return 'success';
      }
      if($request->isGet()) {
-     $sourceSettingModel->loadData($request->getBody());
-     $getUserDetailsArray=$sourceSettingModel->getUserDetailsAdmin();
-     return $this->render('source',$getUserDetailsArray);
+     $detailsProviderSettingModel->loadData($request->getBody());
+     $getUserDetailsArray=$detailsProviderSettingModel->getUserDetailsAdmin();
+     return $this->render('detailsProvider',$getUserDetailsArray);
      }
 }
 
@@ -28,7 +28,7 @@ public function sourceSettings($request){
         return 'success';
     }
 
-    return $this->render(['source', 'contactAdmin']);
+    return $this->render(['detailsProvider', 'contactAdmin']);
      
 
 }

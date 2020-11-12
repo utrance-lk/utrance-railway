@@ -69,12 +69,17 @@ $app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutU
 $app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
 
 
-
-
-
 ////////Registered User Routing
 $app->router->get('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUserSettings']);
 $app->router->post('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUserSettings']);
+
+
+//detailsProvider routing
+$app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+$app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+$app->router->get('/utrance-railway/detailsProvider/contactAdmin', [detailsProviderController::class, 'contactAdmin']);
+
+
 
 // Admin routing
 // $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);

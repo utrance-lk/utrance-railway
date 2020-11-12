@@ -66,7 +66,7 @@
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
-            <a href="/utrance-railway/source" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
+            <a href="/utrance-railway/detailsProvider" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
               <svg class="settings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
               </svg>
@@ -81,7 +81,7 @@
           </div>
           <div class="userrole-name">Details Provider</div>
           <div class="sidebar__nav-role-items">
-            <a href="/utrance-railway/source/contactAdmin" class="sidebar__nav-manage--trains sidebar__nav-item">
+            <a href="/utrance-railway/detailsProvider/contactAdmin" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
               </svg>

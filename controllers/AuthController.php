@@ -4,6 +4,7 @@ include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
 include_once "AdminController.php";
 include_once "RegisterUserController.php";
+include_once "../utils/Email.php";
 
 class AuthController extends Controller
 {
@@ -92,7 +93,7 @@ class AuthController extends Controller
         }
         if ($role === 'detailsProvider') {
             $regUser = new detailsProviderController();
-            return $regUser->sourceSettings($request);
+            return $regUser->detailsProviderSettings($request);
         }
         return 'hacker';
 
