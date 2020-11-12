@@ -6,6 +6,8 @@ include_once "Response.php";
 include_once "Session.php";
 include_once "Database.php";
 
+include_once "../../utils/Email.php";
+
 class App {
     
     public static $ROOT_DIR;
@@ -19,6 +21,9 @@ class App {
     public $userClass;
 
     public function __construct($rootPath, $config) {
+
+        date_default_timezone_set("Asia/Colombo");
+
         $this->userClass = $config['userClass'];
         self::$ROOT_DIR = $rootPath;
         self::$APP = $this;
@@ -28,6 +33,7 @@ class App {
         $this->router = new Router($this->request, $this->response);
 
         $this->db = new Database($config['db']);
+        $this->email = new Email($config['email']);
 
         $activeUserId = $this->session->get('user');
         if($activeUserId) {

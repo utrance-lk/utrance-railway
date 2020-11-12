@@ -124,7 +124,7 @@
               </svg>
               <span class="manage--trains-name">Manage trains</span>
             </a>
-            <a href="/utrance-railway/admin/routes" class="sidebar__nav-manage--routes sidebar__nav-item">
+            <a href="/utrance-railway/routes" class="sidebar__nav-manage--routes sidebar__nav-item">
               <svg class="route-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-location"></use>
               </svg>
