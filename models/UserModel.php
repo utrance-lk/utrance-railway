@@ -27,12 +27,19 @@ class UserModel extends Model
     public function findOne() ///Asindu
 
     {
-        $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email AND user_password=:password LIMIT 1");
+        $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email LIMIT 1");
         $query->bindValue(":email", $this->email_id);
-        $query->bindValue(":password", $this->user_password);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // public function findOneOnlyEmail()
+    // {
+    //     $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email LIMIT 1");
+    //     $query->bindValue(":email", $this->email_id);
+    //     $query->execute();
+    //     return $query->fetchAll(PDO::FETCH_ASSOC);
+    // }
 
     public static function getUser($id) ///Asindu
 
@@ -214,7 +221,7 @@ class UserModel extends Model
         $this->last_name = $this->sanitizeFormUsername($this->last_name);
         $this->email_id = $this->sanitizeFormEmail($this->email_id);
         $this->user_password = $this->sanitizeFormPassword($this->user_password);
-        $this->user_password = hash('sha256', $this->user_password);
+        $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
     }
 
     private function sanitizeFormString($inputText) //Asindu
@@ -344,6 +351,20 @@ class UserModel extends Model
             $this->errorArray['emailIdError'] = "Invalid email format";
         }
 
+    }
+
+    public function createPasswordResetToken()
+    {
+        $resetToken = bin2hex(random_bytes(32));
+        $resetTokenEncrypted = hash('sha256', $resetToken);
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetToken=:prt WHERE id=:id");
+        $query->bindValue(":prt", $resetTokenEncrypted);
+        $query->execute();
+        $currentMilliSecond = ((int) (microtime(true) * 1000)) + 10 * 60 * 1000;
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetExpires=:pre WHERE id=:id");
+        $query->bindValue(":pre", $currentMilliSecond);
+        $query->execute();
+        return $resetToken;
     }
 
 }
