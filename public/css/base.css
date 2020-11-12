@@ -46,6 +46,10 @@ a:visited {
   color: black;
 }
 
+li {
+  list-style: none;
+}
+
 .btn {
   outline: none;
   cursor: pointer;

@@ -9,11 +9,6 @@ class AdminController extends Controller
     {
         $currentUser = new AuthController();
 
-        if (!$currentUser->isLoggedIn()) {
-            echo 'You are not logged in!!';
-            return false;
-        }
-
         if (!$currentUser->restrictTo('admin')) {
             echo 'You are unorthorized to perform this action!!';
             return false;
@@ -72,9 +67,7 @@ class AdminController extends Controller
             if ($request->isPost()) {
                 $searchUser=new UserModel();
                 $searchUser->loadData($request->getBody());
-                //var_dump($request->getBody());
                 $getSearchREsult=$searchUser->getSearchUserResult();
-                //var_dump($getSearchREsult);
                 return $this->render(['admin', 'manageUsers'], $getSearchREsult);
 
             }
@@ -85,24 +78,7 @@ class AdminController extends Controller
     }
 
              
-   /* public function updateUserAdmin($request){ //daranya
-      
-        $updateUserModel=new UserModel();
- 
-        if ($request->isPost()) {
- 
-         $updateUserModel->loadData($request->getBody());
-         if($updateUserModel->updateUserAdmin()){
-             return "Success";
-         }
- 
-     }
-     return $this->render(['admin']);
- }*/
-
-
-
-   public function addUser($request){//daranya
+   public function addUser($request){
       
        $addUserModel=new UserModel();
 
@@ -115,8 +91,7 @@ class AdminController extends Controller
 
     }
     return $this->render(['admin', 'addUser']);
-
-    
+  
 }
 
    
@@ -195,7 +170,6 @@ class AdminController extends Controller
             $tempBody['id'] = $request->getQueryParams()['id'];
             $saveDetailsModel->loadData($tempBody);
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
-            //var_dump($saveDetailsModel->updateUserDetails());
             $saveDetailsModel->updateUserDetails();
             
             return;
@@ -205,7 +179,6 @@ class AdminController extends Controller
     }
 
    
-
     public function updateTrain($request)
     {
         if ($request->isPost()) {

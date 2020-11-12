@@ -177,9 +177,7 @@ function input_data($data){
 				</div>
 				<div class="firstname-box form__container-item register__form--inputs">
 					<label for="first_name">First name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Steven';?>" value="<?php echo isset($first_name) ? $first_name : '';?>" required>
-                    
-                  
+                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Steven';?>" value="<?php echo isset($first_name) ? $first_name : '';?>" required>       
                    
 				</div>
                 
