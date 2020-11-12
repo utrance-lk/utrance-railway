@@ -50,12 +50,50 @@
             <span class="notification__numbers">13</span>
           </div>
           <div class="userdetails-box">
-            <img
-              src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
-              alt="profile picture"
-              class="user-img"
-            />
-            <span class="user-name">Chris</span>
+            <a href="#">
+              <img
+                src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
+                alt="profile picture"
+                class="user-img"
+              />
+            </a>
+            <a href="#" class="user-name"><?php echo App::$APP->activeUser()['first_name']?></a href="#">
+            <div class="userdetails-box--dropdown">
+               <ul>
+                 <li>
+                   <a href="/utrance-railway/profile">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-gauge"></use>
+                    </svg>
+                    <span class="userdetails-box--dropdown-text">Dashboard</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-suitcase"></use>
+                    </svg>
+                    <span class="userdetails-box--dropdown-text">My Bookings</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="/utrance-railway/settings">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
+                    </svg>
+                    <span class="userdetails-box--dropdown-text">Settings</span>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="/utrance-railway/logout">
+                    <svg class="dropdown-icon">
+                      <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-log-out"></use>
+                    </svg>
+                    <span class="userdetails-box--dropdown-text">Logout</span>
+                   </a>
+                 </li>
+               </ul>
+             </div>
           </div>
         </div>
       </div>
@@ -65,7 +103,7 @@
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
-            <a href="/utrance-railway/admin" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
+            <a href="/utrance-railway/settings" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
               <svg class="settings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
               </svg>
@@ -80,7 +118,7 @@
           </div>
           <div class="userrole-name">Admin</div>
           <div class="sidebar__nav-role-items">
-            <a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
+            <a href="/utrance-railway/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
               </svg>
@@ -92,7 +130,7 @@
               </svg>
               <span class="manage--route-name">Manage routes</span>
             </a>
-            <a href="/utrance-railway/admin/users" class="sidebar__nav-manage--users sidebar__nav-item js--sidebar__nav-manage--users">
+            <a href="/utrance-railway/users" class="sidebar__nav-manage--users sidebar__nav-item js--sidebar__nav-manage--users">
               <svg class="user-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-man"></use>
               </svg>

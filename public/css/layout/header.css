@@ -68,6 +68,39 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  /* border: 1px solid lime; */
+  position: relative;
+}
+
+.userdetails-box:active .userdetails-box--dropdown,
+.userdetails-box:focus-within .userdetails-box--dropdown {
+  display: flex;
+}
+
+.userdetails-box--dropdown {
+  /* border: 1px solid yellow; */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-right: 1px solid #eeeeee;
+  display: none;
+}
+
+.userdetails-box--dropdown li {
+  width: 15rem;
+  padding: 1rem;
+}
+
+.userdetails-box--dropdown a {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-icon {
+  height: 2rem;
+  width: 2rem;
+  fill: #eeeeee;
+  margin-right: 1rem;
 }
 
 .guest-user {
