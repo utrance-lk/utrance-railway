@@ -102,11 +102,11 @@
                   >
                   <input
                     type="password"
-<<<<<<< HEAD
+
                     name="user_confirmpassword"
-=======
+
                     name="user_confirmPassword"
->>>>>>> 68b3619cd300cea886ac7716b4ffd4de03d7c10a
+
                     class="form__input"
                   />
                 </div>

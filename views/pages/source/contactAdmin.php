@@ -6,18 +6,20 @@
             </div>
          <br>
           <br>
-          <br>
+          
           <p>To admin,</p>
-          <br>
-          <form action="" class="form__train-data">
+        
+          <form action="" method="POST" class="form__train-data">
           <div class="content__fields">
           <div class="textarea">
-              <textarea rows="50" cols="75" name="message" form="messageform" >Enter the message here...</textarea>
+              <textarea rows="20" cols="70" name="message" form="messageform" >Enter the message here...</textarea>
           </div>
               <br>
               <div class="btn__save-box">
                         <div class="btn__save btn__add-train">Send</div>
               </div>
+          </div>
+          </div>
           </div>
           </form>
             

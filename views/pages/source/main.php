@@ -79,7 +79,7 @@
               <span class="mybookings-name">My bookings</span>
             </div>
           </div>
-          <div class="userrole-name">Source</div>
+          <div class="userrole-name">Details Provider</div>
           <div class="sidebar__nav-role-items">
             <a href="/utrance-railway/source/contactAdmin" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">

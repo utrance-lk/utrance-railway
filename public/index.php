@@ -4,6 +4,8 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
+require_once "../controllers/detailsProviderController.php";
+require_once "../controllers/UserController.php";
 
 require_once "../controllers/RegisterUserController.php";
 
@@ -180,8 +182,10 @@ $app->router->get('/utrance-railway/source', [detailsProviderController::class, 
 $app->router->get('/utrance-railway/source/settings', [detailsProviderController::class, 'sourceSettings']);
 $app->router->get('/utrance-railway/source/contactAdmin', [detailsProviderController::class, 'contactAdmin']);
 
+// registered user routing daranya
 
-
+$app->router->get('/utrance-railway/registeredUser', [RegisterUserController::class, 'registeredUserSettings']);
+$app->router->get('/utrance-railway/registeredUser/settings', [RegisterUserController::class, 'registeredUserSettings']);
 
 ////////////////////////////////
 
