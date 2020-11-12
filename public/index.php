@@ -57,7 +57,7 @@ $app->router->get('/utrance-railway/profile', [AuthController::class, 'getMyProf
 $app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
 
 // reset password
-$app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
+$app->router->get('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
 $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 
 

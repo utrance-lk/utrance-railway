@@ -4,6 +4,7 @@ include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
 include_once "AdminController.php";
 include_once "RegisterUserController.php";
+include_once "../utils/Email.php";
 
 class AuthController extends Controller
 {
@@ -81,20 +82,29 @@ class AuthController extends Controller
 
     public function forgotPassword($request, $response)
     {
-        // 1) get user based on POSTed email
-        $userForgotPassword = new UserModel();
-        $userForgotPassword->loadData($request->getBody());
-        $user = $userForgotPassword->findOne();
 
-        if(!$user) {
-            return 'There is no user with that email address.';
-            // return $response->setStatusCode('404');
+        if($request->isPost()) {
+            
+            // 1) get user based on POSTed email
+            $userForgotPassword = new UserModel();
+            $userForgotPassword->loadData($request->getBody());
+            $user = $userForgotPassword->findOne();
+            
+            if(!$user) {
+                return 'There is no user with that email address.';
+                // return $response->setStatusCode('404');
+            }
+            
+            // 2) Generate the random reset token
+            $resetToken = $userForgotPassword->createPasswordResetToken();
+            
+            // 3) Send it to user's email
+            // $resetURL = 
+            return '';
         }
 
-        // 2) Generate the random reset token
-        $resetToken = $userForgotPassword->createPasswordResetToken();
+        return $this->render('forgotPassword');
 
-        // 3) Send it to user's email
     }
 
     public function resetPassword()
