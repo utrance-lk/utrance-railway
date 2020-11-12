@@ -47,7 +47,7 @@
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo' />";
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
                 $id = App::$APP->activeUser()['id'];
-                var_dump($id); 
+               // var_dump($id); 
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
                 $html .= "<input type='submit' class='btn__save btn-settings'  name='submit' value='Save Settings'></div></div></div></form>";

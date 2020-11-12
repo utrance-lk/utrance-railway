@@ -221,7 +221,7 @@ function input_data($data){
                 </div>
                 <div class="password-box form__container-item register__form--inputs">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="user_password" placeholder="**********" required>
+                    <input type="password" id="password" name="user_password" placeholder="<?php echo isset($passwordError) ? $passwordError :'***************';?>" required>
                    
                 </div>
                 <div class="password-confirm-box form__container-item register__form--inputs">

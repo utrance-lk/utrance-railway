@@ -275,6 +275,7 @@ class UserModel extends Model
         $this->validateCity($this->city);//Ashika
         $this->validateContactNumber($this->contact_num);//Ashika
         $this->validateEmailId($this->email_id);//Ashika
+        $this->validatePassword($this->user_password);
     }
 
     private function validateFirstName($fn)//Asindu
@@ -363,6 +364,43 @@ class UserModel extends Model
         if(!filter_var($email_id,FILTER_VALIDATE_EMAIL)){
             $this->errorArray['emailIdError']="Invalid email format";
         }
+
+    }
+
+    private function validatePassword($user_password){
+        if(strlen($user_password) <8 ){
+            $this->errorArray['passwordError']="Password at least 8 characters";
+        }
+
+        /*function countDigits( $user_password ){
+        return preg_match_all( "/[0-9]/", $user_password );
+ 
+         } 
+         
+        if(countDigits($user_password) < 1 ){
+            $this->errorArray['passwordError']="Password at least 1 digit";
+        }*/
+       
+        $uppercase = preg_match('@[A-Z]@', $user_password);
+        $lowercase = preg_match('@[a-z]@', $user_password);
+        $number    = preg_match('@[0-9]@', $user_password);
+        $specialChars = preg_match('@[^\w]@', $user_password);
+
+        if(!$uppercase){
+            $this->errorArray['passwordError']="Password at least one upper case letter";
+        }
+        if(!$lowercase){
+            $this->errorArray['passwordError']="Password at least one lower case letter";
+        }
+
+        if(!$number){
+            $this->errorArray['passwordError']="Password at least one digit";
+        }
+
+        if(!$specialChars){
+            $this->errorArray['passwordError']="Password at least one special charcter";
+        }
+
 
     }
 
