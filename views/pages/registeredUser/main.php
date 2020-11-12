@@ -43,13 +43,13 @@
           </div>
         </div>
         <div class="user__nav">
-          <!-- <div class="notification-box">
+          <-- <div class="notification-box">
             <svg class="notification__icon navbar__icon">
               <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chat"></use>
             </svg>
             <span class="notification__numbers">13</span>
           </div> -->
-          <div class="userdetails-box">
+          <!--div class="userdetails-box">
             <a href="#">
               <img
                 src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
@@ -57,7 +57,7 @@
                 class="user-img"
               />
             </a>
-            <a href="#" class="user-name"><?php echo App::$APP->activeUser()['first_name']?></a href="#">
+            <a href="#" class="user-name"><!?php echo App::$APP->activeUser()['first_name']?></a href="#">
             <div class="userdetails-box--dropdown">
                <ul>
                  <li>
@@ -116,44 +116,6 @@
               <span class="mybookings-name">My bookings</span>
             </div>
           </div>
-<<<<<<< HEAD
-          <div class="userrole-name">User</div>
-
-
-          <div class="sidebar__nav-role-items" style="height:6">
-            <a href="/utrance-railway/admin/trains" class="sidebar__nav-manage--trains sidebar__nav-item">
-              <svg class="train-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
-              </svg>
-              <span class="manage--trains-name">Manage trains</span>
-            </a>
-            <!--a href="/utrance-railway/admin/routes" class="sidebar__nav-manage--routes sidebar__nav-item">
-              <svg class="route-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-location"></use>
-              </svg>
-              <span class="manage--route-name">Manage routes</span>
-            </a>
-            <a href="/utrance-railway/admin/users" class="sidebar__nav-manage--users sidebar__nav-item js--sidebar__nav-manage--users">
-              <svg class="user-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-man"></use>
-              </svg>
-              <span class="manage--users-name">Manage users</span>
-            </a>
-            <div class="sidebar__nav-manage--bookings sidebar__nav-item">
-              <svg class="bookings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-map"></use>
-              </svg>
-              <span class="manage--bookings-name">Manage bookings</span>
-            </div>
-            <div class="sidebar__nav-manage--freights sidebar__nav-item">
-              <svg class="freights-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-shopping-cart"></use>
-              </svg>
-              <span class="manage--freights-name">Manage freights</span>
-            </div>
-          </div>
-=======
->>>>>>> af88cd648676b25c8e6ea6872785543ef7a223f4
         </div>
       </div!-->
 

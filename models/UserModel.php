@@ -71,16 +71,10 @@ class UserModel extends Model
 
     }
 
-<<<<<<< HEAD
-    public function registerSetValue($registerSetValueArray){//Ashika
-        if(empty($registerSetValueArray['firstNameError'])){
-            $registerSetValueArray['first_name']=$this->first_name;
-=======
     public function registerSetValue($registerSetValueArray)
     { //Ashika
         if (empty($registerSetValueArray['firstNameError'])) {
             $registerSetValueArray['first_name'] = $this->first_name;
->>>>>>> af88cd648676b25c8e6ea6872785543ef7a223f4
         }
         if (empty($registerSetValueArray['lastNameError'])) {
             $registerSetValueArray['last_name'] = $this->last_name;
@@ -106,14 +100,8 @@ class UserModel extends Model
 
     }
 
-<<<<<<< HEAD
-    public function addUser(){ //daranya
-
-    
-=======
     public function addUser()
     { //Daranya
->>>>>>> af88cd648676b25c8e6ea6872785543ef7a223f4
 
         $this->user_active_status = 1;
         $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role,user_active_status) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us,:ua)");

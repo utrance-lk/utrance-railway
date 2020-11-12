@@ -89,9 +89,13 @@ class AuthController extends Controller
             $admin = new AdminController();
             return $admin->adminSettings($request);
         }
-        if ($role === 'User') {
+        if ($role === 'user') {
             $regUser = new RegisterUserController();
             return $regUser->registeredUserSettings($request);
+        }
+        if ($role === 'detailsProvider') {
+            $regUser = new detailsProviderController();
+            return $regUser->sourceSettings($request);
         }
         return 'hacker';
 
