@@ -27,7 +27,7 @@
 
             </form>
 
-            <a href="/utrance-railway/admin/users/add" class="adduserbtn addbtn">
+            <a href="/utrance-railway/users/add" class="adduserbtn addbtn">
               <div class="adduserbtn-text addbtn-text">Add User</div>
               <svg class="adduserbtn-img addbtn-img">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus">
@@ -74,17 +74,17 @@
 
                       
                       $id = $value['id'];
-                      $html .="<a href='/utrance-railway/admin/users/update?id=$id' class='search__result-user-managebtnbox'>";
+                      $html .="<a href='/utrance-railway/users/update?id=$id' class='search__result-user-managebtnbox'>";
                       $html .="<div class='search__result-managebtn btn-white'> View</div></a>";
 
                      
                      //$html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
                       $user_active_status=$value['user_active_status'];
                       if($user_active_status == 1){
-                        $html .="<a href='/utrance-railway/admin/users/deactivate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
+                        $html .="<a href='/utrance-railway/users/deactivate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
                         $html .="<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactive</div></a></form>";
                       }else{
-                        $html .="<a href='/utrance-railway/admin/users/activate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
+                        $html .="<a href='/utrance-railway/users/activate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
                         $html .="<div class='search__result-activatebtn btn-white' id='activate-btn'>Active</div></a></form>";
                       }
                       
