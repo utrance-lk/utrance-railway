@@ -12,6 +12,8 @@ class Email
     public function __construct($config)
     {
         $this->mail = new PHPMailer(true);
+        $this->mail->isSMTP();
+        $this->mail->SMTPAuth = true;
         $this->mail->Host = $config['host'];
         $this->mail->Username = $config['user'];
         $this->mail->Password = $config['password'];
@@ -27,6 +29,7 @@ class Email
             $this->mail->Body = $options['message'];
 
             $this->mail->send();
+            echo 'message has been sent!';
         } catch (Execption $e) {
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }

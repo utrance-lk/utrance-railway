@@ -83,23 +83,33 @@ class AuthController extends Controller
     public function forgotPassword($request, $response)
     {
 
-        if($request->isPost()) {
-            
+        if ($request->isPost()) {
+
             // 1) get user based on POSTed email
             $userForgotPassword = new UserModel();
             $userForgotPassword->loadData($request->getBody());
             $user = $userForgotPassword->findOne();
-            
-            if(!$user) {
+
+            if (!$user) {
                 return 'There is no user with that email address.';
                 // return $response->setStatusCode('404');
             }
-            
+
             // 2) Generate the random reset token
             $resetToken = $userForgotPassword->createPasswordResetToken();
-            
+
             // 3) Send it to user's email
-            // $resetURL = 
+            $resetURL = $_SERVER['SERVER_PROTOCOL'] . "://" . $_SERVER['HTTP_HOST'] . "/utrance-railway/resetPassword/" . $resetToken;
+
+            $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
+
+            App::$APP->email->sendEmail([
+                'email' => $user[0]['email_id'],
+                'subject' => 'Your password reset token (valid for 10 minutes)',
+                'message' => $message
+            ]);
+
+
             return '';
         }
 

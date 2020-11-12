@@ -357,12 +357,14 @@ class UserModel extends Model
     {
         $resetToken = bin2hex(random_bytes(32));
         $resetTokenEncrypted = hash('sha256', $resetToken);
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetToken=:prt WHERE id=:id");
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetToken=:prt WHERE email_id=:email");
         $query->bindValue(":prt", $resetTokenEncrypted);
+        $query->bindValue(":email", $this->email_id);
         $query->execute();
         $currentMilliSecond = ((int) (microtime(true) * 1000)) + 10 * 60 * 1000;
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetExpires=:pre WHERE id=:id");
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetExpires=:pre WHERE email_id=:email");
         $query->bindValue(":pre", $currentMilliSecond);
+        $query->bindValue(":email", $this->email_id);
         $query->execute();
         return $resetToken;
     }
