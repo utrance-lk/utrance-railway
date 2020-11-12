@@ -1,5 +1,5 @@
 {
- "name": "av/utrance-railway",
+  "name": "av/utrance-railway",
   "description": "Ticket reservation system for railways",
   "authors": [
     {
@@ -8,6 +8,7 @@
     }
   ],
   "require": {
-    "vlucas/phpdotenv": "^5.2"
+    "vlucas/phpdotenv": "^5.2",
+    "phpmailer/phpmailer": "^6.1"
   }
 }

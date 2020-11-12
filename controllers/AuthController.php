@@ -12,12 +12,10 @@ class AuthController extends Controller
     {
         if ($request->isPost()) {
             $loginUser = new UserModel();
-            $tempBody = $request->getBody();
-            $tempBody['user_password'] = hash('sha256', $request->getBody()['user_password']);
-            // $loginUser->loadData($request->getBody()); // for earlier created users
-            $loginUser->loadData($tempBody);
+            $loginUser->loadData($request->getBody());
             $result = $loginUser->findOne();
-            if ($result) {
+            $verifyPassword = password_verify($loginUser->user_password, $result[0]['user_password']);
+            if ($verifyPassword) {
                 App::$APP->session->set('user', $result[0]['id']);
                 return $response->redirect('/utrance-railway/home');
             }
@@ -65,7 +63,6 @@ class AuthController extends Controller
             }
             return $this->render('register', $registerSetValue); //Ashika
             //  return $this->render('register', $registrationState);
-
         }
         return $this->render('register');
 
@@ -101,9 +98,22 @@ class AuthController extends Controller
 
     }
 
-    public function forgotPassword()
+    public function forgotPassword($request, $response)
     {
-        // user forget the password
+        // 1) get user based on POSTed email
+        $userForgotPassword = new UserModel();
+        $userForgotPassword->loadData($request->getBody());
+        $user = $userForgotPassword->findOne();
+
+        if(!$user) {
+            return 'There is no user with that email address.';
+            // return $response->setStatusCode('404');
+        }
+
+        // 2) Generate the random reset token
+        $resetToken = $userForgotPassword->createPasswordResetToken();
+
+        // 3) Send it to user's email
     }
 
     public function resetPassword()
