@@ -35,7 +35,7 @@ class AuthController extends Controller
         return $response->redirect('/utrance-railway/home');
     }
 
-    public function registerPageNow($request, $response)
+    public function register($request, $response)
     {
 
         $registerModel = new UserModel();
@@ -43,7 +43,6 @@ class AuthController extends Controller
             $registerModel->loadData($request->getBody());
             $registrationState = $registerModel->register();
             if ($registrationState === 'success') {
-                // return $this->render('register');
                 return $this->login($request, $response);
             } else {
                 $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika
@@ -53,7 +52,6 @@ class AuthController extends Controller
             //  return $this->render('register', $registrationState);
 
         }
-        // //var_dump("heo");
         return $this->render('register');
 
     }

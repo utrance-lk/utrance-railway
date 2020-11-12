@@ -40,8 +40,8 @@ $app->router->post('/utrance-railway/login', [AuthController::class, 'login']);
 $app->router->get('/utrance-railway/logout', [AuthController::class, 'logout']);
 
 // register page routing
-$app->router->get('/utrance-railway/register', [AuthController::class, 'registerPageNow']);
-$app->router->post('/utrance-railway/register', [AuthController::class, 'registerPageNow']);
+$app->router->get('/utrance-railway/register', [AuthController::class, 'register']);
+$app->router->post('/utrance-railway/register', [AuthController::class, 'register']);
 
 // relevant page rendering
 $app->router->get('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);

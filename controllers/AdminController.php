@@ -156,7 +156,6 @@ class AdminController extends Controller
             $tempBody['id'] = $request->getQueryParams()['id'];
             $saveDetailsModel->loadData($tempBody);
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
-            //var_dump($saveDetailsModel->updateUserDetails());
             $saveDetailsModel->updateUserDetails();
             
             return;
@@ -166,7 +165,6 @@ class AdminController extends Controller
     }
 
    
-
     public function updateTrain($request)
     {
         if ($request->isPost()) {

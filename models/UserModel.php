@@ -12,7 +12,7 @@ class UserModel extends Model
     public $contact_num;
     public $user_password;
     public $email_id;
-    public $user_role = "User";
+    public $user_role = "user";
     public $user_confirmPassword;
     public $searchUserByNameOrId;
 
