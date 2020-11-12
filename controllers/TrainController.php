@@ -139,12 +139,12 @@ class TrainController extends Controller
 
         $deleteTrainModel->loadData($request->getQueryParams());
         $deleteTrainModel->deleteTrains();
-        $trainArrays=$deleteTrainModel->getTrains();
+        $trainArray=$deleteTrainModel->getTrains();
         
             
     
-        return $this->render(['admin', 'manageTrains'],$trainArrays);
-        return succsee;
+        return $this->render(['admin', 'manageTrains'],$trainArray);
+        // return succsee;
         }
 
         

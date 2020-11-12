@@ -51,7 +51,7 @@
                             $html .= "<a href='/utrance-railway/trains/update?id=$train_id' class='search__result-train-managebtnbox'>";
                             $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
                             
-                            $html .= "<a href='/utrance-railway/admin/trains/delete?id=$train_id' class='search__result-train-deletebtnbox' >";
+                            $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='search__result-train-deletebtnbox' >";
                             $html .= "<div class='search__result-deletebtn btn-white' onclick=\"return confirm('Are you sure?');\">Delete</div></a></div></div>";
                             
 
