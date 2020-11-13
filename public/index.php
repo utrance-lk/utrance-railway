@@ -4,6 +4,8 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
+require_once "../controllers/detailsProviderController.php";
+require_once "../controllers/UserController.php";
 
 require_once "../controllers/RegisterUserController.php";
 
@@ -61,13 +63,23 @@ $app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'f
 $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 
 
+//aboutUs routing Daranya
 
-
+$app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
+$app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
 
 
 ////////Registered User Routing
 $app->router->get('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUserSettings']);
 $app->router->post('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUserSettings']);
+
+
+//detailsProvider routing
+$app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+$app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+$app->router->get('/utrance-railway/detailsProvider/contactAdmin', [detailsProviderController::class, 'contactAdmin']);
+
+
 
 // Admin routing
 // $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
@@ -96,8 +108,8 @@ $app->router->get('/utrance-railway/users/deactivate', [AdminController::class, 
 
 $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRoute']);
 
-$app->router->post('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
-$app->router->get('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
+
+
 
 
 $app->router->get('/utrance-railway/getUserDetails', [FormDetailsController::class, 'form']);

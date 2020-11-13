@@ -4,7 +4,7 @@
             <div class="content-title">
               <p>New User Account Settings</p>
             </div>
-            <form action="" class="form__user-data">
+            <form action="" method="POST" class="form__user-data">
               <div class="content__fields">
                 <div class="firstname-box content__fields-item">
                   <label for="firstname" class="form__label">First Name</label>
