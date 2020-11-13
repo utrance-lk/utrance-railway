@@ -141,10 +141,11 @@ class AuthController extends Controller
 
     public function resetPassword($request)
     {
+        $resetPasswordUser = new UserModel();
+
         if ($request->isGet()) {
 
             // 1) get user based on the token
-            $resetPasswordUser = new UserModel();
             $resetToken = $request->getQueryParams()['token'];
             $hashedToken = hash('sha256', $resetToken);
             $tempBody = $request->getBody();
@@ -164,13 +165,15 @@ class AuthController extends Controller
 
             // 2) If token has not expired and there is a user, set the new password
             // var_dump($tempBody);
-            return $this->render('resetPassword');
+            return $this->render('resetPassword', $user);
         }
 
         // 3) Update changedPasswordAt property for the current user
         
 
         // 4) Log the user in
+        $resetPasswordUser->loadData($request->getBody());
+        var_dump($user);
 
 
 

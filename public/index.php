@@ -60,6 +60,7 @@ $app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyPro
 $app->router->get('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
 $app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
 $app->router->get('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
+$app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 
 //aboutUs routing Daranya
 

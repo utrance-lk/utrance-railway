@@ -15,7 +15,7 @@ class UserModel extends Model
     public $user_role = "user";
     public $user_confirm_password;
     public $searchUserByNameOrId;
-    public $addUserImage="Chris-user-profile.jpg";
+    public $addUserImage = "Chris-user-profile.jpg";
 
     public $resultArray;
     public $detailsArray;
@@ -31,9 +31,9 @@ class UserModel extends Model
 
     {
         $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE $field=:field LIMIT 1");
-        if($field === 'email_id') {
+        if ($field === 'email_id') {
             $query->bindValue(":field", $this->email_id);
-        } else if($field === 'PasswordResetToken') {
+        } else if ($field === 'PasswordResetToken') {
             $query->bindValue(":field", $this->PasswordResetToken);
         }
         $query->execute();
@@ -124,10 +124,10 @@ class UserModel extends Model
         $query->execute();
 
     }
-     
 
-    public function updateUserSettingsDetails(){//Daranya
-       // var_dump("Hello");
+    public function updateUserSettingsDetails()
+    { //Daranya
+        // var_dump("Hello");
         $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
         $query->bindValue(":id", $this->id);
         $query->bindValue(":first_name", $this->first_name);
@@ -138,16 +138,9 @@ class UserModel extends Model
         $query->bindValue(":contact_num", $this->contact_num);
         $query->bindValue(":email_id", $this->email_id);
         $query->execute();
-    
+
         //var_dump($query->execute());
     }
-    /*public function getUserDetails1()
-    { //Daranya
-        $query = APP::$APP->db->pdo->prepare("SELECT first_name,last_name,email_id,street_line1,street_line2,city,contact_num,user_password FROM users WHERE id=10 ");
-        $query->execute();
-        $this->detailsArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $this->detailsArray;
-    }*/
 
     public function getManageUsers() //Ashika
 
@@ -213,8 +206,6 @@ class UserModel extends Model
         // return $resultArray;
     }
 
-   
-
     public function updateUserDetails() ////Ashika
 
     {
@@ -275,16 +266,15 @@ class UserModel extends Model
     private function runValidators()
     {
 
-        $this->validateFirstName($this->first_name);//Asindu
-        $this->validateLastName($this->last_name);//Ashika
-        $this->validateStreetLine1($this->street_line1);//Ashika
-        $this->validateStreetLine2($this->street_line2);//Ashika
-        $this->validateCity($this->city);//Ashika
-        $this->validateContactNumber($this->contact_num);//Ashika
-        $this->validateEmailId($this->email_id);//Ashika
-        $this->validatePassword($this->user_password,$this->user_confirm_password);//Ashika
-       // $this->validateConfirmPassword($this->$user_confirmPassword);//Ashika
-        
+        $this->validateFirstName($this->first_name); //Asindu
+        $this->validateLastName($this->last_name); //Ashika
+        $this->validateStreetLine1($this->street_line1); //Ashika
+        $this->validateStreetLine2($this->street_line2); //Ashika
+        $this->validateCity($this->city); //Ashika
+        $this->validateContactNumber($this->contact_num); //Ashika
+        $this->validateEmailId($this->email_id); //Ashika
+        $this->validatePassword($this->user_password, $this->user_confirm_password); //Ashika
+        // $this->validateConfirmPassword($this->$user_confirmPassword);//Ashika
 
     }
 
@@ -334,7 +324,8 @@ class UserModel extends Model
         }
     }
 
-    private function validateCity($city){ //Ashika
+    private function validateCity($city)
+    { //Ashika
         if (strlen($city) < 2 || strlen($city) > 25) {
             $this->errorArray['cityError'] = 'City  wrong length';
         }
@@ -343,7 +334,8 @@ class UserModel extends Model
             $this->errorArray['cityError'] = 'City  only letters  required';
         }
     }
-    private function validateContactNumber($cnum){ //Ashika
+    private function validateContactNumber($cnum)
+    { //Ashika
         $num = "";
         $num = substr($cnum, 0, 3);
         if (strlen($cnum) == 10 && is_numeric($cnum)) {
@@ -365,93 +357,60 @@ class UserModel extends Model
 
     }
 
-    private function validateEmailId($email_id){ //Ashika
-        
+    private function validateEmailId($email_id)
+    { //Ashika
+
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
 
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id");
-        $query->bindValue(":email_id",$email_id);
+        $query->bindValue(":email_id", $email_id);
         $query->execute();
-         $email_status=$query->fetchAll(PDO::FETCH_ASSOC);
-        if($email_status == true){
+        $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
+        if ($email_status == true) {
             $this->errorArray['email_id_error'] = "This email is already exist";
         }
 
     }
 
+    private function validatePassword($user_password, $user_confirm_password)
+    { //Ashika
 
-    public function validatePassword($user_password,$user_confirm_password){//Ashika
+        if ($user_password != $user_confirm_password) {
+            $this->errorArray['passwordError'] = "Password does not match";
+        } else {
+            if (strlen($user_password) < 8) {
+                $this->errorArray['passwordError'] = "Password at least 8 characters";
+            }
 
+            $uppercase = preg_match('@[A-Z]@', $user_password);
+            $lowercase = preg_match('@[a-z]@', $user_password);
+            $number = preg_match('@[0-9]@', $user_password);
+            $specialChars = preg_match('@[^\w]@', $user_password);
 
+            if (!$uppercase) {
+                $this->errorArray['passwordError'] = "Password at least one upper case letter";
+            }
+            if (!$lowercase) {
+                $this->errorArray['passwordError'] = "Password at least one lower case letter";
+            }
 
-        if($user_password!=$user_confirm_password){
-            $this->errorArray['passwordError']="Password does not match";
-        }else{
-          if(strlen($user_password) <8 ){
-            $this->errorArray['passwordError']="Password at least 8 characters";
-           }
-       
-        $uppercase = preg_match('@[A-Z]@', $user_password);
-        $lowercase = preg_match('@[a-z]@', $user_password);
-        $number    = preg_match('@[0-9]@', $user_password);
-        $specialChars = preg_match('@[^\w]@', $user_password);
+            if (!$number) {
+                $this->errorArray['passwordError'] = "Password at least one digit";
+            }
 
-        if(!$uppercase){
-            $this->errorArray['passwordError']="Password at least one upper case letter";
+            if (!$specialChars) {
+                $this->errorArray['passwordError'] = "Password at least one special charcter";
+            }
         }
-        if(!$lowercase){
-            $this->errorArray['passwordError']="Password at least one lower case letter";
-        }
-
-        if(!$number){
-            $this->errorArray['passwordError']="Password at least one digit";
-        }
-
-        if(!$specialChars){
-            $this->errorArray['passwordError']="Password at least one special charcter";
-        }
-    }
-        /*if(strlen($user_password) <8 ){
-            $this->errorArray['passwordError']="Password at least 8 characters";
-        }
-       
-        $uppercase = preg_match('@[A-Z]@', $user_password);
-        $lowercase = preg_match('@[a-z]@', $user_password);
-        $number    = preg_match('@[0-9]@', $user_password);
-        $specialChars = preg_match('@[^\w]@', $user_password);
-
-        if(!$uppercase){
-            $this->errorArray['passwordError']="Password at least one upper case letter";
-        }
-        if(!$lowercase){
-            $this->errorArray['passwordError']="Password at least one lower case letter";
-        }
-
-        if(!$number){
-            $this->errorArray['passwordError']="Password at least one digit";
-        }
-
-        if(!$specialChars){
-            $this->errorArray['passwordError']="Password at least one special charcter";
-        }
-
-        if($user_password!=$user_confirm_password){
-            $this->errorArray['passwordError']="Password does not match";
-        }*/
-
+        
 
     }
 
-    // public function getError($error)
-    // {
-    //     if (in_array($error, $this->errorArray)) {
-    //         return $error;
-    //     }
-    // }
-
-
+    public function updatePassword() {
+        
+    }
 
     public function createPasswordResetToken()
     {
