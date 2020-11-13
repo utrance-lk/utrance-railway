@@ -12,11 +12,11 @@ class RegisterUserController extends Controller
             // form
             return 'success';
         }
-        if ($request->isGet()) {
-            $registerUserSettingModel->loadData($request->getBody());
-            $getUserDetailsArray = $registerUserSettingModel->getUserDetails1();
-            //var_dump($getUserDetailsArray);
-            return $this->render('registeredUser', $getUserDetailsArray);
+        if($request->isGet()) {
+        $registerUserSettingModel->loadData($request->getBody());
+        $getUserDetailsArray=$registerUserSettingModel->getUserDetailsAdmin();
+        //var_dump($getUserDetailsArray);
+        return $this->render('registeredUser',$getUserDetailsArray);
         }
     }
 

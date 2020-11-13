@@ -58,7 +58,7 @@
             <div class="content-title">
               <p>Password Change</p>
             </div>
-            <form action="" method="POST" class="password__change">
+            <form action="" class="password__change">
               <div class="content__fields">
             <?php
               $html = "";

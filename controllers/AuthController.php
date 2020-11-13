@@ -25,9 +25,24 @@ class AuthController extends Controller
         }
         return $this->render('login');
 
-    }
 
-    public function logout($request, $response)
+       if($request->isPost()){
+         
+        $registerModel->loadData($request->getBody());
+        $pathArray1=$registerModel->getUsers();
+          //  return  $this->render('validation',$pathArray1);
+        if( $registerModel->valid()){
+            if($registerModel->register()){
+                return "Success";
+        }
+    }
+        else{return  $this->render('validation',$pathArray1);
+        } 
+
+    }
+}
+
+ public function logout($request, $response)
     {
         App::$APP->user = null;
         App::$APP->session->remove('user');
@@ -75,6 +90,10 @@ class AuthController extends Controller
         if ($role === 'user') {
             $regUser = new RegisterUserController();
             return $regUser->registeredUserSettings($request);
+        }
+        if ($role === 'detailsProvider') {
+            $regUser = new detailsProviderController();
+            return $regUser->detailsProviderSettings($request);
         }
         return 'hacker';
 

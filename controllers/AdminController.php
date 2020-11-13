@@ -18,19 +18,36 @@ class AdminController extends Controller
 
     }
 
-    public function adminSettings($request)
+
+    public function adminSettings($request) //daranya
     {
-
-        if ($this->validateUser()) {
-            if ($request->isPost()) {
-                // form
-                return 'success';
-            }
-
-            return $this->render('admin');
+        $adminSettingModel=new UserModel();
+        if($request->isPost()) {
+            // form
+            return 'success';
+        }
+        if($request->isGet()) {
+        $adminSettingModel->loadData($request->getBody());
+        $getUserDetailsArray=$adminSettingModel->getUserDetailsAdmin();
+        return $this->render('admin',$getUserDetailsArray);
         }
 
     }
+
+    public function updateUserAdmin($request){ //daranya
+      
+        $updateUserModel=new UserModel();
+ 
+        if ($request->isPost()) {
+ 
+         $updateUserModel->loadData($request->getBody());
+         if($updateUserModel->updateUserAdmin()){
+             return "Success";
+         }
+ 
+     }
+     return $this->render(['admin']);
+ }
 
     public function searchManageUsers($request){
         
@@ -60,11 +77,12 @@ class AdminController extends Controller
             //return $this->render(['admin', 'manageUsers']);
         }
 
-         return $this->render(['admin', 'manageUsers']);
+
+        //  return $this->render(['admin', 'manageUsers']);
     }
 
              
-   public function addUser($request){
+public function addUser($request){
       
        $addUserModel=new UserModel();
 
@@ -72,13 +90,18 @@ class AdminController extends Controller
 
         $addUserModel->loadData($request->getBody());
         if($addUserModel->addUser()){
-                return "Success";
+
+            return "Success";
         }
 
     }
     return $this->render(['admin', 'addUser']);
   
 }
+
+   
+
+
 
    
     public function manageTrains($request)
@@ -209,11 +232,98 @@ class AdminController extends Controller
 
     public function aboutUs()
     {
-        echo "Hello world";
+        
         return $this->render('aboutUs');
         
 
     }
+
+////////////////////////////////////////////////////////////////////////////////
+//source functionalities daranya
+/*
+public function sourceSettings($request){
+    $sourceSettingModel=new UserModel();
+     if($request->isPost()) {
+         // form
+         return 'success';
+     }
+     if($request->isGet()) {
+     $sourceSettingModel->loadData($request->getBody());
+     $getUserDetailsArray=$sourceSettingModel->getUserDetails1();
+     return $this->render('source',$getUserDetailsArray);
+     }
+}
+
+ public function contactAdmin($request)
+ {
+    if ($request->isPost()) {
+        // form
+        return 'success';
+    }
+
+    return $this->render(['source', 'contactAdmin']);
+     
+
+}
+
+
+public function functionality02($request){
+   
+   
+ 
+}
+
+public function fnuctionality03(){
+ 
+     
+}
+
+ public function functionality04($request)
+ {
+     
+ }
+
+ public function functionality05($request)
+ {
+     
+ }
+
+ 
+ public function addNoticesBySource()
+ {
+     return $this->render('addNoticesBySource');
+     echo "hy girl";
+ }
+
+ public function addNoticesBySourceNow()
+ {
+     echo "Added Notices!!";
+ }
+
+ public function sourceDashboard()
+ {
+     return $this->render('sourceDashboard');
+     echo "Hello Sri Lanka";
+ }
+
+ public function sourceDashboardNow()
+ {
+     echo "Hello my world";
+ }
+
+ public function viewUsers2()
+ {
+     return $this->render('viewUsers');
+     echo " View Users!!";
+ }
+ public function viewUsersNow2()
+ {
+     echo "Upload View Users form";
+ }
+
+ 
+*/
+
 
 
 }
