@@ -79,10 +79,10 @@ if (isset($users)) {
         $user_active_status = $value['user_active_status'];
         if ($user_active_status == 1) {
             $html .= "<a href='/utrance-railway/users/deactivate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
-            $html .= "<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactive</div></a></form>";
+            $html .= "<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactivate</div></a></form>";
         } else {
             $html .= "<a href='/utrance-railway/users/activate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
-            $html .= "<div class='search__result-activatebtn btn-white' id='activate-btn'>Active</div></a></form>";
+            $html .= "<div class='search__result-activatebtn btn-white' id='activate-btn'>Activate</div></a></form>";
         }
 
         $dom = new DOMDocument();

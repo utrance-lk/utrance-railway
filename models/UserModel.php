@@ -384,7 +384,7 @@ class UserModel extends Model
     }
 
 
-    private function validatePassword($user_password,$user_confirm_password){//Ashika
+    public function validatePassword($user_password,$user_confirm_password){//Ashika
 
 
 
