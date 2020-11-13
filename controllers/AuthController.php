@@ -49,7 +49,11 @@ class AuthController extends Controller
         return $response->redirect('/utrance-railway/home');
     }
 
+
+    //public function register($request)
+
     public function register($request, $response)
+
     {
 
         $registerModel = new UserModel();

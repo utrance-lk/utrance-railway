@@ -18,8 +18,35 @@ class AdminController extends Controller
 
     }
 
+    public function adminSettings($request)
+    {
+     
+        if ($this->validateUser()) {
+            
+            $updateUserDetailsModel=new UserModel();
+            
+            if ($request->isPost()){
+                 
+                $tempUpdateUserBody = $request->getBody();
+                
+              
+                $tempUpdateUserBody['id'] = $request->getQueryParams()['id'];
+                
+                $updateUserDetailsModel->loadData($tempUpdateUserBody);
+                
+                $updateUserDetailsModel->updateUserSettingsDetails();
+                return $this->render('admin');
+            }
+          
 
-    public function adminSettings($request) //daranya
+            return $this->render('admin');
+        }
+    }
+
+            
+
+
+    /*public function adminSettings($request) //daranya
     {
         $adminSettingModel=new UserModel();
         if($request->isPost()) {
@@ -30,11 +57,12 @@ class AdminController extends Controller
         $adminSettingModel->loadData($request->getBody());
         $getUserDetailsArray=$adminSettingModel->getUserDetailsAdmin();
         return $this->render('admin',$getUserDetailsArray);
+
         }
 
-    }
+    }*/
 
-    public function updateUserAdmin($request){ //daranya
+   /* public function updateUserAdmin($request){ //daranya
       
         $updateUserModel=new UserModel();
  
@@ -47,11 +75,11 @@ class AdminController extends Controller
  
      }
      return $this->render(['admin']);
- }
+ }*/
 
-    public function searchManageUsers($request){
+    /*public function searchManageUsers($request){
         
-    }
+    }*/
 
     public function manageUsers($request)//Ashika
     {

@@ -172,7 +172,7 @@ function input_data($data){
 						Sign up
 					</div>
 					<div class="new-account-box">
-						<span class="new-account-box--1">Already have an account?</span>&nbsp;<a href="#" class="new-account-box--2">Login here</a>
+						<span class="new-account-box--1">Already have an account?</span>&nbsp;<a href="/utrance-railway/login" class="new-account-box--2">Login here</a>
 					</div>
 				</div>
 				<div class="firstname-box form__container-item register__form--inputs">
@@ -191,7 +191,7 @@ function input_data($data){
 				</div>
 				<div class="email-box form__container-item register__form--inputs">
 					<label for="email_id">Email</label>
-					<input type="email" id="email_id" name="email_id" placeholder="stevensmith@example.com"   value="<?php echo isset($email_id) ? $email_id : '';?>"required>
+					<input type="email" id="email_id" name="email_id" placeholder="<?php echo isset($email_id_error) ? $email_id_error :'stevensmith@example.com';?>"   value="<?php echo isset($email_id) ? $email_id : '';?>"required>
                    
 				</div>
 				<div class="streetline1-box form__container-item register__form--inputs">
@@ -219,7 +219,7 @@ function input_data($data){
                 </div>
                 <div class="password-box form__container-item register__form--inputs">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="user_password" placeholder="**********" required>
+                    <input type="password" id="password" name="user_password" placeholder="<?php echo isset($passwordError) ? $passwordError :'***************';?>" required>
                    
                 </div>
                 <div class="password-confirm-box form__container-item register__form--inputs">
