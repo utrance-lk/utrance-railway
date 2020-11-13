@@ -172,7 +172,7 @@ function input_data($data){
 						Sign up
 					</div>
 					<div class="new-account-box">
-						<span class="new-account-box--1">Already have an account?</span>&nbsp;<a href="#" class="new-account-box--2">Login here</a>
+						<span class="new-account-box--1">Already have an account?</span>&nbsp;<a href="/utrance-railway/login" class="new-account-box--2">Login here</a>
 					</div>
 				</div>
 				<div class="firstname-box form__container-item register__form--inputs">

@@ -275,8 +275,7 @@ class UserModel extends Model
         $this->validateCity($this->city);//Ashika
         $this->validateContactNumber($this->contact_num);//Ashika
         $this->validateEmailId($this->email_id);//Ashika
-        $this->validatePassword($this->user_password);
-
+        $this->validatePassword($this->user_password);//Ashika
         
 
     }
@@ -293,7 +292,7 @@ class UserModel extends Model
         }
 
         if (!(ctype_alpha($fn))) {
-            $this->errorArray['firstNameError'] = 'First name only letters 1 required';
+            $this->errorArray['firstNameError'] = 'First name only letters  required';
         }
 
     }

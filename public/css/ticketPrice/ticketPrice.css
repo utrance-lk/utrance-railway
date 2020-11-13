@@ -1,14 +1,55 @@
 
-section {
-    width: 200px;
-    border: 1px solid #2d2d2d;
+.main-01 {
+    width: 96rem;
+    height: 6rem;
     display: flex;
     justify-content: center;
+    padding: 0;
   }
-  
-  div {
+  #div-table{
+    justify-content: center;
+    display: flex;
+  }
+.main-02 {
+      width: 97rem;
     color: #fff;
     background: #1F3A93;
-    padding: 12px;
+    padding-left: 40rem;
+    padding-top: 0.2rem;
     display: inline-block;
+  }
+  .p-ticket-head{
+      color: white;
+      font-size: 1.8rem;
+      font-family: "Poppins", sans-serif;
+  }
+
+.train-table{
+    padding-top: 4rem;
+}
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 74%;
+    height: 45%;
+    
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 0.4rem;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  #div-table{
+      padding-top: 4.5rem;
+  }
+  .td-first{
+      background-color: #5CB8DC ;
+  }
+  .td-second{
+      background-color:  rgb(250, 151, 70);
   }

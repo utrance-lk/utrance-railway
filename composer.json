@@ -8,6 +8,8 @@
     }
   ],
   "require": {
-    "vlucas/phpdotenv": "^5.2"
+    "vlucas/phpdotenv": "^5.2",
+  "phpoffice/phpspreadsheet": "^1.15",
+  "phpoffice/phpexcel": "^1.8"
   }
 }

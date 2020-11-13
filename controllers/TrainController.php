@@ -1,7 +1,7 @@
 <?php
 include_once "../classes/core/Controller.php";
 include_once "../models/TrainModel.php";
-class FormDetailsController extends Controller
+class TrainController extends Controller
 {
 
     public function form($request)
@@ -125,14 +125,10 @@ class FormDetailsController extends Controller
     public function addTrain($request) 
     {
         $saveTrainDetails = new TrainModel();
-        
-        if ($request->isPost()) 
+         if ($request->isPost()) 
         {
-            
-
-           echo "hello";
-
-            $saveTrainDetails->loadData($request->getBody());
+         echo "hello";
+         $saveTrainDetails->loadData($request->getBody());
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             //var_dump($saveDetailsModel->updateUserDetails());
             if($saveTrainDetails->addNewTrainDetails()){
@@ -146,6 +142,15 @@ class FormDetailsController extends Controller
       
             return $this->render(['admin', 'addTrain']);
         
+
+    }
+
+
+    public function ticketPrice($request){
+        if($request->isPost()){
+            return $this->render('ticketPrice');
+        }
+        return $this->render('ticketPrice');
 
     }
 
