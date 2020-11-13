@@ -4,13 +4,8 @@
             <div class="content-title">
               <p>Your Account Settings</p>
             </div>
-<<<<<<< HEAD
             <!--form action="/utrance-railway/admin?id=$id" class="form__user-data" method="post">
             <div class="content__fields"!-->
-=======
-            <form action="" class="form__user-data" method="POST">
-            <div class="content__fields">
->>>>>>> 5ca164471d2bb769d55e2c19bc851fae647ea959
             <?php
               $dom = new DOMDocument;
               libxml_use_internal_errors(true);
