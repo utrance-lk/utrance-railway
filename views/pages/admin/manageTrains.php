@@ -1,7 +1,7 @@
 <div class="load-content-container">
     <div class="load-content">
         <div class="load-content--manage-trains">
-              <form class="dashboard-searchbar--container" method = "post" action="/utrance-railway/admin/trains" >
+              <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/trains" >
                 <input type="text" class="dashboard-searchbar" placeholder="Search trains by name" name="searchTrain"/>
                 <button>
                 <svg class="search-icon__btn">
@@ -12,10 +12,10 @@
                   <!-- <svg class="dropdown-btn">
                               <use xlink:href="./icons/sprite.svg#icon-chevron-small-down"></use>
                           </svg> -->
-                  <select name="catogory" id="" class="dropdown__list">
+                  <!-- <select name="catogory" id="" class="dropdown__list">
                     <option value="name">Name</option>
                     <option value="id">Id</option>
-                  </select>
+                  </select> -->
                 </div>
               </form>
 

@@ -62,21 +62,12 @@ class TrainController extends Controller
             $resultArray=$searModel->searchTrainDetails();
            
 
-            if($resultArray){
+           
                 
              return $this->render(['admin', 'manageTrains'], $resultArray);
-
-            }else{
-                 return $this->render(['admin', 'manageTrains'] );
-                
-               
-            }
             
 
-            // if($searchModel->searchTrainDetails()){
-            //     return 'success';
-                
-            // }  
+           
 
         }
 
@@ -111,13 +102,14 @@ class TrainController extends Controller
              $tempBody = $request->getBody();
              $tempBody['id'] = $request->getQueryParams()['id'];
              $saveDetailsModel->loadData($tempBody);
-
+             
 
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             //var_dump($saveDetailsModel->updateUserDetails());
             $saveDetailsModel->updateTrainDetails();
-            
-            return 'success';
+            $trainArray=$saveDetailsModel->getTrains();
+            return $this->render(['admin', 'manageTrains'],$trainArray);
+        
 
         }
 
@@ -156,20 +148,21 @@ class TrainController extends Controller
         
         if ($request->isPost()) 
         {
-            
-
-          
-
+        
             $saveTrainDetails->loadData($request->getBody());
-            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
-            //var_dump($saveDetailsModel->updateUserDetails());
-            if($saveTrainDetails->addNewTrainDetails()){
-                return 'success';
-                
-            }
             
-           
+            $validationState = $saveTrainDetails->addNewTrainDetails();
+            if ($validationState === 'success') {
+                return $this->render(['admin', 'addTrain']);
+            } else {
+                $registerSetValue = $saveTrainDetails->registerSetValue($validationState);
+               
+                // var_dump( $registerSetValue['train_travel_days']);
+                return $this->render(['admin', 'addTrain'], $registerSetValue); 
 
+            }
+           
+      
         }
       
             return $this->render(['admin', 'addTrain']);

@@ -1,4 +1,5 @@
 
+ 
 
 <div class="load-content-container">
         <div class="load-content">
@@ -6,11 +7,12 @@
             <div class="content-title">
               <p>New Train Profile Settings</p>
             </div>
-            <form action="" class="form__train-data" method='post' enctype="multipart/form-data" onsubmit="return validateForm()">
+            <form action="/utrance-railway/trains/add" class="form__train-data" method='post' >
+            <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?> 
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
-                        <input type="text" name="train_name" class="form__input" value=" " required>
+                        <input type="text" name="train_name" class="form__input" placeholder="<?php echo isset($TrainNameError) ? $TrainNameError : 'Galle train';?>"value="<?php echo isset($train_name) ? $train_name : '';?>" required>
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>
@@ -22,11 +24,11 @@
                     </div>
                     <div class="routeid-box content__fields-item">
                         <label for="routeid" class="form__label">Route Id</label>
-                        <input type="number" min="0" value="0" name="route_id" id="routeid" class="form__input number__input route-id__number-input">
+                        <input type="number" min="0"  name="route_id" id="routeid" class="form__input number__input route-id__number-input" placeholder="<?php echo isset($RoutIdError) ? $RoutIdError : '1';?>"value="<?php echo isset($route_id) ? $route_id : '';?>" required>
                     </div>
                     <fieldset class="traintaveldays-box content__fields-item">
                         <legend class="form__label">Train Travel Days</legend>
-                        <div class="traveldaysbox__container checkbox__horizontal">
+                        <div class="traveldaysbox__container checkbox__horizontal" required>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="">
                                 <input type="checkbox" id="monday" name="train_travel_days[]" value="monday" >

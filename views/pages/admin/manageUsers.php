@@ -1,7 +1,7 @@
   <div class="load-content-container">
       <div class="load-content">
           <div class="load-content--manage-users">
-            <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/admin/users">
+            <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/users">
             
               <input
                 type="text"
