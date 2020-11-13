@@ -24,36 +24,18 @@ class AuthController extends Controller
             return 'invalid username or password';
         }
         return $this->render('login');
-
-
-       if($request->isPost()){
-         
-        $registerModel->loadData($request->getBody());
-        $pathArray1=$registerModel->getUsers();
-          //  return  $this->render('validation',$pathArray1);
-        if( $registerModel->valid()){
-            if($registerModel->register()){
-                return "Success";
-        }
     }
-        else{return  $this->render('validation',$pathArray1);
-        } 
 
-    }
-}
-
- public function logout($request, $response)
+    public function logout($request, $response)
     {
         App::$APP->user = null;
         App::$APP->session->remove('user');
         return $response->redirect('/utrance-railway/home');
     }
 
-
     //public function register($request)
 
     public function register($request, $response)
-
     {
 
         $registerModel = new UserModel();
@@ -139,7 +121,7 @@ class AuthController extends Controller
 
     }
 
-    public function resetPassword($request)
+    public function resetPassword($request, $response)
     {
         $resetPasswordUser = new UserModel();
 
@@ -152,31 +134,38 @@ class AuthController extends Controller
             $tempBody['PasswordResetToken'] = $hashedToken;
             $resetPasswordUser->loadData($tempBody);
             $user = $resetPasswordUser->findOne('PasswordResetToken');
-            // var_dump($user);
-            if(!$user) {
+            if (!$user) {
                 return 'invalid token';
             }
             $dateInDB = new DateTime($user[0]['PasswordResetExpires']);
             $currentDate = new DateTime();
             $interval = $dateInDB->diff($currentDate);
-            // if((int)$interval->format('%i') > 10 && (int)$interval->format('%s') > 0) {
-            //     return 'your token has expired'; // 400 bad request
-            // }
+            if((int)$interval->format('%i') > 10 && (int)$interval->format('%s') > 0) {
+                return 'your token has expired'; // 400 bad request
+            }
 
             // 2) If token has not expired and there is a user, set the new password
             // var_dump($tempBody);
-            return $this->render('resetPassword', $user);
+            return $this->render('resetPassword', [
+                'user' => $user[0],
+            ]);
         }
 
         // 3) Update changedPasswordAt property for the current user
-        
 
         // 4) Log the user in
-        $resetPasswordUser->loadData($request->getBody());
-        var_dump($user);
-
-
-
+        $email = $request->getQueryParams()['email_id'];
+        $tempBody = $request->getBody();
+        $tempBody['email_id'] = $email;
+        $resetPasswordUser->loadData($tempBody);
+        $passwordChangeState = $resetPasswordUser->updatePassword();
+        if($passwordChangeState === 'success') {
+            return $response->redirect('/utrance-railway/login');
+        } else {
+            $registerSetValue = $resetPasswordUser->registerSetValue($passwordChangeState); 
+            var_dump($registerSetValue);
+            return $this->render('resetPassword', $registerSetValue);
+        }
     }
 
     public function updatePassword()

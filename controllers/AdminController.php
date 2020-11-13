@@ -20,68 +20,29 @@ class AdminController extends Controller
 
     public function adminSettings($request)
     {
-     
+
         if ($this->validateUser()) {
-            
-            $updateUserDetailsModel=new UserModel();
-            
-            if ($request->isPost()){
-                 
+
+            $updateUserDetailsModel = new UserModel();
+
+            if ($request->isPost()) {
+
                 $tempUpdateUserBody = $request->getBody();
-                
-              
+
                 $tempUpdateUserBody['id'] = $request->getQueryParams()['id'];
-                
+
                 $updateUserDetailsModel->loadData($tempUpdateUserBody);
-                
+
                 $updateUserDetailsModel->updateUserSettingsDetails();
                 return $this->render('admin');
             }
-          
 
             return $this->render('admin');
         }
     }
 
-            
+    public function manageUsers($request) //Ashika
 
-
-    /*public function adminSettings($request) //daranya
-    {
-        $adminSettingModel=new UserModel();
-        if($request->isPost()) {
-            // form
-            return 'success';
-        }
-        if($request->isGet()) {
-        $adminSettingModel->loadData($request->getBody());
-        $getUserDetailsArray=$adminSettingModel->getUserDetailsAdmin();
-        return $this->render('admin',$getUserDetailsArray);
-
-        }
-
-    }*/
-
-   /* public function updateUserAdmin($request){ //daranya
-      
-        $updateUserModel=new UserModel();
- 
-        if ($request->isPost()) {
- 
-         $updateUserModel->loadData($request->getBody());
-         if($updateUserModel->updateUserAdmin()){
-             return "Success";
-         }
- 
-     }
-     return $this->render(['admin']);
- }*/
-
-    /*public function searchManageUsers($request){
-        
-    }*/
-
-    public function manageUsers($request)//Ashika
     {
 
         if ($this->validateUser()) {
@@ -96,42 +57,36 @@ class AdminController extends Controller
             }
 
             if ($request->isPost()) {
-                $searchUser=new UserModel();
+                $searchUser = new UserModel();
                 $searchUser->loadData($request->getBody());
-                $getSearchREsult=$searchUser->getSearchUserResult();
+                $getSearchREsult = $searchUser->getSearchUserResult();
                 return $this->render(['admin', 'manageUsers'], $getSearchREsult);
 
             }
             //return $this->render(['admin', 'manageUsers']);
         }
 
-
         //  return $this->render(['admin', 'manageUsers']);
     }
 
-             
-public function addUser($request){
-      
-       $addUserModel=new UserModel();
+    public function addUser($request)
+    {
 
-       if ($request->isPost()) {
+        $addUserModel = new UserModel();
 
-        $addUserModel->loadData($request->getBody());
-        if($addUserModel->addUser()){
+        if ($request->isPost()) {
 
-            return "Success";
+            $addUserModel->loadData($request->getBody());
+            if ($addUserModel->addUser()) {
+
+                return "Success";
+            }
+
         }
+        return $this->render(['admin', 'addUser']);
 
     }
-    return $this->render(['admin', 'addUser']);
-  
-}
 
-   
-
-
-
-   
     public function manageTrains($request)
     {
 
@@ -149,7 +104,6 @@ public function addUser($request){
     public function manageRoutes($request)
     {
         if ($request->isPost()) {
-            //from
             return 'success';
         }
 
@@ -159,7 +113,6 @@ public function addUser($request){
     public function addTrain($request)
     {
         if ($request->isPost()) {
-            //form
             return 'success';
         }
 
@@ -169,28 +122,27 @@ public function addUser($request){
     public function addRoute($request)
     {
         if ($request->isPost()) {
-            // form
             return 'success';
         }
 
         return $this->render(['admin', 'addRoute']);
     }
 
-
-    public function changeUserStatus($request){//Ashika
-        if($request->isGet()){
-            $changeUserStatusModel=new UserModel();
+    public function changeUserStatus($request)
+    { //Ashika
+        if ($request->isGet()) {
+            $changeUserStatusModel = new UserModel();
             $changeUserStatusModel->loadData($request->getQueryParams());
             //var_dump($request->getQueryParams());
             $changeUserStatusModel->changeUserStatusDetails();
-            $changeStatusArray=$changeUserStatusModel->getManageUsers();
-          
+            $changeStatusArray = $changeUserStatusModel->getManageUsers();
 
         }
-       return $this->render(['admin','manageUsers'],$changeStatusArray);
+        return $this->render(['admin', 'manageUsers'], $changeStatusArray);
     }
 
-    public function updateUser($request)//Ashika
+    public function updateUser($request) //Ashika
+
     {
 
         if ($request->isGet()) {
@@ -208,18 +160,16 @@ public function addUser($request){
             $saveDetailsModel->loadData($tempBody);
             //$updateUser=$saveDetailsModel->getUpdateUserDetails();
             $saveDetailsModel->updateUserDetails();
-            
+
             return;
 
         }
 
     }
 
-   
     public function updateTrain($request)
     {
         if ($request->isPost()) {
-            //form
             return 'success';
         }
 
@@ -228,8 +178,8 @@ public function addUser($request){
 
     public function addNoticesByAdmin()
     {
-        return $this->render('addNoticesByAdmin');
         echo "hy girl";
+        return $this->render('addNoticesByAdmin');
     }
 
     public function addNoticesByAdminNow()
@@ -239,8 +189,8 @@ public function addUser($request){
 
     public function adminDashboard()
     {
-        return $this->render('adminDashboard');
         echo "Hello Sri Lanka";
+        return $this->render('adminDashboard');
     }
 
     public function adminDashboardNow()
@@ -250,8 +200,8 @@ public function addUser($request){
 
     public function viewUsers()
     {
-        return $this->render('viewUsers');
         echo " View Users!!";
+        return $this->render('viewUsers');
     }
     public function viewUsersNow()
     {
@@ -260,98 +210,9 @@ public function addUser($request){
 
     public function aboutUs()
     {
-        
+
         return $this->render('aboutUs');
-        
 
     }
-
-////////////////////////////////////////////////////////////////////////////////
-//source functionalities daranya
-/*
-public function sourceSettings($request){
-    $sourceSettingModel=new UserModel();
-     if($request->isPost()) {
-         // form
-         return 'success';
-     }
-     if($request->isGet()) {
-     $sourceSettingModel->loadData($request->getBody());
-     $getUserDetailsArray=$sourceSettingModel->getUserDetails1();
-     return $this->render('source',$getUserDetailsArray);
-     }
-}
-
- public function contactAdmin($request)
- {
-    if ($request->isPost()) {
-        // form
-        return 'success';
-    }
-
-    return $this->render(['source', 'contactAdmin']);
-     
-
-}
-
-
-public function functionality02($request){
-   
-   
- 
-}
-
-public function fnuctionality03(){
- 
-     
-}
-
- public function functionality04($request)
- {
-     
- }
-
- public function functionality05($request)
- {
-     
- }
-
- 
- public function addNoticesBySource()
- {
-     return $this->render('addNoticesBySource');
-     echo "hy girl";
- }
-
- public function addNoticesBySourceNow()
- {
-     echo "Added Notices!!";
- }
-
- public function sourceDashboard()
- {
-     return $this->render('sourceDashboard');
-     echo "Hello Sri Lanka";
- }
-
- public function sourceDashboardNow()
- {
-     echo "Hello my world";
- }
-
- public function viewUsers2()
- {
-     return $this->render('viewUsers');
-     echo " View Users!!";
- }
- public function viewUsersNow2()
- {
-     echo "Upload View Users form";
- }
-
- 
-*/
-
-
 
 }

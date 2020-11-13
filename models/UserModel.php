@@ -10,9 +10,9 @@ class UserModel extends Model
     public $street_line2;
     public $city;
     public $contact_num;
-    public $user_password;
     public $email_id;
     public $user_role = "user";
+    public $user_password;
     public $user_confirm_password;
     public $searchUserByNameOrId;
     public $addUserImage = "Chris-user-profile.jpg";
@@ -229,17 +229,17 @@ class UserModel extends Model
         $this->last_name = $this->sanitizeFormUsername($this->last_name);
         $this->email_id = $this->sanitizeFormEmail($this->email_id);
         $this->user_password = $this->sanitizeFormPassword($this->user_password);
-        $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
+        $this->passwordHashing();
     }
 
-    private function sanitizeFormString($inputText) //Asindu
+    // private function sanitizeFormString($inputText) //Asindu
 
-    {
-        $inputText = strip_tags($inputText); //remove html tags
-        $inputText = str_replace(" ", "", $inputText); // remove white spaces
-        $inputText = strtolower($inputText); // lowering the text
-        return ucfirst($inputText); // capitalize first letter
-    }
+    // {
+    //     $inputText = strip_tags($inputText); //remove html tags
+    //     $inputText = str_replace(" ", "", $inputText); // remove white spaces
+    //     $inputText = strtolower($inputText); // lowering the text
+    //     return ucfirst($inputText); // capitalize first letter
+    // }
 
     private function sanitizeFormUsername($inputText) //Asindu~
 
@@ -259,6 +259,11 @@ class UserModel extends Model
     {
         $inputText = strip_tags($inputText); //remove html tags
         return str_replace(" ", "", $inputText); // remove white spaces
+    }
+
+    private function passwordHashing()
+    {
+        $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
     }
 
     // asindu - validations
@@ -404,12 +409,7 @@ class UserModel extends Model
                 $this->errorArray['passwordError'] = "Password at least one special charcter";
             }
         }
-        
 
-    }
-
-    public function updatePassword() {
-        
     }
 
     public function createPasswordResetToken()
@@ -428,6 +428,21 @@ class UserModel extends Model
         $query->bindValue(":email", $this->email_id);
         $query->execute();
         return $resetToken;
+    }
+
+    public function updatePassword()
+    {
+        $this->validatePassword($this->user_password, $this->user_confirm_password);
+        if (empty($this->errorArray)) {
+            $this->sanitizeFormPassword($this->user_password);
+            $this->passwordHashing();
+            $query = App::$APP->db->pdo->prepare("UPDATE users SET user_password=:up WHERE email_id=:email");
+            $query->bindValue(":up", $this->user_password);
+            $query->bindValue(":email", $this->email_id);
+            $query->execute();
+            return 'success';
+        }
+        return $this->errorArray;
     }
 
 }
