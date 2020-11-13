@@ -107,7 +107,6 @@
     $fileSize=$_FILES['file']['size'];
     $fileError=$_FILES['file']['error'];
     $fileType=$_FILES['file']['type'];
-<<<<<<< HEAD
 
     $fileExt=explode('.',$fileName);
     $fileActualExt=strtolower(end($fileExt));
@@ -134,34 +133,6 @@
   }
 
 
-=======
-
-    $fileExt=explode('.',$fileName);
-    $fileActualExt=strtolower(end($fileExt));
-    $allowed=array('jpg','jpeg','png','pdf');
-
-    if(in_array($fileActualExt,$allowed)){
-      if($fileError === 0){
-        if($fileSize < 1000000){
-              $fileNameNew=uniqid('',true).".".$fileActualExt;
-              $fileDestination='uploads/'.$fileNameNew;
-              move_uploaded_file($fileTempName,$fileDestination);
-              header("Location:index.php?uploadsuccess");     
-        }else{
-          echo "Your file is too big!!!";
-        }
-            
-      }else{
-        echo "There was an error uploading your file!!";
-      }
-
-    }else{
-      echo "You can not upload files of this type!!!";
-    }
-  }
-
-
->>>>>>> 5ca164471d2bb769d55e2c19bc851fae647ea959
 ?!-->
 </body>
 </html>
