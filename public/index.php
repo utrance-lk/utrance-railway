@@ -96,6 +96,9 @@ $app->router->post('/utrance-railway/users/add', [AdminController::class, 'addUs
 $app->router->get('/utrance-railway/users/update', [AdminController::class, 'updateUser']);
 $app->router->post('/utrance-railway/users/update', [AdminController::class, 'updateUser']);
 
+$app->router->get('/utrance-railway/users/updateSettings', [AdminController::class, 'adminSettings']);
+$app->router->post('/utrance-railway/users/updateSettings', [AdminController::class, 'adminSettings']);
+
 $app->router->get('/utrance-railway/users/delete', [AdminController::class, 'deleteUser']);
 $app->router->post('/utrance-railway/users/delete', [AdminController::class, 'deleteUser']);
 

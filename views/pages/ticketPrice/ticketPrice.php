@@ -49,17 +49,36 @@ var_dump($k);
 
 echo"</table>";
 ?!-->
-<?php 
-  require '../vendor/autoload.php';
-// require_once('path/vendor/autoload.php'); 
-// Load an .xlsx file 
-$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load('ticketPrice.xlsx'); 
-   
-// Store data from the activeSheet to the varibale 
-// in the form of Array 
-   
-$data = array(1,$spreadsheet->getActiveSheet()->toArray(null,true,true,true)); 
-  
-// Display the sheet content 
-var_dump($data); 
-?> 
+
+<body style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;">
+    
+      <div class="main-01">
+            <div class="main-02"><p class="p-ticket-head">Train Ticket Price</p></div>
+        </div>
+
+<?php
+$reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
+$reader->setReadDataOnly(TRUE);
+$spreadsheet = $reader->load("ticketPrice.xlsx");
+
+$worksheet = $spreadsheet->getActiveSheet();
+
+echo '<table>' . PHP_EOL;
+foreach ($worksheet->getRowIterator() as $row) {
+    echo '<tr>' . PHP_EOL;
+    $cellIterator = $row->getCellIterator();
+    $cellIterator->setIterateOnlyExistingCells(FALSE); // This loops through all cells,
+                                                       //    even if a cell value is not set.
+                                                       // By default, only cells that have a value
+                                                       //    set will be iterated.
+    foreach ($cellIterator as $cell) {
+        echo '<td>' .
+             $cell->getValue() .
+             '</td>' . PHP_EOL;
+    }
+    echo '</tr>' . PHP_EOL;
+}
+echo '</table>' . PHP_EOL;
+?>
+</body>
+</html>

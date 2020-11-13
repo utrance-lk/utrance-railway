@@ -17,7 +17,7 @@
               if (isset($_SESSION['user'])) {
                 $html = "";
                 $id = App::$APP->activeUser()['id'];
-                $html .="<form action='/utrance-railway/admin?id=$id' class='form__user-data' method='post'>";
+                $html .="<form action='/utrance-railway/users/updateSettings?id=$id' class='form__user-data' method='post'>";
                 $html .="<div class='content__fields'>";
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";

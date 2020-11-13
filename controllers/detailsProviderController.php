@@ -15,8 +15,8 @@ public function detailsProviderSettings($request){
          return 'success';
      }
      if($request->isGet()) {
-     $detailsProviderSettingModel->loadData($request->getBody());
-     $getUserDetailsArray=$detailsProviderSettingModel->getUserDetailsAdmin();
+     //$detailsProviderSettingModel->loadData($request->getBody());
+     //$getUserDetailsArray=$detailsProviderSettingModel->getUserDetailsAdmin();
      return $this->render('detailsProvider',$getUserDetailsArray);
      }
 }

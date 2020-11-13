@@ -46,40 +46,7 @@ class AdminController extends Controller
             
 
 
-    /*public function adminSettings($request) //daranya
-    {
-        $adminSettingModel=new UserModel();
-        if($request->isPost()) {
-            // form
-            return 'success';
-        }
-        if($request->isGet()) {
-        $adminSettingModel->loadData($request->getBody());
-        $getUserDetailsArray=$adminSettingModel->getUserDetailsAdmin();
-        return $this->render('admin',$getUserDetailsArray);
-
-        }
-
-    }*/
-
-   /* public function updateUserAdmin($request){ //daranya
-      
-        $updateUserModel=new UserModel();
- 
-        if ($request->isPost()) {
- 
-         $updateUserModel->loadData($request->getBody());
-         if($updateUserModel->updateUserAdmin()){
-             return "Success";
-         }
- 
-     }
-     return $this->render(['admin']);
- }*/
-
-    /*public function searchManageUsers($request){
-        
-    }*/
+   
 
     public function manageUsers($request)//Ashika
     {
