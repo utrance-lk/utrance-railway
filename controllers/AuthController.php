@@ -137,7 +137,7 @@ class AuthController extends Controller
 
     public function resetPassword($request)
     {
-        // if ($request->isPost()) {
+        if ($request->isGet()) {
 
             // 1) get user based on the token
             $resetPasswordUser = new UserModel();
@@ -147,21 +147,29 @@ class AuthController extends Controller
             $tempBody['PasswordResetToken'] = $hashedToken;
             $resetPasswordUser->loadData($tempBody);
             $user = $resetPasswordUser->findOne('PasswordResetToken');
-            var_dump($user);
+            // var_dump($user);
+            if(!$user) {
+                return 'invalid token';
+            }
             $dateInDB = new DateTime($user[0]['PasswordResetExpires']);
             $currentDate = new DateTime();
             $interval = $dateInDB->diff($currentDate);
-            if((int)$interval->format('%i') > 10 && (int)$interval->format('%s') > 0) {
-                return 'your token has expired';
-            }
-            return '';
+            // if((int)$interval->format('%i') > 10 && (int)$interval->format('%s') > 0) {
+            //     return 'your token has expired'; // 400 bad request
+            // }
 
             // 2) If token has not expired and there is a user, set the new password
+            // var_dump($tempBody);
+            return $this->render('resetPassword');
+        }
 
-            // 3) Update changedPasswordAt property for the current user
+        // 3) Update changedPasswordAt property for the current user
+        
 
-            // 4) Log the user in
-        // }
+        // 4) Log the user in
+
+
+
     }
 
     public function updatePassword()
