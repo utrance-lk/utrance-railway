@@ -1,11 +1,9 @@
-<?php 
+<?php
 
 include_once "App.php";
 
-
- abstract class Model {
-
-    
+abstract class Model
+{
 
     // did not implemented generalized methods as it may lead to more complexity
 
@@ -13,21 +11,15 @@ include_once "App.php";
 
     // We import this file because our data object is in the App.php file
 
-    public function loadData($data) {
-    
-        foreach($data as $key => $value) {
-            if(property_exists($this, $key)) {
+    public function loadData($data)
+    {
+
+        foreach ($data as $key => $value) {
+            if (property_exists($this, $key)) {
                 $this->{$key} = $value; // asigning the values for properties of the UserModel class
-                
+
             }
         }
-    } 
-      
-   
-
-
-    
-  
+    }
 
 }
-?>

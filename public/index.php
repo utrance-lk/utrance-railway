@@ -23,6 +23,12 @@ $config = [
         'user' => $_ENV['DB_USER'],
         'password' => $_ENV['DB_PASSWORD'],
     ],
+    'email' => [
+        'user' => $_ENV['EMAIL_USERNAME'],
+        'password' => $_ENV['EMAIL_PASSWORD'],
+        'host' => $_ENV['EMAIL_HOST'],
+        'port' => $_ENV['EMAIL_PORT']
+    ]
 ];
 
 $app = new App(dirname(__DIR__), $config);
@@ -34,6 +40,9 @@ $app = new App(dirname(__DIR__), $config);
 // Home page
 $app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
 
+// search
+$app->router->post('/utrance-railway/search', [ViewController::class, 'search']);
+
 // login Page Routing
 $app->router->get('/utrance-railway/login', [AuthController::class, 'login']);
 $app->router->post('/utrance-railway/login', [AuthController::class, 'login']);
@@ -43,12 +52,16 @@ $app->router->get('/utrance-railway/logout', [AuthController::class, 'logout']);
 $app->router->get('/utrance-railway/register', [AuthController::class, 'register']);
 $app->router->post('/utrance-railway/register', [AuthController::class, 'register']);
 
-// relevant page rendering
+// profile rendering
 $app->router->get('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
+$app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
+
+// reset password
+$app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
+$app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 
 
-// search
-$app->router->post('/utrance-railway/search', [ViewController::class, 'search']);
+
 
 
 
@@ -59,7 +72,7 @@ $app->router->post('/utrance-railway/registeredUser',[RegisterUserController::cl
 // Admin routing
 // $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
-$app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
+
 $app->router->post('/utrance-railway/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/users', [AdminController::class, 'manageUsers']);
 // $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
