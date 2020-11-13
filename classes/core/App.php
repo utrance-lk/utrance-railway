@@ -6,7 +6,7 @@ include_once "Response.php";
 include_once "Session.php";
 include_once "Database.php";
 
-include_once "../../utils/Email.php";
+include_once "../utils/Email.php";
 
 class App {
     

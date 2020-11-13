@@ -58,8 +58,7 @@ $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load('ticketPrice.xlsx');
 // Store data from the activeSheet to the varibale 
 // in the form of Array 
    
-$data = array(1,$spreadsheet->getActiveSheet() 
-            ->toArray(null,true,true,true)); 
+$data = array(1,$spreadsheet->getActiveSheet()->toArray(null,true,true,true)); 
   
 // Display the sheet content 
 var_dump($data); 
