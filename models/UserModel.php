@@ -24,22 +24,20 @@ class UserModel extends Model
     private $errorArray = [];
     private $registerSetValueArray = [];
 
-    public function findOne() ///Asindu
+    public $PasswordResetToken;
+
+    public function findOne($field) ///Asindu
 
     {
-        $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email LIMIT 1");
-        $query->bindValue(":email", $this->email_id);
+        $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE $field=:field LIMIT 1");
+        if($field === 'email_id') {
+            $query->bindValue(":field", $this->email_id);
+        } else if($field === 'PasswordResetToken') {
+            $query->bindValue(":field", $this->PasswordResetToken);
+        }
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    // public function findOneOnlyEmail()
-    // {
-    //     $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email LIMIT 1");
-    //     $query->bindValue(":email", $this->email_id);
-    //     $query->execute();
-    //     return $query->fetchAll(PDO::FETCH_ASSOC);
-    // }
 
     public static function getUser($id) ///Asindu
 
@@ -361,9 +359,11 @@ class UserModel extends Model
         $query->bindValue(":prt", $resetTokenEncrypted);
         $query->bindValue(":email", $this->email_id);
         $query->execute();
-        $currentMilliSecond = ((int) (microtime(true) * 1000)) + 10 * 60 * 1000;
+        $date = new DateTime();
+        $date->add(new DateInterval('PT10M'));
+        $date = $date->format('Y-m-d H:i:s');
         $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetExpires=:pre WHERE email_id=:email");
-        $query->bindValue(":pre", $currentMilliSecond);
+        $query->bindValue(":pre", $date);
         $query->bindValue(":email", $this->email_id);
         $query->execute();
         return $resetToken;
