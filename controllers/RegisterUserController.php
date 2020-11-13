@@ -15,7 +15,7 @@ class RegisterUserController extends Controller
         }
         if($request->isGet()) {
         $registerUserSettingModel->loadData($request->getBody());
-        $getUserDetailsArray=$registerUserSettingModel->getUserDetails1();
+        $getUserDetailsArray=$registerUserSettingModel->getUserDetailsAdmin();
         //var_dump($getUserDetailsArray);
         return $this->render('registeredUser',$getUserDetailsArray);
         }
