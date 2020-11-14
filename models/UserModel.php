@@ -2,6 +2,9 @@
 
 include_once "../classes/core/Model.php";
 include_once "HandlerFactory.php";
+include_once "../middlewares/FormValidation.php";
+include_once "../middlewares/Sanitization.php";
+
 
 class UserModel extends Model
 {
@@ -17,7 +20,7 @@ class UserModel extends Model
     public $user_active_status = 1;
     public $user_confirm_password;
     public $searchUserByNameOrId;
-    public $addUserImage = "Chris-user-profile.jpg";
+    public $photo = "Chris-user-profile.jpg";
 
     public $resultArray;
     public $detailsArray;
@@ -25,12 +28,13 @@ class UserModel extends Model
     public $id;
     private $errorArray = [];
     private $registerSetValueArray = [];
+    public $array=[];
 
     public $PasswordResetToken;
 
 
     private function populateValues() {
-        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status];
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status, ];
     }
 
     public static function getUser($id) {
@@ -47,25 +51,39 @@ class UserModel extends Model
     }
 
     public function register(){ 
+       
+        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password];
+        $registerValidation=new FormValidation();
+        $validationState=$registerValidation->runValidators($array);
+        if($validationState ==="success"){
+         $arraySanitize=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password];
+         $sanitizeData=new Sanitization();
+         $sanitizeArray=$sanitizeData->runSanitization($arraySanitize);
+         $createUser = new HandlerFactory();
+         return $createUser->createOne('users', $sanitizeArray);
+         }else{
+             //var_dump($validationState);
+             return $validationState;
+         }
+       
+
+        
+    }
+
+    public function updateMyProfile() { 
         $this->runValidators();
+        var_dump($this->first_name);
         if (empty($this->errorArray)) {
 
             $this->runSanitization();
 
-            $createUser = new HandlerFactory();
-            return $createUser->createOne('users', $this->populateValues());
-        }
-
-        return $this->errorArray;
-    }
-
-    public function updateMyProfile() { 
-
         $updateUser = New HandlerFactory();
 
-        $valuesArray = ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id];
-
+        $valuesArray = ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id,];
+       
         return $updateUser->updateOne('users', 'id', $this->id, $valuesArray);
+        }
+        return $this->errorArray;
     }
 
 
@@ -130,7 +148,7 @@ class UserModel extends Model
     //     return ucfirst($inputText); // capitalize first letter
     // }
 
-    private function sanitizeFormUsername($inputText){//Asindu
+   /* private function sanitizeFormUsername($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
         $inputText = ucfirst($inputText);
         return str_replace(" ", "", $inputText); // remove white spaces
@@ -152,8 +170,8 @@ class UserModel extends Model
 
     // asindu - validations
 
-    private function runValidators(){
-
+    /*private function runValidators(){
+      var_dump("hello");
         $this->validateFirstName($this->first_name); //Asindu
         $this->validateLastName($this->last_name); //Ashika
         $this->validateStreetLine1($this->street_line1); //Ashika
@@ -176,7 +194,7 @@ class UserModel extends Model
         }
 
         if (!(ctype_alpha($fn))) {
-            $this->errorArray['firstNameError'] = 'First name only letters  required';
+            $this->errorArray['firstNameError'] = 'First name only letters 1  required';
         }
 
     }
@@ -290,7 +308,7 @@ class UserModel extends Model
             }
         }
 
-    }
+    }*/
 
     public function createPasswordResetToken()
     {

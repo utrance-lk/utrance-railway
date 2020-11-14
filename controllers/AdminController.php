@@ -2,6 +2,7 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
+include_once "../models/UserModel.php";
 
 class AdminController extends Controller
 {
@@ -27,6 +28,7 @@ class AdminController extends Controller
 
             $updateUserDetailsModel = new UserModel();
 
+
             if ($request->isPost()) {
 
                 $tempUpdateUserBody = $request->getBody();
@@ -34,16 +36,24 @@ class AdminController extends Controller
                 $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
 
                 $updateUserDetailsModel->loadData($tempUpdateUserBody);
-
+                var_dump($tempUpdateUserBody);
+                
                 $state = $updateUserDetailsModel->updateMyProfile();
+
                 if($state === 'success') {
                     return $response->redirect('/utrance-railway/settings');
                 } else {
-                    return 'error updating data!!';
+                    $updateSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
+                   // var_dump($updateSetValue);
+                    return $this->render('admin', $updateSetValue); //Ashika
+                    
+                   // return 'error updating data!!';
                 }
+               
             }
-
             return $this->render('admin');
+
+            
 
         }
     }
@@ -58,10 +68,10 @@ class AdminController extends Controller
             $manageUserModel = new AdminModel(); 
 
             if ($request->isPost()) {
-                $searchUser = new AdminModel();
-                $searchUser->loadData($request->getBody());
-                $getSearchREsult = $searchUser->getSearchUserResult();
-                return $this->render(['admin', 'manageUsers'], $getSearchREsult);
+               
+                $manageUserModel->loadData($request->getBody());
+                $getSearchResult = $manageUserModel->getSearchUserResult();
+                return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
             $manageUserModel->loadData($request->getBody());
@@ -113,14 +123,13 @@ class AdminController extends Controller
 
     }
 
-    public function changeUserStatus($request)
+    public function changeUserStatus($request) /// Activate and deactivate part in manage users
     { //Ashika
         if ($request->isGet()) {
             $changeUserStatusModel = new AdminModel();
             $changeUserStatusModel->loadData($request->getQueryParams());
-            //var_dump($request->getQueryParams());
             $changeUserStatusModel->changeUserStatusDetails();
-            $changeStatusArray = $changeUserStatusModel->getManageUsers();
+            $changeStatusArray = $changeUserStatusModel->getUsers();
 
         }
         return $this->render(['admin', 'manageUsers'], $changeStatusArray);

@@ -47,6 +47,7 @@ class AuthController extends Controller
                 return $this->login($request, $response);
             } else {
                 $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika
+                
 
             }
             return $this->render('register', $registerSetValue); //Ashika
