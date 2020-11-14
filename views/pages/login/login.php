@@ -20,7 +20,7 @@
 					<input type="password" id="password" name="user_password" placeholder="*****************" required>
 				</div>
 				<div class="forgot-password-box form__container-item">
-					<a href="#" class="forgort-password-box">Forgot Password?</a>
+					<a href="/utrance-railway/forgotPassword" class="forgort-password-box">Forgot Password?</a>
 				</div>
 				<button type="submit" class="login-btn form__container-item" formaction="#">
 						Login

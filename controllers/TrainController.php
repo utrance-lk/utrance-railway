@@ -104,11 +104,27 @@ class TrainController extends Controller
              $saveDetailsModel->loadData($tempBody);
              
 
-            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
-            //var_dump($saveDetailsModel->updateUserDetails());
-            $saveDetailsModel->updateTrainDetails();
-            $trainArray=$saveDetailsModel->getTrains();
-            return $this->render(['admin', 'manageTrains'],$trainArray);
+            
+             $validationState = $saveDetailsModel->updateTrainDetails();
+             
+             if ($validationState === 'success') {
+                 echo 'hello';
+                 $trainArray=$saveDetailsModel->getTrains();
+             return $this->render(['admin', 'manageTrains'],$trainArray);
+             } 
+             else {
+                $trainArray=$saveDetailsModel->getManagTrains();
+                var_dump($validationState);
+                return $this->render(['admin', 'updateTrain'],$trainArray,$validationState);
+            //     $registerSetValue = $saveDetailsModel->registerSetValue($validationState);
+                
+            //     $updateTrainArray=$saveDetailsModel->getManagTrains();
+            //     // var_dump( $registerSetValue['train_travel_days']);
+            //     return $this->render(['admin', 'updateTrain'],$updateTrainArray); 
+
+             }
+            // $trainArray=$saveDetailsModel->getTrains();
+            // return $this->render(['admin', 'manageTrains'],$trainArray);
         
 
         }
@@ -145,8 +161,7 @@ class TrainController extends Controller
     public function addTrain($request) 
     {
         $saveTrainDetails = new TrainModel();
-        
-        if ($request->isPost()) 
+         if ($request->isPost()) 
         {
         
             $saveTrainDetails->loadData($request->getBody());
@@ -167,6 +182,15 @@ class TrainController extends Controller
       
             return $this->render(['admin', 'addTrain']);
         
+
+    }
+
+
+    public function ticketPrice($request){
+        if($request->isPost()){
+            return $this->render('ticketPrice');
+        }
+        return $this->render('ticketPrice');
 
     }
 

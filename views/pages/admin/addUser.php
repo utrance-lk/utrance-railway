@@ -102,7 +102,11 @@
                   >
                   <input
                     type="password"
+
+                    name="user_confirmpassword"
+
                     name="user_confirmPassword"
+
                     class="form__input"
                   />
                 </div>

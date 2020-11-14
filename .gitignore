@@ -1,3 +1,5 @@
 .env
 /vendor/
 .*/
+ticketPrice.xlsx
+~$ticketPrice.xlsx

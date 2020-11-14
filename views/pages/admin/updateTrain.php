@@ -1,6 +1,7 @@
 <div class="load-content-container">
 
     <div class="load-content">
+     <!-- if(isset($TrainNameError)){echo $TrainNameError;}else{echo 'hello';}  -->
         <?php
             $dom = new DOMDocument;
             libxml_use_internal_errors(true);
@@ -13,6 +14,7 @@
                 {
                     
                     
+                    
                     $travalArray =  explode(" ", $value['train_travel_days']);
                    
                     $html ="<div class='load-content--settings'> 
@@ -20,6 +22,8 @@
                     ";
                     $html .="<p>" .$value['train_name'] . " Profile Settings</p></div>";
                     $html .="<form action='' class='form__train-data' method = 'post'>";
+                     if(isset($newtrains)){foreach($newtrains as $item){ echo $item; }}
+                    // if(isset($TrainNameError)){echo $TrainNameError;}else{echo 'hello';}
                     $html .="<div class='content__fields'>";
                     $html .="<div class='trainname-box content__fields-item'>";
                     $html .="<label for='trainname' class='form__label'>Train Name</label>";

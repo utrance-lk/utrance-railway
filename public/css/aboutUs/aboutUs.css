@@ -1,3 +1,15 @@
+body {
+  font-family: "Sora", sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
   
   .column {
@@ -15,7 +27,7 @@
   .about-section {
     padding: 50px;
     text-align: center;
-    background-color: #89c4f4;
+    background-color: #1f3a93;
     color: white;
   }
   

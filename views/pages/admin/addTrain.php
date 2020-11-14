@@ -11,6 +11,11 @@
             <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?> 
             <?php if(isset($RoutIdError)){echo $RoutIdError;}?> 
             <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
+            <?php if(isset($TrainTypeError)){echo $TrainTypeError;}?>
+            <?php if(isset($TrainFcError)){echo $TrainFcError;}?>
+            <?php if(isset($TrainScError)){echo $TrainScError;}?>
+            <?php if(isset($TrainSleepingBError)){echo $TrainSleepingBError;}?>
+            <?php if(isset($TrainweightError)){echo $TrainweightError;}?>
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
@@ -18,10 +23,10 @@
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>
-                        <select name="train_type" id="train_type" class="form__input">
-                            <option value="Express">Express</option>
-                            <option value="Slow">Slow</option>
-                            <option value="Intercity">Intercity</option>
+                        <select name="train_type" id="train_type" class="form__input" >
+                            <option value="Express"<?php if(isset($train_type)){if($train_type=='Express'){echo 'selected'; }}?>>Express</option>
+                            <option value="Slow"<?php if(isset($train_type)){if($train_type=='Slow'){echo 'selected'; }}?>>Slow</option>
+                            <option value="Intercity"<?php if(isset($train_type)){if($train_type=='Intercity'){echo 'selected'; }}?>>Intercity</option>
                         </select>
                     </div>
                     <div class="routeid-box content__fields-item">
@@ -71,35 +76,35 @@
                     <div class="trainactive-box content__fields-item">
                         <label for="trainactive" class="form__label form__label--active">Active Status</label>
                         <input type="hidden" name="train_active_status" value="0">
-                        <input type="checkbox" name="train_active_status" id="trainactive" value="1" >
+                        <input type="checkbox" name="train_active_status" id="trainactive" value="1" <?php if(isset($train_active_status)){if($train_active_status==1){echo "checked='checked'";}}?>>
                     </div>
                     <div class="freightallowed-box content__fields-item">
                         <label for="freightsallowed" class="form__label form__label--freights-allowed">Freights Allowed (Kg)</label>
                         <input type="hidden" name="train_freights_allowed" value="0">
-                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed" value="1" >
-                        <input type="number" min="0" value="0" name="train_total_weight" id="freights-quantity" class="form__input number__input freights-quantity__number-input">
+                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed" value="1" <?php if(isset($train_freights_allowed)){if($train_freights_allowed==1){echo "checked='checked'";}}?>>
+                        <input type="number" min="0" name="train_total_weight" id="freights-quantity" class="form__input number__input freights-quantity__number-input" value="<?php echo isset($train_total_weight) ? $train_total_weight : '0';?>">
                     </div>
                     <fieldset class="classess-box content__fields-item">
                         <legend class="form__label">Reservation Categories</legend>
                         <div class="reservation-categorybox__container checkbox__horizontal">
                             <div class="seatbox-firstclass reservation__category-item">
                                 <label for="firstclass">First Class</label>
-                                <input type="number" min="0" value="0" name="train_fc_seats" id="firstclass" class="form__input number__input">
+                                <input type="number" min="0" name="train_fc_seats" id="firstclass" class="form__input number__input" value="<?php echo isset($train_fc_seats) ? $train_fc_seats : '0';?>">
                             </div>
                             <div class="seatbox-secondclass reservation__category-item">
                                 <label for="secondclas">Second Class</label>
-                                <input type="number" min="0" value="0" name="train_sc_seats" id="secondclass" class="form__input number__input">
+                                <input type="number" min="0" name="train_sc_seats" id="secondclass" class="form__input number__input" value="<?php echo isset($train_sc_seats) ? $train_sc_seats : '0';?>">
                             </div>
                             <div class="seatbox-sleepingberths reservation__category-item">
                                 <label for="sleepingberths">Sleeping Berths</label>
-                                <input type="number" min="0" value="0" name="train_sleeping_berths" id="sleepingberths" class="form__input number__input">
+                                <input type="number" min="0" name="train_sleeping_berths" id="sleepingberths" class="form__input number__input" value="<?php echo isset($train_sleeping_berths) ? $train_sleeping_berths : '0';?>">
                             </div>
                         </div> 
                         <div class="reservation-categorybox__container checkbox__horizontal">
                             <div class="seatbox-observation--saloon reservation__category-item">
                                 <label for="observation-saloon">Observation Saloon</label>
                                 <input type="hidden" name="train_observation_seats" value="0">
-                                <input type="checkbox" name="train_observation_seats" id="observation-saloon" value="1"   >
+                                <input type="checkbox" name="train_observation_seats" id="observation-saloon" value="1" <?php if(isset($train_observation_seats)){if($train_observation_seats==1){echo "checked='checked'";}}?>>
                             </div> 
                         </div>          
                     </fieldset>

@@ -33,7 +33,7 @@
               <!--p>Chris's Account Settings</p!-->
           
             
-          <form action="" class="form__user-data" method="post">
+          <form action="/utrance-railway/users/update?id=<?php echo $users[0]['id'];?>" class="form__user-data" method="post">
             <div class="content__fields">
 
 
