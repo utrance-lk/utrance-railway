@@ -161,6 +161,7 @@ public function addUser($request){
     {
 
         if ($request->isGet()) {
+            var_dump("hy");
             $updateUserModel = new UserModel();
             $updateUserModel->loadData($request->getQueryParams());
             $updateUserArray = $updateUserModel->getUserDetails();
@@ -168,7 +169,7 @@ public function addUser($request){
         }
 
         if ($request->isPost()) {
-
+var_dump("bye");
             $saveDetailsModel = new UserModel();
             $tempBody = $request->getBody();
             $tempBody['id'] = $request->getQueryParams()['id'];

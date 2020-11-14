@@ -17,7 +17,7 @@
               if (isset($_SESSION['user'])) {
                 $html = "";
                 $id = App::$APP->activeUser()['id'];
-                $html .="<form action='/utrance-railway/users/updateSettings?id=$id' class='form__user-data' method='post'>";
+                $html .="<form action='/utrance-railway/users/updateSettings?id=$id' class='form__user-data' method='post' enctype='multipart/form-data'>";
                 $html .="<div class='content__fields'>";
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";
@@ -42,9 +42,10 @@
                 $html .= "<div class='contactno-box content__fields-item'>";
                 $html .= "<label for='contactno' class='form__label'>Contact No</label>";
                 $html .= "<input type='text' name='contact_num' class='form__input' value=" . App::$APP->activeUser()['contact_num'] . "></div>";
-                $html .= "<div class='userpicture-box'>";
-                $html .= "<img src='../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg' alt='user-profile-picture' class=''/>";
-                $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo' />";
+                $html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
+                $html .= "<img src='../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class=''/>";
+                $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo' onchange='loadFile(event)' />";
+                
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
                 $id = App::$APP->activeUser()['id'];
                // var_dump($id); 
@@ -82,6 +83,49 @@
 
               $html .= "<div class='btn__save-box'>";
               $html .= "<div class='btn__save btn__password'>Save Password</div></div>";
+              
+
+
+
+             
+
+////Image save function
+              if(isset($_POST['submit'])){ //Ashika
+                echo "Hello1234";
+                $file=$_FILES['photo'];
+                $name=$_POST['first_name'];
+                $fileName=$_FILES['photo']['name'];
+                $fileTempName=$_FILES['photo']['tmp_name'];
+                $fileSize=$_FILES['photo']['size'];
+                $fileError=$_FILES['photo']['error'];
+                $fileType=$_FILES['photo']['type'];
+                
+            
+                $fileExt=explode('.',$fileName);
+                $fileActualExt=strtolower(end($fileExt));
+                $allowed=array('jpg','jpeg','png');
+            
+                if(in_array($fileActualExt,$allowed)){
+                  if($fileError === 0){
+                    if($fileSize < 1000000){
+                          $fileNameNew=$name.".".$fileActualExt;
+                          $fileDestination='img/uploads/'.$fileNameNew;
+                          move_uploaded_file($fileTempName,$fileDestination);
+                          echo "file added succesfully!!";
+                          
+                    }else{
+                      echo "Your file is too big!!!";
+                    }
+                        
+                  }else{
+                    echo "There was an error uploading your file!!";
+                  }
+            
+                }else{
+                  echo "You can not upload files of this type!!!";
+                }
+              }
+
 
               $dom = new DOMDocument();
               $dom->loadHTML($html);
@@ -95,44 +139,16 @@
     </div>
 </div>
 
-<script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
 
-<!--?php
-  if(isset($_POST['submit'])){
-    $file=$_FILES['photo'];
-    //print_r($file);
-    var_dump($file);
-    $fileName=$_FILES['file']['name'];
-    $fileTempName=$_FILES['file']['temp_name'];
-    $fileSize=$_FILES['file']['size'];
-    $fileError=$_FILES['file']['error'];
-    $fileType=$_FILES['file']['type'];
-
-    $fileExt=explode('.',$fileName);
-    $fileActualExt=strtolower(end($fileExt));
-    $allowed=array('jpg','jpeg','png','pdf');
-
-    if(in_array($fileActualExt,$allowed)){
-      if($fileError === 0){
-        if($fileSize < 1000000){
-              $fileNameNew=uniqid('',true).".".$fileActualExt;
-              $fileDestination='uploads/'.$fileNameNew;
-              move_uploaded_file($fileTempName,$fileDestination);
-              header("Location:index.php?uploadsuccess");     
-        }else{
-          echo "Your file is too big!!!";
-        }
-            
-      }else{
-        echo "There was an error uploading your file!!";
-      }
-
-    }else{
-      echo "You can not upload files of this type!!!";
-    }
-  }
+<script>
+//load Image ///Ashika
+var loadFile=function(event){
+  var image=document.getElementById('image_preview');
+  image.src=URL.createObjectURL(event.target.files[0]);
+}
+</script>
 
 
-?!-->
+
 </body>
 </html>
