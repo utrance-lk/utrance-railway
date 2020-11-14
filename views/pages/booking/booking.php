@@ -118,7 +118,7 @@
                     </div>
                     <div class="seperator"></div>
                     <div class="card__persons card__item">
-                        <input type="number" class="person__count" name="person__count" value="1" min="1"></input>&nbsp;<label for="person__count">persons</label>
+                        <input type="number" class="person__count" name="person__count" value="1" min="1" max="10"></input>&nbsp;<label for="person__count">person(s)</label>
                     </div>
                     <div class="seperator"></div>
                     <div class="card__class card__item">
@@ -148,7 +148,7 @@
                     </div>
                     <div class="seperator"></div>
                     <div class="card__persons card__item">
-                        <input type="number" class="person__count" name="person__count" value="1" min="1"></input>&nbsp;<label for="person__count">persons</label>
+                        <input type="number" class="person__count" name="person__count" value="1" min="1" max="10"></input>&nbsp;<label for="person__count">person(s)</label>
                     </div>
                     <div class="seperator"></div>
                     <div class="card__class card__item">
