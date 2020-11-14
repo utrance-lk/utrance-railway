@@ -16,7 +16,6 @@ require_once "../vendor/autoload.php";
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
-
 // databse configuration (getting the details from the config.env)
 $config = [
     'userClass' => UserModel::class,
@@ -29,15 +28,14 @@ $config = [
         'user' => $_ENV['EMAIL_USERNAME'],
         'password' => $_ENV['EMAIL_PASSWORD'],
         'host' => $_ENV['EMAIL_HOST'],
-        'port' => $_ENV['EMAIL_PORT']
-    ]
+        'port' => $_ENV['EMAIL_PORT'],
+    ],
 ];
 
 $app = new App(dirname(__DIR__), $config);
 
 /* ROUTE HANDLING */
 //This stores the route data in an array in Route class, that means we specify if the '/register' like url recieved we should render the registration page.
-
 
 // Home page
 $app->router->get('/utrance-railway/home', [ViewController::class, 'home']);
@@ -57,11 +55,14 @@ $app->router->post('/utrance-railway/register', [AuthController::class, 'registe
 // profile rendering
 $app->router->get('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
 $app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
+$app->router->post('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
+$app->router->post('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
 
 // reset password
+$app->router->get('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
 $app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
+$app->router->get('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
-
 
 //aboutUs routing Daranya
 
@@ -70,8 +71,8 @@ $app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs
 
 
 ////////Registered User Routing
-$app->router->get('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUserSettings']);
-$app->router->post('/utrance-railway/registeredUser',[RegisterUserController::class,'registeredUserSettings']);
+$app->router->get('/utrance-railway/registeredUser', [RegisterUserController::class, 'registeredUserSettings']);
+$app->router->post('/utrance-railway/registeredUser', [RegisterUserController::class, 'registeredUserSettings']);
 
 
 //detailsProvider routing
@@ -84,7 +85,6 @@ $app->router->get('/utrance-railway/detailsProvider/contactAdmin', [detailsProvi
 // Admin routing
 // $app->router->get('/utrance-railway/admin', [AdminController::class, 'adminSettings']);
 
-
 $app->router->post('/utrance-railway/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/users', [AdminController::class, 'manageUsers']);
 // $app->router->get('/utrance-railway/admin/trains', [AdminController::class, 'manageTrains']);
@@ -93,7 +93,7 @@ $app->router->get('/utrance-railway/routes', [AdminController::class, 'manageRou
 $app->router->get('/utrance-railway/users/add', [AdminController::class, 'addUser']);
 $app->router->post('/utrance-railway/users/add', [AdminController::class, 'addUser']);
 
-$app->router->get('/utrance-railway/users/update', [AdminController::class, 'updateUser']);
+$app->router->get('/utrance-railway/users/view', [AdminController::class, 'viewUser']);
 $app->router->post('/utrance-railway/users/update', [AdminController::class, 'updateUser']);
 
 $app->router->get('/utrance-railway/users/updateSettings', [AdminController::class, 'adminSettings']);
@@ -104,7 +104,6 @@ $app->router->post('/utrance-railway/users/delete', [AdminController::class, 'de
 
 $app->router->get('/utrance-railway/users/activate', [AdminController::class, 'changeUserStatus']);
 $app->router->get('/utrance-railway/users/deactivate', [AdminController::class, 'changeUserStatus']);
-
 
 // $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 // $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
@@ -137,7 +136,6 @@ $app->router->get('/utrance-railway/ticketPrice', [TrainController::class, 'tick
 // $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 // $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 // $app->router->post('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
-
 
 /* ROUTE HANDLING */
 

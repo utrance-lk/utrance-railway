@@ -60,7 +60,7 @@
         $html .= "<div class='search__result-user-rolebox'> " . $value['user_role'] . "</div>";
 
         $id = $value['id'];
-        $html .= "<a href='/utrance-railway/users/update?id=$id' class='search__result-user-managebtnbox'>";
+        $html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";
         $html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
 
         //$html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
