@@ -166,7 +166,7 @@ function input_data($data){
         
         </div>
 		<div class="register__form-box register__container-item">
-			<form class="form__container" method="POST">
+			<form class="form__container" method="POST" action="/utrance-railway/register">
 				<div class="new-account-box-container form__container-item">
 					<div class="register-text">
 						Sign up
@@ -250,7 +250,7 @@ function input_data($data){
 				<!-- <div class="forgot-password-box form__container-item">
 					<a href="#" class="forgort-password-box">Forgot Password?</a>
 				</div> -->
-				<button type="submit" class="register-btn form__container-item" formaction="#" onclick="myFunction()">
+				<button type="submit" class="register-btn form__container-item">
 						Register
 				</button>
 			</form>

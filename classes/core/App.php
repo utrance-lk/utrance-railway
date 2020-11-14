@@ -17,6 +17,7 @@ class App {
     public $response;
     public $session;
     public $db;
+    public $email;
     public $user;
     public $userClass;
 
