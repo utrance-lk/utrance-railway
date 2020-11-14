@@ -9,7 +9,7 @@
   ],
   "require": {
     "vlucas/phpdotenv": "^5.2",
-  "phpoffice/phpspreadsheet": "^1.15",
+    "phpoffice/phpspreadsheet": "^1.15",
   "phpoffice/phpexcel": "^1.8",
     "phpmailer/phpmailer": "^6.1"
   }

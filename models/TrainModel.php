@@ -191,7 +191,7 @@ class TrainModel extends Model
         }
         if (empty($registerSetValueArray['TravalDaysError'])) {
             $registerSetValueArray['train_travel_days'] = $this->train_travel_days;
-
+            //  var_dump($registerSetValueArray['train_travel_days']);
         }
 
         
@@ -223,13 +223,13 @@ class TrainModel extends Model
 
     private function runValidators()
     {
-        $this->validateTrainName($this->train_name); 
+        $this->validateTrainName($this->train_name, $this->route_id); 
         $this->validateRouteId($this->route_id); 
         $this->validateTravelDays(implode($this->train_travel_days)); 
        
     }
 
-    private function validateTrainName($tn) 
+    private function validateTrainName($tn, $rn) 
 
     {
         if (strlen($tn) < 2 || strlen($tn) > 50) {
@@ -242,10 +242,44 @@ class TrainModel extends Model
 
         if (empty($tn)) {
             $this->errorArray['TrainNameError'] = 'enter valid train name';
-            echo "hegf";
+            
             // var_dump($this->errorArray);
         }
+        $this->my($tn, $rn);
+       
+        // $trains="";
 
+        
+
+    }
+
+    public function my($inputText , $rid){
+        $results = $this->sameTrains($this->train_name , $this->route_id);
+        // var_dump($results);
+        if($results==='success'){
+           
+                    $this->errorArray['TrainNameError'] = 'Route_id is not valid';
+                    // echo $rid;
+          
+                    
+        }
+    }
+
+
+
+
+    public function sameTrains($inputText , $rid){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name = :train_name AND route_id=:route_id ");
+        $query->bindValue(":train_name",$inputText);
+        $query->bindValue(":route_id",$rid);
+        $query->execute();
+
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($this->resultArray["trains"]);
+        // var_dump( $this->resultArray["trains"]);
+       if(!empty($this->resultArray["trains"] )){
+        return 'success';
+       }
     }
 
     private function validateRouteId($tn) 
@@ -255,8 +289,36 @@ class TrainModel extends Model
         if ($tn == 0) {
             $this->errorArray['RoutIdError'] = 'Please enter valid route';
         }
+        $this->rout($tn);
 
     }
+
+    public function rout($rid){
+        $results = $this->getsameTrains($this->train_name , $this->route_id);
+        // var_dump($results);
+        if($results==='success'){
+           
+                    $this->errorArray['TrainNameError'] = 'error error';
+                    // echo $rid;
+          
+                    
+        }
+    }
+
+    public function getsameTrains($rid){
+        $query = APP::$APP->db->pdo->prepare("SELECT trains.train_name FROM trains INNER JOIN routes ON trains.route_id=routes.route_id WHERE trains.route_id= :route_id");
+        
+        $query->bindValue(":route_id",$rid);
+        $query->execute();
+
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
+         var_dump($this->resultArray["trains"]);
+        // var_dump( $this->resultArray["trains"]);
+       if(empty($this->resultArray["trains"] )){
+        return 'success';
+       }
+    }
+
 
     private function validateTravelDays($tn) 
 
@@ -266,13 +328,14 @@ class TrainModel extends Model
             $this->errorArray['TravalDaysError'] = 'enter travel days';
            
         }
-        var_dump($this->errorArray);
+       
 
     }
 
     private function runSanitization()
     {
-        $this->first_name = $this->sanitizeFormtrainame($this->train_name);
+        $this->train_name = $this->sanitizeFormtrainame($this->train_name);
+        
   
     }
 
@@ -282,6 +345,8 @@ class TrainModel extends Model
         $inputText = strip_tags($inputText); //remove html tags
         return ucfirst($inputText); // capitalize first letter
     }
+
+    
 
 
     

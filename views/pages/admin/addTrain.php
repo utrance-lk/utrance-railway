@@ -1,6 +1,6 @@
 
- 
 
+ 
 <div class="load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -9,6 +9,8 @@
             </div>
             <form action="/utrance-railway/trains/add" class="form__train-data" method='post' >
             <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?> 
+            <?php if(isset($RoutIdError)){echo $RoutIdError;}?> 
+            <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
@@ -24,44 +26,44 @@
                     </div>
                     <div class="routeid-box content__fields-item">
                         <label for="routeid" class="form__label">Route Id</label>
-                        <input type="number" min="0"  name="route_id" id="routeid" class="form__input number__input route-id__number-input" placeholder="<?php echo isset($RoutIdError) ? $RoutIdError : '1';?>"value="<?php echo isset($route_id) ? $route_id : '';?>" required>
+                        <input type="number" min="0"  name="route_id" id="routeid" class="form__input number__input route-id__number-input" placeholder="<?php echo isset($RoutIdError) ? $RoutIdError : '0';?>"value="<?php echo isset($route_id) ? $route_id : '';?>" required>
                     </div>
                     <fieldset class="traintaveldays-box content__fields-item">
                         <legend class="form__label">Train Travel Days</legend>
                         <div class="traveldaysbox__container checkbox__horizontal" required>
                             <div class="">
-                                <input type="hidden" name="train_travel_days[]" value="">
-                                <input type="checkbox" id="monday" name="train_travel_days[]" value="monday" >
+                                <input type="hidden" name="train_travel_days[]" value="" >
+                                <input type="checkbox" id="monday" name="train_travel_days[]" value="monday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'monday'){ echo "checked='checked'"; }}}?>>
                                 <label for="monday" class="checkbox__label">Mon</label>
                             </div>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="">
-                                <input type="checkbox" id="tuesday" name="train_travel_days[]" value="tuesday" >
+                                <input type="checkbox" id="tuesday" name="train_travel_days[]" value="tuesday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'tuesday'){ echo "checked='checked'"; }}}?>>
                                 <label for="tuesday" class="checkbox__label">Tue</label>
                             </div>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="">
-                                <input type="checkbox" id="wednesday" name="train_travel_days[]" value="wednesday" >
+                                <input type="checkbox" id="wednesday" name="train_travel_days[]" value="wednesday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'wednesday'){ echo "checked='checked'"; }}}?>>
                                 <label for="wednesday" class="checkbox__label">Wed</label>
                             </div>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="">
-                                <input type="checkbox" id="thursday" name="train_travel_days[]" value="thursday" >
+                                <input type="checkbox" id="thursday" name="train_travel_days[]" value="thursday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'thursday'){ echo "checked='checked'"; }}}?>>
                                 <label for="thursday" class="checkbox__label">Thurs</label>
                             </div>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="">
-                                <input type="checkbox" id="friday" name="train_travel_days[]" value="friday" >
+                                <input type="checkbox" id="friday" name="train_travel_days[]" value="friday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'friday'){ echo "checked='checked'"; }}}?>>
                                 <label for="friday" class="checkbox__label">Fri</label>
                             </div>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="">
-                                <input type="checkbox" id="saturday" name="train_travel_days[]" value="saturday" >
+                                <input type="checkbox" id="saturday" name="train_travel_days[]" value="saturday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'saturday'){ echo "checked='checked'"; }}}?>>
                                 <label for="saturday" class="checkbox__label">Sat</label>
                             </div>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="">
-                                <input type="checkbox" id="sunday" name="train_travel_days[]" value="sunday" >
+                                <input type="checkbox" id="sunday" name="train_travel_days[]" value="sunday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'sunday'){ echo "checked='checked'"; }}}?>>
                                 <label for="sunday" class="checkbox__label">Sun</label>
                             </div>
                         </div>
