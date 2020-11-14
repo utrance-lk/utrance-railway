@@ -2,6 +2,7 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
+include_once "../models/AdminModel.php";
 include_once "AdminController.php";
 include_once "RegisterUserController.php";
 include_once "../utils/Email.php";
@@ -14,7 +15,7 @@ class AuthController extends Controller
         if ($request->isPost()) {
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
-            $result = $loginUser->findOne('email_id');
+            $result = $loginUser->findUser('email_id');
             $verifyPassword = password_verify($loginUser->user_password, $result[0]['user_password']);
             if ($verifyPassword) {
                 App::$APP->session->set('user', $result[0]['id']);
@@ -55,23 +56,18 @@ class AuthController extends Controller
 
     }
 
-    public function getMyProfile($request)
+    public function getMyProfile($request, $response)
     {
-        if ($request->isPost()) {
-
-            //from
-            return 'success';
-        }
-
-        $role = App::$APP->activeUser()['role'];
-
+       
         if (!$this->isLoggedIn()) {
             return 'You are not logged in!';
         }
 
+        $role = App::$APP->activeUser()['role'];
+        
         if ($role === 'admin') {
             $admin = new AdminController();
-            return $admin->adminSettings($request);
+            return $admin->adminProfile($request, $response);
         }
         if ($role === 'user') {
             $regUser = new RegisterUserController();

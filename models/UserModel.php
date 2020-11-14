@@ -1,6 +1,7 @@
 <?php
 
 include_once "../classes/core/Model.php";
+include_once "HandlerFactory.php";
 
 class UserModel extends Model
 {
@@ -13,6 +14,7 @@ class UserModel extends Model
     public $email_id;
     public $user_role = "user";
     public $user_password;
+    public $user_active_status = 1;
     public $user_confirm_password;
     public $searchUserByNameOrId;
     public $addUserImage = "Chris-user-profile.jpg";
@@ -21,61 +23,51 @@ class UserModel extends Model
     public $detailsArray;
     public $defaultPassword;
     public $id;
-    public $user_active_status;
     private $errorArray = [];
     private $registerSetValueArray = [];
 
     public $PasswordResetToken;
 
-    public function findOne($field) ///Asindu
 
-    {
-        $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE $field=:field LIMIT 1");
-        if ($field === 'email_id') {
-            $query->bindValue(":field", $this->email_id);
-        } else if ($field === 'PasswordResetToken') {
-            $query->bindValue(":field", $this->PasswordResetToken);
-        }
-        $query->execute();
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+    private function populateValues() {
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status];
     }
 
-    public static function getUser($id) ///Asindu
-
-    {
+    public static function getUser($id) {
         $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE id=:id");
         $query->bindValue(":id", $id);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function register()
-    { ////Ashika
+
+    public function findUser($email) {
+        $findUser = new HandlerFactory();
+        return $findUser->getOne('users', $email, $this->email_id);
+    }
+
+    public function register(){ 
         $this->runValidators();
         if (empty($this->errorArray)) {
 
             $this->runSanitization();
 
-            $this->user_active_status = 1;
-
-            $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role,user_active_status) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us,:ua)");
-            $query->bindValue(":fn", $this->first_name);
-            $query->bindValue(":ln", $this->last_name);
-            $query->bindValue(":st1", $this->street_line1);
-            $query->bindValue(":st2", $this->street_line2);
-            $query->bindValue(":city", $this->city);
-            $query->bindValue(":cn", $this->contact_num);
-            $query->bindValue(":up", $this->user_password);
-            $query->bindValue(":eid", $this->email_id);
-            $query->bindValue(":us", $this->user_role);
-            $query->bindValue(":ua", $this->user_active_status);
-            $query->execute();
-            return 'success';
+            $createUser = new HandlerFactory();
+            return $createUser->createOne('users', $this->populateValues());
         }
 
         return $this->errorArray;
-
     }
+
+    public function updateMyProfile() { 
+
+        $updateUser = New HandlerFactory();
+
+        $valuesArray = ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id];
+
+        return $updateUser->updateOne('users', 'id', $this->id, $valuesArray);
+    }
+
 
     public function registerSetValue($registerSetValueArray)
     { //Ashika
@@ -106,77 +98,7 @@ class UserModel extends Model
 
     }
 
-    public function addUser()
-    { //Daranya
-
-        $this->user_active_status = 1;
-        $query = App::$APP->db->pdo->prepare("INSERT INTO users (first_name, last_name,street_line1,street_line2,city,contact_num,user_password,email_id,user_role,user_active_status) VALUES (:fn, :ln,:st1,:st2,:city,:cn,:up,:eid,:us,:ua)");
-        $query->bindValue(":fn", $this->first_name);
-        $query->bindValue(":ln", $this->last_name);
-        $query->bindValue(":st1", $this->street_line1);
-        $query->bindValue(":st2", $this->street_line2);
-        $query->bindValue(":city", $this->city);
-        $query->bindValue(":cn", $this->contact_num);
-        $query->bindValue(":up", $this->user_password);
-        $query->bindValue(":eid", $this->email_id);
-        $query->bindValue(":us", $this->user_role);
-        $query->bindValue(":ua", $this->user_active_status);
-        $query->execute();
-
-    }
-
-    public function updateUserSettingsDetails()
-    { //Daranya
-        // var_dump("Hello");
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
-        $query->bindValue(":id", $this->id);
-        $query->bindValue(":first_name", $this->first_name);
-        $query->bindValue(":last_name", $this->last_name);
-        $query->bindValue(":street_line1", $this->street_line1);
-        $query->bindValue(":street_line2", $this->street_line2);
-        $query->bindValue(":city", $this->city);
-        $query->bindValue(":contact_num", $this->contact_num);
-        $query->bindValue(":email_id", $this->email_id);
-        $query->execute();
-
-        //var_dump($query->execute());
-    }
-
-    public function getManageUsers() //Ashika
-
-    {
-
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  ORDER BY user_active_status DESC");
-        $query->execute();
-        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $this->resultArray;
-    }
-
-    public function getSearchUserResult()
-    { //Ashika
-        $this->id = $this->searchUserByNameOrId;
-        $this->first_name = $this->searchUserByNameOrId;
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  WHERE id=:id OR first_name=:fn ");
-        $query->bindValue(":id", $this->id);
-        $query->bindValue(":fn", $this->first_name);
-        $query->execute();
-        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $this->resultArray;
-
-    }
-
-    public function getUserDetails() ///Ashika
-
-    {
-        $query = APP::$APP->db->pdo->prepare("SELECT last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");
-        $query->bindValue(":id", $this->id);
-
-        $query->execute();
-        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $this->resultArray;
-    }
-
-    public function getUpdateUserDetails() ////Ashika
+    public function getUpdateUserDetails() ////Ashika 
 
     {
         $this->resultArray['first_name'] = $this->first_name;
@@ -187,38 +109,6 @@ class UserModel extends Model
         $this->resultArray['city'] = $this->city;
         $this->resultArray['email_id'] = $this->email_id;
         return $this->resultArray;
-    }
-
-    public function changeUserStatusDetails()
-    { //Ashika
-        if ($this->user_active_status == 0) {
-            $this->user_active_status = 1;
-        } else {
-            $this->user_active_status = 0;
-        }
-        //var_dump($this->user_active_status);
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET user_active_status=:uas WHERE id=:id");
-        $query->bindValue(":id", $this->id);
-        $query->bindValue(":uas", $this->user_active_status);
-        $query->execute();
-
-        // $resultArray=$this->getManageUsers();
-        // return $resultArray;
-    }
-
-    public function updateUserDetails() ////Ashika
-
-    {
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
-        $query->bindValue(":id", $this->id);
-        $query->bindValue(":first_name", $this->first_name);
-        $query->bindValue(":last_name", $this->last_name);
-        $query->bindValue(":street_line1", $this->street_line1);
-        $query->bindValue(":street_line2", $this->street_line2);
-        $query->bindValue(":city", $this->city);
-        $query->bindValue(":contact_num", $this->contact_num);
-        $query->bindValue(":email_id", $this->email_id);
-        $query->execute();
     }
 
     // asindu - sanitization

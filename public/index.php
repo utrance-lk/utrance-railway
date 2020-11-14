@@ -55,6 +55,8 @@ $app->router->post('/utrance-railway/register', [AuthController::class, 'registe
 // profile rendering
 $app->router->get('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
 $app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
+$app->router->post('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
+$app->router->post('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
 
 // reset password
 $app->router->get('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
@@ -91,7 +93,7 @@ $app->router->get('/utrance-railway/routes', [AdminController::class, 'manageRou
 $app->router->get('/utrance-railway/users/add', [AdminController::class, 'addUser']);
 $app->router->post('/utrance-railway/users/add', [AdminController::class, 'addUser']);
 
-$app->router->get('/utrance-railway/users/update', [AdminController::class, 'updateUser']);
+$app->router->get('/utrance-railway/users/view', [AdminController::class, 'viewUser']);
 $app->router->post('/utrance-railway/users/update', [AdminController::class, 'updateUser']);
 
 $app->router->get('/utrance-railway/users/delete', [AdminController::class, 'deleteUser']);

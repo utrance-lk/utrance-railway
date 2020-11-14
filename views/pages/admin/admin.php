@@ -17,7 +17,7 @@
               if (isset($_SESSION['user'])) {
                 $html = "";
                 $id = App::$APP->activeUser()['id'];
-                $html .="<form action='/utrance-railway/admin?id=$id' class='form__user-data' method='post'>";
+                $html .="<form action='/utrance-railway/settings' class='form__user-data' method='post'>";
                 $html .="<div class='content__fields'>";
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";
@@ -38,7 +38,7 @@
                 $html .= "<input type='text' name='street_line2' class='form__input' value=" . App::$APP->activeUser()['street_line2'] . "></div>";
                 $html .= "<div class='city content__fields-item'>";
                 $html .= "<label for='city' class='form__label'>City</label>";
-                $html .= "<input type='text' name='city' class='form__input' value=" . App::$APP->activeUser()['city'] . "></div>";
+                $html .= "<input type='text' name='city' class='form__input' value=" . App::$APP->activeUser()['city'] . "></div></div>";
                 $html .= "<div class='contactno-box content__fields-item'>";
                 $html .= "<label for='contactno' class='form__label'>Contact No</label>";
                 $html .= "<input type='text' name='contact_num' class='form__input' value=" . App::$APP->activeUser()['contact_num'] . "></div>";
@@ -46,8 +46,7 @@
                 $html .= "<img src='../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg' alt='user-profile-picture' class=''/>";
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo' />";
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
-                $id = App::$APP->activeUser()['id'];
-               // var_dump($id); 
+                // $id = App::$APP->activeUser()['id'];
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
                 $html .= "<input type='submit' class='btn__save btn-settings'  name='submit' value='Save Settings'></div></div></div></form>";

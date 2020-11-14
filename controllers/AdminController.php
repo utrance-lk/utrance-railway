@@ -18,7 +18,9 @@ class AdminController extends Controller
 
     }
 
-    public function adminSettings($request)
+    // Admin as User
+
+    public function adminProfile($request, $response)
     {
 
         if ($this->validateUser()) {
@@ -29,63 +31,103 @@ class AdminController extends Controller
 
                 $tempUpdateUserBody = $request->getBody();
 
-                $tempUpdateUserBody['id'] = $request->getQueryParams()['id'];
+                $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
 
                 $updateUserDetailsModel->loadData($tempUpdateUserBody);
 
-                $updateUserDetailsModel->updateUserSettingsDetails();
-                return $this->render('admin');
+                $state = $updateUserDetailsModel->updateMyProfile();
+                if($state === 'success') {
+                    return $response->redirect('/utrance-railway/settings');
+                } else {
+                    return 'error updating data!!';
+                }
             }
 
             return $this->render('admin');
+
         }
     }
 
-    public function manageUsers($request) //Ashika
+    // Admin's Specific functionalities //
 
-    {
+    // manage users
+
+    public function manageUsers($request) {
 
         if ($this->validateUser()) {
-            $manageUserModel = new UserModel();
-            if ($request->isGet()) {
-
-                $manageUserModel->loadData($request->getBody());
-                $getUserArray = $manageUserModel->getManageUsers();
-
-                return $this->render(['admin', 'manageUsers'], $getUserArray);
-
-            }
+            $manageUserModel = new AdminModel(); 
 
             if ($request->isPost()) {
-                $searchUser = new UserModel();
+                $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
                 $getSearchREsult = $searchUser->getSearchUserResult();
                 return $this->render(['admin', 'manageUsers'], $getSearchREsult);
-
             }
-            //return $this->render(['admin', 'manageUsers']);
-        }
 
-        //  return $this->render(['admin', 'manageUsers']);
+            $manageUserModel->loadData($request->getBody());
+            $getUserArray = $manageUserModel->getUsers();
+
+            return $this->render(['admin', 'manageUsers'], $getUserArray);
+
+        }
     }
 
-    public function addUser($request)
-    {
+    public function addUser($request) {
 
-        $addUserModel = new UserModel();
+        $adminFunction = new AdminModel();
 
         if ($request->isPost()) {
-
-            $addUserModel->loadData($request->getBody());
-            if ($addUserModel->addUser()) {
-
+            $adminFunction->loadData($request->getBody());
+            if ($adminFunction->addUser()) {
                 return "Success";
+            } else {
+                return 'error creating user!';
             }
-
         }
         return $this->render(['admin', 'addUser']);
+    }
+
+    public function viewUser($request) {
+
+        if($request->isGet()) {
+            $adminViewUser = new AdminModel();
+            $adminViewUser->loadData($request->getQueryParams());
+            $updateUserArray = $adminViewUser->getUserDetails();
+            $updateUserArray['users'][0]['id'] = $request->getQueryParams()['id'];
+            return $this->render(['admin', 'updateUser'], $updateUserArray);
+        }
 
     }
+
+    public function updateUser($request, $response) {
+
+        if ($request->isPost()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $id = $request->getQueryParams()['id'];
+            $tempBody['id'] = $id;
+            $saveDetailsModel->loadData($tempBody);
+            $saveDetailsModel->updateUserDetails();
+            return $response->redirect('/utrance-railway/users/view?id=' . $id);
+        }
+
+    }
+
+    public function changeUserStatus($request)
+    { //Ashika
+        if ($request->isGet()) {
+            $changeUserStatusModel = new AdminModel();
+            $changeUserStatusModel->loadData($request->getQueryParams());
+            //var_dump($request->getQueryParams());
+            $changeUserStatusModel->changeUserStatusDetails();
+            $changeStatusArray = $changeUserStatusModel->getManageUsers();
+
+        }
+        return $this->render(['admin', 'manageUsers'], $changeStatusArray);
+    }
+
+
+    // manage trains
 
     public function manageTrains($request)
     {
@@ -101,15 +143,6 @@ class AdminController extends Controller
 
     }
 
-    public function manageRoutes($request)
-    {
-        if ($request->isPost()) {
-            return 'success';
-        }
-
-        return $this->render(['admin', 'manageRoutes']);
-    }
-
     public function addTrain($request)
     {
         if ($request->isPost()) {
@@ -117,6 +150,17 @@ class AdminController extends Controller
         }
 
         return $this->render(['admin', 'addTrain']);
+    }
+
+    // manage routes
+
+    public function manageRoutes($request)
+    {
+        if ($request->isPost()) {
+            return 'success';
+        }
+
+        return $this->render(['admin', 'manageRoutes']);
     }
 
     public function addRoute($request)
@@ -128,44 +172,7 @@ class AdminController extends Controller
         return $this->render(['admin', 'addRoute']);
     }
 
-    public function changeUserStatus($request)
-    { //Ashika
-        if ($request->isGet()) {
-            $changeUserStatusModel = new UserModel();
-            $changeUserStatusModel->loadData($request->getQueryParams());
-            //var_dump($request->getQueryParams());
-            $changeUserStatusModel->changeUserStatusDetails();
-            $changeStatusArray = $changeUserStatusModel->getManageUsers();
-
-        }
-        return $this->render(['admin', 'manageUsers'], $changeStatusArray);
-    }
-
-    public function updateUser($request) //Ashika
-
-    {
-
-        if ($request->isGet()) {
-            $updateUserModel = new UserModel();
-            $updateUserModel->loadData($request->getQueryParams());
-            $updateUserArray = $updateUserModel->getUserDetails();
-            return $this->render(['admin', 'updateUser'], $updateUserArray);
-        }
-
-        if ($request->isPost()) {
-
-            $saveDetailsModel = new UserModel();
-            $tempBody = $request->getBody();
-            $tempBody['id'] = $request->getQueryParams()['id'];
-            $saveDetailsModel->loadData($tempBody);
-            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
-            $saveDetailsModel->updateUserDetails();
-
-            return;
-
-        }
-
-    }
+    ////////////////////////
 
     public function updateTrain($request)
     {
@@ -182,20 +189,10 @@ class AdminController extends Controller
         return $this->render('addNoticesByAdmin');
     }
 
-    public function addNoticesByAdminNow()
-    {
-        echo "Added Notices!!";
-    }
-
     public function adminDashboard()
     {
         echo "Hello Sri Lanka";
         return $this->render('adminDashboard');
-    }
-
-    public function adminDashboardNow()
-    {
-        echo "Hello my world";
     }
 
     public function viewUsers()
@@ -203,11 +200,7 @@ class AdminController extends Controller
         echo " View Users!!";
         return $this->render('viewUsers');
     }
-    public function viewUsersNow()
-    {
-        echo "Upload View Users form";
-    }
-
+    
     public function aboutUs()
     {
 
