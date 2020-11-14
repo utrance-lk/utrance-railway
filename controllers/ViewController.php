@@ -39,22 +39,14 @@ class ViewController extends Controller
 
     }
 
-    public function contact()
-    {
-        App::$APP->router->renderView('contact');
-    }
+    public function bookSeat($request) {
+        if($request->isPost()) {
+            // form submission
+            return '';
+        }
 
-    public function handleContact($request)
-    {
-        $body = $request->getBody();
-        var_dump($body);
-        return 'Handling submitted data';
-    }
+        return $this->render('booking');
 
-    public function cat()
-    {
-        echo 'hello from cat!!';
     }
-
     
 }

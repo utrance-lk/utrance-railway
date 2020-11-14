@@ -6,13 +6,13 @@
               <input
                 type="text"
                 class="dashboard-searchbar"
-                placeholder="Search users by name"  name="searchUserByNameOrId"
+                placeholder="Search users by name or id"  name="searchUserByNameOrId"
               />
-              <button>
+              <!-- <button> -->
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
-              </button>
+              <!-- </button> -->
               <!-- <div class="dashboard-searchbar__dropdown">
 
                 <select name="catogory" id="" class="dropdown__list">

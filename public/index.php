@@ -64,6 +64,10 @@ $app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'f
 $app->router->get('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 
+// booking routes
+$app->router->get('/utrance-railway/booking', [ViewController::class, 'bookSeat']);
+
+
 //aboutUs routing Daranya
 
 $app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
