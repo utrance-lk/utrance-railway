@@ -90,7 +90,7 @@ class AuthController extends Controller
             // 1) get user based on POSTed email
             $userForgotPassword = new UserModel();
             $userForgotPassword->loadData($request->getBody());
-            $user = $userForgotPassword->findOne('email_id');
+            $user = $userForgotPassword->findUser('email_id');
 
             if (!$user) {
                 return 'There is no user with that email address.';
@@ -130,7 +130,7 @@ class AuthController extends Controller
             $tempBody = $request->getBody();
             $tempBody['PasswordResetToken'] = $hashedToken;
             $resetPasswordUser->loadData($tempBody);
-            $user = $resetPasswordUser->findOne('PasswordResetToken');
+            $user = $resetPasswordUser->findUser('PasswordResetToken');
             if (!$user) {
                 return 'invalid token';
             }

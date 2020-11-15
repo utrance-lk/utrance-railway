@@ -47,9 +47,11 @@ class UserModel extends Model
     }
 
 
-    public function findUser($email) {
+    public function findUser($category) {
         $findUser = new HandlerFactory();
-        return $findUser->getOne('users', $email, $this->email_id);
+        if($category === 'email_id') return $findUser->getOne('users', $category, $this->email_id);
+        if($category === 'PasswordResetToken') return $findUser->getOne('users', $category, $this->PasswordResetToken);
+
     }
 
     public function register(){ 
@@ -64,8 +66,6 @@ class UserModel extends Model
          }else{
             return $validationState;
          }
-       
-
         
     }
 
