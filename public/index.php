@@ -69,6 +69,7 @@ $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 're
 
 // booking routes
 $app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createBooking']);
+$app->router->get('/utrance-railway/booked-tour', [BookingController::class, 'bookedTour']);
 
 
 //aboutUs routing Daranya

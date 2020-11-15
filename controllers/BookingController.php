@@ -46,6 +46,12 @@ class BookingController extends Controller {
 
     }
 
+    public function bookedTour($request) {
+        if($request->isGet()) {
+            return $this->render('bookedTour');
+        }
+    }
+
     public function updateBooking() {
         // update
     }
