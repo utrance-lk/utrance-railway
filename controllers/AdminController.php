@@ -5,7 +5,7 @@ include_once "../controllers/AuthController.php";
 
 class AdminController extends Controller
 {
-    public function validateUser()
+    public function validateAdmin()
     {
         $currentUser = new AuthController();
 
@@ -18,50 +18,20 @@ class AdminController extends Controller
 
     }
 
-    // Admin as User
-
-    public function adminProfile($request, $response)
-    {
-
-        if ($this->validateUser()) {
-
-            $updateUserDetailsModel = new UserModel();
-
-            if ($request->isPost()) {
-
-                $tempUpdateUserBody = $request->getBody();
-
-                $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
-
-                $updateUserDetailsModel->loadData($tempUpdateUserBody);
-
-                $state = $updateUserDetailsModel->updateMyProfile();
-                if($state === 'success') {
-                    return $response->redirect('/utrance-railway/settings');
-                } else {
-                    return 'error updating data!!';
-                }
-            }
-
-            return $this->render('admin');
-
-        }
-    }
-
     // Admin's Specific functionalities //
 
     // manage users
 
     public function manageUsers($request) {
 
-        if ($this->validateUser()) {
+        if ($this->validateAdmin()) {
             $manageUserModel = new AdminModel(); 
 
             if ($request->isPost()) {
                 $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
-                $getSearchREsult = $searchUser->getSearchUserResult();
-                return $this->render(['admin', 'manageUsers'], $getSearchREsult);
+                $getSearchResult = $searchUser->getSearchUserResult();
+                return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
             $manageUserModel->loadData($request->getBody());
@@ -132,7 +102,7 @@ class AdminController extends Controller
     public function manageTrains($request)
     {
 
-        if ($this->validateUser()) {
+        if ($this->validateAdmin()) {
             if ($request->isPost()) {
                 // form
                 return 'success';

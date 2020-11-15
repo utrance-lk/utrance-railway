@@ -56,30 +56,30 @@ class AuthController extends Controller
 
     }
 
-    public function getMyProfile($request, $response)
-    {
+    // public function getMyProfile($request, $response)
+    // {
        
-        if (!$this->isLoggedIn()) {
-            return 'You are not logged in!';
-        }
+    //     if (!$this->isLoggedIn()) {
+    //         return 'You are not logged in!';
+    //     }
 
-        $role = App::$APP->activeUser()['role'];
+    //     $role = App::$APP->activeUser()['role'];
         
-        if ($role === 'admin') {
-            $admin = new AdminController();
-            return $admin->adminProfile($request, $response);
-        }
-        if ($role === 'user') {
-            $regUser = new RegisterUserController();
-            return $regUser->registeredUserSettings($request);
-        }
-        if ($role === 'detailsProvider') {
-            $regUser = new detailsProviderController();
-            return $regUser->detailsProviderSettings($request);
-        }
-        return 'hacker';
+    //     if ($role === 'admin') {
+    //         $admin = new AdminController();
+    //         return $admin->adminProfile($request, $response);
+    //     }
+    //     if ($role === 'user') {
+    //         $regUser = new RegisterUserController();
+    //         return $regUser->registeredUserSettings($request);
+    //     }
+    //     if ($role === 'detailsProvider') {
+    //         $regUser = new detailsProviderController();
+    //         return $regUser->detailsProviderSettings($request);
+    //     }
+    //     return 'hacker';
 
-    }
+    // }
 
     public function forgotPassword($request, $response)
     {

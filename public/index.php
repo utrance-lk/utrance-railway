@@ -53,10 +53,12 @@ $app->router->get('/utrance-railway/register', [AuthController::class, 'register
 $app->router->post('/utrance-railway/register', [AuthController::class, 'register']);
 
 // profile rendering
-$app->router->get('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
-$app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
-$app->router->post('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
-$app->router->post('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
+$app->router->get('/utrance-railway/profile', [UserController::class, 'getMe']);
+$app->router->post('/utrance-railway/profile', [UserController::class, 'updateMe']);
+$app->router->get('/utrance-railway/settings', [UserController::class, 'getMe']);
+$app->router->post('/utrance-railway/settings', [UserController::class, 'updateMe']);
+
+$app->router->get('/utrance-railway/myBookings', [AuthController::class, 'getMyProfile']);
 
 // reset password
 $app->router->get('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
