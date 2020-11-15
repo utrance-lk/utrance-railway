@@ -155,15 +155,24 @@ class AdminController extends Controller
     {
 
         if ($this->validateUser()) {
+            $manageTrainsModel = new AdminModel(); 
+
             if ($request->isPost()) {
-                // form
-                return 'success';
+               
+                $manageTrainModel->loadData($request->getBody());
+                $getSearchResult = $manageTrainModel->getSearchTrainResult();
+                return $this->render(['admin', 'manageTrains'], $getSearchResult);
             }
 
-            return $this->render(['admin', 'manageTrains']);
+            $manageTrainModel->loadData($request->getBody());
+            $getTrainArray = $manageTrainModel->getTrains();
+
+            return $this->render(['admin', 'manageTrains'], $getTrainArray);
+
+        }
         }
 
-    }
+    
 
     public function addTrain($request)
     {

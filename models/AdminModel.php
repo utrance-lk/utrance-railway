@@ -24,6 +24,27 @@ class AdminModel extends Model {
     private $registerSetValueArray = [];
     public $addUserImage = "Chris-user-profile.jpg";
 
+
+    //////////////Train//////////////////
+
+
+
+    public $train_name;
+    public $train_type;
+    public $train_id;
+    public $route_id;
+    public $train_travel_days;
+    public $train_active_status;
+    public $train_freights_allowed;
+    public $train_fc_seats;
+    public $train_sc_seats;
+    public $train_observation_seats;
+    public $train_sleeping_berths;
+    public $train_total_weight;
+
+
+
+
     private $errorArray = [];
 
     private function populateValues() {
@@ -35,6 +56,14 @@ class AdminModel extends Model {
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
+    }
+
+    public function getTrains(){
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users");
+        $query->execute();
+        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+
     }
 
     public function addUser() {
@@ -74,6 +103,22 @@ class AdminModel extends Model {
         return $this->resultArray;
 
     }
+
+
+    public function getSearchTrainResult() // selected Train
+    { //Ashika
+        $this->train_id = $this->searchTrainByNameOrId;
+        $this->train_name = $this->searchTrainByNameOrId;
+        $query = APP::$APP->db->pdo->prepare("SELECT train_id,train_name,train_type FROM train  WHERE train_id=:tid OR train_name=:tn ");
+        $query->bindValue(":tid", $this->train_id);
+        $query->bindValue(":tn", $this->train_name);
+        $query->execute();
+        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+
+    }
+
+
 
     public function updateUserDetails(){//Ashika
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];

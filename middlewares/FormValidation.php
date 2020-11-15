@@ -42,6 +42,30 @@ class FormValidation{
         }
     }
 
+    public function runPasswordUpdateValidation($array){
+       
+        $query = APP::$APP->db->pdo->prepare("SELECT user_password FROM users WHERE email_id=:eid");
+        $query->bindValue(":eid", $array['email_id']);
+        $query->execute();
+        $resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+
+        $verifyPassword = password_verify($array['user_password'], $resultArray[0]['user_password']);
+        
+        if (!$verifyPassword) {
+            $this->errorArray['passwordError'] = "This password is not your current password";
+            return $this->errorArray;
+        }else{
+            $this->validateUpdatePassword($array['user_new_password'], $array['user_confirm_password']); //Ashika*/
+            if(empty($this->errorArray)){
+                return "success";
+            }else{
+                
+                return $this->errorArray;
+            } 
+        }
+}
+
 
     private function validateFirstName($fn){//Asindu
        
@@ -175,7 +199,7 @@ class FormValidation{
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
         //SELECT * FROM users GROUP BY email_id HAVING COUNT(email_id) > 1;
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id HAVING COUNT(email_id) > 1");
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id");
         $query->bindValue(":email_id", $email_id);
         $query->execute();
         $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -199,6 +223,38 @@ class FormValidation{
         if ($email_status == true) {
             $this->errorArray['email_id_error'] = "This email is already exist";
         }
+
+    }
+
+    private function validateUpdatePassword($user_password,$user_confirm_password){
+        if ($user_password != $user_confirm_password) {
+            $this->errorArray['passwordMatchError'] = "Password does not match";
+        } else {
+            if (strlen($user_password) < 8) {
+                $this->errorArray['passwordError'] = "Password at least 8 characters";
+            }
+
+            $uppercase = preg_match('@[A-Z]@', $user_password);
+            $lowercase = preg_match('@[a-z]@', $user_password);
+            $number = preg_match('@[0-9]@', $user_password);
+            $specialChars = preg_match('@[^\w]@', $user_password);
+
+            if (!$uppercase) {
+                $this->errorArray['passwordError'] = "Password at least one upper case letter";
+            }
+            if (!$lowercase) {
+                $this->errorArray['passwordError'] = "Password at least one lower case letter";
+            }
+
+            if (!$number) {
+                $this->errorArray['passwordError'] = "Password at least one digit";
+            }
+
+            if (!$specialChars) {
+                $this->errorArray['passwordError'] = "Password at least one special charcter";
+            }
+        }
+
 
     }
 

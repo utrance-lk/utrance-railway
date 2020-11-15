@@ -165,8 +165,31 @@ class AuthController extends Controller
         }
     }
 
-    public function updatePassword()
+    public function updatePassword($request,$response)
     {
+        
+        $updatePasswordUserModel = new UserModel();
+
+        if($request->isPost()){
+            $tempBody=$request->getBody();
+            $email=App::$APP->activeUser()['email_id'];
+            $tempBody["email_id"]=$email;
+            $updatePasswordUserModel->loadData($tempBody);
+            $updatePasswordState = $updatePasswordUserModel->updatePassword();
+            
+            if ($updatePasswordState === 'success') {
+                return $response->redirect('/utrance-railway/settings'); 
+            }else{
+                $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);
+              
+                return $this->render('admin',$updatePasswordSetValue);
+                
+            }
+
+        }
+        return $this->render('admin');
+
+      
         // updates the password
     }
 

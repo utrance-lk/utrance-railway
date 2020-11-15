@@ -20,6 +20,7 @@ class UserModel extends Model
     public $user_active_status = 1;
     public $user_confirm_password;
     public $searchUserByNameOrId;
+    public $user_new_password;
     public $photo = "Chris-user-profile.jpg";
 
     public $resultArray;
@@ -86,6 +87,26 @@ class UserModel extends Model
     }
 
 
+    public function updatePassword(){
+        $array=['user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password,'user_new_password' => $this->user_new_password,'email_id' => $this->email_id];
+        $updatePassword=new FormValidation();
+        $validationState=$updatePassword->runPasswordUpdateValidation($array);
+        
+        
+        if($validationState === "success"){
+            $this->sanitizeFormPassword($this->user_new_password);
+            $this->passwordHashing();
+            $query = App::$APP->db->pdo->prepare("UPDATE users SET user_password=:up WHERE email_id=:email");
+            $query->bindValue(":up", $this->user_new_password);
+            $query->bindValue(":email", $this->email_id);
+            $query->execute();
+            return 'success';
+
+        }
+        return $validationState;
+    }
+
+
     public function registerSetValue($registerSetValueArray)
     { //Ashika
         if (empty($registerSetValueArray['firstNameError'])) {
@@ -110,6 +131,14 @@ class UserModel extends Model
         }
         if (empty($registerSetValueArray['cityError'])) {
             $registerSetValueArray['city'] = $this->city;
+        }
+
+        if (empty($registerSetValueArray['passwordError'])) {
+            $registerSetValueArray['user_password'] = $this->user_password;
+        }
+
+        if (empty($registerSetValueArray['passwordMatchError'])) {
+            $registerSetValueArray['user_password'] = $this->user_password;
         }
         return $registerSetValueArray;
 
@@ -209,7 +238,7 @@ class UserModel extends Model
         return $resetToken;
     }
 
-    public function updatePassword()
+    /*public function updatePassword()
     {
         $this->validatePassword($this->user_password, $this->user_confirm_password);
         if (empty($this->errorArray)) {
@@ -222,6 +251,6 @@ class UserModel extends Model
             return 'success';
         }
         return $this->errorArray;
-    }
+    }*/
 
 }

@@ -67,7 +67,7 @@
                 
                 $html .= "<div class='streetline-2 content__fields-item'>";
                 $html .= "<label for='stl2' class='form__label'>Street Line 2</label>";
-                
+
                 if(isset($streetLine2Error)){
                   $html .= "<input type='text' name='street_line2' class='form__input' placeholder='".$streetLine2Error."' ></div>";
                 }else{
@@ -124,24 +124,42 @@
             <div class="content-title">
               <p>Password Change</p>
             </div>
-            <form action="" method="POST" class="password__change">
+            
+            <form action="/utrance-railway/updatePassword" method="POST" class="password__change">
               <div class="content__fields">
             <?php
+            
               $html = "";
               $html .= "<div class='currentpassword-box content__fields-item'>";
               $html .= "<label for='currentpassword' class='form__label'>Current Password</label>";
-              $html .= "<input type='password' name='user_password' class='form__input'/></div>";
+              
+              if(isset($passwordError)){
+                $html .= "<input type='password' name='user_password' placeholder='".$passwordError."'  class='form__input'/></div>";
+              }else{
+                
+                $html .= "<input type='password' name='user_password'  class='form__input'/></div>";
+              }
+             // $html .= "<input type='password' name='user_password' class='form__input'/></div>";
 
               $html .= "<div class='newpassword-box content__fields-item'>";
               $html .= "<label for='newpassword' class='form__label'>New Password</label>";
-              $html .= "<input type='password' name='newpassword' class='form__input'></div>";
+              
+              if(isset($passwordMatchError)){
+                $html .= "<input type='password' name='user_new_password'  placeholder='".$passwordMatchError."' class='form__input'></div>";
+              }else{
+                $html .= "<input type='password' name='user_password'   class='form__input'/></div>";
+              }
+
+             // $html .= "<input type='password' name='user_new_password' class='form__input'></div>";
 
               $html .= "<div class='confirmpassword-box content__fields-item'>";
               $html .= "<label for='confirmpassword' class='form__label'>Confirm Password</label>";
-              $html .= "<input type='password' name='confirmpassword' class='form__input'></div>";
+              $html .= "<input type='password' name='user_confirm_password' class='form__input'></div>";
 
               $html .= "<div class='btn__save-box'>";
-              $html .= "<div class='btn__save btn__password'>Save Password</div></div>";
+
+              //$html .= "<div class='btn__save btn__password'>Save Password</div></div>";
+              $html .= "<input type='submit' class='btn__save btn__password' value='Save Password'></div>";
           
 
               $dom = new DOMDocument();
