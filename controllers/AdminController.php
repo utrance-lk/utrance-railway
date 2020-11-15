@@ -2,14 +2,19 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
+include_once "../middelwares/AuthMiddelware.php";
 
 class AdminController extends Controller
 {
-    public function validateUser()
+    public function protect()
     {
-        $currentUser = new AuthController();
+        $authMiddleware = new AuthMiddleware();
 
-        if (!$currentUser->restrictTo('admin')) {
+        if(!$authMiddleware->isLoggedIn()) {
+            return 'Your are not logged in!';
+        }
+
+        if (!$authMiddleware->restrictTo('admin')) {
             echo 'You are unorthorized to perform this action!!';
             return false;
         }
@@ -18,50 +23,20 @@ class AdminController extends Controller
 
     }
 
-    // Admin as User
-
-    public function adminProfile($request, $response)
-    {
-
-        if ($this->validateUser()) {
-
-            $updateUserDetailsModel = new UserModel();
-
-            if ($request->isPost()) {
-
-                $tempUpdateUserBody = $request->getBody();
-
-                $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
-
-                $updateUserDetailsModel->loadData($tempUpdateUserBody);
-
-                $state = $updateUserDetailsModel->updateMyProfile();
-                if($state === 'success') {
-                    return $response->redirect('/utrance-railway/settings');
-                } else {
-                    return 'error updating data!!';
-                }
-            }
-
-            return $this->render('admin');
-
-        }
-    }
-
     // Admin's Specific functionalities //
 
     // manage users
 
     public function manageUsers($request) {
 
-        if ($this->validateUser()) {
+        if ($this->protect()) {
             $manageUserModel = new AdminModel(); 
 
             if ($request->isPost()) {
                 $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
-                $getSearchREsult = $searchUser->getSearchUserResult();
-                return $this->render(['admin', 'manageUsers'], $getSearchREsult);
+                $getSearchResult = $searchUser->getSearchUserResult();
+                return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
             $manageUserModel->loadData($request->getBody());
@@ -132,7 +107,7 @@ class AdminController extends Controller
     public function manageTrains($request)
     {
 
-        if ($this->validateUser()) {
+        if ($this->protect()) {
             if ($request->isPost()) {
                 // form
                 return 'success';

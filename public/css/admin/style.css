@@ -249,10 +249,6 @@
   transition: all 0.3s;
 }
 
-.dashboard-searchbar:focus,
-.dashboard-searchbar:active {
-  width: 80%;
-}
 .search-icon__btn {
   height: 2.5rem;
   width: 2.5rem;
@@ -410,7 +406,7 @@ select {
 
 .btn-white {
   background-color: #fff;
-  width: 8rem;
+  width: 9rem;
   margin: 0 auto;
   padding: 1rem;
   border-radius: 5px;
@@ -557,9 +553,7 @@ select {
 }
 
 .addstopbtn-img {
-
-  fill: #89c4f4;
-
+  
   fill: rgba(31, 58, 147, 0.8);
 
 }

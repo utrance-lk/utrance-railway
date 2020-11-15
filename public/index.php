@@ -4,6 +4,7 @@ require_once "../classes/core/App.php";
 require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
+require_once "../controllers/BookingController.php";
 require_once "../controllers/detailsProviderController.php";
 require_once "../controllers/UserController.php";
 
@@ -53,16 +54,23 @@ $app->router->get('/utrance-railway/register', [AuthController::class, 'register
 $app->router->post('/utrance-railway/register', [AuthController::class, 'register']);
 
 // profile rendering
-$app->router->get('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
-$app->router->get('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
-$app->router->post('/utrance-railway/profile', [AuthController::class, 'getMyProfile']);
-$app->router->post('/utrance-railway/settings', [AuthController::class, 'getMyProfile']);
+$app->router->get('/utrance-railway/profile', [UserController::class, 'getMe']);
+$app->router->post('/utrance-railway/profile', [UserController::class, 'updateMe']);
+$app->router->get('/utrance-railway/settings', [UserController::class, 'getMe']);
+$app->router->post('/utrance-railway/settings', [UserController::class, 'updateMe']);
+
+$app->router->get('/utrance-railway/myBookings', [BookingController::class, 'getAllBookings']);
 
 // reset password
 $app->router->get('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
 $app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'forgotPassword']);
 $app->router->get('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
+
+// booking routes
+$app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createBooking']);
+$app->router->get('/utrance-railway/booked-tour', [BookingController::class, 'bookedTour']);
+
 
 //aboutUs routing Daranya
 

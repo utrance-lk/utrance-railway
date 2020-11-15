@@ -109,12 +109,12 @@
               </svg>
               <span class="settings-name">Settings</span>
             </a>
-            <div class="sidebar__nav-mybookings sidebar__nav-item">
+            <a href="/utrance-railway/myBookings" class="sidebar__nav-mybookings sidebar__nav-item">
               <svg class="mybookings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-suitcase"></use>
               </svg>
               <span class="mybookings-name">My bookings</span>
-            </div>
+            </a>
           </div>
           <div class="userrole-name">Admin</div>
           <div class="sidebar__nav-role-items">
