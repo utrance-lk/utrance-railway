@@ -2,7 +2,7 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
-include_once "../middelwares/AuthMiddelware.php";
+include_once "../middlewares/AuthMiddleware.php";
 
 class AdminController extends Controller
 {
