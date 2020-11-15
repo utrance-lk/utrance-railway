@@ -67,6 +67,7 @@
                 
                 $html .= "<div class='streetline-2 content__fields-item'>";
                 $html .= "<label for='stl2' class='form__label'>Street Line 2</label>";
+                
                 if(isset($streetLine2Error)){
                   $html .= "<input type='text' name='street_line2' class='form__input' placeholder='".$streetLine2Error."' ></div>";
                 }else{

@@ -136,6 +136,8 @@ class UserModel extends Model
         $this->email_id = $this->sanitizeFormEmail($this->email_id);
         $this->street_line1 = $this->sanitizeFormStreet($this->street_line1);
         $this->street_line2 = $this->sanitizeFormStreet($this->street_line2);
+        $this->city=$this->sanitizeFormString($this->city);
+        $this->contact_num=$this->sanitizeContactNumber($this->contact_num);
         $this->user_password = $this->sanitizeFormPassword($this->user_password);
         $this->passwordHashing();
     }
@@ -145,29 +147,40 @@ class UserModel extends Model
      {
         $inputText = strip_tags($inputText); //remove html tags
         $inputText = str_replace(" ", "", $inputText); // remove white spaces
-        $inputText = strtolower($inputText); // lowering the text
+        $inputText = strtolower($inputText);
+        $inputText=trim($inputText); // lowering the text
         return ucfirst($inputText); // capitalize first letter
     }
 
     private function sanitizeFormStreet($inputText){
         $inputText = strip_tags($inputText);
         $inputText = strtolower($inputText); // lowering the text
+        $inputText=trim($inputText); 
         return ucfirst($inputText); // capitalize first letter
   
+    }
+
+    private function sanitizeContactNumber($inputText){
+        $inputText = strip_tags($inputText);
+        $inputText=trim($inputText);
+        return $inputText; 
     }
 
     private function sanitizeFormUsername($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
         $inputText = ucfirst($inputText);
+        $inputText=trim($inputText); 
         return str_replace(" ", "", $inputText); // remove white spaces
     }
 
     private function sanitizeFormPassword($inputText){
+        $inputText=trim($inputText); 
         return strip_tags($inputText); //remove html tags
     }
 
     private function sanitizeFormEmail($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
+        $inputText=trim($inputText); 
         return str_replace(" ", "", $inputText); // remove white spaces
     }
 

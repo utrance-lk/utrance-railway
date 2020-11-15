@@ -4,6 +4,7 @@
 
 include_once "../classes/core/Model.php";
 include_once "HandlerFactory.php";
+include_once "../middlewares/FormValidation.php";
 
 class AdminModel extends Model {
 
@@ -20,6 +21,7 @@ class AdminModel extends Model {
     public $user_active_status = 1;
     public $user_confirm_password;
     public $searchUserByNameOrId;
+    private $registerSetValueArray = [];
     public $addUserImage = "Chris-user-profile.jpg";
 
     private $errorArray = [];
@@ -72,9 +74,13 @@ class AdminModel extends Model {
 
     }
 
-    public function updateUserDetails() ////Ashika
+    public function updateUserDetails(){//Ashika
+        $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
+        $updateUserValidation=new FormValidation();
+        $validationState=$updateUserValidation->runUpdateValidators($array);
 
-    {
+        if ($validationState ==="success") {
+        $this->runSanitizationAdmin();
         $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
         $query->bindValue(":id", $this->id);
         $query->bindValue(":first_name", $this->first_name);
@@ -85,6 +91,9 @@ class AdminModel extends Model {
         $query->bindValue(":contact_num", $this->contact_num);
         $query->bindValue(":email_id", $this->email_id);
         $query->execute();
+        return "success";
+        }
+        return $validationState;
     }
 
     public function changeUserStatusDetails() { 
@@ -103,13 +112,94 @@ class AdminModel extends Model {
         // return $resultArray;
     }
 
-    private function runValidators() {
-        // validation
+    
+
+
+
+    public function registerSetValue($registerSetValueArray)//Ashika
+    { //Ashika
+        if (empty($registerSetValueArray['firstNameError'])) {
+            $registerSetValueArray['first_name'] = $this->first_name;
+        }
+        if (empty($registerSetValueArray['lastNameError'])) {
+            $registerSetValueArray['last_name'] = $this->last_name;
+        }
+        if (empty($registerSetValueArray['streetLine1Error'])) {
+            $registerSetValueArray['street_line1'] = $this->street_line1;
+        }
+
+        if (empty($registerSetValueArray['streetLine2Error'])) {
+            $registerSetValueArray['street_line2'] = $this->street_line2;
+        }
+
+        if (empty($registerSetValueArray['contactNumError'])) {
+            $registerSetValueArray['contact_num'] = $this->contact_num;
+        }
+        if (empty($registerSetValueArray['email_id_error'])) {
+            $registerSetValueArray['email_id'] = $this->email_id;
+        }
+        if (empty($registerSetValueArray['cityError'])) {
+            $registerSetValueArray['city'] = $this->city;
+        }
+        return $registerSetValueArray;
+
     }
 
-    private function runSanitization() {
-        // sanitization
+
+
+
+   private function runSanitizationAdmin(){//Ashika
+        $this->first_name = $this->sanitizeFormUsername($this->first_name);
+        $this->last_name = $this->sanitizeFormUsername($this->last_name);
+        $this->email_id = $this->sanitizeFormEmail($this->email_id);
+        $this->street_line1 = $this->sanitizeFormStreet($this->street_line1);
+        $this->street_line2 = $this->sanitizeFormStreet($this->street_line2);
+        $this->city=$this->sanitizeFormString($this->city);
+        $this->contact_num=$this->sanitizeContactNumber($this->contact_num);
+        
     }
+
+     private function sanitizeFormString($inputText) //Asindu
+
+     {
+        $inputText = strip_tags($inputText); //remove html tags
+        $inputText = str_replace(" ", "", $inputText); // remove white spaces
+        $inputText = strtolower($inputText);
+        $inputText=trim($inputText); // lowering the text
+        return ucfirst($inputText); // capitalize first letter
+    }
+
+    private function sanitizeFormStreet($inputText){
+        $inputText = strip_tags($inputText);
+        $inputText = strtolower($inputText); // lowering the text
+        $inputText=trim($inputText); 
+        return ucfirst($inputText); // capitalize first letter
+  
+    }
+
+    private function sanitizeContactNumber($inputText){
+        $inputText = strip_tags($inputText);
+        $inputText=trim($inputText);
+        return $inputText; 
+    }
+
+    private function sanitizeFormUsername($inputText){//Asindu
+        $inputText = strip_tags($inputText); //remove html tags
+        $inputText = ucfirst($inputText);
+        $inputText=trim($inputText); 
+        return str_replace(" ", "", $inputText); // remove white spaces
+    }
+
+
+    private function sanitizeFormEmail($inputText){//Asindu
+        $inputText = strip_tags($inputText); //remove html tags
+        $inputText=trim($inputText); 
+        return str_replace(" ", "", $inputText); // remove white spaces
+    }
+
+   
+
+
 
 
 

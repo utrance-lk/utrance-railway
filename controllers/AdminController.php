@@ -3,6 +3,7 @@
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
 include_once "../models/UserModel.php";
+include_once "../models/AdminModel.php";
 
 class AdminController extends Controller
 {
@@ -27,9 +28,7 @@ class AdminController extends Controller
         if ($this->validateUser()) {
 
             $updateUserDetailsModel = new UserModel();
-
-
-            if ($request->isPost()) {
+           if ($request->isPost()) {
 
                 $tempUpdateUserBody = $request->getBody();
 
@@ -95,7 +94,7 @@ class AdminController extends Controller
         return $this->render(['admin', 'addUser']);
     }
 
-    public function viewUser($request) {
+    public function viewUser($request) {//View users from manage users
 
         if($request->isGet()) {
             $adminViewUser = new AdminModel();
@@ -107,16 +106,27 @@ class AdminController extends Controller
 
     }
 
-    public function updateUser($request, $response) {
+    public function updateUser($request, $response) {//update users from manage users
 
         if ($request->isPost()) {
             $saveDetailsModel = new AdminModel();
+            
             $tempBody = $request->getBody();
             $id = $request->getQueryParams()['id'];
             $tempBody['id'] = $id;
             $saveDetailsModel->loadData($tempBody);
-            $saveDetailsModel->updateUserDetails();
-            return $response->redirect('/utrance-railway/users/view?id=' . $id);
+            $state=$saveDetailsModel->updateUserDetails();
+           
+            if($state === "success"){
+                var_dump("hy");
+                return $response->redirect('/utrance-railway/users/view?id=' . $id);
+            }else{
+
+                $commonArray=$saveDetailsModel->getUserDetails();
+                $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
+                return $this->render(['admin','updateUser'], $commonArray); //Ashika
+            }
+            
         }
 
     }

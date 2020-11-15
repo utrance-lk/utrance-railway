@@ -26,17 +26,11 @@ class FormValidation{
 
 
     public function runUpdateValidators($array){
-        $val=$array['contact_num'];
-        $num = substr($val, 0, 1);
-        $a='';
-        if($num==0){
-
-
-        }else{
-            $a="0";
-            $a.=$array['contact_num'];
-            $val=$a;
-        }
+        
+      
+        
+        
+      
        
         
         $this->validateFirstName(trim($array['first_name'])); //Asindu
@@ -44,7 +38,7 @@ class FormValidation{
         $this->validateStreetLine1(trim($array['street_line1'])); //Ashika
         $this->validateStreetLine2(trim($array['street_line2'])); //Ashika
         $this->validateCity(trim($array['city'])); //Ashika
-        $this->validateContactNumber(trim($val)); //Ashika
+        $this->validateContactNumber(trim($array['contact_num'])); //Ashika
         $this->validateEmailId(trim($array['email_id'])); //Ashika
         if(empty($this->errorArray)){
            return "success";
@@ -149,7 +143,8 @@ class FormValidation{
     { //Ashika
         $num = "";
         $num = substr($cnum, 0, 3);
-        if (strlen($cnum) == 10 && is_numeric($cnum)) {
+        if(strlen($cnum)!=9){
+         if (strlen($cnum) == 10 && is_numeric($cnum)) {
             
             if ($num != "070" && $num != "071" && $num != "072" && $num != "075" && $num != "076" && $num != "077" && $num != "078" && $num != "063") {
                 $this->errorArray['contactNumError'] = 'Contact Num in Invalid Format';
@@ -169,7 +164,15 @@ class FormValidation{
             $this->errorArray['contactNumError'] = "Contact Num has only digits";
         }
 
-    }
+       }else{
+           $num2=substr($cnum,0,2);
+           echo $num2;
+           if ($num2 != "70" && $num2 != "71" && $num2 != "72" && $num2 != "75" && $num2 != "76" && $num2 != "77" && $num2 != "78" && $num2 != "63") {
+            $this->errorArray['contactNumError'] = 'Contact Num234 in Invalid Format';
+          } 
+
+       }
+}
 
     private function validateEmailId($email_id)
     { //Ashika

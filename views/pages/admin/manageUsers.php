@@ -44,7 +44,7 @@
                   <div class='search__result-user-mainbox search__result-mainbox'>
                   <div class='user-mainbox__img-box'>";
 
-        $html .= "<img src='/utrance-railway/public/img/uploads/".$value['first_name'].".jpg ' alt='profile-avatar' class='profile__avatar'/></div>";
+        $html .= "<img src='/utrance-railway/public/img/uploads/Ashoka.jpg' alt='profile-avatar' class='profile__avatar'/></div>";
         $html .= "<div class='user-mainbox__other'>";
         $html .= "<div class ='user-mainbox__other-name'> " . $value['first_name'] . "</div>";
         $html .= "<div class ='user-mainbox__other-id'><span>#<span>";
