@@ -67,6 +67,10 @@ $app->router->post('/utrance-railway/forgotPassword', [AuthController::class, 'f
 $app->router->get('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 'resetPassword']);
 
+
+////update Password
+$app->router->get('/utrance-railway/updatePassword', [AuthController::class, 'updatePassword']);
+$app->router->post('/utrance-railway/updatePassword', [AuthController::class, 'updatePassword']);
 // booking routes
 $app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createBooking']);
 $app->router->get('/utrance-railway/booked-tour', [BookingController::class, 'bookedTour']);
@@ -103,6 +107,9 @@ $app->router->post('/utrance-railway/users/add', [AdminController::class, 'addUs
 
 $app->router->get('/utrance-railway/users/view', [AdminController::class, 'viewUser']);
 $app->router->post('/utrance-railway/users/update', [AdminController::class, 'updateUser']);
+
+$app->router->get('/utrance-railway/users/updateSettings', [AdminController::class, 'adminSettings']);
+$app->router->post('/utrance-railway/users/updateSettings', [AdminController::class, 'adminSettings']);
 
 $app->router->get('/utrance-railway/users/delete', [AdminController::class, 'deleteUser']);
 $app->router->post('/utrance-railway/users/delete', [AdminController::class, 'deleteUser']);

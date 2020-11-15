@@ -47,22 +47,27 @@ class AdminController extends Controller
         }
     }
 
-    public function addUser($request) {
+    public function addUser($request,$response) {//Admin page add user function
 
         $adminFunction = new AdminModel();
 
         if ($request->isPost()) {
             $adminFunction->loadData($request->getBody());
-            if ($adminFunction->addUser()) {
-                return "Success";
-            } else {
-                return 'error creating user!';
+            $state=$adminFunction->addUser();
+
+            if($state === "success"){
+                return $response->redirect('/utrance-railway/users/add');
+            }else{
+                $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
+                var_dump($addUserSetValue);
+                return $this->render(['admin','addUser'], $addUserSetValue); //Ashika
             }
+
         }
         return $this->render(['admin', 'addUser']);
     }
 
-    public function viewUser($request) {
+    public function viewUser($request) {//View users from manage users
 
         if($request->isGet()) {
             $adminViewUser = new AdminModel();
@@ -74,28 +79,38 @@ class AdminController extends Controller
 
     }
 
-    public function updateUser($request, $response) {
+    public function updateUser($request, $response) {//update users from manage users
 
         if ($request->isPost()) {
             $saveDetailsModel = new AdminModel();
+            
             $tempBody = $request->getBody();
             $id = $request->getQueryParams()['id'];
             $tempBody['id'] = $id;
             $saveDetailsModel->loadData($tempBody);
-            $saveDetailsModel->updateUserDetails();
-            return $response->redirect('/utrance-railway/users/view?id=' . $id);
+            $state=$saveDetailsModel->updateUserDetails();
+           
+            if($state === "success"){
+                
+                return $response->redirect('/utrance-railway/users/view?id=' . $id);
+            }else{
+
+                $commonArray=$saveDetailsModel->getUserDetails();
+                $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
+                return $this->render(['admin','updateUser'], $commonArray); //Ashika
+            }
+            
         }
 
     }
 
-    public function changeUserStatus($request)
+    public function changeUserStatus($request) /// Activate and deactivate part in manage users
     { //Ashika
         if ($request->isGet()) {
             $changeUserStatusModel = new AdminModel();
             $changeUserStatusModel->loadData($request->getQueryParams());
-            //var_dump($request->getQueryParams());
             $changeUserStatusModel->changeUserStatusDetails();
-            $changeStatusArray = $changeUserStatusModel->getManageUsers();
+            $changeStatusArray = $changeUserStatusModel->getUsers();
 
         }
         return $this->render(['admin', 'manageUsers'], $changeStatusArray);
@@ -109,14 +124,21 @@ class AdminController extends Controller
 
         if ($this->protect()) {
             if ($request->isPost()) {
-                // form
-                return 'success';
+               
+                $manageTrainModel->loadData($request->getBody());
+                $getSearchResult = $manageTrainModel->getSearchTrainResult();
+                return $this->render(['admin', 'manageTrains'], $getSearchResult);
             }
 
-            return $this->render(['admin', 'manageTrains']);
+            $manageTrainModel->loadData($request->getBody());
+            $getTrainArray = $manageTrainModel->getTrains();
+
+            return $this->render(['admin', 'manageTrains'], $getTrainArray);
+
+        }
         }
 
-    }
+    
 
     public function addTrain($request)
     {

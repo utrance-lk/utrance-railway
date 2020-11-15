@@ -4,7 +4,7 @@
             <div class="content-title">
               <p>Your Account Settings</p>
             </div>
-            <form action="/utrance-railway/register" class="form__user-data" method="POST">
+            <form action="/utrance-railway/register" class="form__user-data" method="POST" enctype='multipart/form-data'>
             <div class="content__fields">
             <?php
               $dom = new DOMDocument;
