@@ -184,7 +184,7 @@
         $html .= "<div class='search__results-card-sub'>";
             
         $html .= "<div class='search__card-classbox'>";
-        $html .= "<a href='utrance-railway/booking' class='search__card-classbox--btnproceed'><p>Proceed</p></a></div></div></div>";
+        $html .= "<a href='/utrance-railway/book-seats' class='search__card-classbox--btnproceed'><p>Proceed</p></a></div></div></div>";
         // print_r($dom->saveHTML());
         return $html;
       }
@@ -323,7 +323,7 @@
         $html .= "<div class='search__results-card-sub'>";
 
         $html .= "<div class='search__card-classbox'>";
-        $html .= "<a href='/utrance-railway/booking' class='search__card-classbox--btnproceed'><p>Proceed</p></a></div></div></div>";
+        $html .= "<a href='/utrance-railway/book-seats' class='search__card-classbox--btnproceed'><p>Proceed</p></a></div></div></div>";
         
 
         

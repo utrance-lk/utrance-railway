@@ -2,14 +2,15 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
+include_once "../middelwares/AuthMiddelware.php";
 
 class AdminController extends Controller
 {
     public function validateAdmin()
     {
-        $currentUser = new AuthController();
+        $authMiddleware = new AuthMiddleware();
 
-        if (!$currentUser->restrictTo('admin')) {
+        if (!$authMiddleware->restrictTo('admin')) {
             echo 'You are unorthorized to perform this action!!';
             return false;
         }

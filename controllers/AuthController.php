@@ -169,24 +169,24 @@ class AuthController extends Controller
         // updates the password
     }
 
-    public function restrictTo($role)
-    { // asindu
-        if (App::$APP->activeUser()['role'] === $role) {
-            return true;
-        }
+    // public function restrictTo($role)
+    // { // asindu
+    //     if (App::$APP->activeUser()['role'] === $role) {
+    //         return true;
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    public function isLoggedIn()
-    { // asindu
-        if (App::$APP->user) {
-            return true;
-        }
+    // public function isLoggedIn()
+    // { // asindu
+    //     if (App::$APP->user) {
+    //         return true;
+    //     }
 
-        return false;
+    //     return false;
 
-    }
+    // }
 
     public function protect()
     {
