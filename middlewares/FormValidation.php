@@ -8,7 +8,6 @@ class FormValidation{
   public $errorArray=[];
 
         public function runValidators($array){
-            
         $this->validateFirstName($array['first_name']); //Asindu
         $this->validateLastName($array['last_name']); //Ashika
         $this->validateStreetLine1($array['street_line1']); //Ashika
@@ -26,8 +25,38 @@ class FormValidation{
     }
 
 
+    public function runUpdateValidators($array){
+        $val=$array['contact_num'];
+        $num = substr($val, 0, 1);
+        $a='';
+        if($num==0){
+
+
+        }else{
+            $a="0";
+            $a.=$array['contact_num'];
+            $val=$a;
+        }
+       
+        
+        $this->validateFirstName(trim($array['first_name'])); //Asindu
+        $this->validateLastName(trim($array['last_name'])); //Ashika
+        $this->validateStreetLine1(trim($array['street_line1'])); //Ashika
+        $this->validateStreetLine2(trim($array['street_line2'])); //Ashika
+        $this->validateCity(trim($array['city'])); //Ashika
+        $this->validateContactNumber(trim($val)); //Ashika
+        $this->validateEmailId(trim($array['email_id'])); //Ashika
+        if(empty($this->errorArray)){
+           return "success";
+        }else{
+            
+            return $this->errorArray;
+        }
+    }
+
+
     private function validateFirstName($fn){//Asindu
-        //var_dump($fn);
+       
         if (strlen($fn) < 2 || strlen($fn) > 25) {
             
             $this->errorArray['firstNameError'] = 'first name wrong length';
@@ -35,7 +64,7 @@ class FormValidation{
         }
 
         if (is_numeric($fn)) {
-           
+            
             $this->errorArray['firstNameError'] = 'first name only letters required';
         }
 
@@ -50,14 +79,17 @@ class FormValidation{
 
     private function validateLastName($ln){ //Ashika
         if (strlen($ln) < 2 || strlen($ln) > 25) {
+           
             $this->errorArray['lastNameError'] = 'last name wrong length';
         }
 
         if (is_numeric($ln)) {
+            
             $this->errorArray['lastNameError'] = 'last name only letters required';
         }
 
         if (!(ctype_alpha($ln))) {
+            
             $this->errorArray['lastNameError'] = 'last name only letters 1 required';
         }
     }
@@ -66,25 +98,50 @@ class FormValidation{
 
     private function validateStreetLine1($str1){ //Ashika
         if (strlen($str1) < 5 || strlen($str1) > 30) {
+            
             $this->errorArray['streetLine1Error'] = 'Street Line 1  wrong length';
         }
+
+      /*  if (ctype_digit($str1)) {
+            //var_dump("N");
+            $this->errorArray['streetLine1Error'] = "Street Line 1 has only letters";
+        }
+
+        if (!(ctype_alpha($str1))) {
+            //Var_dump($city);
+              $this->errorArray['streetLine1Error'] = "Street Line 1 has only letters";
+          }*/
+
     }
 
 
 
     private function validateStreetLine2($str2){ //Ashika
         if (strlen($str2) < 5 || strlen($str2) > 30) {
+           
             $this->errorArray['streetLine2Error'] = 'Street Line 2  wrong length';
         }
+
+        /*if (ctype_digit($str2)) {
+            //var_dump("N");
+            $this->errorArray['streetLine2Error'] = "Street Line 2 has only letters";
+        }
+
+        if (!(ctype_alpha($str2))) {
+            //Var_dump($city);
+              $this->errorArray['streetLine2Error'] = "Street Line 2 has only letters";
+          }*/
     }
 
     private function validateCity($city)
     { //Ashika
         if (strlen($city) < 2 || strlen($city) > 25) {
+           
             $this->errorArray['cityError'] = 'City  wrong length';
         }
 
         if (!(ctype_alpha($city))) {
+          Var_dump($city);
             $this->errorArray['cityError'] = 'City  only letters  required';
         }
     }
@@ -93,12 +150,14 @@ class FormValidation{
         $num = "";
         $num = substr($cnum, 0, 3);
         if (strlen($cnum) == 10 && is_numeric($cnum)) {
+            
             if ($num != "070" && $num != "071" && $num != "072" && $num != "075" && $num != "076" && $num != "077" && $num != "078" && $num != "063") {
                 $this->errorArray['contactNumError'] = 'Contact Num in Invalid Format';
             }
 
         } else {
             if (strlen($cnum) != 10 && is_numeric($num)) {
+                
                 $this->errorArray['contactNumError'] = 'Contact Num Wrong length';
             } elseif (!(is_numeric($num)) && strlen($cnum) != 10) {
                 $this->errorArray['contactNumError'] = 'Contact Num has only digits';
@@ -106,6 +165,7 @@ class FormValidation{
 
         }
         if (!(ctype_digit($cnum))) {
+            
             $this->errorArray['contactNumError'] = "Contact Num has only digits";
         }
 
@@ -117,8 +177,8 @@ class FormValidation{
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
-
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id");
+        //SELECT * FROM users GROUP BY email_id HAVING COUNT(email_id) > 1;
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id HAVING COUNT(email_id) > 1");
         $query->bindValue(":email_id", $email_id);
         $query->execute();
         $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -127,6 +187,23 @@ class FormValidation{
         }
 
     }
+
+   /* private function validateEmailIdForUpdate($email_id,$id){
+
+        if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
+            $this->errorArray['email_id_error'] = "Invalid email format";
+        }
+
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id NOT IN (id=:id)");
+        $query->bindValue(":email_id", $email_id);
+        $query->bindValue(":id",$id);
+        $query->execute();
+        $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
+        if ($email_status == true) {
+            $this->errorArray['email_id_error'] = "This email is already exist";
+        }
+
+    }*/
 
     private function validatePassword($user_password, $user_confirm_password)
     { //Ashika

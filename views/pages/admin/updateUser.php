@@ -45,7 +45,9 @@
                   ?>
 
               <?php
+              
                   if(isset($users)){
+                   
                     foreach($users as $key=>$value){
                      
                      $html =" 
@@ -54,7 +56,16 @@
 
                     $html .="<div class='firstname-box content__fields-item'>";
                     $html .="<label for='firstname' class='form__label'>First Name</label>";
-                    $html .="<input type='text' name='first_name' class='form__input' value=' ".$value['first_name']." '></div>";
+                    
+                    $error=" ";
+                    var_dump($value['last_name']);
+                    /*if(!(empty($value['firstNameError']))){
+                      var_dump("hy");
+                      $error=$firstNameError;
+                    }else{
+                      $value=$first_name;
+                    }*/
+                    $html .="<input type='text' name='first_name' class='form__input' placeholder=$error value=$value></div>";
 
                     $html .="<div class='lastname-box content__fields-item'>";
                     $html .="<label for='lastname' class='form__label'>Last Name</label>";

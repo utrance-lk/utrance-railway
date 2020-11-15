@@ -34,20 +34,18 @@ class AdminController extends Controller
                 $tempUpdateUserBody = $request->getBody();
 
                 $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+                $tempUpdateUserBody['user_role']=App::$APP->activeUser()['role'];
 
                 $updateUserDetailsModel->loadData($tempUpdateUserBody);
-                var_dump($tempUpdateUserBody);
-                
                 $state = $updateUserDetailsModel->updateMyProfile();
-
+               
                 if($state === 'success') {
                     return $response->redirect('/utrance-railway/settings');
                 } else {
                     $updateSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
-                   // var_dump($updateSetValue);
+                    
                     return $this->render('admin', $updateSetValue); //Ashika
                     
-                   // return 'error updating data!!';
                 }
                
             }

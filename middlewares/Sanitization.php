@@ -13,6 +13,7 @@ class Sanitization{
         $array['last_name'] = $this->sanitizeFormUsername($array['last_name']);
         $array['email_id'] = $this->sanitizeFormEmail($array['email_id']);
         $array['user_password'] = $this->sanitizeFormPassword($array['user_password']);
+        
         $array['user_password']=$this->passwordHashing($array['user_password']);
         return $array;
 
@@ -22,20 +23,24 @@ class Sanitization{
     private function sanitizeFormUsername($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
         $inputText = ucfirst($inputText);
+        $inpurText=trim($inpurText);
         return str_replace(" ", "", $inputText); // remove white spaces
     }
 
     private function sanitizeFormPassword($inputText){
+        $inpurText=trim($inpurText);
         return strip_tags($inputText); //remove html tags
     }
 
     private function sanitizeFormEmail($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
+        $inpurText=trim($inpurText);
         return str_replace(" ", "", $inputText); // remove white spaces
     }
 
     private function passwordHashing($value)
     {
+        $inpurText=trim($inpurText);
         $array['user_password'] = password_hash($value, PASSWORD_BCRYPT);
         return $array['user_password'];
     }
