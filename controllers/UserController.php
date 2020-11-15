@@ -2,20 +2,28 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../models/UserModel.php";
+include_once "../middelwares/AuthMiddelware.php";
 
 class UserController extends Controller
 {
-    public function getMe($request, $response)
-    {
+    private $authMiddleware;
+
+    public function __construct() {
+        $this->authMiddleware = new AuthMiddleware();
+    }
+
+    public function getMe($request, $response) {
         if ($request->isGet()) {
-            $role = App::$APP->activeUser()['role'];
-            if($role === 'admin') return $this->render('admin');
-            if($role === 'user') return $this->render('registeredUser');
+            if($this->authMiddleware->restrictTo('admin')) {
+                return $this->render('admin');
+            }
+            if($this->authMiddleware->restrictTo('admin')) {
+                return $this->render('registeredUser');
+            }
         }
     }
 
-    public function updateMe($request, $response)
-    {
+    public function updateMe($request, $response) {
         if ($request->isPost()) {
             $updateUserDetailsModel = new UserModel();
 

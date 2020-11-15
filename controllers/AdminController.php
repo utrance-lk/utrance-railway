@@ -6,9 +6,13 @@ include_once "../middelwares/AuthMiddelware.php";
 
 class AdminController extends Controller
 {
-    public function validateAdmin()
+    public function protect()
     {
         $authMiddleware = new AuthMiddleware();
+
+        if(!$authMiddleware->isLoggedIn()) {
+            return 'Your are not logged in!';
+        }
 
         if (!$authMiddleware->restrictTo('admin')) {
             echo 'You are unorthorized to perform this action!!';
@@ -25,7 +29,7 @@ class AdminController extends Controller
 
     public function manageUsers($request) {
 
-        if ($this->validateAdmin()) {
+        if ($this->protect()) {
             $manageUserModel = new AdminModel(); 
 
             if ($request->isPost()) {
@@ -103,7 +107,7 @@ class AdminController extends Controller
     public function manageTrains($request)
     {
 
-        if ($this->validateAdmin()) {
+        if ($this->protect()) {
             if ($request->isPost()) {
                 // form
                 return 'success';
