@@ -38,11 +38,12 @@ class AdminModel extends Model {
     }
 
     public function addUser() {
-        $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' =>$this->user_password,'user_confirm_password' => $this->user_confirm_password];
+        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' =>$this->user_password,'user_confirm_password' => $this->user_confirm_password];
         $addUserValidation=new FormValidation();
-        $validationState=$addUserValidation->runUpdateValidators($array);
+        $validationState=$addUserValidation->runValidators($array);
         if ($validationState ==="success") {
             $this->runSanitizationAdmin();
+            $this->runPasswordSanitization();
             $createUser = new HandlerFactory();
             return $createUser->createOne('users', $this->populateValues());
         }
@@ -147,6 +148,10 @@ class AdminModel extends Model {
 
 
 
+  private function runPasswordSanitization(){
+    $this->user_password = $this->sanitizeFormPassword($this->user_password);
+    $this->passwordHashing();
+  }
 
    private function runSanitizationAdmin(){//Ashika
         $this->first_name = $this->sanitizeFormUsername($this->first_name);
@@ -195,6 +200,17 @@ class AdminModel extends Model {
         $inputText = strip_tags($inputText); //remove html tags
         $inputText=trim($inputText); 
         return str_replace(" ", "", $inputText); // remove white spaces
+    }
+
+
+    private function sanitizeFormPassword($inputText){
+        $inputText=trim($inputText); 
+        return strip_tags($inputText); //remove html tags
+    }
+
+    private function passwordHashing()
+    {
+        $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
     }
 
    

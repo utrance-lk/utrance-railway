@@ -79,7 +79,7 @@ class AdminController extends Controller
         }
     }
 
-    public function addUser($request) {//Admin page add user function
+    public function addUser($request,$response) {//Admin page add user function
 
         $adminFunction = new AdminModel();
 
@@ -91,7 +91,8 @@ class AdminController extends Controller
                 return $response->redirect('/utrance-railway/users/add');
             }else{
                 $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
-                return $this->render(['admin','addUser'], $updateSetValue); //Ashika
+                var_dump($addUserSetValue);
+                return $this->render(['admin','addUser'], $addUserSetValue); //Ashika
             }
 
         }

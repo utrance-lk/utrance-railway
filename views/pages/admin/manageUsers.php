@@ -37,7 +37,7 @@
              ?>
 
         <?php
-         if (isset($users)) {
+        if (isset($users)) {
          foreach ($users as $key => $value) {
         //echo $value['first_name'];
         $html = " <form class='search__result-card' id='form-card' method='get'>

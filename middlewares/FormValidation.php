@@ -27,12 +27,6 @@ class FormValidation{
 
     public function runUpdateValidators($array){
         
-      
-        
-        
-      
-       
-        
         $this->validateFirstName(trim($array['first_name'])); //Asindu
         $this->validateLastName(trim($array['last_name'])); //Ashika
         $this->validateStreetLine1(trim($array['street_line1'])); //Ashika
@@ -191,22 +185,22 @@ class FormValidation{
 
     }
 
-   /* private function validateEmailIdForUpdate($email_id,$id){
+    private function validateEmailIdForUpdate($email_id,$id){
 
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
 
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id NOT IN (id=:id)");
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id ");
         $query->bindValue(":email_id", $email_id);
-        $query->bindValue(":id",$id);
+        //$query->bindValue(":id",$id);
         $query->execute();
         $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
         if ($email_status == true) {
             $this->errorArray['email_id_error'] = "This email is already exist";
         }
 
-    }*/
+    }
 
     private function validatePassword($user_password, $user_confirm_password)
     { //Ashika
