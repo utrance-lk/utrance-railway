@@ -114,7 +114,7 @@ class TrainController extends Controller
              } 
              else {
                 $trainArray=$saveDetailsModel->getManagTrains();
-                var_dump($validationState);
+                // var_dump($validationState);
                 return $this->render(['admin', 'updateTrain'],$trainArray,$validationState);
             //     $registerSetValue = $saveDetailsModel->registerSetValue($validationState);
                 
