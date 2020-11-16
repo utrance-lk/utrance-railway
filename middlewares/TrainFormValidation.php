@@ -10,13 +10,13 @@ public $errorArray=[];
    public function runValidators($array)
     {
         
-        $this->validateTrainName($array['train_name'], $array['route_id']); 
-        $this->validateRouteId($array['route_id']); 
+        $this->validateTrainName(trim($array['train_name']), trim($array['route_id'])); 
+        $this->validateRouteId(trim($array['route_id'])); 
         $this->validateTravelDays(implode($array['train_travel_days'])); 
-        $this->validateTrainFc($array['train_fc_seats']); 
-        $this->validateTrainSc($array['train_sc_seats']); 
-        $this->validateTrainSleepingB($array['train_sleeping_berths']); 
-        $this->validateTrainweight($array['train_total_weight']); 
+        $this->validateTrainFc(trim($array['train_fc_seats'])); 
+        $this->validateTrainSc(trim($array['train_sc_seats'])); 
+        $this->validateTrainSleepingB(trim($array['train_sleeping_berths'])); 
+        $this->validateTrainweight(trim($array['train_total_weight'])); 
         return $this->errorArray;
        
 
@@ -28,6 +28,7 @@ public $errorArray=[];
     {
         if (empty($tn)) {
             $this->errorArray['TravalDaysError'] = 'enter travel days';
+            
            
         }
     }
@@ -38,29 +39,35 @@ public $errorArray=[];
 
     public function runValidators1($array)
     {
-        $this->validateTrainName1($array['train_name']); 
+        $this->validateTrainName1(trim($array['train_name'])); 
         
         $this->validateTravelDays($array['train_travel_days']); 
+        $this->validateRouteId(trim($array['route_id']));
+        $this->validateTrainFc(trim($array['train_fc_seats'])); 
+        $this->validateTrainSc(trim($array['train_sc_seats'])); 
+        $this->validateTrainSleepingB(trim($array['train_sleeping_berths'])); 
+        $this->validateTrainweight(trim($array['train_total_weight'])); 
+        return $this->errorArray;
         return $this->errorArray;
        
     }
 
     private function validateTrainFc($tn)
     {
-        // if (is_numeric($tn)) {
-        //     $this->errorArray['TrainFcError'] = 'Num Wrong ';
-        // } 
+         if($tn<0) {
+            $this->errorArray['TrainFcError'] = 'Number of seats greater than 0';
+        } 
         // if (ctype_digit($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
-        // }
+        //  }
         
 
     }
     private function validateTrainSc($tn)
     {
-        // if (is_numeric($tn)) {
-        //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
-        // } 
+        if($tn<0) {
+            $this->errorArray['TrainscError'] = 'Number of seats greater than 0';
+        } 
         // if (ctype_digit($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
         // }
@@ -68,9 +75,9 @@ public $errorArray=[];
     }
     private function validateTrainSleepingB($tn)
     {
-        // if (is_numeric($tn)) {
-        //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
-        // } 
+        if($tn<0) {
+            $this->errorArray['TrainSleepingBError'] = 'Number of seats greater than 0';
+        } 
         // if (ctype_digit($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
         // }
@@ -78,11 +85,16 @@ public $errorArray=[];
     }
     private function validateTrainweight($tn)
     {
+        if($tn<0) {
+            $this->errorArray['TrainweightError'] = 'weight greter than 0';
+        }
 
     }
     private function validateRouteId($tn)
     {
-        $this->errorArray['TrainRouteError'] = 'route not valid';
+        if (empty($tn)) {
+        $this->errorArray['TrainRouteError'] = 'Route not valid';
+        }
     }
 
 
@@ -90,15 +102,15 @@ public $errorArray=[];
 
     {
         if (strlen($tn) < 2 || strlen($tn) > 50) {
-            $this->errorArray['TrainNameError'] = 'train name not valid';
+            $this->errorArray['TrainNameError'] = 'Train name not valid';
         }    
 
         if (is_numeric($tn)) {
-            $this->errorArray['TrainNameError'] = 'first name only letters required';
+            $this->errorArray['TrainNameError'] = 'Train name only letters required';
         }
 
         if (empty($tn)) {
-            $this->errorArray['TrainNameError'] = 'enter valid train name';
+            $this->errorArray['TrainNameError'] = 'Enter train name';
             
             // var_dump($this->errorArray);
         }
@@ -137,21 +149,6 @@ public $errorArray=[];
         }
 
     }
-
-    // public function my( $inputText, $rid){
-    //     $results = $this->sameTrains($inputText, $rid);
-    //     // var_dump($results);
-    //     if($results==='success'){
-           
-    //                 $this->errorArray['RoutIdError'] = 'Route_id is not valid';
-    //                 // echo $rid;
-          
-                    
-    //     }
-    // }
-
-
-
 
     public function sameTrains($inputText , $rid){
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE (train_name = :train_name AND route_id=:route_id) OR route_id=:route_id ");

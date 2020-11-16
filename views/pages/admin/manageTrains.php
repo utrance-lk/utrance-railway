@@ -48,7 +48,7 @@
                             $train_id=$value['train_id'];
                             // $train_active_status=$value['train_active_status'];
 
-                            $html .= "<a href='/utrance-railway/trains/update?id=$train_id' class='search__result-train-managebtnbox'>";
+                            $html .= "<a href='/utrance-railway/trains/view?id=$train_id' class='search__result-train-managebtnbox'>";
                             $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
                             
                             $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='search__result-train-deletebtnbox' >";

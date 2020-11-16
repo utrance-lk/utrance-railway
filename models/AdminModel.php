@@ -309,7 +309,9 @@ class AdminModel extends Model {
             'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
            
 
-        $updateTrain->updateOne('trains', 'train_id', $this->id, $valuesArray);
+        $getsuccess=$updateTrain->updateOne('trains', 'train_id', $this->id, $valuesArray);
+        return  $getsuccess;
+
         }
         $this->resultArray["newtrains"] = $validationState;
         return $this->resultArray;
@@ -338,7 +340,7 @@ class AdminModel extends Model {
         $query = App::$APP->db->pdo->prepare("INSERT INTO trains (train_name, route_id, train_type, train_active_status, train_travel_days,
          train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths, train_total_weight) VALUES (:train_name, :route_id, :train_type, :train_active_status, :train_travel_days, :train_freights_allowed,
          :train_fc_seats, :train_sc_seats, :train_observation_seats, :train_sleeping_berths, :train_total_weight)");
-        //  $query->bindValue(":train_id", $this->id);
+        //   $query->bindValue(":train_id", $this->id);
        
         $query->bindValue(":train_name", $this->train_name);
         $query->bindValue(":route_id", $this->route_id);
@@ -359,12 +361,15 @@ class AdminModel extends Model {
            
            
            $query->execute();
+          
            $this->setRoute();
           
-           return 'success';
+          return 'success';
+           
         
         }
-         var_dump($validationState);
+    
+        //  var_dump($validationState);
         return $validationState;  
 
         

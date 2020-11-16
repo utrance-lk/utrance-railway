@@ -20,6 +20,7 @@
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
                         <input type="text" name="train_name" class="form__input" placeholder="<?php echo isset($TrainNameError) ? $TrainNameError : 'Galle train';?>"value="<?php echo isset($train_name) ? $train_name : '';?>" required>
+                        <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>
@@ -64,9 +65,14 @@
                         {
                           
                         $html ="<input type='number' min='0'  name='route_id' id='routeid' class='form__input number__input route-id__number-input' value=".$route_id.">";
+            
                         $dom = new DOMDocument();
                         $dom->loadHTML($html);
                         print_r($dom->saveHTML());
+                        }
+                        if(!isset($route_id) && !isset($routes)){
+                            echo '&nbsp &nbsp';
+                            echo 'NOT VALIED ROUTE ID';
                         }
                         ?>
                         

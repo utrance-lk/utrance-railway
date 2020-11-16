@@ -158,9 +158,10 @@ class AdminController extends Controller
              $tempBody['id'] = $request->getQueryParams()['id'];
              $saveDetailsModel->loadData($tempBody); 
              $validationState = $saveDetailsModel->updateTrainDetails();
+            //  var_dump($validationState);
              
-             if ($validationState === 'success') {
-                 echo 'hello';
+             if ($validationState === "success") {
+               
                  $trainArray=$saveDetailsModel->getTrains();
              return $this->render(['admin', 'manageTrains'],$trainArray);
              } 

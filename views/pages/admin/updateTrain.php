@@ -23,6 +23,7 @@
                     $html .="<p>" .$value['train_name'] . " Profile Settings</p></div>";
                     $html .="<form action='' class='form__train-data' method = 'post'>";
                      if(isset($newtrains)){foreach($newtrains as $item){ echo $item; }}
+                    
                     // if(isset($TrainNameError)){echo $TrainNameError;}else{echo 'hello';}
                     $html .="<div class='content__fields'>";
                     $html .="<div class='trainname-box content__fields-item'>";
