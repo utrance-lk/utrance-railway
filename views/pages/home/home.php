@@ -12,11 +12,15 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
+            
             <div class="ticket-box nav-items-little">
+            
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
               </svg>
+              <a href="/utrance-railway/ticketPrice" >
               <span class="nav__items-text-box">Tickets</span>
+              </a>
             </div>
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">

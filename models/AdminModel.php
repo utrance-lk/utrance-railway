@@ -41,6 +41,7 @@ class AdminModel extends Model {
     public $train_observation_seats;
     public $train_sleeping_berths;
     public $train_total_weight;
+    public $searchTrainByNameOrId;
 
 
 
@@ -59,9 +60,9 @@ class AdminModel extends Model {
     }
 
     public function getTrains(){
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users");
+        $query = APP::$APP->db->pdo->prepare("SELECT train_id,train_name,train_type FROM trains");
         $query->execute();
-        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
 
     }
@@ -91,6 +92,9 @@ class AdminModel extends Model {
         return $this->resultArray;
     }
 
+
+    
+
     public function getSearchUserResult() // selected user
     { //Ashika
         $this->id = $this->searchUserByNameOrId;
@@ -109,11 +113,11 @@ class AdminModel extends Model {
     { //Ashika
         $this->train_id = $this->searchTrainByNameOrId;
         $this->train_name = $this->searchTrainByNameOrId;
-        $query = APP::$APP->db->pdo->prepare("SELECT train_id,train_name,train_type FROM train  WHERE train_id=:tid OR train_name=:tn ");
+        $query = APP::$APP->db->pdo->prepare("SELECT train_id,train_name,train_type FROM trains  WHERE train_name LIKE '%{$this->train_name}%' ");
         $query->bindValue(":tid", $this->train_id);
         $query->bindValue(":tn", $this->train_name);
         $query->execute();
-        $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
 
     }
@@ -187,6 +191,8 @@ class AdminModel extends Model {
         if (empty($registerSetValueArray['cityError'])) {
             $registerSetValueArray['city'] = $this->city;
         }
+
+        
         return $registerSetValueArray;
 
     }
@@ -258,6 +264,11 @@ class AdminModel extends Model {
         $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
     }
 
+
+
+
+
+    /////////////////////////////////////////////Train Sanitization////////////////////////////////////////////
    
 
 
