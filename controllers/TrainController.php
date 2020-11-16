@@ -161,26 +161,35 @@ class TrainController extends Controller
     public function addTrain($request) 
     {
         $saveTrainDetails = new TrainModel();
+        $saveTrainDetails->loadData($request->getBody());
          if ($request->isPost()) 
         {
         
-            $saveTrainDetails->loadData($request->getBody());
+           
             
             $validationState = $saveTrainDetails->addNewTrainDetails();
+             
             if ($validationState === 'success') {
-                return $this->render(['admin', 'addTrain']);
+                $getrouteArray = $saveTrainDetails->getAvailableRoute();
+                
+                return $this->render(['admin', 'addTrain'],$getrouteArray);
             } else {
                 $registerSetValue = $saveTrainDetails->registerSetValue($validationState);
-               
+            //    var_dump($getrouteArray);
                 // var_dump( $registerSetValue['train_travel_days']);
-                return $this->render(['admin', 'addTrain'], $registerSetValue); 
+                // $this->render(['admin', 'addTrain'], $getrouteArray);
+                
+                return $this->render(['admin', 'addTrain'],$registerSetValue); 
+                
 
             }
            
       
         }
+        $getrouteArray = $saveTrainDetails->getAvailableRoute();
+        // var_dump($getrouteArray);
       
-            return $this->render(['admin', 'addTrain']);
+            return $this->render(['admin', 'addTrain'],$getrouteArray);
         
 
     }

@@ -57,11 +57,14 @@ class TrainModel extends Model
 
     public function getManagTrains()
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_id = :train_id ");
-        $query->bindValue(":train_id", $this->id);
-        $query->execute();
+        $manageTrain = New HandlerFactory();
+        $valuesArray =['train_id' =>$this->id];
+        // $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_id = :train_id ");
+        // $query->bindValue(":train_id", $this->id);
+        // $query->execute();
 
-        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->resultArray["trains"] = $manageTrain->getAll('trains', 'train_id', $this->id);
+        // $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
         // var_dump( $this->resultArray["trains"]);
 
         return $this->resultArray;
@@ -121,40 +124,52 @@ class TrainModel extends Model
 
         if (empty($this->errorArray)) {
             $this->runSanitization();
+            $addTrain = New HandlerFactory();
+            $valuesArray = ['train_name'=>$this->train_name, 'route_id'=>$this->route_id, 'train_type'=>$this->train_type,'train_active_status'=>$this->train_active_status,'train_travel_days'=>implode(' ',$this->train_travel_days),
+            'train_freights_allowed'=>$this->train_freights_allowed,'train_fc_seats'=>$this->train_fc_seats,'train_sc_seats'=>$this->train_sc_seats,'train_observation_seats'=>$this->train_observation_seats,'train_sleeping_berths'=>$this->train_sleeping_berths,
+            'train_total_weight'=>$this->train_total_weight];
+            
+            $addTrain->createOne('trains', $valuesArray);
+            $this->setRoute();
 
-            $query = App::$APP->db->pdo->prepare("INSERT INTO trains (train_name, route_id, train_type, train_active_status, train_travel_days,
-         train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths, train_total_weight) VALUES (:train_name, :route_id, :train_type, :train_active_status, :train_travel_days, :train_freights_allowed,
-         :train_fc_seats, :train_sc_seats, :train_observation_seats, :train_sleeping_berths, :train_total_weight)");
-        //  $query->bindValue(":train_id", $this->id);
-        $query->bindValue(":train_name", $this->train_name);
-        $query->bindValue(":route_id", $this->route_id);
-        $query->bindValue(":train_type", $this->train_type);
-        // // // $int = (int)$this->train_active_status;
-          $query->bindValue(":train_active_status",$this->train_active_status);
+        //     $query = App::$APP->db->pdo->prepare("INSERT INTO trains (train_name, route_id, train_type, train_active_status, train_travel_days,
+        //  train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths, train_total_weight) VALUES (:train_name, :route_id, :train_type, :train_active_status, :train_travel_days, :train_freights_allowed,
+        //  :train_fc_seats, :train_sc_seats, :train_observation_seats, :train_sleeping_berths, :train_total_weight)");
+        // //  $query->bindValue(":train_id", $this->id);
+       
+        // $query->bindValue(":train_name", $this->train_name);
+        // $query->bindValue(":route_id", $this->route_id);
+        // $query->bindValue(":train_type", $this->train_type);
+        // // // // $int = (int)$this->train_active_status;
+        //   $query->bindValue(":train_active_status",$this->train_active_status);
 
 
-           $trinTravalDays=implode(' ',$this->train_travel_days);
-          $query->bindValue(":train_travel_days", $trinTravalDays);
+        //    $trinTravalDays=implode(' ',$this->train_travel_days);
+        //   $query->bindValue(":train_travel_days", $trinTravalDays);
              
-          $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
-          $query->bindValue(":train_fc_seats", $this->train_fc_seats);
-          $query->bindValue(":train_sc_seats", $this->train_sc_seats);
-          $query->bindValue(":train_observation_seats", $this->train_observation_seats);
-          $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
-          $query->bindValue(":train_total_weight", $this->train_total_weight);
+        //   $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
+        //   $query->bindValue(":train_fc_seats", $this->train_fc_seats);
+        //   $query->bindValue(":train_sc_seats", $this->train_sc_seats);
+        //   $query->bindValue(":train_observation_seats", $this->train_observation_seats);
+        //   $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
+        //   $query->bindValue(":train_total_weight", $this->train_total_weight);
            
            
-           $query->execute();
+        //    $query->execute();
+        //    $this->setRoute();
           
-           return 'success';
+        //    return 'success';
         
         }
         // var_dump($this->errorArray);
-        return $this->errorArray;
-      
-      
-         
+        return $this->errorArray;    
         
+    }
+
+    public function setRoute(){
+        $query = App::$APP->db->pdo->prepare("UPDATE routes SET route_status = 1 wHERE route_id=:route_id");
+        $query->bindValue(":route_id", $this->route_id);
+        $query->execute();
     }
 
     public function registerSetValue($registerSetValueArray)
@@ -164,6 +179,7 @@ class TrainModel extends Model
         }
         if (empty($registerSetValueArray['RoutIdError'])) {
             $registerSetValueArray['route_id'] = $this->route_id;
+           
         }
         if (empty($registerSetValueArray['TravalDaysError'])) {
             $registerSetValueArray['train_travel_days'] = $this->train_travel_days;
@@ -224,7 +240,7 @@ class TrainModel extends Model
     private function runValidators()
     {
         $this->validateTrainName($this->train_name, $this->route_id); 
-        $this->validateRouteId($this->route_id); 
+         $this->validateRouteId($this->route_id); 
         $this->validateTravelDays(implode($this->train_travel_days)); 
         $this->validateTrainFc($this->train_fc_seats); 
         $this->validateTrainSc($this->train_sc_seats); 
@@ -238,7 +254,7 @@ class TrainModel extends Model
     {
         $this->validateTrainName1($this->train_name); 
         
-        $this->validateTravelDays(implode($this->train_travel_days)); 
+        $this->validateTravelDays($this->train_travel_days); 
        
     }
 
@@ -274,6 +290,10 @@ class TrainModel extends Model
 
     }
     private function validateTrainweight($tn)
+    {
+
+    }
+    private function validateRouteId($tn)
     {
 
     }
@@ -351,42 +371,8 @@ class TrainModel extends Model
        }
     }
 
-    private function validateRouteId($tn) 
+    
 
-    {
-        
-        if ($tn == 0) {
-            $this->errorArray['RoutIdError'] = 'Please enter valid route';
-        }
-        $this->rout($tn);
-
-    }
-
-    public function rout($rid){
-        $results = $this->getsameTrains($this->train_name , $this->route_id);
-        // var_dump($results);
-        if($results==='success'){
-           
-                    $this->errorArray['TrainNameError'] = 'error error';
-                    // echo $rid;
-          
-                    
-        }
-    }
-
-    public function getsameTrains($rid){
-        $query = APP::$APP->db->pdo->prepare("SELECT routes.start_station_id FROM trains RIGHT JOIN routes ON trains.route_id=routes.route_id WHERE routes.route_id=$this->route_id");
-        
-        $query->bindValue(":route_id",$rid);
-        $query->execute();
-
-        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
-         var_dump($this->resultArray["trains"]);
-        // var_dump( $this->resultArray["trains"]);
-       if(empty($this->resultArray["trains"] )){
-        return 'success';
-       }
-    }
 
 
     private function validateTravelDays($tn) 
@@ -414,6 +400,17 @@ class TrainModel extends Model
         $inputText = strip_tags($inputText); //remove html tags
         return ucfirst($inputText); // capitalize first letter
     }
+
+    public function getAvailableRoute(){
+        $query = APP::$APP->db->pdo->prepare("SELECT route_id FROM routes WHERE route_status=0");
+        $query->execute();
+        $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->resultArray;
+        
+
+    }
+    
 
     
 }

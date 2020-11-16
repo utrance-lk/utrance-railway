@@ -9,7 +9,7 @@
             </div>
             <form action="/utrance-railway/trains/add" class="form__train-data" method='post' >
             <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?> 
-            <?php if(isset($RoutIdError)){echo $RoutIdError;}?> 
+            <?php if(isset($TrainRouteError)){echo $TrainRouteError;}?> 
             <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
             <?php if(isset($TrainTypeError)){echo $TrainTypeError;}?>
             <?php if(isset($TrainFcError)){echo $TrainFcError;}?>
@@ -31,7 +31,45 @@
                     </div>
                     <div class="routeid-box content__fields-item">
                         <label for="routeid" class="form__label">Route Id</label>
-                        <input type="number" min="0"  name="route_id" id="routeid" class="form__input number__input route-id__number-input" placeholder="<?php echo isset($RoutIdError) ? $RoutIdError : '0';?>"value="<?php echo isset($route_id) ? $route_id : '';?>" required>
+                        <!-- <input type="number" min="0"  name="route_id" id="routeid" class="form__input number__input route-id__number-input" placeholder="<?php echo isset($RoutIdError) ? $RoutIdError : '0';?>"value="<?php echo isset($route_id) ? $route_id : '';?>" required> -->
+                        <?php
+                        $dom = new DOMDocument;
+                        libxml_use_internal_errors(true);
+                        $dom->loadHTML('...');
+                        libxml_clear_errors();
+                        if(isset($routes))
+                        {
+                            
+                            $html =" <select name='route_id' id='route_id'>";
+                        foreach($routes as $key => $value)
+                        {
+                           
+                            $html .= "<option value=".$value['route_id']."> ".$value['route_id']."</option>";
+
+                        }
+                        $html .= "</select>";
+
+                        $dom = new DOMDocument();
+                        $dom->loadHTML($html);
+                        print_r($dom->saveHTML());
+                        }
+                        
+                        ?>
+                        <?php
+                        $dom = new DOMDocument;
+                        libxml_use_internal_errors(true);
+                        $dom->loadHTML('...');
+                        libxml_clear_errors();
+                        if(isset($route_id))
+                        {
+                          
+                        $html ="<input type='number' min='0'  name='route_id' id='routeid' class='form__input number__input route-id__number-input' value=".$route_id.">";
+                        $dom = new DOMDocument();
+                        $dom->loadHTML($html);
+                        print_r($dom->saveHTML());
+                        }
+                        ?>
+                        
                     </div>
                     <fieldset class="traintaveldays-box content__fields-item">
                         <legend class="form__label">Train Travel Days</legend>
