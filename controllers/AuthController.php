@@ -47,6 +47,7 @@ class AuthController extends Controller
                 return $this->login($request, $response);
             } else {
                 $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika
+                
 
             }
             return $this->render('register', $registerSetValue); //Ashika
@@ -56,30 +57,30 @@ class AuthController extends Controller
 
     }
 
-    public function getMyProfile($request, $response)
-    {
+    // public function getMyProfile($request, $response)
+    // {
        
-        if (!$this->isLoggedIn()) {
-            return 'You are not logged in!';
-        }
+    //     if (!$this->isLoggedIn()) {
+    //         return 'You are not logged in!';
+    //     }
 
-        $role = App::$APP->activeUser()['role'];
+    //     $role = App::$APP->activeUser()['role'];
         
-        if ($role === 'admin') {
-            $admin = new AdminController();
-            return $admin->adminProfile($request, $response);
-        }
-        if ($role === 'user') {
-            $regUser = new RegisterUserController();
-            return $regUser->registeredUserSettings($request);
-        }
-        if ($role === 'detailsProvider') {
-            $regUser = new detailsProviderController();
-            return $regUser->detailsProviderSettings($request);
-        }
-        return 'hacker';
+    //     if ($role === 'admin') {
+    //         $admin = new AdminController();
+    //         return $admin->adminProfile($request, $response);
+    //     }
+    //     if ($role === 'user') {
+    //         $regUser = new RegisterUserController();
+    //         return $regUser->registeredUserSettings($request);
+    //     }
+    //     if ($role === 'detailsProvider') {
+    //         $regUser = new detailsProviderController();
+    //         return $regUser->detailsProviderSettings($request);
+    //     }
+    //     return 'hacker';
 
-    }
+    // }
 
     public function forgotPassword($request, $response)
     {
@@ -89,7 +90,7 @@ class AuthController extends Controller
             // 1) get user based on POSTed email
             $userForgotPassword = new UserModel();
             $userForgotPassword->loadData($request->getBody());
-            $user = $userForgotPassword->findOne('email_id');
+            $user = $userForgotPassword->findUser('email_id');
 
             if (!$user) {
                 return 'There is no user with that email address.';
@@ -129,7 +130,7 @@ class AuthController extends Controller
             $tempBody = $request->getBody();
             $tempBody['PasswordResetToken'] = $hashedToken;
             $resetPasswordUser->loadData($tempBody);
-            $user = $resetPasswordUser->findOne('PasswordResetToken');
+            $user = $resetPasswordUser->findUser('PasswordResetToken');
             if (!$user) {
                 return 'invalid token';
             }
@@ -164,29 +165,52 @@ class AuthController extends Controller
         }
     }
 
-    public function updatePassword()
+    public function updatePassword($request,$response)
     {
+        
+        $updatePasswordUserModel = new UserModel();
+
+        if($request->isPost()){
+            $tempBody=$request->getBody();
+            $email=App::$APP->activeUser()['email_id'];
+            $tempBody["email_id"]=$email;
+            $updatePasswordUserModel->loadData($tempBody);
+            $updatePasswordState = $updatePasswordUserModel->updatePassword();
+            
+            if ($updatePasswordState === 'success') {
+                return $response->redirect('/utrance-railway/settings'); 
+            }else{
+                $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);
+              
+                return $this->render('admin',$updatePasswordSetValue);
+                
+            }
+
+        }
+        return $this->render('admin');
+
+      
         // updates the password
     }
 
-    public function restrictTo($role)
-    { // asindu
-        if (App::$APP->activeUser()['role'] === $role) {
-            return true;
-        }
+    // public function restrictTo($role)
+    // { // asindu
+    //     if (App::$APP->activeUser()['role'] === $role) {
+    //         return true;
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    public function isLoggedIn()
-    { // asindu
-        if (App::$APP->user) {
-            return true;
-        }
+    // public function isLoggedIn()
+    // { // asindu
+    //     if (App::$APP->user) {
+    //         return true;
+    //     }
 
-        return false;
+    //     return false;
 
-    }
+    // }
 
     public function protect()
     {

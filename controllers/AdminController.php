@@ -2,14 +2,19 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
+include_once "../middlewares/AuthMiddleware.php";
 
 class AdminController extends Controller
 {
-    public function validateUser()
+    public function protect()
     {
-        $currentUser = new AuthController();
+        $authMiddleware = new AuthMiddleware();
 
-        if (!$currentUser->restrictTo('admin')) {
+        if(!$authMiddleware->isLoggedIn()) {
+            return 'Your are not logged in!';
+        }
+
+        if (!$authMiddleware->restrictTo('admin')) {
             echo 'You are unorthorized to perform this action!!';
             return false;
         }
@@ -18,50 +23,20 @@ class AdminController extends Controller
 
     }
 
-    // Admin as User
-
-    public function adminProfile($request, $response)
-    {
-
-        if ($this->validateUser()) {
-
-            $updateUserDetailsModel = new UserModel();
-
-            if ($request->isPost()) {
-
-                $tempUpdateUserBody = $request->getBody();
-
-                $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
-
-                $updateUserDetailsModel->loadData($tempUpdateUserBody);
-
-                $state = $updateUserDetailsModel->updateMyProfile();
-                if($state === 'success') {
-                    return $response->redirect('/utrance-railway/settings');
-                } else {
-                    return 'error updating data!!';
-                }
-            }
-
-            return $this->render('admin');
-
-        }
-    }
-
     // Admin's Specific functionalities //
 
     // manage users
 
     public function manageUsers($request) {
 
-        if ($this->validateUser()) {
+        if ($this->protect()) {
             $manageUserModel = new AdminModel(); 
 
             if ($request->isPost()) {
                 $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
-                $getSearchREsult = $searchUser->getSearchUserResult();
-                return $this->render(['admin', 'manageUsers'], $getSearchREsult);
+                $getSearchResult = $searchUser->getSearchUserResult();
+                return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
             $manageUserModel->loadData($request->getBody());
@@ -72,22 +47,27 @@ class AdminController extends Controller
         }
     }
 
-    public function addUser($request) {
+    public function addUser($request,$response) {//Admin page add user function
 
         $adminFunction = new AdminModel();
 
         if ($request->isPost()) {
             $adminFunction->loadData($request->getBody());
-            if ($adminFunction->addUser()) {
-                return "Success";
-            } else {
-                return 'error creating user!';
+            $state=$adminFunction->addUser();
+
+            if($state === "success"){
+                return $response->redirect('/utrance-railway/users/add');
+            }else{
+                $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
+                var_dump($addUserSetValue);
+                return $this->render(['admin','addUser'], $addUserSetValue); //Ashika
             }
+
         }
         return $this->render(['admin', 'addUser']);
     }
 
-    public function viewUser($request) {
+    public function viewUser($request) {//View users from manage users
 
         if($request->isGet()) {
             $adminViewUser = new AdminModel();
@@ -99,28 +79,38 @@ class AdminController extends Controller
 
     }
 
-    public function updateUser($request, $response) {
+    public function updateUser($request, $response) {//update users from manage users
 
         if ($request->isPost()) {
             $saveDetailsModel = new AdminModel();
+            
             $tempBody = $request->getBody();
             $id = $request->getQueryParams()['id'];
             $tempBody['id'] = $id;
             $saveDetailsModel->loadData($tempBody);
-            $saveDetailsModel->updateUserDetails();
-            return $response->redirect('/utrance-railway/users/view?id=' . $id);
+            $state=$saveDetailsModel->updateUserDetails();
+           
+            if($state === "success"){
+                
+                return $response->redirect('/utrance-railway/users/view?id=' . $id);
+            }else{
+
+                $commonArray=$saveDetailsModel->getUserDetails();
+                $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
+                return $this->render(['admin','updateUser'], $commonArray); //Ashika
+            }
+            
         }
 
     }
 
-    public function changeUserStatus($request)
+    public function changeUserStatus($request) /// Activate and deactivate part in manage users
     { //Ashika
         if ($request->isGet()) {
             $changeUserStatusModel = new AdminModel();
             $changeUserStatusModel->loadData($request->getQueryParams());
-            //var_dump($request->getQueryParams());
             $changeUserStatusModel->changeUserStatusDetails();
-            $changeStatusArray = $changeUserStatusModel->getManageUsers();
+            $changeStatusArray = $changeUserStatusModel->getUsers();
 
         }
         return $this->render(['admin', 'manageUsers'], $changeStatusArray);
@@ -132,16 +122,23 @@ class AdminController extends Controller
     public function manageTrains($request)
     {
 
-        if ($this->validateUser()) {
+        if ($this->protect()) {
             if ($request->isPost()) {
-                // form
-                return 'success';
+               
+                $manageTrainModel->loadData($request->getBody());
+                $getSearchResult = $manageTrainModel->getSearchTrainResult();
+                return $this->render(['admin', 'manageTrains'], $getSearchResult);
             }
 
-            return $this->render(['admin', 'manageTrains']);
+            $manageTrainModel->loadData($request->getBody());
+            $getTrainArray = $manageTrainModel->getTrains();
+
+            return $this->render(['admin', 'manageTrains'], $getTrainArray);
+
+        }
         }
 
-    }
+    
 
     public function addTrain($request)
     {

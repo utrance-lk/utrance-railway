@@ -6,13 +6,13 @@
               <input
                 type="text"
                 class="dashboard-searchbar"
-                placeholder="Search users by name"  name="searchUserByNameOrId"
+                placeholder="Search users by name or id"  name="searchUserByNameOrId"
               />
-              <button>
+              <!-- <button> -->
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
-              </button>
+              <!-- </button> -->
               <!-- <div class="dashboard-searchbar__dropdown">
 
                 <select name="catogory" id="" class="dropdown__list">
@@ -42,21 +42,21 @@
 
 
                   <?php
-$dom = new DOMDocument;
-libxml_use_internal_errors(true);
-$dom->loadHTML('...');
-libxml_clear_errors();
-?>
+             $dom = new DOMDocument;
+             libxml_use_internal_errors(true);
+             $dom->loadHTML('...');
+              libxml_clear_errors();
+             ?>
 
-                  <?php
-if (isset($users)) {
-    foreach ($users as $key => $value) {
+        <?php
+        if (isset($users)) {
+         foreach ($users as $key => $value) {
         //echo $value['first_name'];
         $html = " <form class='search__result-card' id='form-card' method='get'>
-                             <div class='search__result-user-mainbox search__result-mainbox'>
-                             <div class='user-mainbox__img-box'>";
+                  <div class='search__result-user-mainbox search__result-mainbox'>
+                  <div class='user-mainbox__img-box'>";
 
-        $html .= "<img src='/utrance-railway/public/img/pages/admin/" . $value['first_name'] . ".jpg' alt='profile-avatar' class='profile__avatar'/></div>";
+        $html .= "<img src='/utrance-railway/public/img/uploads/Ashoka.jpg' alt='profile-avatar' class='profile__avatar'/></div>";
         $html .= "<div class='user-mainbox__other'>";
         $html .= "<div class ='user-mainbox__other-name'> " . $value['first_name'] . "</div>";
         $html .= "<div class ='user-mainbox__other-id'><span>#<span>";

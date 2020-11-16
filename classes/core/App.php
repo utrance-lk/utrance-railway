@@ -54,6 +54,7 @@ class App {
             "city" => $this->user[0]["city"],
             "contact_num" => $this->user[0]["contact_num"],
             "role" => $this->user[0]["user_role"],
+            "user_image" => $this->user[0]["user_image"],
         ];
     }
 

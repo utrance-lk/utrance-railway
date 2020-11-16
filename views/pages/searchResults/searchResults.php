@@ -184,14 +184,7 @@
         $html .= "<div class='search__results-card-sub'>";
             
         $html .= "<div class='search__card-classbox'>";
-        $html .= "<form action='' class='search__card-classbox--form'>";
-        $html .= "<select name='class' id='search__card-classbox--selectclass' class='search__card-classbox--selectclass'>";    
-        $html .= "<option value='first-class'>First Class</option>";
-        $html .= "<option value='second-class'>Second Class</option></select>";
-        $html .= "<div class='search__card-classbox--pricebox'>";
-        $html .= "Rs <span>210</span></div>";
-        $html .= "<div class='btn-cta'>";
-        $html .= "<button class='search__card-classbox--btnproceed'><p>Proceed</p></button></div></form></div></div></div>";
+        $html .= "<a href='/utrance-railway/book-seats' class='search__card-classbox--btnproceed'><p>Proceed</p></a></div></div></div>";
         // print_r($dom->saveHTML());
         return $html;
       }
@@ -330,14 +323,7 @@
         $html .= "<div class='search__results-card-sub'>";
 
         $html .= "<div class='search__card-classbox'>";
-        $html .= "<form action='' class='search__card-classbox--form'>";
-        $html .= "<select name='class' id='search__card-classbox--selectclass' class='search__card-classbox--selectclass'>";
-        $html .= "<option value='first-class'>First Class</option>";
-        $html .= "<option value='second-class'>Second Class</option></select>";
-        $html .= "<div class='search__card-classbox--pricebox'>";
-        $html .= "Rs <span>210</span></div>";
-        $html .= "<div class='btn-cta'>";
-        $html .= "<button class='search__card-classbox--btnproceed'><p>Proceed</p></button></div></form></div></div></div>";
+        $html .= "<a href='/utrance-railway/book-seats' class='search__card-classbox--btnproceed'><p>Proceed</p></a></div></div></div>";
         
 
         
