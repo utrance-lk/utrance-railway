@@ -198,6 +198,14 @@ class TrainController extends Controller
 
     }
 
+    public function FreightServicePrice($request){
+        if($request->isPost()){
+            return $this->render('reightServicePrice');
+        }
+        return $this->render('reightServicePrice');
+
+    }
+
    
 
  

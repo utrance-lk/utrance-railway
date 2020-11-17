@@ -32,4 +32,4 @@ echo '</table>' . PHP_EOL;
 </body>
 </html>
 
-echo 'hi';
+
