@@ -122,18 +122,17 @@ class AdminController extends Controller
     public function manageTrains($request)
     {
         $searchModel = new AdminModel();
+        $searchModel->loadData($request->getBody());
         if ($this->protect()) {
             if ($request->isPost()) 
         {
-            $searchModel = new AdminModel();
-            $searchModel->loadData($request->getBody());          
+                     
             $resultArray=$searchModel->searchTrainDetails();
              return $this->render(['admin', 'manageTrains'], $resultArray);
         }
 
-        $searchModel->loadData($request->getBody());
+        
         $trainArrays = $searchModel->getTrains();
-        //  var_dump($trainArrays);
         return $this->render(['admin', 'manageTrains'], $trainArrays);
 
 
@@ -142,21 +141,16 @@ class AdminController extends Controller
 
     public function updateTrain($request) 
     {
+        $saveDetailsModel = new AdminModel();
+        $tempBody = $request->getBody();
+        $tempBody['id'] = $request->getQueryParams()['id'];
+        $saveDetailsModel->loadData($tempBody); 
     
-        if($request->isGet()) 
-        {
-        $updateTrainModel=new AdminModel();
-        $updateTrainModel->loadData($request->getQueryParams());
-        $updateTrainArray=$updateTrainModel->getManagTrains();
-        return $this->render(['admin', 'updateTrain'],$updateTrainArray);
-        }
+        
 
         if ($request->isPost()) 
         {
-            $saveDetailsModel = new AdminModel();
-             $tempBody = $request->getBody();
-             $tempBody['id'] = $request->getQueryParams()['id'];
-             $saveDetailsModel->loadData($tempBody); 
+           
              $validationState = $saveDetailsModel->updateTrainDetails();
             //  var_dump($validationState);
              
@@ -172,6 +166,8 @@ class AdminController extends Controller
              }
          
         }
+        $updateTrainArray=$saveDetailsModel->getManagTrains();
+        return $this->render(['admin', 'updateTrain'],$updateTrainArray);
 
     }
 

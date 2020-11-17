@@ -78,35 +78,23 @@ class TrainController extends Controller
    public function updateTrain($request) 
     {
     
-        if($request->isGet()) 
-        {
-            $updateTrainModel=new TrainModel();
+        
+            $saveDetailsModel = new TrainModel();
+            $tempBody = $request->getBody();
+             $tempBody['id'] = $request->getQueryParams()['id'];
+             $saveDetailsModel->loadData($tempBody);
+            // $updateTrainModel=new TrainModel();
             // var_dump($request->getQueryParams());
 
 
-        $updateTrainModel->loadData($request->getQueryParams());
-        $updateTrainArray=$updateTrainModel->getManagTrains();
+        // $updateTrainModel->loadData($request->getQueryParams());
         
-            
         
-            //return $this->render(['admin', 'manageUsers'],$getUserArray);
-        return $this->render(['admin', 'updateTrain'],$updateTrainArray);
-        }
 
         if ($request->isPost()) 
         {
 
-            $saveDetailsModel = new TrainModel();
-
-       
-
-             $tempBody = $request->getBody();
-             $tempBody['id'] = $request->getQueryParams()['id'];
-             $saveDetailsModel->loadData($tempBody);
-             
-
-            
-             $validationState = $saveDetailsModel->updateTrainDetails();
+                 $validationState = $saveDetailsModel->updateTrainDetails();
              
              if ($validationState === 'success') {
                  echo 'hello';
@@ -129,6 +117,12 @@ class TrainController extends Controller
         
 
         }
+        $updateTrainArray=$saveDetailsModel->getManagTrains();
+        
+            
+        
+            //return $this->render(['admin', 'manageUsers'],$getUserArray);
+        return $this->render(['admin', 'updateTrain'],$updateTrainArray);
 
    
             //  return $this->render(
