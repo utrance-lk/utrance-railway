@@ -70,7 +70,7 @@
                         $dom->loadHTML($html);
                         print_r($dom->saveHTML());
                         }
-                        if(!isset($route_id) && !isset($routes)){
+                        if(!isset($route_id) && empty($routes)){
                             echo '&nbsp &nbsp';
                             echo 'NOT VALIED ROUTE ID';
                         }
