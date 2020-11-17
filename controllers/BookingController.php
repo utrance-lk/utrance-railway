@@ -70,4 +70,21 @@ class BookingController extends Controller {
 
     }
 
+    public function manageFreights($request) {
+        if($this->authMiddleware->restrictTo('admin')) {
+            return $this->render(['admin', 'manageFreights']);
+        } else {
+            return 'You are not authorized';
+        }
+    }
+
+    public function freightBookingForTrain($request) {
+        if ($this->authMiddleware->restrictTo('admin')) {
+            return $this->render('freightBookingForATrain');
+        } else {
+            return 'You are not authorized';
+}
+
+    }
+
 }

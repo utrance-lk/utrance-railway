@@ -671,7 +671,8 @@ select {
 .fcseats,
 .scseats,
 .sleeping-berths,
-.observation {
+.observation,
+.weight {
   display: flex;
   flex-direction: column;
   align-items: center;
