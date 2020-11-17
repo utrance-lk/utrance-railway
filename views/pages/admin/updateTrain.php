@@ -29,7 +29,7 @@
                     $html .="<div class='trainname-box content__fields-item'>";
                     $html .="<label for='trainname' class='form__label'>Train Name</label>";
                     $train_name = $value['train_name'];
-                    $html .="<input type='text' name='train_name' class='form__input' value='$train_name' /></div>";
+                    $html .="<input type='text' name='train_name' class='form__input' value='$train_name' reqiured/></div>";
                     $html .="<div class='traintype-box content__fields-item'>";
                     $html .="<label for='traintype' class='form__label'>Train Type</label>";
                     $train_type = $value['train_type'];
