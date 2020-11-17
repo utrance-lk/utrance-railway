@@ -84,7 +84,7 @@
 }
 
 .load-content {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100%;
   width: 80%;
   margin: auto auto;
@@ -203,6 +203,8 @@
   cursor: pointer;
   transition: transform 0.5s;
   transition: background-color 0.2s;
+  font-family: 'Lato', 'sans-serif';
+  font-size: 1.5rem;
 }
 
 .btn__save:active,
@@ -617,7 +619,6 @@ select {
 }
 
 #deactivate-btn{
-  
   color: red;
 }
 
@@ -634,13 +635,6 @@ select {
   flex-direction: row;
   height: 5rem;
   align-items: center;
-}
-
-.seperator {
-  width: 1.5px;
-  height: 2.5rem;
-  background-color: rgb(119, 119, 119);
-  margin: 0 2rem;
 }
 
 .filters > * {

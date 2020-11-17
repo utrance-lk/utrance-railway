@@ -60,4 +60,14 @@ class BookingController extends Controller {
         // delete
     }
 
+    // admin
+    public function bookingForTrain($request) {
+        if($this->authMiddleware->restrictTo('admin')) {
+            return $this->render('bookingForATrain');
+        } else {
+            return 'You are not authorized';
+        }
+
+    }
+
 }

@@ -127,8 +127,8 @@ $app->router->get('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs'
 
 $app->router->get('/utrance-railway/bookings', [AdminController::class, 'manageBookings']);
 $app->router->post('/utrance-railway/bookings', [AdminController::class, 'manageBookings']);
-$app->router->get('/utrance-railway/booking-train', [AdminController::class, 'bookingForTrain']);
-$app->router->post('/utrance-railway/booking-train', [AdminController::class, 'bookingForTrain']);
+$app->router->get('/utrance-railway/booking-train', [BookingController::class, 'bookingForTrain']);
+$app->router->post('/utrance-railway/booking-train', [BookingController::class, 'bookingForTrain']);
 
 
 

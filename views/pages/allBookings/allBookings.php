@@ -63,7 +63,7 @@
                             1 / 1
                         </div>
                     </div>
-                    <a class="btn__view--bookings">
+                    <a href="/utrance-railway/booking-train" class="btn__view--bookings">
                         view
                     </a>
                 </div>
@@ -102,7 +102,7 @@
                             0 / 1
                         </div>
                     </div>
-                    <a class="btn__view--bookings">
+                    <a href="/utrance-railway/booking-train" class="btn__view--bookings">
                         view
                     </a>
                 </div>
