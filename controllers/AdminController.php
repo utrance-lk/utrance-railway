@@ -169,6 +169,18 @@ class AdminController extends Controller
         return $this->render(['admin', 'addRoute']);
     }
 
+    // manage bookings
+
+    public function manageBookings($request) {
+        if($request->isPost()) {
+            // form
+            return 'success';
+        }
+
+        return $this->render('allBookings');
+
+    }
+
     ////////////////////////
 
     public function updateTrain($request)
