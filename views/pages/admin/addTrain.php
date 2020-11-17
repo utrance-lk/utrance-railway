@@ -10,7 +10,7 @@
             <form action="/utrance-railway/trains/add" class="form__train-data" method='post' >
             <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?> 
             <?php if(isset($TrainRouteError)){echo $TrainRouteError;}?> 
-            <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
+           
             <?php if(isset($TrainTypeError)){echo $TrainTypeError;}?>
             <?php if(isset($TrainFcError)){echo $TrainFcError;}?>
             <?php if(isset($TrainScError)){echo $TrainScError;}?>
@@ -20,7 +20,7 @@
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
                         <input type="text" name="train_name" class="form__input" placeholder="<?php echo isset($TrainNameError) ? $TrainNameError : 'Galle train';?>"value="<?php echo isset($train_name) ? $train_name : '';?>" required>
-                        <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
+                       <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>

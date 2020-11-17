@@ -181,11 +181,15 @@ class AdminController extends Controller
         if($request->isGet()) 
         {
         $deleteTrainModel=new AdminModel();
+      
         $deleteTrainModel->loadData($request->getQueryParams());
         $deleteTrainModel->deleteTrains();
         $trainArray=$deleteTrainModel->getTrains();
         return $this->render(['admin', 'manageTrains'],$trainArray);
-        }  
+        
+        }
+
+        
     }
 
     public function addTrain($request) 

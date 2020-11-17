@@ -113,9 +113,16 @@ class TrainModel extends Model
     public function deleteTrains(){
         $query = APP::$APP->db->pdo->prepare("DELETE FROM trains WHERE train_id = :train_id ");
         $query->bindValue(":train_id", $this->id);
-        // $query->bindValue(":train_active_status",$this->train_active_status);
+        $query->execute();
+        $this->setRouteStatus();
+    }
+
+    public function setRouteStatus(){
+        $query = APP::$APP->db->pdo->prepare("UPDATE routes SET route_status = 0 WHERE route_id=(SELECT routes.route_id FROM trains RIGHT JOIN routes ON trains.route_id = routes.route_id WHERE trains.train_id=:train_id)");
+        $query->bindValue(":train_id", $this->id);
         $query->execute();
     }
+
 
     public function addNewTrainDetails()
     {

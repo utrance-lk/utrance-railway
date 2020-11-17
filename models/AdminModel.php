@@ -321,6 +321,15 @@ class AdminModel extends Model {
     public function deleteTrains(){
         $query = APP::$APP->db->pdo->prepare("DELETE FROM trains WHERE train_id = :train_id ");
         $query->bindValue(":train_id", $this->id);
+        $this->setRouteStatus();
+        $query->execute();
+        
+    }
+
+    public function setRouteStatus(){
+
+        $query = APP::$APP->db->pdo->prepare("UPDATE routes SET route_status=0 WHERE route_id=(SELECT trains.route_id FROM trains INNER JOIN routes ON trains.route_id = routes.route_id WHERE trains.train_id=:train_id)");
+        $query->bindValue(":train_id", $this->id);
         $query->execute();
     }
 
@@ -449,6 +458,8 @@ class AdminModel extends Model {
         $inputText = strip_tags($inputText); //remove html tags
         return ucfirst($inputText); // capitalize first letter
     }
+
+    
 
    
 

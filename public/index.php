@@ -137,8 +137,8 @@ $app->router->post('/utrance-railway/trains', [AdminController::class, 'manageTr
 
 $app->router->get('/utrance-railway/trains/view', [AdminController::class, 'updateTrain']);
 $app->router->post('/utrance-railway/trains/view', [AdminController::class, 'updateTrain']);
-$app->router->get('/utrance-railway/trains/delete', [TrainController::class, 'deleteTrain']);
-$app->router->post('/utrance-railway/trains/delete', [TrainController::class, 'deleteTrain']);
+$app->router->get('/utrance-railway/trains/delete', [AdminController::class, 'deleteTrain']);
+$app->router->post('/utrance-railway/trains/delete', [AdminController::class, 'deleteTrain']);
 $app->router->get('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
 $app->router->post('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
 
