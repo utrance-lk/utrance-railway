@@ -57,11 +57,15 @@ echo"</table>";
         </div>
 
 <?php
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
 $reader->setReadDataOnly(TRUE);
 $spreadsheet = $reader->load("ticketPrice.xlsx");
 
 $worksheet = $spreadsheet->getActiveSheet();
+//$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+//$spreadsheet->getActiveSheet()->getStyle('A2:A20')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
 
 echo '<table>' . PHP_EOL;
 foreach ($worksheet->getRowIterator() as $row) {
