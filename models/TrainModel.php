@@ -55,7 +55,7 @@ class TrainModel extends Model
 
     }
 
-    public function getManagTrains()
+    public function getManageTrains()
     {
         $manageTrain = New HandlerFactory();
         $valuesArray =['train_id' =>$this->id];
