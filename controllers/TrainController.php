@@ -9,6 +9,7 @@ class TrainController extends Controller
         if ($request->isPost()) {
             // form
             return 'success';
+            echo 'hello';
 
         }
 
