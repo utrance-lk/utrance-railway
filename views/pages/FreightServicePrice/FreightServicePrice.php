@@ -4,7 +4,7 @@
     <div class="main-01">
           <div class="main-02"><p class="p-ticket-head">Freight Service Price</p></div>
       </div>
-      <p style="color:orange">FF = Furniture small Lots</p><br>
+      <p>FF = Furniture small Lots</p><br>
       <p >LL = Letters</p><br>
       <p>TWL = Light weight Articles which require more space</p><br>
       <p>MW = Machinery not weight over 50 kg</p><br>

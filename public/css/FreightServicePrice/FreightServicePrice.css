@@ -34,8 +34,11 @@
    
 }
 p{
+  font-family: arial, sans-serif;
   margin-left: 200px;
-  color:darkblue;
+  color:rgb(207, 167, 35);
+  font-weight: bold;
+  font-size: px;
   
 }
   table {
@@ -63,7 +66,7 @@ p{
 
   }
   tr:first-child {
-    color: #3794fd;
+    color: darkblue;
     
   }
 
