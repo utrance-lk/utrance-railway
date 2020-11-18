@@ -22,7 +22,7 @@ class UserController extends Controller
             }
 
             if($this->authMiddleware->restrictTo('details_provider')){
-                var_dump(" hello");
+               
                 return $this->render('detailsProvider');
             }
 
