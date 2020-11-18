@@ -4,10 +4,13 @@
     <div class="main-01">
           <div class="main-02"><p class="p-ticket-head">Freight Service Price</p></div>
       </div>
-      <p>FF = Furniture small Lots</p><br>
-      <p >LL = Letters</p><br>
-      <p>TWL = Light weight Articles which require more space</p><br>
-      <p>MW = Machinery not weight over 50 kg</p><br>
+      <div class="freight">
+      <p><i class="fas fa-box"></i> FF = Furniture small Lots</p><br>
+      <p ><i class="fas fa-envelope-square"></i> LL = Letters</p><br>
+      <p><i class="fas fa-mail-bulk"></i> TWL = Light weight Articles which require more space</p><br>
+      <p><i class="fas fa-boxes"></i> MW = Machinery not weight over 50 kg</p><br>
+      </div>
+      
 
 <?php
 $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');

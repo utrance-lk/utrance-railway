@@ -7,6 +7,7 @@
     justify-content: center;
     padding: 0;
     margin-bottom: 1.875rem;
+    
   }
   #div-table{
     justify-content: center;
@@ -20,12 +21,13 @@
     padding-left: 40rem;
     padding-top: 0.2rem;
     display: inline-block;
+    
   }
   .p-ticket-head{
       color: white;
-      font-size: 1.8rem;
+      font-size: 20px;
       font-family: "Poppins", sans-serif;
-      margin-left: 24.625rem;
+      margin-left: 30.0rem;
       margin-top: 1.800rem;
   }
 
@@ -33,12 +35,12 @@
     padding-top: 4rem;
    
 }
-p{
+.freight p{
   font-family: arial, sans-serif;
   margin-left: 200px;
-  color:rgb(207, 167, 35);
+  color:rgb(245, 203, 67);
   font-weight: bold;
-  font-size: px;
+  font-size: 20px;
   
 }
   table {
