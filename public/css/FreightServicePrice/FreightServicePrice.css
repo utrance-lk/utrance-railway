@@ -33,6 +33,11 @@
     padding-top: 4rem;
    
 }
+p{
+  margin-left: 200px;
+  color:darkblue;
+  
+}
   table {
     font-family: arial, sans-serif;
     font-weight: bold;
@@ -41,6 +46,8 @@
     height: 45%;
     margin: 1.8rem;
     table-layout:fixed;
+    font-size: 17px;
+    margin-left: 200px;
     
   }
   
@@ -56,7 +63,8 @@
 
   }
   tr:first-child {
-    color: #1F3A93;
+    color: #3794fd;
+    
   }
 
   
