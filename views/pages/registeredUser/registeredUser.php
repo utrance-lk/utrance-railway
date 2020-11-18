@@ -62,7 +62,7 @@
                 $html .= "<label for='stl2' class='form__label'>Street Line 2</label>";
 
                 if(isset($streetLine2Error)){
-                  $html .= "<input type='text' name='street_line2' class='form__input' ></div>";
+                  $html .= "<input type='text' name='street_line2' class='form__input' placeholder='".$streetLine2Error."'  ></div>";
                 }else{
                   $val=App::$APP->activeUser()['street_line2'];
                   //var_dump($val);
@@ -74,7 +74,7 @@
                 $html .= "<label for='city' class='form__label'>City</label>";
 
                 if(isset($cityError)){
-                  $html .= "<input type='text' name='city' class='form__input' value=" . App::$APP->activeUser()['city'] . "></div></div></div>";
+                  $html .= "<input type='text' name='city' class='form__input'  placeholder='".$cityError."'></div></div></div>";
                 }else{
                   $html .= "<input type='text' name='city' class='form__input' value=" . App::$APP->activeUser()['city'] . "></div></div></div>";
                 }
@@ -115,7 +115,7 @@
               $html .= "<label for='currentpassword' class='form__label'>Current Password</label>";
 
               if(isset($passwordError)){
-
+                $html .= "<input type='password' name='user_password'  placeholder='".$passwordError."' class='form__input'/></div>";
               }else{
                 $html .= "<input type='password' name='user_password' class='form__input'/></div>";
               }
@@ -127,7 +127,7 @@
               if(isset($passwordMatchError)){
                 $html .= "<input type='password' name='newpassword' placeholder='".$passwordMatchError."'  class='form__input'></div>";
               }else{
-                $html .= "<input type='password' name='newpassword' class='form__input'></div>";
+                $html .= "<input type='password' name='user_new_password' class='form__input'></div>";
               }
 
               //$html .= "<input type='password' name='newpassword' class='form__input'></div>";
@@ -136,7 +136,7 @@
               $html .= "<label for='confirmpassword' class='form__label'>Confirm Password</label>";
 
 
-              $html .= "<input type='password' name='confirmpassword' class='form__input'></div>";
+              $html .= "<input type='password' name='user_confirm_password' class='form__input'></div>";
 
               $html .= "<div class='btn__save-box'>";
               //$html .= "<div class='btn__save btn__password'>Save Password</div></div>";
