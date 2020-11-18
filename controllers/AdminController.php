@@ -36,6 +36,7 @@ class AdminController extends Controller
                 $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
                 $getSearchResult = $searchUser->getSearchUserResult();
+                //var_dump($getSearchResult);
                 return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
@@ -59,7 +60,7 @@ class AdminController extends Controller
                 return $response->redirect('/utrance-railway/users/add');
             }else{
                 $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
-                var_dump($addUserSetValue);
+               // var_dump($addUserSetValue);
                 return $this->render(['admin','addUser'], $addUserSetValue); //Ashika
             }
 
@@ -79,6 +80,20 @@ class AdminController extends Controller
 
     }
 
+    public function viewTrains($request){
+        if($request->isGet()){
+            $adminViewTrain=new AdminModel();
+            $adminViewTrain->loadData($request->getQueryParams());
+            $updateTrainArray=$adminViewTrain->getTrainDetails();
+            $updateTrainArray['trains'][0]['trains_id']=$request->getQueryParams()['trains_id'];
+            return $this->render(['admin','updateUser'],$updateTrainArray);
+        }
+    }
+
+
+
+
+    
     public function updateUser($request, $response) {//update users from manage users
 
         if ($request->isPost()) {
@@ -119,20 +134,23 @@ class AdminController extends Controller
 
     // manage trains
 
-    public function manageTrains($request)
+    public function manageTrains($request) //Ashika
     {
 
         if ($this->protect()) {
+            $manageTrainModel = new AdminModel(); 
+            
             if ($request->isPost()) {
                
                 $manageTrainModel->loadData($request->getBody());
                 $getSearchResult = $manageTrainModel->getSearchTrainResult();
+                
                 return $this->render(['admin', 'manageTrains'], $getSearchResult);
             }
 
             $manageTrainModel->loadData($request->getBody());
             $getTrainArray = $manageTrainModel->getTrains();
-
+            
             return $this->render(['admin', 'manageTrains'], $getTrainArray);
 
         }

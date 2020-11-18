@@ -7,7 +7,7 @@
             </div>
             <form action="" class="js--addStop-container">
                 
-                <!-- <div class="search__result-card added__stops-card">
+                < <div class="search__result-card added__stops-card">
                     <div class="stopadd__id-box"># <span>1</span> </div>
                     <div class="stopadd__station-box">Matara</div>
                     <div class="stopadd__arrivaltime-box">09:00 AM</div>
@@ -24,7 +24,7 @@
                     <svg class="stop__delete-btn">
                         <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cross"></use>
                     </svg>
-                </div> -->
+                </div> 
                 <div class="added_stops-card--container" id="js--added_stops-card--container"></div>
                 <div class="btn__addStop addbtn js--btn__addStop">
                     <div class="btn__addStop-text addbtn-text">Add Stop</div>
@@ -32,7 +32,7 @@
                         <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus"></use>
                     </svg>
                 </div>
-                <!-- <div class="search__result-card addStop-card">
+                < <div class="search__result-card addStop-card">
                    <div class="addstation-box addStop-card-item">
                        <div class="station-heading">
                            Station
@@ -54,8 +54,9 @@
                    <div class="addstop-btn-box btn-white">
                        Add
                    </div>
-                </div> -->
+                </div> >
             </form>
+          </div>
           </div>
 </div>
 </div>
