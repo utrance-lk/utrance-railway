@@ -101,7 +101,7 @@ class AuthController extends Controller
             $resetToken = $userForgotPassword->createPasswordResetToken();
 
             // 3) Send it to user's email
-            $resetURL = $_SERVER['SERVER_PROTOCOL'] . "://" . $_SERVER['HTTP_HOST'] . "/utrance-railway/resetPassword?token=" . $resetToken;
+            $resetURL = $_SERVER['HTTP_HOST'] . "/utrance-railway/resetPassword?token=" . $resetToken;
 
             $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
 
@@ -155,14 +155,14 @@ class AuthController extends Controller
         $tempBody = $request->getBody();
         $tempBody['email_id'] = $email;
         $resetPasswordUser->loadData($tempBody);
-        var_dump($tempBody);
-        $passwordChangeState = $resetPasswordUser->updatePassword();
+        $passwordChangeState = $resetPasswordUser->forgotUpdatePassword();
         if($passwordChangeState === 'success') {
             return $response->redirect('/utrance-railway/login');
         } else {
-            $registerSetValue = $resetPasswordUser->registerSetValue($passwordChangeState); 
-            //var_dump($registerSetValue);
-            return $this->render('resetPassword', $registerSetValue);
+            // $registerSetValue = $resetPasswordUser->registerSetValue($passwordChangeState); 
+            // var_dump($registerSetValue);
+            // return $this->render('resetPassword', $registerSetValue);
+            return 'fail';
         }
     }
 

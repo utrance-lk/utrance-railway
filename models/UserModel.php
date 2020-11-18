@@ -66,8 +66,6 @@ class UserModel extends Model
          }else{
             return $validationState;
          }
-       
-
         
     }
 
@@ -88,6 +86,23 @@ class UserModel extends Model
         
     }
 
+    public function forgotUpdatePassword() {
+        $passwordValidation = new FormValidation();
+        $passwordValidation->validatePassword($this->user_password, $this->user_confirm_password);
+        if(empty($passwordValidation->errorArray)) {
+            $this->passwordHashing();
+            var_dump($this->user_password);
+            $query = App::$APP->db->pdo->prepare("UPDATE users SET user_password=:up WHERE email_id=:email");
+            $query->bindValue(":up", $this->user_password);
+            $query->bindValue(":email", $this->email_id);
+            $query->execute();
+            return 'success';
+        } else {
+            var_dump($passwordValidation->errorArray);
+            return 'failed';
+        }
+
+    }
 
     public function updatePassword(){
         $array=['user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password,'user_new_password' => $this->user_new_password,'email_id' => $this->email_id];

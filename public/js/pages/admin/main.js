@@ -10,7 +10,6 @@ items.addStopBtn.addEventListener("click", function () {
     stopsCount++;
   }
   items.addBtn = document.getElementById("js--addstop-btn-box");
-
 });
 
 // document.addEventListener('click', function(e) {
@@ -37,3 +36,7 @@ var myobj=document.getElementById("form-card");
 
 
 
+items.deleteUserBtn.addEventListener("click", function () {
+  var myobj = document.getElementById("form-card");
+  myobj.remove();
+});

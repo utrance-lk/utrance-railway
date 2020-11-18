@@ -227,4 +227,42 @@ var loadFile=function(event){
 </script!-->
 
 
+</body>
+</html>
+<?php
+if(isset($_POST['save'])){ //Ashika
+  //echo "Hello1234";
+  $file=$_FILES['photo'];
+  $name=$_POST['first_name'];
+  $fileName=$_FILES['photo']['name'];
+  $fileTempName=$_FILES['photo']['tmp_name'];
+  $fileSize=$_FILES['photo']['size'];
+  $fileError=$_FILES['photo']['error'];
+  $fileType=$_FILES['photo']['type'];
+  
+
+  $fileExt=explode('.',$fileName);
+  $fileActualExt=strtolower(end($fileExt));
+  $allowed=array('jpg','jpeg','png');
+
+  if(in_array($fileActualExt,$allowed)){
+    if($fileError === 0){
+      if($fileSize < 1000000){
+            $fileNameNew=$name.".".$fileActualExt;
+            $fileDestination='img/uploads/'.$fileNameNew;
+            move_uploaded_file($fileNameNew,$fileDestination);
+            echo "file added succesfully!!";
+            
+      }else{
+        echo "Your file is too big!!!";
+      }
+          
+    }else{
+      echo "There was an error uploading your file!!";
+    }
+
+  }else{
+    echo "You can not upload files of this type!!!";
+  }
+}
 

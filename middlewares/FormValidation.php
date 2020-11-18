@@ -260,7 +260,8 @@ class FormValidation{
 
     }
 
-    private function validatePassword($user_password, $user_confirm_password){ //Ashika
+    public function validatePassword($user_password, $user_confirm_password)
+    { //Ashika
 
         if ($user_password != $user_confirm_password) {
             $this->errorArray['passwordError'] = "Password does not match";
