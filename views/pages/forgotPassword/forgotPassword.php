@@ -3,7 +3,7 @@
 
         <div class="email__container">
             <label for="email_id">Enter your email</label>
-            <input type="email" name="email_id" id="email_id">
+            <input type="email" name="email_id" id="email_id" required>
         </div>
         <input type="submit" value="Send reset link to this email" class="btn__submit">
 

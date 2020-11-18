@@ -258,7 +258,7 @@ class FormValidation{
 
     }
 
-    private function validatePassword($user_password, $user_confirm_password)
+    public function validatePassword($user_password, $user_confirm_password)
     { //Ashika
 
         if ($user_password != $user_confirm_password) {
