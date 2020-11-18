@@ -26,7 +26,7 @@ class FormValidation{
 
 
     public function runUpdateValidators($array){
-        var_dump(trim($array['street_line1']));
+       // var_dump(trim($array['street_line1']));
         $this->validateFirstName(trim($array['first_name'])); //Asindu
         $this->validateLastName(trim($array['last_name'])); //Ashika
         $this->validateStreetLine1($array['street_line1']); //Ashika
@@ -43,7 +43,8 @@ class FormValidation{
     }
 
     public function runPasswordUpdateValidation($array){
-       
+       var_dump($array['user_password']);
+       var_dump($array['user_new_password']);
         $query = APP::$APP->db->pdo->prepare("SELECT user_password FROM users WHERE email_id=:eid");
         $query->bindValue(":eid", $array['email_id']);
         $query->execute();
@@ -214,6 +215,7 @@ class FormValidation{
     }
 
     private function validateUpdatePassword($user_password,$user_confirm_password){
+        var_dump($user_password);
         if ($user_password != $user_confirm_password) {
             $this->errorArray['passwordMatchError'] = "Password does not match";
         } else {

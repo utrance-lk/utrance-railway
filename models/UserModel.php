@@ -3,7 +3,7 @@
 include_once "../classes/core/Model.php";
 include_once "HandlerFactory.php";
 include_once "../middlewares/FormValidation.php";
-include_once "../middlewares/Sanitization.php";
+
 
 
 class UserModel extends Model
@@ -71,9 +71,9 @@ class UserModel extends Model
         
     }
 
-    public function updateMyProfile() { 
-        $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
-        var_dump("hello");
+    public function updateMyProfile() {
+        
+        $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_role' =>$this->user_role];
         $updateValidation=new FormValidation();
         $validationState=$updateValidation->runUpdateValidators($array);
         

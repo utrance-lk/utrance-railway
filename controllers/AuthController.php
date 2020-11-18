@@ -174,6 +174,8 @@ class AuthController extends Controller
             $tempBody=$request->getBody();
             $email=App::$APP->activeUser()['email_id'];
             $tempBody["email_id"]=$email;
+            $user_role=App::$APP->activeUser()['role'];
+            $tempBody['user_role']=$user_role;
             $updatePasswordUserModel->loadData($tempBody);
             $updatePasswordState = $updatePasswordUserModel->updatePassword();
             
@@ -181,8 +183,15 @@ class AuthController extends Controller
                 return $response->redirect('/utrance-railway/settings'); 
             }else{
                 $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);
+                if($user_role === "admin"){
+                    return $this->render('admin',$updatePasswordSetValue);
+                }
+
+                if($user_role === "user"){
+                    return $this->render('registeredUser',$updatePasswordSetValue); 
+                }
               
-                return $this->render('admin',$updatePasswordSetValue);
+                
                 
             }
 

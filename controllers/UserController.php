@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
     public function updateMe($request, $response) {
-        var_dump("hy");
+       // var_dump("hy");
         $updateUserDetailsModel = new UserModel();
         if ($request->isPost()) {
             
@@ -32,23 +32,24 @@ class UserController extends Controller
             $tempUpdateUserBody = $request->getBody();
 
             $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+            $tempUpdateUserBody['user_role']=App::$APP->activeUser()['role'];
 
             $updateUserDetailsModel->loadData($tempUpdateUserBody);
            
             $state = $updateUserDetailsModel->updateMyProfile();
-           var_dump($state);
+           
             if ($state === 'success') {
-                var_dump("hyefew");
+               var_dump("hello");
                 return $response->redirect('/utrance-railway/settings');
             } else {
                 $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
-               // var_dump($addUserSetValue);
+               var_dump("hy");
                if($this->authMiddleware->restrictTo('admin')) {
                 return $this->render('admin',$updateUserDetailsSetValue);
                }
       
               if($this->authMiddleware->restrictTo('user')) {
-                  var_dump($updateUserDetailsSetValue);
+                //  var_dump($updateUserDetailsSetValue);
                 return $this->render('registeredUser',$updateUserDetailsSetValue);
               }
                // return $this->render(['admin','addUser'], $addUserSetValue); //Ashika

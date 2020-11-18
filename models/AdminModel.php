@@ -99,9 +99,9 @@ class AdminModel extends Model {
     { //Ashika
         $this->id = $this->searchUserByNameOrId;
         $this->first_name = $this->searchUserByNameOrId;
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  WHERE id=:id OR first_name=:fn ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  WHERE first_name LIKE '%{$this->first_name}%' ");
         $query->bindValue(":id", $this->id);
-        $query->bindValue(":fn", $this->first_name);
+        //$query->bindValue(":fn", $this->first_name);
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;

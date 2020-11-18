@@ -127,7 +127,7 @@
               if(isset($passwordMatchError)){
                 $html .= "<input type='password' name='newpassword' placeholder='".$passwordMatchError."'  class='form__input'></div>";
               }else{
-                $html .= "<input type='password' name='newpassword' class='form__input'></div>";
+                $html .= "<input type='password' name='user_new_password' class='form__input'></div>";
               }
 
               //$html .= "<input type='password' name='newpassword' class='form__input'></div>";
@@ -136,7 +136,7 @@
               $html .= "<label for='confirmpassword' class='form__label'>Confirm Password</label>";
 
 
-              $html .= "<input type='password' name='confirmpassword' class='form__input'></div>";
+              $html .= "<input type='password' name='user_confirm_password' class='form__input'></div>";
 
               $html .= "<div class='btn__save-box'>";
               //$html .= "<div class='btn__save btn__password'>Save Password</div></div>";

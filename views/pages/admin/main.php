@@ -19,7 +19,7 @@
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/admin/UtranceLogo.png" alt="logo" class="logo" />
           </div>
           <div class="main__nav-items">
             <a href="/utrance-railway/home" class="home-box nav-items-little">

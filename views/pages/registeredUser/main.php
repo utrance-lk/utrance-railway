@@ -140,7 +140,7 @@
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/admin/UtranceLogo.png" alt="logo" class="logo" />
           </div>
           <div class="main__nav-items">
             <a href="/utrance-railway/home" class="home-box nav-items-little">
@@ -208,7 +208,7 @@
             
           </div>
           
-          <div class="userrole-name">Registered User</div>
+          
           <!--div class="sidebar__nav-role-items">
             <a href="/utrance-railway/source/contactAdmin" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="train-icon sidebar__nav-icon">
