@@ -495,7 +495,7 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .search__card-detailbox--train-name a {
-    color: rgb(119, 119, 119);
+    color: rgb(119, 119, 119) !important;
 }
 
 /* .btn-cta {
