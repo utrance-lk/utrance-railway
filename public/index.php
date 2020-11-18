@@ -144,8 +144,8 @@ $app->router->post('/utrance-railway/trains/add', [AdminController::class, 'addT
 
 $app->router->post('/utrance-railway/ticketPrice', [TrainController::class, 'ticketPrice']);
 $app->router->get('/utrance-railway/ticketPrice', [TrainController::class, 'ticketPrice']);
-$app->router->post('/utrance-railway/ticketPrice', [TrainController::class, 'FreightServicePrice']);
-$app->router->get('/utrance-railway/ticketPrice', [TrainController::class, 'FreightServicePrice']);
+$app->router->post('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
+$app->router->get('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
 // $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 // $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 // $app->router->post('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
