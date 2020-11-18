@@ -142,13 +142,13 @@
               </svg>
               <span class="manage--bookings-name">Manage bookings</span>
             </a>
-            <div class="sidebar__nav-manage--freights sidebar__nav-item">
+            <a href="/utrance-railway/freight-bookings" class="sidebar__nav-manage--freights sidebar__nav-item">
               <svg class="freights-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-shopping-cart"></use>
               </svg>
               <span class="manage--freights-name">Manage freights</span>
-            </div>
-            <a href="/utrance-railway/freight-bookings" class="sidebar__nav-manage--news sidebar__nav-item">
+            </a>
+            <a href="#" class="sidebar__nav-manage--news sidebar__nav-item">
               <svg class="news-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-landline"></use>
               </svg>
