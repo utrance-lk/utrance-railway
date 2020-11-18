@@ -50,10 +50,21 @@
         {
             $base = $this->loadBase();
             $footer = $this->layoutContent('footer');
+            $header = $this->layoutContent('header');
+            
             $main = $this->renderOnlyView($view, $params, true);
             $viewContent = $this->renderOnlyView($view, $params);
 
             $base = str_replace('{{main}}', $main, $base);
+            $base = str_replace('{{header}}', $header, $base);
+            if(App::$APP->activeUser()['role'] === 'admin') {
+                $adminSideNav = $this->layoutContent('adminSideNav');
+                $base = str_replace('{{adminSideNav}}', $adminSideNav, $base);
+            }
+            if(App::$APP->activeUser()['role'] === 'user') {
+                $userSideNav = $this->layoutContent('userSideNav');
+                $base = str_replace('{{userSideNav}}', $userSideNav, $base);
+            }
             $base = str_replace('{{content}}', $viewContent, $base);
 
             return str_replace('{{footer}}', $footer, $base);

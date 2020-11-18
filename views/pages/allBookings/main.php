@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <!-- <nav class="nav-container">
+    <div class="nav-container">
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
@@ -97,9 +97,9 @@
           </div>
         </div>
       </div>
-    </nav> -->
+    </div>
 
-    <!-- <div class="main-container">
+    <div class="main-container">
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
@@ -142,19 +142,12 @@
               </svg>
               <span class="manage--bookings-name">Manage bookings</span>
             </a>
-            <a href="/utrance-railway/freight-bookings" class="sidebar__nav-manage--freights sidebar__nav-item">
+            <div class="sidebar__nav-manage--freights sidebar__nav-item">
               <svg class="freights-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-shopping-cart"></use>
               </svg>
               <span class="manage--freights-name">Manage freights</span>
-            </a>
-            <a href="#" class="sidebar__nav-manage--news sidebar__nav-item">
-              <svg class="news-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-landline"></use>
-              </svg>
-              <span class="manage--news-name">Manage News</span>
-            </a>
+            </div>
           </div>
         </div>
-      </div> -->
-
+      </div>

@@ -203,6 +203,8 @@
   cursor: pointer;
   transition: transform 0.5s;
   transition: background-color 0.2s;
+  font-family: 'Lato', 'sans-serif';
+  font-size: 1.5rem;
 }
 
 .btn__save:active,
@@ -617,11 +619,74 @@ select {
 }
 
 #deactivate-btn{
-  
   color: red;
 }
 
 #activate-btn{ 
  
   color: green;
+}
+
+.filters {
+  /* border: 1px solid green; */
+  padding: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  height: 5rem;
+  align-items: center;
+}
+
+.filters > * {
+  /* border: 1px solid slateblue; */
+}
+
+
+.date__picker {
+}
+
+.filter__label {
+  padding: .5rem;
+  /* border: 1px solid greenyellow; */
+  background-color: rgba(31, 58, 147, 0.8);
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.train-booking__stat-card--container {
+  /* border: 1px solid pink; */
+  margin-top: 4rem;
+}
+
+.train-booking__stat-card {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8rem;
+  background-color: rgb(244, 242, 242);
+  padding: 0 1rem;
+}
+
+.fcseats,
+.scseats,
+.sleeping-berths,
+.observation,
+.weight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.train-booking__stat-card:not(:last-child) {
+  margin-bottom: 4rem;
+}
+
+.btn__view--bookings {
+  border:  1px solid rgba(31, 58, 147, 0.8);
+  padding: 1rem;
+  border-radius: 5px;
+  width: 6rem;
+  text-align: center;
 }

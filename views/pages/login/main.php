@@ -11,4 +11,5 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/login/login.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
   </head>

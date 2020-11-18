@@ -3,11 +3,11 @@
 
         <div class="password__container">
             <label for="user_password">Enter new password</label>
-            <input type="password" name="user_password" id="user_password">
+            <input type="password" name="user_password" id="user_password" required>
         </div>
         <div class="password__container">
             <label for="user_confirm_password">Confirm password</label>
-            <input type="password" name="user_confirm_password" id="user_confirm_password">
+            <input type="password" name="user_confirm_password" id="user_confirm_password" required>
         </div>
         <input type="submit" value="Update Password" class="btn__submit">
 
