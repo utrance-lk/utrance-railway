@@ -4,7 +4,7 @@
             <div class="content-title">
               <p>Your Account Settings</p>
             </div>
-            <form action="" class="form__user-data" method="POST">
+            <form formaction="/utrance-railway/settings" class="form__user-data" method="POST">
             <div class="content__fields">
             <?php
               $dom = new DOMDocument;
@@ -16,6 +16,7 @@
             <?php
               if (isset($_SESSION['user'])) {
                 $html = "";
+               
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";
                 
@@ -93,7 +94,7 @@
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo' />";
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
                 $html .= "<div class='btn__save-box'>";
-                $html .= "<div class='btn__save btn-settings' name='submit'>Save Settings</div></div>";
+                $html .= "<button type='submit' class='btn__save btn-settings'  name='submit'>Save Settings</button></div>";
 
                 $dom = new DOMDocument();
                 $dom->loadHTML($html);
@@ -155,42 +156,6 @@
 
 <script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
 
-<!--?php
-  if(isset($_POST['submit'])){
-    $file=$_FILES['photo'];
-    //print_r($file);
-    var_dump($file);
-    $fileName=$_FILES['file']['name'];
-    $fileTempName=$_FILES['file']['temp_name'];
-    $fileSize=$_FILES['file']['size'];
-    $fileError=$_FILES['file']['error'];
-    $fileType=$_FILES['file']['type'];
 
-    $fileExt=explode('.',$fileName);
-    $fileActualExt=strtolower(end($fileExt));
-    $allowed=array('jpg','jpeg','png','pdf');
-
-    if(in_array($fileActualExt,$allowed)){
-      if($fileError === 0){
-        if($fileSize < 1000000){
-              $fileNameNew=uniqid('',true).".".$fileActualExt;
-              $fileDestination='uploads/'.$fileNameNew;
-              move_uploaded_file($fileTempName,$fileDestination);
-              header("Location:index.php?uploadsuccess");     
-        }else{
-          echo "Your file is too big!!!";
-        }
-            
-      }else{
-        echo "There was an error uploading your file!!";
-      }
-
-    }else{
-      echo "You can not upload files of this type!!!";
-    }
-  }
-
-
-?!-->
 </body>
 </html>

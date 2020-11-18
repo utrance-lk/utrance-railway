@@ -192,7 +192,7 @@ class AuthController extends Controller
                     return $this->render('registeredUser',$updatePasswordSetValue); 
                 }
 
-                if($user_role === "details provider"){
+                if($user_role === "details_provider"){
                     return $this->render('detailsProvider',$updatePasswordSetValue);
                 }
               

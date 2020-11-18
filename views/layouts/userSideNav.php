@@ -2,7 +2,7 @@
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
-            <a href="/utrance-railway/registeredUser" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
+            <a href="/utrance-railway/settings" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
               <svg class="settings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
               </svg>

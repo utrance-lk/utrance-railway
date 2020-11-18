@@ -21,8 +21,9 @@ class UserController extends Controller
                 return $this->render('registeredUser');
             }
 
-            if($this->authMiddleware->restrictTo('deatils provider')){
-               // return $this->render('');
+            if($this->authMiddleware->restrictTo('details_provider')){
+                var_dump(" hello");
+                return $this->render('detailsProvider');
             }
 
         }
@@ -30,8 +31,11 @@ class UserController extends Controller
 
     public function updateMe($request, $response) {
        
+       var_dump("yicd");
         $updateUserDetailsModel = new UserModel();
+        
         if ($request->isPost()) {
+            
             
             
             $tempUpdateUserBody = $request->getBody();
@@ -57,9 +61,16 @@ class UserController extends Controller
                 
                 return $this->render('registeredUser',$updateUserDetailsSetValue);
               }
+
+
+              if($this->authMiddleware->restrictTo('details_provider')) {
+                
+                return $this->render('detailsProvider',$updateUserDetailsSetValue);
+              }
               
             }
         }
+        return "HEllo";
         
     }
 
