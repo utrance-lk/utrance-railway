@@ -20,11 +20,16 @@ class UserController extends Controller
             if($this->authMiddleware->restrictTo('user')) {
                 return $this->render('registeredUser');
             }
+
+            if($this->authMiddleware->restrictTo('deatils provider')){
+               // return $this->render('');
+            }
+
         }
     }
 
     public function updateMe($request, $response) {
-       // var_dump("hy");
+       
         $updateUserDetailsModel = new UserModel();
         if ($request->isPost()) {
             
@@ -39,21 +44,20 @@ class UserController extends Controller
             $state = $updateUserDetailsModel->updateMyProfile();
            
             if ($state === 'success') {
-               var_dump("hello");
+             
                 return $response->redirect('/utrance-railway/settings');
             } else {
                 $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
-               var_dump("hy");
+               
                if($this->authMiddleware->restrictTo('admin')) {
                 return $this->render('admin',$updateUserDetailsSetValue);
                }
       
               if($this->authMiddleware->restrictTo('user')) {
-                //  var_dump($updateUserDetailsSetValue);
+                
                 return $this->render('registeredUser',$updateUserDetailsSetValue);
               }
-               // return $this->render(['admin','addUser'], $addUserSetValue); //Ashika
-               // return 'error updating data!!';
+              
             }
         }
         

@@ -155,12 +155,13 @@ class AuthController extends Controller
         $tempBody = $request->getBody();
         $tempBody['email_id'] = $email;
         $resetPasswordUser->loadData($tempBody);
+        var_dump($tempBody);
         $passwordChangeState = $resetPasswordUser->updatePassword();
         if($passwordChangeState === 'success') {
             return $response->redirect('/utrance-railway/login');
         } else {
             $registerSetValue = $resetPasswordUser->registerSetValue($passwordChangeState); 
-            var_dump($registerSetValue);
+            //var_dump($registerSetValue);
             return $this->render('resetPassword', $registerSetValue);
         }
     }
@@ -189,6 +190,10 @@ class AuthController extends Controller
 
                 if($user_role === "user"){
                     return $this->render('registeredUser',$updatePasswordSetValue); 
+                }
+
+                if($user_role === "details provider"){
+                    return $this->render('detailsProvider',$updatePasswordSetValue);
                 }
               
                 

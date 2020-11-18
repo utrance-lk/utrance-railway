@@ -92,11 +92,8 @@ class UserModel extends Model
     public function updatePassword(){
         $array=['user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password,'user_new_password' => $this->user_new_password,'email_id' => $this->email_id];
         $updatePassword=new FormValidation();
-        var_dump($array);
         $validationState=$updatePassword->runPasswordUpdateValidation($array);
-       // var_dump($validationState);
-        
-        
+       
         if($validationState === "success"){
             $this->sanitizeFormPassword($this->user_new_password);
             $this->user_password=$this->user_new_password;
