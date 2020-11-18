@@ -5,6 +5,7 @@ require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
 require_once "../controllers/BookingController.php";
+require_once "../controllers/FreightController.php";
 require_once "../controllers/detailsProviderController.php";
 require_once "../controllers/UserController.php";
 
@@ -158,6 +159,8 @@ $app->router->get('/utrance-railway/ticketPrice', [TrainController::class, 'tick
 // $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 // $app->router->post('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
-/* ROUTE HANDLING */
+// FREIGHT CONTROLLER
+$app->router->get('/utrance-railway/freight-search', [FreightController::class, 'searchFreightTrains']);
+
 
 $app->run();
