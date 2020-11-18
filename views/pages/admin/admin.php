@@ -187,9 +187,6 @@ var loadFile=function(event){
 </body>
 </html>
 <?php
-
-//echo "hello";
-var_dump(isset($_POST['save']));
 if(isset($_POST['save'])){ //Ashika
   //echo "Hello1234";
   $file=$_FILES['photo'];
