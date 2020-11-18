@@ -1,4 +1,4 @@
-<?php if($_REQUEST['url'] === 'home') : ?>
+<?php if($_REQUEST['url'] === 'home' || $_REQUEST['url'] === 'search') : ?>
 <nav class="nav-container">
       <div class="navbar">
         <div class="main__nav">
