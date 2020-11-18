@@ -17,7 +17,7 @@ class UserController extends Controller
             if($this->authMiddleware->restrictTo('admin')) {
                 return $this->render('admin');
             }
-            if($this->authMiddleware->restrictTo('admin')) {
+            if($this->authMiddleware->restrictTo('user')) {
                 return $this->render('registeredUser');
             }
         }

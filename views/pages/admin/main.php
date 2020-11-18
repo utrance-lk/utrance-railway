@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div class="nav-container">
+    <!-- <nav class="nav-container">
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
@@ -97,9 +97,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </nav> -->
 
-    <div class="main-container">
+    <!-- <div class="main-container">
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
@@ -156,4 +156,5 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
+

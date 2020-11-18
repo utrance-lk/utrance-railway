@@ -1,5 +1,5 @@
-<body>
-  <nav class="nav-container">
+<!-- <body> -->
+  <!-- <nav class="nav-container">
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-    </nav>
+    </nav> -->
       <section class="heading-primary">
         <form class="search-bar__container" method="POST" action="/utrance-railway/search">
           <div class="search-bar">
