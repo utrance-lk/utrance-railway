@@ -63,7 +63,9 @@ class BookingController extends Controller {
     // admin
     public function bookingForTrain($request) {
         if($this->authMiddleware->restrictTo('admin')) {
-            return $this->render('bookingForATrain');
+            if($request->isGet()) {
+                return $this->render('bookingForATrain');
+            }
         } else {
             return 'You are not authorized';
         }
@@ -72,7 +74,19 @@ class BookingController extends Controller {
 
     public function manageFreights($request) {
         if($this->authMiddleware->restrictTo('admin')) {
-            return $this->render(['admin', 'manageFreights']);
+            if($request->isGet()) {
+                return $this->render(['admin', 'manageFreights']);
+            }
+        } else {
+            return 'You are not authorized';
+        }
+    }
+
+    public function manageBookings($request) {
+        if ($this->authMiddleware->restrictTo('admin')) {
+            if($request->isGet()) {
+                return $this->render(['admin', 'manageBookings']);
+            }
         } else {
             return 'You are not authorized';
         }
@@ -80,7 +94,9 @@ class BookingController extends Controller {
 
     public function freightBookingForTrain($request) {
         if ($this->authMiddleware->restrictTo('admin')) {
-            return $this->render('freightBookingForATrain');
+            if($request->isGet()) {
+                return $this->render('freightBookingForATrain');
+            }
         } else {
             return 'You are not authorized';
 }

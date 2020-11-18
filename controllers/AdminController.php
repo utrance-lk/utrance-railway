@@ -171,15 +171,15 @@ class AdminController extends Controller
 
     // manage bookings
 
-    public function manageBookings($request) {
-        if($request->isPost()) {
-            // form
-            return 'success';
-        }
+    // public function manageBookings($request) {
+    //     if($request->isPost()) {
+    //         // form
+    //         return 'success';
+    //     }
 
-        return $this->render('allBookings');
+    //     return $this->render('allBookings');
 
-    }
+    // }
 
     ////////////////////////
 
