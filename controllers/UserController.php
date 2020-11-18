@@ -24,22 +24,38 @@ class UserController extends Controller
     }
 
     public function updateMe($request, $response) {
+        var_dump("hy");
+        $updateUserDetailsModel = new UserModel();
         if ($request->isPost()) {
-            $updateUserDetailsModel = new UserModel();
-
+            
+            
             $tempUpdateUserBody = $request->getBody();
 
             $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
 
             $updateUserDetailsModel->loadData($tempUpdateUserBody);
-
+           
             $state = $updateUserDetailsModel->updateMyProfile();
+           var_dump($state);
             if ($state === 'success') {
+                var_dump("hyefew");
                 return $response->redirect('/utrance-railway/settings');
             } else {
-                return 'error updating data!!';
+                $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
+               // var_dump($addUserSetValue);
+               if($this->authMiddleware->restrictTo('admin')) {
+                return $this->render('admin',$updateUserDetailsSetValue);
+               }
+      
+              if($this->authMiddleware->restrictTo('user')) {
+                  var_dump($updateUserDetailsSetValue);
+                return $this->render('registeredUser',$updateUserDetailsSetValue);
+              }
+               // return $this->render(['admin','addUser'], $addUserSetValue); //Ashika
+               // return 'error updating data!!';
             }
         }
+        
     }
 
     public function deleteMe()
