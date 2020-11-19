@@ -68,7 +68,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-seats"
+            href="/utrance-railway/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >
@@ -100,7 +100,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-seats"
+            href="/utrance-railway/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >
@@ -132,7 +132,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-seats"
+            href="/utrance-railway/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >
@@ -164,7 +164,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-seats"
+            href="/utrance-railway/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >

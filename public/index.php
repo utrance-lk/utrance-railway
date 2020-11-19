@@ -5,7 +5,6 @@ require_once "../controllers/ViewController.php";
 require_once "../controllers/AuthController.php";
 require_once "../controllers/AdminController.php";
 require_once "../controllers/BookingController.php";
-require_once "../controllers/FreightController.php";
 require_once "../controllers/detailsProviderController.php";
 require_once "../controllers/UserController.php";
 
@@ -75,6 +74,7 @@ $app->router->get('/utrance-railway/updatePassword', [AuthController::class, 'up
 $app->router->post('/utrance-railway/updatePassword', [AuthController::class, 'updatePassword']);
 // booking routes
 $app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createBooking']);
+$app->router->get('/utrance-railway/book-freights', [BookingController::class, 'bookFreight']);
 $app->router->get('/utrance-railway/booked-tour', [BookingController::class, 'bookedTour']);
 
 
@@ -160,7 +160,6 @@ $app->router->get('/utrance-railway/ticketPrice', [TrainController::class, 'tick
 // $app->router->post('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
 // FREIGHT CONTROLLER
-$app->router->get('/utrance-railway/freight-search', [FreightController::class, 'searchFreightTrains']);
-
+$app->router->get('/utrance-railway/freight-search', [BookingController::class, 'searchFreightTrains']);
 
 $app->run();

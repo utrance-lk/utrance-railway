@@ -1,0 +1,109 @@
+.freight__booking {
+  /* border: 1px solid red; */
+  margin-top: 4rem;
+}
+
+.topic {
+  /* border: 1px solid green; */
+  /* width: 30rem; */
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 10rem;
+}
+
+.station__text-box {
+  font-size: 3rem;
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.journey__time-box,
+.journey__date-box {
+  font-size: 1.7rem;
+  color: rgb(119, 119, 119);
+  margin-bottom: 0.5rem;
+}
+
+.freight__form {
+    /* border: 1px solid brown; */
+    margin: 0 10vw;
+}
+
+.freight__details-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.freight__detail--item {
+    display: flex;
+    padding: 1rem;
+}
+
+.freight__detail--item > * {
+    /* border: 1px solid purple; */
+    padding: 1rem;
+    width: 13rem;
+}
+
+.freight__detail--item-label {
+    border: 1px solid rgba(31, 58, 147, 0.8);
+    margin-right: 2rem;
+}
+
+.freight__detail--item input {
+    background-color: #fff;
+    font-family: 'Sora', 'sans-serif';
+}
+
+.seperator {
+    width: 50%;
+    height: 1px;
+    background-color: rgba(119, 119, 119, .8);
+    margin: 4rem auto;
+}
+
+.reciever__details-box {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+}
+
+.receiver__details--topic {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.receiver__details--item {
+    /* border: 1px solid pink; */
+    padding: 1rem;
+    display: flex;
+}
+
+.receiver__details--item > * {
+    padding: 1rem;
+}
+
+.receiver__details--item label {
+    width: 20rem;
+    /* border: 1px solid lime; */
+    margin-right: 2rem;
+}
+
+.receiver__details--item input {
+    flex: 1;
+    font-family: 'Lato', 'sans-serif';
+}
+
+.btn__book-now {
+    margin-top: 4rem;
+    background-color: rgba(31, 58, 147, 0.8);
+    width: fit-content;
+    align-self: center;
+    padding: 1rem 1.5rem;
+    border-radius: 10rem;
+    font-size: 1.5rem;
+    color: #fff;
+}

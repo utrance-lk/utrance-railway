@@ -99,8 +99,20 @@ class BookingController extends Controller {
             }
         } else {
             return 'You are not authorized';
-}
-
+        }
     }
+
+    public function searchFreightTrains($request) {
+        if($request->isGet()) {
+            return $this->render('freightSearch');
+        }
+    }
+
+    public function bookFreight($request) {
+        if($request->isGet()) {
+            return $this->render('bookFreight');
+        }
+    }
+
 
 }
