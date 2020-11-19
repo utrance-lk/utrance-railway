@@ -162,4 +162,6 @@ $app->router->get('/utrance-railway/ticketPrice', [TrainController::class, 'tick
 // FREIGHT CONTROLLER
 $app->router->get('/utrance-railway/freight-search', [BookingController::class, 'searchFreightTrains']);
 
+$app->router->get('/utrance-railway/view-train', [ViewController::class, 'viewTrain']);
+
 $app->run();
