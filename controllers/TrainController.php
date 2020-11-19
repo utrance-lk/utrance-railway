@@ -97,7 +97,7 @@ class TrainController extends Controller
                  $validationState = $saveDetailsModel->updateTrainDetails();
              
              if ($validationState === 'success') {
-                 echo 'hello';
+                
                  $trainArray=$saveDetailsModel->getTrains();
              return $this->render(['admin', 'manageTrains'],$trainArray);
              } 

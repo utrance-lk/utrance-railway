@@ -104,8 +104,9 @@ class TrainModel extends Model
         // $query->execute();
         //  return 'success';
         }
-        $this->resultArray["newtrains"] = $this->errorArray;
-         return $this->resultArray;
+        // $this->resultArray["newtrains"] = $this->errorArray;
+        //  return $this->resultArray;
+         return $this->errorArray;
 
         
     }
