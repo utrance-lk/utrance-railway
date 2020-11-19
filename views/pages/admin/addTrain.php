@@ -1,6 +1,4 @@
 
-
- 
 <div class="load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -8,19 +6,12 @@
               <p>New Train Profile Settings</p>
             </div>
             <form action="/utrance-railway/trains/add" class="form__train-data" method='post' >
-            <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?> 
-            <?php if(isset($TrainRouteError)){echo $TrainRouteError;}?> 
-           
-            <?php if(isset($TrainTypeError)){echo $TrainTypeError;}?>
-            <?php if(isset($TrainFcError)){echo $TrainFcError;}?>
-            <?php if(isset($TrainScError)){echo $TrainScError;}?>
-            <?php if(isset($TrainSleepingBError)){echo $TrainSleepingBError;}?>
-            <?php if(isset($TrainweightError)){echo $TrainweightError;}?>
+            <!-- <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?>  -->
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
-                        <input type="text" name="train_name" class="form__input" placeholder="<?php echo isset($TrainNameError) ? $TrainNameError : 'Galle train';?>"value="<?php echo isset($train_name) ? $train_name : '';?>" required>
-                       <?php if(isset($TrainNameError)){echo $TrainNameError;}?>
+                        <input type="text" name="train_name" class="form__input" placeholder="<?php echo isset($TrainNameError) ? $TrainNameError : ' ';?>"value="<?php echo isset($train_name) ? $train_name : '';?>" required>
+                      
                     </div>
                     <div class="traintype-box content__fields-item">
                         <label for="traintype" class="form__label">Train Type</label>
@@ -62,9 +53,9 @@
                         $dom->loadHTML('...');
                         libxml_clear_errors();
                         if(isset($route_id))
-                        {
-                          
-                        $html ="<input type='number' min='0'  name='route_id' id='routeid' class='form__input number__input route-id__number-input' value=".$route_id.">";
+                         {
+                        
+                         $html ="<input type='number' min='0'  name='route_id' id='routeid' class='form__input number__input route-id__number-input' value=".$route_id." readonly>";
             
                         $dom = new DOMDocument();
                         $dom->loadHTML($html);
@@ -82,7 +73,7 @@
                         <div class="traveldaysbox__container checkbox__horizontal" required>
                             <div class="">
                                 <input type="hidden" name="train_travel_days[]" value="" >
-                                <input type="checkbox" id="monday" name="train_travel_days[]" value="monday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'monday'){ echo "checked='checked'"; }}}?>>
+                                <input type="checkbox" id="monday" name="train_travel_days[]" value="monday" <?php if(isset($train_travel_days)){foreach($train_travel_days as $item) {if($item === 'monday'){ echo "checked='checked'"; }}}?>checked>
                                 <label for="monday" class="checkbox__label">Mon</label>
                             </div>
                             <div class="">
@@ -119,8 +110,8 @@
                     </fieldset>
                     <div class="trainactive-box content__fields-item">
                         <label for="trainactive" class="form__label form__label--active">Active Status</label>
-                        <input type="hidden" name="train_active_status" value="0">
-                        <input type="checkbox" name="train_active_status" id="trainactive" value="1" <?php if(isset($train_active_status)){if($train_active_status==1){echo "checked='checked'";}}?>>
+                
+                        <input type="checkbox" name="train_active_status" id="trainactive" value="1" <?php if(isset($train_active_status)){if($train_active_status==1){echo "checked='checked'";}}?>checked>
                     </div>
                     <div class="freightallowed-box content__fields-item">
                         <label for="freightsallowed" class="form__label form__label--freights-allowed">Freights Allowed (Kg)</label>

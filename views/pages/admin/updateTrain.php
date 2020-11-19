@@ -1,3 +1,4 @@
+
 <div class="load-content-container">
 
     <div class="load-content">
@@ -12,25 +13,34 @@
             {
                 foreach($trains as $key=>$value)
                 {
-                    
-                    
-                    
+    
+    
                     $travalArray =  explode(" ", $value['train_travel_days']);
                    
                     $html ="<div class='load-content--settings'> 
                     <div class='content-title'>      
                     ";
                     $html .="<p>" .$value['train_name'] . " Profile Settings</p></div>";
-                    $html .="<form action='' class='form__train-data' method = 'post'>";
-                    //  if(isset($newtrains)){foreach($newtrains as $item){ echo $item; }}
-                     if(isset($newtrains)){echo $newtrains['TravalDaysError'];}
-                    
+                    $html .="<form action='/utrance-railway/trains/update?id=".$value['train_id']."' class='form__train-data' method = 'post'>";
+                //  if(isset($newtrains)){foreach($newtrains as $item){ echo $item; }}
+                    //  if(isset($newtrains)){echo $newtrains['TrainNameError'];};
+                  
                     // if(isset($TrainNameError)){echo $TrainNameError;}else{echo 'hello';}
                     $html .="<div class='content__fields'>";
                     $html .="<div class='trainname-box content__fields-item'>";
                     $html .="<label for='trainname' class='form__label'>Train Name</label>";
-                    $train_name = $value['train_name'];
+                    if(isset($newtrains['TrainNameError'])){
+                    $error=$newtrains['TrainNameError'];
+                    $html .="<input type='text' name='train_name' class='form__input' placeholder='$error' required/></div>";
+                    }else if(isset($newtrains['train_name'])){
+                        $html .="<input type='text' name='train_name' class='form__input' value='".$newtrains['train_name']." required/></div>";
+                    
+                    }else{
+                        $train_name = $value['train_name'];
                     $html .="<input type='text' name='train_name' class='form__input' value='$train_name' required/></div>";
+
+                    }
+                    
                     $html .="<div class='traintype-box content__fields-item'>";
                     $html .="<label for='traintype' class='form__label'>Train Type</label>";
                     $train_type = $value['train_type'];

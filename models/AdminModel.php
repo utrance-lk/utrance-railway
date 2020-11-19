@@ -455,6 +455,8 @@ class AdminModel extends Model {
     private function sanitizeFormtrainame($inputText) //Asindu
 
     {
+        $inputText = strtolower($inputText);
+        $inputText=trim($inputText);
         $inputText = strip_tags($inputText); //remove html tags
         return ucfirst($inputText); // capitalize first letter
     }
