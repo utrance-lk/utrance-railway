@@ -26,7 +26,7 @@ class FormValidation{
 
 
     public function runUpdateValidators($array){
-        var_dump(trim($array['street_line1']));
+       // var_dump(trim($array['street_line1']));
         $this->validateFirstName(trim($array['first_name'])); //Asindu
         $this->validateLastName(trim($array['last_name'])); //Ashika
         $this->validateStreetLine1($array['street_line1']); //Ashika
@@ -43,30 +43,44 @@ class FormValidation{
     }
 
     public function runPasswordUpdateValidation($array){
-       
-        $query = APP::$APP->db->pdo->prepare("SELECT user_password FROM users WHERE email_id=:eid");
-        $query->bindValue(":eid", $array['email_id']);
-        $query->execute();
-        $resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($user_new_password);
-        //var_dump($user_password);
-        
+      
+        if(empty($array['user_password']) || empty($array['user_new_password']) || empty($array['user_confirm_password'])){
+          
+            if(empty($array['user_password']) ){
+                $this->errorArray['passwordError'] = "Please input your password";
+                
 
-        $verifyPassword = password_verify($array['user_password'], $resultArray[0]['user_password']);
-        //var_dump($verifyPassword);
-        
-        if (!$verifyPassword) {
-            $this->errorArray['passwordError'] = "This password is not your current password";
+            }
+
+            if(empty($array['user_new_password']) || empty($array['user_confirm_password'])){
+                $this->errorArray['passwordMatchError'] = "Please input your password";
+            }
             return $this->errorArray;
         }else{
-            $this->validateUpdatePassword($array['user_new_password'], $array['user_confirm_password']); //Ashika*/
-            if(empty($this->errorArray)){
-                return "success";
-            }else{
-                
+            $query = APP::$APP->db->pdo->prepare("SELECT user_password FROM users WHERE email_id=:eid");
+            $query->bindValue(":eid", $array['email_id']);
+            $query->execute();
+            $resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+            
+    
+            $verifyPassword = password_verify($array['user_password'], $resultArray[0]['user_password']);
+            //var_dump($verifyPassword);
+            
+            if (!$verifyPassword) {
+                $this->errorArray['passwordError'] = "This password is not your current password";
                 return $this->errorArray;
-            } 
+            }else{
+                $this->validateUpdatePassword($array['user_new_password'], $array['user_confirm_password']); //Ashika*/
+                if(empty($this->errorArray)){
+                    return "success";
+                }else{
+                    
+                    return $this->errorArray;
+                } 
+            }
         }
+        
 }
 
 
@@ -214,6 +228,7 @@ class FormValidation{
     }
 
     private function validateUpdatePassword($user_password,$user_confirm_password){
+       
         if ($user_password != $user_confirm_password) {
             $this->errorArray['passwordMatchError'] = "Password does not match";
         } else {

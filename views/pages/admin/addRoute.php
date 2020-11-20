@@ -6,7 +6,6 @@
               <div>#<span>39</span></div>
             </div>
             <form action="" class="js--addStop-container">
-                
                 <!-- <div class="search__result-card added__stops-card">
                     <div class="stopadd__id-box"># <span>1</span> </div>
                     <div class="stopadd__station-box">Matara</div>
@@ -58,10 +57,11 @@
                        Add
                    </div>
                 </div> -->
+
             </form>
           </div>
           </div>
-</div>
+         </div>
 </div>
 
 <script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>

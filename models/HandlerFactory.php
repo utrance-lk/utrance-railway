@@ -48,7 +48,7 @@ class HandlerFactory{
         }
 
         $bindString = substr($bindString, 0, -1);
-        var_dump($value);
+        //var_dump($value);
 
         $query = App::$APP->db->pdo->prepare("UPDATE $table SET $bindString WHERE $field=:field");
 
