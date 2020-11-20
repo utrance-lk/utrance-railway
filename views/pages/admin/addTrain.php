@@ -10,7 +10,7 @@
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
-                        <input type="text" name="train_name" class="form__input" placeholder="<?php echo isset($TrainNameError) ? $TrainNameError : ' ';?>"value="<?php echo isset($train_name) ? $train_name : '';?>" required>
+                        <input type="text" name="train_name" class="form__input" placeholder="<?php  echo isset($TrainNameError)? $TrainNameError : '';?>" value="<?php echo isset($train_name) ? $train_name : '';?>" required>
                       
                     </div>
                     <div class="traintype-box content__fields-item">
@@ -29,17 +29,22 @@
                         libxml_use_internal_errors(true);
                         $dom->loadHTML('...');
                         libxml_clear_errors();
-                        if(isset($routes))
-                        {
-                            
-                            $html =" <select name='route_id' id='route_id'>";
-                        foreach($routes as $key => $value)
+                        if(isset($routes) && !isset($route_id))
                         {
                            
-                            $html .= "<option value=".$value['route_id']."> ".$value['route_id']."</option>";
-
-                        }
-                        $html .= "</select>";
+                        $html =" <select name='route_id' id='route_id'>";
+                       
+                        
+                            foreach($routes as $key => $value)
+                            {
+                               
+                                $html .= "<option value=".$value['route_id']."> ".$value['route_id']."</option>";
+    
+                            }
+                            
+                          
+                          $html .= "</select>"; 
+                        
 
                         $dom = new DOMDocument();
                         $dom->loadHTML($html);
@@ -52,14 +57,34 @@
                         libxml_use_internal_errors(true);
                         $dom->loadHTML('...');
                         libxml_clear_errors();
-                        if(isset($route_id))
-                         {
+                        if(isset($route_id) && isset($routes))
+                         { 
+                            
+                            $html =" <select name='route_id' id='route_id'>";
+                            
                         
-                         $html ="<input type='number' min='0'  name='route_id' id='routeid' class='form__input number__input route-id__number-input' value=".$route_id." readonly>";
-            
-                        $dom = new DOMDocument();
-                        $dom->loadHTML($html);
-                        print_r($dom->saveHTML());
+                            foreach($routes as $key => $value)
+                            {
+                                $isChecked = false;
+                                if($value['route_id']==$route_id){
+                                    $html .= "<option value=".$value['route_id']." selected='selected'> ".$value['route_id']."</option>";
+    
+                                }
+                                if($value['route_id']==$route_id){
+                                    continue;
+                                }
+                
+                                $html .= "<option value=".$value['route_id']." > ".$value['route_id']."</option>";
+
+    
+                            }
+                            
+                          
+                          $html .= "</select>"; 
+                            // $html = "<input type='number' min='0'  name='route_id' id='routeid' class='form__input number__input route-id__number-input' value=".$route_id.">";
+                            $dom = new DOMDocument();
+                            $dom->loadHTML($html);
+                            print_r($dom->saveHTML()); 
                         }
                         if(!isset($route_id) && empty($routes)){
                             echo '&nbsp &nbsp';

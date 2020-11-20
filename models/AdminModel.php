@@ -393,7 +393,7 @@ class AdminModel extends Model {
     public function getAvailableRoute(){
         $query = APP::$APP->db->pdo->prepare("SELECT route_id FROM routes WHERE route_status=0");
         $query->execute();
-        $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $this->resultArray;
         

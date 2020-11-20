@@ -117,7 +117,7 @@ class AdminController extends Controller
     }
 
 
-    // manage trains///////////////////////////////////////////////////////////////////////////////////////////////
+    // manage trains///////////////////////////////////////////////////////////////////
 
     public function manageTrains($request)
     {
@@ -179,8 +179,9 @@ class AdminController extends Controller
                 return $response->redirect('/utrance-railway/trains/view?id='.$id);
              } 
              else {
-                $registerSetValue = $saveDetailsModel->trainSetValue($validationState);
+               
                 $trainArray=$saveDetailsModel->getManagTrains();
+                $registerSetValue = $saveDetailsModel->trainSetValue($validationState);
                 return $this->render(['admin', 'updateTrain'],$trainArray,$registerSetValue);
    
              }
@@ -211,7 +212,7 @@ class AdminController extends Controller
     {
         $saveTrainDetails = new AdminModel();
         $saveTrainDetails->loadData($request->getBody());
-        $getrouteArray = $saveTrainDetails->getAvailableRoute();
+        $getrouteArray['routes'] = $saveTrainDetails->getAvailableRoute();
          if ($request->isPost()) 
         {
             $validationState = $saveTrainDetails->addNewTrainDetails();
@@ -223,13 +224,16 @@ class AdminController extends Controller
                 return $response->redirect('/utrance-railway/trains/add');
             } else {
                
-                $registerSetValue = $saveTrainDetails->trainSetValue($validationState);
-                $getrouteArray = $saveTrainDetails->getAvailableRoute();
-                // var_dump($getrouteArray);
+                
+               
+                $trainArray= $saveTrainDetails->trainSetValue($validationState);
+                $trainArray['routes']= $saveTrainDetails->getAvailableRoute();
+                 
+                //  var_dump($trainavailability);
                 // var_dump( $registerSetValue['train_travel_days']);
                 // $this->render(['admin', 'addTrain'], $getrouteArray);
                 
-                return $this->render(['admin', 'addTrain'],$registerSetValue,$getrouteArray); 
+                return $this->render(['admin', 'addTrain'],$trainArray); 
                 
 
             }
