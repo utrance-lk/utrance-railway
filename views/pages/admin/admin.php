@@ -104,7 +104,8 @@
                 // $id = App::$APP->activeUser()['id'];
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
-                $html .= "<input type='submit' class='btn__save btn-settings'  name='submit_details' value='Save Settings'></div></div>";
+                $html .= "<input type='submit' class='btn__save btn-settings'  name='save' value='Save Settings'></div></div>";
+                //$html .= "<input type='submit' class='btn__save btn-settings'  name='save' value='Save Settings'></div></div>";
                  //echo "hy";
 
                 
@@ -230,6 +231,7 @@ var loadFile=function(event){
 </body>
 </html>
 <?php
+var_dump($_POST['save']);
 if(isset($_POST['save'])){ //Ashika
   //echo "Hello1234";
   $file=$_FILES['photo'];

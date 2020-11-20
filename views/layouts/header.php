@@ -20,7 +20,7 @@
             </div>
             
             <div class="ticket-box nav-items-little">
-            <a href="utrance-railway/ticketPrice" class="home-box nav-items-little">
+            <a href="/utrance-railway/ticketPrice" class="home-box nav-items-little">
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
               </svg>
@@ -123,7 +123,7 @@
             </div>
             
             <div class="ticket-box nav-items-little">
-            <a href="utrance-railway/ticketPrice" class="home-box nav-items-little">
+            <a href="/utrance-railway/ticketPrice" class="home-box nav-items-little">
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
               </svg>
@@ -225,7 +225,7 @@
             </div>
            
             <div class="ticket-box nav-items-little">
-            <a href="utrance-railway/ticketPrice" class="home-box nav-items-little">
+            <a href="/utrance-railway/ticketPrice" class="home-box nav-items-little">
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
               </svg>

@@ -38,8 +38,36 @@
 if(isset($_POST['submit'])){
     $select_route=$_POST['routes'];
     $select_class=$_POST['class'];
+    $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
+    $reader->setReadDataOnly(TRUE);
     if($select_class === "First Class" && $select_route === "Matara To Colombo"){
-        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
+      $spreadsheet = $reader->load("ticketPriceMCF.xlsx");
+    }
+    if($select_class === "Second Class" && $select_route === "Matara To Colombo"){
+      $spreadsheet = $reader->load("ticketPriceMCS.xlsx");
+    }
+
+    $worksheet = $spreadsheet->getActiveSheet();
+
+        echo '<table>' . PHP_EOL;
+       foreach ($worksheet->getRowIterator() as $row) {
+          echo '<tr>' . PHP_EOL;
+        $cellIterator = $row->getCellIterator();
+         $cellIterator->setIterateOnlyExistingCells(FALSE); // This loops through all cells,
+                                                       //    even if a cell value is not set.
+                                                       // By default, only cells that have a value
+                                                       //    set will be iterated.
+        foreach ($cellIterator as $cell) {
+        echo '<td>' .
+             $cell->getValue() .
+             '</td>' . PHP_EOL;
+        }
+         echo '</tr>' . PHP_EOL;
+       }
+      echo '</table>' . PHP_EOL;
+
+}else{
+    $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
         $reader->setReadDataOnly(TRUE);
         $spreadsheet = $reader->load("ticketPriceMCF.xlsx");
 
@@ -62,60 +90,8 @@ if(isset($_POST['submit'])){
        }
       echo '</table>' . PHP_EOL;
 
-
-    }
-
-    if($select_class === "Second Class" && $select_route === "Matara To Colombo"){
-
-        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
-        $reader->setReadDataOnly(TRUE);
-        $spreadsheet = $reader->load("ticketPriceMCS.xlsx");
-
-        $worksheet = $spreadsheet->getActiveSheet();
-
-        echo '<table>' . PHP_EOL;
-       foreach ($worksheet->getRowIterator() as $row) {
-          echo '<tr>' . PHP_EOL;
-        $cellIterator = $row->getCellIterator();
-         $cellIterator->setIterateOnlyExistingCells(FALSE); // This loops through all cells,
-                                                       //    even if a cell value is not set.
-                                                       // By default, only cells that have a value
-                                                       //    set will be iterated.
-        foreach ($cellIterator as $cell) {
-        echo '<td>' .
-             $cell->getValue() .
-             '</td>' . PHP_EOL;
-        }
-         echo '</tr>' . PHP_EOL;
-       }
-      echo '</table>' . PHP_EOL;
-
-    }
-}else{
-    $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
-        $reader->setReadDataOnly(TRUE);
-        $spreadsheet = $reader->load("ticketPriceMCS.xlsx");
-
-        $worksheet = $spreadsheet->getActiveSheet();
-
-        echo '<table>' . PHP_EOL;
-       foreach ($worksheet->getRowIterator() as $row) {
-          echo '<tr>' . PHP_EOL;
-        $cellIterator = $row->getCellIterator();
-         $cellIterator->setIterateOnlyExistingCells(FALSE); // This loops through all cells,
-                                                       //    even if a cell value is not set.
-                                                       // By default, only cells that have a value
-                                                       //    set will be iterated.
-        foreach ($cellIterator as $cell) {
-        echo '<td>' .
-             $cell->getValue() .
-             '</td>' . PHP_EOL;
-        }
-         echo '</tr>' . PHP_EOL;
-       }
-      echo '</table>' . PHP_EOL;
-
 }
+
 ?>
 </body>
 </html>
