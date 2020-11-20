@@ -12,12 +12,12 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
-            <div class="news-box nav-items-little">
+            <a href="/utrance-railway/news" class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="nav__items-text-box">News</span>
-            </div>
+            </a>
             
             <div class="ticket-box nav-items-little">
             <a href="/utrance-railway/ticketPrice" class="home-box nav-items-little">
@@ -249,11 +249,13 @@
         </div>
         <div class="user__nav">
           <div class="userdetails-box">
-            <img
+            <a href="#">
+              <img
               src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
               alt="profile picture"
               class="user-img"
-            />
+              />
+            </a>
             <a href="#" class="user-name"><?php echo App::$APP->activeUser()['first_name']?></a href="#">
             <div class="userdetails-box--dropdown">
                <ul>

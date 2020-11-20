@@ -167,7 +167,7 @@
               <p>Password Change</p>
             </div>
             
-            <form action="/utrance-railway/updatePassword" method="POST" class="password__change">
+            <form action="/utrance-railway/update-password" method="POST" class="password__change">
               <div class="content__fields">
             <?php
             

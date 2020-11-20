@@ -70,8 +70,8 @@ $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 're
 
 
 ////update Password
-$app->router->get('/utrance-railway/updatePassword', [AuthController::class, 'updatePassword']);
-$app->router->post('/utrance-railway/updatePassword', [AuthController::class, 'updatePassword']);
+$app->router->get('/utrance-railway/update-password', [AuthController::class, 'updatePassword']);
+$app->router->post('/utrance-railway/update-password', [AuthController::class, 'updatePassword']);
 // booking routes
 $app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createBooking']);
 $app->router->get('/utrance-railway/book-freights', [BookingController::class, 'bookFreight']);

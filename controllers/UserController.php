@@ -14,27 +14,16 @@ class UserController extends Controller
 
     public function getMe($request, $response) {
         if ($request->isGet()) {
-            if($this->authMiddleware->restrictTo('admin')) {
-                return $this->render('admin');
-            }
-            if($this->authMiddleware->restrictTo('user')) {
-                return $this->render('registeredUser');
-            }
-            if($this->authMiddleware->restrictTo('detailsProvider')) {
-                return $this->render('detailsProvider');
-            }
+            return $this->render('settings');
         }
     }
 
     public function updateMe($request, $response) {
        
-       //var_dump("yicd");
         $updateUserDetailsModel = new UserModel();
         
         if ($request->isPost()) {
-            
-            
-            
+                
             $tempUpdateUserBody = $request->getBody();
 
             $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
@@ -44,27 +33,11 @@ class UserController extends Controller
            
             $state = $updateUserDetailsModel->updateMyProfile();
            
-            if ($state === 'success') {
-             
+            if ($state === 'success') { 
                 return $response->redirect('/utrance-railway/settings');
             } else {
                 $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
-               
-               if($this->authMiddleware->restrictTo('admin')) {
-                return $this->render('admin',$updateUserDetailsSetValue);
-               }
-      
-              if($this->authMiddleware->restrictTo('user')) {
-                
-                return $this->render('registeredUser',$updateUserDetailsSetValue);
-              }
-
-
-              if($this->authMiddleware->restrictTo('details_provider')) {
-                
-                return $this->render('detailsProvider',$updateUserDetailsSetValue);
-              }
-              
+                return $this->render('settings', $updateUserDetailsSetValue);
             }
         }
         return "HEllo";

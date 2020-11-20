@@ -59,14 +59,14 @@
   fill: #fff;
 }
 
-.userdetails-box--dropdown {
+/* .userdetails-box--dropdown {
   background-color: rgb(31, 58, 147);
   border-radius: 5px;
 }
 
 .userdetails-box--dropdown-text {
   color: #eeeeee;
-}
+} */
 
 .userrole-name {
   border-bottom: 1px solid #eeeeee;
