@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
   </head>
 
+<<<<<<< HEAD
+  <body>
+=======
   <body>
   <div class="nav-container">
       <div class="navbar">
@@ -90,3 +93,4 @@
           </div>
         </div>
       </div>
+>>>>>>> 1c596a7172767448d774aa401ad9c1bc867fbcde

@@ -65,6 +65,10 @@
                 $userSideNav = $this->layoutContent('userSideNav');
                 $base = str_replace('{{userSideNav}}', $userSideNav, $base);
             }
+            if(App::$APP->activeUser()['role'] === 'detailsProvider') {
+                $detailsProviderSideNav = $this->layoutContent('detailsProviderSideNav');
+                $base = str_replace('{{detailsProviderSideNav}}', $detailsProviderSideNav, $base);
+            }
             $base = str_replace('{{content}}', $viewContent, $base);
 
             return str_replace('{{footer}}', $footer, $base);

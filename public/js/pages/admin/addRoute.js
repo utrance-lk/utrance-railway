@@ -1,5 +1,7 @@
 import { items } from "./components.js";
 
+let stopValues;
+
 export const renderAddStation = function(stopsCount) {
     // items.addRouteBtn.style.display = "none";
     const markup = `
@@ -45,10 +47,20 @@ export const renderAddStation = function(stopsCount) {
             return alert('Input departure time!!');
         }
 
+        // stopsArray.push(inputValues);
+
+        // console.log(stopsArray);
+
+        stopValues = inputValues;
+
         displayAddedStop(inputValues, stopsCount);
         items.addStopBtn.style.display = "flex";
-        
+        items.addRouteBtn.style.display = "block";
       });
+}
+
+export const stopDetails = function() {
+    return stopValues;
 }
 
 const displayAddedStop = function(inputValues, stopsCount) {
@@ -76,6 +88,10 @@ const displayAddedStop = function(inputValues, stopsCount) {
       .addEventListener("click", function (e) {
         deleteAddedStop(e);
       });
+}
+
+export const sendData = function() {
+
 }
 
 const deleteAddedStop = function(e) {
