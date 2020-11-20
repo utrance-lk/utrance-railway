@@ -23,7 +23,7 @@
                     $html .="<p>" .$value['train_name'] . " Profile Settings</p></div>";
                     $html .="<form action='/utrance-railway/trains/update?id=".$value['train_id']."' class='form__train-data' method = 'post'>";
                     // if(isset($newtrains)){foreach($newtrains as $item){ echo $item; }}
-                     if(isset($newtrains)){echo $newtrains['TravalDaysError'];};
+                     if(isset($newtrains['TravalDaysError'])){echo $newtrains['TravalDaysError'];};
                   
                     // if(isset($TrainNameError)){echo $TrainNameError;}else{echo 'hello';}
                     $html .="<div class='content__fields'>";
