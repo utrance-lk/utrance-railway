@@ -12,18 +12,6 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
-<<<<<<< HEAD
-=======
-            <a href="/utrance-railway/ticketPrice">
-            <div class="ticket-box nav-items-little">
-            
-              <svg class="ticket__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
-              </svg>
-              <span class="nav__items-text-box">Tickets</span>
-            </div>
-            </a>
->>>>>>> 1c596a7172767448d774aa401ad9c1bc867fbcde
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
@@ -121,20 +109,6 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
-<<<<<<< HEAD
-=======
-            <a href="/utrance-railway/ticketPrice">
-            <div class="ticket-box nav-items-little">
-            
-              <svg class="ticket__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
-              </svg>
-              <span class="nav__items-text-box">Tickets</span>
-              
-            </div>
-            </a>
-            
->>>>>>> 1c596a7172767448d774aa401ad9c1bc867fbcde
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
@@ -231,19 +205,6 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
-<<<<<<< HEAD
-=======
-            <a href="/utrance-railway/ticketPrice">
-            <div class="ticket-box nav-items-little">
-            
-              <svg class="ticket__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
-              </svg>
-              <span class="nav__items-text-box">Tickets</span>
-              
-            </div>
-            </a>
->>>>>>> 1c596a7172767448d774aa401ad9c1bc867fbcde
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>

@@ -90,15 +90,9 @@ $app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs
 
 
 //detailsProvider routing
-<<<<<<< HEAD
 // $app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
 // $app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
 $app->router->get('/utrance-railway/contact-admin', [detailsProviderController::class, 'contactAdmin']);
-=======
-//$app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
-//$app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
-$app->router->get('/utrance-railway/detailsProvider/contactAdmin', [detailsProviderController::class, 'contactAdmin']);
->>>>>>> 1c596a7172767448d774aa401ad9c1bc867fbcde
 
 
 
