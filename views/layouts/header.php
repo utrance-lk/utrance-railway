@@ -223,12 +223,14 @@
               
             </div>
             </a>
+            <a href="/utrance-railway/newsFeed">
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="nav__items-text-box">News</span>
             </div>
+            </a>
             <a href="/utrance-railway/freight-search" class="freights-box nav-items-little">
               <svg class="freights__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-local_shipping"></use>

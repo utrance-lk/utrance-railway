@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function updateMe($request, $response) {
        
-       var_dump("yicd");
+       //var_dump("yicd");
         $updateUserDetailsModel = new UserModel();
         
         if ($request->isPost()) {
@@ -83,6 +83,19 @@ class UserController extends Controller
     {
         // do not implement this method
         // use sign up in AuthController
+    }
+
+    public function aboutUs()
+    {
+
+        return $this->render('aboutUs');
+
+    }
+
+
+    public function newsFeed(){
+       
+        return $this->render('newsFeed');
     }
 
 }

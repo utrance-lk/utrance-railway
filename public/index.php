@@ -80,8 +80,8 @@ $app->router->get('/utrance-railway/booked-tour', [BookingController::class, 'bo
 
 //aboutUs routing Daranya
 
-$app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
-$app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
+//$app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
+//$app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
 
 
 ////////Registered User Routing
@@ -119,13 +119,15 @@ $app->router->post('/utrance-railway/users/delete', [AdminController::class, 'de
 $app->router->get('/utrance-railway/users/activate', [AdminController::class, 'changeUserStatus']);
 $app->router->get('/utrance-railway/users/deactivate', [AdminController::class, 'changeUserStatus']);
 
-$app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 
 $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRoute']);
 
 
-$app->router->post('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
-$app->router->get('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
+$app->router->post('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
+$app->router->get('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
+
+$app->router->post('/utrance-railway/newsFeed',[UserController::class,'newsFeed']);
+$app->router->get('/utrance-railway/newsFeed',[UserController::class,'newsFeed']);
 
 $app->router->get('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
 $app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
