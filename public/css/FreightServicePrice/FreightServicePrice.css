@@ -17,10 +17,12 @@
   width:100%;
       /* width: 97rem; */
     color: #fff;
-    background: #1F3A93;
+    background: rgba(31, 58, 147, 0.8);;
+    /* background: #1F3A93; */
     padding-left: 40rem;
-    padding-top: 0.2rem;
+    padding-top: 0.5rem;
     display: inline-block;
+    height: 70px;
     
   }
   .p-ticket-head{
@@ -36,6 +38,7 @@
    
 }
 .freight p{
+  padding-top:15px;
   font-family: arial, sans-serif;
   margin-left: 200px;
   color:rgb(250, 151, 70);
@@ -69,6 +72,8 @@
   }
   tr:first-child {
     color: darkblue;
+    font-weight: bold;
+    font-size: 20px;
     
   }
 

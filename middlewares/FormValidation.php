@@ -26,14 +26,14 @@ class FormValidation{
 
 
     public function runUpdateValidators($array){
-        
+       // var_dump(trim($array['street_line1']));
         $this->validateFirstName(trim($array['first_name'])); //Asindu
         $this->validateLastName(trim($array['last_name'])); //Ashika
-        $this->validateStreetLine1(trim($array['street_line1'])); //Ashika
-        $this->validateStreetLine2(trim($array['street_line2'])); //Ashika
+        $this->validateStreetLine1($array['street_line1']); //Ashika
+        $this->validateStreetLine2($array['street_line2']); //Ashika
         $this->validateCity(trim($array['city'])); //Ashika
         $this->validateContactNumber(trim($array['contact_num'])); //Ashika
-        $this->validateEmailId(trim($array['email_id'])); //Ashika
+        $this->validateEmailIdForUpdate(trim($array['email_id'])); //Ashika
         if(empty($this->errorArray)){
            return "success";
         }else{
@@ -43,31 +43,48 @@ class FormValidation{
     }
 
     public function runPasswordUpdateValidation($array){
-       
-        $query = APP::$APP->db->pdo->prepare("SELECT user_password FROM users WHERE email_id=:eid");
-        $query->bindValue(":eid", $array['email_id']);
-        $query->execute();
-        $resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-        
+      
+        if(empty($array['user_password']) || empty($array['user_new_password']) || empty($array['user_confirm_password'])){
+          
+            if(empty($array['user_password']) ){
+                $this->errorArray['passwordError'] = "Please input your password";
+                
 
-        $verifyPassword = password_verify($array['user_password'], $resultArray[0]['user_password']);
-        
-        if (!$verifyPassword) {
-            $this->errorArray['passwordError'] = "This password is not your current password";
+            }
+
+            if(empty($array['user_new_password']) || empty($array['user_confirm_password'])){
+                $this->errorArray['passwordMatchError'] = "Please input your password";
+            }
             return $this->errorArray;
         }else{
-            $this->validateUpdatePassword($array['user_new_password'], $array['user_confirm_password']); //Ashika*/
-            if(empty($this->errorArray)){
-                return "success";
-            }else{
-                
+            $query = APP::$APP->db->pdo->prepare("SELECT user_password FROM users WHERE email_id=:eid");
+            $query->bindValue(":eid", $array['email_id']);
+            $query->execute();
+            $resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+            
+    
+            $verifyPassword = password_verify($array['user_password'], $resultArray[0]['user_password']);
+            //var_dump($verifyPassword);
+            
+            if (!$verifyPassword) {
+                $this->errorArray['passwordError'] = "This password is not your current password";
                 return $this->errorArray;
-            } 
+            }else{
+                $this->validateUpdatePassword($array['user_new_password'], $array['user_confirm_password']); //Ashika*/
+                if(empty($this->errorArray)){
+                    return "success";
+                }else{
+                    
+                    return $this->errorArray;
+                } 
+            }
         }
+        
 }
 
 
-    private function validateFirstName($fn){//Asindu
+    private function validateFirstName($fn){//Asindu              //First Name Validation
        
         if (strlen($fn) < 2 || strlen($fn) > 25) {
             
@@ -82,14 +99,14 @@ class FormValidation{
 
         if (!(ctype_alpha($fn))) {
             
-            $this->errorArray['firstNameError'] = 'First name only letters 1  required';
+            $this->errorArray['firstNameError'] = 'First name only letters   required';
         }
 
     }
 
 
 
-    private function validateLastName($ln){ //Ashika
+    private function validateLastName($ln){ //Ashika          ////Last Name Validation
         if (strlen($ln) < 2 || strlen($ln) > 25) {
            
             $this->errorArray['lastNameError'] = 'last name wrong length';
@@ -108,44 +125,28 @@ class FormValidation{
 
  
 
-    private function validateStreetLine1($str1){ //Ashika
+    private function validateStreetLine1($str1){ //Ashika  //validate Street line 1
         if (strlen($str1) < 5 || strlen($str1) > 30) {
             
             $this->errorArray['streetLine1Error'] = 'Street Line 1  wrong length';
         }
 
-      /*  if (ctype_digit($str1)) {
-            //var_dump("N");
-            $this->errorArray['streetLine1Error'] = "Street Line 1 has only letters";
-        }
-
-        if (!(ctype_alpha($str1))) {
-            //Var_dump($city);
-              $this->errorArray['streetLine1Error'] = "Street Line 1 has only letters";
-          }*/
+     
 
     }
 
 
 
-    private function validateStreetLine2($str2){ //Ashika
+    private function validateStreetLine2($str2){ //Ashika  //validate street line 2
         if (strlen($str2) < 5 || strlen($str2) > 30) {
            
             $this->errorArray['streetLine2Error'] = 'Street Line 2  wrong length';
         }
 
-        /*if (ctype_digit($str2)) {
-            //var_dump("N");
-            $this->errorArray['streetLine2Error'] = "Street Line 2 has only letters";
-        }
-
-        if (!(ctype_alpha($str2))) {
-            //Var_dump($city);
-              $this->errorArray['streetLine2Error'] = "Street Line 2 has only letters";
-          }*/
+       
     }
 
-    private function validateCity($city)
+    private function validateCity($city)//Ashika //validate city
     { //Ashika
         if (strlen($city) < 2 || strlen($city) > 25) {
            
@@ -157,7 +158,7 @@ class FormValidation{
             $this->errorArray['cityError'] = 'City  only letters  required';
         }
     }
-    private function validateContactNumber($cnum)
+    private function validateContactNumber($cnum) //validate contact number
     { //Ashika
         $num = "";
         $num = substr($cnum, 0, 3);
@@ -184,7 +185,7 @@ class FormValidation{
 
        }else{
            $num2=substr($cnum,0,2);
-           echo $num2;
+           //echo $num2;
            if ($num2 != "70" && $num2 != "71" && $num2 != "72" && $num2 != "75" && $num2 != "76" && $num2 != "77" && $num2 != "78" && $num2 != "63") {
             $this->errorArray['contactNumError'] = 'Contact Num234 in Invalid Format';
           } 
@@ -192,7 +193,7 @@ class FormValidation{
        }
 }
 
-    private function validateEmailId($email_id)
+    private function validateEmailId($email_id) //validate email id
     { //Ashika
 
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
@@ -209,17 +210,19 @@ class FormValidation{
 
     }
 
-    private function validateEmailIdForUpdate($email_id,$id){
+    private function validateEmailIdForUpdate($email_id){///Validate email for update
 
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
 
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE email_id=:email_id ");
+        $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
         $query->bindValue(":email_id", $email_id);
+        
         //$query->bindValue(":id",$id);
         $query->execute();
         $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
+      
         if ($email_status == true) {
             $this->errorArray['email_id_error'] = "This email is already exist";
         }
@@ -227,11 +230,12 @@ class FormValidation{
     }
 
     private function validateUpdatePassword($user_password,$user_confirm_password){
+       
         if ($user_password != $user_confirm_password) {
             $this->errorArray['passwordMatchError'] = "Password does not match";
         } else {
             if (strlen($user_password) < 8) {
-                $this->errorArray['passwordError'] = "Password at least 8 characters";
+                $this->errorArray['passwordMatchError'] = "Password at least 8 characters";
             }
 
             $uppercase = preg_match('@[A-Z]@', $user_password);
@@ -240,25 +244,25 @@ class FormValidation{
             $specialChars = preg_match('@[^\w]@', $user_password);
 
             if (!$uppercase) {
-                $this->errorArray['passwordError'] = "Password at least one upper case letter";
+                $this->errorArray['passwordMatchError'] = "Password at least one upper case letter";
             }
             if (!$lowercase) {
-                $this->errorArray['passwordError'] = "Password at least one lower case letter";
+                $this->errorArray['passwordMatchError'] = "Password at least one lower case letter";
             }
 
             if (!$number) {
-                $this->errorArray['passwordError'] = "Password at least one digit";
+                $this->errorArray['passwordMatchError'] = "Password at least one digit";
             }
 
             if (!$specialChars) {
-                $this->errorArray['passwordError'] = "Password at least one special charcter";
+                $this->errorArray['passwordMatchError'] = "Password at least one special charcter";
             }
         }
 
 
     }
 
-    private function validatePassword($user_password, $user_confirm_password)
+    public function validatePassword($user_password, $user_confirm_password)
     { //Ashika
 
         if ($user_password != $user_confirm_password) {

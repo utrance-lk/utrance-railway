@@ -9,7 +9,9 @@
       <p ><i class="fas fa-envelope-square"></i> LL = Letters</p><br>
       <p><i class="fas fa-mail-bulk"></i> TWL = Light weight Articles which require more space</p><br>
       <p><i class="fas fa-boxes"></i> MW = Machinery not weight over 50 kg</p><br>
+      <p>Price was given by 1kg per km</p>
       </div>
+      
       
 
 <?php
