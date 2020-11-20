@@ -64,7 +64,7 @@
                    </a>
                  </li>
                  <li>
-                   <a href="">
+                   <a href="/utrance-railway/myBookings">
                     <svg class="dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-suitcase"></use>
                     </svg>
@@ -172,7 +172,7 @@
                    </a>
                  </li>
                  <li>
-                   <a href="">
+                   <a href="/utrance-railway/myBookings">
                     <svg class="dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-suitcase"></use>
                     </svg>
@@ -266,7 +266,7 @@
                    </a>
                  </li>
                  <li>
-                   <a href="">
+                   <a href="/utrance-railway/myBookings">
                     <svg class="dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-suitcase"></use>
                     </svg>
