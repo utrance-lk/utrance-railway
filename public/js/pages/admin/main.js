@@ -21,22 +21,14 @@ items.addStopBtn.addEventListener("click", function () {
 //     }
 // })
 
-window.addEventListener('load', function() {
-    if(stopsCount === 0) {
-        items.addRouteBtn.style.display = 'none';
-    }
+window.addEventListener("load", function () {
+  if (stopsCount === 0) {
+    // items.addRouteBtn.style.display = "none";
+  }
 });
 
+// items.deleteUserBtn.addEventListener("click", function () {
+//   var myobj = document.getElementById("form-card");
+//   myobj.remove();
+// });
 
-items.deleteUserBtn.addEventListener("click",function () {
-var myobj=document.getElementById("form-card");
- myobj.remove();
-  
-});
-
-
-
-items.deleteUserBtn.addEventListener("click", function () {
-  var myobj = document.getElementById("form-card");
-  myobj.remove();
-});
