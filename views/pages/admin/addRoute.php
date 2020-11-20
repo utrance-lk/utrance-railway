@@ -32,6 +32,9 @@
                         <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus"></use>
                     </svg>
                 </div>
+                <div class="btn__add-route addbtn js--btn__addRoute" id="js--btn__add-route">
+                    Add route
+                </div>
                 <!-- <div class="search__result-card js--addStop-card">
                    <div class="addstation-box addStop-card-item">
                        <div class="station-heading">
