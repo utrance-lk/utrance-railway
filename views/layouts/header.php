@@ -12,33 +12,34 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
-            <a href="/utrance-railway/ticketPrice">
-            <div class="ticket-box nav-items-little">
-            
-              <svg class="ticket__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
-              </svg>
-              <span class="nav__items-text-box">Tickets</span>
-            </div>
-            </a>
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="nav__items-text-box">News</span>
             </div>
+            
+            <div class="ticket-box nav-items-little">
+            <a href="utrance-railway/ticketPrice" class="home-box nav-items-little">
+              <svg class="ticket__icon navbar__icon">
+                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
+              </svg>
+              <span class="nav__items-text-box">Ticket Prices</span>
+              </a>
+            </div>
+           
             <a href="/utrance-railway/freight-search" class="freights-box nav-items-little">
               <svg class="freights__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-local_shipping"></use>
               </svg>
               <span class="nav__items-text-box">Freight Booking</span>
             </a>
-            <a href="/utrance-railway/view-train" class="train-box nav-items-little">
+            <!-- <a href="/utrance-railway/view-train" class="train-box nav-items-little">
               <svg class="train__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-train"></use>
               </svg>
               <span class="nav__items-text-box">Trains</span>
-            </a>
+            </a> -->
           </div>
         </div>
         <div class="user__nav">
@@ -112,35 +113,36 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
-            <a href="/utrance-railway/ticketPrice">
-            <div class="ticket-box nav-items-little">
-            
-              <svg class="ticket__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
-              </svg>
-              <span class="nav__items-text-box">Tickets</span>
-              
-            </div>
-            </a>
-            
             <div class="news-box nav-items-little">
+            <a href="/utrance-railway/news" class="home-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="nav__items-text-box">News</span>
+              </a>
             </div>
+            
+            <div class="ticket-box nav-items-little">
+            <a href="utrance-railway/ticketPrice" class="home-box nav-items-little">
+              <svg class="ticket__icon navbar__icon">
+                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
+              </svg>
+              <span class="nav__items-text-box">Ticket Prices</span>
+              </a>
+            </div>
+            
             <a href="/utrance-railway/freight-search" class="freights-box nav-items-little">
               <svg class="freights__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-local_shipping"></use>
               </svg>
               <span class="nav__items-text-box">Freight Booking</span>
             </a>
-            <a href="/utrance-railway/view-train" class="train-box nav-items-little">
+            <!-- <a href="/utrance-railway/view-train" class="train-box nav-items-little">
               <svg class="train__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-train"></use>
               </svg>
               <span class="nav__items-text-box">Trains</span>
-            </a>
+            </a> -->
           </div>
         </div>
         <div class="user__nav">
@@ -199,7 +201,7 @@
         </div>
       </div>
     </nav>
-    <?php elseif(App::$APP->activeUser()['role'] === 'user') : ?>
+    <?php elseif(App::$APP->activeUser()['role'] === 'user' || App::$APP->activeUser()['role'] === 'detailsProvider') : ?>
       <nav class="nav-container">
       <div class="navbar">
         <div class="main__nav">
@@ -213,36 +215,36 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
-            <a href="/utrance-railway/ticketPrice">
-            <div class="ticket-box nav-items-little">
-            
-              <svg class="ticket__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
-              </svg>
-              <span class="nav__items-text-box">Tickets</span>
-              
-            </div>
-            </a>
-            <a href="/utrance-railway/newsFeed">
             <div class="news-box nav-items-little">
+            <a href="/utrance-railway/news" class="home-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="nav__items-text-box">News</span>
+              </a>
             </div>
-            </a>
+           
+            <div class="ticket-box nav-items-little">
+            <a href="utrance-railway/ticketPrice" class="home-box nav-items-little">
+              <svg class="ticket__icon navbar__icon">
+                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
+              </svg>
+              <span class="nav__items-text-box">Ticket Prices</span>
+              </a>
+            </div>
+            
             <a href="/utrance-railway/freight-search" class="freights-box nav-items-little">
               <svg class="freights__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-local_shipping"></use>
               </svg>
               <span class="nav__items-text-box">Freight Booking</span>
             </a>
-            <a href="/utrance-railway/view-train" class="train-box nav-items-little">
+            <!-- <a href="/utrance-railway/view-train" class="train-box nav-items-little">
               <svg class="train__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-train"></use>
               </svg>
               <span class="nav__items-text-box">Trains</span>
-            </a>
+            </a> -->
           </div>
         </div>
         <div class="user__nav">

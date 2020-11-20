@@ -15,5 +15,14 @@
               <span class="mybookings-name">My bookings</span>
             </a>
           </div>
+          <div class="userrole-name">Details Provider</div>
+          <div class="sidebar__nav-role-items">
+            <a href="/utrance-railway/contact-admin" class="sidebar__nav-manage--trains sidebar__nav-item">
+              <svg class="train-icon sidebar__nav-icon">
+                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-paper-plane"></use>
+              </svg>
+              <span class="manage--trains-name">Contact Admin</span>
+            </a>
+          </div>
         </div>
       </div>

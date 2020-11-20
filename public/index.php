@@ -90,9 +90,9 @@ $app->router->get('/utrance-railway/booked-tour', [BookingController::class, 'bo
 
 
 //detailsProvider routing
-//$app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
-//$app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
-$app->router->get('/utrance-railway/detailsProvider/contactAdmin', [detailsProviderController::class, 'contactAdmin']);
+// $app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+// $app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+$app->router->get('/utrance-railway/contact-admin', [detailsProviderController::class, 'contactAdmin']);
 
 
 
@@ -126,8 +126,8 @@ $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRo
 $app->router->post('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
 $app->router->get('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
 
-$app->router->post('/utrance-railway/newsFeed',[UserController::class,'newsFeed']);
-$app->router->get('/utrance-railway/newsFeed',[UserController::class,'newsFeed']);
+$app->router->post('/utrance-railway/news',[UserController::class,'newsFeed']);
+$app->router->get('/utrance-railway/news',[UserController::class,'newsFeed']);
 
 $app->router->get('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
 $app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);

@@ -690,3 +690,7 @@ select {
   width: 6rem;
   text-align: center;
 }
+
+.btn__add-route {
+  margin: 0 0 0 40vw;
+}

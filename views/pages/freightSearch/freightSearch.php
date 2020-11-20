@@ -54,7 +54,7 @@
               ><span> am </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="#">Dakshina Intercity</a>
+              <a href="/utrance-railway/view-train">Dakshina Intercity</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
@@ -86,7 +86,7 @@
               ><span> am </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="#">Ruhunu Kumari</a>
+              <a href="/utrance-railway/view-train">Ruhunu Kumari</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
@@ -118,7 +118,7 @@
               ><span> am </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="#">Galu Kumari</a>
+              <a href="/utrance-railway/view-train">Galu Kumari</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
@@ -150,7 +150,7 @@
               ><span> pm </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="#">Matara - Galle train</a>
+              <a href="/utrance-railway/view-train">Matara - Galle train</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
