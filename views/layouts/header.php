@@ -30,12 +30,12 @@
               </svg>
               <span class="nav__items-text-box">Freight Booking</span>
             </a>
-            <div class="train-box nav-items-little">
+            <a href="/utrance-railway/view-train" class="train-box nav-items-little">
               <svg class="train__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-train"></use>
               </svg>
               <span class="nav__items-text-box">Trains</span>
-            </div>
+            </a>
           </div>
         </div>
         <div class="user__nav">
@@ -127,12 +127,12 @@
               </svg>
               <span class="nav__items-text-box">Freight Booking</span>
             </a>
-            <div class="train-box nav-items-little">
+            <a href="/utrance-railway/view-train" class="train-box nav-items-little">
               <svg class="train__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-train"></use>
               </svg>
               <span class="nav__items-text-box">Trains</span>
-            </div>
+            </a>
           </div>
         </div>
         <div class="user__nav">
@@ -223,12 +223,12 @@
               </svg>
               <span class="nav__items-text-box">Freight Booking</span>
             </a>
-            <div class="train-box nav-items-little">
+            <a href="/utrance-railway/view-train" class="train-box nav-items-little">
               <svg class="train__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-train"></use>
               </svg>
               <span class="nav__items-text-box">Trains</span>
-            </div>
+            </a>
           </div>
         </div>
         <div class="user__nav">

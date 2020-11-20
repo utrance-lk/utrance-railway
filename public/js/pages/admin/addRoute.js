@@ -1,26 +1,26 @@
 import { items } from "./components.js";
 
 export const renderAddStation = function(stopsCount) {
-    items.addRouteBtn.style.display = "none";
+    // items.addRouteBtn.style.display = "none";
     const markup = `
     <div class="search__result-card addStop-card" id="js--addStop-card">
         <div class="addstation-box addStop-card-item">
             <div class="station-heading">
                 Station
             </div>
-            <input type="text" class="station-search addStop-card-item--input" id="js--station-search">
+            <input type="text" class="station-search addStop-card-item--input" id="js--station-search" required>
         </div>
         <div class="arrivaltime-box addStop-card-item">
             <div class="arrival-heading">
                 Arrival Time
             </div>
-            <input type="time" class="arrivaltime-add addStop-card-item--input" id="js--arrivaltime-add">
+            <input type="time" class="arrivaltime-add addStop-card-item--input" id="js--arrivaltime-add" required>
         </div>
         <div class="depttime-box addStop-card-item">
             <div class="dept-heading">
                 Departure Time
             </div>
-            <input type="time" class="departtime-add addStop-card-item--input" id="js--departtime-add">
+            <input type="time" class="departtime-add addStop-card-item--input" id="js--departtime-add" required>
         </div>
         <div class="addstop-btn-box btn-white" id="js--addstop-btn-box">
             Add
@@ -36,6 +36,14 @@ export const renderAddStation = function(stopsCount) {
             arrivalTime: document.getElementById("js--arrivaltime-add").value,
             departureTime: document.getElementById("js--departtime-add").value
         };
+
+        if(!inputValues.inputStation) {
+            return alert('Input the station!!');
+        } else if(!inputValues.arrivalTime) {
+            return alert('Input arrival time!!');
+        } else if(!inputValues.departureTime) {
+            return alert('Input departure time!!');
+        }
 
         displayAddedStop(inputValues, stopsCount);
         items.addStopBtn.style.display = "flex";
