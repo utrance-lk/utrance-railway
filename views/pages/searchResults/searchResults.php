@@ -1,5 +1,4 @@
-<body>
-      <section class="heading-primary">
+     <section class="heading-primary">
         <form class="search-bar__container" method="POST" action="/utrance-railway/search">
           <div class="search-bar">
             <div class="search-bar__search">

@@ -48,5 +48,12 @@ class ViewController extends Controller
         return $this->render('booking');
 
     }
+
+    public function viewTrain($request) {
+        if($request->isGet()) {
+            return $this->render('viewTrain');
+        }
+
+    }
     
 }
