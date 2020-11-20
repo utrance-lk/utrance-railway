@@ -98,25 +98,67 @@
                
                 $html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
                 $html .= "<img src='../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class=''/>";
-                $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo' onchange='loadFile(event)'   />";
+                $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo'    />";
                 
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
                 // $id = App::$APP->activeUser()['id'];
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
-                $html .= "<input type='submit' class='btn__save btn-settings'  name='submit' value='Save Settings'></div></div>";
+                $html .= "<input type='submit' class='btn__save btn-settings'  name='submit_details' value='Save Settings'></div></div>";
                  //echo "hy";
 
                 
-                $dom = new DOMDocument();
+                
+                
+
+              /*echo "hello";
+              var_dump($_POST['submit_details']);
+              if(isset($_POST['submit_details'])){ //Ashika
+              echo "Hello1234";
+              echo "Hello";
+              $file=$_FILES['photo'];
+              $name=$_POST['first_name'];
+              $fileName=$_FILES['photo']['name'];
+              $fileTempName=$_FILES['photo']['tmp_name'];
+              $fileSize=$_FILES['photo']['size'];
+              $fileError=$_FILES['photo']['error'];
+              $fileType=$_FILES['photo']['type'];
+  
+
+              $fileExt=explode('.',$fileName);
+              $fileActualExt=strtolower(end($fileExt));
+              $allowed=array('jpg','jpeg','png');
+
+              if(in_array($fileActualExt,$allowed)){
+                 if($fileError === 0){
+                     if($fileSize < 1000000){
+                        $fileNameNew=$name.".".$fileActualExt;
+                        $fileDestination='img/uploads/'.$fileNameNew;
+                        move_uploaded_file($fileNameNew,$fileDestination);
+                        echo "file added succesfully!!";
+            
+                    }else{
+                      echo "Your file is too big!!!";
+                    }
+          
+                }else{
+                  echo "There was an error uploading your file!!";
+                }
+
+                }else{
+                  echo "You can not upload files of this type!!!";
+                }
+              }*/
+
+
+              $dom = new DOMDocument();
                 $dom->loadHTML($html);
                 print_r($dom->saveHTML());
-                
-              }
 
-              ?>
-            
-           
+            }
+
+?>
+
               </div>
               </form>
 
@@ -173,15 +215,16 @@
         </div>
     </div>
 </div>
+</body>
+</html>
 
-
-<script>
+<!--script>
 //load Image ///Ashika
 var loadFile=function(event){
   var image=document.getElementById('image_preview');
   image.src=URL.createObjectURL(event.target.files[0]);
 }
-</script>
+</script!-->
 
 
 </body>
@@ -223,4 +266,3 @@ if(isset($_POST['save'])){ //Ashika
   }
 }
 
-?>

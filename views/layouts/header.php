@@ -3,7 +3,7 @@
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/home/logo-white.png" alt="logo" class="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/home/utranceWhite.png" alt="logo" class="logo" />
           </div>
           <div class="main__nav-items">
             <a href="/utrance-railway/home" class="home-box nav-items-little">
@@ -12,12 +12,15 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
+            <a href="/utrance-railway/ticketPrice">
             <div class="ticket-box nav-items-little">
+            
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
               </svg>
               <span class="nav__items-text-box">Tickets</span>
             </div>
+            </a>
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
@@ -100,7 +103,7 @@
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/admin/UtranceLogo.png" alt="logo" class="logo" />
           </div>
           <div class="main__nav-items">
             <a href="/utrance-railway/home" class="home-box nav-items-little">
@@ -109,12 +112,17 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
+            <a href="/utrance-railway/ticketPrice">
             <div class="ticket-box nav-items-little">
+            
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
               </svg>
               <span class="nav__items-text-box">Tickets</span>
+              
             </div>
+            </a>
+            
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
@@ -196,7 +204,7 @@
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/admin/UtranceLogo.png" alt="logo" class="logo" />
           </div>
           <div class="main__nav-items">
             <a href="/utrance-railway/home" class="home-box nav-items-little">
@@ -205,12 +213,16 @@
               </svg>
               <span class="nav__items-text-box">Home</span>
             </a>
+            <a href="/utrance-railway/ticketPrice">
             <div class="ticket-box nav-items-little">
+            
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-ticket"></use>
               </svg>
               <span class="nav__items-text-box">Tickets</span>
+              
             </div>
+            </a>
             <div class="news-box nav-items-little">
               <svg class="news__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>

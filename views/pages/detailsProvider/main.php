@@ -19,7 +19,7 @@
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/admin/UtranceLogo.png" alt="logo" class="logo" />
           </div>
           <div class="main__nav-items">
             <a href="/utrance-railway/home" class="home-box nav-items-little">
@@ -66,7 +66,7 @@
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
-            <a href="/utrance-railway/detailsProvider" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
+            <a href="/utrance-railway/settings" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
               <svg class="settings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cog"></use>
               </svg>
