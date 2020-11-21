@@ -62,10 +62,10 @@
                     
                     $html .="<input type='text' name='first_name' class='form__input'  placeholder='".$updateSetValue['firstNameError']."' ></div>";
                    }else if(isset($updateSetValue['first_name'])){
-                    $html .="<input type='text' name='first_name' class='form__input'   value='".$updateSetValue['first_name']." '></div>";
+                    $html .="<input type='text' name='first_name' class='form__input'   value='".trim($updateSetValue['first_name'])." '></div>";
 
                    }else{
-                    $html .="<input type='text' name='first_name' class='form__input'   value='".$value['first_name']." '></div>";
+                    $html .="<input type='text' name='first_name' class='form__input'   value='".trim($value['first_name'])." '></div>";
                    }
                     
                     
@@ -77,9 +77,9 @@
                     if(isset($updateSetValue['lastNameError'])){
                       $html .="<input type='text' name='last_name' class='form__input' placeholder='".$updateSetValue['lastNameError']."'></div>";
                     }else if(isset($updateSetValue['last_name'])){
-                      $html .="<input type='text' name='last_name' class='form__input' value=' ".$updateSetValue['last_name']." '></div>";
+                      $html .="<input type='text' name='last_name' class='form__input' value=' ".trim($updateSetValue['last_name'])." '></div>";
                     }else{
-                      $html .="<input type='text' name='last_name' class='form__input' value=' ".$value['last_name']." '></div>";
+                      $html .="<input type='text' name='last_name' class='form__input' value=' ".trim($value['last_name'])." '></div>";
                     }
                     
 
@@ -89,9 +89,9 @@
                     if(isset($updateSetValue['email_id_error'])){
                       $html .="<input type='email' name='email_id' class='form__input' placeholder='".$updateSetValue['email_id_error']."'></div>";
                     }else if(isset($updateSetValue['email_id'])){
-                      $html .="<input type='email' name='email_id' class='form__input' value=' ".$updateSetValue['email_id']." '></div>";
+                      $html .="<input type='email' name='email_id' class='form__input' value=' ".trim($updateSetValue['email_id'])." '></div>";
                     }else{
-                      $html .="<input type='email' name='email_id' class='form__input' value=' ".$value['email_id']." '></div>";
+                      $html .="<input type='email' name='email_id' class='form__input' value=' ".trim($value['email_id'])." '></div>";
                     }
                     
 
@@ -103,9 +103,9 @@
                     if(isset($updateSetValue['streetLine1Error'])){
                       $html .="<input type='text' name='street_line1' class='form__input'   placeholder='".$updateSetValue['streetLine1Error']."'></div>";
                     }else if(isset($updateSetValue['street_line1'])){
-                      $html .="<input type='text' name='street_line1' class='form__input'  value=' ".$updateSetValue['street_line1']." '></div>";
+                      $html .="<input type='text' name='street_line1' class='form__input'  value=' ".trim($updateSetValue['street_line1'])." '></div>";
                     }else{
-                      $html .="<input type='text' name='street_line1' class='form__input'  value=' ".$value['street_line1']." '></div>";
+                      $html .="<input type='text' name='street_line1' class='form__input'  value=' ".trim($value['street_line1'])." '></div>";
                     }
                     
 
@@ -116,9 +116,9 @@
                     if(isset($updateSetValue['streetLine2Error'])){
                       $html .="<input type='text' name='street_line2' class='form__input' placeholder='".$updateSetValue['streetLine2Error']."'></div>";
                     }else if(isset($updateSetValue['street_line2'])){
-                      $html .="<input type='text' name='street_line2' class='form__input' value=' ".$updateSetValue['street_line2']." '></div>";
+                      $html .="<input type='text' name='street_line2' class='form__input' value=' ".trim($updateSetValue['street_line2'])." '></div>";
                     }else{
-                      $html .="<input type='text' name='street_line2' class='form__input' value=' ".$value['street_line2']." '></div>";
+                      $html .="<input type='text' name='street_line2' class='form__input' value=' ".trim($value['street_line2'])." '></div>";
                     }
                     
 
@@ -127,7 +127,7 @@
                     if(isset($updateSetValue['city'])){
                       $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
                       $html .="<select name='city' class='form__input'>";
-                      $cityValue=$value['city'];
+                      $cityValue=$updateSetValue['city'];
                       $html .="<option value=''>".$updateSetValue['city']."</option>";
                       foreach($cityArray as $cities){
                         if($cityValue!=$cities){
@@ -160,9 +160,9 @@
                     if(isset($updateSetValue['contactNumError'])){
                       $html .="<input type='text' name='contact_num' class='form__input' placeholder='".$updateSetValue['contactNumError']."'></div>";
                     }else if(isset($updateSetValue['contact_num'])){
-                      $html .="<input type='text' name='contact_num' class='form__input' value=' ".$updateSetValue['contact_num']." '></div>";
+                      $html .="<input type='text' name='contact_num' class='form__input' value=' ".trim($updateSetValue['contact_num'])." '></div>";
                     }else{
-                      $html .="<input type='text' name='contact_num' class='form__input' value=' ".$value['contact_num']." '></div>";
+                      $html .="<input type='text' name='contact_num' class='form__input' value=' ".trim($value['contact_num'])." '></div>";
                     }
                     
 
