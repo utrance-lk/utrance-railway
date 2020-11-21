@@ -158,7 +158,8 @@ class AdminController extends Controller
         $saveDetailsModel->loadData($tempBody); 
 
         $updateTrainArray=$saveDetailsModel->getManagTrains();
-        // $newArray=$saveDetailsModel->validateTrains($updateTrainArray);
+        $updateTrainArray['newArray']=$saveDetailsModel->validateTrains($updateTrainArray);
+    
         return $this->render(['admin', 'updateTrain'],$updateTrainArray);
 
         }

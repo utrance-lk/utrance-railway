@@ -219,7 +219,15 @@
 
                     $html .="<div class='btn__save-box'>";
                     // $html .="<div class='btn__save btn__add-train' type='submit'>Update Train</div></div></div></form></div>";
-                    $html .="<button class='btn__save btn-settings' type='submit'>Update Train</button></div></div></form></div>";        
+            
+                        if(isset($newArray)){
+                            
+                        $html .="<button class='btn__save btn-settings' type='submit' disabled>Update Train</button></div></div></form></div>";
+                    }else{
+                        $html .="<button class='btn__save btn-settings' type='submit'>Update Train</button></div></div></form></div>";        
+                    }
+                
+                   
                         
                    
                     $dom = new DOMDocument();
