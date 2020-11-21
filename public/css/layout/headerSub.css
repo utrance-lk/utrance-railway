@@ -8,7 +8,7 @@
 
 .navbar {
     /* border-bottom: 1px solid rgba(119, 119, 119, 0.1); */
-  height: 14vh;
+  height: 16vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
