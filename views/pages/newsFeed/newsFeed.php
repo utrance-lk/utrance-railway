@@ -1,3 +1,4 @@
+<div class="main-container">
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -161,11 +162,7 @@ The train schedules will face changes due to the current situation in the countr
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="manage--freights-name">News 5</span>
-            
-
-
-
-
+            </a>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&amp;family=Sora:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/header.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/bookFreight/bookFreight.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
   </head>

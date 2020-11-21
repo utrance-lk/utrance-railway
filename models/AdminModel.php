@@ -129,7 +129,8 @@ class AdminModel extends Model {
 
 
     public function updateUserDetails(){//Ashika
-        $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
+        //var_dump($this->city);
+        $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city' => $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
         $updateUserValidation=new FormValidation();
         $validationState=$updateUserValidation->runUpdateValidators($array);
         //var_dump($validationState);

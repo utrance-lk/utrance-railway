@@ -120,39 +120,25 @@
                     }else{
                       $html .="<input type='text' name='street_line2' class='form__input' value=' ".trim($value['street_line2'])." '></div>";
                     }
-                    
-
-                    $html .="<div class='city content__fields-item'>";
+                     $html .="<div class='city content__fields-item'>";
                     $html .="<label for='city' class='form__label'>City</label>";
-                    if(isset($updateSetValue['city'])){
-                      $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
-                      $html .="<select name='city' class='form__input'>";
-                      $cityValue=$updateSetValue['city'];
-                      $html .="<option value=''>".$updateSetValue['city']."</option>";
-                      foreach($cityArray as $cities){
-                        if($cityValue!=$cities){
-                          $html .="<option value=''>$cities</option>";
-                        }
-                        
-                      }
-                      $html .="</div></div>";
-
+                    
                      
-                    }else{
                       $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
                       $html .="<select name='city' class='form__input'>";
                       $cityValue=$value['city'];
                       $html .="<option value=''>".$value['city']."</option>";
                       foreach($cityArray as $cities){
                         if($cityValue!=$cities){
-                          $html .="<option value=''>$cities</option>";
+                          $html .="<option value='$cities'>$cities</option>";
                         }
                         
                       }
-                      $html .="</div></div>";
+                      
+                      $html .="</select></div></div>";
                      
-                    }
                     
+
 
                     $html .="<div class='contactno-box content__fields-item'>";
                     $html .="<label for='contactno' class='form__label'>Contact No</label>";
