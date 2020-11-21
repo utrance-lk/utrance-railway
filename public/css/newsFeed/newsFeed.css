@@ -682,12 +682,7 @@
       margin: 2px;
     }
     
-    .about-section {
-      padding: 50px;
-      text-align: center;
-      background-color: #1f3a93;
-      color: white;
-    }
+
     
     .container {
       padding: 0 16px;
@@ -708,4 +703,22 @@
         width: 100%;
         display: block;
       }
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #1f3a93;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+
+  
+    
+    .button:hover {
+      background-color: #555;
     }
