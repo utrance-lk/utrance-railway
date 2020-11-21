@@ -2,11 +2,26 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
+include_once "../middlewares/AuthMiddleware.php";
 
 class detailsProviderController extends Controller
 {
 
-//details provider functionalities daranya
+    private function protect()
+    {
+        $authMiddleware = new AuthMiddleware();
+
+        if(!$authMiddleware->isLoggedIn()) {
+            return 'Your are not logged in!';
+        }
+
+        if (!$authMiddleware->restrictTo('detailsProvider')) {
+            echo 'You are unorthorized to perform this action!!';
+            return false;
+        }
+        return true;
+
+    }
 
     public function detailsProviderSettings($request)
     {
@@ -24,12 +39,15 @@ class detailsProviderController extends Controller
 
     public function contactAdmin($request)
     {
-        if ($request->isPost()) {
-            // form
-            return 'success';
+        if($this->protect()) {
+            if ($request->isPost()) {
+                // form
+                return 'success';
+            }
+            return $this->render(['detailsProvider', 'contactAdmin']);
+        } else {
+            return 'You are not authorized!';
         }
-
-        return $this->render(['detailsProvider', 'contactAdmin']);
 
     }
 

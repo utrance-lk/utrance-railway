@@ -13,8 +13,12 @@ class UserController extends Controller
     }
 
     public function getMe($request, $response) {
-        if ($request->isGet()) {
-            return $this->render('settings');
+        if($this->authMiddleware->isLoggedIn()) {
+            if ($request->isGet()) {
+                return $this->render('settings');
+            }
+        } else {
+            return 'You are not logged in!';
         }
     }
 

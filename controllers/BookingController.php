@@ -47,8 +47,12 @@ class BookingController extends Controller {
     }
 
     public function bookedTour($request) {
-        if($request->isGet()) {
-            return $this->render('bookedTour');
+        if($this->authMiddleware->isLoggedIn()) {
+            if($request->isGet()) {
+                return $this->render('bookedTour');
+            }
+        }else {
+            return 'your not logged in!';
         }
     }
 
