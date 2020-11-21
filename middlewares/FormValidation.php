@@ -217,9 +217,11 @@ class FormValidation{
         
         $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users WHERE email_id=:email_id");
         $query->bindValue(":email_id", $email_id);
+        
         //$query->bindValue(":id",$id);
         $query->execute();
         $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
+      
         if ($email_status == true) {
             $this->errorArray['email_id_error'] = "This email is already exist";
         }

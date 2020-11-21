@@ -9,6 +9,7 @@ class TrainController extends Controller
         if ($request->isPost()) {
             // form
             return 'success';
+            
 
         }
 
@@ -39,6 +40,7 @@ class TrainController extends Controller
 
     public function manageTrains($request)
     {
+       
         // var_dump($request->getBody());
         if($request->isGet()) 
         {
@@ -46,52 +48,81 @@ class TrainController extends Controller
             $searchModel->loadData($request->getBody());
             
 
-            $trainArrays = $searchModel->getTours();
+            $trainArrays = $searchModel->getTrains();
             //  var_dump($trainArrays);
             return $this->render(['admin', 'manageTrains'], $trainArrays);
 
         }
 
-         return $this->render(['admin', 'manageTrains']);
+        if ($request->isPost()) 
+        {
+            $searModel = new TrainModel();
+
+            $searModel->loadData($request->getBody());
+           
+            $resultArray=$searModel->searchTrainDetails();
+           
+
+           
+                
+             return $this->render(['admin', 'manageTrains'], $resultArray);
+            
+
+           
+
+        }
+
+        //  return $this->render(['admin', 'manageTrains']);
    }
 
    public function updateTrain($request) 
     {
     
-        if($request->isGet()) 
-        {
-            $updateTrainModel=new TrainModel();
+        
+            $saveDetailsModel = new TrainModel();
+            $tempBody = $request->getBody();
+             $tempBody['id'] = $request->getQueryParams()['id'];
+             $saveDetailsModel->loadData($tempBody);
+            // $updateTrainModel=new TrainModel();
             // var_dump($request->getQueryParams());
 
 
-        $updateTrainModel->loadData($request->getQueryParams());
-        $updateTrainArray=$updateTrainModel->getManagTrains();
+        // $updateTrainModel->loadData($request->getQueryParams());
+        
+        
+
+        if ($request->isPost()) 
+        {
+
+                 $validationState = $saveDetailsModel->updateTrainDetails();
+             
+             if ($validationState === 'success') {
+                
+                 $trainArray=$saveDetailsModel->getTrains();
+             return $this->render(['admin', 'manageTrains'],$trainArray);
+             } 
+             else {
+                $trainArray=$saveDetailsModel->getManageTrains();
+                // var_dump($validationState);
+                return $this->render(['admin', 'updateTrain'],$trainArray,$validationState);
+            //     $registerSetValue = $saveDetailsModel->registerSetValue($validationState);
+                
+            //     $updateTrainArray=$saveDetailsModel->getManagTrains();
+            //     // var_dump( $registerSetValue['train_travel_days']);
+            //     return $this->render(['admin', 'updateTrain'],$updateTrainArray); 
+
+             }
+            // $trainArray=$saveDetailsModel->getTrains();
+            // return $this->render(['admin', 'manageTrains'],$trainArray);
+        
+
+        }
+        $updateTrainArray=$saveDetailsModel->getManagTrains();
         
             
         
             //return $this->render(['admin', 'manageUsers'],$getUserArray);
         return $this->render(['admin', 'updateTrain'],$updateTrainArray);
-        }
-
-        if ($request->isPost()) 
-        {
-
-            $saveDetailsModel = new TrainModel();
-
-       
-
-             $tempBody = $request->getBody();
-             $tempBody['id'] = $request->getQueryParams()['id'];
-             $saveDetailsModel->loadData($tempBody);
-
-
-            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
-            //var_dump($saveDetailsModel->updateUserDetails());
-            $saveDetailsModel->updateTrainDetails();
-            
-            return 'success';
-
-        }
 
    
             //  return $this->render(
@@ -111,12 +142,12 @@ class TrainController extends Controller
 
         $deleteTrainModel->loadData($request->getQueryParams());
         $deleteTrainModel->deleteTrains();
-        $trainArrays=$deleteTrainModel->getTours();
+        $trainArray=$deleteTrainModel->getTrains();
         
             
     
-        return $this->render(['admin', 'manageTrains'],$trainArrays);
-        return succsee;
+        return $this->render(['admin', 'manageTrains'],$trainArray);
+        // return succsee;
         }
 
         
@@ -125,22 +156,35 @@ class TrainController extends Controller
     public function addTrain($request) 
     {
         $saveTrainDetails = new TrainModel();
+        $saveTrainDetails->loadData($request->getBody());
          if ($request->isPost()) 
         {
-         echo "hello";
-         $saveTrainDetails->loadData($request->getBody());
-            //$updateUser=$saveDetailsModel->getUpdateUserDetails();
-            //var_dump($saveDetailsModel->updateUserDetails());
-            if($saveTrainDetails->addNewTrainDetails()){
-                return 'success';
-                echo "hihih";
-            }
-            
+        
            
+            
+            $validationState = $saveTrainDetails->addNewTrainDetails();
+             
+            if ($validationState === 'success') {
+                $getrouteArray = $saveTrainDetails->getAvailableRoute();
+                
+                return $this->render(['admin', 'addTrain'],$getrouteArray);
+            } else {
+                $registerSetValue = $saveTrainDetails->registerSetValue($validationState);
+            //    var_dump($getrouteArray);
+                // var_dump( $registerSetValue['train_travel_days']);
+                // $this->render(['admin', 'addTrain'], $getrouteArray);
+                
+                return $this->render(['admin', 'addTrain'],$registerSetValue); 
+                
 
-        }
+            }
+           
       
-            return $this->render(['admin', 'addTrain']);
+        }
+        $getrouteArray = $saveTrainDetails->getAvailableRoute();
+        // var_dump($getrouteArray);
+      
+            return $this->render(['admin', 'addTrain'],$getrouteArray);
         
 
     }
@@ -151,6 +195,14 @@ class TrainController extends Controller
             return $this->render('ticketPrice');
         }
         return $this->render('ticketPrice');
+
+    }
+
+    public function FreightServicePrice($request){
+        if($request->isPost()){
+            return $this->render('FreightServicePrice');
+        }
+        return $this->render('FreightServicePrice');
 
     }
 

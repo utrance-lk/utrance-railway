@@ -1,7 +1,7 @@
 {{main}}
 
 <?php
-    if($_REQUEST['url'] !== 'resetPassword' && $_REQUEST['url'] !== 'forgotPassword' && $_REQUEST['url'] !== 'login' && $_REQUEST['url'] !== 'register') :?>
+if ($_REQUEST['url'] !== 'resetPassword' && $_REQUEST['url'] !== 'forgotPassword' && $_REQUEST['url'] !== 'login' && $_REQUEST['url'] !== 'register'): ?>
         {{header}}
     <?php endif;?>
 
@@ -11,12 +11,12 @@
 <?php endif;?>
 
 <?php
-    if(App::$APP->activeUser()['role'] === 'user' && ($_REQUEST['url'] === 'profile' || $_REQUEST['url'] === 'settings' || $_REQUEST['url'] === 'trains/update')) : ?>
+if (App::$APP->activeUser()['role'] === 'user' && ($_REQUEST['url'] === 'profile' || $_REQUEST['url'] === 'settings' || $_REQUEST['url'] === 'trains/update')): ?>
     {{userSideNav}}
 <?php endif;?>
 
 <?php
-    if(App::$APP->activeUser()['role'] === 'detailsProvider' && ($_REQUEST['url'] === 'profile' || $_REQUEST['url'] === 'settings' || $_REQUEST['url'] === 'trains/update' || $_REQUEST['url'] === 'contact-admin')) : ?>
+if (App::$APP->activeUser()['role'] === 'detailsProvider' && ($_REQUEST['url'] === 'profile' || $_REQUEST['url'] === 'settings' || $_REQUEST['url'] === 'trains/update' || $_REQUEST['url'] === 'contact-admin')): ?>
     {{detailsProviderSideNav}}
 <?php endif;?>
 
