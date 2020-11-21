@@ -14,32 +14,34 @@ class UserController extends Controller
 
     public function getMe($request, $response) {
         if ($request->isGet()) {
-            if($this->authMiddleware->restrictTo('admin')) {
-                return $this->render('admin');
-            }
-            if($this->authMiddleware->restrictTo('admin')) {
-                return $this->render('registeredUser');
-            }
+            return $this->render('settings');
         }
     }
 
     public function updateMe($request, $response) {
+       
+        $updateUserDetailsModel = new UserModel();
+        
         if ($request->isPost()) {
-            $updateUserDetailsModel = new UserModel();
-
+                
             $tempUpdateUserBody = $request->getBody();
 
             $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+            $tempUpdateUserBody['user_role']=App::$APP->activeUser()['role'];
 
             $updateUserDetailsModel->loadData($tempUpdateUserBody);
-
+           
             $state = $updateUserDetailsModel->updateMyProfile();
-            if ($state === 'success') {
+           
+            if ($state === 'success') { 
                 return $response->redirect('/utrance-railway/settings');
             } else {
-                return 'error updating data!!';
+                $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
+                return $this->render('settings', $updateUserDetailsSetValue);
             }
         }
+        return "HEllo";
+        
     }
 
     public function deleteMe()
@@ -51,6 +53,19 @@ class UserController extends Controller
     {
         // do not implement this method
         // use sign up in AuthController
+    }
+
+    public function aboutUs()
+    {
+
+        return $this->render('aboutUs');
+
+    }
+
+
+    public function newsFeed(){
+       
+        return $this->render('newsFeed');
     }
 
 }

@@ -211,11 +211,10 @@ class FormValidation{
     }
 
     private function validateEmailIdForUpdate($email_id){///Validate email for update
-
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
-
+        
         $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
         $query->bindValue(":email_id", $email_id);
         

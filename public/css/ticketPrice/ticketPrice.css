@@ -43,10 +43,15 @@
     
   }
   
-  td, th {
+  td {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 0.4rem;
+  }
+  th{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 0.4rem; 
   }
   
   tr:nth-child(even) {
@@ -61,3 +66,93 @@
   .td-second{
       background-color:  rgb(250, 151, 70);
   }
+
+
+
+  .pagination {
+    display: flex;
+  justify-content: center;
+    
+     
+  }
+
+  .div-pagination{
+    width:14.5rem;
+    padding: 1rem;
+    align-items: center;
+    height:4rem;
+    font-size: 1.6rem;
+   display: flex;
+   background-color: white;
+   flex-direction: column;
+   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+   border-radius: 5px;
+   font-family: "Noto Sans JP", sans-serif;
+   border-color: #1F3A93;
+    border-style: groove;
+    border-width: 0.14rem;
+    font-family: "Lato", sans-serif;
+    border-radius: 4px;
+  }
+  .div-pagination:hover{
+    background: #e7e7e7;
+  }
+  
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 4px 11px;
+    text-decoration: none;
+    font-family: "Lato", sans-serif;
+  }
+  
+  
+
+  #div-sleeping-births{
+    width:17.5rem
+  }
+
+  .select{
+    display: flex;
+    margin-top: 2rem;
+  justify-content: center;
+  
+  }
+  .div-class{
+    
+    margin-right: 1.2rem;
+  }
+
+  .select-routes{
+    width: 24.5rem;
+    border-radius: 0.6rem;
+    height: 4.5rem;
+    border-color: #1F3A93;
+    border-style: groove;
+    border-width: 0.14rem;
+    font-family: "Lato", sans-serif;
+    border-radius: 4px;
+    
+    
+  }
+  .select-submit{
+    display: flex;
+  justify-content: center;
+  }
+  .select-div{
+    padding: 1.3rem;
+    width:14.5rem;
+    background-color: white;
+    height: 4.5rem;
+    text-align: center;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    border-color: #1F3A93;
+    font-family: "Lato", sans-serif;
+    border-style: groove;
+    border-width: 0.14rem;
+    border-radius: 4px;
+  }
+  
+  

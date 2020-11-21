@@ -59,14 +59,14 @@
   fill: #fff;
 }
 
-.userdetails-box--dropdown {
+/* .userdetails-box--dropdown {
   background-color: rgb(31, 58, 147);
   border-radius: 5px;
 }
 
 .userdetails-box--dropdown-text {
   color: #eeeeee;
-}
+} */
 
 .userrole-name {
   border-bottom: 1px solid #eeeeee;
@@ -203,6 +203,8 @@
   cursor: pointer;
   transition: transform 0.5s;
   transition: background-color 0.2s;
+  font-family: 'Lato', 'sans-serif';
+  font-size: 1.5rem;
 }
 
 .btn__save:active,
@@ -353,7 +355,7 @@ select {
   padding: 0 2rem;
 }
 
-.search__result-card:not(:last-child) {
+.search__result-card {
   margin-bottom: 4rem;
 }
 
@@ -617,11 +619,84 @@ select {
 }
 
 #deactivate-btn{
-  
   color: red;
 }
 
 #activate-btn{ 
  
   color: green;
+}
+
+.filters {
+  /* border: 1px solid green; */
+  padding: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  height: 5rem;
+  align-items: center;
+}
+
+.filters > * {
+  /* border: 1px solid slateblue; */
+}
+
+
+.date__picker {
+}
+
+.filter__label {
+  padding: .5rem;
+  /* border: 1px solid greenyellow; */
+  background-color: rgba(31, 58, 147, 0.8);
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.train-booking__stat-card--container {
+  /* border: 1px solid pink; */
+  margin-top: 4rem;
+}
+
+.train-booking__stat-card {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 8rem;
+  background-color: rgb(244, 242, 242);
+  padding: 0 1rem;
+}
+
+.fcseats,
+.scseats,
+.sleeping-berths,
+.observation,
+.weight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.train-booking__stat-card:not(:last-child) {
+  margin-bottom: 4rem;
+}
+
+.btn__view--bookings {
+  /* border:  1px solid rgba(31, 58, 147, 0.8); */
+  padding: 1rem;
+  border-radius: 5px;
+  width: 10rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.train-booking__stat-card--train-name {
+  width: 15rem;
+  text-align: center;
+}
+
+.btn__add-route {
+  margin: 0 0 0 40vw;
 }

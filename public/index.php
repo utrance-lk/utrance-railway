@@ -56,6 +56,7 @@ $app->router->post('/utrance-railway/register', [AuthController::class, 'registe
 // profile rendering
 $app->router->get('/utrance-railway/profile', [UserController::class, 'getMe']);
 $app->router->post('/utrance-railway/profile', [UserController::class, 'updateMe']);
+
 $app->router->get('/utrance-railway/settings', [UserController::class, 'getMe']);
 $app->router->post('/utrance-railway/settings', [UserController::class, 'updateMe']);
 
@@ -69,28 +70,29 @@ $app->router->post('/utrance-railway/resetPassword', [AuthController::class, 're
 
 
 ////update Password
-$app->router->get('/utrance-railway/updatePassword', [AuthController::class, 'updatePassword']);
-$app->router->post('/utrance-railway/updatePassword', [AuthController::class, 'updatePassword']);
+$app->router->get('/utrance-railway/update-password', [AuthController::class, 'updatePassword']);
+$app->router->post('/utrance-railway/update-password', [AuthController::class, 'updatePassword']);
 // booking routes
 $app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createBooking']);
+$app->router->get('/utrance-railway/book-freights', [BookingController::class, 'bookFreight']);
 $app->router->get('/utrance-railway/booked-tour', [BookingController::class, 'bookedTour']);
 
 
 //aboutUs routing Daranya
 
-$app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
-$app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
+//$app->router->post('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
+//$app->router->get('/utrance-railway/aboutUs/', [AdminController::class, 'aboutUs']);
 
 
 ////////Registered User Routing
-$app->router->get('/utrance-railway/registeredUser', [RegisterUserController::class, 'registeredUserSettings']);
-$app->router->post('/utrance-railway/registeredUser', [RegisterUserController::class, 'registeredUserSettings']);
+//$app->router->get('/utrance-railway/registeredUser', [RegisterUserController::class, 'registeredUserSettings']);
+//$app->router->post('/utrance-railway/registeredUser', [RegisterUserController::class, 'registeredUserSettings']);
 
 
 //detailsProvider routing
-$app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
-$app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
-$app->router->get('/utrance-railway/detailsProvider/contactAdmin', [detailsProviderController::class, 'contactAdmin']);
+// $app->router->get('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+// $app->router->post('/utrance-railway/detailsProvider/detailsProviderSettings', [detailsProviderController::class, 'detailsProviderSettings']);
+$app->router->get('/utrance-railway/contact-admin', [detailsProviderController::class, 'contactAdmin']);
 
 
 
@@ -117,42 +119,51 @@ $app->router->post('/utrance-railway/users/delete', [AdminController::class, 'de
 $app->router->get('/utrance-railway/users/activate', [AdminController::class, 'changeUserStatus']);
 $app->router->get('/utrance-railway/users/deactivate', [AdminController::class, 'changeUserStatus']);
 
-// $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
-// $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
-
-
-$app->router->get('/utrance-railway/admin/routes/add', [AdminController::class, 'addRoute']);
 
 $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRoute']);
 
 
-$app->router->post('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
-$app->router->get('/utrance-railway/aboutUs', [AdminController::class, 'aboutUs']);
+$app->router->post('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
+$app->router->get('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
 
+$app->router->post('/utrance-railway/news',[UserController::class,'newsFeed']);
+$app->router->get('/utrance-railway/news',[UserController::class,'newsFeed']);
+
+$app->router->get('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
+$app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
+$app->router->get('/utrance-railway/booking-train', [BookingController::class, 'bookingForTrain']);
+$app->router->post('/utrance-railway/booking-train', [BookingController::class, 'bookingForTrain']);
+$app->router->get('/utrance-railway/freight-bookings', [BookingController::class, 'manageFreights']);
+$app->router->get('/utrance-railway/freight-booking-train', [BookingController::class, 'freightBookingForTrain']);
+
+$app->router->post('/utrance-railway/trains/update', [AdminController::class, 'updateTrain']);
 
 $app->router->get('/utrance-railway/getUserDetails', [TrainController::class, 'form']);
 $app->router->post('/utrance-railway/getUserDetgitails', [TrainController::class, 'register']);
+//$app->router->get('/utrance-railway/trains', [TrainController::class, 'manageTrains']);
+
 $app->router->get('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
-$app->router->post('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
+$app->router->Post('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
+
+
 
 $app->router->get('/utrance-railway/trains/view', [AdminController::class, 'viewTrain']);
 
 $app->router->post('/utrance-railway/trains/update', [AdminController::class, 'updateTrain']);
-
 $app->router->get('/utrance-railway/trains/delete', [AdminController::class, 'deleteTrain']);
 $app->router->post('/utrance-railway/trains/delete', [AdminController::class, 'deleteTrain']);
 $app->router->get('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
 $app->router->post('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
 
-$app->router->post('/utrance-railway/ticketPrice', [TrainController::class, 'ticketPrice']);
-$app->router->get('/utrance-railway/ticketPrice', [TrainController::class, 'ticketPrice']);
-$app->router->post('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
-$app->router->get('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
+$app->router->post('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
+$app->router->get('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
 // $app->router->get('/utrance-railway/admin/trains/add', [AdminController::class, 'addTrain']);
 // $app->router->get('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 // $app->router->post('/utrance-railway/admin/trains/update', [AdminController::class, 'updateTrain']);
 
+// FREIGHT CONTROLLER
+$app->router->get('/utrance-railway/freight-search', [BookingController::class, 'searchFreightTrains']);
 
-// / ROUTE HANDLING /
+$app->router->get('/utrance-railway/view-train', [ViewController::class, 'viewTrain']);
 
 $app->run();

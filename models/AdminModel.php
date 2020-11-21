@@ -399,9 +399,10 @@ class AdminModel extends Model {
     public function getAvailableRoute(){
         $query = APP::$APP->db->pdo->prepare("SELECT route_id FROM routes WHERE route_status=0");
         $query->execute();
-        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $this->resultArray;
+    
         
 
     }
@@ -446,6 +447,7 @@ class AdminModel extends Model {
 
         
         return $registerSetValueArray1;
+        
 
     }
 
@@ -469,14 +471,16 @@ class AdminModel extends Model {
 
     public function validateTrains(){
         $currentTime = date('h:i:s');
-        $query = APP::$APP->db->pdo->prepare("SELECT routes.route_id FROM routes RIGHT JOIN trains ON trains.route_id = routes.route_id");
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM routes RIGHT JOIN trains ON trains.route_id = routes.route_id");
         $query->bindValue(":route_id", $this->route_id);
         $query->execute();
     }
+    
 
    
 
     
+
 
 
 }

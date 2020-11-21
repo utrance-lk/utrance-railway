@@ -9,17 +9,17 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/header.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerSub.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/admin/style.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
   </head>
 
   <body>
-    <div class="nav-container">
+    <!-- <nav class="nav-container">
       <div class="navbar">
         <div class="main__nav">
           <div class="logobox">
-            <img src="../../../../utrance-railway/public/img/pages/admin/logo.png" alt="logo" class="logo" />
+            <img src="../../../../utrance-railway/public/img/pages/admin/UtranceLogo.png" alt="logo" class="logo" />
           </div>
           <div class="main__nav-items">
             <a href="/utrance-railway/home" class="home-box nav-items-little">
@@ -97,9 +97,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </nav> -->
 
-    <div class="main-container">
+    <!-- <div class="main-container">
       <div class="sidebar">
         <div class="sidebar__nav">
           <div class="sidebar__nav-common-items">
@@ -136,18 +136,25 @@
               </svg>
               <span class="manage--users-name">Manage users</span>
             </a>
-            <div class="sidebar__nav-manage--bookings sidebar__nav-item">
+            <a href="/utrance-railway/bookings" class="sidebar__nav-manage--bookings sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-map"></use>
               </svg>
               <span class="manage--bookings-name">Manage bookings</span>
-            </div>
-            <div class="sidebar__nav-manage--freights sidebar__nav-item">
+            </a>
+            <a href="/utrance-railway/freight-bookings" class="sidebar__nav-manage--freights sidebar__nav-item">
               <svg class="freights-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-shopping-cart"></use>
               </svg>
               <span class="manage--freights-name">Manage freights</span>
-            </div>
+            </a>
+            <a href="#" class="sidebar__nav-manage--news sidebar__nav-item">
+              <svg class="news-icon sidebar__nav-icon">
+                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-landline"></use>
+              </svg>
+              <span class="manage--news-name">Manage News</span>
+            </a>
           </div>
         </div>
-      </div>
+      </div> -->
+

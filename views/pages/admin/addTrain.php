@@ -31,19 +31,20 @@
                         libxml_clear_errors();
                         if(isset($routes) && !isset($route_id))
                         {
+                          
                            
                         $html =" <select name='route_id' id='route_id'>";
-                       
+                     
                         
                             foreach($routes as $key => $value)
                             {
-                               
-                                $html .= "<option value=".$value['route_id']."> ".$value['route_id']."</option>";
+                                
+                             $html .= "<option value=".$value['route_id'].">".$value['route_id']."</option>";
     
                             }
                             
                           
-                          $html .= "</select>"; 
+                        $html .= "</select>"; 
                         
 
                         $dom = new DOMDocument();

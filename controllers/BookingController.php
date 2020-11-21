@@ -60,4 +60,63 @@ class BookingController extends Controller {
         // delete
     }
 
+    // admin
+    public function bookingForTrain($request) {
+        if($this->authMiddleware->restrictTo('admin')) {
+            if($request->isGet()) {
+                return $this->render('bookingForATrain');
+            }
+        } else {
+            return 'You are not authorized';
+        }
+
+    }
+
+    public function manageFreights($request) {
+        if($this->authMiddleware->restrictTo('admin')) {
+            if($request->isGet()) {
+                return $this->render(['admin', 'manageFreights']);
+            }
+        } else {
+            return 'You are not authorized';
+        }
+    }
+
+    public function manageBookings($request) {
+        if ($this->authMiddleware->restrictTo('admin')) {
+            if($request->isGet()) {
+                return $this->render(['admin', 'manageBookings']);
+            }
+        } else {
+            return 'You are not authorized';
+        }
+    }
+
+    public function freightBookingForTrain($request) {
+        if ($this->authMiddleware->restrictTo('admin')) {
+            if($request->isGet()) {
+                return $this->render('freightBookingForATrain');
+            }
+        } else {
+            return 'You are not authorized';
+        }
+    }
+
+    public function searchFreightTrains($request) {
+        if($request->isGet()) {
+            return $this->render('freightSearch');
+        }
+    }
+
+    public function bookFreight($request) {
+        if($this->authMiddleware->isLoggedIn()) {
+            if($request->isGet()) {
+                return $this->render('bookFreight');
+            }
+        } else {
+            return 'You are not logged in!';
+        }
+    }
+
+
 }
