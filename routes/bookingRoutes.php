@@ -15,5 +15,4 @@ $app->router->get('/utrance-railway/freight-bookings', [BookingController::class
 $app->router->get('/utrance-railway/freight-booking-train', [BookingController::class, 'freightBookingForTrain']);
 $app->router->get('/utrance-railway/freight-search', [BookingController::class, 'searchFreightTrains']);
 
-
 ?>

@@ -16,26 +16,6 @@
   margin: 0 15vw;
 }
 
-/* .navbar {
-  color: #fff;
-  background-color: rgba(31, 58, 147, 0.8);
-  border: none;
-  font-family: "Lato", sans-serif;
-}
-
-.nav-container {
-  border: none;
-}
-
-.navbar__icon {
-  fill: rgb(242, 242, 242);
-}
-
-.navbar a:link,
-.navbar a:visited {
-  color: #fff;
-} */
-
 .header {
   height: 10vh;
   /* background-color: #fff; */
@@ -50,33 +30,6 @@
 .logo {
   height: 8rem;
 }
-
-/* .navbar__list {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.navbar__list-items {
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 2rem;
-  margin-left: 10rem;
-  /* border: 1px dotted navajowhite; 
-  opacity: 0.8;
-  transition: all 0.5s;
-  backface-visibility: hidden;
-}
-
-.navbar__list-items:hover {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.navbar__list-items a {
-  text-decoration: none;
-  color: #fff;
-} */
 
 .user__nav-box {
   position: relative;

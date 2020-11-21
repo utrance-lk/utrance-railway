@@ -2,8 +2,6 @@
 
 require_once "../classes/core/App.php";
 include_once "../models/UserModel.php";
-require_once "../controllers/RegisterUserController.php";
-
 require_once "../vendor/autoload.php";
 
 
