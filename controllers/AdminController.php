@@ -6,16 +6,17 @@ include_once "../middlewares/AuthMiddleware.php";
 
 class AdminController extends Controller
 {
-    public function protect()
+    private function protect()
     {
         $authMiddleware = new AuthMiddleware();
 
         if(!$authMiddleware->isLoggedIn()) {
-            return 'Your are not logged in!';
+            // echo 'Your are not logged in!';
+            return false;
         }
 
         if (!$authMiddleware->restrictTo('admin')) {
-            echo 'You are unorthorized to perform this action!!';
+            // echo 'You are unorthorized to perform this action!!';
             return false;
         }
         return true;
@@ -35,7 +36,6 @@ class AdminController extends Controller
                 $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
                 $getSearchResult = $searchUser->getSearchUserResult();
-                //var_dump($getSearchResult);
                 return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
@@ -44,6 +44,8 @@ class AdminController extends Controller
 
             return $this->render(['admin', 'manageUsers'], $getUserArray);
 
+        } else {
+            return 'You are not authorized';
         }
     }
 
