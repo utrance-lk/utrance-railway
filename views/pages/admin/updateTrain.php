@@ -169,7 +169,7 @@
                     
                     if($value['train_active_status']==1)
                     {
-                    $html .="<input type='checkbox' name='train_active_status' id='trainactivestatus' value=''1' checked='checked'></div>";
+                    $html .="<input type='checkbox' name='train_active_status' id='trainactivestatus' value='1' checked='checked'></div>";
                     }
                     else
                     {

@@ -10,7 +10,7 @@
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
-                        <input type="text" name="train_name" class="form__input" placeholder="<?php  echo isset($TrainNameError)? $TrainNameError : '';?>" value="<?php echo isset($train_name) ? $train_name : '';?>" required>
+                        <input type="text" name="train_name" class="form__input" placeholder="<?php  echo isset($TrainNameError)? $TrainNameError : 'Enter train name';?>" value="<?php echo isset($train_name) ? $train_name : '';?>" required>
                       
                     </div>
                     <div class="traintype-box content__fields-item">

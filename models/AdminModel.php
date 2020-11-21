@@ -296,7 +296,7 @@ class AdminModel extends Model {
     {
         $array= ['train_name' => $this->train_name, 'route_id' => $this->route_id, 'train_type' => $this->train_type, 'train_travel_days' => $this->train_travel_days,
         'train_freights_allowed' => $this->train_freights_allowed, 'train_fc_seats' => $this->train_fc_seats, 'train_sc_seats' => $this->train_sc_seats,
-        'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
+        'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status'=> $this->train_active_status];
         $updateTrainrValidation=new TrainFormValidation();
         $validationState=$updateTrainrValidation->runValidators1($array);
        
@@ -305,7 +305,7 @@ class AdminModel extends Model {
            if($this->train_freights_allowed==0){
             $this->train_total_weight=0;
         }
-
+          
            $updateTrain = New HandlerFactory();
            $valuesArray = ['train_name' => $this->train_name, 'route_id' => $this->route_id, 'train_type' => $this->train_type, 'train_travel_days' => implode(" ",$this->train_travel_days),
             'train_freights_allowed' => $this->train_freights_allowed, 'train_fc_seats' => $this->train_fc_seats, 'train_sc_seats' => $this->train_sc_seats,
@@ -313,6 +313,7 @@ class AdminModel extends Model {
            
 
         $getsuccess=$updateTrain->updateOne('trains', 'train_id', $this->id, $valuesArray);
+        
         return  $getsuccess;
 
         }
@@ -448,6 +449,7 @@ class AdminModel extends Model {
         
         return $registerSetValueArray1;
         
+        
 
     }
 
@@ -469,11 +471,27 @@ class AdminModel extends Model {
         return ucfirst($inputText); // capitalize first letter
     }
 
-    public function validateTrains(){
-        $currentTime = date('h:i:s');
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM routes RIGHT JOIN trains ON trains.route_id = routes.route_id");
-        $query->bindValue(":route_id", $this->route_id);
+    public function validateTrains($trains){
+       
+    foreach($trains as $key=>$value)
+    {
+        $route=$value[0]['route_id'];
+        
+        $query = APP::$APP->db->pdo->prepare("SELECT stops.	arrival_time FROM stops RIGHT JOIN trains ON trains.route_id = stops.route_id WHERE stops.route_id=$route");
+        $query->bindValue(":route_id", $route);
         $query->execute();
+        $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($this->resultArray);
+        
+    }
+}
+
+    public function vTrains($array){
+        $currentTime = date('h:i:s');
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops RIGHT JOIN trains ON trains.route_id = stops.route_id WHERE  ");
+        $query->bindValue(":train_id", $this->route_id);
+        $query->execute();
+      
     }
     
 

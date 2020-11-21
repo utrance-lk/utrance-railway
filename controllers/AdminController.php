@@ -158,6 +158,7 @@ class AdminController extends Controller
         $saveDetailsModel->loadData($tempBody); 
 
         $updateTrainArray=$saveDetailsModel->getManagTrains();
+        $newArray=$saveDetailsModel->validateTrains($updateTrainArray);
         return $this->render(['admin', 'updateTrain'],$updateTrainArray);
 
         }
@@ -180,7 +181,7 @@ class AdminController extends Controller
         $id = $request->getQueryParams()['id'];
         $tempBody['id'] = $id;
         $saveDetailsModel->loadData($tempBody);
-           
+   
              $validationState = $saveDetailsModel->updateTrainDetails();
             //  var_dump($validationState);
              
