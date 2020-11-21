@@ -277,7 +277,7 @@ class AdminModel extends Model {
     public function searchTrainDetails()
     {
         $this->train_name = $this->searchTrain;
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%'");
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%' OR train_id=:trainName");
         $query->bindValue(":trainName", $this->train_name);
         $query->execute();    
         $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
