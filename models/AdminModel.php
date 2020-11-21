@@ -467,12 +467,16 @@ class AdminModel extends Model {
         return ucfirst($inputText); // capitalize first letter
     }
 
-    
+    public function validateTrains(){
+        $currentTime = date('h:i:s');
+        $query = APP::$APP->db->pdo->prepare("SELECT routes.route_id FROM routes RIGHT JOIN trains ON trains.route_id = routes.route_id");
+        $query->bindValue(":route_id", $this->route_id);
+        $query->execute();
+    }
 
    
 
     
-
 
 
 }
