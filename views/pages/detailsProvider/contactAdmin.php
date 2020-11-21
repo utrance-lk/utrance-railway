@@ -1,65 +1,95 @@
+<style>
+textarea {
+  border-style: none;
+  border-color: Transparent;
+  overflow: auto;
+  outline: none;
+}
+</style>
+
+
+
 <div class="load-content-container">
         <div class="load-content">
           <div class="load-content--manage-trains">
             <div class="content-title">
               <p> Contact Admin</p>
             </div>
-         <br>
-          <br>
-          
-          <p>To admin,</p>
-        
-          <form action="" method="POST" class="form__train-data">
+    
+          <form action="/utrance-railway/contact-admin" method="POST" >
           <div class="content__fields">
-          <div class="textarea">
-              <textarea rows="20" cols="70" name="message" form="messageform" >Enter the message here...</textarea>
-          </div>
-              <br>
-              <div class="btn__save-box">
-                        <div class="btn__save btn__add-train">Send</div>
-              </div>
+
+          <?php
+              if (isset($_SESSION['user'])) {
+                $html = "";
+                
+              
+
+                $html .= "<div class='firstname-box content__fields-item'>";
+                $html .= "<label for='firstname' class='form__label'>From</label>";
+                $html .= "<input type='text' name='first_name' class='form__input' value=" . App::$APP->activeUser()['first_name'] . "></div>";
+                
+                $dom = new DOMDocument();
+                $dom->loadHTML($html);
+                print_r($dom->saveHTML());
+              }
+            ?>
+
+                <div class="emai-box content__fields-item">
+                <label for="email" class="form__label">To</label>
+                <input type="email" name="email_id" class="form__input">
+                </div>
+              
+
+                <!--div class="city-box form__container-item register__form--inputs">
+                <label for="details_type">Details Type</label>
+                <select name="details_type" id="details_type">
+                    <option value="train_schedule">Train Schedule</option>
+                    <option value="ticket_price">Ticket Price</option>
+                    <option value="other">Other</option>
+              </select>
+            </div!-->
+
+            <fieldset class="classess-box content__fields-item">
+                        <legend class="form__label">Detail Type</legend>
+                        <div class="reservation-categorybox__container checkbox__horizontal">
+                         
+                            <div class="seatbox-sleepingberths reservation__category-item">
+                                <label for="train_schedule">Train Schedule</label>
+                                <input type="radio" value="train_schedule" name="details_type" id="train_schedule" >
+                            </div>
+                            <div class="seatbox-sleepingberths reservation__category-item">
+                                <label for="ticket_price">Ticket Price</label>
+                                <input type="radio" value="ticket_price" name="details_type" id="ticket_price" >
+                            </div>
+                            <div class="seatbox-sleepingberths reservation__category-item">
+                                <label for="other">Other</label>
+                                <input type="radio" value="other" name="details_type" id="other" >
+                            </div>
+                           
+                        </div> 
+                        <br>
+                                
+                    </fieldset>
+              
+                <fieldset class="classess-box content__fields-item">
+                        <legend class="form__label">Message</legend>
+                
+            
+                <textarea rows="10" cols="60" name="detail" placeholder=" Enter the message here..."></textarea>
+                </fieldset>
+                
+                <div class="btn__save-box">
+                <input type="submit" class="btn__save btn-settings"  name="submit" value="Send"></div>
+
+
+      
           </div>
           </div>
           </div>
           </form>
             
-          <!--  <a href="/utrance-railway/admin/trains/add" class="adduserbtn addbtn">
-              <div class="addtrainbtn-text addbtn-text">Add Train</div>
-              <svg class="addtrainbtn-img addbtn-img">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus">
-                </use>
-              </svg> 
-            </a>
-            <div class="search__results-container">
-              <div class="search__result-card">
-                
-                <div class="search__result-train-idbox">
-                  #<span class="train__id">1</span>
-                </div>
-                <div class="search__result-train-namebox">Denuwara Menike</div>
-                <div class="search__result-train-typebox">Express</div>
-                <a href="/utrance-railway/admin/trains/update" class="search__result-train-managebtnbox">
-                  <div class="search__result-managebtn btn-white">View</div>
-                </a>
-                <div class="search__result-train-deletebtnbox">
-                  <div class="search__result-deletebtn btn-white">Delete</div>
-                </div>
-              </div>
-              <div class="search__result-card">
-                
-                <div class="search__result-train-idbox">
-                  #<span class="train__id">2</span>
-                </div>
-                <div class="search__result-train-namebox">Dakshiana Intercity</div>
-                <div class="search__result-train-typebox">Express</div>
-                <a href="/utrance-railway/admin/trains/update" class="search__result-train-managebtnbox">
-                  <div class="search__result-managebtn btn-white">View</div>
-                </a>
-                <div class="search__result-train-deletebtnbox">
-                  <div class="search__result-deletebtn btn-white">Delete</div>
-                </div>
-              </div>
-            </div>!-->
+       
           </div>
         </div>
       </div>
