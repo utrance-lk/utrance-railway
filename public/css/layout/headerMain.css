@@ -1,17 +1,33 @@
 .nav-container {
   /* border: 1px solid maroon; */
   /* background-color: #eeeeee; */
-  border-bottom: 1px solid rgba(119, 119, 119, 0.1);
+  /* border-bottom: 1px solid rgba(119, 119, 119, 0.1); */
+  font-family: "Lato", sans-serif;
+  border-bottom: 1px solid rgba(31, 58, 147, 0.8);
+  color: #fff;
+  background-color: rgba(31, 58, 147, 0.8);
+  border: none;
   font-family: "Lato", sans-serif;
 }
 
 .navbar {
-  border-bottom: 1px solid rgba(31, 58, 147, 0.8);
-  background-color: #fff;
-  height: 14vh;
+  height: 16vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.navbar__icon {
+  height: 3rem;
+  width: 4rem;
+    fill: rgb(242, 242, 242);
+  cursor: pointer;
+}
+
+.navbar a:link,
+.navbar a:active,
+.navbar a:visited {
+  color: #fff;
 }
 
 .main__nav {
@@ -42,8 +58,14 @@
 }
 
 .logobox {
+  height: 10rem;
+  width: 10rem;
   margin-left: 10vw;
+  margin-top: 1rem;
+  background-image: url(../../img/logo/utranceWhite.png);
   /* border: 1px dotted darkcyan; */
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .logo {
@@ -78,12 +100,16 @@
 }
 
 .userdetails-box--dropdown {
-  /* border: 1px solid yellow; */
+  background-color: rgb(31, 58, 147);
   position: absolute;
   top: 100%;
   left: 50%;
-  border-right: 1px solid #eeeeee;
   display: none;
+  border-radius: 5px;
+}
+
+.userdetails-box--dropdown-text {
+  color: #eeeeee;
 }
 
 .userdetails-box--dropdown li {
@@ -119,13 +145,6 @@
 
 .notification-box {
   position: relative;
-}
-
-.navbar__icon {
-  height: 3rem;
-  width: 4rem;
-  fill: rgb(119, 119, 119);
-  cursor: pointer;
 }
 
 .notification__numbers {

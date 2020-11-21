@@ -18,7 +18,6 @@ class AdminController extends Controller
             echo 'You are unorthorized to perform this action!!';
             return false;
         }
-
         return true;
 
     }
@@ -65,7 +64,7 @@ class AdminController extends Controller
             }
 
         }
-        return $this->render(['admin', 'addUser']);
+        return $response->redirect('/utrance-railway/users');
     }
 
     public function viewUser($request) {//View users from manage users
@@ -89,10 +88,6 @@ class AdminController extends Controller
             return $this->render(['admin','updateUser'],$updateTrainArray);
         }
     }
-
-
-
-
     
     public function updateUser($request, $response) {//update users from manage users
 
@@ -106,10 +101,8 @@ class AdminController extends Controller
             $state=$saveDetailsModel->updateUserDetails();
            
             if($state === "success"){
-                
                 return $response->redirect('/utrance-railway/users/view?id=' . $id);
             }else{
-
                 $commonArray=$saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
                 return $this->render(['admin','updateUser'], $commonArray); //Ashika
@@ -119,7 +112,7 @@ class AdminController extends Controller
 
     }
 
-    public function changeUserStatus($request) /// Activate and deactivate part in manage users
+    public function changeUserStatus($request, $response) /// Activate and deactivate part in manage users
     { //Ashika
         if ($request->isGet()) {
             $changeUserStatusModel = new AdminModel();
@@ -128,7 +121,7 @@ class AdminController extends Controller
             $changeStatusArray = $changeUserStatusModel->getUsers();
 
         }
-        return $this->render(['admin', 'manageUsers'], $changeStatusArray);
+        $response->redirect('/utrance-railway/users');
     }
 
 
@@ -196,24 +189,6 @@ class AdminController extends Controller
         }
 
         return $this->render(['admin', 'updateTrain']);
-    }
-
-    public function addNoticesByAdmin()
-    {
-        echo "hy girl";
-        return $this->render('addNoticesByAdmin');
-    }
-
-    public function adminDashboard()
-    {
-        echo "Hello Sri Lanka";
-        return $this->render('adminDashboard');
-    }
-
-    public function viewUsers()
-    {
-        echo " View Users!!";
-        return $this->render('viewUsers');
     }
     
     public function aboutUs()
