@@ -2,36 +2,30 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
+include_once "../models/DetailsProviderModel.php";
 
-class detailsProviderController extends Controller
+
+class DetailsProviderController extends Controller
 {
 
-//details provider functionalities daranya
-
-    public function detailsProviderSettings($request)
-    {
-        $detailsProviderSettingModel = new UserModel();
-        if ($request->isPost()) {
-            // form
-            return 'success';
-        }
-        if ($request->isGet()) {
-            $detailsProviderSettingModel->loadData($request->getBody());
-            $getUserDetailsArray = $detailsProviderSettingModel->getUserDetailsAdmin();
-            return $this->render('detailsProvider', $getUserDetailsArray);
-        }
-    }
-
     public function contactAdmin($request)
-    {
-        if ($request->isPost()) {
-            // form
-            return 'success';
+    { 
+        $contactAdminModel = new DetailsProviderModel();
+
+        if ($request->isPost()) 
+        {
+            $contactAdminModel->loadData($request->getbody());
+            $addDetails = $contactAdminModel->contactAdmin();
+            //var_dump($addDetails);
+            return $this->render(['detailsProvider','contactAdmin']); 
+        
         }
 
         return $this->render(['detailsProvider', 'contactAdmin']);
 
     }
+
+
 
     public function addNoticesBySource()
     {
