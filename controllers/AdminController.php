@@ -281,14 +281,14 @@ class AdminController extends Controller
         return $this->render(['admin', 'manageRoutes']);
     }
 
-    // public function addRoute($request)
-    // {
-    //     if ($request->isPost()) {
-    //         return 'success';
-    //     }
+    public function addRoute($request)
+    {
+        if ($request->isPost()) {
+            return 'success';
+        }
 
-    //     return $this->render(['admin', 'addRoute']);
-    // }
+        return $this->render(['admin', 'addRoute']);
+    }
 
     // ////////////////////////
 
