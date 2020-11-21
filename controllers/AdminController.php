@@ -42,8 +42,7 @@ class AdminController extends Controller
 
             $manageUserModel->loadData($request->getBody());
             $getUserArray = $manageUserModel->getUsers();
-
-            return $this->render(['admin', 'manageUsers'], $getUserArray);
+           return $this->render(['admin', 'manageUsers'], $getUserArray);
 
         }
     }
@@ -74,9 +73,11 @@ class AdminController extends Controller
             $adminViewUser = new AdminModel();
             $adminViewUser->loadData($request->getQueryParams());
             $updateUserArray = $adminViewUser->getUserDetails();
-            $updateUserArray['users'][0]['id'] = $request->getQueryParams()['id'];
-            return $this->render(['admin', 'updateUser'], $updateUserArray);
+            //$updateUserArray['users'][0]['id'] = $request->getQueryParams()['id'];
+            return $this->render(['admin', 'updateUser'],$updateUserArray);
         }
+       
+
 
     }
 
@@ -104,18 +105,23 @@ class AdminController extends Controller
             $tempBody['id'] = $id;
             $saveDetailsModel->loadData($tempBody);
             $state=$saveDetailsModel->updateUserDetails();
-           
+          
             if($state === "success"){
                 
                 return $response->redirect('/utrance-railway/users/view?id=' . $id);
             }else{
 
                 $commonArray=$saveDetailsModel->getUserDetails();
-                $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
-                return $this->render(['admin','updateUser'], $commonArray); //Ashika
+            // $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
+               $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
+              // $commonArray["updateSetValue"][0]['id']=$id;
+               //var_dump($commonArray);
+                return $this->render(['admin','updateUser'],$commonArray); //Ashika
             }
+           
             
         }
+        return $this->render(['admin','updateUser']); 
 
     }
 

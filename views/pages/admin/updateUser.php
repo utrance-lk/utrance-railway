@@ -5,15 +5,9 @@
 
 
             <?php
-                    $dom = new DOMDocument;
-                    libxml_use_internal_errors(true);
-                    $dom->loadHTML('...');
-                    libxml_clear_errors();
-                  ?>
-
-            <?php
             if(isset($users)){
               foreach($users as $key=>$value){
+                
                      
                 $html ="";
                 $html .="<div class='content-title'>";
@@ -31,9 +25,10 @@
              <!--/div!-->
               <!--p>Chris's Account Settings</p!-->
           
-            
-          <form action="/utrance-railway/users/update?id=<?php echo $users[0]['id'];?>" class="form__user-data" method="post">
-            <div class="content__fields">
+             
+          <form action="/utrance-railway/users/update?id=<?php echo $users[0]['id'];?>" class="form__user-data" method="POST">
+          <!--form action="/utrance-railway/users/update?id=".$value['id']."' class="form__user-data" method="POST"!-->
+            <!--div class="content__fields"!-->
 
 
                   <?php
@@ -46,17 +41,19 @@
               <?php
                   
                   if(isset($users)){
-                   
+                  
                     foreach($users as $key=>$value){
                      
-                     $html =" 
-                               
-                     ";
-
+                     $html ="";
+                     
+                    
+                    
+                    $html .="<div class='content__fields'>";
                     $html .="<div class='firstname-box content__fields-item'>";
                     $html .="<label for='firstname' class='form__label'>First Name</label>";
                    
                    if(isset($updateSetValue['firstNameError'])){
+                    
                     $html .="<input type='text' name='first_name' class='form__input'  placeholder='".$updateSetValue['firstNameError']."' ></div>";
                    }else{
                     $html .="<input type='text' name='first_name' class='form__input'   value=' ".$value['first_name']." '></div>";

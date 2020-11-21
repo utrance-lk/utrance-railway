@@ -87,11 +87,12 @@ class AdminModel extends Model {
     public function getUserDetails() ///Ashika
 
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
 
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($this->resultArray);
         return $this->resultArray;
     }
 
@@ -131,6 +132,7 @@ class AdminModel extends Model {
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
         $updateUserValidation=new FormValidation();
         $validationState=$updateUserValidation->runUpdateValidators($array);
+        //var_dump($validationState);
 
         if ($validationState ==="success") {
         $this->runSanitizationAdmin();
@@ -145,8 +147,10 @@ class AdminModel extends Model {
         $query->bindValue(":email_id", $this->email_id);
         $query->execute();
         return "success";
+        }else{
+            return $validationState;
         }
-        return $validationState;
+        
     }
 
     public function changeUserStatusDetails() { 

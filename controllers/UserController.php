@@ -60,7 +60,7 @@ class UserController extends Controller
               }
 
 
-              if($this->authMiddleware->restrictTo('details_provider')) {
+              if($this->authMiddleware->restrictTo('detailsProvider')) {
                 
                 return $this->render('detailsProvider',$updateUserDetailsSetValue);
               }

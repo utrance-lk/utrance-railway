@@ -69,7 +69,18 @@
         }
 
         $html .= "<div class='search__result-user-emailbox'> $status</div>";
-        $html .= "<div class='search__result-user-rolebox'> " . $value['user_role'] . "</div>";
+        if($value['user_role']==="admin"){
+          $valueRole="Admin";
+        }
+        if($value['user_role']==="user"){
+          $valueRole="User";
+
+        }
+
+        if($value['user_role'] === "detailsProvider"){
+          $valueRole="Details Provider";
+        }
+        $html .= "<div class='search__result-user-rolebox'>$valueRole</div>";
 
         $id = $value['id'];
         $html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";
