@@ -9,8 +9,8 @@
     </div>
     <div class="booking__users--card-container">
         <div class="booking__users--card">
-            <div class="booking__users--name">
-                Nihal
+            <div class="booking__users--id">
+                #1
             </div>
             <div class="booking__users--email">
                 nihal@gmail.com
@@ -23,8 +23,8 @@
             </div>
         </div>
         <div class="booking__users--card">
-            <div class="booking__users--name">
-                Nihal
+            <div class="booking__users--id">
+                #2
             </div>
             <div class="booking__users--email">
                 nihal@gmail.com
@@ -37,8 +37,8 @@
             </div>
         </div>
         <div class="booking__users--card">
-            <div class="booking__users--name">
-                Nihal
+            <div class="booking__users--id">
+                #3
             </div>
             <div class="booking__users--email">
                 nihal@gmail.com

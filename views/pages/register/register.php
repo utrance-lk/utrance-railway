@@ -62,7 +62,7 @@
                 </div>
                 <div class="password-confirm-box form__container-item register__form--inputs">
                     <label for="password-confirm">Password Confirm</label>
-                    <input type="password" id="password-confirm" name="user_confirm_password" placeholder="**********" required>
+                    <input type="password" id="password-confirm" name="user_confirm_password" placeholder="***************" required>
                    
 
                    

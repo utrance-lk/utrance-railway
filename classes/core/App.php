@@ -41,6 +41,10 @@ class App {
             $this->user = $this->userClass::getUser($activeUserId);
         }
 
+        if($this->user) {
+            $this->isActiveAccount();
+        }
+
     }
 
     public function activeUser() {
@@ -56,6 +60,13 @@ class App {
             "role" => $this->user[0]["user_role"],
             "user_image" => $this->user[0]["user_image"],
         ];
+    }
+
+    private function isActiveAccount() {
+        if(!$this->user[0]['user_active_status']) {
+            echo 'your account has been deactivated or banned';
+            $this->response->redirect('/utrance-railway/logout');
+        }
     }
 
     public function run() {

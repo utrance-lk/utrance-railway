@@ -2,11 +2,29 @@
 
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
-include_once "../models/DetailsProviderModel.php";
+include_once "../middlewares/AuthMiddleware.php";
 
+
+  
 
 class DetailsProviderController extends Controller
 {
+
+    private function protect()
+    {
+        $authMiddleware = new AuthMiddleware();
+
+        if(!$authMiddleware->isLoggedIn()) {
+            return 'Your are not logged in!';
+        }
+
+        if (!$authMiddleware->restrictTo('detailsProvider')) {
+            echo 'You are unorthorized to perform this action!!';
+            return false;
+        }
+        return true;
+
+    }
 
     public function contactAdmin($request)
     { 
@@ -21,42 +39,10 @@ class DetailsProviderController extends Controller
         
         }
 
-        return $this->render(['detailsProvider', 'contactAdmin']);
-
     }
 
 
 
-    public function addNoticesBySource()
-    {
-        return $this->render('addNoticesBySource');
-        echo "hy girl";
-    }
-
-    public function addNoticesBySourceNow()
-    {
-        echo "Added Notices!!";
-    }
-
-    public function sourceDashboard()
-    {
-        return $this->render('sourceDashboard');
-        echo "Hello Sri Lanka";
-    }
-
-    public function sourceDashboardNow()
-    {
-        echo "Hello my world";
-    }
-
-    public function viewUsers2()
-    {
-        return $this->render('viewUsers');
-        echo " View Users!!";
-    }
-    public function viewUsersNow2()
-    {
-        echo "Upload View Users form";
-    }
+   
 
 }

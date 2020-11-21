@@ -6,9 +6,16 @@ include_once "../models/AdminModel.php";
 include_once "AdminController.php";
 include_once "RegisterUserController.php";
 include_once "../utils/Email.php";
+include_once "../middlewares/AuthMiddleware.php";
 
 class AuthController extends Controller
 {
+
+    private $authMiddleware;
+
+    public function __construct() {
+        $this->authMiddleware = new AuthMiddleware();
+    }
 
     public function login($request, $response)
     {
@@ -16,6 +23,9 @@ class AuthController extends Controller
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
             $result = $loginUser->findUser('email_id');
+            if(!$result[0]['user_active_status']) {
+                return 'Your account has been deactivated!';
+            }
             $verifyPassword = password_verify($loginUser->user_password, $result[0]['user_password']);
             if ($verifyPassword) {
                 App::$APP->session->set('user', $result[0]['id']);
@@ -56,31 +66,6 @@ class AuthController extends Controller
         return $this->render('register');
 
     }
-
-    // public function getMyProfile($request, $response)
-    // {
-       
-    //     if (!$this->isLoggedIn()) {
-    //         return 'You are not logged in!';
-    //     }
-
-    //     $role = App::$APP->activeUser()['role'];
-        
-    //     if ($role === 'admin') {
-    //         $admin = new AdminController();
-    //         return $admin->adminProfile($request, $response);
-    //     }
-    //     if ($role === 'user') {
-    //         $regUser = new RegisterUserController();
-    //         return $regUser->registeredUserSettings($request);
-    //     }
-    //     if ($role === 'detailsProvider') {
-    //         $regUser = new detailsProviderController();
-    //         return $regUser->detailsProviderSettings($request);
-    //     }
-    //     return 'hacker';
-
-    // }
 
     public function forgotPassword($request, $response)
     {
@@ -125,7 +110,8 @@ class AuthController extends Controller
         if ($request->isGet()) {
 
             // 1) get user based on the token
-            $resetToken = $request->getQueryParams()['token'];
+            $resetToken = $request->getQueryParams()['token']; // url error
+
             $hashedToken = hash('sha256', $resetToken);
             $tempBody = $request->getBody();
             $tempBody['PasswordResetToken'] = $hashedToken;
@@ -162,72 +148,49 @@ class AuthController extends Controller
             // $registerSetValue = $resetPasswordUser->registerSetValue($passwordChangeState); 
             // var_dump($registerSetValue);
             // return $this->render('resetPassword', $registerSetValue);
+            // validation part is to be done
             return 'fail';
         }
     }
 
-    public function updatePassword($request,$response)
-    {
-        
-        $updatePasswordUserModel = new UserModel();
+    public function updatePassword($request,$response) {
+        if($this->authMiddleware->isLoggedIn()) {
 
-        if($request->isPost()){
-            $tempBody=$request->getBody();
-            $email=App::$APP->activeUser()['email_id'];
-            $tempBody["email_id"]=$email;
-            $user_role=App::$APP->activeUser()['role'];
-            $tempBody['user_role']=$user_role;
-            $updatePasswordUserModel->loadData($tempBody);
-            $updatePasswordState = $updatePasswordUserModel->updatePassword();
+            $updatePasswordUserModel = new UserModel();
             
-            if ($updatePasswordState === 'success') {
-                return $response->redirect('/utrance-railway/settings'); 
-            }else{
-                $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);
-                if($user_role === "admin"){
-                    return $this->render('admin',$updatePasswordSetValue);
-                }
-
-                if($user_role === "user"){
-                    return $this->render('registeredUser',$updatePasswordSetValue); 
-                }
-
-                if($user_role === "details_provider"){
-                    return $this->render('detailsProvider',$updatePasswordSetValue);
-                }
-              
+            if($request->isPost()){
+                $tempBody=$request->getBody();
+                $email=App::$APP->activeUser()['email_id'];
+                $tempBody["email_id"]=$email;
+                $user_role=App::$APP->activeUser()['role'];
+                $tempBody['user_role']=$user_role;
+                $updatePasswordUserModel->loadData($tempBody);
+                $updatePasswordState = $updatePasswordUserModel->updatePassword();
                 
-                
+                if ($updatePasswordState === 'success') {
+                    return $response->redirect('/utrance-railway/logout');
+                }else{
+                    $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);
+                    // if($user_role === "admin"){
+                        //     return $this->render('admin',$updatePasswordSetValue);
+                        // }
+                        
+                        // if($user_role === "user"){
+                            //     return $this->render('registeredUser',$updatePasswordSetValue); 
+                            // }
+                            
+                            // if($user_role === "detailsProvider"){
+                                //     return $this->render('detailsProvider',$updatePasswordSetValue);
+                                // }     
+                    return $this->render('settings', $updatePasswordSetValue);   
+                                
+                }
             }
 
+            return $this->render('settings');
         }
-        return $this->render('admin');
-
       
         // updates the password
     }
 
-    // public function restrictTo($role)
-    // { // asindu
-    //     if (App::$APP->activeUser()['role'] === $role) {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
-
-    // public function isLoggedIn()
-    // { // asindu
-    //     if (App::$APP->user) {
-    //         return true;
-    //     }
-
-    //     return false;
-
-    // }
-
-    public function protect()
-    {
-        // protect the route
-    }
 }

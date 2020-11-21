@@ -6,19 +6,19 @@ include_once "../middlewares/AuthMiddleware.php";
 
 class AdminController extends Controller
 {
-    public function protect()
+    private function protect()
     {
         $authMiddleware = new AuthMiddleware();
 
         if(!$authMiddleware->isLoggedIn()) {
-            return 'Your are not logged in!';
-        }
-
-        if (!$authMiddleware->restrictTo('admin')) {
-            echo 'You are unorthorized to perform this action!!';
+            // echo 'Your are not logged in!';
             return false;
         }
 
+        if (!$authMiddleware->restrictTo('admin')) {
+            // echo 'You are unorthorized to perform this action!!';
+            return false;
+        }
         return true;
 
     }
@@ -36,7 +36,6 @@ class AdminController extends Controller
                 $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
                 $getSearchResult = $searchUser->getSearchUserResult();
-                //var_dump($getSearchResult);
                 return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
@@ -45,6 +44,8 @@ class AdminController extends Controller
 
             return $this->render(['admin', 'manageUsers'], $getUserArray);
 
+        } else {
+            return 'You are not authorized';
         }
     }
 
@@ -65,7 +66,8 @@ class AdminController extends Controller
             }
 
         }
-        return $this->render(['admin', 'addUser']);
+        
+        return $this->render(['admin','addUser']);
     }
 
     public function viewUser($request) {//View users from manage users
@@ -89,10 +91,6 @@ class AdminController extends Controller
             return $this->render(['admin','updateUser'],$updateTrainArray);
         }
     }
-
-
-
-
     
     public function updateUser($request, $response) {//update users from manage users
 
@@ -106,10 +104,8 @@ class AdminController extends Controller
             $state=$saveDetailsModel->updateUserDetails();
            
             if($state === "success"){
-                
                 return $response->redirect('/utrance-railway/users/view?id=' . $id);
             }else{
-
                 $commonArray=$saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
                 return $this->render(['admin','updateUser'], $commonArray); //Ashika
@@ -119,7 +115,7 @@ class AdminController extends Controller
 
     }
 
-    public function changeUserStatus($request) /// Activate and deactivate part in manage users
+    public function changeUserStatus($request, $response) /// Activate and deactivate part in manage users
     { //Ashika
         if ($request->isGet()) {
             $changeUserStatusModel = new AdminModel();
@@ -128,7 +124,7 @@ class AdminController extends Controller
             $changeStatusArray = $changeUserStatusModel->getUsers();
 
         }
-        return $this->render(['admin', 'manageUsers'], $changeStatusArray);
+        $response->redirect('/utrance-railway/users');
     }
 
 
@@ -196,24 +192,6 @@ class AdminController extends Controller
         }
 
         return $this->render(['admin', 'updateTrain']);
-    }
-
-    public function addNoticesByAdmin()
-    {
-        echo "hy girl";
-        return $this->render('addNoticesByAdmin');
-    }
-
-    public function adminDashboard()
-    {
-        echo "Hello Sri Lanka";
-        return $this->render('adminDashboard');
-    }
-
-    public function viewUsers()
-    {
-        echo " View Users!!";
-        return $this->render('viewUsers');
     }
     
     public function aboutUs()

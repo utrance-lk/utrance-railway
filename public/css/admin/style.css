@@ -59,14 +59,14 @@
   fill: #fff;
 }
 
-.userdetails-box--dropdown {
+/* .userdetails-box--dropdown {
   background-color: rgb(31, 58, 147);
   border-radius: 5px;
 }
 
 .userdetails-box--dropdown-text {
   color: #eeeeee;
-}
+} */
 
 .userrole-name {
   border-bottom: 1px solid #eeeeee;
@@ -355,7 +355,7 @@ select {
   padding: 0 2rem;
 }
 
-.search__result-card:not(:last-child) {
+.search__result-card {
   margin-bottom: 4rem;
 }
 
@@ -661,7 +661,7 @@ select {
 .train-booking__stat-card {
   /* border: 1px solid black; */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 8rem;
   background-color: rgb(244, 242, 242);
@@ -684,10 +684,16 @@ select {
 }
 
 .btn__view--bookings {
-  border:  1px solid rgba(31, 58, 147, 0.8);
+  /* border:  1px solid rgba(31, 58, 147, 0.8); */
   padding: 1rem;
   border-radius: 5px;
-  width: 6rem;
+  width: 10rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.train-booking__stat-card--train-name {
+  width: 15rem;
   text-align: center;
 }
 

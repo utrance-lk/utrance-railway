@@ -47,8 +47,12 @@ class BookingController extends Controller {
     }
 
     public function bookedTour($request) {
-        if($request->isGet()) {
-            return $this->render('bookedTour');
+        if($this->authMiddleware->isLoggedIn()) {
+            if($request->isGet()) {
+                return $this->render('bookedTour');
+            }
+        }else {
+            return 'your not logged in!';
         }
     }
 
@@ -109,8 +113,12 @@ class BookingController extends Controller {
     }
 
     public function bookFreight($request) {
-        if($request->isGet()) {
-            return $this->render('bookFreight');
+        if($this->authMiddleware->isLoggedIn()) {
+            if($request->isGet()) {
+                return $this->render('bookFreight');
+            }
+        } else {
+            return 'You are not logged in!';
         }
     }
 

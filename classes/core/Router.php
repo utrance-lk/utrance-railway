@@ -1,8 +1,6 @@
 <?php {
-
     class Router
     {
-
         public $request;
         public $response;
         protected $routes = [];
@@ -90,7 +88,6 @@
 
         protected function renderOnlyView($view, $params, $isMain = false)
         {
-
             if($isMain) {
                 ob_start();
                 if(is_array($view)) {
