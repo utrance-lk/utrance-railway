@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
     
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/header.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
     <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/footer.css" />
     <link rel="stylesheet" href="../../../utrance-railway/public/css/ticketPrice/ticketPrice.css" />
     

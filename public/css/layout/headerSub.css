@@ -1,13 +1,13 @@
 .nav-container {
   /* border: 1px solid maroon; */
   /* background-color: #eeeeee; */
-  border-bottom: 1px solid rgba(119, 119, 119, 0.1);
+  border-bottom: 1px solid rgba(31, 58, 147, 0.8);
   font-family: "Lato", sans-serif;
+  background-color: #fff;
 }
 
 .navbar {
-  border-bottom: 1px solid rgba(31, 58, 147, 0.8);
-  background-color: #fff;
+    /* border-bottom: 1px solid rgba(119, 119, 119, 0.1); */
   height: 14vh;
   display: flex;
   justify-content: space-between;
@@ -42,7 +42,13 @@
 }
 
 .logobox {
+  height: 10rem;
+  width: 10rem;
   margin-left: 10vw;
+  margin-top: 1rem;
+  background-image: url(../../img/logo/utranceLogoBlack.png);
+  background-size: contain;
+  background-repeat: no-repeat;
   /* border: 1px dotted darkcyan; */
 }
 
@@ -72,6 +78,15 @@
   position: relative;
 }
 
+.main__nav a:link,
+.main__nav a:active,
+.main__nav a:visited,
+.userdetails-box a:link,
+.userdetails-box a:active,
+.userdetails-box a:visited {
+  color: #000000;
+}
+
 .userdetails-box:active .userdetails-box--dropdown,
 .userdetails-box:focus-within .userdetails-box--dropdown {
   display: flex;
@@ -84,6 +99,13 @@
   left: 50%;
   display: none;
   border-radius: 5px;
+  color: #fff !important;
+}
+
+.userdetails-box--dropdown a:link,
+.userdetails-box--dropdown a:active,
+.userdetails-box--dropdown a:visited {
+  color: #fff;
 }
 
 .userdetails-box--dropdown-text {

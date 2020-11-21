@@ -40,11 +40,6 @@ a {
   cursor: pointer;
 }
 
-a:link,
-a:active,
-a:visited {
-  color: black;
-}
 
 li {
   list-style: none;

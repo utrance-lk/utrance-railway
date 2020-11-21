@@ -91,8 +91,6 @@ class AdminController extends Controller
     
     public function updateUser($request, $response) {//update users from manage users
 
-        var_dump('pp');
-
         if ($request->isPost()) {
             $saveDetailsModel = new AdminModel();
             
@@ -105,7 +103,6 @@ class AdminController extends Controller
             if($state === "success"){
                 return $response->redirect('/utrance-railway/users/view?id=' . $id);
             }else{
-
                 $commonArray=$saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
                 return $this->render(['admin','updateUser'], $commonArray); //Ashika
@@ -192,24 +189,6 @@ class AdminController extends Controller
         }
 
         return $this->render(['admin', 'updateTrain']);
-    }
-
-    public function addNoticesByAdmin()
-    {
-        echo "hy girl";
-        return $this->render('addNoticesByAdmin');
-    }
-
-    public function adminDashboard()
-    {
-        echo "Hello Sri Lanka";
-        return $this->render('adminDashboard');
-    }
-
-    public function viewUsers()
-    {
-        echo " View Users!!";
-        return $this->render('viewUsers');
     }
     
     public function aboutUs()
