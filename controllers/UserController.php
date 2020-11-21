@@ -72,4 +72,57 @@ class UserController extends Controller
         return $this->render('newsFeed');
     }
 
+    public function newsFeed01(){
+       
+        return $this->render(['newsFeed','newsFeed01']);
+    }
+
+    public function newsFeed02(){
+       
+        return $this->render(['newsFeed','newsFeed02']);
+    }
+
+    public function newsFeed03(){
+       
+        return $this->render(['newsFeed','newsFeed03']);
+    }
+
+
+    public function newsFeed04(){
+       
+        return $this->render(['newsFeed','newsFeed04']);
+    }
+
+    public function newsFeed05(){
+       
+        return $this->render(['newsFeed','newsFeed05']);
+    }
+
+    public function newsFeed06(){
+       
+        return $this->render(['newsFeed','newsFeed06']);
+    }
+
+    public function newsFeed07(){
+       
+        return $this->render(['newsFeed','newsFeed07']);
+    }
+
+    public function newsFeed08(){
+       
+        return $this->render(['newsFeed','newsFeed08']);
+    }
+
+    public function newsFeed09(){
+       
+        return $this->render(['newsFeed','newsFeed09']);
+    }
+
+    public function newsFeed10(){
+       
+        return $this->render(['newsFeed','newsFeed10']);
+    }
+
+    
+
 }
