@@ -23,7 +23,7 @@
             </div>
               <div class="select-submit">
                <button class="select-div" name="submit">
-                   Submit
+                   Search
                </button>
               </div>
         </div>

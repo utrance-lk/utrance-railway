@@ -81,9 +81,16 @@
                 if(isset($cityError)){
                   $html .= "<input type='text' name='city' class='form__input' placeholder='".$cityError."' ></div></div>";
                 }else{
-                  $html .= "<input type='text' name='city' class='form__input'  value='" .App::$APP->activeUser()['city']. "'></div></div>";
-                  
-                }
+                  $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
+                  $html .="<select name='city' class='form__input'>";
+                  $html .="<option value=''>".App::$APP->activeUser()['city']."</option>";
+                  foreach($cityArray as $cities){
+                    $html .="<option value='$cities'>$cities</option>";
+                   }
+                
+                  //$html .= "<input type='text' name='city' class='form__input'  value='" .App::$APP->activeUser()['city']. "'></div></div>";
+                  }
+                  $html .="</select></div></div>";
 
                 
                 $html .= "<div class='contactno-box content__fields-item'>";

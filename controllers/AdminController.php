@@ -63,7 +63,7 @@ class AdminController extends Controller
             }
 
         }
-        return $response->redirect('/utrance-railway/users');
+        return $this->render('addUser');
     }
 
     public function viewUser($request) {//View users from manage users
