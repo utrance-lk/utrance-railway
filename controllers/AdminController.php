@@ -37,7 +37,6 @@ class AdminController extends Controller
                 $searchUser = new AdminModel();
                 $searchUser->loadData($request->getBody());
                 $getSearchResult = $searchUser->getSearchUserResult();
-                
                 return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 

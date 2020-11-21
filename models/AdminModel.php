@@ -103,7 +103,7 @@ class AdminModel extends Model {
     { //Ashika
         $this->id = $this->searchUserByNameOrId;
         $this->first_name = $this->searchUserByNameOrId;
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  WHERE first_name LIKE '%{$this->first_name}%' ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  WHERE first_name LIKE '%{$this->first_name}%' OR id LIKE '%{$this->id}%' ");
         $query->bindValue(":id", $this->id);
         //$query->bindValue(":fn", $this->first_name);
         $query->execute();
@@ -129,7 +129,7 @@ class AdminModel extends Model {
 
 
     public function updateUserDetails(){//Ashika
-        //var_dump($this->city);
+        var_dump($this->city);
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city' => $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
         $updateUserValidation=new FormValidation();
         $validationState=$updateUserValidation->runUpdateValidators($array);

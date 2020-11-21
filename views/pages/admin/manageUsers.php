@@ -9,9 +9,11 @@
                 placeholder="Search users by name or id"  name="searchUserByNameOrId"
               />
               <!-- <button> -->
+              <a href="/utrance-railway/users">
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
+              </a>
               <!-- </button> -->
               <!-- <div class="dashboard-searchbar__dropdown">
 
@@ -76,7 +78,6 @@
           $valueRole="User";
 
         }
-
         if($value['user_role'] === "detailsProvider"){
           $valueRole="Details Provider";
         }
