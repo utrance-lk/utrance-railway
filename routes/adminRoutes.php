@@ -2,8 +2,8 @@
 
 require_once "../controllers/AdminController.php";
 
-$app->router->post('/utrance-railway/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/users', [AdminController::class, 'manageUsers']);
+$app->router->post('/utrance-railway/users', [AdminController::class, 'manageUsers']);
 $app->router->get('/utrance-railway/users/add', [AdminController::class, 'addUser']);
 $app->router->post('/utrance-railway/users/add', [AdminController::class, 'addUser']);
 $app->router->get('/utrance-railway/users/view', [AdminController::class, 'viewUser']);

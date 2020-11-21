@@ -8,6 +8,7 @@ $app->router->post('/utrance-railway/profile', [UserController::class, 'updateMe
 
 $app->router->get('/utrance-railway/settings', [UserController::class, 'getMe']);
 $app->router->post('/utrance-railway/settings', [UserController::class, 'updateMe']);
+
 $app->router->post('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
 $app->router->get('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
 
