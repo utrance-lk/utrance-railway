@@ -195,14 +195,14 @@ class AdminController extends Controller
 
     // // manage routes
 
-    // public function manageRoutes($request)
-    // {
-    //     if ($request->isPost()) {
-    //         return 'success';
-    //     }
+    public function manageRoutes($request)
+    {
+        if ($request->isPost()) {
+            return 'success';
+        }
 
-    //     return $this->render(['admin', 'manageRoutes']);
-    // }
+        return $this->render(['admin', 'manageRoutes']);
+    }
 
     // public function addRoute($request)
     // {
