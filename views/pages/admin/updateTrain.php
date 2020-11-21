@@ -181,26 +181,29 @@
                     if($value['train_freights_allowed']==1)
                     {
                     $html .="<input type='checkbox' name='train_freights_allowed' id='freightsallowed' value='1' checked='checked'>";
+                    $html .="<input type='number' min='0' value=".$value['train_total_weight']." name='train_total_weight' id='freights-quantity' class='form__input number__input freights-quantity__number-input'></div>";
                     }
                     else
                     {
-                    $html .="<input type='checkbox' name='train_freights_allowed' id='freightsallowed' value='1'>";
+                    $html .="<input type='checkbox' name='train_freights_allowed' id='freightsallowed' value='1' onclick='terms_changed(this)'>";
+                    $html .="<input type='number' min='0' value=".$value['train_total_weight']." name='train_total_weight' id='freights-quantity' class='form__input number__input freights-quantity__number-input' disabled></div>";
+                    
                     }
 
-                    $html .="<input type='number' min='0' value=".$value['train_total_weight']." name='train_total_weight' id='freights-quantity' class='form__input number__input freights-quantity__number-input'></div>";
+                    
                     $html .="<fieldset class='classess-box content__fields-item'>";
                     $html .="<legend class='form__label'>Reservation Categories</legend>";
                     $html .="<div class='reservation-categorybox__container checkbox__horizontal'>";
                     $html .="<div class='seatbox-firstclass reservation__category-item'>";
                     $html .="<label for='firstclass'>First Class</label>";
-                    $html .="<input type='number' min='0' value=".$value['train_fc_seats']." name='train_fc_seats' id='firstclass' class='form__input number__input'></div>";
+                    $html .="<input type='number' min='0' max='50' value=".$value['train_fc_seats']." name='train_fc_seats' id='firstclass' class='form__input number__input'></div>";
                     $html .="<div class='seatbox-secondclass reservation__category-item'>";
                     $html .="<label for='secondclas'>Second Class</label>";
-                    $html .="<input type='number' min='0' value=".$value['train_sc_seats']." name='train_sc_seats' id='secondclass' class='form__input number__input'></div>";
+                    $html .="<input type='number' min='0' max='60' value=".$value['train_sc_seats']." name='train_sc_seats' id='secondclass' class='form__input number__input'></div>";
                     $html .="<div class='seatbox-sleepingberths reservation__category-item'>";
 
                     $html .="<label for='sleepingberths'>Sleeping Berths</label>";
-                    $html .="<input type='number' min='0' value=".$value['train_sleeping_berths']." name='train_sleeping_berths' id='sleepingberths' class='form__input number__input'></div></div>";
+                    $html .="<input type='number' min='0' max='20' value=".$value['train_sleeping_berths']." name='train_sleeping_berths' id='sleepingberths' class='form__input number__input'></div></div>";
                     $html .="<div class='reservation-categorybox__container checkbox__horizontal'>";
                     $html .="<div class='seatbox-observation--saloon reservation__category-item'>";
                     $html .="<label for='observation-saloon'>Observation Saloon</label>";
@@ -238,3 +241,15 @@
  </div>
 <!-- </div> -->
 
+                       <script>
+                        function terms_changed(termsCheckBox){
+                            //If the checkbox has been checked
+                            if(termsCheckBox.checked){
+                                //Set the disabled property to FALSE and enable the button.
+                                document.getElementById("freights-quantity").disabled = false;
+                            } else{
+                                //Otherwise, disable the submit button.
+                                document.getElementById("freights-quantity").disabled = true;
+                            }
+                        }
+                        </script>

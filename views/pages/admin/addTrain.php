@@ -6,7 +6,7 @@
               <p>New Train Profile Settings</p>
             </div>
             <form action="/utrance-railway/trains/add" class="form__train-data" method='post' >
-            <!-- <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?>  -->
+            <?php if(isset($TravalDaysError)){echo $TravalDaysError;}?> 
                 <div class="content__fields">
                     <div class="trainname-box content__fields-item">
                         <label for="trainname" class="form__label">Train Name</label>
@@ -141,23 +141,36 @@
                     <div class="freightallowed-box content__fields-item">
                         <label for="freightsallowed" class="form__label form__label--freights-allowed">Freights Allowed (Kg)</label>
                         <input type="hidden" name="train_freights_allowed" value="0">
-                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed" value="1" <?php if(isset($train_freights_allowed)){if($train_freights_allowed==1){echo "checked='checked'";}}?>>
-                        <input type="number" min="0" name="train_total_weight" id="freights-quantity" class="form__input number__input freights-quantity__number-input" value="<?php echo isset($train_total_weight) ? $train_total_weight : '0';?>">
+                        <input type="checkbox" name="train_freights_allowed" id="freightsallowed" value="1" <?php if(isset($train_freights_allowed)){if($train_freights_allowed==1){echo "checked='checked'";}}?> onclick="terms_changed(this)">
+                        
+                        <input type="number" min="0" name="train_total_weight" id="freights-quantity" class="form__input number__input freights-quantity__number-input" value="<?php echo isset($train_total_weight) ? $train_total_weight : '0';?>"disabled>
+                        <script>
+                        function terms_changed(termsCheckBox){
+                            //If the checkbox has been checked
+                            if(termsCheckBox.checked){
+                                //Set the disabled property to FALSE and enable the button.
+                                document.getElementById("freights-quantity").disabled = false;
+                            } else{
+                                //Otherwise, disable the submit button.
+                                document.getElementById("freights-quantity").disabled = true;
+                            }
+                        }
+                        </script>
                     </div>
                     <fieldset class="classess-box content__fields-item">
                         <legend class="form__label">Reservation Categories</legend>
                         <div class="reservation-categorybox__container checkbox__horizontal">
                             <div class="seatbox-firstclass reservation__category-item">
                                 <label for="firstclass">First Class</label>
-                                <input type="number" min="0" name="train_fc_seats" id="firstclass" class="form__input number__input" value="<?php echo isset($train_fc_seats) ? $train_fc_seats : '0';?>">
+                                <input type="number" min="0" max="50" name="train_fc_seats" id="firstclass" class="form__input number__input" value="<?php echo isset($train_fc_seats) ? $train_fc_seats : '0';?>">
                             </div>
                             <div class="seatbox-secondclass reservation__category-item">
                                 <label for="secondclas">Second Class</label>
-                                <input type="number" min="0" name="train_sc_seats" id="secondclass" class="form__input number__input" value="<?php echo isset($train_sc_seats) ? $train_sc_seats : '0';?>">
+                                <input type="number" min="0" max="60" name="train_sc_seats" id="secondclass" class="form__input number__input" value="<?php echo isset($train_sc_seats) ? $train_sc_seats : '0';?>">
                             </div>
                             <div class="seatbox-sleepingberths reservation__category-item">
                                 <label for="sleepingberths">Sleeping Berths</label>
-                                <input type="number" min="0" name="train_sleeping_berths" id="sleepingberths" class="form__input number__input" value="<?php echo isset($train_sleeping_berths) ? $train_sleeping_berths : '0';?>">
+                                <input type="number" min="0" max="20" name="train_sleeping_berths" id="sleepingberths" class="form__input number__input" value="<?php echo isset($train_sleeping_berths) ? $train_sleeping_berths : '0';?>">
                             </div>
                         </div> 
                         <div class="reservation-categorybox__container checkbox__horizontal">

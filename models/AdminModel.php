@@ -302,6 +302,9 @@ class AdminModel extends Model {
        
         if (empty($validationState)) {
            $this->runSanitization();
+           if($this->train_freights_allowed==0){
+            $this->train_total_weight=0;
+        }
 
            $updateTrain = New HandlerFactory();
            $valuesArray = ['train_name' => $this->train_name, 'route_id' => $this->route_id, 'train_type' => $this->train_type, 'train_travel_days' => implode(" ",$this->train_travel_days),
@@ -344,6 +347,9 @@ class AdminModel extends Model {
 
         if (empty($validationState)) {
             $this->runSanitization();
+            if($this->train_freights_allowed==0){
+                $this->train_total_weight=0;
+            }
            
 
         $query = App::$APP->db->pdo->prepare("INSERT INTO trains (train_name, route_id, train_type, train_active_status, train_travel_days,
