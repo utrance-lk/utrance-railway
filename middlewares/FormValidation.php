@@ -33,7 +33,7 @@ class FormValidation{
         $this->validateStreetLine2(trim($array['street_line2'])); //Ashika
         $this->validateCity(trim($array['city'])); //Ashika
         $this->validateContactNumber(trim($array['contact_num'])); //Ashika
-        $this->validateEmailIdForUpdate(trim($array['email_id'])); //Ashika
+        $this->validateEmailIdForUpdate($array['email_id'],$array['id']); //Ashika
         if(empty($this->errorArray)){
            return "success";
         }else{
@@ -211,17 +211,19 @@ class FormValidation{
 
     }
 
-    private function validateEmailIdForUpdate($email_id){///Validate email for update
+    private function validateEmailIdForUpdate($email_id,$id){///Validate email for update
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
         
-        $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
+        //$query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
+        $query = APP::$APP->db->pdo->prepare("SELECT id FROM users WHERE email_id=:email_id ");
         $query->bindValue(":email_id", $email_id);
-        //$query->bindValue(":id",$id);
         $query->execute();
-        $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
-        if ($email_status == true) {
+        $email_status["users"]= $query->fetchAll(PDO::FETCH_ASSOC);
+        $k=$email_status["users"][0]['id'];
+        //var_dump($k);
+        if ($k!=$id) {
             $this->errorArray['email_id_error'] = "This email is already exist";
         }
 

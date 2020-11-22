@@ -84,6 +84,7 @@
                   $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
                   $html .="<select name='city' class='form__input'>";
                   $html .="<option value=''>".App::$APP->activeUser()['city']."</option>";
+
                   foreach($cityArray as $cities){
                     $html .="<option value='$cities'>$cities</option>";
                    }
@@ -115,44 +116,7 @@
                 $html .= "<input type='submit' class='btn__save btn-settings'  name='save' value='Save Settings'></div></div>";
                  //echo "hy";
 
-                 /*var_dump("Hello");
-                 var_dump($_POST);
-                 if(isset($_POST['save'])){ //Ashika
-                   
-                   $file=$_FILES['photo'];
-                   $name=$_POST['first_name'];
-                   $fileName=$_FILES['photo']['name'];
-                   $fileTempName=$_FILES['photo']['tmp_name'];
-                   $fileSize=$_FILES['photo']['size'];
-                   $fileError=$_FILES['photo']['error'];
-                   $fileType=$_FILES['photo']['type'];
-                   
-                   $fileExt=explode('.',$fileName);
-                   $fileActualExt=strtolower(end($fileExt));
-                   $allowed=array('jpg','jpeg','png');
-                 
-                   if(in_array($fileActualExt,$allowed)){
-                     if($fileError === 0){
-                       if($fileSize < 1000000){
-                             $fileNameNew=$name.".".$fileActualExt;
-                             $fileDestination='img/uploads/'.$fileNameNew;
-                             move_uploaded_file($fileNameNew,$fileDestination);
-                             echo "file added succesfully!!";
-                             
-                       }else{
-                         echo "Your file is too big!!!";
-                       }
-                           
-                     }else{
-                       echo "There was an error uploading your file!!";
-                     }
-                 
-                   }else{
-                     echo "You can not upload files of this type!!!";
-                   }
-                 }*/
-                
-                
+              
 
               
 
