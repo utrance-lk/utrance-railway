@@ -9,9 +9,11 @@
                 placeholder="Search users by name or id"  name="searchUserByNameOrId"
               />
               <!-- <button> -->
+              <a href="/utrance-railway/users">
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
+              </a>
               <!-- </button> -->
               <!-- <div class="dashboard-searchbar__dropdown">
 
@@ -59,7 +61,7 @@
           $user_img = $value["user_image"];
         $html .= "<img src='/utrance-railway/public/img/uploads/$user_img.jpg' alt='profile-avatar' class='profile__avatar'/></div>";
         $html .= "<div class='user-mainbox__other'>";
-        $html .= "<div class ='user-mainbox__other-name'> " . $value['first_name'] . "</div>";
+        $html .= "<div class ='user-mainbox__other-name'> ". $value['first_name']."</div>";
         $html .= "<div class ='user-mainbox__other-id'><span>#<span>";
         $html .= "<span class='user__id'> " . $value['id'] . "</span></div></div></div>";
 
@@ -70,7 +72,17 @@
         }
 
         $html .= "<div class='search__result-user-emailbox'> $status</div>";
-        $html .= "<div class='search__result-user-rolebox'> " . $value['user_role'] . "</div>";
+        if($value['user_role']==="admin"){
+          $valueRole="Admin";
+        }
+        if($value['user_role']==="user"){
+          $valueRole="User";
+
+        }
+        if($value['user_role'] === "detailsProvider"){
+          $valueRole="Details Provider";
+        }
+        $html .= "<div class='search__result-user-rolebox'>$valueRole</div>";
 
         $id = $value['id'];
         $html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";

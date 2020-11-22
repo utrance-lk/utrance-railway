@@ -22,7 +22,7 @@ class UserModel extends Model
     public $user_new_password;
     public $id;
     // public $photo = "Chris-user-profile.jpg";
-    public $user_image = "Chris-user-profile.jpg";
+    // public $user_image = "Chris-user-profile.jpg";
     
     public $searchUserByNameOrId;
     public $resultArray;
@@ -56,12 +56,13 @@ class UserModel extends Model
 
     public function register(){ 
        
-        $this->user_image = strtolower($this->first_name);
-        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password];
+        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password, 'user_image' => $this->user_image];
         $registerValidation=new FormValidation();
         $validationState=$registerValidation->runValidators($array);
         if($validationState ==="success"){
             $this->runSanitization();
+            $user_image = $this->first_name;
+            $this->user_image = strtolower($user_image);
             $createUser = new HandlerFactory();
             return $createUser->createOne('users', $this->populateValues());
          }else{
@@ -186,6 +187,7 @@ class UserModel extends Model
         $this->city=$this->sanitizeFormString($this->city);
         $this->contact_num=$this->sanitizeContactNumber($this->contact_num);
         $this->user_password = $this->sanitizeFormPassword($this->user_password);
+        $this->user_image = $this->sanitizeFormUsername($this->user_image);
         $this->passwordHashing();
     }
 
