@@ -99,7 +99,7 @@ class AdminModel extends Model {
     { //Ashika
         $this->id = $this->searchUserByNameOrId;
         $this->first_name = $this->searchUserByNameOrId;
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  WHERE first_name LIKE '%{$this->first_name}%' OR id LIKE '%{$this->id}%' ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status,user_image FROM users  WHERE first_name LIKE '%{$this->first_name}%' OR id LIKE '%{$this->id}%' ");
         $query->bindValue(":id", $this->id);
         $query->bindValue(":fn", $this->first_name);
         $query->execute();
@@ -243,9 +243,9 @@ class AdminModel extends Model {
 
     private function sanitizeFormUsername($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
-        $inputText = ucfirst($inputText);
+        $inputText = str_replace(" ", "", $inputText); // remove white spaces
         $inputText=trim($inputText); 
-        return str_replace(" ", "", $inputText); // remove white spaces
+        return ucfirst($inputText); // remove white spaces
     }
 
 

@@ -22,7 +22,7 @@ class UserModel extends Model
     public $user_new_password;
     public $id;
     // public $photo = "Chris-user-profile.jpg";
-    // public $user_image = "Chris-user-profile.jpg";
+     public $user_image = "Chris-user-profile.jpg";
     
     public $searchUserByNameOrId;
     public $resultArray;
@@ -38,7 +38,11 @@ class UserModel extends Model
         
         return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status, 'user_image' => $this->user_image];
     }
-
+    
+    private function populateValuesUpdate(){
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id,'user_image' => $this->user_image];
+    }
+    
     public static function getUser($id) {
         $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE id=:id");
         $query->bindValue(":id", $id);
@@ -78,10 +82,13 @@ class UserModel extends Model
         $validationState=$updateValidation->runUpdateValidators($array);
         
         if ($validationState ==="success") {
+           $this->user_image=$this->first_name;
+           $this->user_image=strtolower($this->user_image);
+
            $this->runSanitization();
            $updateUser = New HandlerFactory();
            
-           return $updateUser->updateOne('users', 'id', $this->id, $this->populateValues());
+           return $updateUser->updateOne('users', 'id', $this->id, $this-> populateValuesUpdate());
         }else{
             return $validationState;
         }

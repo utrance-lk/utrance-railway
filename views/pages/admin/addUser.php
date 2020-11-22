@@ -109,10 +109,15 @@
 
                   $html .="<div class='city content__fields-item'>";
                   $html .="<label for='city' class='form__label'>City</label>";
-                  $html .="<select name='city' id='city' class='form__input'>";
-                  $html .="<option value='Matara'>Matara</option>";
-                  $html .="<option value='Colombo'>Colombo</option></select></div></div>";
-
+                  $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
+                  $html .="<select name='city' class='form__input'>";
+                  foreach($cityArray as $cities){
+                    $html .="<option value='$cities'>$cities</option>";
+                   }
+                  //$html .="<select name='city' id='city' class='form__input'>";
+                  //$html .="<option value='Matara'>Matara</option>";
+                 // $html .="<option value='Colombo'>Colombo</option></select></div></div>";
+                  $html .="</select></div></div>";
                   $html .="<div class='contactno-box content__fields-item'>";
                   $html .="<label for='contactno' class='form__label'>Contact No</label>";
 
