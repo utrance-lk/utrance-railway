@@ -130,66 +130,69 @@ class AdminController extends Controller
     // manage trains
     public function manageTrains($request)
     {
-        $searchModel = new AdminModel();
-        $searchModel->loadData($request->getBody());
-        if ($this->protect()) {
-            if ($request->isPost()) 
-        {
-                     
-            $resultArray=$searchModel->searchTrainDetails();
-             return $this->render(['admin', 'manageTrains'], $resultArray);
-        }
+        if($this->protect()) {
 
-        
-        $trainArrays = $searchModel->getTrains();
-        return $this->render(['admin', 'manageTrains'], $trainArrays);
-
-
+            $searchModel = new AdminModel();
+            $searchModel->loadData($request->getBody());
+            if ($this->protect()) {
+                if ($request->isPost()) 
+                {
+                    
+                    $resultArray=$searchModel->searchTrainDetails();
+                    return $this->render(['admin', 'manageTrains'], $resultArray);
+                }
+                
+                
+                $trainArrays = $searchModel->getTrains();
+                return $this->render(['admin', 'manageTrains'], $trainArrays);       
+            }
         }
     }
     
     public function viewTrain($request){
-        if ($request->isGet()) {
-            $saveDetailsModel = new AdminModel();
-    
-        $tempBody = $request->getBody();
-        $tempBody['id'] = $request->getQueryParams()['id'];
-        $saveDetailsModel->loadData($tempBody); 
+        if($this->protect()) {
 
-        $updateTrainArray=$saveDetailsModel->getManagTrains();
-        $updateTrainArray['newArray']=$saveDetailsModel->validateTrains($updateTrainArray);
-    
-        return $this->render(['admin', 'updateTrain'],$updateTrainArray);
-
+            if ($request->isGet()) {
+                $saveDetailsModel = new AdminModel();
+                
+                $tempBody = $request->getBody();
+                $tempBody['id'] = $request->getQueryParams()['id'];
+                $saveDetailsModel->loadData($tempBody); 
+                
+                $updateTrainArray=$saveDetailsModel->getManagTrains();
+                $updateTrainArray['newArray']=$saveDetailsModel->validateTrains($updateTrainArray);
+                
+                return $this->render(['admin', 'updateTrain'],$updateTrainArray);
+                
+            }
         }
-        
-        
 
     } 
 
 
     public function updateTrain($request, $response) 
     {
-        
-        if ($request->isPost()) 
-        {
-            $saveDetailsModel = new AdminModel();
-           
-          
-        $tempBody = $request->getBody();
-        $tempBody['id'] = $request->getQueryParams()['id'];
-        $id = $request->getQueryParams()['id'];
-        $tempBody['id'] = $id;
-        $saveDetailsModel->loadData($tempBody);
-   
-             $validationState = $saveDetailsModel->updateTrainDetails();
-            //  var_dump($validationState);
-             
+
+        if($this->protect()) {      
+            if ($request->isPost()) 
+            {
+                $saveDetailsModel = new AdminModel();
+                
+                
+                $tempBody = $request->getBody();
+                $tempBody['id'] = $request->getQueryParams()['id'];
+                $id = $request->getQueryParams()['id'];
+                $tempBody['id'] = $id;
+                $saveDetailsModel->loadData($tempBody);
+                
+                $validationState = $saveDetailsModel->updateTrainDetails();
+                //  var_dump($validationState);
+                
              if ($validationState === "success") {
-               
-                return $response->redirect('/utrance-railway/trains/view?id='.$id);
-             } 
-             else {
+                 
+                 return $response->redirect('/utrance-railway/trains/view?id='.$id);
+                } 
+                else {
                
                 $trainArray=$saveDetailsModel->getManagTrains();
                 $registerSetValue = $saveDetailsModel->trainSetValue($validationState);
@@ -197,6 +200,7 @@ class AdminController extends Controller
    
              }
          
+            }
         }
         
 
@@ -204,47 +208,50 @@ class AdminController extends Controller
 
     public function deleteTrain($request) 
     {
-    
-        if($request->isGet()) 
-        {
-        $deleteTrainModel=new AdminModel();
-      
-        $deleteTrainModel->loadData($request->getQueryParams());
-        $deleteTrainModel->deleteTrains();
-        $trainArray=$deleteTrainModel->getTrains();
-        return $this->render(['admin', 'manageTrains'],$trainArray);
-        
-        }
 
+        if($this->protect()) {
+    
+            if($request->isGet()) 
+            {
+                $deleteTrainModel=new AdminModel();
+                
+                $deleteTrainModel->loadData($request->getQueryParams());
+                $deleteTrainModel->deleteTrains();
+                $trainArray=$deleteTrainModel->getTrains();
+                return $this->render(['admin', 'manageTrains'],$trainArray);
+                
+            }
+        }
         
     }
 
     public function addTrain($request, $response) 
     {
-        $saveTrainDetails = new AdminModel();
-        $saveTrainDetails->loadData($request->getBody());
-        $getrouteArray['routes'] = $saveTrainDetails->getAvailableRoute();
-        
-        
-         if ($request->isPost()) 
-        {
-            $validationState = $saveTrainDetails->addNewTrainDetails();
-             
-            if ($validationState === 'success') {
-                // $getrouteArray = $saveTrainDetails->getAvailableRoute();
+        if($this->protect()) {            
+            $saveTrainDetails = new AdminModel();
+            $saveTrainDetails->loadData($request->getBody());
+            $getrouteArray['routes'] = $saveTrainDetails->getAvailableRoute();
+            
+            
+            if ($request->isPost()) 
+            {
+                $validationState = $saveTrainDetails->addNewTrainDetails();
                 
-                // return $this->render(['admin', 'addTrain'],$getrouteArray);
-                return $response->redirect('/utrance-railway/trains/add');
-            } else {
-               
-                $trainArray= $saveTrainDetails->trainSetValue($validationState);
-                $trainArray['routes'] = $saveTrainDetails->getAvailableRoute();
-             
-                // var_dump( $registerSetValue['train_travel_days']);
-                // $this->render(['admin', 'addTrain'], $getrouteArray);
-                
-                return $this->render(['admin', 'addTrain'],$trainArray); 
-                
+                if ($validationState === 'success') {
+                    // $getrouteArray = $saveTrainDetails->getAvailableRoute();
+                    
+                    // return $this->render(['admin', 'addTrain'],$getrouteArray);
+                    return $response->redirect('/utrance-railway/trains/add');
+                } else {
+                    
+                    $trainArray= $saveTrainDetails->trainSetValue($validationState);
+                    $trainArray['routes'] = $saveTrainDetails->getAvailableRoute();
+                    
+                    // var_dump( $registerSetValue['train_travel_days']);
+                    // $this->render(['admin', 'addTrain'], $getrouteArray);
+                    
+                    return $this->render(['admin', 'addTrain'],$trainArray);    
+                }
 
             }
         }
@@ -258,20 +265,25 @@ class AdminController extends Controller
 
     public function manageRoutes($request)
     {
-        if ($request->isPost()) {
-            return 'success';
-        }
 
-        return $this->render(['admin', 'manageRoutes']);
+        if($this->protect()) {   
+            if ($request->isPost()) {
+                return 'success';
+            }
+            
+            return $this->render(['admin', 'manageRoutes']);
+        }
     }
 
     public function addRoute($request)
     {
-        if ($request->isPost()) {
-            return 'success';
+        if($this->protect()) {   
+            if ($request->isPost()) {
+                return 'success';
+            }
+            
+            return $this->render(['admin', 'addRoute']);
         }
-
-        return $this->render(['admin', 'addRoute']);
     }
 
     ////////////////////////
@@ -288,17 +300,19 @@ class AdminController extends Controller
 
     public function manageNews($request)   //daranya
     { 
-        $manageNewsModel = new AdminModel();
-
-        if ($request->isPost()) 
-        {
-            $manageNewsModel->loadData($request->getbody());
-            $addNewss = $manageNewsModel->manageNews();
-            //var_dump($addDetails);
+        if($this->protect()) {    
+            $manageNewsModel = new AdminModel();
+            
+            if ($request->isPost()) 
+            {
+                $manageNewsModel->loadData($request->getbody());
+                $addNewss = $manageNewsModel->manageNews();
+                //var_dump($addDetails);
+                return $this->render(['admin','manageNews']); 
+                
+            }
             return $this->render(['admin','manageNews']); 
-        
         }
-        return $this->render(['admin','manageNews']); 
 
     }
 
