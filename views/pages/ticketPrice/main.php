@@ -16,4 +16,9 @@
     <link rel="stylesheet" href="../../../utrance-railway/public/css/ticketPrice/ticketPrice.css" />
     
     <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
+    
+<style>
+
+  tr
+  </style>
 </head>

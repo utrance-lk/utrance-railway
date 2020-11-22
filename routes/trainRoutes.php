@@ -20,5 +20,9 @@ $app->router->post('/utrance-railway/trains/delete', [AdminController::class, 'd
 $app->router->get('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
 $app->router->post('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
 
+$app->router->get('/utrance-railway/frieght-prices', [TrainController::class, 'freightPrice']);
+$app->router->post('/utrance-railway/freight-prices', [TrainController::class, 'freightPrice']);
+
+
 
 ?>
