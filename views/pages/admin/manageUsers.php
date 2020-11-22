@@ -37,8 +37,6 @@
               </svg>
             </a>
 
-
-
            <div method="POST"  name="manage_users"  id="manage_user_form" >
                 <div class="search__results-container">
 

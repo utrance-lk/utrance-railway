@@ -76,8 +76,6 @@ class AdminController extends Controller
             //var_dump($updateUserArray);
             return $this->render(['admin', 'updateUser'],$updateUserArray);
         }
-       
-
 
     }
 

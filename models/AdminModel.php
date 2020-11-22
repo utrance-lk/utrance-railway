@@ -23,7 +23,7 @@ class AdminModel extends Model {
     public $user_confirm_password;
     public $searchUserByNameOrId;
     private $registerSetValueArray = [];
-    public $addUserImage = "Chris-user-profile.jpg";
+    // public $addUserImage = "Chris-user-profile.jpg";
 
 
     //////////////Train//////////////////
