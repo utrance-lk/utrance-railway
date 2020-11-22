@@ -479,23 +479,88 @@ class AdminModel extends Model {
     public function validateTrains($trains){
        
     foreach($trains as $key=>$value)
-    {
+     {
         $route=$value[0]['route_id'];
+     }
+   
+   
+        $currentdate = date('w');
         
-        $query = APP::$APP->db->pdo->prepare("SELECT stops.	arrival_time FROM stops RIGHT JOIN trains ON trains.route_id = stops.route_id WHERE stops.route_id=$route");
+        if($currentdate==0){
+            $crrent='sunday';
+        }
+        if($currentdate==1){
+            $crrent='monday';
+        }
+        if($currentdate==2){
+            $crrent='tuesday';
+        }
+        if($currentdate==3){
+            $crrent='wednesday';
+        }
+        if($currentdate==4){
+            $crrent='thursday';
+        }
+        if($currentdate==5){
+            $crrent='friday';
+        }
+        if($currentdate==6){
+            $crrent='saturday';
+        }
+
+        $this->results1 = $this->vTrains($crrent,$route);
+       
+        
+        $query = APP::$APP->db->pdo->prepare("SELECT MAX(stops.arrival_time) AS maxlue,MIN(stops.arrival_time) AS minlue FROM stops RIGHT JOIN trains ON trains.route_id = stops.route_id WHERE stops.route_id=$route");
         $query->bindValue(":route_id", $route);
         $query->execute();
         $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($this->resultArray);
         
+        $this->results = $this->validateTrainsMin($this->resultArray, $this->results1);
+        return $this->results;
+     
+     
+   }
+   public function validateTrainsMin($t,$results1){
+    
+    foreach($t as $key=>$value)
+    {
+        $min=$value['minlue'];
+        $max=$value['maxlue'];   
     }
-}
+    $currentTime = date('h:i:s');
+    
+    
+    
+   
+    $results2 = 0;
 
-    public function vTrains($array){
-        $currentTime = date('h:i:s');
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops RIGHT JOIN trains ON trains.route_id = stops.route_id WHERE  ");
-        $query->bindValue(":train_id", $this->route_id);
+$date1 = DateTime::createFromFormat('h:i:s', $max);
+$date2 = DateTime::createFromFormat('h:i:s', $currentTime);
+$date3 = DateTime::createFromFormat('h:i:s', $min);
+if ($date2 > $date3 && $date2 < $date1)
+{
+    $results2 = 1;
+}
+    if(($results2==1) && !empty($results1)){
+        
+       return $results1;
+     
+    }
+    
+    
+   }
+
+    public function vTrains($crrent,$route){
+       
+      
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_travel_days LIKE '%{$crrent}%' AND route_id=:route_id");
+        $query->bindValue(":route_id", $route);
         $query->execute();
+        $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
+      
+        return $this->resultArray;
+        
       
     }
     

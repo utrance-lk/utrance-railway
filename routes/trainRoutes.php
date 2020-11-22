@@ -24,5 +24,8 @@ $app->router->get('/utrance-railway/frieght-prices', [TrainController::class, 'f
 $app->router->post('/utrance-railway/freight-prices', [TrainController::class, 'freightPrice']);
 
 
+$app->router->post('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
+$app->router->get('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
+
 
 ?>
