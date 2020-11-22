@@ -37,9 +37,11 @@ class App {
         $this->email = new Email($config['email']);
 
         $activeUserId = $this->session->get('user');
+      
         if($activeUserId) {
             $this->user = $this->userClass::getUser($activeUserId);
         }
+        
 
         if(!empty($this->user)) {
             $this->isActiveAccount();
@@ -76,6 +78,8 @@ class App {
             "user_image" => null
         ];
     }
+    
+    
 
     private function isActiveAccount() {
         if(!$this->user[0]['user_active_status']) {
