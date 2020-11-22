@@ -487,9 +487,18 @@ select {
   margin-left: 2rem;
 }
 
-.reservation-categorybox__container > *:not(:last-child) {
-  margin-right: 1rem;
+.reservation-categorybox__container {
+  display: flex;
+  justify-content: space-around;
 }
+
+.reservation-categorybox__container:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+/* .reservation-categorybox__container > *:not(:last-child) {
+  margin-right: 1rem;
+} */
 
 .reservation__category-item {
   display: flex;
@@ -699,4 +708,22 @@ select {
 
 .btn__add-route {
   margin: 0 0 0 40vw;
+}
+
+.route_id,
+.freights-quantity__number-input
+#sleepingberths,
+#secondclass,
+#firstclass {
+  /* border: 1px solid red; */
+  margin-left: 2rem;
+  border-radius: 5px;
+  /* width: 6rem; */
+  padding: .5rem 1rem;
+  background-color: rgb(242, 242, 242);
+  text-align: center;
+}
+
+#freightsallowed {
+  margin-left: 2rem;
 }

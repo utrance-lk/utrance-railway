@@ -60,7 +60,7 @@
 
         $html .= "<img src='/utrance-railway/public/img/uploads/Ashoka.jpg' alt='profile-avatar' class='profile__avatar'/></div>";
         $html .= "<div class='user-mainbox__other'>";
-        $html .= "<div class ='user-mainbox__other-name'> " . $value['first_name'] . "</div>";
+        $html .= "<div class ='user-mainbox__other-name'> ". $value['first_name']."</div>";
         $html .= "<div class ='user-mainbox__other-id'><span>#<span>";
         $html .= "<span class='user__id'> " . $value['id'] . "</span></div></div></div>";
 

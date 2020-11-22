@@ -83,7 +83,7 @@ class AdminModel extends Model {
         return $validationState;
     }
 
-    public function getUserDetails() ///Ashika
+    public function getUserDetails() ///Ashika ///After Click the view button
 
     {
         $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");

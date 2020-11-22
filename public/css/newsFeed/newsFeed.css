@@ -81,6 +81,7 @@
   .load-content-container {
     background-color: #fff;
     /* border: 1px solid yellow; */
+    /* display: flex; */
     width: 60vw;
   }
   

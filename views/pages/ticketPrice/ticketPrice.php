@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
     $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
     $reader->setReadDataOnly(TRUE);
     if($select_class === "First Class" && $select_route === "Matara To Colombo"){
-     $spreadsheet = $reader->load("ticketPriceMCF.xlsx");
+     //$spreadsheet = $reader->load("ticketPriceMCF.xlsx");
      //$spreadsheet = $reader->load("Book2.xlsx");
     }
     if($select_class === "Second Class" && $select_route === "Matara To Colombo"){
