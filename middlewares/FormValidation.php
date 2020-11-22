@@ -222,7 +222,7 @@ class FormValidation{
         $query->execute();
         $email_status["users"]= $query->fetchAll(PDO::FETCH_ASSOC);
         $k=$email_status["users"][0]['id'];
-        //var_dump($k);
+        
         if ($k!=$id) {
             $this->errorArray['email_id_error'] = "This email is already exist";
         }
