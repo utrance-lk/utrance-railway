@@ -15,7 +15,7 @@ class FormValidation{
         $this->validateCity(trim($array['city'])); //Ashika
         $this->validateContactNumber(trim($array['contact_num'])); //Ashika
         $this->validateEmailId(trim($array['email_id'])); //Ashika
-        $this->validatePassword(trim($array['user_password'], $array['user_confirm_password'])); //Ashika*/
+        $this->validatePassword(trim($array['user_password']), trim($array['user_confirm_password'])); //Ashika*/
         if(empty($this->errorArray)){
             return "success";
         }else{
@@ -85,7 +85,7 @@ class FormValidation{
 
 
     private function validateFirstName($fn){//Asindu              //First Name Validation
-       
+
         if (strlen($fn) < 2 || strlen($fn) > 25) {
             
             $this->errorArray['firstNameError'] = 'first name wrong length';
@@ -103,8 +103,6 @@ class FormValidation{
         }
 
     }
-
-
 
     private function validateLastName($ln){ //Ashika          ////Last Name Validation
         if (strlen($ln) < 2 || strlen($ln) > 25) {
@@ -223,8 +221,8 @@ class FormValidation{
         $email_status["users"]= $query->fetchAll(PDO::FETCH_ASSOC);
         $k=$email_status["users"][0]['id'];
         
-        if ($k!=$id) {
-            $this->errorArray['email_id_error'] = "This email is already exist";
+        if ($k!=$id && $k) {
+            $this->errorArray['email_id_error'] = "This email already exists";
         }
 
     }

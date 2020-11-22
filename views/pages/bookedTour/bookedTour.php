@@ -32,7 +32,7 @@
                     </div>
                     <div class="seperator"></div>
                     <div class="card__persons card__item">
-                        <span>1 pupil</span>
+                        <span>1 person(s)</span>
                     </div>
                     <div class="seperator"></div>
                     <div class="card__class card__item">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="seperator"></div>
                     <div class="card__persons card__item">
-                        <span>5 people</span>
+                        <span>5 person(s)</span>
                     </div>
                     <div class="seperator"></div>
                     <div class="card__class card__item">
