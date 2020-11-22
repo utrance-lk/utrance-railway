@@ -5,7 +5,6 @@ include_once "../controllers/AuthController.php";
 include_once "../middlewares/AuthMiddleware.php";
 include_once "../models/DetailsProviderModel.php";
 
-
   
 
 class DetailsProviderController extends Controller
@@ -42,9 +41,5 @@ class DetailsProviderController extends Controller
         return $this->render(['detailsProvider','contactAdmin']); 
 
     }
-
-
-
-   
 
 }

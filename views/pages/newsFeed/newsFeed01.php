@@ -26,6 +26,8 @@
 
           </div>
      </div>
+
+     
 </div>
 
 <div class="sidebar">
@@ -108,8 +110,6 @@
         </div>
       </div>
 </div>
-
-<script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
 
 
 </body>

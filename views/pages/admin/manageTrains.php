@@ -1,20 +1,22 @@
 <div class="load-content-container">
     <div class="load-content">
         <div class="load-content--manage-trains">
-              <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/trains">
-                <input type="text" class="dashboard-searchbar" placeholder="Search trains by name" name="searchTrainByNameOrId"/>
+              <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/trains" >
+                <input type="text" class="dashboard-searchbar" placeholder="Search trains by name" name="searchTrain"/>
+                <button>
                 <svg class="search-icon__btn">
                   <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
                 </svg>
-                <!--div class="dashboard-searchbar__dropdown">
-                  < <svg class="dropdown-btn">
+                </button>
+                <div class="dashboard-searchbar__dropdown">
+                  <!-- <svg class="dropdown-btn">
                               <use xlink:href="./icons/sprite.svg#icon-chevron-small-down"></use>
                           </svg> -->
-                  <!--select name="catogory" id="" class="dropdown__list">
+                  <!-- <select name="catogory" id="" class="dropdown__list">
                     <option value="name">Name</option>
                     <option value="id">Id</option>
-                  </select>
-                </div!-->
+                  </select> -->
+                </div>
               </form>
 
               <a href="/utrance-railway/trains/add" class="adduserbtn addbtn">
@@ -46,11 +48,11 @@
                             $train_id=$value['train_id'];
                             // $train_active_status=$value['train_active_status'];
 
-                            $html .= "<a href='/utrance-railway/trains/update?id=$train_id' class='search__result-train-managebtnbox'>";
+                            $html .= "<a href='/utrance-railway/trains/view?id=$train_id' class='search__result-train-managebtnbox'>";
                             $html .= "<div class='search__result-managebtn btn-white'>View</div></a>";
                             
-                            $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='search__result-train-deletebtnbox'>";
-                            $html .= "<div class='search__result-deletebtn btn-white'>Delete</div></a></div></div>";
+                            $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='search__result-train-deletebtnbox' >";
+                            $html .= "<div class='search__result-deletebtn btn-white' onclick=\"return confirm('Are you sure?');\">Delete</div></a></div></div>";
                             
 
                             $dom = new DOMDocument();

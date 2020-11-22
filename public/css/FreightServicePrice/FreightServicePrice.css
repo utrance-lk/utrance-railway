@@ -1,0 +1,92 @@
+
+.main-01 {
+  width:100%;
+    /* width: 96rem; */
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 1.875rem;
+    
+  }
+  #div-table{
+    justify-content: center;
+    display: flex;
+  }
+.main-02 {
+  width:100%;
+      /* width: 97rem; */
+    color: #fff;
+    background: rgba(31, 58, 147, 0.8);;
+    /* background: #1F3A93; */
+    padding-left: 40rem;
+    padding-top: 0.5rem;
+    display: inline-block;
+    height: 70px;
+    
+  }
+  .p-ticket-head{
+      color: white;
+      font-size: 20px;
+      font-family: "Poppins", sans-serif;
+      margin-left: 30.0rem;
+      margin-top: 1.800rem;
+  }
+
+.train-table{
+    padding-top: 4rem;
+   
+}
+.freight p{
+  padding-top:15px;
+  font-family: arial, sans-serif;
+  margin-left: 200px;
+  color:rgb(250, 151, 70);
+  font-weight: bold;
+  font-size: 20px;
+  
+}
+  table {
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    border-collapse: collapse;
+    width: 74%;
+    height: 45%;
+    margin: 1.8rem;
+    table-layout:fixed;
+    font-size: 17px;
+    margin-left: 200px;
+    
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    /* padding: 0.4rem; */
+    height: 25px;
+    padding: 15px;
+
+    /* width:auto; */
+    width:1px;white-space:nowrap; 
+
+  }
+  tr:first-child {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 20px;
+    
+  }
+
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  #div-table{
+      padding-top: 4.5rem;
+  }
+  .td-first{
+      background-color: #5CB8DC ;
+  }
+  .td-second{
+      background-color:  rgb(250, 151, 70);
+  }
