@@ -70,12 +70,13 @@ class UserModel extends Model
     }
 
     public function updateMyProfile() {
-        
+        var_dump($this->city);
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_role' =>$this->user_role];
         $updateValidation=new FormValidation();
         $validationState=$updateValidation->runUpdateValidators($array);
-        
+        var_dump($validationState);
         if ($validationState ==="success") {
+           
            $this->runSanitization();
            $updateUser = New HandlerFactory();
            
