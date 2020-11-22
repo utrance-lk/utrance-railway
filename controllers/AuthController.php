@@ -23,13 +23,15 @@ class AuthController extends Controller
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
             $result = $loginUser->findUser('email_id');
-            if(!$result[0]['user_active_status']) {
-                return 'Your account has been deactivated!';
-            }
-            $verifyPassword = password_verify($loginUser->user_password, $result[0]['user_password']);
-            if ($verifyPassword) {
-                App::$APP->session->set('user', $result[0]['id']);
-                return $response->redirect('/utrance-railway/home');
+            if($result) {
+                if(!$result[0]['user_active_status']) {
+                    return 'Your account has been deactivated!';
+                }
+                $verifyPassword = password_verify($loginUser->user_password, $result[0]['user_password']);
+                if ($verifyPassword) {
+                    App::$APP->session->set('user', $result[0]['id']);
+                    return $response->redirect('/utrance-railway/home');
+                }
             }
 
             return 'invalid username or password';

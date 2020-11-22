@@ -226,7 +226,7 @@ class FormValidation{
                 $resultArray1=$query1->fetchAll(PDO::FETCH_ASSOC);
                 $k=empty($resultArray1[0]['id']);
                 if($k == false){
-                    $this->errorArray['email_id_error'] = "Email is Already exists";  
+                    $this->errorArray['email_id_error'] = "Email already exists";  
                 }
             }
 
