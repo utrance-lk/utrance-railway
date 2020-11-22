@@ -47,7 +47,7 @@
               </svg>
               <span class="manage--freights-name">Manage freights</span>
             </a>
-            <a href="#" class="sidebar__nav-manage--news sidebar__nav-item">
+            <a href="/utrance-railway/manage-news" class="sidebar__nav-manage--news sidebar__nav-item">
               <svg class="news-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-landline"></use>
               </svg>

@@ -1,3 +1,4 @@
+<div class="main-container">
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -97,7 +98,7 @@
               <svg class="freights-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
-              <span class="manage--freights-name">Ticket price meeting ...</span>
+              <span class="manage--freights-name">New trains ...</span>
             </a>
             <a href="/utrance-railway/news/news10" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="freights-icon sidebar__nav-icon">

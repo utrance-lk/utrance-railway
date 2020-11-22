@@ -1,3 +1,4 @@
+<div class="main-container">
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -11,7 +12,7 @@
       <img src="/utrance-railway/public/img/pages/newsFeed/train2.jpg" style="width:100%">
       <div class="container">
        <br>
-        <p style="text-align:justify;">The train schedules will face changes due to the current situation in the country. There is a chance for some train routes to stop functioning in particular areas. A few trains will not stop in all stations according to the railway department. Further details regarding this will be posted in the railway department website tonight.</p>
+        <p style="text-align:justify;">The train schedules will face changes due to the current situation in the country. There is a chance for some train routes to stop functioning in particular areas. A few trains will not stop in all stations according to the railway department. Further details regarding this will be posted in the railway department website tonight.This rule is mainly will be in the areas around Colombo. The passengers will have to wait a few more days once the stations closed. This is to ensure the safety of the citizens. People are expected to follow the headlthcare advices and act accordinly. Even thoughh trains </p>
       <br>
       </div>
     </div>

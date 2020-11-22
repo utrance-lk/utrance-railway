@@ -1,32 +1,42 @@
 <style>
-textarea {
-  border-style: none;
-  border-color: Transparent;
-  overflow: auto;
-  outline: none;
+
+.textinput {
+    float: left;
+    width: 100%;
+    min-height: 75px;
+    outline: none;
+    resize: none;
+    border: 1px solid grey;
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+    outline: none;
+}
+.newsimage {
+    float: left;
+    width: 100%;
+    min-height: 75px;
+    outline: none;
+    resize: none;
+    border: 1px solid grey;
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+    outline: none;
 }
 </style>
 
 
 
-<div class="load-content-container">
+<div class="load-content-container ">
         <div class="load-content">
           <div class="load-content--manage-trains">
             <div class="content-title">
               <p> Manage News</p>
             </div>
     
-          <form action="/utrance-railway/manageNews" method="POST" >
+          <form action="/utrance-railway/manage-news" method="POST" >
           <div class="content__fields">
-
-      
-
-                <div class="emai-box content__fields-item">
-                <label for="email" class="form__label">Headline</label>
-                <input type="text" name="news_headline" class="form__input">
-                </div>
-              
-
 
             <fieldset class="classess-box content__fields-item">
                         <legend class="form__label">News Type</legend>
@@ -51,22 +61,42 @@ textarea {
                     </fieldset>
               
                 <fieldset class="classess-box content__fields-item">
-                        <legend class="form__label">News</legend>
-                
-            
-                <textarea rows="10" cols="60" name="detail" placeholder=" Enter the news here..."></textarea>
+                <legend class="form__label">News</legend>
+                <div class="emai-box content__fields-item">
+             
+                <input type="text" name="news_headline" class="form__input" placeholder="Headline">
+                </div>
+                <textarea class="textinput" rows="10" cols="60" name="detail" placeholder=" Enter the news here..."></textarea>
                 </fieldset>
+                <fieldset class="classess-box content__fields-item">
+                <legend class="form__label">Image</legend>
                 
+                <div class="">
+                 <img 
+                    src="../../../../utrance-railway/public/img/pages/admin/train.jpg"
+                    alt="news-picutre"
+                    class="newsimage"
+                  />
+                    <input
+                    type="file"
+                    name="photo"
+                    accept="image/*"
+                    class="form__upload"
+                    id="photo"
+                  />
+                  <label for="photo">Choose Photo</label>
+                </div>
+                </fieldset>
                 <div class="btn__save-box">
                 <input type="submit" class="btn__save btn-settings"  name="submit" value="Post"></div>
 
-
+               
       
           </div>
           </div>
           </div>
           </form>
-            
+
        
           </div>
         </div>

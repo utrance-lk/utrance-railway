@@ -1,3 +1,4 @@
+<div class="main-container">
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--settings">

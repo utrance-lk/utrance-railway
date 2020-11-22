@@ -1,3 +1,4 @@
+<div class="main-container">
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -11,7 +12,7 @@
       <img src="/utrance-railway/public/img/pages/newsFeed/train3.jpg" style="width:100%">
       <div class="container">
        <br>
-        <p style="text-align:justify;">The ticket prices for the other classes and A/C trains won't be changed. The meeting results from the parliament is out. There may be further discussion on this in the upcoming meeting scheduled next month.The news will be published officially and the new prices will be published on coming friday.</p>
+        <p style="text-align:justify;">The ticket prices for the other classes and Air conditioned trains won't be changed. The meeting results from the parliament is out. There may be further discussion on this in the upcoming meeting scheduled next month.The news will be published officially and the new prices will be published on coming friday.Since the most number of passengers use the third class to travel, only third class pricess will be reduced. Though, there is a possibility for other prices to change in the upcoming month. This change in price w=is welcomed by the people also. The third class users are happy with it. The parliament meeting result is not officially out. This change will be implemented soon after the publishing the news officially. The first and second class ticket may be increased next month but the air conditioned ticket prices won't be changed. For the air conditioned train passengers a change in the ticket prices may be implemented in the near future.</p>
         <br>
       </div>
     </div>

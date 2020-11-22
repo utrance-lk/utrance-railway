@@ -26,5 +26,9 @@ $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRo
 $app->router->get('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
 $app->router->Post('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
 
+//daranya
+$app->router->get('/utrance-railway/manage-news', [AdminController::class, 'manageNews']);
+$app->router->post('/utrance-railway/manage-news', [AdminController::class, 'manageNews']);
+
 
 ?>
