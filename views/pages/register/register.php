@@ -15,29 +15,29 @@
 				</div>
 				<div class="firstname-box form__container-item register__form--inputs">
 					<label for="first_name">First name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Steven';?>" value="<?php echo isset($first_name) ? $first_name : '';?>" required>       
+                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Steven';?>" value="<?php echo isset($first_name) ? $first_name : '';?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : '';?>" required>       
                    
 				</div>             
                 
 				<div class="lastname-box form__container-item register__form--inputs">
 					<label for="last_name">Last name</label>
-					<input type="text" id="last_name" name="last_name" placeholder="<?php echo isset($lastNameError) ? $lastNameError :'Smith';?>" value="<?php echo isset($last_name) ? $last_name : '';?>" required>
+					<input type="text" id="last_name" name="last_name" placeholder="<?php echo isset($lastNameError) ? $lastNameError :'Smith';?>" value="<?php echo isset($last_name) ? $last_name : '';?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : '';?>" required>
                    
                     
 				</div>
 				<div class="email-box form__container-item register__form--inputs">
 					<label for="email_id">Email</label>
-					<input type="email" id="email_id" name="email_id" placeholder="<?php echo isset($email_id_error) ? $email_id_error :'stevensmith@example.com';?>"   value="<?php echo isset($email_id) ? $email_id : '';?>"required>
+					<input type="email" id="email_id" name="email_id" placeholder="<?php echo isset($email_id_error) ? $email_id_error :'stevensmith@example.com';?>"   value="<?php echo isset($email_id) ? $email_id : '';?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : '';?>" required>
                    
 				</div>
 				<div class="streetline1-box form__container-item register__form--inputs">
 					<label for="streetline1">Street line 1</label>
-					<input type="text" id="streetline1" name="street_line1" placeholder="<?php echo isset($streetLine1Error) ? $streetLine1Error :'22/50, Agathuduwa Watta';?>" value="<?php echo isset($street_line1) ? $street_line1 : '';?>" required>
+					<input type="text" id="streetline1" name="street_line1" placeholder="<?php echo isset($streetLine1Error) ? $streetLine1Error :'22/50, Agathuduwa Watta';?>" value="<?php echo isset($street_line1) ? $street_line1 : '';?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : '';?>" required>
                     
 				</div>
 				<div class="streetline2-box form__container-item register__form--inputs">
 					<label for="streetline2">Street line 2</label>
-					<input type="text" id="streetline2" name="street_line2" placeholder="<?php echo isset($streetLine2Error) ? $streetLine2Error :'Godagama West';?>"  value="<?php echo isset($street_line2) ? $street_line2 : '';?>" required>
+					<input type="text" id="streetline2" name="street_line2" placeholder="<?php echo isset($streetLine2Error) ? $streetLine2Error :'Godagama West';?>"  value="<?php echo isset($street_line2) ? $street_line2 : '';?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : '';?>" required>
                     
 				</div>
 				<div class="city-box form__container-item register__form--inputs">
@@ -72,20 +72,17 @@
 				</div>
                 <div class="contactno-box form__container-item register__form--inputs">
                     <label for="contactno">Contact No</label>
-                    <input type="text" id="contactno" name="contact_num" placeholder="<?php echo isset($contactNumError) ? $contactNumError :'07*1234567';?>" value="<?php echo isset($contact_num) ? $contact_num : '';?>" required>
+                    <input type="text" id="contactno" name="contact_num" placeholder="<?php echo isset($contactNumError) ? $contactNumError :'07*1234567';?>" value="<?php echo isset($contact_num) ? $contact_num : '';?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : '';?>" required>
                    
                 </div>
                 <div class="password-box form__container-item register__form--inputs">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="user_password" placeholder="<?php echo isset($passwordError) ? $passwordError :'***************';?>" required>
+                    <input type="password" id="password" name="user_password" placeholder="<?php echo isset($passwordError) ? $passwordError :'***************';?>" class="<?php echo isset($passwordError) ? 'error__placeholder' : '';?>" required>
                    
                 </div>
                 <div class="password-confirm-box form__container-item register__form--inputs">
                     <label for="password-confirm">Password Confirm</label>
-                    <input type="password" id="password-confirm" name="user_confirm_password" placeholder="***************" required>
-                   
-
-                   
+                    <input type="password" id="password-confirm" name="user_confirm_password" placeholder="<?php echo isset($passwordError) ? $passwordError :'***************';?>" class="<?php echo isset($passwordError) ? 'error__placeholder' : '';?>" required>   
                 </div>
                 <!--?php
                
