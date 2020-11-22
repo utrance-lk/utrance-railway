@@ -55,7 +55,7 @@ class AdminModel extends Model {
     }
 
     public function getUsers() {
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status FROM users  ORDER BY user_active_status DESC");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status,user_image FROM users  ORDER BY user_active_status DESC");
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
@@ -86,7 +86,7 @@ class AdminModel extends Model {
     public function getUserDetails() ///Ashika
 
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");
+        $query = APP::$APP->db->pdo->prepare("SELECT last_name,first_name,street_line1,street_line2,email_id,city,contact_num  FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
 
         $query->execute();

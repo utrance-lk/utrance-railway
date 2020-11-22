@@ -56,7 +56,7 @@
              <?php if(App::$APP->user) : ?>
               <a href="#">
                 <img
-                  src="../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg"
+                  src="../../../../utrance-railway/public/img/uploads/<?php echo App::$APP->activeUser()['user_image'];?>.jpg"
                   alt="profile picture"
                   class="user-img"
                 />

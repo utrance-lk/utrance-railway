@@ -2,7 +2,7 @@
     <div class="load-content">
         <div class="load-content--manage-trains">
               <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/trains" >
-                <input type="text" class="dashboard-searchbar" placeholder="Search trains by name" name="searchTrain"/>
+                <input type="text" class="dashboard-searchbar" placeholder="Search trains by name or id" name="searchTrain"/>
                 <button>
                 <svg class="search-icon__btn">
                   <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
