@@ -31,10 +31,9 @@
                 $html .="<label for='trainname' class='form__label'>Train Name</label>";
                 if(isset($newtrains['TrainNameError'])){
                 $error=$newtrains['TrainNameError'];
-                $html .="<input type='text' name='train_name' class='form__input' placeholder='$error' required/></div>";
+                $html .="<input type='text' name='train_name' class='form__input error__placeholder' placeholder='$error' required/></div>";
                 }else if(isset($newtrains['train_name'])){
                     $html .="<input type='text' name='train_name' class='form__input' value='".$newtrains['train_name']." required/></div>";
-                
                 }else{
                     $train_name = $value['train_name'];
                 $html .="<input type='text' name='train_name' class='form__input' value='$train_name' required/></div>";

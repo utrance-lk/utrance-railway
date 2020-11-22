@@ -84,3 +84,7 @@ button {
   font-family: "Sora", sans-serif;
   /* transition: all .2s; */
 }
+
+.error__placeholder::-webkit-input-placeholder {
+  color: red; 
+}
