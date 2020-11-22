@@ -15,7 +15,7 @@ class FormValidation{
         $this->validateCity(trim($array['city'])); //Ashika
         $this->validateContactNumber(trim($array['contact_num'])); //Ashika
         $this->validateEmailId(trim($array['email_id'])); //Ashika
-        $this->validatePassword(trim($array['user_password']),trim($array['user_confirm_password'])); //Ashika*/
+        $this->validatePassword(trim($array['user_password']), trim($array['user_confirm_password'])); //Ashika*/
         if(empty($this->errorArray)){
             return "success";
         }else{
@@ -85,7 +85,7 @@ class FormValidation{
 
 
     private function validateFirstName($fn){//Asindu              //First Name Validation
-       
+
         if (strlen($fn) < 2 || strlen($fn) > 25) {
             
             $this->errorArray['firstNameError'] = 'first name wrong length';
@@ -104,8 +104,6 @@ class FormValidation{
 
     }
 
-
-
     private function validateLastName($ln){ //Ashika          ////Last Name Validation
         if (strlen($ln) < 2 || strlen($ln) > 25) {
            
@@ -119,7 +117,7 @@ class FormValidation{
 
         if (!(ctype_alpha($ln))) {
             
-            $this->errorArray['lastNameError'] = 'last name only letters 1 required';
+            $this->errorArray['lastNameError'] = 'last name only letters  required';
         }
     }
 

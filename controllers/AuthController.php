@@ -114,13 +114,13 @@ class AuthController extends Controller
 
             $hashedToken = hash('sha256', $resetToken);
             $tempBody = $request->getBody();
-            $tempBody['PasswordResetToken'] = $hashedToken;
+            $tempBody['password_reset_token'] = $hashedToken;
             $resetPasswordUser->loadData($tempBody);
-            $user = $resetPasswordUser->findUser('PasswordResetToken');
+            $user = $resetPasswordUser->findUser('password_reset_token');
             if (!$user) {
                 return 'invalid token';
             }
-            $dateInDB = new DateTime($user[0]['PasswordResetExpires']);
+            $dateInDB = new DateTime($user[0]['password_reset_expires']);
             $currentDate = new DateTime();
             $interval = $dateInDB->diff($currentDate);
             if((int)$interval->format('%i') > 10 && (int)$interval->format('%s') > 0) {
