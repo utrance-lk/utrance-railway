@@ -37,9 +37,11 @@ class App {
         $this->email = new Email($config['email']);
 
         $activeUserId = $this->session->get('user');
+      
         if($activeUserId) {
             $this->user = $this->userClass::getUser($activeUserId);
         }
+        
 
         if($this->user) {
             $this->isActiveAccount();
@@ -48,6 +50,7 @@ class App {
     }
 
     public function activeUser() {
+        if($this->user){
         return [
             "first_name" => $this->user[0]["first_name"],
             "last_name" => $this->user[0]["last_name"],
@@ -60,6 +63,20 @@ class App {
             "role" => $this->user[0]["user_role"],
             "user_image" => $this->user[0]["user_image"],
         ];
+    }
+    return [
+        "first_name" => null,
+        "last_name" => null,
+        "id" => null,
+        "email_id" => null,
+        "street_line1" => null,
+        "street_line2" => null,
+        "city" => null,
+        "contact_num" => null,
+        "role" => null,
+        "user_image" => null,
+
+    ];
     }
 
     private function isActiveAccount() {
