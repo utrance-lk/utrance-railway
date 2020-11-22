@@ -95,8 +95,10 @@ if(isset($_POST['submit'])){
   }
 
     if($select_class === "Second Class" && $select_route === "Matara To Colombo"){
+       $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
+      $reader->setReadDataOnly(TRUE);
       $spreadsheet = $reader->load("ticketPriceMCS.xlsx");
-  
+     
     $worksheet = $spreadsheet->getActiveSheet();
     
 
