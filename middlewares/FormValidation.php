@@ -215,7 +215,7 @@ class FormValidation{
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
         
-        $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
+        $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users WHERE email_id=:email_id");
         $query->bindValue(":email_id", $email_id);
         
         //$query->bindValue(":id",$id);

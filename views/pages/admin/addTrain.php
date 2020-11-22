@@ -33,7 +33,7 @@
                         {
                           
                            
-                        $html =" <select name='route_id' id='route_id'>";
+                        $html =" <select name='route_id' class='route_id' id='route_id'>";
                      
                         
                             foreach($routes as $key => $value)

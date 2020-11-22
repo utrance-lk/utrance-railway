@@ -3,7 +3,7 @@
 include_once "../classes/core/Controller.php";
 include_once "../controllers/AuthController.php";
 include_once "../middlewares/AuthMiddleware.php";
-
+include_once "../models/DetailsProviderModel.php";
 
   
 
@@ -38,6 +38,8 @@ class DetailsProviderController extends Controller
             return $this->render(['detailsProvider','contactAdmin']); 
         
         }
+
+        return $this->render(['detailsProvider','contactAdmin']);
 
     }
 
