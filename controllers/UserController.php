@@ -44,7 +44,7 @@ class UserController extends Controller
                 return $this->render('settings', $updateUserDetailsSetValue);
             }
         }
-        return "HEllo";
+        //return "HEllo";
         
     }
 

@@ -727,3 +727,9 @@ select {
 #freightsallowed {
   margin-left: 2rem;
 }
+
+.btn__view--bookings:link,
+.btn__view--bookings:active,
+.btn__view--bookings:visited {
+  color: #000000;
+}

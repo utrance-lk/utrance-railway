@@ -19,26 +19,30 @@ class UserModel extends Model
     public $user_password;
     public $user_active_status = 1;
     public $user_confirm_password;
-    public $searchUserByNameOrId;
     public $user_new_password;
-    public $photo = "Chris-user-profile.jpg";
-
+    public $id;
+    // public $photo = "Chris-user-profile.jpg";
+     public $user_image = "Chris-user-profile.jpg";
+    
+    public $searchUserByNameOrId;
     public $resultArray;
     public $detailsArray;
     public $defaultPassword;
-    public $id;
     private $errorArray = [];
     private $registerSetValueArray = [];
     public $array=[];
 
-    public $PasswordResetToken;
-
+    public $password_reset_token;
 
     private function populateValues() {
         
-        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status ];
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status, 'user_image' => $this->user_image];
     }
-
+    
+    private function populateValuesUpdate(){
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id,'user_image' => $this->user_image];
+    }
+    
     public static function getUser($id) {
         $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE id=:id");
         $query->bindValue(":id", $id);
@@ -50,17 +54,19 @@ class UserModel extends Model
     public function findUser($category) {
         $findUser = new HandlerFactory();
         if($category === 'email_id') return $findUser->getOne('users', $category, $this->email_id);
-        if($category === 'PasswordResetToken') return $findUser->getOne('users', $category, $this->PasswordResetToken);
+        if($category === 'password_reset_token') return $findUser->getOne('users', $category, $this->password_reset_token);
 
     }
 
     public function register(){ 
        
-        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password];
+        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password, 'user_image' => $this->user_image];
         $registerValidation=new FormValidation();
         $validationState=$registerValidation->runValidators($array);
         if($validationState ==="success"){
             $this->runSanitization();
+            $user_image = $this->first_name;
+            $this->user_image = strtolower($user_image);
             $createUser = new HandlerFactory();
             return $createUser->createOne('users', $this->populateValues());
          }else{
@@ -76,10 +82,13 @@ class UserModel extends Model
         $validationState=$updateValidation->runUpdateValidators($array);
         
         if ($validationState ==="success") {
+           $this->user_image=$this->first_name;
+           $this->user_image=strtolower($this->user_image);
+
            $this->runSanitization();
            $updateUser = New HandlerFactory();
            
-           return $updateUser->updateOne('users', 'id', $this->id, $this->populateValues());
+           return $updateUser->updateOne('users', 'id', $this->id, $this-> populateValuesUpdate());
         }else{
             return $validationState;
         }
@@ -185,6 +194,7 @@ class UserModel extends Model
         $this->city=$this->sanitizeFormString($this->city);
         $this->contact_num=$this->sanitizeContactNumber($this->contact_num);
         $this->user_password = $this->sanitizeFormPassword($this->user_password);
+        $this->user_image = $this->sanitizeFormUsername($this->user_image);
         $this->passwordHashing();
     }
 
@@ -241,14 +251,14 @@ class UserModel extends Model
     {
         $resetToken = bin2hex(random_bytes(32));
         $resetTokenEncrypted = hash('sha256', $resetToken);
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetToken=:prt WHERE email_id=:email");
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET password_reset_token=:prt WHERE email_id=:email");
         $query->bindValue(":prt", $resetTokenEncrypted);
         $query->bindValue(":email", $this->email_id);
         $query->execute();
         $date = new DateTime();
         $date->add(new DateInterval('PT10M'));
         $date = $date->format('Y-m-d H:i:s');
-        $query = App::$APP->db->pdo->prepare("UPDATE users SET PasswordResetExpires=:pre WHERE email_id=:email");
+        $query = App::$APP->db->pdo->prepare("UPDATE users SET password_reset_expires=:pre WHERE email_id=:email");
         $query->bindValue(":pre", $date);
         $query->bindValue(":email", $this->email_id);
         $query->execute();

@@ -41,24 +41,39 @@ class App {
             $this->user = $this->userClass::getUser($activeUserId);
         }
 
-        if($this->user) {
+        if(!empty($this->user)) {
             $this->isActiveAccount();
         }
 
     }
 
     public function activeUser() {
+        if($this->user) {
+            return [
+                "id" => $this->user[0]["id"],
+                "first_name" => $this->user[0]["first_name"],
+                "last_name" => $this->user[0]["last_name"],
+                "email_id" => $this->user[0]["email_id"],
+                "street_line1" => $this->user[0]["street_line1"],
+                "street_line2" => $this->user[0]["street_line2"],
+                "city" => $this->user[0]["city"],
+                "contact_num" => $this->user[0]["contact_num"],
+                "role" => $this->user[0]["user_role"],
+                "user_image" => $this->user[0]["user_image"],
+            ];
+        }
+
         return [
-            "first_name" => $this->user[0]["first_name"],
-            "last_name" => $this->user[0]["last_name"],
-            "id" => $this->user[0]["id"],
-            "email_id" => $this->user[0]["email_id"],
-            "street_line1" => $this->user[0]["street_line1"],
-            "street_line2" => $this->user[0]["street_line2"],
-            "city" => $this->user[0]["city"],
-            "contact_num" => $this->user[0]["contact_num"],
-            "role" => $this->user[0]["user_role"],
-            "user_image" => $this->user[0]["user_image"],
+            "id" => null,
+            "first_name" => null,
+            "last_name" => null,
+            "email_id" => null,
+            "street_line1" => null,
+            "street_line2" => null,
+            "city" => null,
+            "contact_num" => null,
+            "role" => null,
+            "user_image" => null
         ];
     }
 
