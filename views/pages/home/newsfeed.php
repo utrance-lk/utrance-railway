@@ -43,30 +43,34 @@
     <div class="newsfeed__container">
         <div class="newscard">
             <div class="newscard__img-box">
-                <img src="/utrance-railway/public/img/pages/home/newsfeed/train3.jpg" class="newscard__img" alt="news-img">
+                <img src="/utrance-railway/public/img/pages/newsFeed/train1.jpg" class="newscard__img" alt="news-img">
                 <div class="newsview-btn">
+                <a href="/utrance-railway/news/news01">
                     <span>View</span>
+                </a>
                     <svg class="newsview-icon">
                         <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
             </div>
             <div class="newscard__content-box">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos nisi dolores cumque praesentium dolore iure ut, ratione quo suscipit perferendis laudantium alias rerum molestiae corporis earum magni eveniet distinctio assumenda!
+            The train from Colombo to Kandy will  not depart from Colombo today due to Corona lockdown process in the western province. The ministry of health and the ministry of railway have decided to implement this weekend.
             </div>
         </div>
         <div class="newscard">
             <div class="newscard__img-box">
-                <img src="/utrance-railway/public/img/pages/home/newsfeed/train3.jpg" class="newscard__img" alt="news-img">
+                <img src="/utrance-railway/public/img/pages/newsFeed/train2.jpg" class="newscard__img" alt="news-img">
                 <div class="newsview-btn">
+                <a href="/utrance-railway/news/news02">
                     <span>View</span>
+                </a>
                     <svg class="newsview-icon">
                         <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
             </div>
             <div class="newscard__content-box">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non amet velit aperiam molestiae est temporibus. Optio voluptatum fugit cupiditate. Nobis doloribus quae minima, molestiae vero aut tenetur error quibusdam esse!
+            The train schedules will face changes due to the current situation in the country. There is a chance for some train routes to stop functioning in particular areas. A few trains will not stop in all stations according to the railway department.
             </div>
         </div>
     </div>
