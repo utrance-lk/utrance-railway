@@ -12,7 +12,7 @@
       <img src="/utrance-railway/public/img/pages/newsFeed/train5.jpg" style="width:100%">
       <div class="container">
        <br>
-        <p style="text-align:justify;">A new train is going to be introduced in the eastern coastal line. This train is part of the new project, “Advanced trains in Sri Lanka” implemented by the new government. This train will start it’s journey in the coming March. The date is still unknown.</p>
+        <p style="text-align:justify;">A new train is going to be introduced in the Eastern coastal line. This train is part of the new project, “Advanced trains in Sri Lanka” implemented by the new government. This train will start it’s journey in the coming March. The date is still unknown. After the introduction, this train will be one of the fastest trains in SriLanka. The train will cover the Eastern and Southern stations. This train is expected to be a modern train. More of this type trains will be introduced in the near future under this project. This will be a pioneer in railway development of country. Additionally this train is beliebved to have many advanced features and passenger friendly facilities. Those functions are still unknown. These information will be disclosed in the near future.</p>
         <br>
       </div>
     </div>
@@ -35,7 +35,7 @@
 
           <a href="/utrance-railway/news" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
+                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-clock"></use>
               </svg>
               <span class="manage--bookings-name">Recent News</span>
               </a>

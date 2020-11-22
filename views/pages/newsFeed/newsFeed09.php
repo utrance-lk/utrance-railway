@@ -12,7 +12,7 @@
       <img src="/utrance-railway/public/img/pages/newsFeed/train9.jpg" style="width:100%">
       <div class="container">
        <br>
-        <p style="text-align:justify;">A new meeting will be held in the parliament coming wednesday and the train ticket prices will be dicussed. The railway ministry expect the ticket prices will be reduced. The possible result will be a reduction of ticket prices. The ministry also stated that the passengers don't have to worry about increase in ticket prices.</p>
+        <p style="text-align:justify;">A new meeting will be held in the parliament coming wednesday and the train ticket prices will be dicussed. The railway ministry expect the ticket prices will be reduced. The possible result will be a reduction of ticket prices. The ministry also stated that the passengers don't have to worry about increase in ticket prices. The ticket price is being discussed in the last meeting as well. So in this parliament meeting, a final decision will be taken. A step by step reduction of prices is possibly be implemented according to sources. The railway department news are still unknown to the public. It is expected to published once the meeting finished. Many more decisons will be taken and it will be mostly in favour of students who travel daily on trains. Some other railway projects also will be discussed in this meeting which will be implemented in the near future.</p>
       <br>
       </div>
     </div>
@@ -35,7 +35,7 @@
 
           <a href="/utrance-railway/news" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
+                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-clock"></use>
               </svg>
               <span class="manage--bookings-name">Recent News</span>
               </a>

@@ -12,7 +12,7 @@
       <img src="/utrance-railway/public/img/pages/newsFeed/train100.jpg" style="width:100%">
       <div class="container">
        <br>
-        <p style="text-align:justify;">The main trains will be remodeled and repaired. The trains will be designed and painted according to the design teams created by the goverment. The people are expressing good responses to this new idea. Passengers are excited and the employment of the country will be increased in this period of time.</p>
+        <p style="text-align:justify;">The main trains will be remodeled and repaired. The trains will be designed and painted according to the design teams created by the goverment. The people are expressing good responses to this new idea. Passengers are excited and the employment of the country will be increased in this period of time. The new government decided to develop the railway department under many projects. This is the first step in tis path. The goverment decided to remodel old trains and then introduce new trains.The details of the new trains are not out yet. It will be decided in the next parliament meeting together with the ticket prices. The results will be out once the meeting is held next week. There are many people whi are happy and welcoming these developments. These developments have a vision of developed SriLanka. These developments will be a pioneer in the transport sector and will be extended to other mode of transport in the future.</p>
       <br>
       </div>
     </div>
@@ -35,7 +35,7 @@
 
           <a href="/utrance-railway/news" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
+                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-clock"></use>
               </svg>
               <span class="manage--bookings-name">Recent News</span>
               </a>

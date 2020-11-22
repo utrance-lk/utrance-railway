@@ -12,7 +12,7 @@
       <img src="/utrance-railway/public/img/pages/newsFeed/train4.jpg" style="width:100%">
       <div class="container">
        <br>
-        <p style="text-align:justify;">The ticket prices of the trains will be reduced for the third class and the other classes and air conditioned train tickets will remain the same. According to the decisions taken in the parliament after the meeting held on Wednesday this change is decided to be implemented. Most of the passengers are using the third class so this decision is taken in favor of the public.</p>
+        <p style="text-align:justify;">The ticket prices of the trains will be reduced for the third class and the other classes and air conditioned train tickets will remain the same. According to the decisions taken in the parliament after the meeting held on Wednesday this change is decided to be implemented. Most of the passengers are using the third class so this decision is taken in favor of the public. The other class prices are still not confirmed. Further news will be published later regarding this. As for the third class the price reduction will be implemented from the next week. The price will be reduced to a certain percentage which is still unknown. People are giving positive feedback regarding this matter. This is done in favour of students and workers who usually trabel in third class. The amount of reduction will be published this weekend as the conversation regarding this is still going on. </p>
         <br>
       </div>
     </div>
@@ -35,7 +35,7 @@
 
           <a href="/utrance-railway/news" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
+                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-clock"></use>
               </svg>
               <span class="manage--bookings-name">Recent News</span>
               </a>

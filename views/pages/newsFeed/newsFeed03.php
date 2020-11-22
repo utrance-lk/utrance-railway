@@ -35,7 +35,7 @@
 
           <a href="/utrance-railway/news" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
+                <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-clock"></use>
               </svg>
               <span class="manage--bookings-name">Recent News</span>
               </a>
