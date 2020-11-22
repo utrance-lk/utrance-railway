@@ -26,7 +26,7 @@ class FormValidation{
 
 
     public function runUpdateValidators($array){
-       // var_dump(trim($array['street_line1']));
+      
         $this->validateFirstName(trim($array['first_name'])); //Asindu
         $this->validateLastName(trim($array['last_name'])); //Ashika
         $this->validateStreetLine1(trim($array['street_line1'])); //Ashika
@@ -65,7 +65,7 @@ class FormValidation{
             
     
             $verifyPassword = password_verify($array['user_password'], $resultArray[0]['user_password']);
-            //var_dump($verifyPassword);
+            
             
             if (!$verifyPassword) {
                 $this->errorArray['passwordError'] = "This password is not your current password";
@@ -117,7 +117,7 @@ class FormValidation{
 
         if (!(ctype_alpha($ln))) {
             
-            $this->errorArray['lastNameError'] = 'last name only letters 1 required';
+            $this->errorArray['lastNameError'] = 'last name only letters  required';
         }
     }
 
@@ -126,7 +126,7 @@ class FormValidation{
     private function validateStreetLine1($str1){ //Ashika  //validate Street line 1
         if (strlen($str1) < 5 || strlen($str1) > 30) {
             
-            $this->errorArray['streetLine1Error'] = 'Street Line 1  wrong length';
+            $this->errorArray['streetLine1Error'] = 'Street Line  Maximum length is 30 ';
         }
 
      
@@ -146,16 +146,13 @@ class FormValidation{
 
     private function validateCity($city)//Ashika //validate city
     { //Ashika
-        //var_dump($city);
+       
         if (strlen($city) < 2 || strlen($city) > 25) {
            
             $this->errorArray['cityError'] = 'City  wrong length';
         }
 
-        /*if (!(ctype_alpha($city))) {
-          Var_dump($city);
-            $this->errorArray['cityError'] = 'City  only letters  required';
-        }*/
+        
     }
     private function validateContactNumber($cnum) //validate contact number
     { //Ashika
@@ -214,18 +211,35 @@ class FormValidation{
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
         
-        //$query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
-        $query = APP::$APP->db->pdo->prepare("SELECT id FROM users WHERE email_id=:email_id ");
-        $query->bindValue(":email_id", $email_id);
-        $query->execute();
-        $email_status["users"]= $query->fetchAll(PDO::FETCH_ASSOC);
-        $k=$email_status["users"][0]['id'];
-        
-        if ($k!=$id && $k) {
-            $this->errorArray['email_id_error'] = "This email already exists";
-        }
+       
+            $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users WHERE id=:id");
+            $query->bindValue(":id", $id);
+            $query->execute();
+            $resultArray=$query->fetchAll(PDO::FETCH_ASSOC);
+            $emailVal=$resultArray[0]['email_id'];
+            if($emailVal!=$email_id){
+                
+                $query1 = APP::$APP->db->pdo->prepare(" SELECT id FROM users WHERE email_id=:eid");
+                $query1->bindValue(":eid", $email_id);
+                $query1->execute();
+                
+                $resultArray1=$query1->fetchAll(PDO::FETCH_ASSOC);
+                $k=empty($resultArray1[0]['id']);
+                if($k == false){
+                    $this->errorArray['email_id_error'] = "Email already exists";  
+                }
+            }
 
-    }
+
+            
+            }
+       
+              
+        
+
+        
+
+    
 
     private function validateUpdatePassword($user_password,$user_confirm_password){
        

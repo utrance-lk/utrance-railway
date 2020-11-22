@@ -19,4 +19,7 @@ $app->router->get('/utrance-railway/routes/', [AdminController::class, 'manageRo
 $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRoute']);
 $app->router->get('/utrance-railway/routes/update', [AdminController::class, 'addRoute']);
 
+$app->router->get('/utrance-railway/manage-news', [AdminController::class, 'manageNews']);
+
+
 ?>
