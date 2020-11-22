@@ -102,7 +102,7 @@ public $errorArray=[];
 
     {
         if (strlen($tn) < 2 || strlen($tn) > 50) {
-            $this->errorArray['TrainNameError'] = 'Train name not valid';
+            $this->errorArray['TrainNameError'] = 'Length should be in between 2 and 50 characters';
         }    
 
         if (is_numeric($tn)) {
@@ -135,15 +135,15 @@ public $errorArray=[];
 
     {
         if (strlen($tn) < 2 || strlen($tn) > 50) {
-            $this->errorArray['TrainNameError'] = 'train name not valid';
+            $this->errorArray['TrainNameError'] = 'Length should be in between 2 and 50 characters';
         }    
 
         if (is_numeric($tn)) {
-            $this->errorArray['TrainNameError'] = 'first name only letters required';
+            $this->errorArray['TrainNameError'] = 'Name should not start with a digit';
         }
 
         if (empty($tn)) {
-            $this->errorArray['TrainNameError'] = 'enter valid train name';
+            $this->errorArray['TrainNameError'] = 'Enter valid train name';
             
             // var_dump($this->errorArray);
         }
