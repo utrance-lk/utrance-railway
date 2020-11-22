@@ -24,7 +24,7 @@
             </div>
               <div class="select-submit">
                <button class="select-div" name="submit">
-                   Submit
+                   Search
                </button>
               </div>
         </div>
@@ -95,12 +95,10 @@ if(isset($_POST['submit'])){
   }
 
     if($select_class === "Second Class" && $select_route === "Matara To Colombo"){
-
-        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
-        $reader->setReadDataOnly(TRUE);
-        $spreadsheet = $reader->load("ticketPriceMCS.xlsx");
-
-        $worksheet = $spreadsheet->getActiveSheet();
+      $spreadsheet = $reader->load("ticketPriceMCS.xlsx");
+  
+    $worksheet = $spreadsheet->getActiveSheet();
+    
 
         echo '<table>' . PHP_EOL;
        foreach ($worksheet->getRowIterator() as $row) {
@@ -146,6 +144,7 @@ if(isset($_POST['submit'])){
       echo '</table>' . PHP_EOL;
 
 }
+
 ?>
 </body>
 </html>

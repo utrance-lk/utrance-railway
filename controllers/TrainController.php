@@ -198,7 +198,7 @@ class TrainController extends Controller
 
     }
 
-    public function FreightServicePrice($request){
+    public function frieghtPrice($request){
         if($request->isPost()){
             return $this->render('FreightServicePrice');
         }

@@ -6,17 +6,18 @@ include_once "../middlewares/AuthMiddleware.php";
 
 class AdminController extends Controller
 {
-    private function protect()
+    public function protect()
     {
         $authMiddleware = new AuthMiddleware();
 
         if(!$authMiddleware->isLoggedIn()) {
-            // echo 'Your are not logged in!';
+            //return 'Your are not logged in!';
+            echo 'Your are not logged in!';
             return false;
         }
 
         if (!$authMiddleware->restrictTo('admin')) {
-            // echo 'You are unorthorized to perform this action!!';
+            echo 'You are unorthorized to perform this action!!';
             return false;
         }
         return true;
@@ -41,11 +42,8 @@ class AdminController extends Controller
 
             $manageUserModel->loadData($request->getBody());
             $getUserArray = $manageUserModel->getUsers();
+           return $this->render(['admin', 'manageUsers'], $getUserArray);
 
-            return $this->render(['admin', 'manageUsers'], $getUserArray);
-
-        } else {
-            return 'You are not authorized';
         }
     }
 
@@ -61,12 +59,10 @@ class AdminController extends Controller
                 return $response->redirect('/utrance-railway/users/add');
             }else{
                 $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
-               // var_dump($addUserSetValue);
                 return $this->render(['admin','addUser'], $addUserSetValue); //Ashika
             }
 
         }
-        
         return $this->render(['admin','addUser']);
     }
 
@@ -76,9 +72,12 @@ class AdminController extends Controller
             $adminViewUser = new AdminModel();
             $adminViewUser->loadData($request->getQueryParams());
             $updateUserArray = $adminViewUser->getUserDetails();
-            $updateUserArray['users'][0]['id'] = $request->getQueryParams()['id'];
-            return $this->render(['admin', 'updateUser'], $updateUserArray);
+            //$updateUserArray['users'][0]['id'] = $request->getQueryParams()['id'];
+            //var_dump($updateUserArray);
+            return $this->render(['admin', 'updateUser'],$updateUserArray);
         }
+       
+
 
     }
 
@@ -87,7 +86,7 @@ class AdminController extends Controller
             $adminViewTrain=new AdminModel();
             $adminViewTrain->loadData($request->getQueryParams());
             $updateTrainArray=$adminViewTrain->getTrainDetails();
-            $updateTrainArray['trains'][0]['trains_id']=$request->getQueryParams()['trains_id'];
+            //$updateTrainArray['trains'][0]['trains_id']=$request->getQueryParams()['trains_id'];
             return $this->render(['admin','updateUser'],$updateTrainArray);
         }
     }
@@ -102,16 +101,18 @@ class AdminController extends Controller
             $tempBody['id'] = $id;
             $saveDetailsModel->loadData($tempBody);
             $state=$saveDetailsModel->updateUserDetails();
-           
+          
             if($state === "success"){
                 return $response->redirect('/utrance-railway/users/view?id=' . $id);
             }else{
                 $commonArray=$saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"]=$saveDetailsModel->registerSetValue($state); //Ashika
-                return $this->render(['admin','updateUser'], $commonArray); //Ashika
+                return $this->render(['admin','updateUser'],$commonArray); //Ashika
             }
+           
             
         }
+        return $this->render(['admin','updateUser']); 
 
     }
 
@@ -128,7 +129,7 @@ class AdminController extends Controller
     }
 
 
-    // manage trains///////////////////////////////////////////////////////////////////
+    // manage trains
     public function manageTrains($request)
     {
         $searchModel = new AdminModel();
@@ -254,9 +255,6 @@ class AdminController extends Controller
             return $this->render(['admin', 'addTrain'],$getrouteArray);
     }
 
-    
-
-    
 
     // manage routes
 
@@ -281,13 +279,12 @@ class AdminController extends Controller
     ////////////////////////
 
     
+    
     public function aboutUs()
     {
 
         return $this->render('aboutUs');
 
     }
-
-
 
 }

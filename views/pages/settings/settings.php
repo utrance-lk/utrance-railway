@@ -78,12 +78,17 @@
                 
                 $html .= "<div class='city content__fields-item'>";
                 $html .= "<label for='city' class='form__label'>City</label>";
-                if(isset($cityError)){
-                  $html .= "<input type='text' name='city' class='form__input' placeholder='".$cityError."' ></div></div>";
-                }else{
-                  $html .= "<input type='text' name='city' class='form__input'  value='" .App::$APP->activeUser()['city']. "'></div></div>";
+               
+                  $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
+                  $html .="<select name='city' class='form__input'>";
+                  $html .="<option value=''>".App::$APP->activeUser()['city']."</option>";
+
+                  foreach($cityArray as $cities){
+                    $html .="<option value='$cities'>$cities</option>";
+                   }
+                
                   
-                }
+                  $html .="</select></div></div>";
 
                 
                 $html .= "<div class='contactno-box content__fields-item'>";
@@ -95,63 +100,20 @@
                   
                 }
 
-               
+                $user_img = App::$APP->activeUser()['user_image'];
                 $html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
-                $html .= "<img src='../../../../utrance-railway/public/img/pages/admin/Chris-user-profile.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class=''/>";
+                $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class=''/>";
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo'    />";
                 
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
-                // $id = App::$APP->activeUser()['id'];
+               
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
-                $html .= "<input type='submit' class='btn__save btn-settings'  name='submit_details' value='Save Settings'></div></div>";
-                 //echo "hy";
-
                 
-                
-                
+                $html .= "<input type='submit' class='btn__save btn-settings'  name='save' value='Save Settings'></div></div>";
+                 
 
-              /*echo "hello";
-              var_dump($_POST['submit_details']);
-              if(isset($_POST['submit_details'])){ //Ashika
-              echo "Hello1234";
-              echo "Hello";
-              $file=$_FILES['photo'];
-              $name=$_POST['first_name'];
-              $fileName=$_FILES['photo']['name'];
-              $fileTempName=$_FILES['photo']['tmp_name'];
-              $fileSize=$_FILES['photo']['size'];
-              $fileError=$_FILES['photo']['error'];
-              $fileType=$_FILES['photo']['type'];
-  
-
-              $fileExt=explode('.',$fileName);
-              $fileActualExt=strtolower(end($fileExt));
-              $allowed=array('jpg','jpeg','png');
-
-              if(in_array($fileActualExt,$allowed)){
-                 if($fileError === 0){
-                     if($fileSize < 1000000){
-                        $fileNameNew=$name.".".$fileActualExt;
-                        $fileDestination='img/uploads/'.$fileNameNew;
-                        move_uploaded_file($fileNameNew,$fileDestination);
-                        echo "file added succesfully!!";
-            
-                    }else{
-                      echo "Your file is too big!!!";
-                    }
-          
-                }else{
-                  echo "There was an error uploading your file!!";
-                }
-
-                }else{
-                  echo "You can not upload files of this type!!!";
-                }
-              }*/
-
-
-              $dom = new DOMDocument();
+               $dom = new DOMDocument();
                 $dom->loadHTML($html);
                 print_r($dom->saveHTML());
 
@@ -229,7 +191,8 @@ var loadFile=function(event){
 
 </body>
 </html>
-<?php
+<!--?php
+var_dump($_POST['save']);
 if(isset($_POST['save'])){ //Ashika
   //echo "Hello1234";
   $file=$_FILES['photo'];

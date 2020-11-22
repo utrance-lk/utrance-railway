@@ -8,14 +8,14 @@ class FormValidation{
   public $errorArray=[];
 
         public function runValidators($array){
-        $this->validateFirstName($array['first_name']); //Asindu
-        $this->validateLastName($array['last_name']); //Ashika
-        $this->validateStreetLine1($array['street_line1']); //Ashika
-        $this->validateStreetLine2($array['street_line2']); //Ashika
-        $this->validateCity($array['city']); //Ashika
-        $this->validateContactNumber($array['contact_num']); //Ashika
-        $this->validateEmailId($array['email_id']); //Ashika
-        $this->validatePassword($array['user_password'], $array['user_confirm_password']); //Ashika*/
+        $this->validateFirstName(trim($array['first_name'])); //Asindu
+        $this->validateLastName(trim($array['last_name'])); //Ashika
+        $this->validateStreetLine1(trim($array['street_line1'])); //Ashika
+        $this->validateStreetLine2(trim($array['street_line2'])); //Ashika
+        $this->validateCity(trim($array['city'])); //Ashika
+        $this->validateContactNumber(trim($array['contact_num'])); //Ashika
+        $this->validateEmailId(trim($array['email_id'])); //Ashika
+        $this->validatePassword(trim($array['user_password']), trim($array['user_confirm_password'])); //Ashika*/
         if(empty($this->errorArray)){
             return "success";
         }else{
@@ -29,11 +29,11 @@ class FormValidation{
        // var_dump(trim($array['street_line1']));
         $this->validateFirstName(trim($array['first_name'])); //Asindu
         $this->validateLastName(trim($array['last_name'])); //Ashika
-        $this->validateStreetLine1($array['street_line1']); //Ashika
-        $this->validateStreetLine2($array['street_line2']); //Ashika
+        $this->validateStreetLine1(trim($array['street_line1'])); //Ashika
+        $this->validateStreetLine2(trim($array['street_line2'])); //Ashika
         $this->validateCity(trim($array['city'])); //Ashika
         $this->validateContactNumber(trim($array['contact_num'])); //Ashika
-        $this->validateEmailIdForUpdate(trim($array['email_id'])); //Ashika
+        $this->validateEmailIdForUpdate($array['email_id'],$array['id']); //Ashika
         if(empty($this->errorArray)){
            return "success";
         }else{
@@ -85,7 +85,7 @@ class FormValidation{
 
 
     private function validateFirstName($fn){//Asindu              //First Name Validation
-       
+
         if (strlen($fn) < 2 || strlen($fn) > 25) {
             
             $this->errorArray['firstNameError'] = 'first name wrong length';
@@ -103,8 +103,6 @@ class FormValidation{
         }
 
     }
-
-
 
     private function validateLastName($ln){ //Ashika          ////Last Name Validation
         if (strlen($ln) < 2 || strlen($ln) > 25) {
@@ -148,15 +146,16 @@ class FormValidation{
 
     private function validateCity($city)//Ashika //validate city
     { //Ashika
+        //var_dump($city);
         if (strlen($city) < 2 || strlen($city) > 25) {
            
             $this->errorArray['cityError'] = 'City  wrong length';
         }
 
-        if (!(ctype_alpha($city))) {
+        /*if (!(ctype_alpha($city))) {
           Var_dump($city);
             $this->errorArray['cityError'] = 'City  only letters  required';
-        }
+        }*/
     }
     private function validateContactNumber($cnum) //validate contact number
     { //Ashika
@@ -210,20 +209,20 @@ class FormValidation{
 
     }
 
-    private function validateEmailIdForUpdate($email_id){///Validate email for update
+    private function validateEmailIdForUpdate($email_id,$id){///Validate email for update
         if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
             $this->errorArray['email_id_error'] = "Invalid email format";
         }
         
-        $query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
+        //$query = APP::$APP->db->pdo->prepare("SELECT email_id FROM users GROUP BY email_id HAVING COUNT(email_id)>1");
+        $query = APP::$APP->db->pdo->prepare("SELECT id FROM users WHERE email_id=:email_id ");
         $query->bindValue(":email_id", $email_id);
-        
-        //$query->bindValue(":id",$id);
         $query->execute();
-        $email_status = $query->fetchAll(PDO::FETCH_ASSOC);
-      
-        if ($email_status == true) {
-            $this->errorArray['email_id_error'] = "This email is already exist";
+        $email_status["users"]= $query->fetchAll(PDO::FETCH_ASSOC);
+        $k=$email_status["users"][0]['id'];
+        
+        if ($k!=$id && $k) {
+            $this->errorArray['email_id_error'] = "This email already exists";
         }
 
     }

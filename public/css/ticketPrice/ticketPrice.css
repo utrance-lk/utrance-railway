@@ -15,8 +15,9 @@
 .main-02 {
   width:100%;
       /* width: 97rem; */
-    color: #fff;
+    color:aqua;
     background: #1F3A93;
+
     padding-left: 40rem;
     padding-top: 0.2rem;
     display: inline-block;
@@ -182,5 +183,13 @@
     border-width: 0.14rem;
     border-radius: 4px;
   }
+
+
+  .td-first{
+    background-color: #5CB8DC ;
+}
+.td-second{
+    background-color:  rgb(250, 151, 70);
+}
   
   

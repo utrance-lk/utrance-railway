@@ -1,4 +1,6 @@
 <?php {
+
+    include_once "../middlewares/AuthMiddleware.php";
     class Router
     {
         public $request;
