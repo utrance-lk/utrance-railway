@@ -38,13 +38,8 @@ class DetailsProviderController extends Controller
             return $this->render(['detailsProvider','contactAdmin']); 
         
         }
-
-        return $this->render(['detailsProvider','contactAdmin']);
+        return $this->render(['detailsProvider','contactAdmin']); 
 
     }
-
-
-
-   
 
 }

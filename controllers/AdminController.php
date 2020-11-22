@@ -285,4 +285,23 @@ class AdminController extends Controller
 
     }
 
+
+    public function manageNews($request)   //daranya
+    { 
+        $manageNewsModel = new AdminModel();
+
+        if ($request->isPost()) 
+        {
+            $manageNewsModel->loadData($request->getbody());
+            $addNewss = $manageNewsModel->manageNews();
+            //var_dump($addDetails);
+            return $this->render(['admin','manageNews']); 
+        
+        }
+        return $this->render(['admin','manageNews']); 
+
+    }
+
+
+       
 }
