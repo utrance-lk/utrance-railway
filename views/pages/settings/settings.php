@@ -141,7 +141,7 @@
                 $html .= "<input type='password' name='user_password' placeholder='".$passwordError."'  class='form__input error__placeholder'/></div>";
               }else{
                 
-                $html .= "<input type='password' name='user_password'  class='form__input'/></div>";
+                $html .= "<input type='password' name='user_password' placeholder='****************'  class='form__input'/></div>";
               }
              // $html .= "<input type='password' name='user_password' class='form__input'/></div>";
 
