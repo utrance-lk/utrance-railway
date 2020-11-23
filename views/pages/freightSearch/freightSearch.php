@@ -42,7 +42,7 @@
         </form>
       </section>
       <section class="searchResults">
-  <div class="filters-container">filters container</div>
+  <div class="filters-container"></div>
   <div class="search__results-cards-container">
     <div class="search__results-card search__results-card--small">
       <div class="search__results-card-main">

@@ -10,15 +10,15 @@
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
-              <div class="dashboard-searchbar__dropdown">
+              <!-- <div class="dashboard-searchbar__dropdown">
                 <!-- <svg class="dropdown-btn">
                             <use xlink:href="./icons/sprite.svg#icon-chevron-small-down"></use>
-                        </svg> -->
+                        </svg>
                 <select name="catogory" id="" class="dropdown__list">
                   <option value="name">Name</option>
                   <option value="id">Id</option>
                 </select>
-              </div>
+              </div> -->
             </form>
             <a href="/utrance-railway/routes/add" class="adduserbtn addbtn">
               <div class="addroutebtn-text addbtn-text">Add Route</div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="search__result-route-start">Matara</div>
                 <div class="search__result-route-destination">Colombo Fort</div>
-                <a href="/utrance-railway/routes/update" class="search__result-route-managebtnbox">
+                <a href="#" class="search__result-route-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-route-deletebtnbox">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="search__result-route-start">Matara</div>
                 <div class="search__result-route-destination">Kandy</div>
-                <a href="/utrance-railway/route/update" class="search__result-route-managebtnbox">
+                <a href="#" class="search__result-route-managebtnbox">
                   <div class="search__result-managebtn btn-white">View</div>
                 </a>
                 <div class="search__result-route-deletebtnbox">

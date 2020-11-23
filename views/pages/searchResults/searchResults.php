@@ -42,7 +42,6 @@
       </section>
       <section class="searchResults">
         <div class="filters-container">
-          filters container
         </div>
         <div class="search__results-cards-container">
 
