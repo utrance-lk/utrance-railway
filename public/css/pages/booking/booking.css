@@ -126,7 +126,9 @@
     width: 3rem;
     padding: .5rem;
     text-align: center;
-    background-color: transparent;
+    /* border: 1px solid red; */
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
 }
 
 .train_class {

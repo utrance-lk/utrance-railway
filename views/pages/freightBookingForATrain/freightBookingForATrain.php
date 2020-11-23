@@ -15,6 +15,9 @@
             <div class="booking__users--email">
                 nihal@gmail.com
             </div>
+            <div class="booking__users--weight">
+                5kg
+            </div>
             <div class="booking__users--booking-date">
                 2020-10-20
             </div>
@@ -28,6 +31,9 @@
             </div>
             <div class="booking__users--email">
                 supun@gmail.com
+            </div>
+            <div class="booking__users--weight">
+                10kg
             </div>
             <div class="booking__users--booking-date">
                 2020-10-21
@@ -43,6 +49,9 @@
             <div class="booking__users--email">
                 sandun@gmail.com
             </div>
+            <div class="booking__users--weight">
+                15kg
+            </div>
             <div class="booking__users--booking-date">
                 2020-10-22
             </div>
@@ -56,6 +65,9 @@
             </div>
             <div class="booking__users--email">
                 samera@gmail.com
+            </div>
+            <div class="booking__users--weight">
+                20kg
             </div>
             <div class="booking__users--booking-date">
                 2020-10-22
@@ -71,6 +83,9 @@
             <div class="booking__users--email">
                 nimal@gmail.com
             </div>
+            <div class="booking__users--weight">
+                25kg
+            </div>
             <div class="booking__users--booking-date">
                 2020-10-24
             </div>
@@ -84,6 +99,9 @@
             </div>
             <div class="booking__users--email">
                 sandun@gmail.com
+            </div>
+            <div class="booking__users--weight">
+                30kg
             </div>
             <div class="booking__users--booking-date">
                 2020-10-25
