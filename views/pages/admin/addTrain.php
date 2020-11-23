@@ -164,11 +164,11 @@
                         <div class="reservation-categorybox__container checkbox__horizontal">
                             <div class="seatbox-firstclass reservation__category-item">
                                 <label for="firstclass">First Class</label>
-                                <input type="number" min="0" max="50" name="train_fc_seats" id="firstclass" class="form__input number__input" value="<?php echo isset($train_fc_seats) ? $train_fc_seats : '0';?>">
+                                <input type="number" min="0" max="50" name="train_fc_seats" id="firstclass" class="form__input number__input"  value="<?php echo isset($train_fc_seats) ? $train_fc_seats : '0';?>" >
                             </div>
                             <div class="seatbox-secondclass reservation__category-item">
                                 <label for="secondclas">Second Class</label>
-                                <input type="number" min="0" max="60" name="train_sc_seats" id="secondclass" class="form__input number__input" value="<?php echo isset($train_sc_seats) ? $train_sc_seats : '0';?>">
+                                <input type="number" min="0" max="60" name="train_sc_seats" id="secondclass" class="form__input number__input" placeholder="0" required value="<?php echo isset($train_sc_seats) ? $train_sc_seats : '';?>" >
                             </div>
                             <div class="seatbox-sleepingberths reservation__category-item">
                                 <label for="sleepingberths">Sleeping Berths</label>

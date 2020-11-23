@@ -7,18 +7,18 @@
         
     <form action ="#" method="POST">
           <div class="pagination">
-            <div class="div-class">
+            <!--div class="div-class">
               <select class="select-routes" name="class" autofocus>
                     <option value="First Class">First Class</option>
                     <option value="Second Class">Second Class</option>
                     <option value="Third Class">Third Class</option>
                </select>
-            </div>
+            </div!-->
             <div>
                  <select class="select-routes" name="routes" autofocus>
-                    <option value="Matara To Colombo">Matara To Colombo</option>
+                    <option value="Beliatta To Colombo">Beliatta To Colombo</option>
                     <option value="Colombo To Badulla">Colombo To Badulla</option>
-                    <option value="Colombo to Avisawella">Colombo to Avisawella</option>
+                    <option value="Colombo to Avissawella">Colombo to Avisawella</option>
                </select>
                
             </div>
@@ -38,11 +38,11 @@
 
 if(isset($_POST['submit'])){
     $select_route=$_POST['routes'];
-    $select_class=$_POST['class'];
-    if($select_class === "First Class" && $select_route === "Colombo to Avisawella"){
+   
+    if( $select_route === "Colombo to Avissawella"){
         $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
         $reader->setReadDataOnly(TRUE);
-        $spreadsheet = $reader->load("ticketPriceCB.xlsx");
+        $spreadsheet = $reader->load("ticketPriceCA.xlsx");
 
         $worksheet = $spreadsheet->getActiveSheet();
         
@@ -66,10 +66,10 @@ if(isset($_POST['submit'])){
 
 
     }
-    if($select_class === "First Class" && $select_route === "Matara To Colombo"){
+    if($select_route === "Beliatta To Colombo"){
       $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
       $reader->setReadDataOnly(TRUE);
-      $spreadsheet = $reader->load("ticketPriceMCF.xlsx");
+      $spreadsheet = $reader->load("ticketPriceBC.xlsx");
 
       $worksheet = $spreadsheet->getActiveSheet();
       
@@ -94,8 +94,10 @@ if(isset($_POST['submit'])){
 
   }
 
-    if($select_class === "Second Class" && $select_route === "Matara To Colombo"){
-      $spreadsheet = $reader->load("ticketPriceMCS.xlsx");
+    if($select_route === "Colombo To Badulla"){
+      $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
+      $reader->setReadDataOnly(TRUE);
+      $spreadsheet = $reader->load("ticketPriceCB.xlsx");
   
     $worksheet = $spreadsheet->getActiveSheet();
     
@@ -122,7 +124,7 @@ if(isset($_POST['submit'])){
 }else{
     $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
         $reader->setReadDataOnly(TRUE);
-        $spreadsheet = $reader->load("ticketPriceCB.xlsx");
+        $spreadsheet = $reader->load("ticketPriceBC.xlsx");
 
         $worksheet = $spreadsheet->getActiveSheet();
 

@@ -91,7 +91,7 @@ class AdminModel extends Model {
 
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($this->resultArray);
+       
         return $this->resultArray;
     }
 
@@ -125,14 +125,14 @@ class AdminModel extends Model {
 
 
     public function updateUserDetails(){//Ashika
-        //var_dump($this->city);
+        
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city' => $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
         $updateUserValidation=new FormValidation();
         $validationState=$updateUserValidation->runUpdateValidators($array);
-        var_dump($validationState);
+        
         
         if ($validationState ==="success") {
-            var_dump($this->email_id);
+          
         $this->runSanitizationAdmin();
         $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
         $query->bindValue(":id", $this->id);
@@ -350,6 +350,7 @@ class AdminModel extends Model {
         'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
         $updateTrainrValidation=new TrainFormValidation();
         $validationState=$updateTrainrValidation->runValidators($array);
+        var_dump($validationState);
         
 
         if (empty($validationState)) {
