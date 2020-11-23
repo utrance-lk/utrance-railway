@@ -27,7 +27,7 @@
                 #2
             </div>
             <div class="booking__users--email">
-                nihal@gmail.com
+                supun@gmail.com
             </div>
             <div class="booking__users--booking-date">
                 2020-10-21
@@ -41,10 +41,52 @@
                 #3
             </div>
             <div class="booking__users--email">
-                nihal@gmail.com
+                sandun@gmail.com
             </div>
             <div class="booking__users--booking-date">
                 2020-10-22
+            </div>
+            <div class="booking__users--booking-time">
+                3.00 am
+            </div>
+        </div>
+        <div class="booking__users--card">
+            <div class="booking__users--id">
+                #4
+            </div>
+            <div class="booking__users--email">
+                samera@gmail.com
+            </div>
+            <div class="booking__users--booking-date">
+                2020-10-22
+            </div>
+            <div class="booking__users--booking-time">
+                3.00 am
+            </div>
+        </div>
+        <div class="booking__users--card">
+            <div class="booking__users--id">
+                #5
+            </div>
+            <div class="booking__users--email">
+                nimal@gmail.com
+            </div>
+            <div class="booking__users--booking-date">
+                2020-10-24
+            </div>
+            <div class="booking__users--booking-time">
+                4.00 am
+            </div>
+        </div>
+        <div class="booking__users--card">
+            <div class="booking__users--id">
+                #6
+            </div>
+            <div class="booking__users--email">
+                sandun@gmail.com
+            </div>
+            <div class="booking__users--booking-date">
+                2020-10-25
             </div>
             <div class="booking__users--booking-time">
                 3.00 am
