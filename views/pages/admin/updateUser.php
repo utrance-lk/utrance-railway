@@ -126,8 +126,8 @@
                      
                       $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
                       $html .="<select name='city' class='form__input'>";
-                      $cityValue=$value['city'];
-                      $html .="<option value=''>".$value['city']."</option>";
+                      $val=App::$APP->activeUser()['city'];
+                      $html .="<option  value='$val'>$val</option>";
                       foreach($cityArray as $cities){
                        
                           $html .="<option value='$cities'>$cities</option>";

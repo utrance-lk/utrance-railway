@@ -85,17 +85,33 @@
         $html .= "<div class='search__result-user-rolebox'>$valueRole</div>";
 
         $id = $value['id'];
-        $html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";
-        $html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
+        $name=App::$APP->activeUser()['first_name'];
+        //$html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";
+        if($value['user_role']== "admin" && $value['first_name']==$name){
+          $html .= "<a href='/utrance-railway/settings' class='search__result-user-managebtnbox'>";
+          $html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
+        }else{
+          $html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";
+          $html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
+        }
+        //$html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
 
         //$html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
         $user_active_status = $value['user_active_status'];
         if ($user_active_status == 1) {
             $html .= "<a href='/utrance-railway/users/deactivate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
-            $html .= "<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactivate</div></a></form>";
+            $role=$value['user_role'];
+            if($role!="admin"){
+              $html .= "<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactivate</div></a></form>";
+            }
+            
         } else {
             $html .= "<a href='/utrance-railway/users/activate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
-            $html .= "<div class='search__result-activatebtn btn-white' id='activate-btn'>Activate</div></a></form>";
+            $role=$value['user_role'];
+            if($role!="admin"){
+              $html .= "<div class='search__result-activatebtn btn-white' id='activate-btn'>Activate</div></a></form>";
+            }
+           // $html .= "<div class='search__result-activatebtn btn-white' id='activate-btn'>Activate</div></a></form>";
         }
 
         $dom = new DOMDocument();

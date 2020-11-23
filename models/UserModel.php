@@ -42,7 +42,7 @@ class UserModel extends Model
     private function populateValuesUpdate(){
         return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id,'user_image' => $this->user_image];
     }
-    
+
     public static function getUser($id) {
         $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE id=:id");
         $query->bindValue(":id", $id);
@@ -224,9 +224,10 @@ class UserModel extends Model
 
     private function sanitizeFormUsername($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
+        $inputText = str_replace(" ", "", $inputText); // remove white spaces
         $inputText = ucfirst($inputText);
         $inputText=trim($inputText); 
-        return str_replace(" ", "", $inputText); // remove white spaces
+        return ucfirst($inputText); // remove white spaces
     }
 
     private function sanitizeFormPassword($inputText){
