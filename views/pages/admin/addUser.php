@@ -149,7 +149,7 @@
                   $html .="<label for='newpassword' class='form__label'>Create Password</label>";
                    
                   if(empty($user_password) && empty($passwordError)){
-                    $html .="<input type='password'  name='user_password' class='form__input' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' required/></div>";
+                    $html .="<input type='password'  name='user_password' class='form__input'  required/></div>";
                   }
                   if(!empty($user_password) && empty($passwordError)){
                     $html .="<input type='password'  name='user_password' class='form__input' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' required/></div>";
