@@ -168,7 +168,7 @@
                             </div>
                             <div class="seatbox-secondclass reservation__category-item">
                                 <label for="secondclas">Second Class</label>
-                                <input type="number" min="0" max="60" name="train_sc_seats" id="secondclass" class="form__input number__input" value="<?php echo isset($train_sc_seats) ? $train_sc_seats : '0';?>">
+                                <input type="number" min="0" max="60" name="train_sc_seats" id="secondclass" class="form__input number__input" required value="<?php echo isset($train_sc_seats) ? $train_sc_seats : '';?>" placeholder="0">
                             </div>
                             <div class="seatbox-sleepingberths reservation__category-item">
                                 <label for="sleepingberths">Sleeping Berths</label>

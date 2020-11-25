@@ -529,7 +529,7 @@ class AdminModel extends Model {
         $max=$value['maxlue'];   
     }
     $currentTime = date('h:i:s');
-    
+ 
     
     
    

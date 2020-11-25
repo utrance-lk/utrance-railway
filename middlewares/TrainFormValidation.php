@@ -116,6 +116,13 @@ public $errorArray=[];
         }
         // $this->my($tn, $rn);
         $results = $this->sameTrains($tn, $rn);
+        $results1 = $this->sameTrainname($tn, $rn);
+        if($results1==='success'){
+          
+            $this->errorArray['TrainNameError'] = 'Train Name already exists';
+            // echo $rid;
+  
+            }
         // var_dump($results);
         if($results==='success'){
            
@@ -161,6 +168,22 @@ public $errorArray=[];
         // var_dump( $this->resultArray["trains"]);
        if(!empty($this->resultArray["trains"] )){
         return 'success';
+       }
+    }
+
+    public function sameTrainname($inputText , $rid){
+        $query = APP::$APP->db->pdo->prepare("SELECT COUNT(train_name) FROM trains WHERE train_name = :train_name ");
+        $query->bindValue(":train_name",$inputText);
+     
+        $query->execute();
+       
+
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+         
+        // var_dump( $this->resultArray["trains"]);
+       if($this->resultArray[0]['COUNT(train_name)']=='2' ){
+         return 'success';
+        
        }
     }
 

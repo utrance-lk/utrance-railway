@@ -199,7 +199,7 @@
                 $html .="<input type='number' min='0' max='50' value=".$value['train_fc_seats']." name='train_fc_seats' id='firstclass' class='form__input number__input'></div>";
                 $html .="<div class='seatbox-secondclass reservation__category-item'>";
                 $html .="<label for='secondclas'>Second Class</label>";
-                $html .="<input type='number' min='0' max='60' value=".$value['train_sc_seats']." name='train_sc_seats' id='secondclass' class='form__input number__input'></div>";
+                $html .="<input type='number' min='0' max='60' value=".$value['train_sc_seats']." name='train_sc_seats' id='secondclass' class='form__input number__input' required></div>";
                 $html .="<div class='seatbox-sleepingberths reservation__category-item'>";
 
                 $html .="<label for='sleepingberths'>Sleeping Berths</label>";
