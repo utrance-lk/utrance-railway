@@ -184,8 +184,7 @@
                         </div>          
                     </fieldset>
                     <div class="btn__save-box">
-                    <button class="btn__save btn__add-train" type="submit">Add Train</button>
-                        <!-- <div class="btn__save btn__add-train">Add Train</div> -->
+                        <button class="btn btn-round-blue margin-b-l" type="submit">Add Train</button>
                     </div>
                 </div>
             </form>

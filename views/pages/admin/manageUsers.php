@@ -11,28 +11,15 @@
               <!-- <button> -->
               <a href="/utrance-railway/users">
               <svg class="search-icon__btn">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
+                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
               </a>
-              <!-- </button> -->
-              <!-- <div class="dashboard-searchbar__dropdown">
-
-                <select name="catogory" id="" class="dropdown__list">
-                  <option value="name">Name</option>
-                  <option value="id">Id</option>
-                </select>
-
-
-              </div>
-
-              </div> -->
-
             </form>
 
-            <a href="/utrance-railway/users/add" class="adduserbtn addbtn">
-              <div class="adduserbtn-text addbtn-text">Add User</div>
-              <svg class="adduserbtn-img addbtn-img">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-circle-with-plus">
+            <a href="/utrance-railway/users/add" class="btn btn-square-blue">
+              <div class="addbtn-text">Add User</div>
+              <svg class="addbtn-img">
+                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus">
                 </use>
               </svg>
             </a>
@@ -51,11 +38,9 @@
         <?php
         if (isset($users)) {
          foreach ($users as $key => $value) {
-        //echo $value['first_name'];
         $html = " <form class='search__result-card' id='form-card' method='get'>
                   <div class='search__result-user-mainbox search__result-mainbox'>
                   <div class='user-mainbox__img-box'>";
-          // var_dump($users);
           $user_img = $value["user_image"];
         $html .= "<img src='/utrance-railway/public/img/uploads/$user_img.jpg' alt='profile-avatar' class='profile__avatar'/></div>";
         $html .= "<div class='user-mainbox__other'>";
@@ -84,32 +69,34 @@
 
         $id = $value['id'];
         $name=App::$APP->activeUser()['first_name'];
-        //$html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";
-        if($value['user_role']== "admin" && $value['first_name']==$name){
-          $html .= "<a href='/utrance-railway/settings' class='search__result-user-managebtnbox'>";
-          $html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
-        }else{
-          $html .= "<a href='/utrance-railway/users/view?id=$id' class='search__result-user-managebtnbox'>";
-          $html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
-        }
-        //$html .= "<div class='search__result-managebtn btn-white'> View</div></a>";
 
-        //$html .="<a href='/utrance-railway/admin/users/delete?id=$id' class='search__result-user-deletebtnbox'>";
+        if($value['user_role']== "admin" && $value['first_name']==$name){
+          $html .= "<a href='/utrance-railway/settings' class='btn btn-box-white margin-r-s'>";
+          $html .= "View</a>";
+        }else{
+          $html .= "<a href='/utrance-railway/users/view?id=$id' class='btn btn-box-white margin-r-s'>";
+          $html .= "View</a>";
+        }
+
         $user_active_status = $value['user_active_status'];
+
         if ($user_active_status == 1) {
-            $html .= "<a href='/utrance-railway/users/deactivate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
             $role=$value['user_role'];
             if($role!="admin"){
-              $html .= "<div class='search__result-deactivatebtn btn-white' id='deactivate-btn'>Deactivate</div></a></form>";
+            $html .= "<a href='/utrance-railway/users/deactivate?id=$id&user_active_status=$user_active_status' class='btn btn-box-white btn-box-white--delete'>";
+            $html .= "Deactivate</a></form>";
+            } else {
+              $html .= "<a style='visibility: hidden'></a></form>";
             }
             
         } else {
-            $html .= "<a href='/utrance-railway/users/activate?id=$id&user_active_status=$user_active_status' class='search__result-user-deletebtnbox'>";
-            $role=$value['user_role'];
-            if($role!="admin"){
-              $html .= "<div class='search__result-activatebtn btn-white' id='activate-btn'>Activate</div></a></form>";
-            }
-           // $html .= "<div class='search__result-activatebtn btn-white' id='activate-btn'>Activate</div></a></form>";
+          $role=$value['user_role'];
+          if($role!="admin"){
+            $html .= "<a href='/utrance-railway/users/activate?id=$id&user_active_status=$user_active_status' class='btn btn-box-white btn-box-white--activate'>";
+            $html .= "Activate</a></form>";
+            } else {
+              $html .= "<a style='visibility: hidden'></a></form>";
+            }     
         }
 
         $dom = new DOMDocument();

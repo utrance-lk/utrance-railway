@@ -155,7 +155,7 @@
                     
                     $html .="<div class='btn__save-box'>";
                    // $id=$value['id'];
-                    $html .="<button class='btn__save btn-settings' type='submit'>Save Settings</button></div>";
+                    $html .="<button class='btn btn-round-blue margin-b-l' type='submit'>Save Settings</button></div>";
                    
                     $dom = new DOMDocument();
                     $dom->loadHTML($html);

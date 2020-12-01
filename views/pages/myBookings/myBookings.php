@@ -12,7 +12,7 @@
                 <div class="basic__details--box">
                     <div class="date__box">
                         <svg class="basic__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-calendar"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-calendar"></use>
                         </svg>
                         <div class="basic__details--box-text">
                             28th Nov 2020
@@ -22,7 +22,7 @@
                 <div class="train__details--box">
                     <div class="train train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-directions_train"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-directions_train"></use>
                         </svg>
                         <div class="train__details--box-text">
                             Dakshina Intercity
@@ -30,7 +30,7 @@
                     </div>
                     <div class="people__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-users"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-users"></use>
                         </svg>
                         <div class="train__details--box-text">
                             5 people
@@ -38,7 +38,7 @@
                     </div>
                     <div class="class__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-emoji-happy"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-emoji-happy"></use>
                         </svg>
                         <div class="train__details--box-text">
                             First class
@@ -48,7 +48,7 @@
                 <div class="train__details--box">
                     <div class="train train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-directions_train"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-directions_train"></use>
                         </svg>
                         <div class="train__details--box-text">
                             Colombo - Kandy (Intercity)
@@ -56,7 +56,7 @@
                     </div>
                     <div class="people__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-users"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-users"></use>
                         </svg>
                         <div class="train__details--box-text">
                             4 people
@@ -64,7 +64,7 @@
                     </div>
                     <div class="class__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-emoji-neutral"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-emoji-neutral"></use>
                         </svg>
                         <div class="train__details--box-text">
                             Second class
@@ -75,7 +75,7 @@
                     Rs 500
                 </div>
                 <div class="btn__container">
-                    <a href="/utrance-railway/booked-tour" class="btn__view-more">
+                    <a href="/utrance-railway/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
                         View more
                     </a>
                 </div>
@@ -87,7 +87,7 @@
                 <div class="basic__details--box">
                     <div class="date__box">
                         <svg class="basic__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-calendar"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-calendar"></use>
                         </svg>
                         <div class="basic__details--box-text">
                             28th Nov 2020
@@ -97,7 +97,7 @@
                 <div class="train__details--box one__train">
                     <div class="train train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-directions_train"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-directions_train"></use>
                         </svg>
                         <div class="train__details--box-text">
                             Dakshina Intercity
@@ -105,7 +105,7 @@
                     </div>
                     <div class="people__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-users"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-users"></use>
                         </svg>
                         <div class="train__details--box-text">
                             5 people
@@ -113,7 +113,7 @@
                     </div>
                     <div class="class__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-emoji-happy"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-emoji-happy"></use>
                         </svg>
                         <div class="train__details--box-text">
                             First class
@@ -124,7 +124,7 @@
                     Rs 500
                 </div>
                 <div class="btn__container">
-                    <a href="/utrance-railway/booked-tour" class="btn__view-more">
+                    <a href="/utrance-railway/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
                         View more
                     </a>
                 </div>
@@ -136,7 +136,7 @@
                 <div class="basic__details--box">
                     <div class="date__box">
                         <svg class="basic__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-calendar"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-calendar"></use>
                         </svg>
                         <div class="basic__details--box-text">
                             28th Nov 2020
@@ -146,7 +146,7 @@
                 <div class="train__details--box one__train">
                     <div class="train train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-directions_train"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-directions_train"></use>
                         </svg>
                         <div class="train__details--box-text">
                             Dakshina Intercity
@@ -154,7 +154,7 @@
                     </div>
                     <div class="people__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-users"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-users"></use>
                         </svg>
                         <div class="train__details--box-text">
                             5 people
@@ -162,7 +162,7 @@
                     </div>
                     <div class="class__box train__details--box-item">
                         <svg class="train__detials--box-icon">
-                            <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-emoji-happy"></use>
+                            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-emoji-happy"></use>
                         </svg>
                         <div class="train__details--box-text">
                             First class
@@ -173,7 +173,7 @@
                     Rs 500
                 </div>
                 <div class="btn__container">
-                    <a href="/utrance-railway/booked-tour" class="btn__view-more">
+                    <a href="/utrance-railway/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
                         View more
                     </a>
                 </div>
