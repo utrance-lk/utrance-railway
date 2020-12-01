@@ -1,0 +1,89 @@
+.btn {
+    /* display: inline-block; */
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  transition: all 0.2s;}
+
+.btn-white:link,
+.btn-white:visited {
+  color: var(--color-btn-text-view);
+}
+
+.btn-white--delete:link,
+.btn-white--delete:visited {
+    color: var(--color-btn-box-text-delete);
+}
+
+/* ----- */
+
+.btn-box-white {
+  /* width: 9rem; */
+  /* margin: 0 auto; */
+  /* text-align: center; */
+  padding: 1.2rem 0;
+  border-radius: 5px;
+  color: var(--color-btn-text-view);
+  background-color: var(--color-btn-box-background-white);
+}
+
+.btn-box-white:focus,
+.btn-box-white:active {
+  transform: scale(0.97);
+}
+
+.btn-box-white--delete {
+  color: var(--color-btn-box-text-delete);
+}
+
+.btn-box-white--activate {
+  color: var(--color-btn-box-text-activate);
+}
+
+/* ----- */
+
+.btn-square-blue {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+  width: max-content;
+  padding: 1rem;
+  color: var(--color-btn-square-text);
+  background-color: var(--color-btn-square-background);
+}
+
+.btn-square-blue:link,
+.btn-square-blue:visited {
+    color: var(--color-btn-square-text);
+}
+
+.btn-square-blue:active,
+.btn-square-blue:focus {
+  transform: translateY(0.2rem);
+}
+
+/* ----- */
+
+.btn-round-blue {
+    width: 12rem;
+  text-align: center;
+  /* margin-top: 2rem; */
+  /* background-color: #89c4f4; */
+  background-color: var(--color-btn-round-background);
+  border-radius: 10rem;
+  padding: 1rem;
+  color: var(--color-btn-round-text);
+  /* transition: transform 0.5s;
+  transition: background-color 0.2s; */
+  font-family: 'Lato', 'sans-serif';
+  font-size: 1.5rem;
+}
+
+.btn-round-blue:active,
+.btn-round-blue:focus {
+  transform: translateY(3px);
+}
+
+.btn-round-blue:hover {
+  background-color: var(--color-btn-round-background--hover);
+}

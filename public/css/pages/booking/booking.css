@@ -151,15 +151,6 @@
     margin-right: 1rem;
 }
 
-.btn__submit {
-    /* border: 1px solid red; */
-    margin-top: 4rem;
-    width: 15rem;
+.btn__container {
     align-self: center;
-    padding: 1.5rem;
-    font-size: 1.5rem;
-    background-color: rgba(31, 58, 147, 0.8);
-    color: #fff;
-    border-radius: 10rem;
 }
-
