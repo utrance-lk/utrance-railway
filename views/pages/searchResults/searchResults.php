@@ -42,7 +42,6 @@
       </section>
       <section class="searchResults">
         <div class="filters-container">
-          filters container
         </div>
         <div class="search__results-cards-container">
 
@@ -119,7 +118,7 @@
         $html .= "<span> $dayTime </span></div>";
               
         $html .= "<div class='search__card-detailbox--train-name'>";       
-        $html .= "<a href='#'>" .$value['train_name'] . "</a></div>";
+        $html .= "<a href='/utrance-railway/view-train'>" .$value['train_name'] . "</a></div>";
         $html .= "<div class='search__card-detailbox--train-journey'>";
         $html .= "<span>" . $value['fssn'] . "</span>";
         $html .= "<span> to </span>";
@@ -176,7 +175,7 @@
         $html .= "<span> $dayTime </span></div>";
 
         $html .= "<div class='search__card-detailbox--train-name'>";
-        $html .= "<a href='#'>" . $value['frtn'] . "</a></div>";
+        $html .= "<a href='/utrance-railway/view-train'>" . $value['frtn'] . "</a></div>";
         $html .= "<div class='search__card-detailbox--train-journey'>";
         $html .= "<span>" . $value['fssn'] . "</span>";
         $html .= "<span> to </span>";
@@ -250,7 +249,7 @@
         $html .= "<span> $dayTime </span></div>";
 
         $html .= "<div class='search__card-detailbox--train-name'>";
-        $html .= "<a href='#'>" . $value['trtn'] . "</a></div>";
+        $html .= "<a href='/utrance-railway/view-train'>" . $value['trtn'] . "</a></div>";
         $html .= "<div class='search__card-detailbox--train-journey'>";
         $html .= "<span>" . $value['isn'] . "</span>";
         $html .= "<span> to </span>";

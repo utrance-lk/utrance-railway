@@ -10,15 +10,15 @@
               <svg class="search-icon__btn">
                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
-              <!--div class="dashboard-searchbar__dropdown">
-                < <svg class="dropdown-btn">
+              <!-- <div class="dashboard-searchbar__dropdown">
+                <!-- <svg class="dropdown-btn">
                             <use xlink:href="./icons/sprite.svg#icon-chevron-small-down"></use>
-                        </svg> -->
-                <!--select name="catogory" id="" class="dropdown__list">
+                        </svg>
+                <select name="catogory" id="" class="dropdown__list">
                   <option value="name">Name</option>
                   <option value="id">Id</option>
                 </select>
-              </div!-->
+              </div> -->
             </form>
             <a href="/utrance-railway/routes/add" class="adduserbtn addbtn">
               <div class="addroutebtn-text addbtn-text">Add Route</div>
