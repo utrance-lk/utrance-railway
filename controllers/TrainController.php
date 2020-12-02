@@ -206,5 +206,16 @@ class TrainController extends Controller
 
     }
 
+    public function ticket($request){
+        $saveTrainPrice = new TrainModel();
+        $saveTrainPrice->loadData($request->getBody());
+        if($request->isPost()){
+            $getprice = $saveTrainPrice->getPrice();
+            return $this->render('ticket');
+        }
+        return $this->render('ticket');
+
+    }
+
  
 }

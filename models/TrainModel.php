@@ -8,8 +8,8 @@ class TrainModel extends Model
 
     
     
-    public $from2;
-    public $to2;
+    public $from;
+    public $to;
 
     public $id;
     public $train_name;
@@ -418,7 +418,157 @@ class TrainModel extends Model
         
 
     }
+
+    public function getPrice(){
+
+
+        $query = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:stratStation OR station_name=:endStation");
+        $query->bindValue(":stratStation",$this->from);
+        $query->bindValue(":endStation",$this->to);
+        $query->execute();
+        $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        var_dump($this->resultArray[0]['available_lines']);
+        var_dump($this->resultArray[1]['available_lines']);
+        
     
+
+        $result = strstr($this->resultArray[1]['available_lines'], $this->resultArray[0]['available_lines']);
+        
+   
+        $result1 = strstr($this->resultArray[0]['available_lines'], $this->resultArray[1]['available_lines']);
+        
+    
+        if($this->resultArray[0]['available_lines']==$this->resultArray[1]['available_lines']){
+            $TotalPrice=$this->totalPtice();
+           
+        }else if(strlen($this->resultArray[0]['available_lines'])==3 || strlen($this->resultArray[1]['available_lines'])==3){
+
+        }
+        else{
+           $TotalPrice= $this->gettotalPtice($this->resultArray[0]['available_lines'],$this->resultArray[1]['available_lines'],$this->from,$this->to);
+       
+
+           echo $TotalPrice;
+        }
+        
+
+    }
+    public function totalPtice(){
+        $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:stratStation) - (SELECT price FROM ticket_price WHERE station_name=:endStation ) AS total_price");
+        $query->bindValue(":stratStation",$this->from);
+        $query->bindValue(":endStation",$this->to);
+        $query->execute();
+        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($this->result);
+
+    }
+    public function totalPtice3($lines){
+        $price=$this->getpriz($lines);
+      
+        $myArray = explode(',', $price); 
+        
+        $StationendPrice=$myArray[0]; 
+    
+        $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:stratStation) - :StationendPrice AS total_price");
+        $query->bindValue(":stratStation",$this->from);
+        $query->bindValue(":StationendPrice",$StationendPrice);
+        $query->execute();
+        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+        var_dump( $this->result);
+     
+
+    }
+    public function totalPtice4($price){
+        $myArray = explode(',', $price); 
+        $StationendPrice=$myArray[1]; 
+        $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:endStation) - :StationendPrice AS total_price");
+        $query->bindValue(":endStation",$this->to);
+        $query->bindValue(":StationendPrice",$StationendPrice);
+        $query->execute();
+        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($this->result);
+
+    }
+    public function getpriz($lines){
+       
+        $query = APP::$APP->db->pdo->prepare("SELECT price FROM ticket_price WHERE available_lines=:lines");
+        $query->bindValue(":lines",$lines);
+        $query->execute();
+        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->result[0]['price'];
+        // var_dump($this->result[0]['price']);
+        
+     
+      
+
+
+    }
+    public function gettotalPtice($ss,$es,$fromsation,$tosation){
+        $ss1=(int)$ss;
+        $es1=(int)$es;
+      
+        $arr = array($ss,$es);
+        $comma = implode(",",$arr);
+        
+        var_dump($comma);
+        
+        
+        $query = APP::$APP->db->pdo->prepare("SELECT station_name FROM ticket_price WHERE available_lines LIKE '%{$comma}%'");
+        $query->bindValue(":comma", $comma);
+        $query->execute();
+        $this->result1= $query->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($this->result1[0]['station_name']);
+        $price=$this->newgettotalPtice($this->result1[0]['station_name']);
+        
+      $myArray = explode(',', $price);   
+      var_dump($myArray); 
+      
+     
+        $startStationendPrice=$myArray[0];
+        $endStationendPrice=$myArray[1];
+     
+       
+     
+      $price1=$this->totalPtice1($startStationendPrice,$fromsation);
+      $price2=$this->totalPtice2($endStationendPrice,$tosation);
+     $newprice1 = (int)$price1;
+     $newprice2 = (int)$price2;
+     
+
+    $total_price=abs($newprice1)+abs($newprice2);
+    return $total_price;
+   
+        
+    }
+    public function newgettotalPtice($ss){
+        $query = APP::$APP->db->pdo->prepare("SELECT price FROM ticket_price WHERE station_name=:name");
+        $query->bindValue(":name", $ss);
+        $query->execute();
+        $this->result2= $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->result2[0]['price'];
+        
+    }
+    public function totalPtice1($startStationendPrice,$fromsation){
+        $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:fromsation) - :startStationendPrice  AS total_price");
+        $query->bindValue(":fromsation",$fromsation);
+        $query->bindValue(":startStationendPrice",$startStationendPrice);
+        $query->execute();
+        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->result[0]['total_price'];
+        
+
+    }
+    public function totalPtice2($endStationendPrice,$tosation){
+        $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:tosation) - :endStationendPrice AS total_price");
+        $query->bindValue(":tosation",$tosation);
+        $query->bindValue(":endStationendPrice",$endStationendPrice);
+        $query->execute();
+        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->result[0]['total_price'];
+    
+
+    }
 
     
 }
