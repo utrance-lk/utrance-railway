@@ -663,3 +663,8 @@ select {
   height: 2.5rem;
   width: 2.5rem;
 }
+
+.btn__container {
+  display: flex;
+  justify-content: space-between;
+}
