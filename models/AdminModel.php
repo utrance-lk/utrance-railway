@@ -528,16 +528,16 @@ class AdminModel extends Model {
         $min=$value['minlue'];
         $max=$value['maxlue'];   
     }
-    $currentTime = date('h:i:s');
+    $currentTime = date('H:i:s');
  
     
     
    
     $results2 = 0;
 
-$date1 = DateTime::createFromFormat('h:i:s', $max);
-$date2 = DateTime::createFromFormat('h:i:s', $currentTime);
-$date3 = DateTime::createFromFormat('h:i:s', $min);
+$date1 = DateTime::createFromFormat('H:i:s', $max);
+$date2 = DateTime::createFromFormat('H:i:s', $currentTime);
+$date3 = DateTime::createFromFormat('H:i:s', $min);
 if ($date2 > $date3 && $date2 < $date1)
 {
     $results2 = 1;
