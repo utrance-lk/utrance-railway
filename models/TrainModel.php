@@ -571,13 +571,15 @@ class TrainModel extends Model
     // }
 
     public function getPrice(){
-        if($this->from =='Colombo Fort')
+        if($this->from =='Colombo Fort' || $this->from =='Maradana')
         {
-            $query = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:endStation");
-            $query->bindValue(":endStation",$this->to);
-            $query->execute();
-            $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
-            
+            $query2 = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:endStation");
+            $query2->bindValue(":endStation",$this->to);
+            $query2->execute();
+            $this->result= $query2->fetchAll(PDO::FETCH_ASSOC);
+            $result=$this->result;
+         
+        
 
         $query1 = APP::$APP->db->pdo->prepare("SELECT station_name FROM ticket_price WHERE station_name=:endStation AND available_lines=:lines");
         $query1->bindValue(":endStation",$this->from);
@@ -585,10 +587,10 @@ class TrainModel extends Model
         $query1->execute();
         $this->result1= $query1->fetchAll(PDO::FETCH_ASSOC);
         }else{
-        $query = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:stratStation");
-        $query->bindValue(":stratStation",$this->from);
-        $query->execute();
-        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+        $query2 = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:stratStation");
+        $query2->bindValue(":stratStation",$this->from);
+        $query2->execute();
+        $this->result= $query2->fetchAll(PDO::FETCH_ASSOC);
      
 
         $query1 = APP::$APP->db->pdo->prepare("SELECT station_name FROM ticket_price WHERE station_name=:endStation AND available_lines=:lines");
@@ -603,16 +605,35 @@ class TrainModel extends Model
         
       
         if(empty($this->result1)){
-            $query = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:endStation");
+            if($this->from =='Colombo Fort' || $this->from =='Maradana'){
+                $query = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:endStation LIMIT 1");
+            $query->bindValue(":endStation",$this->from);
+            $query->execute();
+            $this->newresult= $query->fetchAll(PDO::FETCH_ASSOC);
+            $TotalPrice= $this->gettotalPrice($result[0]['available_lines'],$this->newresult[0]['available_lines']);
+    
+
+            }else{
+
+                $query = APP::$APP->db->pdo->prepare("SELECT available_lines FROM ticket_price WHERE station_name=:endStation LIMIT 1");
             $query->bindValue(":endStation",$this->to);
             $query->execute();
             $this->newresult= $query->fetchAll(PDO::FETCH_ASSOC);
-
             $TotalPrice= $this->gettotalPrice($this->result[0]['available_lines'],$this->newresult[0]['available_lines']);
+            
+            }
+            
+            
+           
+
+           
+             
+        
            
         }else{
             $TotalPrice=$this->totalPrice($this->result[0]['available_lines']);
-            var_dump($TotalPrice);
+            $newTotalPrice=(int)$TotalPrice[0]['total_price'];
+            echo $newTotalPrice;
         }
 
 
@@ -631,28 +652,32 @@ class TrainModel extends Model
         }
 
         public function gettotalPrice($startline,$endline){
+            
+
            $arr = array($startline,$endline);
            $comma = implode(",",$arr);
            
-           $query = APP::$APP->db->pdo->prepare("SELECT station_name FROM ticket_price WHERE available_lines=:comma LIMIT 1");
+           $query = APP::$APP->db->pdo->prepare("SELECT station_name FROM ticket_price WHERE available_lines=:comma");
            $query->bindValue(":comma",$comma);
          
            $query->execute();
            $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
         
           $price=$this->newgettotalPrice($this->result[0]['station_name'],$startline);
+          
         
-          $price1=$this->newgettotalPrice1($price[0]['price']);
+          $price1=$this->newgettotalPrice1($price[0]['price'],$startline);
         
 
 
           $newprice=$this->newgettotalPrice($this->result[0]['station_name'],$endline);
         
-          $newprice1=$this->newgettotalPrice2($newprice[0]['price']);
+          $newprice1=$this->newgettotalPrice2($newprice[0]['price'],$endline);
        
 
           $newprice2 = (int)$price1;
      $newprice3 = (int)$newprice1;
+     
      
 
     $total_price=abs($newprice2)+abs($newprice3);
@@ -671,28 +696,60 @@ class TrainModel extends Model
          
            $query->execute();
            $this->result1= $query->fetchAll(PDO::FETCH_ASSOC);
+        
            return $this->result1;
            
 
         }
-        public function newgettotalPrice1($price){
-            $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:fromsation) - :price  AS total_price");
+        public function newgettotalPrice1($price,$startline){
+            if($this->from =='Colombo Fort' || $this->from =='Maradana'){
+                $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:fromsation AND available_lines=:startline) - :price  AS total_price");
+           $query->bindValue(":price",$price);
+           $query->bindValue(":fromsation",$this->to);
+           $query->bindValue(":startline",$startline);
+         
+           $query->execute();
+           $this->result1= $query->fetchAll(PDO::FETCH_ASSOC);
+          
+           return $this->result1[0]['total_price'];
+
+            }else{
+            
+            $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:fromsation AND available_lines=:startline) - :price  AS total_price");
            $query->bindValue(":price",$price);
            $query->bindValue(":fromsation",$this->from);
+           $query->bindValue(":startline",$startline);
+         
+           $query->execute();
+           $this->result1= $query->fetchAll(PDO::FETCH_ASSOC);
+       
+           return $this->result1[0]['total_price'];
+            }
+
+        }
+        public function newgettotalPrice2($price,$endline){
+            
+            if($this->from =='Colombo Fort' || $this->from =='Maradana'){
+                $query = APP::$APP->db->pdo->prepare("SELECT (SELECT price from ticket_price WHERE station_name=:fromsation AND available_lines=:startline) - :price  AS total_price");
+           $query->bindValue(":price",$price);
+           $query->bindValue(":fromsation",$this->from);
+           $query->bindValue(":startline",$endline);
          
            $query->execute();
            $this->result1= $query->fetchAll(PDO::FETCH_ASSOC);
            return $this->result1[0]['total_price'];
 
-        }
-        public function newgettotalPrice2($price){
-            $query = APP::$APP->db->pdo->prepare("SELECT ( SELECT price from ticket_price WHERE station_name=:fromsation) - :price  AS total_price");
+            }else{
+  
+            $query = APP::$APP->db->pdo->prepare("SELECT (SELECT price from ticket_price WHERE station_name=:fromsation AND available_lines=:startline) - :price  AS total_price");
            $query->bindValue(":price",$price);
            $query->bindValue(":fromsation",$this->to);
+           $query->bindValue(":startline",$endline);
          
            $query->execute();
            $this->result1= $query->fetchAll(PDO::FETCH_ASSOC);
            return $this->result1[0]['total_price'];
+            }
 
         }
 
