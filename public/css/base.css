@@ -26,6 +26,8 @@
   --color-btn-round-text: #fff;
   --color-btn-round-background--hover: rgb(250, 151, 70);
 
+  --color-btn-round-pagination-background: rgba(119, 119, 119, .1);
+  --color-btn-round-pagination-border: rgb(250, 151, 70);
 
 }
 

@@ -110,7 +110,7 @@
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
                 
-                $html .= "<input type='submit' class='btn btn-round-blue margin-b-l'  name='save' value='Save Settings'></div></div>";
+                $html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' name='save' value='Save Settings'></div></div>";
                  
 
                $dom = new DOMDocument();
@@ -163,7 +163,7 @@
               $html .= "<div class='btn__save-box'>";
 
               //$html .= "<div class='btn__save btn__password'>Save Password</div></div>";
-              $html .= "<input type='submit' class='btn btn-round-blue margin-b-l' value='Save Password'></div>";
+              $html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' value='Save Password'></div>";
           
 
               $dom = new DOMDocument();

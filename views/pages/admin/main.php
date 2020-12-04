@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/components/buttons.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerSub.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/admin/admin.css" />
-    <!-- <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/admin/manageTrains.css" /> -->
-    <!-- <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/admin/manageRoutes.css" /> -->
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
   </head>
 
