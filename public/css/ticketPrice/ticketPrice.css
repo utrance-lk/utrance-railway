@@ -162,6 +162,7 @@
     border-width: 0.14rem;
     font-family: "Lato", sans-serif;
     border-radius: 4px;
+     
     
     
   }
@@ -191,5 +192,47 @@
 .td-second{
     background-color:  rgb(250, 151, 70);
 }
-  
+
+.center {
+
+
+  margin: auto;
+  width: 60%;
+  height: 28rem;
+  padding: 10px;
+  background-color: white;
+  margin-top: 5rem;
+
+
+}
+
+.start-name{
+  margin-left: 5rem;
+  margin-top: 3rem;
+}
+
+.ticekt-sub{
+  display: flex;
+  margin-left: 20rem;
+}
+.first-class{
+  margin-top: 3rem;
+  margin-left: 4.5rem;
+  display: inline;
+}
+.input-class{
+  margin-top: 5rem;
+  width: 10rem;
+  height: 4rem;
+  background-color:#ecf0f1;
+  margin-left: 4rem;
+  text-align: center
+}
+.select-person{
+  width: 9rem;
+  height: 3rem;
+  margin-top: 5rem;
+  margin-left: 34rem;
+}
+
   
