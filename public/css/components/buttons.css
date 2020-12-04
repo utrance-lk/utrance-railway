@@ -85,15 +85,12 @@
 
 .btn-round-pagination {
   border: 1px solid var(--color-btn-round-pagination-border);
-  /* background-color: var(--color-btn-round-pagination-background); */
-  /* width: 12rem; */
-  /* height: 5rem; */
   display: flex;
   align-items: center;
   width: max-content;
   padding: .5rem;
   border-radius: 10rem;
-  /* align-self: flex-end; */
+  margin-left: 1rem;
   color: var(--color-main);
 }
 
@@ -109,10 +106,12 @@
   height: 2.5rem;
   width: 2.5rem;
   fill: var(--color-main);
-  /* border: 1px solid green; */
 }
 
-.btn-round-pagination span {
-  /* border: 1px solid blue; */
+.btn-round-pagination__prev span {
   padding-right: .5rem;
+}
+
+.btn-round-pagination__next span {
+  padding-left: .5rem;
 }

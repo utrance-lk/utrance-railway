@@ -27,32 +27,32 @@
           <script type="text/javascript" src="../../../utrance-railway/public/js/components/pagination/main.js"></script>
 
            <div method="POST"  name="manage_users"  id="manage_user_form" >
-                <div class="search__results-container">
-                <?php
+
+                <!--?php
                   $dom = new DOMDocument;
                   libxml_use_internal_errors(true);
                   $dom->loadHTML('...');
                   libxml_clear_errors();
-                ?>
-                
-                <!--?php var_dump($APP->activeUser())?-->
-
+                ?-->
         <?php if (isset($users)): ?>
-            <script>
-              const jsonArray = <?php echo json_encode($users); ?>;
-              const activeUserr = <?php echo json_encode(App::$APP->activeUser()); ?>;
-              renderResults(jsonArray, activeUserr);
-            </script>
-        <?php endif;?>
-                </div>
+            <div class="search__results-container"></div>
+            <div class="btn__container">
+              <script>
+                renderButtons();
+              </script>
+            </div>
+            <?php endif;?>
              </div>
             </div>
          </div>
          </div>
          </div>
 
-      <script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
+      <script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
       <script type="module" src="../../../utrance-railway/public/js/components/pagination/pagination.js"></script>
+      <script>
+        renderResults(<?php echo json_encode($users); ?>, <?php echo json_encode(App::$APP->activeUser()); ?>);
+      </script>
 
 
 

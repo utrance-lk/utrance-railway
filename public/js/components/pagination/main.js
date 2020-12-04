@@ -1,7 +1,7 @@
 let activeUser;
 let usersSet;
 
-export const renderResults = function (users, actUser, page = 1, resPerPage = 10) {
+const renderResults = function (users, actUser, page = 1, resPerPage = 10) {
   // render results of current page
   activeUser = actUser;
   usersSet = users;
@@ -10,16 +10,15 @@ export const renderResults = function (users, actUser, page = 1, resPerPage = 10
 
   users.slice(start, end).forEach(renderUser);
 
-  document
-      .querySelector(".search__results-container")
-      .insertAdjacentHTML("beforeend", `<div class="btn__container"></div>`);
+  // document
+  //   .querySelector(".search__results-container")
+  //   .insertAdjacentHTML("beforeend", `<div class="btn__container"></div>`);
   // render pagination buttons
   renderButtons(page, users.length, resPerPage);
-
 };
 
-const renderUser = function(user) {
-    let markup = `
+const renderUser = function (user) {
+  let markup = `
     <form class='search__result-card' id='form-card' method='get'>
         <div class='search__result-user-mainbox search__result-mainbox'>
             <div class='user-mainbox__img-box'>
@@ -48,72 +47,77 @@ const renderUser = function(user) {
             }
         </div>`;
 
-    if(user.user_role === 'admin' && user.first_name === activeUser.first_name) {
-        markup += `<a href='/utrance-railway/settings' class='btn btn-box-white margin-r-s'>View</a>`;
+  if (user.user_role === "admin" && user.first_name === activeUser.first_name) {
+    markup += `<a href='/utrance-railway/settings' class='btn btn-box-white margin-r-s'>View</a>`;
+  } else {
+    markup += `<a href='/utrance-railway/users/view?id=${user.id}' class='btn btn-box-white margin-r-s'>View</a>`;
+  }
+
+  if (user.user_active_status) {
+    if (user.user_role !== "admin") {
+      markup += `<a href='/utrance-railway/users/deactivate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--delete'>Deactivate</a>`;
     } else {
-        markup += `<a href='/utrance-railway/users/view?id=${user.id}' class='btn btn-box-white margin-r-s'>View</a>`;
+      markup += `<a style='visibility: hidden'></a>`;
     }
-
-    if(user.user_active_status) {
-        if(user.user_role !== 'admin') {
-            markup += `<a href='/utrance-railway/users/deactivate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--delete'>Deactivate</a>`;
-        } else {
-            markup += `<a style='visibility: hidden'></a>`;
-        }
+  } else {
+    if (user.user_role !== "admin") {
+      markup += `<a href='/utrance-railway/users/activate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--activate'>Activate</a>`;
     } else {
-        if(user.user_role !== 'admin') {
-            markup += `<a href='/utrance-railway/users/activate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--activate'>Activate</a>`;
-        } else {
-            markup += `<a style='visibility: hidden'></a>`;
-        }
+      markup += `<a style='visibility: hidden'></a>`;
     }
+  }
 
-    markup += `</form>`;
+  markup += `</form>`;
 
-    // console.log(markup); 
-    document
-      .querySelector(".search__results-container")
-      .insertAdjacentHTML("beforeend", markup);
-    
-}
+  // console.log(markup);
+  document
+    .querySelector(".search__results-container")
+    .insertAdjacentHTML("beforeend", markup);
+};
 
 // type: 'prev' or 'next'
-const createButton =  function(page, type) {
-    return `
-    <button class='btn btn-round-pagination btn-round-pagination__${type} margin-b-l' data-goto=${
-      type === "prev" ? page - 1 : page + 1
-    }>
-        <svg class='btn-round-pagination--img'>
-            <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-${
-              type === "prev" ? "left" : "right"
-            }'></use>
-        </svg>
-        <span>Page ${type === "prev" ? page - 1 : page + 1}</span>
-    </button>
+const createButton = function (page, type) {
+  let html = `<button class='btn btn-round-pagination btn-round-pagination__${type} margin-b-l' data-goto=${type === "prev" ? page - 1 : page + 1}>`;
+  if(type === 'prev') {
+    html += `
+    <svg class='btn-round-pagination--img'>
+        <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-left'></use>
+    </svg>
+    <span>Page ${page - 1}</span>
     `;
-}
+  } else {
+    html += `
+    <span>Page ${page + 1}</span>
+    <svg class='btn-round-pagination--img'>
+        <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-right'></use>
+    </svg>
+    `;
+  }
+  html += `</button>`;
+  return html;
+};
 
-const renderButtons = function(page, numResults, resPerPage) {
-    const pages = Math.ceil(numResults / resPerPage);
+const renderButtons = function (page, numResults, resPerPage) {
+  const pages = Math.ceil(numResults / resPerPage);
 
-    let button;
-    if(page === 1 && pages > 1) {
-        // button to go next page
-       button = createButton(page, 'next');
-    } else if(page < pages) {
-        // both buttons
-        button = `
-            ${createButton(page, 'prev')}
-            ${createButton(page, 'next')}
+  let button;
+  if (page === 1 && pages > 1) {
+    // button to go next page
+    button = createButton(page, "next");
+  } else if (page < pages) {
+    // both buttons
+    button = `
+            ${createButton(page, "prev")}
+            ${createButton(page, "next")}
         `;
-    } else if(page === pages && pages > 1) {
-        // button to go previous page
-        button = createButton(page, 'prev');
-    }
+  } else if (page === pages && pages > 1) {
+    // button to go previous page
+    button = createButton(page, "prev");
+  }
 
+  if(button) { 
     document
-      .querySelector(".btn__container")
-      .insertAdjacentHTML("afterbegin", button);
-
-}
-
+    .querySelector(".btn__container")
+    .insertAdjacentHTML("afterbegin", button);
+  }
+};

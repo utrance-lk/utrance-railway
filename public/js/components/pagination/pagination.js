@@ -1,11 +1,15 @@
-import * as k from './main.js';
-
 document
   .querySelector(".btn__container")
   .addEventListener("click", function (e) {
     const btn = e.target.closest(".btn-round-pagination");
-    if(btn) {
-        const goToPage = parseInt(btn.dataset.goto, 10);
-        k.renderResults(k.usersSet, k.activeUser, goToPage);
+    if (btn) {
+      clearResults();
+      const goToPage = parseInt(btn.dataset.goto, 10);
+      renderResults(usersSet, activeUser, goToPage);
     }
   });
+
+const clearResults = function () {
+  document.querySelector(".search__results-container").innerHTML = '';
+  document.querySelector(".btn__container").innerHTML = "";
+};
