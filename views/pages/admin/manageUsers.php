@@ -39,8 +39,3 @@
           renderButtons();
         </script>
       <?php endif;?>
-
-
-
-
-
