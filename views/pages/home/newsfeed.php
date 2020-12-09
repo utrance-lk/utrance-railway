@@ -49,7 +49,7 @@
                     <span>View</span>
                 </a>
                     <svg class="newsview-icon">
-                        <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chevron-right"></use>
+                        <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                     <span>View</span>
                 </a>
                     <svg class="newsview-icon">
-                        <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-chevron-right"></use>
+                        <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-chevron-right"></use>
                     </svg>
                 </div>
             </div>
