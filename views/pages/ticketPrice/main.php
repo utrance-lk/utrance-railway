@@ -2,23 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Profile</title>
-    <link rel="stylesheet" type="text/css" href="../../../../utrance-railway/public/css/admin/update_userProfile.css" />
+    <title>Utrance Railway</title>
   <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
 
   <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
-    
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/footer.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/ticketPrice/ticketPrice.css" />
-    
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
-    
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&amp;family=Sora:wght@400;500&amp;display=swap" rel="stylesheet">
 
-  tr
-  </style>
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/components/buttons.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/ticketPrices/ticketPrices.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/footer.css" />
+
 </head>
+<body>

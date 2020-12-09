@@ -9,7 +9,7 @@
                       <div class="from__station js--from__station" id="js--from__station"></div>
                       <div class="swap-button js--swap-btn">
                         <svg class="swap-icon">
-                          <use xlink:href="../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-swap"></use>
+                          <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-swap"></use>
                         </svg>
                       </div>
                     </div>
@@ -17,8 +17,6 @@
                   <div class="search-dropdown search-dropdown__from js--search-dropdown__from">
                     <input type="text" id="dropdown-from" name="from" class="search-dropdown__search js--search-dropdown__search-from">
                   </div>
-                  
-                  <!--?php echo "<script>document.writeln(fromStation);</script>";?-->
                   <ul class="search-dropdown__search-results js--results__list-from"></ul>
                 </div>
               <div class="search-bar__to-container">
