@@ -350,7 +350,7 @@ class AdminModel extends Model {
         'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
         $updateTrainrValidation=new TrainFormValidation();
         $validationState=$updateTrainrValidation->runValidators($array);
-        //var_dump($validationState);
+        // var_dump($validationState);
         
 
         if (empty($validationState)) {
@@ -565,12 +565,4 @@ if ($date2 > $date3 && $date2 < $date1)
         
       
     }
-    
-
-   
-
-    
-
-
-
 }

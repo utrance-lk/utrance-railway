@@ -106,28 +106,17 @@
 
 .price--box {
     font-size: 2rem;
-    color: rgb(119, 119, 119);
+    color: var(--color-secondary-light);
     font-weight: 700;
     padding: 2rem 2rem 0 2rem;
-    background-color: rgba(119, 119, 119, 0.1);
+    background-color: var(--color-secondary-light--half);
 }
 
 .btn__container {
-    background-color: rgba(119, 119, 119, 0.1);
-    /* padding: 1rem 2rem; */
+    background-color: var(--color-secondary-light--half);
     display: flex;
     justify-content: flex-end;
-    /* border: 1px solid blue; */
     padding-bottom: 1rem;
-}
-
-.btn__view-more {
-    width: fit-content;
-    border-radius: 10rem;
-    padding: 1rem;
-    background-color: rgba(31, 58, 147, 0.8);
-    margin-right: 2rem;
-    color: #fff !important;
 }
 
 .one__train {

@@ -221,9 +221,9 @@
         
                     if(isset($newArray)){
                         
-                    $html .="<button class='btn__save btn-settings' type='submit' disabled>Update Train</button></div></div></form></div>";
+                    $html .="<button class='btn btn-round-blue margin-b-l' type='submit' disabled>Update Train</button></div></div></form></div>";
                 }else{
-                    $html .="<button class='btn__save btn-settings' type='submit'>Update Train</button></div></div></form></div>";        
+                    $html .="<button class='btn btn-round-blue margin-b-l' type='submit'>Update Train</button></div></div></form></div>";        
                 }
             
                

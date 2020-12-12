@@ -65,3 +65,24 @@
 .userdetails-box--dropdown a {
     color: #fff !important;
 }
+
+.booking__users--id {
+    width: 5rem;
+    text-align: left;
+}
+
+.booking__users--email {
+    width: 20rem;
+    text-align: left;
+}
+
+.booking__users--weight {
+    width: 5rem;
+    text-align: left;
+}
+
+.booking__users--booking-date {
+    /* border: 1px solid red; */
+    width: 15rem;
+    text-align: left;
+}

@@ -17,11 +17,8 @@ $app->router->post('/utrance-railway/trains/update', [AdminController::class, 'u
 $app->router->get('/utrance-railway/trains/delete', [AdminController::class, 'deleteTrain']);
 $app->router->post('/utrance-railway/trains/delete', [AdminController::class, 'deleteTrain']);
 
-$app->router->get('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
-$app->router->post('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
-
-$app->router->get('/utrance-railway/ticket-price', [TrainController::class, 'viewTicketPrice']);
-$app->router->post('/utrance-railway/ticket-price', [TrainController::class, 'viewTicketPrice']);
+$app->router->get('/utrance-railway/ticket-prices', [TrainController::class, 'ViewticketPrice']);
+$app->router->post('/utrance-railway/ticket-prices', [TrainController::class, 'ViewticketPrice']);
 
 $app->router->get('/utrance-railway/frieght-prices', [TrainController::class, 'freightPrice']);
 $app->router->post('/utrance-railway/freight-prices', [TrainController::class, 'freightPrice']);

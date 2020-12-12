@@ -13,7 +13,7 @@
     
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
     <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/footer.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/ticketPrice/ticketPrice.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/ticketPrice/ticketPrice.css" />
     
     <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
     

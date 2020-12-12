@@ -6,8 +6,6 @@ include_once "HandlerFactory.php";
 class TrainModel extends Model
 {
 
-    
-    
     public $from2;
     public $to2;
 
@@ -30,13 +28,14 @@ class TrainModel extends Model
     public $start;
     public $destination;
     public $availbility_lines;
-    public $resultLine=[];
-    public $ticketPrice=[];
-    public $firstClassPrice=[];
+    public $resultLine = [];
+    public $ticketPrice = [];
+    public $firstClassPrice = [];
     public $secondClassPrice;
     public $thirdClassPrice;
-    public $intLineStart;
-    public $intLineEnd;
+    public $intLineStart = [];
+    public $intLineEnd = [];
+    public $end_lines = [];
 
     public function createOne()
     {
@@ -47,7 +46,6 @@ class TrainModel extends Model
 
         return $query->execute();
     }
-    
 
     public function getTrains()
     {
@@ -58,17 +56,14 @@ class TrainModel extends Model
 
         $this->resultArray['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        
         return $this->resultArray;
-
-        
 
     }
 
     public function getManageTrains()
     {
-        $manageTrain = New HandlerFactory();
-        $valuesArray =['train_id' =>$this->id];
+        $manageTrain = new HandlerFactory();
+        $valuesArray = ['train_id' => $this->id];
         // $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_id = :train_id ");
         // $query->bindValue(":train_id", $this->id);
         // $query->execute();
@@ -82,122 +77,119 @@ class TrainModel extends Model
 
     public function updateTrainDetails()
     {
-         $this->runValidators1();
-         if (empty($this->errorArray)) {
-           $this->runSanitization();
+        $this->runValidators1();
+        if (empty($this->errorArray)) {
+            $this->runSanitization();
 
-           $updateTrain = New HandlerFactory();
-           $valuesArray = ['train_name' => $this->train_name, 'route_id' => $this->route_id, 'train_type' => $this->train_type, 'train_travel_days' => implode(" ",$this->train_travel_days),
-            'train_freights_allowed' => $this->train_freights_allowed, 'train_fc_seats' => $this->train_fc_seats, 'train_sc_seats' => $this->train_sc_seats,
-            'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
+            $updateTrain = new HandlerFactory();
+            $valuesArray = ['train_name' => $this->train_name, 'route_id' => $this->route_id, 'train_type' => $this->train_type, 'train_travel_days' => implode(" ", $this->train_travel_days),
+                'train_freights_allowed' => $this->train_freights_allowed, 'train_fc_seats' => $this->train_fc_seats, 'train_sc_seats' => $this->train_sc_seats,
+                'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
 
-       $updateTrain->updateOne('trains', 'train_id', $this->id, $valuesArray);
-        // $query = App::$APP->db->pdo->prepare("UPDATE trains SET train_name =:train_name, route_id=:route_id, train_type=:train_type, train_active_status=:train_active_status,train_travel_days=:train_travel_days,train_freights_allowed=:train_freights_allowed,train_fc_seats=:train_fc_seats,train_sc_seats=:train_sc_seats,train_observation_seats=:train_observation_seats,train_sleeping_berths=:train_sleeping_berths,train_total_weight=:train_total_weight WHERE train_id=:train_id");
+            $updateTrain->updateOne('trains', 'train_id', $this->id, $valuesArray);
+            // $query = App::$APP->db->pdo->prepare("UPDATE trains SET train_name =:train_name, route_id=:route_id, train_type=:train_type, train_active_status=:train_active_status,train_travel_days=:train_travel_days,train_freights_allowed=:train_freights_allowed,train_fc_seats=:train_fc_seats,train_sc_seats=:train_sc_seats,train_observation_seats=:train_observation_seats,train_sleeping_berths=:train_sleeping_berths,train_total_weight=:train_total_weight WHERE train_id=:train_id");
 
-        // $query->bindValue(":train_id", $this->id);
-        // $query->bindValue(":train_name", $this->train_name);
-        // $query->bindValue(":route_id", $this->route_id);
-        // $query->bindValue(":train_type", $this->train_type);
-        // // $int = (int)$this->train_active_status;
-        // $query->bindValue(":train_active_status", $this->train_active_status);
+            // $query->bindValue(":train_id", $this->id);
+            // $query->bindValue(":train_name", $this->train_name);
+            // $query->bindValue(":route_id", $this->route_id);
+            // $query->bindValue(":train_type", $this->train_type);
+            // // $int = (int)$this->train_active_status;
+            // $query->bindValue(":train_active_status", $this->train_active_status);
 
-        
-        // $query->bindValue(":train_travel_days", implode(" ",$this->train_travel_days));
-             
-        // $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
-        // $query->bindValue(":train_fc_seats", $this->train_fc_seats);
-        // $query->bindValue(":train_sc_seats", $this->train_sc_seats);
-        // $query->bindValue(":train_observation_seats", $this->train_observation_seats);
-        // $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
-        // $query->bindValue(":train_total_weight", $this->train_total_weight);
+            // $query->bindValue(":train_travel_days", implode(" ",$this->train_travel_days));
 
-        // $query->execute();
-        //  return 'success';
+            // $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
+            // $query->bindValue(":train_fc_seats", $this->train_fc_seats);
+            // $query->bindValue(":train_sc_seats", $this->train_sc_seats);
+            // $query->bindValue(":train_observation_seats", $this->train_observation_seats);
+            // $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
+            // $query->bindValue(":train_total_weight", $this->train_total_weight);
+
+            // $query->execute();
+            //  return 'success';
         }
         $this->resultArray["newtrains"] = $this->errorArray;
-         return $this->resultArray;
-        
+        return $this->resultArray;
 
-        
     }
 
-    public function deleteTrains(){
+    public function deleteTrains()
+    {
         $query = APP::$APP->db->pdo->prepare("DELETE FROM trains WHERE train_id = :train_id ");
         $query->bindValue(":train_id", $this->id);
         $query->execute();
         $this->setRouteStatus();
     }
 
-    public function setRouteStatus(){
+    public function setRouteStatus()
+    {
         $query = APP::$APP->db->pdo->prepare("UPDATE routes SET route_status = 0 WHERE route_id=(SELECT routes.route_id FROM trains RIGHT JOIN routes ON trains.route_id = routes.route_id WHERE trains.train_id=:train_id)");
         $query->bindValue(":train_id", $this->id);
         $query->execute();
     }
 
-
     public function addNewTrainDetails()
     {
-        
+
         $this->runValidators();
 
         if (empty($this->errorArray)) {
             $this->runSanitization();
-            $addTrain = New HandlerFactory();
-            $valuesArray = ['train_name'=>$this->train_name, 'route_id'=>$this->route_id, 'train_type'=>$this->train_type,'train_active_status'=>$this->train_active_status,'train_travel_days'=>implode(' ',$this->train_travel_days),
-            'train_freights_allowed'=>$this->train_freights_allowed,'train_fc_seats'=>$this->train_fc_seats,'train_sc_seats'=>$this->train_sc_seats,'train_observation_seats'=>$this->train_observation_seats,'train_sleeping_berths'=>$this->train_sleeping_berths,
-            'train_total_weight'=>$this->train_total_weight];
-            
+            $addTrain = new HandlerFactory();
+            $valuesArray = ['train_name' => $this->train_name, 'route_id' => $this->route_id, 'train_type' => $this->train_type, 'train_active_status' => $this->train_active_status, 'train_travel_days' => implode(' ', $this->train_travel_days),
+                'train_freights_allowed' => $this->train_freights_allowed, 'train_fc_seats' => $this->train_fc_seats, 'train_sc_seats' => $this->train_sc_seats, 'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths,
+                'train_total_weight' => $this->train_total_weight];
+
             $addTrain->createOne('trains', $valuesArray);
             $this->setRoute();
 
-        //     $query = App::$APP->db->pdo->prepare("INSERT INTO trains (train_name, route_id, train_type, train_active_status, train_travel_days,
-        //  train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths, train_total_weight) VALUES (:train_name, :route_id, :train_type, :train_active_status, :train_travel_days, :train_freights_allowed,
-        //  :train_fc_seats, :train_sc_seats, :train_observation_seats, :train_sleeping_berths, :train_total_weight)");
-        // //  $query->bindValue(":train_id", $this->id);
-       
-        // $query->bindValue(":train_name", $this->train_name);
-        // $query->bindValue(":route_id", $this->route_id);
-        // $query->bindValue(":train_type", $this->train_type);
-        // // // // $int = (int)$this->train_active_status;
-        //   $query->bindValue(":train_active_status",$this->train_active_status);
+            //     $query = App::$APP->db->pdo->prepare("INSERT INTO trains (train_name, route_id, train_type, train_active_status, train_travel_days,
+            //  train_freights_allowed, train_fc_seats, train_sc_seats, train_observation_seats, train_sleeping_berths, train_total_weight) VALUES (:train_name, :route_id, :train_type, :train_active_status, :train_travel_days, :train_freights_allowed,
+            //  :train_fc_seats, :train_sc_seats, :train_observation_seats, :train_sleeping_berths, :train_total_weight)");
+            // //  $query->bindValue(":train_id", $this->id);
 
+            // $query->bindValue(":train_name", $this->train_name);
+            // $query->bindValue(":route_id", $this->route_id);
+            // $query->bindValue(":train_type", $this->train_type);
+            // // // // $int = (int)$this->train_active_status;
+            //   $query->bindValue(":train_active_status",$this->train_active_status);
 
-        //    $trinTravalDays=implode(' ',$this->train_travel_days);
-        //   $query->bindValue(":train_travel_days", $trinTravalDays);
-             
-        //   $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
-        //   $query->bindValue(":train_fc_seats", $this->train_fc_seats);
-        //   $query->bindValue(":train_sc_seats", $this->train_sc_seats);
-        //   $query->bindValue(":train_observation_seats", $this->train_observation_seats);
-        //   $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
-        //   $query->bindValue(":train_total_weight", $this->train_total_weight);
-           
-           
-        //    $query->execute();
-        //    $this->setRoute();
-          
-        //    return 'success';
-        
+            //    $trinTravalDays=implode(' ',$this->train_travel_days);
+            //   $query->bindValue(":train_travel_days", $trinTravalDays);
+
+            //   $query->bindValue(":train_freights_allowed", $this->train_freights_allowed);
+            //   $query->bindValue(":train_fc_seats", $this->train_fc_seats);
+            //   $query->bindValue(":train_sc_seats", $this->train_sc_seats);
+            //   $query->bindValue(":train_observation_seats", $this->train_observation_seats);
+            //   $query->bindValue(":train_sleeping_berths", $this->train_sleeping_berths);
+            //   $query->bindValue(":train_total_weight", $this->train_total_weight);
+
+            //    $query->execute();
+            //    $this->setRoute();
+
+            //    return 'success';
+
         }
         // var_dump($this->errorArray);
-        return $this->errorArray;    
-        
+        return $this->errorArray;
+
     }
 
-    public function setRoute(){
+    public function setRoute()
+    {
         $query = App::$APP->db->pdo->prepare("UPDATE routes SET route_status = 1 wHERE route_id=:route_id");
         $query->bindValue(":route_id", $this->route_id);
         $query->execute();
     }
 
     public function registerSetValue($registerSetValueArray)
-    { 
+    {
         if (empty($registerSetValueArray['TrainNameError'])) {
             $registerSetValueArray['train_name'] = $this->train_name;
         }
         if (empty($registerSetValueArray['RoutIdError'])) {
             $registerSetValueArray['route_id'] = $this->route_id;
-           
+
         }
         if (empty($registerSetValueArray['TravalDaysError'])) {
             $registerSetValueArray['train_travel_days'] = $this->train_travel_days;
@@ -228,70 +220,62 @@ class TrainModel extends Model
             $registerSetValueArray['train_observation_seats'] = $this->train_observation_seats;
         }
 
-        
         return $registerSetValueArray;
 
     }
 
-
     public function searchTrainDetails()
     {
         $this->train_name = $this->searchTrain;
-    // $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name = :trainName");
-    $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%'");
-    $query->bindValue(":trainName", $this->train_name);
-    //    echo (:trainName);
-
+        // $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name = :trainName");
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%'");
+        $query->bindValue(":trainName", $this->train_name);
+        //    echo (:trainName);
 
         $query->execute();
-        
+
         $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        
-        // var_dump($this->resultArray[0]['train_name']);  
-        return $this->resultArray; 
-        
-        
-       
+
+        // var_dump($this->resultArray[0]['train_name']);
+        return $this->resultArray;
 
     }
 
     private function runValidators()
     {
-        $this->validateTrainName($this->train_name, $this->route_id); 
-         $this->validateRouteId($this->route_id); 
-        $this->validateTravelDays(implode($this->train_travel_days)); 
-        $this->validateTrainFc($this->train_fc_seats); 
-        $this->validateTrainSc($this->train_sc_seats); 
-        $this->validateTrainSleepingB($this->train_sleeping_berths); 
-        $this->validateTrainweight($this->train_total_weight); 
-       
-       
+        $this->validateTrainName($this->train_name, $this->route_id);
+        $this->validateRouteId($this->route_id);
+        $this->validateTravelDays(implode($this->train_travel_days));
+        $this->validateTrainFc($this->train_fc_seats);
+        $this->validateTrainSc($this->train_sc_seats);
+        $this->validateTrainSleepingB($this->train_sleeping_berths);
+        $this->validateTrainweight($this->train_total_weight);
+
     }
 
     private function runValidators1()
     {
-        $this->validateTrainName1($this->train_name); 
-        
-        $this->validateTravelDays($this->train_travel_days); 
-       
+        $this->validateTrainName1($this->train_name);
+
+        $this->validateTravelDays($this->train_travel_days);
+
     }
 
     private function validateTrainFc($tn)
     {
         // if (is_numeric($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong ';
-        // } 
+        // }
         // if (ctype_digit($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
         // }
-        
 
     }
     private function validateTrainSc($tn)
     {
         // if (is_numeric($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
-        // } 
+        // }
         // if (ctype_digit($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
         // }
@@ -301,7 +285,7 @@ class TrainModel extends Model
     {
         // if (is_numeric($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
-        // } 
+        // }
         // if (ctype_digit($tn)) {
         //     $this->errorArray['TrainFcError'] = 'Num Wrong length';
         // }
@@ -316,13 +300,11 @@ class TrainModel extends Model
 
     }
 
-
-    private function validateTrainName($tn, $rn) 
-
+    private function validateTrainName($tn, $rn)
     {
         if (strlen($tn) < 2 || strlen($tn) > 50) {
             $this->errorArray['TrainNameError'] = 'train name not valid';
-        }    
+        }
 
         if (is_numeric($tn)) {
             $this->errorArray['TrainNameError'] = 'first name only letters required';
@@ -330,23 +312,20 @@ class TrainModel extends Model
 
         if (empty($tn)) {
             $this->errorArray['TrainNameError'] = 'enter valid train name';
-            
+
             // var_dump($this->errorArray);
         }
         $this->my($tn, $rn);
-       
-        // $trains="";
 
-        
+        // $trains="";
 
     }
 
-    private function validateTrainName1($tn) 
-
+    private function validateTrainName1($tn)
     {
         if (strlen($tn) < 2 || strlen($tn) > 50) {
             $this->errorArray['TrainNameError'] = 'train name not valid';
-        }    
+        }
 
         if (is_numeric($tn)) {
             $this->errorArray['TrainNameError'] = 'first name only letters required';
@@ -354,61 +333,52 @@ class TrainModel extends Model
 
         if (empty($tn)) {
             $this->errorArray['TrainNameError'] = 'enter valid train name';
-            
+
             // var_dump($this->errorArray);
         }
 
     }
 
-    public function my($inputText , $rid){
-        $results = $this->sameTrains($this->train_name , $this->route_id);
+    public function my($inputText, $rid)
+    {
+        $results = $this->sameTrains($this->train_name, $this->route_id);
         // var_dump($results);
-        if($results==='success'){
-           
-                    $this->errorArray['RoutIdError'] = 'Route_id is not valid';
-                    // echo $rid;
-          
-                    
+        if ($results === 'success') {
+
+            $this->errorArray['RoutIdError'] = 'Route_id is not valid';
+            // echo $rid;
+
         }
     }
 
-
-
-
-    public function sameTrains($inputText , $rid){
+    public function sameTrains($inputText, $rid)
+    {
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE (train_name = :train_name AND route_id=:route_id) OR route_id=:route_id ");
-        $query->bindValue(":train_name",$inputText);
-        $query->bindValue(":route_id",$rid);
+        $query->bindValue(":train_name", $inputText);
+        $query->bindValue(":route_id", $rid);
         $query->execute();
 
         $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
-      
-       if(!empty($this->resultArray["trains"] )){
-        return 'success';
-       }
+
+        if (!empty($this->resultArray["trains"])) {
+            return 'success';
+        }
     }
 
-    
-
-
-
-    private function validateTravelDays($tn) 
-
+    private function validateTravelDays($tn)
     {
 
         if (empty($tn)) {
             $this->errorArray['TravalDaysError'] = 'enter travel days';
-           
+
         }
-       
 
     }
 
     private function runSanitization()
     {
         $this->train_name = $this->sanitizeFormtrainame($this->train_name);
-        
-  
+
     }
 
     private function sanitizeFormtrainame($inputText) //Asindu
@@ -418,353 +388,697 @@ class TrainModel extends Model
         return ucfirst($inputText); // capitalize first letter
     }
 
-    public function getAvailableRoute(){
+    public function getAvailableRoute()
+    {
         $query = APP::$APP->db->pdo->prepare("SELECT route_id FROM routes WHERE route_status=0");
         $query->execute();
         $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $this->resultArray;
-        
 
     }
 
-    public function getTicketPrice(){
-        $query = APP::$APP->db->pdo->prepare("SELECT availability_lines FROM ticket_price WHERE station_name=:start_place OR station_name=:end_place");
-        $query->bindValue(":start_place", $this->start);
-        $query->bindValue(":end_place", $this->destination);
+    public function availabiltyLines($find_line)
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT availability_lines FROM ticket_price WHERE station_name=:station");
+        $query->bindValue(":station", $find_line);
         $query->execute();
-        $this->resultLine=$query->fetchAll(PDO::FETCH_ASSOC);
+        $this->resultLine = $query->fetchAll(PDO::FETCH_ASSOC);
         //var_dump($this->resultLine);
-       // var_dump($this->resultPrice);
-        //var_dump($this->resultPrice[0]);
-       // var_dump($this->resultPrice[1]);
-
-        $lineLengthStart=strlen($this->resultLine[0]['availability_lines']);
-        $lineLengthEnd=strlen($this->resultLine[1]['availability_lines']);
-
-        //var_dump($lineLengthEnd);
-        //var_dump($lineLengthStart);
-
-        
-        if($lineLengthStart == 1 && $lineLengthEnd == 1){
-            $this->intLineStart=(int) ($this->resultLine[0]['availability_lines']);
-            $this->intLineEnd=(int) ($this->resultLine[1]['availability_lines']);
-           // var_dump($intlineStart);
-            //var_dump($intlineEnd);
-
-
-        if($this->intLineStart ==  $this->intLineEnd ){
-           $query=APP::$APP->db->pdo->prepare("SELECT ( SELECT first_class from ticket_price WHERE station_name=:start_place) - (SELECT first_class FROM ticket_price WHERE station_name=:end_place) As First_class_price");
-           $query->bindValue(":start_place", $this->start);
-           $query->bindValue(":end_place", $this->destination);
-           $query->execute();
-           $this->firstClassPrice=$query->fetchAll(PDO::FETCH_ASSOC);
-           var_dump($this->firstClassPrice);
-
-
-
-           $query=APP::$APP->db->pdo->prepare("SELECT ( SELECT second_class from ticket_price WHERE station_name=:start_place) - (SELECT second_class FROM ticket_price WHERE station_name=:end_place) As Second_class_price");
-           $query->bindValue(":start_place", $this->start);
-           $query->bindValue(":end_place", $this->destination);
-           $query->execute();
-           $this->secondClassPrice=$query->fetchAll(PDO::FETCH_ASSOC);
-           var_dump($this->secondClassPrice);
-
-
-           $query=APP::$APP->db->pdo->prepare("SELECT ( SELECT third_class from ticket_price WHERE station_name=:start_place) - (SELECT third_class FROM ticket_price WHERE station_name=:end_place) As Third_class_price");
-           $query->bindValue(":start_place", $this->start);
-           $query->bindValue(":end_place", $this->destination);
-           $query->execute();
-           $this->thirdClassPrice=$query->fetchAll(PDO::FETCH_ASSOC);
-           var_dump($this->thirdClassPrice);
-
-
-
-           
-        }else{
-            $arr=array($this->intLineStart,$this->intLineEnd);
-            $comma=implode(",",$arr);
-
-            $query=APP::$APP->db->pdo->prepare("SELECT station_name from ticket_price WHERE availability_lines=:comma");//Get a intersect station
-            $query->bindValue(":comma", $comma);
-            $query->execute();
-            $station_name=$query->fetchAll(PDO::FETCH_ASSOC);
-           // var_dump($station_name);
-
-            $query=APP::$APP->db->pdo->prepare("SELECT first_class from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station",$station_name[0]['station_name']);
-            $query->execute();
-            $first_price=$query->fetchAll(PDO::FETCH_ASSOC);
-            
-            $value_first_price=$first_price[0]['first_class'];
-            
-            $my_first_price=explode(',',$value_first_price);// Get the value set ony by one in intersect
-            //var_dump($my_first_price);
-           
-
-
-            $query=APP::$APP->db->pdo->prepare("SELECT availability_lines from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $station_name[0]['station_name']);
-            $query->execute();
-            $lines=$query->fetchAll(PDO::FETCH_ASSOC);
-
-            $value_lines=$lines[0]['availability_lines'];
-            $my_line=explode(',',$value_lines);
-
-            $n = sizeof($my_line);
-
-           // var_dump($n);
-            
-
-
-            $query=APP::$APP->db->pdo->prepare("SELECT availability_lines from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->start);
-            $query->execute();
-            $start_line=$query->fetchAll(PDO::FETCH_ASSOC);
-
-            $query=APP::$APP->db->pdo->prepare("SELECT availability_lines from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->destination);
-            $query->execute();
-            $dest_line=$query->fetchAll(PDO::FETCH_ASSOC);
-
-            $query=APP::$APP->db->pdo->prepare("SELECT first_class from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->start);
-            $query->execute();
-            $start_price=$query->fetchAll(PDO::FETCH_ASSOC);
-
-
-            $query=APP::$APP->db->pdo->prepare("SELECT first_class from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->destination);
-            $query->execute();
-            $dest_price=$query->fetchAll(PDO::FETCH_ASSOC);
-
-            $positionstart=0;
-            $positionend=0;
-            $find_posi_start=0;
-            $find_posi_end=0;
-            $i=0;
-            $intersect_start=0;
-            $intersect_end=0;
-
-            for($i=0;$i<$n;$i++){
-                if($my_line[$i] == $start_line[0]['availability_lines']){
-                   $find_posi_start=$positionstart;
-                }
-                $positionstart=$positionstart+1;
-            }
-            
-            for($i=0;$i<$n;$i++){
-                if($my_line[$i] == $dest_line[0]['availability_lines']){
-                   $find_posi_end=$positionend;
-                }
-                $positionend=$positionend+1;
-            }
-
-
-
-            for($i=0;$i<$n;$i++){
-                if($i== $find_posi_start){
-                    $intersect_start = $start_price[0]['first_class'] - $my_first_price[$i];
-                }
-            }
-          var_dump($find_posi_end);
-            for($i=0;$i<$n;$i++){
-                if($i== $find_posi_end){
-                    $intersect_end = $dest_price[0]['first_class'] - $my_first_price[$i];
-                }
-            }
-            var_dump($intersect_start);
-            var_dump($intersect_end);
-            if($intersect_start < 0){
-                $intersect_start=-($intersect_start);
-            }
-            if($intersect_end < 0){
-                $intersect_end=-($intersect_end);
-            }
-            $total=$intersect_start+$intersect_end;
-            var_dump($total);
-
-
-
-
-
-        }
-        }
-
-        if($lineLengthStart!= $lineLengthEnd){
-            
-            if($lineLengthStart == 1 && $lineLengthEnd >1 || $lineLengthStart >1 && $lineLengthEnd ==1 ){
-                $this->intLineStart=(int) ($this->resultLine[0]['availability_lines']);
-
-            $value_lines=$this->resultLine[1]['availability_lines'];
-            $my_lines=explode(',',$value_lines);
-
-            $i=0;
-            $position=0;
-            $find_position=-1;
-
-            $n = sizeof($my_lines);
-            for($i;$i<$n;$i++){
-                if($this->intLineStart == $my_lines[$i]){
-                    $find_position=$find_position+1;
-                    $find_position=$position;
-
-                }
-                $position=$position+1;
-
-            }
-
-            if($find_position != -1){
-
-            $query=APP::$APP->db->pdo->prepare("SELECT first_class from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->start);
-            $query->execute();
-            $start_price=$query->fetchAll(PDO::FETCH_ASSOC);
-
-            $start_prices=$start_price[0]['first_class'];
-
-            if(strlen($start_prices) >1){
-                $my_start_price=explode(',',$start_prices);
-
-            }
-
-
-            $query=APP::$APP->db->pdo->prepare("SELECT first_class from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->destination);
-            $query->execute();
-            $dest_price=$query->fetchAll(PDO::FETCH_ASSOC);
-
-            $dest_prices=$dest_price[0]['first_class'];
-
-            if(strlen($dest_prices) >1){
-            $my_dest_price=explode(',',$dest_prices);
-            }
-
-            if(strlen($start_price[0]['first_class'])==1 && strlen($dest_price[0]['first_class']>1)){
-
-                if($my_dest_price[$find_position] > $start_price[0]['first_class'] ){
-                    $get_value=$my_dest_price[$find_position]-$start_price[0]['first_class'];
-                }else{
-                    $get_value=$start_price[0]['first_class']-$my_dest_price[$find_position];
-                }
-
-            }else{
-
-                if($dest_price[0]['first_class']> $my_start_price[$find_position]){
-                    $get_value=$dest_price[0]['first_class']-$my_start_price[$find_position];
-                }else{
-                    $get_value=$my_start_price[$find_position] - $dest_price[0]['first_class'];
-                }
-
-            }
-            
-
-            
-
-            var_dump($get_value);
-
-            
-
-
-
-
-            }
-
-
-            }
-            
-
-        }
-
-        if($lineLengthStart == $lineLengthEnd && $lineLengthStart > 1 && $lineLengthEnd >1){
-
-            $value_lines1=$this->resultLine[0]['availability_lines'];
-            $value_lines2=$this->resultLine[1]['availability_lines'];
-
-            $my_value_lines1=explode(',',$value_lines1);
-            $my_value_lines2=explode(',',$value_lines2);
-
-            $lines1=sizeof($my_value_lines1);
-            $lines2=sizeof($my_value_lines2);
-
-            $result1=array_intersect($my_value_lines1,$my_value_lines2);
-            $result2=array_intersect($my_value_lines2,$my_value_lines1);
-
-            var_dump($result1);
-            var_dump($result2);
-            if(sizeof($result1)>0){
-
-            $query=APP::$APP->db->pdo->prepare("SELECT first_class from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->destination);
-            $query->execute();
-            $dest_price=$query->fetchAll(PDO::FETCH_ASSOC);
-
-            $query=APP::$APP->db->pdo->prepare("SELECT first_class from ticket_price WHERE station_name=:station");
-            $query->bindValue(":station", $this->start);
-            $query->execute();
-            $start_price=$query->fetchAll(PDO::FETCH_ASSOC);
-              
-            $start_prices=$start_price[0]['first_class'];
-            $dest_prices=$dest_price[0]['first_class'];
-
-            $my_dest_price=explode(',',$dest_prices);
-            $my_start_price=explode(',',$start_prices);
-             
-            
-            
-            $key1=array_keys($result1);
-            $key2=array_keys($result2);
-            var_dump($key1);
-           
-            $i=0;
-            $j=sizeof($key1);
-            $k=sizeof($key2);
-            $array1=[];
-            $pos1=0;
-            $pos2=0;
-
-            for($i=0;$i<$j;$i++){
-                
-                $pos1=$key1[$i];
-
-            }
-
-            for($i=0;$i<$k;$i++){
-                $pos2=$key2[$i];
-            }
-            //var_dump($my_dest_price[$key2]);
-            if($result1[$pos2] == $result2[$pos1]){
-                if($my_dest_price[$pos2]> $my_start_price[$pos1]){
-                    $get_value=$my_dest_price[$pos2]-$my_start_price[$pos1];
-                }else{
-                    $get_value=$my_start_price[$pos1] - $my_dest_price[$pos2];
-                }
-            }
-            
-
-            var_dump($get_value);
-
-
-
-            }
-            
-
-        }
-
+        return $this->resultLine[0]['availability_lines'];
 
     }
-    
 
-    
+    public function calculateTicketPrice($station, $class_type)
+    {
+
+        $query = APP::$APP->db->pdo->prepare("SELECT $class_type FROM ticket_price WHERE station_name=:place");
+        $query->bindValue(":place", $station);
+        $query->execute();
+        $this->ClassPrice = $query->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($this->ClassPrice);
+        return $this->ClassPrice[0][$class_type];
+
+    }
+
+    public function findStation($intersect_station_name)
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT station_name from ticket_price WHERE availability_lines LIKE '%{$intersect_station_name}%' LIMIT 1"); //Get a intersect station
+        $query->bindValue(":comma", $intersect_station_name);
+        $query->execute();
+        $station_name = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $station_name[0]['station_name'];
+
+    }
+
+    public function totalTicketPrice($start_price, $end_price)
+    {
+        //var_dump($start_price);
+        if ($start_price > $end_price) {
+            $total_ticket_price = $start_price - $end_price;
+        } else {
+            $total_ticket_price = $end_price - $start_price;
+        }
+        return $total_ticket_price;
+    }
+
+    public function explodeValues($val_explode)
+    {
+
+        if (strlen($val_explode) > 1) {
+            $my_price = explode(',', $val_explode);
+        } else {
+            $my_price = explode(',', $val_explode);
+        }
+        return $my_price;
+
+    }
+
+    public function getTicketPrice()
+    {
+
+        $lineLengthStart = strlen($this->availabiltyLines($this->start));
+        $lineLengthEnd = strlen($this->availabiltyLines($this->destination));
+
+        $this->intLineStart = $this->availabiltyLines($this->start);
+        $this->intLineEnd = $this->availabiltyLines($this->destination);
+
+        if ($lineLengthStart == $lineLengthEnd) {
+
+            if ($lineLengthStart == 1 && $lineLengthEnd == 1) {
+
+                if ($this->intLineStart == $this->intLineEnd) {
+
+                    $train_class = ["first_class", "second_class", "third_class"];
+                    // var_dump($train_class);
+                    $i = 0;
+                    $j = 0;
+                    $total_ticket_amount = [];
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        //var_dump("hello");
+                        $start_val = $this->calculateTicketPrice($this->start, $train_class[$i]);
+                        $end_val = $this->calculateTicketPrice($this->destination, $train_class[$i]);
+                        $total_ticket_amount[$j] = $this->totalTicketPrice($start_val, $end_val);
+                        $j = $j + 1;
+                    }
+                    var_dump($total_ticket_amount); // print all class values;
+
+                } else {
+                    $train_class = ["first_class", "second_class", "third_class"];
+                    $arr = array($this->intLineStart, $this->intLineEnd);
+                    sort($arr); //start -> 1 line End -> 2 end find intersect 1,2 include line
+                    $comma = implode(",", $arr);
+
+                    $get_intersect_station = $this->findStation($comma);
+
+                    $i = 0;
+                    $j = 0;
+                    $total_ticket_amount = [];
+                    $my_price = [];
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+
+                        $get_ticket_price = $this->calculateTicketPrice($get_intersect_station, $train_class[$i]);
+
+                        $my_price[$i] = $this->explodeValues($get_ticket_price);
+
+                    }
+                    $get_intersect_station_lines = [];
+                    $get_start_lines = [];
+                    $get_destination_lines = [];
+                    // var_dump($my_price);
+                    $get_intersect_lines = $this->availabiltyLines($get_intersect_station);
+                    $get_intersect_station_lines = $this->explodeValues($get_intersect_lines);
+                    //var_dump($my_interset_lines);
+                    $n = sizeof($get_intersect_station_lines);
+
+                    $get_start_lines = $this->availabiltyLines($this->start);
+                    $get_destination_lines = $this->availabiltyLines($this->destination);
+
+                    $get_start_lines = $this->explodeValues($get_start_lines);
+                    $get_destination_lines = $this->explodeValues($get_destination_lines);
+
+                    //var_dump($get_intersect_station_lines);
+                    //var_dump($get_start_lines);
+                    //var_dump($get_destination_lines);
+
+                    $get_ticket_price_start = [];
+                    $get_ticket_price_end = [];
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_start[$i] = $this->calculateTicketPrice($this->start, $train_class[$i]);
+
+                    }
+                    //var_dump($get_ticket_price_start);
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_end[$i] = $this->calculateTicketPrice($this->destination, $train_class[$i]);
+
+                    }
+                    //var_dump($get_ticket_price_end);
+
+                    $positionstart = 0;
+                    $positionend = 0;
+                    $find_posi_start = 0;
+                    $find_posi_end = 0;
+                    $i = 0;
+                    $intersect_start = 0;
+                    $intersect_end = 0;
+
+                    for ($i = 0; $i < $n; $i++) {
+                        if ($get_intersect_station_lines[$i] == $get_start_lines[0]) {
+                            $find_posi_start = $positionstart;
+                        }
+                        $positionstart = $positionstart + 1; /// find start station position
+                    }
+
+                    for ($i = 0; $i < $n; $i++) {
+                        if ($get_intersect_station_lines[$i] == $get_destination_lines[0]) {
+                            $find_posi_end = $positionend;
+                        }
+                        $positionend = $positionend + 1; // find dest position
+                    }
+
+                    $intersect_start = [];
+                    $j = 0;
+                    $k = 0;
+
+                    for ($i = 0; $i < $n; $i++) {
+                        if ($i == $find_posi_start) {
+                            for ($k = 0; $k < sizeof($train_class); $k++) {
+                                if ($get_ticket_price_start[$k] > $my_price[$k][$i]) {
+                                    $intersect_start[$j] = $get_ticket_price_start[$k] - $my_price[$k][$i];
+
+                                    $j = $j + 1;
+
+                                } else {
+
+                                    $intersect_start[$j] = $my_price[$k][$i] - $get_ticket_price_start[$k];
+
+                                    $j = $j + 1;
+
+                                }
+
+                            }
+
+                        }
+                    }
+
+                    $j = 0;
+                    $k = 0;
+                    $intersect_end = [];
+                    for ($i = 0; $i < $n; $i++) {
+                        if ($i == $find_posi_end) {
+                            for ($k = 0; $k < sizeof($train_class); $k++) {
+                                if ($get_ticket_price_end[$k] > $my_price[$k][$i]) {
+                                    $intersect_end[$j] = $get_ticket_price_end[$k] - $my_price[$k][$i];
+                                    // var_dump( $intersect_end[$j]);
+
+                                    $j = $j + 1;
+
+                                } else {
+                                    $intersect_end[$j] = $my_price[$k][$i] - $get_ticket_price_end[$k];
+
+                                    $j = $j + 1;
+                                    // var_dump( $intersect_end[$j]);
+                                }
+
+                            }
+                        }
+                    }
+
+                    $total_value = [];
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $total_value[$i] = $intersect_start[$i] + $intersect_end[$i];
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        var_dump($total_value[$i]);
+                    }
+
+                }
+
+            } elseif ($lineLengthStart > 1 && $lineLengthEnd > 1) {
+                //var_dump("hy");
+                $train_class = ["first_class", "second_class", "third_class"];
+                $start_line1 = [];
+                $value_start_lines = $this->intLineStart;
+                $start_line1 = $this->explodeValues($value_start_lines);
+
+                $end_line1 = [];
+                $value_end_lines = $this->intLineEnd;
+                $end_line1 = $this->explodeValues($value_end_lines);
+
+                $i = 0;
+                $j = 0;
+                $position = 0;
+                $find_position = -1;
+                $p1_start = 0;
+                $p2_end = 0;
+
+                $n = sizeof($end_line1);
+                //var_dump($n);
+                for ($i = 0; $i < $n; $i++) {
+
+                    for ($j = 0; $j < $n; $j++) {
+                        if ($start_line1[$i] == $end_line1[$j]) {
+                            $find_position = $find_position + 1;
+                            $find_position = $position;
+                            $p1_start = $i;
+                            $p2_end = $j;
+
+                        }
+                        $position = $position + 1;
+                    }
+
+                }
+
+                if ($find_position != -1) {
+                    $get_explode_start = [];
+                    $get_ticket_price_start = [];
+                    $get_ticket_price_end = [];
+                    $get_explode_end = [];
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_start[$i] = $this->calculateTicketPrice($this->start, $train_class[$i]);
+                        $get_explode_start[$i] = $this->explodeValues($get_ticket_price_start[$i]);
+
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_end[$i] = $this->calculateTicketPrice($this->destination, $train_class[$i]);
+                        $get_explode_end[$i] = $this->explodeValues($get_ticket_price_end[$i]);
+
+                    }
+
+                    $get_value = [];
+                    $j = 0;
+                    //var_dump( $get_ticket_price_end);
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+
+                        if ($get_explode_end[$i][$p2_end] > $get_explode_start[$i][$p1_start]) {
+                            // var_dump($get_explode_end[$i][$p2_end]);
+                            $get_value[$j] = $get_explode_end[$i][$p2_end] - $get_explode_start[$i][$p1_start];
+                            //  var_dump($get_value[$j]);
+                            $j = $j + 1;
+                        } else {
+                            $get_value[$j] = $get_explode_start[$i][$p1_start] - $get_explode_end[$i][$p2_end];
+                            //var_dump($get_value[$j]);
+                            $j = $j + 1;
+                        }
+
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+
+                        var_dump($get_value[$i]);
+                    }
+
+                } else {
+                    $train_class = ["first_class", "second_class", "third_class"];
+                    $i = 0;
+                    $k = 0;
+                    //var_dump($this->intLineStart);
+                    $this->intLineStart1 = explode(',', $this->intLineStart);
+                    $this->intLineStart2 = explode(',', $this->intLineEnd);
+                    $size1 = sizeof($this->intLineStart1);
+                    $size2 = sizeof($this->intLineStart2);
+                    $size = $size1 + $size2;
+
+                    for ($i = 0; $i < $size1; $i++) {
+                        $merge[$i] = $this->intLineStart1[$i];
+                    }
+
+                    for ($i = 0, $k = $size1; $k < $size && $i < $size2; $i++, $k++) {
+                        $merge[$k] = $this->intLineStart2[$i];
+                    }
+                    sort($merge);
+                    $arrNew = implode(",", $merge);
+
+                    $get_intersect_station = $this->findStation($arrNew);
+                    $get_intersect_lines = $this->availabiltyLines($get_intersect_station);
+
+                    $common1 = [];
+                    $line_New = [];
+                    $i = 0;$j=0;$n1=0;$p=0;
+                    $intLineStart1 = [];
+                    $intLineStart1 = $this->explodeValues($this->intLineStart);
+                    $n1 = sizeof($intLineStart1);
+                    var_dump($intLineStart1);
+
+                    //$value_lines = $line_set[0]['availability_lines'];
+
+                    $get_intersect_station_lines = $this->explodeValues($get_intersect_lines);
+                    $start_posi = 0;
+                    $mid_posi1 = 0;
+
+                    $n2 = sizeof($get_intersect_station_lines);
+
+                    $j = 0;
+                    while ($i < $n1 && $j < $n2) {
+                        if ($intLineStart1[$i] == $get_intersect_station_lines[$j]) {
+                            $common1[$p] = $intLineStart1[$i];
+                            $start_posi = $i;
+                            $mid_posi1 = $j;
+                            $i = $i + 1;
+                            $j = $j + 1;
+                            $p = $p + 1;
+                        } else if ($intLineStart1[$i] < $get_intersect_station_lines[$j]) {
+                            $i = $i + 1;
+
+                        } else {
+                            $j = $j + 1;
+                        }
+                    }
+
+                    $i = 0;
+                    $j = 0;
+                    $p = 0;
+                    $mid_posi2 = 0;
+                    $end_posi = 0;
+                    $intLineStart2 = [];
+                    $intLineStart2 = $this->explodeValues($this->intLineEnd);
+                    $n3 = sizeof($intLineStart2);
+
+                    while ($i < $n3 && $j < $n2) {
+
+                        if ($intLineStart2[$i] == $get_intersect_station_lines[$j]) {
+
+                            $common2[$p] = $intLineStart2[$i];
+                            $mid_posi2 = $j;
+                            $end_posi = $i;
+                            $p = $p + 1;
+                            $i = $i + 1;
+                            $j = $j + 1;
+                        } else if ($intLineStart2[$i] < $get_intersect_station_lines[$j]) {
+                            $i = $i + 1;
+
+                        } else {
+                            $j = $j + 1;
+                        }
+                    }
+
+                    $get_ticket_price_start = [];
+                    $get_explode_start = [];
+                    $get_ticket_price_mid = [];
+                    $get_explode_mid = [];
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_start[$i] = $this->calculateTicketPrice($this->start, $train_class[$i]);
+                        $get_explode_start[$i] = $this->explodeValues($get_ticket_price_start[$i]);
+
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_mid[$i] = $this->calculateTicketPrice($get_intersect_station, $train_class[$i]);
+                        $get_explode_mid[$i] = $this->explodeValues($get_ticket_price_mid[$i]);
+
+                    }
+
+                    $get_mid_value = [];
+                    $j = 0;
+                    $i = 0;
+                    //var_dump($get_explode_mid);
+                    //var_dump($get_explode_start);
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+
+                        if ($get_explode_mid[$i][$mid_posi1] > $get_explode_start[$i][$start_posi]) {
+                            $get_mid_value[$j] = $get_explode_mid[$i][$mid_posi1] - $get_explode_start[$i][$start_posi];
+                            $j = $j + 1;
+                        } else {
+                            $get_mid_value[$j] = $get_explode_start[$i][$start_posi] - $get_explode_mid[$i][$mid_posi1];
+                            $j = $j + 1;
+                        }
+
+                    }
+                    $get_ticket_price_end = [];
+                    $get_explode_end = [];
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_end[$i] = $this->calculateTicketPrice($this->destination, $train_class[$i]);
+                        $get_explode_end[$i] = $this->explodeValues($get_ticket_price_end[$i]);
+
+                    }
+
+                    $get_end_value = [];
+                    $j = 0;
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+
+                        if ($get_explode_mid[$i][$mid_posi2] > $get_explode_end[$i][$end_posi]) {
+                            $get_end_value[$j] = $get_explode_mid[$i][$mid_posi2] - $get_explode_end[$i][$end_posi];
+                            $j = $j + 1;
+                        } else {
+                            $get_end_value[$j] = $get_explode_end[$i][$end_posi] - $get_explode_mid[$i][$mid_posi2];
+                            $j = $j + 1;
+                        }
+
+                    }
+
+                    $get_final_value = [];
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_final_value[$i] = $get_end_value[$i] + $get_mid_value[$i];
+
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                       
+                        var_dump($get_final_value[$i]);
+
+                    }
+
+                }
+
+            }
+        }
+
+        if ($lineLengthStart != $lineLengthEnd) {
+            $train_class = ["first_class", "second_class", "third_class"];
+            //var_dump("hello");
+
+            if ($lineLengthStart >= 1 && $lineLengthEnd > 1 || $lineLengthStart >= 1 && $lineLengthEnd == 1) {
+
+                $value_start_lines = $this->intLineStart;
+                $this->intLineStart = $this->explodeValues($value_start_lines);
+
+                $value_lines = $this->intLineEnd;
+                $this->intLineEnd = $this->explodeValues($value_lines);
+
+                //var_dump($this->intLineEnd);
+                //var_dump($this->intLineStart);
+
+                $i = 0;
+                $j = 0;
+                $position = 0;
+                $find_position = -1;
+                $p1_start = 0;
+                $p2_end = 0;
+
+                $x = sizeof($this->intLineEnd);
+                $y = sizeof($this->intLineStart);
+
+                //var_dump($n);
+                for ($i; $i < $y; $i++) {
+                    $j = 0;
+                    for ($j; $j < $x; $j++) {
+                        if ($this->intLineStart[$i] == $this->intLineEnd[$j]) {
+                            $find_position = $find_position + 1;
+                            $find_position = $position;
+                            $p1_start = $i;
+                            $p2_end = $j;
+
+                        }
+                        $position = $position + 1;
+                    }
+
+                }
+                
+                $get_ticket_price_start = [];
+                $get_explode_price_start = [];
+                $get_ticket_price_end = [];
+                $get_explode_price_end = [];
+                if ($find_position != -1) {
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_start[$i] = $this->calculateTicketPrice($this->start, $train_class[$i]);
+                        $get_explode_price_start[$i] = $this->explodeValues($get_ticket_price_start[$i]);
+
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_end[$i] = $this->calculateTicketPrice($this->destination, $train_class[$i]);
+                        $get_explode_price_end[$i] = $this->explodeValues($get_ticket_price_end[$i]);
+
+                    }
+
+                    $j = 0;
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        if ($get_explode_price_end[$i][$p2_end] > $get_explode_price_start[$i][$p1_start]) {
+                            $get_value[$j] = $get_explode_price_end[$i][$p2_end] - $get_explode_price_start[$i][$p1_start];
+                            $j = $j + 1;
+                        } else {
+                            $get_value[$j] = $get_explode_price_start[$i][$p1_start] - $get_explode_price_end[$i][$p2_end];
+                            $j = $j + 1;
+                        }
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        var_dump($get_value[$i]);
+                    }
+
+                } else { // example beliatta line 1 maradna line 2,3 find intesect station and get a value
+                    $i = 0;
+                    $k = 0;
+
+                    //var_dump($this->intLineStart);
+                    $newStart = [];
+                    $newEnd = [];
+                    $newStart = $this->intLineStart;
+                    $newEnd = $this->intLineEnd;
+
+                    $size1 = sizeof($newStart);
+                    $size2 = sizeof($newEnd);
+                    $size = $size1 + $size2;
+                    $merge = [];
+
+                    //var_dump($size);
+
+                    for ($i = 0; $i < $size1; $i++) {
+                        $merge[$i] = $newStart[$i];
+                    }
+
+                    for ($i = 0, $k = $size1; $k < $size && $i < $size2; $i++, $k++) {
+                        $merge[$k] = $newEnd[$i];
+                    }
+                    sort($merge);
+                    $arrNew = implode(",", $merge);
+
+                    $get_explode_intersect = [];
+                    $get_intersect_station = $this->findStation($arrNew);
+                    $get_intersect_lines = $this->availabiltyLines($get_intersect_station);
+                    $get_explode_intersect = $this->explodeValues($get_intersect_lines);
+
+                    $common1 = [];
+                    $line_New = [];
+                    $i = 0;
+                    $j = 0;
+                    $n1 = 0;
+                    $n1 = $size1;
+                    $n2 = sizeof($get_explode_intersect);
+                    $n3 = $size2;
+                    //var_dump($line_New);
+
+                    $p = 0;
+                    $start_posi = 0;
+                    $mid_posi1 = 0;
+                    $mid_posi2 = 0;
+                    $end_posi = 0;
+
+                    while ($i < $n1 && $j < $n2) {
+                        if ($newStart[$i] == $get_explode_intersect[$j]) {
+                            $common1[$p] = $newStart[$i];
+                            $start_posi = $i;
+                            $mid_posi1 = $j;
+                            $i = $i + 1;
+                            $j = $j + 1;
+                            $p = $p + 1;
+                        } else if ($newStart[$i] < $get_explode_intersect[$j]) {
+                            $i = $i + 1;
+
+                        } else {
+                            $j = $j + 1;
+                        }
+                    }
+
+                    $i = 0;
+                    $j = 0;
+                    $p = 0;
+
+                    while ($i < $n3 && $j < $n2) {
+
+                        if ($newEnd[$i] == $get_explode_intersect[$j]) {
+
+                            $common2[$p] = $newEnd[$i];
+                            $mid_posi2 = $j;
+                            $end_posi = $i;
+                            $p = $p + 1;
+                            $i = $i + 1;
+                            $j = $j + 1;
+                        } else if ($newEnd[$i] < $get_explode_intersect[$j]) {
+                            $i = $i + 1;
+
+                        } else {
+                            $j = $j + 1;
+                        }
+                    }
+                    $get_ticket_price_start = [];
+                    $get_explode_price_start = [];
+                    $get_ticket_price_mid = [];
+                    $get_explode_price_mid = [];
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_start[$i] = $this->calculateTicketPrice($this->start, $train_class[$i]);
+                        $get_explode_price_start[$i] = $this->explodeValues($get_ticket_price_start[$i]);
+
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_mid[$i] = $this->calculateTicketPrice($get_intersect_station, $train_class[$i]);
+                        $get_explode_price_mid[$i] = $this->explodeValues($get_ticket_price_mid[$i]);
+
+                    }
+
+                    $get_mid_value = [];
+                    $j = 0;
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        if ($get_explode_price_mid[$i][$mid_posi1] > $get_explode_price_start[$i][$start_posi]) {
+                            $get_mid_value[$j] = $get_explode_price_mid[$i][$mid_posi1] - $get_explode_price_start[$i][$start_posi];
+                            $j = $j + 1;
+                        } else {
+                            $get_mid_value[$j] = $get_explode_price_start[$i][$start_posi] - $get_explode_price_mid[$i][$mid_posi1];
+                            $j = $j + 1;
+                        }
+                    }
+                    $get_ticket_price_end = [];
+                    $get_explode_price_end = [];
+                    // var_dump($get_explode_price_mid);
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_ticket_price_end[$i] = $this->calculateTicketPrice($this->destination, $train_class[$i]);
+                        $get_explode_price_end[$i] = $this->explodeValues($get_ticket_price_end[$i]);
+
+                    }
+
+                    $get_end_value = [];
+                    $j = 0;
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        if ($get_explode_price_mid[$i][$mid_posi2] > $get_explode_price_end[$i][$end_posi]) {
+                            $get_end_value[$j] = $get_explode_price_mid[$i][$mid_posi2] - $get_explode_price_end[$i][$end_posi];
+                            $j = $j + 1;
+                        } else {
+                            $get_end_value[$j] = $get_explode_price_end[$i][$end_posi] - $get_explode_price_mid[$i][$mid_posi2];
+                            $j = $j + 1;
+                        }
+                    }
+                    //var_dump($get_mid_value);
+                    //var_dump($get_end_value);
+                    $get_final_value = [];
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+                        $get_final_value[$i] = $get_end_value[$i] + $get_mid_value[$i];
+
+                    }
+
+                    for ($i = 0; $i < sizeof($train_class); $i++) {
+
+                        var_dump($get_final_value[$i]);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
 }
-
-
-
-
-    
-  
-
-  
-
-
-

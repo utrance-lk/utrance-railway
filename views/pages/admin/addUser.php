@@ -169,7 +169,7 @@
 
 
                   $html .="<div class='btn__save-box'>";
-                  $html .="<button class='btn__save btn__password' type='Submit'>Add User</button></div></div>";
+                  $html .="<button class='btn btn-round-blue margin-b-l' type='Submit'>Add User</button></div></div>";
 
                   
                   $dom = new DOMDocument();
