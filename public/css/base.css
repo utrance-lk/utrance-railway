@@ -3,11 +3,32 @@
   --color-primary-light: 27, 147, 194;
   --color-secondary-dark: 19, 0, 38;
 
-  --color-secondary-light: 74, 74, 74;
-
   --color-tertiary-light: 192, 196, 199;
   --color-slight-gray: #ecf0f1;
   --color-brown: rgb(119, 119, 119);
+
+  /* main */
+  --color-main: rgba(31, 58, 147, 0.8);
+  --color-secondary-light: rgb(119, 119, 119);
+  --color-secondary-light--half: rgba(119, 119, 119, 0.1);
+
+
+  /* buttons */
+  --color-btn-box-background-white: #fff;
+  --color-btn-box-text-view: #000000;
+  --color-btn-box-text-delete: #d64541;
+  --color-btn-box-text-activate: #3FC380;
+
+  --color-btn-square-background: rgba(31, 58, 147, 0.8); 
+  --color-btn-square-text: #fff;
+  
+  --color-btn-round-background: rgba(31, 58, 147, 0.8); 
+  --color-btn-round-text: #fff;
+  --color-btn-round-background--hover: rgb(250, 151, 70);
+
+  --color-btn-round-pagination-background: rgba(119, 119, 119, .1);
+  --color-btn-round-pagination-border: rgb(250, 151, 70);
+
 }
 
 *,
@@ -45,11 +66,11 @@ li {
   list-style: none;
 }
 
-.btn {
+/* .btn {
   outline: none;
   cursor: pointer;
   color: #fff;
-}
+} */
 
 .clearfix::after {
   content: "";
@@ -83,4 +104,30 @@ button {
   cursor: pointer;
   font-family: "Sora", sans-serif;
   /* transition: all .2s; */
+}
+
+.error__placeholder::-webkit-input-placeholder {
+  color: red; 
+}
+
+/* utils */
+
+.margin-r-xs {
+  margin-right: 1rem;
+}
+
+.margin-r-s {
+  margin-right: 2rem;
+}
+
+.margin-b-s {
+  margin-bottom: 1rem;
+}
+
+.margin-b-l {
+  margin-bottom: 5rem;
+}
+
+.margin-t-s {
+  margin-top: 2rem;
 }

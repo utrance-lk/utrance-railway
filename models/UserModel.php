@@ -22,7 +22,7 @@ class UserModel extends Model
     public $user_new_password;
     public $id;
     // public $photo = "Chris-user-profile.jpg";
-     public $user_image = "Chris-user-profile.jpg";
+     public $user_image = "default";
     
     public $searchUserByNameOrId;
     public $resultArray;
@@ -40,9 +40,9 @@ class UserModel extends Model
     }
     
     private function populateValuesUpdate(){
-        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id,'user_image' => $this->user_image];
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id];
     }
-    
+
     public static function getUser($id) {
         $query = App::$APP->db->pdo->prepare("SELECT * FROM users WHERE id=:id");
         $query->bindValue(":id", $id);
@@ -60,13 +60,13 @@ class UserModel extends Model
 
     public function register(){ 
        
-        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password, 'user_image' => $this->user_image];
+        $array=['first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=>$this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_password' => $this->user_password,'user_confirm_password' => $this->user_confirm_password];
         $registerValidation=new FormValidation();
         $validationState=$registerValidation->runValidators($array);
         if($validationState ==="success"){
             $this->runSanitization();
-            $user_image = $this->first_name;
-            $this->user_image = strtolower($user_image);
+            // $user_image = $this->first_name;
+            // $this->user_image = strtolower($user_image);
             $createUser = new HandlerFactory();
             return $createUser->createOne('users', $this->populateValues());
          }else{
@@ -194,7 +194,7 @@ class UserModel extends Model
         $this->city=$this->sanitizeFormString($this->city);
         $this->contact_num=$this->sanitizeContactNumber($this->contact_num);
         $this->user_password = $this->sanitizeFormPassword($this->user_password);
-        $this->user_image = $this->sanitizeFormUsername($this->user_image);
+        // $this->user_image = $this->sanitizeFormUsername($this->user_image);
         $this->passwordHashing();
     }
 
@@ -224,9 +224,10 @@ class UserModel extends Model
 
     private function sanitizeFormUsername($inputText){//Asindu
         $inputText = strip_tags($inputText); //remove html tags
+        $inputText = str_replace(" ", "", $inputText); // remove white spaces
         $inputText = ucfirst($inputText);
         $inputText=trim($inputText); 
-        return str_replace(" ", "", $inputText); // remove white spaces
+        return ucfirst($inputText); // remove white spaces
     }
 
     private function sanitizeFormPassword($inputText){

@@ -31,7 +31,7 @@
                     $html .="<input type='text' name='first_name' class='form__input' value='$first_name' required /></div>";
                   }
                   if(empty($first_name) && !empty($firstNameError)){
-                    $html .="<input type='text' name='first_name' class='form__input' placeholder='".$firstNameError."' required /></div>";
+                    $html .="<input type='text' name='first_name' class='form__input error__placeholder' placeholder='".$firstNameError."' required /></div>";
                   }
 
                   //$html .="<input type='text' name='first_name' class='form__input' required /></div>";
@@ -46,7 +46,7 @@
                     $html .="<input type='text' name='last_name' class='form__input' value='$last_name' required /></div>";
                   }
                   if(empty($last_name) && !empty($lastNameError)){
-                    $html .="<input type='text' name='last_name' class='form__input' placeholder='".$lastNameError."' required /></div>";
+                    $html .="<input type='text' name='last_name' class='form__input error__placeholder' placeholder='".$lastNameError."' required /></div>";
                   }
 
 
@@ -63,7 +63,7 @@
                     $html .="<input type='text' name='email_id' class='form__input' value='$email_id' required /></div>";
                   }
                   if(empty($email_id) && !empty($email_id_error)){
-                    $html .="<input type='text' name='email_id' class='form__input' placeholder='".$email_id_error."' required /></div>";
+                    $html .="<input type='text' name='email_id' class='form__input error__placeholder' placeholder='".$email_id_error."' required /></div>";
                   }
 
 
@@ -82,7 +82,7 @@
                     $html .="<input type='text' name='street_line1' class='form__input' value='$street_line1' required /></div>";
                   }
                   if(empty($street_line1) && !empty($streetLine1Error)){
-                    $html .="<input type='text' name='email_id' class='form__input' placeholder='".$streetLine1Error."' required /></div>";
+                    $html .="<input type='text' name='email_id' class='form__input error__placeholder' placeholder='".$streetLine1Error."' required /></div>";
                   }
 
 
@@ -101,7 +101,7 @@
                     $html .="<input type='text' name='street_line2' class='form__input' value='$street_line2' required /></div>";
                   }
                   if(empty($street_line1) && !empty($streetLine2Error)){
-                    $html .="<input type='text' name='street_line2' class='form__input' placeholder='".$streetLine2Error."' required /></div>";
+                    $html .="<input type='text' name='street_line2' class='form__input error__placeholder' placeholder='".$streetLine2Error."' required /></div>";
                   }
 
 
@@ -129,7 +129,7 @@
                   }
 
                   if(empty($contact_num) && !empty($contactNumError)){
-                    $html .="<input type='text' name='contact_num' class='form__input' placeholder='".$contactNumError."' required/> </div>";
+                    $html .="<input type='text' name='contact_num' class='form__input error__placeholder' placeholder='".$contactNumError."' required/> </div>";
                   }
 
                   //$html .="<input type='text' name='contact_num' class='form__input'  required/> </div>";
@@ -149,13 +149,13 @@
                   $html .="<label for='newpassword' class='form__label'>Create Password</label>";
                    
                   if(empty($user_password) && empty($passwordError)){
-                    $html .="<input type='password'  name='user_password' class='form__input' required/></div>";
+                    $html .="<input type='password'  name='user_password' class='form__input' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' required/></div>";
                   }
                   if(!empty($user_password) && empty($passwordError)){
-                    $html .="<input type='password'  name='user_password' class='form__input'  required/></div>";
+                    $html .="<input type='password'  name='user_password' class='form__input' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' required/></div>";
                   }
                   if(empty($user_password) && !empty($passwordError)){
-                    $html .="<input type='password'  name='user_password' class='form__input' placeholder='".$passwordError."' required/></div>";
+                    $html .="<input type='password'  name='user_password' class='form__input error__placeholder' placeholder='".$passwordError."' required/></div>";
                   }
 
 
@@ -169,7 +169,7 @@
 
 
                   $html .="<div class='btn__save-box'>";
-                  $html .="<button class='btn__save btn__password' type='Submit'>Add User</button></div></div>";
+                  $html .="<button class='btn btn-round-blue margin-b-l' type='Submit'>Add User</button></div></div>";
 
                   
                   $dom = new DOMDocument();

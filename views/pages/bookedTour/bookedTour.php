@@ -76,9 +76,11 @@
                         <span>Rs</span>&nbsp;<span class="ticket__price">500</span>
                     </div>
                 </div>
-                <button class="btn__submit">
-                    Cancel Booking
-                </button>
+                <div class="btn__container">
+                    <button class="btn btn-round-blue">
+                        Cancel Booking
+                    </button>
+                </div>
                 </div>
         </div>
 

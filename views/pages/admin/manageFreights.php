@@ -9,7 +9,7 @@
                 placeholder="Search trains by name or id"  name="searchUserByNameOrId"
               />
               <svg class="search-icon__btn">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
+                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
             </form>
             <div class="filters">
@@ -31,7 +31,7 @@
                             20 / 50 kg
                         </div>
                     </div>
-                    <a href="/utrance-railway/freight-booking-train" class="btn__view--bookings">
+                    <a href="/utrance-railway/freight-booking-train" class="btn btn-box-white">
                         view
                     </a>
                 </div>
@@ -46,7 +46,7 @@
                             20 / 50 kg
                         </div>
                     </div>
-                    <a href="/utrance-railway/freight-booking-train" class="btn__view--bookings">
+                    <a href="/utrance-railway/freight-booking-train" class="btn btn-box-white">
                         view
                     </a>
                 </div>

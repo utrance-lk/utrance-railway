@@ -31,10 +31,9 @@
                 $html .="<label for='trainname' class='form__label'>Train Name</label>";
                 if(isset($newtrains['TrainNameError'])){
                 $error=$newtrains['TrainNameError'];
-                $html .="<input type='text' name='train_name' class='form__input' placeholder='$error' required/></div>";
+                $html .="<input type='text' name='train_name' class='form__input error__placeholder' placeholder='$error' required/></div>";
                 }else if(isset($newtrains['train_name'])){
                     $html .="<input type='text' name='train_name' class='form__input' value='".$newtrains['train_name']." required/></div>";
-                
                 }else{
                     $train_name = $value['train_name'];
                 $html .="<input type='text' name='train_name' class='form__input' value='$train_name' required/></div>";
@@ -199,7 +198,7 @@
                 $html .="<input type='number' min='0' max='50' value=".$value['train_fc_seats']." name='train_fc_seats' id='firstclass' class='form__input number__input'></div>";
                 $html .="<div class='seatbox-secondclass reservation__category-item'>";
                 $html .="<label for='secondclas'>Second Class</label>";
-                $html .="<input type='number' min='0' max='60' value=".$value['train_sc_seats']." name='train_sc_seats' id='secondclass' class='form__input number__input' required></div>";
+                $html .="<input type='number' min='0' max='60' value=".$value['train_sc_seats']." name='train_sc_seats' id='secondclass' class='form__input number__input'></div>";
                 $html .="<div class='seatbox-sleepingberths reservation__category-item'>";
 
                 $html .="<label for='sleepingberths'>Sleeping Berths</label>";
@@ -221,11 +220,10 @@
                 // $html .="<div class='btn__save btn__add-train' type='submit'>Update Train</div></div></div></form></div>";
         
                     if(isset($newArray)){
-                    
                         
-                    $html .="<button class='btn__save btn-settings' type='submit' disabled>Update Train</button></div></div></form></div>";
+                    $html .="<button class='btn btn-round-blue margin-b-l' type='submit' disabled>Update Train</button></div></div></form></div>";
                 }else{
-                    $html .="<button class='btn__save btn-settings' type='submit'>Update Train</button></div></div></form></div>";        
+                    $html .="<button class='btn btn-round-blue margin-b-l' type='submit'>Update Train</button></div></div></form></div>";        
                 }
             
                

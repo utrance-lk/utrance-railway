@@ -674,9 +674,12 @@ class TrainModel extends Model
 
            $arr = array($startline,$endline);
            $comma = implode(",",$arr);
+           $arr1 = array($endline,$startline);
+           $comma1 = implode(",",$arr1);
            
-           $query = APP::$APP->db->pdo->prepare("SELECT station_name FROM ticket_price WHERE available_lines=:comma");
+           $query = APP::$APP->db->pdo->prepare("SELECT station_name FROM ticket_price WHERE available_lines LIKE :comma OR available_lines LIKE :comma1");
            $query->bindValue(":comma",$comma);
+           $query->bindValue(":comma1",$comma1);
          
            $query->execute();
            $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
@@ -770,6 +773,9 @@ class TrainModel extends Model
             }
 
         }
+
+
+        /////////////////////////////////new comand/////////////////////////////////////////////
 
     
 }

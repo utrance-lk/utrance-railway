@@ -26,7 +26,7 @@
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";
                 if(isset($firstNameError)){
-                  $html .= "<input type='text' name='first_name' class='form__input'  placeholder='".$firstNameError."'   ></div>"; 
+                  $html .= "<input type='text' name='first_name' class='form__input error__placeholder'  placeholder='".$firstNameError."'   ></div>"; 
                  
                 }else{
                   $html .= "<input type='text' name='first_name' class='form__input'   value='".App::$APP->activeUser()['first_name']."' ></div>"; 
@@ -37,7 +37,7 @@
                 $html .= "<label for='lastname' class='form__label'>Last Name</label>";
 
                 if(isset($lastNameError)){
-                  $html .= "<input type='text' name='last_name' class='form__input'  placeholder='".$lastNameError."'   ></div>"; 
+                  $html .= "<input type='text' name='last_name' class='form__input error__placeholder'  placeholder='".$lastNameError."'   ></div>"; 
                  
                 }else{
                   $html .= "<input type='text' name='last_name' class='form__input'   value='".App::$APP->activeUser()['last_name']."' ></div>"; 
@@ -46,7 +46,7 @@
                 $html .= "<div class='emai-box content__fields-item'>";
                 $html .= "<label for='email' class='form__label'>Email</label>";
                 if(isset($email_id_error)){
-                  $html .= "<input type='text' name='email_id' class='form__input'  placeholder='".$email_id_error."'   ></div>"; 
+                  $html .= "<input type='text' name='email_id' class='form__input error__placeholder'  placeholder='".$email_id_error."'   ></div>"; 
                  
                 }else{
                   $html .= "<input type='text' name='email_id' class='form__input'   value='".App::$APP->activeUser()['email_id']."' ></div>"; 
@@ -58,7 +58,7 @@
                 $html .= "<div class='streetline-1 content__fields-item'>";
                 $html .= "<label for='stl1' class='form__label'>Street Line 1</label>";
                 if(isset($streetLine1Error)){
-                  $html .= "<input type='text' name='street_line1' class='form__input' placeholder='".$streetLine1Error."' ></div>";
+                  $html .= "<input type='text' name='street_line1' class='form__input error__placeholder' placeholder='".$streetLine1Error."' ></div>";
                 }else{
                   $html .= "<input type='text' name='street_line1' class='form__input'  value='".App::$APP->activeUser()['street_line1']."'></div>";
                   
@@ -69,7 +69,7 @@
                 $html .= "<label for='stl2' class='form__label'>Street Line 2</label>";
 
                 if(isset($streetLine2Error)){
-                  $html .= "<input type='text' name='street_line2' class='form__input' placeholder='".$streetLine2Error."' ></div>";
+                  $html .= "<input type='text' name='street_line2' class='form__input error__placeholder' placeholder='".$streetLine2Error."' ></div>";
                 }else{
                   $html .= "<input type='text' name='street_line2' class='form__input'  value='".App::$APP->activeUser()['street_line2']."'></div>";
                   
@@ -94,7 +94,7 @@
                 $html .= "<div class='contactno-box content__fields-item'>";
                 $html .= "<label for='contactno' class='form__label'>Contact No</label>";
                 if(isset($contactNumError)){
-                  $html .= "<input type='text' name='contact_num' class='form__input' placeholder='".$contactNumError."' ></div>";
+                  $html .= "<input type='text' name='contact_num' class='form__input error__placeholder' placeholder='".$contactNumError."' ></div>";
                 }else{
                   $html .= "<input type='text' name='contact_num' class='form__input'  value='" .App::$APP->activeUser()['contact_num']."'></div>";
                   
@@ -110,7 +110,7 @@
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
                 
-                $html .= "<input type='submit' class='btn__save btn-settings'  name='save' value='Save Settings'></div></div>";
+                $html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' name='save' value='Save Settings'></div></div>";
                  
 
                $dom = new DOMDocument();
@@ -138,10 +138,10 @@
               $html .= "<label for='currentpassword' class='form__label'>Current Password</label>";
               
               if(isset($passwordError)){
-                $html .= "<input type='password' name='user_password' placeholder='".$passwordError."'  class='form__input'/></div>";
+                $html .= "<input type='password' name='user_password' placeholder='".$passwordError."'  class='form__input error__placeholder'/></div>";
               }else{
                 
-                $html .= "<input type='password' name='user_password'  class='form__input'/></div>";
+                $html .= "<input type='password' name='user_password' placeholder='****************'  class='form__input'/></div>";
               }
              // $html .= "<input type='password' name='user_password' class='form__input'/></div>";
 
@@ -149,21 +149,21 @@
               $html .= "<label for='newpassword' class='form__label'>New Password</label>";
               
               if(isset($passwordMatchError)){
-                $html .= "<input type='password' name='user_new_password'  placeholder='".$passwordMatchError."' class='form__input'></div>";
+                $html .= "<input type='password' name='user_new_password'  placeholder='".$passwordMatchError."' class='form__input error__placeholder'></div>";
               }else{
-                $html .= "<input type='password' name='user_new_password'   class='form__input'/></div>";
+                $html .= "<input type='password' name='user_new_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit'   class='form__input'/></div>";
               }
 
              // $html .= "<input type='password' name='user_new_password' class='form__input'></div>";
 
               $html .= "<div class='confirmpassword-box content__fields-item'>";
               $html .= "<label for='confirmpassword' class='form__label'>Confirm Password</label>";
-              $html .= "<input type='password' name='user_confirm_password' class='form__input'></div>";
+              $html .= "<input type='password' name='user_confirm_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' class='form__input'></div>";
 
               $html .= "<div class='btn__save-box'>";
 
               //$html .= "<div class='btn__save btn__password'>Save Password</div></div>";
-              $html .= "<input type='submit' class='btn__save btn__password' value='Save Password'></div>";
+              $html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' value='Save Password'></div>";
           
 
               $dom = new DOMDocument();
