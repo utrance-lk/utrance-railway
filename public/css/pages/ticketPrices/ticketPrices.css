@@ -1,0 +1,110 @@
+.ticket__prices {
+  /* border: 2px solid red; */
+  margin-top: 5rem;
+}
+
+.search__box {
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 30vw;
+}
+
+.search__box div {
+  /* width:15rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, .4); */
+}
+
+.search__box span {
+  font-size: 2rem;
+  width: 5rem;
+}
+
+.input__from,
+.input__to{
+  height:5rem;
+  width:15rem;
+  padding:.5rem;
+  font-size: 2rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
+  font-family: 'Sora', Courier, monospace;
+}
+
+.search__box--item {
+  /* border: 1px solid green; */
+  padding: 1rem;
+}
+
+.btn-square-blue {
+  margin-top: 0;
+  padding: 1.5rem;
+  border-radius: 10rem;
+  width: 10rem;
+  justify-content: center;
+}
+
+.search__results-container {
+  /* border: 1px solid red; */
+  margin: 5rem 15vw 0 15vw;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
+}
+
+.results__set {
+  display: flex;
+  justify-content: space-around;
+}
+
+.seat__class--box {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+}
+
+.seat__class--box-item {
+  margin: 1rem;
+}
+
+.class__icon {
+  width: 3rem;
+  height: 3rem;
+  fill: var(--color-main);
+}
+
+.class__price {
+  font-size: 2rem;
+  border: 1px solid var(--color-main);
+  padding: .5rem;
+}
+
+.class__name {
+  font-family: "Lato", sans-serif;
+  font-size: 1.7rem;
+}
+
+.icon__btn {
+  cursor: pointer;
+}
+
+.icon__btn:active,
+.icon__btn:focus {
+  transform: scale(.9);
+}
+
+.number-of-persons__box {
+  /* border: 1px solid red; */
+  width: 15rem;
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+}

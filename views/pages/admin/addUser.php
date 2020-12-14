@@ -144,7 +144,7 @@
                   $html .="<div class='content-title'>";
                   $html .="<p>Create Password</p></div>";
 
-                  $html .="<div class='content__fields'>";
+                  $html .="<div>";
                   $html .="<div class='newpassword-box content__fields-item'>";
                   $html .="<label for='newpassword' class='form__label'>Create Password</label>";
                    
