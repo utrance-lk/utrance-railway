@@ -59,9 +59,15 @@
 
                       $html .= "<a href='/utrance-railway/trains/view?id=$train_id' class='btn btn-box-white margin-r-s'>";
                       $html .= "View</a>";
+                      if($value['train_active_status']==0){
+                        $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='btn btn-box-white btn-box-white--delete' id='isActive'>";
+                        $html .= "Deactivated</a></div></div>";
+                      }else{
+                        $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='btn btn-box-white btn-box-white--delete' id='isActive'>";
+                      $html .= "Active</a></div></div>";
+
+                      }
                       
-                      $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='btn btn-box-white btn-box-white--delete'>";
-                      $html .= "Delete</a></div></div>";
                       
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);
@@ -74,6 +80,10 @@
     </div>
 </div>
 </div>
+
+<script>
+
+</script>
 
 
 

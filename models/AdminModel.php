@@ -328,7 +328,7 @@ class AdminModel extends Model {
     }
 
     public function deleteTrains(){
-        $query = APP::$APP->db->pdo->prepare("DELETE FROM trains WHERE train_id = :train_id ");
+        $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=0 WHERE train_id = :train_id ");
         $query->bindValue(":train_id", $this->id);
         $this->setRouteStatus();
         $query->execute();
