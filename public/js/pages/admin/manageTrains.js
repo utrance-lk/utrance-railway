@@ -1,18 +1,18 @@
-let usersSet;
+let trainsSet;
 
-const renderResults = function (users, page = 1, resPerPage = 4) {
+const renderResults = function (trains, page = 1, resPerPage = 4) {
     // render results of current page
-    usersSet = users;
+    trainsSet = trains;
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
   
-    users.slice(start, end).forEach(renderUser);
+    trains.slice(start, end).forEach(renderUser);
   
     // document
     //   .querySelector(".search__results-container")
     //   .insertAdjacentHTML("beforeend", `<div class="btn__container"></div>`);
     // render pagination buttons
-    renderButtons(page, users.length, resPerPage);
+    renderButtons(page, trains.length, resPerPage);
   };
   
 var x="all";
@@ -65,11 +65,11 @@ document
     if (btn) {
       clearResults();
       const goToPage = parseInt(btn.dataset.goto, 4);
-      renderResults(usersSet, goToPage);
+      renderResults(trainsSet, goToPage);
     }
   });
 
- let y="all";
+  y="all";
   document.getElementById("train__type").addEventListener("change", function () {
 
     y = train__type.value;
