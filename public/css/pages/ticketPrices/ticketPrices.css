@@ -243,10 +243,13 @@
   width:2rem;
   height:2rem;
   color: white;
+  border-radius: 10px;
+
 }
 .minus-btn{
   background-color: rgba(31, 58, 147, 0.8);
   width:2rem;
   height:2rem;
   color: white;
+  border-radius: 10px;
 }

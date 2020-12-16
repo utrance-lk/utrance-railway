@@ -63,6 +63,8 @@
 
         </script>
       <?php endif;?>
+
+
       <script>
        document.querySelector(".minus-btn").setAttribute("disabled","disabled");
        let valueCount;
