@@ -20,7 +20,7 @@
                 <div class="filter__item">
                   <label for="train__type" class="margin-r-s">Train Type &colon;</label>
                   <select name="train__type" id="train__type" class="form__input">
-                    <option value="express">All</option>
+                    <option value="all">All</option>
                     <option value="express">Express</option>
                     <option value="slow">Slow</option>
                     <option value="Intercity">Intercity</option>
@@ -35,55 +35,21 @@
                   </select>
                 </div>
               </div>
-              <div class="search__results-container">
-                <?php
-                  $dom = new DOMDocument;
-                  libxml_use_internal_errors(true);
-                  $dom->loadHTML('...');
-                  libxml_clear_errors();
-              
-                  if(isset($trains))
-                  {
-                    foreach($trains as $key => $value)
-                    {
-                      $html ="<div class='search__result-card'>
-                        <div class='search__result-train-idbox'>#
-                      ";
-
-                      $html .= "<span class='train__id ' name='id'>" .$value['train_id'] . "</span></div>";
-                    
-                      $html .= "<div class='search__result-train-namebox'>" .$value['train_name'] . "</div>";
-                      $html .= "<div class='search__result-train-typebox'>" .$value['train_type'] . "</div>";
-                      $train_id=$value['train_id'];
-                      // $train_active_status=$value['train_active_status'];
-
-                      $html .= "<a href='/utrance-railway/trains/view?id=$train_id' class='btn btn-box-white margin-r-s'>";
-                      $html .= "View</a>";
-                      if($value['train_active_status']==0){
-                        $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='btn btn-box-white btn-box-white--delete' id='isActive'>";
-                        $html .= "Deactivated</a></div></div>";
-                      }else{
-                        $html .= "<a href='/utrance-railway/trains/delete?id=$train_id' class='btn btn-box-white btn-box-white--delete' id='isActive'>";
-                      $html .= "Active</a></div></div>";
-
-                      }
-                      
-                      
-                      $dom = new DOMDocument();
-                      $dom->loadHTML($html);
-                      print_r($dom->saveHTML());
-                    }
-                  }      
-                ?>
-              </div>    
+              <div class="search__results-container"></div>  
+              <div class="btn__container"></div>  
         </div>
     </div>
 </div>
 </div>
 
-<script>
-
-</script>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/pagination.js"></script>
+      <script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/manageTrains.js"></script>
+      <?php if (isset($trains)): ?>
+        <script>
+          renderResults(<?php echo json_encode($trains); ?>);
+          renderButtons();
+        </script>
+      <?php endif;?>
 
 
 

@@ -326,6 +326,13 @@ class AdminModel extends Model {
         return $this->resultArray;
    
     }
+    public function activeTrains(){
+        $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=1 WHERE train_id = :train_id ");
+        $query->bindValue(":train_id", $this->id);
+        $this->setRouteStatus2();
+        $query->execute();
+        
+    }
 
     public function deleteTrains(){
         $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=0 WHERE train_id = :train_id ");
@@ -333,6 +340,12 @@ class AdminModel extends Model {
         $this->setRouteStatus();
         $query->execute();
         
+    }
+    public function setRouteStatus2(){
+
+        $query = APP::$APP->db->pdo->prepare("UPDATE routes SET route_status=1 WHERE route_id=(SELECT trains.route_id FROM trains INNER JOIN routes ON trains.route_id = routes.route_id WHERE trains.train_id=:train_id)");
+        $query->bindValue(":train_id", $this->id);
+        $query->execute();
     }
 
     public function setRouteStatus(){
