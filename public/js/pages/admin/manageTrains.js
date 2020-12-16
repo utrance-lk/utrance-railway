@@ -69,14 +69,21 @@ document
     }
   });
 
- var y;
+ let y="all";
   document.getElementById("train__type").addEventListener("change", function () {
 
-    y=train__type.value;
-    console.log(y);
+    y = train__type.value;
+    
   });
+ 
+ 
 
+  document.getElementById("active__status").addEventListener("change", function () {
 
+    console.log(y);
+    var l= train__type.value;
+    
+  });
 
 
 
