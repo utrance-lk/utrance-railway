@@ -19,14 +19,12 @@
               <span class="nav__items-text-box">News</span>
             </a>
             
-            <div class="ticket-box nav-items-little">
             <a href="/utrance-railway/ticket-prices" class="home-box nav-items-little">
               <svg class="ticket__icon navbar__icon">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-ticket"></use>
               </svg>
               <span class="nav__items-text-box">Ticket Prices</span>
-              </a>
-            </div>
+            </a>
            
             <a href="/utrance-railway/freight-search" class="freights-box nav-items-little">
               <svg class="freights__icon navbar__icon">
