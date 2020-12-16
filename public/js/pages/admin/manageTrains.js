@@ -69,32 +69,43 @@ document
     }
   });
 
-//  var y;
-//   document.getElementById("train__type").addEventListener("change", function () {
+ var y;
+  document.getElementById("train__type").addEventListener("change", function () {
 
-//     y=train__type.value;
+    y=train__type.value;
+    console.log(y);
+  });
+
+
+
+
+
+  // var accInfo;
+  // const train__type = document.getElementById("train__type");
+  //  train__type.addEventListener("change",function(){
   
-//   });
-//   console.log(y); 
-
+  //    accInfo = train__type.value;
+  //   console.log(accInfo);
+  //   });
  
-//   const train__type = document.getElementById("train__type");
-//   train__type.addEventListener("change", () => {
 
-//     accInfo = train__type.value;
-   
-// })
+
+
 
 // console.log(accInfo);
-let train;
-const train__type = document.querySelector('#train_type');
-document.addEventListener("change",function(e){
-    if(e.target===train__type){
-         train=train__type.value;
-         console.log(train);
-    }
-});
-
+// let train;
+// const train__type = document.querySelector('#train_type');
+// document.addEventListener("change",function(e){
+//     if(e.target===train__type){
+//          train=train__type.value;
+//          console.log(train);
+//     }
+// });
+// var i;
+// document.getElementById('train__type').addEventListener('change', function() {
+ 
+//   console.log(this.value);
+// });
 
 
 

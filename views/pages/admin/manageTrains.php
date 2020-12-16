@@ -46,6 +46,7 @@
       <script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/manageTrains.js"></script>
       <?php if (isset($trains)): ?>
         <script>
+   
           renderResults(<?php echo json_encode($trains); ?>);
           renderButtons();
         </script>
