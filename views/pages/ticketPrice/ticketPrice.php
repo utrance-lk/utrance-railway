@@ -69,7 +69,7 @@
        document.querySelector(".minus-btn").setAttribute("disabled","disabled");
        let valueCount;
        let onePerson="Person";
-       let twoPerson="Persons)";
+       let twoPerson="Persons";
        let firstClassPrice=document.getElementById("first_class").innerText;
        firstClassPrice=firstClassPrice.match(/\d+/g);
        console.log(firstClassPrice)
