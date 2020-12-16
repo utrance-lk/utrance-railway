@@ -137,16 +137,6 @@
   text-transform: uppercase;
 }
 
-.form__input {
-  padding: 1rem;
-  outline: none;
-  /* width: 60%; */
-  background-color: rgb(242, 242, 242);
-  border: none;
-  font-family: "Lato", sans-serif;
-  border-radius: 3px;
-}
-
 .userpicture-box {
   /* border: 1px solid red; */
 }
@@ -667,4 +657,20 @@ select {
 .btn__container {
   display: flex;
   justify-content: flex-end;
+}
+.filters__container {
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem 1rem;
+  border: 1px solid rgba(119, 119, 119, .3);
+}
+
+.filter__item {
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.form__input {
+  box-shadow: 1px 1px 2px rgba(0, 0, .3, .2);
+  border-radius: 5px;
 }
