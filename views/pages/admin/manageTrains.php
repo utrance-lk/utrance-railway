@@ -21,17 +21,17 @@
                   <label for="train__type" class="margin-r-s">Train Type &colon;</label>
                   <select name="train__type" id="train__type" class="form__input">
                     <option value="all">All</option>
-                    <option value="express">Express</option>
-                    <option value="slow">Slow</option>
+                    <option value="Express">Express</option>
+                    <option value="Slow">Slow</option>
                     <option value="Intercity">Intercity</option>
                   </select>
                 </div>
                 <div class="filter__item">
                   <label for="active__status" class="margin-r-s">Active Status &colon;</label>
                   <select name="active__status" id="active__status" class="form__input">
-                    <option value="active">All</option>
-                    <option value="active">Active</option>
-                    <option value="deactivated">Deactivated</option>
+                    <option value="all">All</option>
+                    <option value="1">Active</option>
+                    <option value="0">Deactivated</option>
                   </select>
                 </div>
               </div>
@@ -46,8 +46,27 @@
       <script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/manageTrains.js"></script>
       <?php if (isset($trains)): ?>
         <script>
-   
-          renderResults(<?php echo json_encode($trains); ?>);
+             var y;
+             var l;
+             document.getElementById("train__type").addEventListener("change", function () {
+             y = train__type.value;  
+           
+             renderResults(<?php echo json_encode($trains); ?>,y,l);
+             
+           
+  });
+  document.getElementById("active__status").addEventListener("change", function () {
+    l= active__status.value;
+    
+    renderResults(<?php echo json_encode($trains); ?>,y,l);
+ 
+ 
+
+});
+var r = document.getElementById("train__type").value;
+
+    renderResults(<?php echo json_encode($trains); ?>);
+
           renderButtons();
         </script>
       <?php endif;?>
