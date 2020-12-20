@@ -1,3 +1,8 @@
+<?php $mysqli = new mysqli("localhost", "root", "", "dbname");
+if($mysqli->connect_error) {
+  exit('Could not connect');
+} ?>
+
 <div class="load-content-container">
     <div class="load-content">
         <div class="load-content--manage-trains">
@@ -19,7 +24,7 @@
               <div class="filters__container margin-t-s">
                 <div class="filter__item">
                   <label for="train__type" class="margin-r-s">Train Type &colon;</label>
-                  <select name="train__type" id="train__type" class="form__input">
+                  <select name="train__type"  id="train__type" class="form__input">
                     <option value="all">All</option>
                     <option value="Express">Express</option>
                     <option value="Slow">Slow</option>
