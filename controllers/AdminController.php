@@ -142,9 +142,12 @@ class AdminController extends Controller
                     return $this->render(['admin', 'manageTrains'], $resultArray);
                 }
                 
-                
+               
                 $trainArrays = $searchModel->getTrains();
-                return $this->render(['admin', 'manageTrains'], $trainArrays);       
+                 return $this->render(['admin', 'manageTrains'], $trainArrays); 
+                // return $this->render($trainArrays); 
+                // return $trainArrays;
+                   
             }
         }
     }

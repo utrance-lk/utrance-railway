@@ -7,7 +7,10 @@ require_once "../controllers/AdminController.php";
 $app->router->get('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
 $app->router->Post('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
 
+$app->router->get('/utrance-railway/newmanageTrains.php', [TrainController::class, 'newsearch']);
+
 $app->router->get('/utrance-railway/trains/view', [AdminController::class, 'viewTrain']);
+
 
 $app->router->get('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
 $app->router->post('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
@@ -35,5 +38,7 @@ $app->router->get('/utrance-railway/FreightServicePrice', [TrainController::clas
 $app->router->post('/utrance-railway/ticket', [TrainController::class, 'ticket']);
 $app->router->get('/utrance-railway/ticket', [TrainController::class, 'ticket']);
 
+
+$app->router->get('/utrance-railway/trains/search', [TrainController::class, 'newsearch']);
 
 ?>

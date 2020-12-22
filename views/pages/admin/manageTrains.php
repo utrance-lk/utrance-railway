@@ -1,7 +1,4 @@
-<?php $mysqli = new mysqli("localhost", "root", "", "dbname");
-if($mysqli->connect_error) {
-  exit('Could not connect');
-} ?>
+
 
 <div class="load-content-container">
     <div class="load-content">
@@ -34,7 +31,7 @@ if($mysqli->connect_error) {
                 <div class="filter__item">
                   <label for="active__status" class="margin-r-s">Active Status &colon;</label>
                   <select name="active__status" id="active__status" class="form__input">
-                    <option value="all">All</option>
+                    <option value="a">All</option>
                     <option value="1">Active</option>
                     <option value="0">Deactivated</option>
                   </select>
@@ -49,7 +46,11 @@ if($mysqli->connect_error) {
 
 <script type="text/javascript" src="../../../utrance-railway/public/js/components/pagination.js"></script>
       <script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/manageTrains.js"></script>
-      <?php if (isset($trains)): ?>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    
+     
+      <!-- <?php if (isset($trains)): ?>
         <script>
              var y;
              var l;
@@ -70,11 +71,76 @@ if($mysqli->connect_error) {
 });
 var r = document.getElementById("train__type").value;
 
-    renderResults(<?php echo json_encode($trains); ?>);
+      renderResults(<?php echo json_encode($trains); ?>);
 
           renderButtons();
         </script>
+        renderResults(<?php echo json_encode($trains); ?>);
+      <?php endif;?> -->
+      <?php if (isset($trains)): ?>
+        <script>
+          renderResults(<?php echo json_encode($trains); ?>);
+          renderButtons();
+        </script>
       <?php endif;?>
+
+      <script>
+
+
+      var index;
+      var newindex;
+      $(document).ready(function(){
+       
+       
+        $(".form__input").on('change', function() {
+         
+         index = $('#train__type').val();
+         newindex = $('#active__status').val();
+         console.log(index);
+         console.log(newindex +" "+index);
+         newindex2=newindex +" "+index;
+          $.ajax({
+            url:'newmanageTrains.php?Traintype='+newindex2,
+            method:'get',
+            data:{index1:newindex2}
+          }).done(function(book){
+            console.log(book)
+            trains=JSON.parse(book)
+            renderResults(trains);
+            renderButtons();
+
+          })
+    
+
+        })
+
+      })
+
+      // $(document).ready(function(){
+      //   $("#active__status").on('change', function() {
+       
+      //    newindex = this.value;
+      //    $.ajax({
+      //       url:'newmanageTrains.php?Traintype='+index+'&status'+newindex,
+      //       method:'get',
+      //       data:{index1:index, index2:newindex}
+      //     }).done(function(book){
+      //       trains=JSON.parse(book)
+      //       renderResults(trains);
+      // renderButtons();
+
+      //     })
+        
+      //   })
+      // })
+ </script>
+
+
+
+
+
+
+     
 
 
 

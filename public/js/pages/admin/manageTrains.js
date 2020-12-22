@@ -6,6 +6,7 @@ var i=0;
 let k;
 
 const renderResults = function (trains,y,l, page = 1, resPerPage = 4) {
+  
   clearResults();
     // render results of current page
  console.log(l);
@@ -17,7 +18,7 @@ const renderResults = function (trains,y,l, page = 1, resPerPage = 4) {
     const end = page * resPerPage;
   
     trains.slice(start, end).forEach(renderUser);
-    
+   
 
     renderButtons(page, trains.length, resPerPage);
     
@@ -96,6 +97,8 @@ document
     }
   });
 
+
+
 //  var y;
 //   document.getElementById("train__type").addEventListener("change", function () {
 
@@ -122,6 +125,7 @@ document
 
 
  
+
 
 
 

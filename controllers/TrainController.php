@@ -16,6 +16,25 @@ class TrainController extends Controller
         return $this->render('getUserDetails');
     }
 
+    public function newsearch($request)
+    {
+        
+
+         if ($request->isGet()) {
+            $saveDetailsModel = new TrainModel();
+            $tempBody = $request->getBody();
+             $tempBody = $request->getQueryParams();
+             $saveDetailsModel->loadData($tempBody);
+            
+
+            $trainArrays =  $saveDetailsModel->getMyTrains();
+            //  var_dump($trainArrays);
+            // // return $this->render(['admin', 'manageTrains'], $trainArrays);
+          
+            echo json_encode($trainArrays);
+         }
+    }
+
     public function register($request)
     {
 

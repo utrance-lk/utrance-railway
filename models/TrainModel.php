@@ -10,7 +10,8 @@ class TrainModel extends Model
     
     public $from;
     public $to;
-
+    public $Traintype;
+   
     public $id;
     public $train_name;
     public $train_type;
@@ -27,6 +28,44 @@ class TrainModel extends Model
     public $searchTrain;
     private $errorArray = [];
     private $registerSetValueArray = [];
+
+    public function getMyTrains(){
+    //   $new= explode(" ",$this->Traintype);
+      $firstName = substr($this->Traintype,4);
+      $lastName = $this->Traintype[0];
+    if($firstName!="all" && $lastName=="a"){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_id  ");
+        $query->bindValue(":train_id",  $firstName);
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray; 
+
+    }else if($firstName=="all" && $lastName!="a"){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_active_status = :train_id  ");
+        $query->bindValue(":train_id",  $lastName);
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+
+    }else if($firstName!="all" && $lastName!="a"){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_id AND train_active_status = :train_status");
+        $query->bindValue(":train_id",  $firstName);
+        $query->bindValue(":train_status",  $lastName);
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+
+    }else if($firstName=="all" && $lastName=="a"){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains");
+        
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+       
+    
+
+    }
 
     public function createOne()
     {
@@ -48,7 +87,7 @@ class TrainModel extends Model
 
         $this->resultArray['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        
+     
         return $this->resultArray;
 
         
@@ -773,6 +812,8 @@ class TrainModel extends Model
             }
 
         }
+
+        
 
 
         /////////////////////////////////new comand/////////////////////////////////////////////
