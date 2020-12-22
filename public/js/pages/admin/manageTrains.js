@@ -27,29 +27,7 @@ const renderResults = function (trains,y,l, page = 1, resPerPage = 4) {
  
 
   const renderUser = function (train){
-    if(trainctive==null && trainnew==null){
-      newResult(train);
-    }
-    else if(train.train_type== trainnew && trainctive==null ){
-      newResult(train);
-    }else if(train.train_active_status==trainctive && trainnew==null){
-      newResult(train);
-    }else if(train.train_type=== trainnew && train.train_active_status===trainctive){
-      newResult(train);
-    }else if(trainctive=="all" && trainnew=="all"){
-      newResult(train);
-    }
-    else if(train.train_type== trainnew && trainctive=="all" ){
-      newResult(train);
-    }else if(train.train_active_status==trainctive && trainnew=="all"){
-      newResult(train);
-    }
-
-};
-
-const newResult = function(train){
-  i++;
-  let markup=`<div class='search__result-card'>
+    let markup=`<div class='search__result-card'>
       <div class='search__result-train-idbox'>#
     <span class='train__id ' name='id'>${train.train_id}</span></div>
     
@@ -76,8 +54,11 @@ const newResult = function(train){
     document
       .querySelector(".search__results-container")
       .insertAdjacentHTML("beforeend", markup);
+   
 
-}
+};
+
+
 
 const clearResults = function () {
   document.querySelector(".search__results-container").innerHTML = "";

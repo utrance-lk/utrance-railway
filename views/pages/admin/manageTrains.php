@@ -46,37 +46,9 @@
 
 <script type="text/javascript" src="../../../utrance-railway/public/js/components/pagination.js"></script>
       <script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/manageTrains.js"></script>
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     
      
-      <!-- <?php if (isset($trains)): ?>
-        <script>
-             var y;
-             var l;
-             document.getElementById("train__type").addEventListener("change", function () {
-             y = train__type.value;  
-           
-             renderResults(<?php echo json_encode($trains); ?>,y,l);
-             
-           
-  });
-  document.getElementById("active__status").addEventListener("change", function () {
-    l= active__status.value;
     
-    renderResults(<?php echo json_encode($trains); ?>,y,l);
- 
- 
-
-});
-var r = document.getElementById("train__type").value;
-
-      renderResults(<?php echo json_encode($trains); ?>);
-
-          renderButtons();
-        </script>
-        renderResults(<?php echo json_encode($trains); ?>);
-      <?php endif;?> -->
       <?php if (isset($trains)): ?>
         <script>
           renderResults(<?php echo json_encode($trains); ?>);
@@ -103,9 +75,9 @@ var r = document.getElementById("train__type").value;
             url:'newmanageTrains.php?Traintype='+newindex2,
             method:'get',
             data:{index1:newindex2}
-          }).done(function(book){
-            console.log(book)
-            trains=JSON.parse(book)
+          }).done(function(train){
+            console.log(train)
+            trains=JSON.parse(train)
             renderResults(trains);
             renderButtons();
 
@@ -116,23 +88,7 @@ var r = document.getElementById("train__type").value;
 
       })
 
-      // $(document).ready(function(){
-      //   $("#active__status").on('change', function() {
-       
-      //    newindex = this.value;
-      //    $.ajax({
-      //       url:'newmanageTrains.php?Traintype='+index+'&status'+newindex,
-      //       method:'get',
-      //       data:{index1:index, index2:newindex}
-      //     }).done(function(book){
-      //       trains=JSON.parse(book)
-      //       renderResults(trains);
-      // renderButtons();
-
-      //     })
-        
-      //   })
-      // })
+     
  </script>
 
 
