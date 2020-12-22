@@ -33,7 +33,7 @@
                   <select name="active__status" id="active__status" class="form__input">
                     <option value="a">All</option>
                     <option value="1">Active</option>
-                    <option value="0">Deactivated</option>
+                    <option value="0">Deactive</option>
                   </select>
                 </div>
               </div>
@@ -72,7 +72,7 @@
          console.log(newindex +" "+index);
          newindex2=newindex +" "+index;
           $.ajax({
-            url:'newmanageTrains.php?Traintype='+newindex2,
+            url:'newmanageTrains?Traintype='+newindex2,
             method:'get',
             data:{index1:newindex2}
           }).done(function(train){

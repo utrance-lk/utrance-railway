@@ -43,11 +43,11 @@ const renderResults = function (trains,y,l, page = 1, resPerPage = 4) {
   View</a>`;
   if(train.train_active_status==1){
    
-      markup +=`<a href='/utrance-railway/trains/deleted?id=${train.train_id}' class='btn btn-box-white btn-box-white--delete' id='isActive' onclick=\"return confirm('Are you sure?');\">
-      Deactive</a></div></div>`;
+      markup +=`<a href='/utrance-railway/trains/Deactivated?id=${train.train_id}' class='btn btn-box-white btn-box-white--delete' id='isActive' onclick=\"return confirm('Are you sure?');\">
+      Deactivate</a></div></div>`;
   }else{
-      markup +=`<a href='/utrance-railway/trains/Activated?id=${train.train_id}' class='btn btn-box-white btn-box-white--delete' id='isActive' onclick=\"return confirm('Are you sure?');\">
-      Active</a></div></div>`;
+      markup +=`<a href='/utrance-railway/trains/Activated?id=${train.train_id}' class='btn btn-box-white btn-box-white--activate' id='isActive' onclick=\"return confirm('Are you sure?');\">
+      Activate</a></div></div>`;
   }
   
     // console.log(markup);

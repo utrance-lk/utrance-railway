@@ -126,8 +126,47 @@ class AdminController extends Controller
         $response->redirect('/utrance-railway/users');
     }
 
+    public function filterSearch($request)
+    {
+        
+
+         if ($request->isGet()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+             $tempBody = $request->getQueryParams();
+             $saveDetailsModel->loadData($tempBody);
+            
+
+            $trainArrays =  $saveDetailsModel->getMyUsers();
+            //  var_dump($trainArrays);
+            // // return $this->render(['admin', 'manageTrains'], $trainArrays);
+          
+            echo json_encode($trainArrays);
+         }
+    }
+
 
     // manage trains
+    
+    public function newsearch($request)
+    {
+        
+
+         if ($request->isGet()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+             $tempBody = $request->getQueryParams();
+             $saveDetailsModel->loadData($tempBody);
+            
+
+            $trainArrays =  $saveDetailsModel->getMyTrains();
+            //  var_dump($trainArrays);
+            // // return $this->render(['admin', 'manageTrains'], $trainArrays);
+          
+            echo json_encode($trainArrays);
+         }
+    }
+
     public function manageTrains($request)
     {
         if($this->protect()) {

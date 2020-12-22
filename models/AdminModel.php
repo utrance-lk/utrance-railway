@@ -23,13 +23,14 @@ class AdminModel extends Model {
     public $user_confirm_password;
     public $searchUserByNameOrId;
     private $registerSetValueArray = [];
+    public $userRole;
     // public $addUserImage = "Chris-user-profile.jpg";
 
 
     //////////////Train//////////////////
 
 
-
+    public $Traintype;
     public $train_name;
     public $train_type;
     public $train_id;
@@ -266,10 +267,85 @@ class AdminModel extends Model {
         $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
     }
 
+    public function getMyUsers(){
+        //   $new= explode(" ",$this->Traintype);
+          $typeOfUser = substr($this->userRole,4);
+          $userstaus = $this->userRole[0];
+        if($typeOfUser!="all" && $userstaus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type  ");
+            $query->bindValue(":user_type",$typeOfUser);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray; 
+    
+        }else if($typeOfUser=="all" && $userstaus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_active_status = :user_status ");
+            $query->bindValue(":user_status",$userstaus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfUser!="all" && $userstaus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type AND user_active_status = :user_status");
+            $query->bindValue(":user_type",$typeOfUser);
+            $query->bindValue(":user_status",$userstaus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfUser=="all" && $userstaus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users");
+            
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+        }
+           
+        
+    
+        }
+
    
 
 
     /////////////////////////Trains model////////////////////////////////////////////
+    public function getMyTrains(){
+        //   $new= explode(" ",$this->Traintype);
+          $typeOfTrain = substr($this->Traintype,4);
+          $staus = $this->Traintype[0];
+        if($typeOfTrain!="all" && $staus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type  ");
+            $query->bindValue(":train_type",$typeOfTrain);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray; 
+    
+        }else if($typeOfTrain=="all" && $staus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_active_status = :train_status ");
+            $query->bindValue(":train_status",$staus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfTrain!="all" && $staus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type AND train_active_status = :train_status");
+            $query->bindValue(":train_type",$typeOfTrain);
+            $query->bindValue(":train_status",$staus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfTrain=="all" && $staus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains");
+            
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+        }
+           
+        
+    
+        }
 
     public function getTrains()
     {
