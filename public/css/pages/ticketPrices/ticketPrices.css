@@ -12,6 +12,8 @@
 }
 
 .search__box div {
+  
+    width: 15rem;
   /* width:15rem;
   background-color: #fff;
   border-radius: 5px;
@@ -25,14 +27,15 @@
 
 .input__from,
 .input__to{
-  height:5rem;
-  width:15rem;
-  padding:.5rem;
-  font-size: 2rem;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
-  font-family: 'Sora', Courier, monospace;
+  height: 5rem;
+    width: 15rem;
+    padding: .5rem;
+    font-size: 2rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
+    font-family: 'Sora', Courier, monospace;
+
 }
 
 .search__box--item {
@@ -107,4 +110,146 @@
   margin: 3rem auto;
   display: flex;
   align-items: center;
+}
+ #number__box{
+  width:2.5rem;
+  padding:0.5rem;
+  text-align: center;
+}
+
+#number__box__name{
+  padding: 0.5rem;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.from__station-container {
+  position: relative;
+  width: 15rem;
+  justify-content: space-between;
+}
+
+.search-dropdown {
+  display: block;
+  width: 14.5rem;
+  height: 4rem;
+  top: 50%;
+  
+  
+  /* border: 1px solid salmon; */
+  
+  position: absolute;
+  
+  
+  transform: translateY(-50%);
+  width:100%;
+  height:100%;
+  display: none;
+  /* visibility: hidden; */
+  z-index: 90;
+}
+.search-dropdown__search {
+  
+  /* border: 1px solid red; */
+
+ 
+  background-color: #fff;
+  /* padding: 1rem; */
+  width: 100%;
+  /* height: 4rem; */
+  font-family: "Sora", sans-serif;
+  font-weight: 500;
+  font-size: 2.4rem;
+  height: 100%;
+  
+  /* position: absolute; */
+}
+
+.search-dropdown__search-results {
+  list-style: none;
+  
+  overflow: scroll;
+  visibility: hidden;
+  display: block;
+  padding: 0px;
+  position: absolute;
+  width: 100%;
+  
+
+  
+  
+  background-color: #fff;
+  
+  /* margin-top: 1rem; */
+  border-radius: 5px;
+  
+  z-index: 90;
+  /* transform: translateY(-50%); */
+  /* border: 1px solid goldenrod;*/
+
+
+
+
+
+
+
+  
+}
+
+.search-dropdown__search-results-item {
+  padding: 1rem;
+  width: 100%;
+  
+  transition: all 0.5s;
+  z-index: 90;
+}
+
+.search-dropdown__search-results-item:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+.to__station-container{
+  position: relative;
+}
+
+.plus-btn{
+  background-color: rgba(31, 58, 147, 0.8);
+  width:2rem;
+  height:2rem;
+  color: white;
+  border-radius: 10px;
+
+}
+.minus-btn{
+  background-color: rgba(31, 58, 147, 0.8);
+  width:2rem;
+  height:2rem;
+  color: white;
+  border-radius: 10px;
 }

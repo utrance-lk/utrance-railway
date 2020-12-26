@@ -29,7 +29,6 @@ class AdminModel extends Model {
 
     //////////////Train//////////////////
 
-
     public $Traintype;
     public $train_name;
     public $train_type;
@@ -92,7 +91,6 @@ class AdminModel extends Model {
 
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($this->resultArray);
         return $this->resultArray;
     }
 
@@ -133,6 +131,14 @@ class AdminModel extends Model {
         //var_dump($validationState);
 
         if ($validationState ==="success") {
+        
+//         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city' => $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
+//         $updateUserValidation=new FormValidation();
+//         $validationState=$updateUserValidation->runUpdateValidators($array);
+        
+        
+//         if ($validationState ==="success") {
+          
         $this->runSanitizationAdmin();
         $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
         $query->bindValue(":id", $this->id);
@@ -299,12 +305,9 @@ class AdminModel extends Model {
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
-        }
-           
-        
+        }   
     
         }
-
    
 
 
@@ -402,6 +405,7 @@ class AdminModel extends Model {
         return $this->resultArray;
    
     }
+  
     public function activeTrains(){
         $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=1 WHERE train_id = :train_id ");
         $query->bindValue(":train_id", $this->id);
@@ -412,11 +416,13 @@ class AdminModel extends Model {
 
     public function deleteTrains(){
         $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=0 WHERE train_id = :train_id ");
+
         $query->bindValue(":train_id", $this->id);
         $this->setRouteStatus();
         $query->execute();
         
     }
+
     public function setRouteStatus2(){
 
         $query = APP::$APP->db->pdo->prepare("UPDATE routes SET route_status=1 WHERE route_id=(SELECT trains.route_id FROM trains INNER JOIN routes ON trains.route_id = routes.route_id WHERE trains.train_id=:train_id)");
@@ -438,7 +444,6 @@ class AdminModel extends Model {
         'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
         $updateTrainrValidation=new TrainFormValidation();
         $validationState=$updateTrainrValidation->runValidators($array);
-        
 
         if (empty($validationState)) {
             $this->runSanitization();
@@ -474,8 +479,7 @@ class AdminModel extends Model {
           
            $this->setRoute();
           
-          return 'success';
-           
+          return 'success';   
         
         }
     
@@ -617,16 +621,15 @@ class AdminModel extends Model {
         $min=$value['minlue'];
         $max=$value['maxlue'];   
     }
+
     $currentTime = date('H:i:s');
- 
-    
-    
-   
+       
     $results2 = 0;
 
 $date1 = DateTime::createFromFormat('H:i:s', $max);
 $date2 = DateTime::createFromFormat('H:i:s', $currentTime);
 $date3 = DateTime::createFromFormat('H:i:s', $min);
+
 if ($date2 > $date3 && $date2 < $date1)
 {
     $results2 = 1;
@@ -652,12 +655,4 @@ if ($date2 > $date3 && $date2 < $date1)
         
       
     }
-    
-
-   
-
-    
-
-
-
 }

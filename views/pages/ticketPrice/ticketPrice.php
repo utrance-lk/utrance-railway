@@ -1,8 +1,32 @@
+
 <section class="ticket__prices">
-    <form class="search__box">
-        <input class="search__box--item input__from" value="Matara" name='from' type="text">
+    <form class="search__box" method="POST" action="/utrance-railway/ticket-prices">
+    <div class="from__station-container">
+    <div class="search__box--item input__from  js--from__station"  id="js--from__station"></div>
+
+      <div class="search-dropdown search-dropdown__from js--search-dropdown__from">
+            <input type="text" id="dropdown-from"   name="start" class="search-dropdown__search js--search-dropdown__search-from" >
+        </div>
+        <ul class="search-dropdown__search-results js--results__list-from"></ul>
+        </div>
+        </div>
         <span class="search__box--item">TO</span>
-        <input class="search__box--item input__to" name='to' value="Galle" type="text">
+
+        <div class="to__station-container">
+          <div class="search__box--item input__to  js--to__station"  id="js--to__station"></div>
+
+
+        <!--input class="search__box--item input__from" value="Matara" name='from' type="text"!-->
+          <!--input class="search__box--item input__to" name='to' value="Galle" type="text"!-->
+      <div class="search-dropdown search-dropdown__to js--search-dropdown__to">
+            <input type="text"  id="dropdown-to" name="destination" class="search-dropdown__search js--search-dropdown__search-to">
+        </div>
+        <ul class="search-dropdown__search-results js--results__list-to"></ul>
+        </div>
+     </div>
+
+
+
         <button class="btn-search" type="submit">
             <svg class="btn-search__icon">
                 <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass'></use>
@@ -10,54 +34,94 @@
         </button>
     </form>
     <div class="search__results-container">
-        <div class="results__set">
-            <div class="seat__class--box first__class--box">
-                <svg class="seat__class--box-item class__icon">
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_one'></use>
-                </svg>
-                <div class="seat__class--box-item class__name">First class</div>
-                <div class="seat__class--box-item class__price">Rs 300</div>
-            </div>
-            <div class="seat__class--box second__class--box">
-                <svg class="seat__class--box-item class__icon">
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_two'></use>
-                </svg>
-                <div class="seat__class--box-item class__name">Second class</div>
-                <div class="seat__class--box-item class__price">Rs 200</div>
-            </div>
-            <div class="seat__class--box third__class--box">
-                <svg class="seat__class--box-item class__icon">
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_3'></use>
-                </svg>
-                <div class="seat__class--box-item class__name">Third class</div>
-                <div class="seat__class--box-item class__price">Rs 100</div>
-            </div>
-            <div class="seat__class--box sleeping__berth--box">
-                <svg class="seat__class--box-item class__icon">
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-airline_seat_flat'></use>
-                </svg>
-                <div class="seat__class--box-item class__name">Sleeping berths</div>
-                <div class="seat__class--box-item class__price">Rs 400</div>
-            </div>
-            <div class="seat__class--box observartion__saloon--box">
-                <svg class="seat__class--box-item class__icon">
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-filter_hdr'></use>
-                </svg>
-                <div class="seat__class--box-item class__name">Observation S</div>
-                <div class="seat__class--box-item class__price">Rs 700</div>
-            </div>
-        </div>
-
-        <div class="number-of-persons__box">
-            <svg class="class__icon margin-r-xs icon__btn">
-                <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-circle-with-minus'></use>
-            </svg>
-            <span class="number__box margin-r-xs">2</span>
-            <svg class="class__icon margin-r-xs icon__btn">
-                <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus'></use>
-            </svg>
-            <span class="number__box">Person(s)</span>
-        </div>
-
-    </div>
+       </div>
 </section>
+
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/viewPrice.js"></script>
+
+
+<?php if (isset($tickets)): ?>
+        <script >
+        let x=<?php echo json_encode($tickets); ?>;
+        document.querySelector(".js--from__station").textContent = x.start;
+        document.querySelector(".js--to__station").textContent = x.destination;
+        document.querySelector(".js--search-dropdown__search-from").value = x.start;
+        document.querySelector(".js--search-dropdown__search-to").value = x.destination;
+         renderResults(<?php echo json_encode($tickets); ?>);
+
+
+        </script>
+      <?php endif;?>
+
+
+      <?php if (!(isset($tickets))): ?>
+        <script>
+        document.querySelector(".js--from__station").textContent = stationsArray[3];
+        document.querySelector(".js--to__station").textContent = stationsArray[0];
+        document.querySelector(".js--search-dropdown__search-from").value = stationsArray[3];
+        document.querySelector(".js--search-dropdown__search-to").value = stationsArray[0];
+          renderDefaultResults();
+
+        </script>
+      <?php endif;?>
+
+
+      <script>
+       document.querySelector(".minus-btn").setAttribute("disabled","disabled");
+       let valueCount;
+       let onePerson="Person";
+       let twoPerson="Persons";
+       let firstClassPrice=document.getElementById("first_class").innerText;
+       firstClassPrice=firstClassPrice.match(/\d+/g);
+       console.log(firstClassPrice)
+       let secondClassPrice=document.getElementById("second_class").innerText;
+       secondClassPrice=secondClassPrice.match(/\d+/g);
+       let thirdClassPrice=document.getElementById("third_class").innerText;
+       thirdClassPrice=thirdClassPrice.match(/\d+/g);
+       console.log(firstClassPrice);
+
+       function getPriceTotal(){
+                let firstTotal=firstClassPrice * valueCount;
+                let secondTotal=secondClassPrice * valueCount;
+                let thirdTotal=thirdClassPrice * valueCount;
+                document.getElementById("first_class").innerText="Rs "+firstTotal;
+                document.getElementById("second_class").innerText="Rs "+secondTotal;
+                document.getElementById("third_class").innerText="Rs "+thirdTotal;
+
+
+
+            }
+        document.querySelector(".plus-btn").addEventListener("click",function(){
+        valueCount=document.getElementById("number__box").value;
+        valueCount++;
+         document.getElementById("number__box").value=valueCount;
+         console.log(valueCount);
+        if(valueCount >1){
+            document.querySelector(".minus-btn").removeAttribute("disabled");
+            document.querySelector(".minus-btn").classList.remove("disabled");
+            document.getElementById("number__box__name").textContent=twoPerson;
+
+            }else{
+                document.getElementById("number__box__name").textContent=onePerson;
+            }
+            getPriceTotal();
+      });
+
+       document.querySelector(".minus-btn").addEventListener("click",function(){
+         valueCount=document.getElementById("number__box").value;
+         valueCount--;
+
+         document.getElementById("number__box").value=valueCount;
+         if(valueCount ==1){
+             document.querySelector(".minus-btn").setAttribute("disabled","disabled");
+             document.getElementById("number__box__name").textContent=onePerson;
+
+         }else{
+            document.getElementById("number__box__name").textContent=twoPerson;
+         }
+         getPriceTotal();
+
+    });
+          </script>
+</body>
+</html>
