@@ -2,6 +2,7 @@ let activeUser;
 let usersSet;
 
 const renderResults = function (users, actUser, page = 1, resPerPage = 10) {
+  clearResults();
   // render results of current page
   activeUser = actUser;
   usersSet = users;
@@ -35,7 +36,8 @@ const renderUser = function (user) {
             </div>
         </div>
         <div class='search__result-user-emailbox'>
-            ${user.user_active_status ? "Active" : "Deactivated"}
+       
+            ${user.user_active_status==1 ? "Active" : "Deactivated"}
         </div>
         <div class='search__result-user-rolebox'>
             ${
@@ -53,7 +55,7 @@ const renderUser = function (user) {
     markup += `<a href='/utrance-railway/users/view?id=${user.id}' class='btn btn-box-white margin-r-s'>View</a>`;
   }
 
-  if (user.user_active_status) {
+  if (user.user_active_status==1) {
     if (user.user_role !== "admin") {
       markup += `<a href='/utrance-railway/users/deactivate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--delete'>Deactivate</a>`;
     } else {
