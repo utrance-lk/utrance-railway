@@ -24,7 +24,21 @@
                     <p>Matara - Colombo Route</p>
                     <p>#1</p>
                 </div>
-                <div class="schedule margin-t-m">
+                <div class="titles margin-t-m margin-b-s">
+                    <div class="titles__id">
+                        Path id
+                    </div>
+                    <div class="titles__station">
+                        Station
+                    </div>
+                    <div class="titles__arr-time">
+                        Arr. Time
+                    </div>
+                    <div class="titles__dept-time">
+                        Dept. Time
+                    </div>
+                </div>
+                <div class="schedule">
                     <div class="stop-card back-odd">
                         <div class="stop-card__details">
                             <div class="stop-card__path-id">
@@ -67,32 +81,17 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="add-stop-popup margin-t-s margin-b-s">
-                        <form action="#" class="add-stop-popup__form">
-                            <div class="add-stop-popup__station">
-                                <input type="text" class="">
-                            </div>
-                            <div class="add-stop-popup__arr-time">
-                                <input type="time" class="">
-                            </div>
-                            <div class="add-stop-popup__dept-time">
-                                <input type="time" class="">
-                            </div>
-                            <button class="btn-square-small">
-                                Add Station
-                            </button>
-                        </form>
-                        <div class="add-stop-popup__stop-btn">
-                            <svg class="close-icon">
-                                <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-clear'></use>
-                            </svg>
-                        </div>
-                    </div>
-
-
+                </div>
+                <div class="btn-update-route">
+                    <button class="btn-round-blue margin-t-m">
+                        Update Route
+                    </button>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewRoute.js"></script>
+<script>addStops();</script>
