@@ -140,3 +140,9 @@
 .btn-search:active .btn-search__icon {
   transform: scale(.9);
 }
+
+.btn-square-small {
+  padding: 1rem;
+ background-color: var(--color-btn-square-background); 
+ color: #fff;
+}

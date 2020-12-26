@@ -350,6 +350,16 @@ class AdminController extends Controller
         }
     }
 
+    public function viewRoute($request) {
+        if($this->protect()) {
+            if($request->isPost()) {
+                return 'success';
+            }
+
+            return $this->render(['admin', 'updateRoute']);
+        }
+    }
+
     ////////////////////////
 
     

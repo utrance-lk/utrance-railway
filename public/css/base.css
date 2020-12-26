@@ -131,7 +131,7 @@ button {
 }
 
 .margin-b-s {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .margin-b-l {
@@ -140,4 +140,8 @@ button {
 
 .margin-t-s {
   margin-top: 2rem;
+}
+
+.margin-t-m {
+  margin-top: 4rem;
 }

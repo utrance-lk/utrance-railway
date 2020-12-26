@@ -26,7 +26,7 @@
                 </div>
                 <div class="search__result-route-start">Matara</div>
                 <div class="search__result-route-destination">Colombo Fort</div>
-                <a href="#" class="btn btn-box-white margin-r-s">View</a>
+                <a href="/utrance-railway/routes/view?id=1" class="btn btn-box-white margin-r-s">View</a>
                 <div class="btn">
                   <div class="btn-box-white btn-box-white--delete">Delete</div>
                 </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="search__result-route-start">Matara</div>
                 <div class="search__result-route-destination">Kandy</div>
-                <a href="#" class="btn btn-box-white margin-r-s">View</a>
+                <a href="/utrance-railway/routes/view?id=2" class="btn btn-box-white margin-r-s">View</a>
                 <div class="btn">
                   <div class="btn-box-white btn-box-white--delete">Delete</div>
                 </div>

@@ -238,7 +238,7 @@
 /* CALANDER */
 
 ::-webkit-calendar-picker-indicator {
-  background-image: url("../../../img/pages/home/svg/chevron-small-down.svg");
+  background-image: url("../../../img/svg/chevron-small-down.svg");
   outline: none;
   transition: all 0.5s;
   transform: translateY(-4px);
