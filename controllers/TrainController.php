@@ -16,6 +16,7 @@ class TrainController extends Controller
         return $this->render('getUserDetails');
     }
 
+
     public function newsearch($request)
     {
         
@@ -217,7 +218,8 @@ class TrainController extends Controller
 
     }
 
-    public function FreightServicePrice($request){
+
+    public function frieghtPrice($request){
         if($request->isPost()){
             return $this->render('FreightServicePrice');
         }
@@ -225,16 +227,14 @@ class TrainController extends Controller
 
     }
 
-    public function ticket($request){
-        $saveTrainPrice = new TrainModel();
-        $saveTrainPrice->loadData($request->getBody());
+    public function viewTicketPrice($request){
+        $viewTicketPrice = new TrainModel();
+        $viewTicketPrice->loadData($request->getBody());
         if($request->isPost()){
-            $getprice = $saveTrainPrice->getPrice();
-            return $this->render('ticket');
+            $viewTicketPrice->getTicketPrice();
+            return $this->render('ticketPrice');
         }
-        return $this->render('ticket');
-
+        return $this->render('ticketPrice');
     }
-
  
 }
