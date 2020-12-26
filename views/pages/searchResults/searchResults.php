@@ -9,7 +9,7 @@
                       <div class="from__station js--from__station" id="js--from__station"><?php echo $_POST['from'];?></div>
                       <div class="swap-button js--swap-btn">
                         <svg class="swap-icon">
-                          <use xlink:href="../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-swap"></use>
+                          <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-swap"></use>
                         </svg>
                       </div>
                     </div>
@@ -195,7 +195,7 @@
                 <div class='switch-card__icon-text-container'>
                   <div class='swich-card__icon-box'>
                     <svg class='swap-icon swap-icon__switch-card'>
-                      <use xlink:href='../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-swap'></use>
+                      <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-swap'></use>
                     </svg>
                   </div>
                   <div class='switch-card__content-box'>

@@ -674,3 +674,99 @@ select {
   box-shadow: 1px 1px 2px rgba(0, 0, .3, .2);
   border-radius: 5px;
 }
+
+.schedule {
+  /* border: 1px solid red; */
+}
+
+.stop-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  position: relative;
+}
+
+.stop-card > * {
+  /* border: 1px solid blue; */
+}
+
+.stop-card__details {
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+}
+
+.stop-card__station {
+  width: 10rem;
+  text-align: center;
+}
+
+.back-odd {
+  background-color: rgb(242, 242, 242);
+}
+
+.back-even {
+  background-color: rgba(119, 119, 119, .2);
+}
+
+.stop-card__add-btn {
+  position: absolute;
+  left: 98.5%;
+  top: 81%;
+  cursor: pointer;
+  display: none;
+}
+
+.stop-card__add-btn:active,
+.stop-card__add-btn:focus {
+  transform: scale(.9);
+}
+
+.add-icon {
+  width: 2rem;
+  height: 2rem;
+  fill: rgba(31, 58, 147, 0.8);
+}
+
+.stop-card:hover .stop-card__add-btn {
+  display: block;
+}
+
+.add-stop-popup {
+  background-color: rgba(119, 119, 119, .2);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.add-stop-popup__form {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-stop-popup input {
+  padding: 1rem;
+}
+
+.add-stop-popup__stop-btn {
+  /* border: 1px solid green; */
+  position: absolute;
+  left: 97.2%;
+  top: 7%;
+  cursor: pointer;
+}
+
+.add-stop-popup__stop-btn:active,
+.add-stop-popup__stop-btn:focus {
+  transform: scale(.9);
+}
+
+.close-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--color-btn-box-text-delete);
+}
