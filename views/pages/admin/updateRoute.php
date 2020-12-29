@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="btn-update-route">
-                    <button class="btn-round-blue margin-t-m">
+                    <button class="btn-round-blue margin-t-m" id="button">
                         Update Route
                     </button>
                 </div>
@@ -93,5 +93,28 @@
     </div>
 </div>
 
+
 <script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewRoute.js"></script>
 <script>addStops();</script>
+
+<script>
+$(document).ready(function(){
+  $("#button").click(function(){
+//  let newindex2=JSON.stringify(newStations);
+ let newindex2=newStations;
+let newindex3=1;
+    $.ajax({
+      url:'newmanageRoutes',
+      method:'post',
+      data:{index1:newindex2,index2:newindex3},
+      success : function (data) { 
+            console.log(data);
+        }
+    })
+     
+
+  
+
+  });
+});
+</script>

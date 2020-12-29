@@ -1,4 +1,5 @@
 let newStations = [];
+let newnewStations = [];
 
 function addStops() {
   document.querySelectorAll(".stop-card__add-btn").forEach(function (item) {
@@ -53,17 +54,50 @@ function addStops() {
               ".add-stop-popup__dept-time--input"
             ).value;
 
+
+
+            const parentPathId =
+              parent.children[0].children[0].innerText.split("#")[1] * 1;
+           
+            let pathId = parentPathId + 1
             const obj = {
               stationName,
               arrTime,
               deptTime,
+              pathId,
             };
 
+
+            let l = 0;
+
+
+            for (let i = 0; i < newStations.length; i++) {
+              let car = newStations[i];
+              if (car.pathId >= pathId) {
+                l++;
+
+              }
+
+            }
+            console.log(l);
+
+            if (l != 0) {
+              for (let n = 0; n < newStations.length; n++) {
+
+                if (newStations[n].pathId >= pathId) {
+                  newStations[n].pathId++;
+                  // console.log(newStations[n]);  
+                }
+
+
+              }
+
+
+
+            }
             newStations.push(obj);
             console.log(newStations);
 
-            const parentPathId =
-              parent.children[0].children[0].innerText.split("#")[1] * 1;
 
             arrTime = timeConversion(arrTime);
             deptTime = timeConversion(deptTime);
@@ -75,9 +109,8 @@ function addStops() {
             const isBackOdd = parent.classList.contains("back-odd");
 
             const html = `
-                    <div class="stop-card ${
-                      isBackOdd ? "back-even" : "back-odd"
-                    }">
+                    <div class="stop-card ${isBackOdd ? "back-even" : "back-odd"
+              }">
                         <div class="stop-card__details">
                             <div class="stop-card__path-id">
                                 #${parentPathId + 1}
@@ -139,3 +172,5 @@ const timeConversion = function (time) {
 
   return `0${arrTimeHour - 12}:${time.split(":")[1]} PM`;
 };
+
+
