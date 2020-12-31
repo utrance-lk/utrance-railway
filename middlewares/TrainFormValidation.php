@@ -7,6 +7,7 @@ include_once "../classes/core/Model.php";
 class TrainFormValidation{
 
 public $errorArray=[];
+public $routeError = [];
    public function runValidators($array)
     {
         
