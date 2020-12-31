@@ -28,15 +28,37 @@ class TrainModel extends Model
     public $searchTrain;
     private $errorArray = [];
     private $registerSetValueArray = [];
+    public $routeError = [];
 
     public function getMyRouts()
     {
+        $sum = [];
 
         $stations = $this->index1;
         var_dump($this->index2);
 
         $length = sizeof($stations);
+
+       for($k = 0; $k< $length; $k++){
+        for ($j= $k+1; $j < $length; $j++){
+            if($stations[$k]["pathId"]>$stations[$j]["pathId"]){
+                $temp = $stations[$k]["pathId"];
+                $stations[$k]["pathId"] = $stations[$j]["pathId"];
+                $stations[$j]["pathId"] = $temp;
+                
+
+            }
+
+        }
+
+       }
+        
+      
+
         for ($i = 0; $i < $length; $i++) {
+
+            // $this->routeValidators($this->index2, $stations[$i]["arrTime"], $stations[$i]["deptTime"], $stations[$i]["stationName"], $stations[$i]["pathId"]);
+
             $result = $this->getStationId($stations[$i]["stationName"]);
             if (empty($result)) {
                 $newquery = APP::$APP->db->pdo->prepare("INSERT INTO stations (station_name) VALUES (:stName)");
@@ -45,6 +67,15 @@ class TrainModel extends Model
                 $result = $this->getStationId($stations[$i]["stationName"]);
 
             }
+
+            $start_t = new DateTime($stations[$i]["arrTime"]);
+            $current_t = new DateTime($stations[$i]["deptTime"]);
+            $difference = $start_t->diff($current_t);
+            $return_time = $difference->format('%H:%I:%S');
+            $this->settimeduration($stations[$i]["pathId"], $return_time, $this->index2);
+            $sum[$i] = $return_time;
+          
+             var_dump($sum);
 
             $query = APP::$APP->db->pdo->prepare("UPDATE stops SET path_id = path_id + 1 WHERE path_id >= :id AND route_id = :route_id ORDER BY path_id ASC");
             $query->bindValue(":id", $stations[$i]["pathId"]);
@@ -58,28 +89,51 @@ class TrainModel extends Model
             $query1->bindValue(":arrTime", $stations[$i]["arrTime"]);
             $query1->bindValue(":depTime", $stations[$i]["deptTime"]);
             $query1->execute();
-
-            $start_t = new DateTime($stations[$i]["arrTime"]);
-            $current_t = new DateTime($stations[$i]["deptTime"]);
-            $difference = $start_t->diff($current_t);
-            $return_time = $difference->format('%H:%I:%S');
+            for($j=0;$j<$i;$j++){
+                $this->settimedurationForNew($stations[$i]["pathId"], $sum[$j], $this->index2);
+            }
+            
+            
             // $secs = strtotime($stations[$i]["deptTime"]);
             // $result = date("H:i:s",strtotime($stations[$i]["arrTime"])+$secs);
             // var_dump($result);
+
            
-             $this->settimeduration($stations[$i]["pathId"], $return_time,$this->index2);
         }
 
         return $this->index1;
 
     }
-    public function settimeduration($path, $time,$routeId)
+    public function settimedurationForNew($path, $time, $routeId){
+        $newtime = strtotime($time);
+        $hourtime = date('H', $newtime);
+        $minitetime = date('i', $newtime);
+
+        $query = APP::$APP->db->pdo->prepare("UPDATE stops SET arrival_time = DATE_ADD(arrival_time,INTERVAL $hourtime hour) WHERE path_id = $path AND route_id = $routeId ORDER BY path_id ASC");
+      
+        $query->execute();
+
+        $query1 = APP::$APP->db->pdo->prepare("UPDATE stops SET arrival_time = DATE_ADD(arrival_time,INTERVAL $minitetime MINUTE) WHERE path_id = $path AND route_id = $routeId ORDER BY path_id ASC");
+       
+        $query1->execute();
+
+        $query2 = APP::$APP->db->pdo->prepare("UPDATE stops SET departure_time = DATE_ADD(departure_time,INTERVAL $hourtime hour) WHERE path_id = $path AND route_id = $routeId ORDER BY path_id ASC");
+       
+        $query2->execute();
+
+        $query3 = APP::$APP->db->pdo->prepare("UPDATE stops SET departure_time = DATE_ADD(departure_time,INTERVAL $minitetime MINUTE) WHERE path_id = $path AND route_id = $routeId ORDER BY path_id ASC");
+        
+        $query3->execute();
+
+
+    }
+
+
+    public function settimeduration($path, $time, $routeId)
     {
         $newtime = strtotime($time);
-        $hourtime= date('H', $newtime);
-        $minitetime= date('i', $newtime);
-
-        
+        $hourtime = date('H', $newtime);
+        $minitetime = date('i', $newtime);
 
         $query = APP::$APP->db->pdo->prepare("UPDATE stops SET arrival_time = DATE_ADD(arrival_time,INTERVAL $hourtime hour) WHERE path_id >= $path AND route_id = $routeId ORDER BY path_id ASC");
         $query->bindValue(":timeduration", $hourtime);
@@ -93,31 +147,41 @@ class TrainModel extends Model
         $query1->bindValue(":route_id", $routeId);
         $query1->execute();
 
-        $query2 = APP::$APP->db->pdo->prepare("UPDATE stops SET departure_time = DATE_ADD(arrival_time,INTERVAL $hourtime hour) WHERE path_id >= $path AND route_id = $routeId ORDER BY path_id ASC");
+        $query2 = APP::$APP->db->pdo->prepare("UPDATE stops SET departure_time = DATE_ADD(departure_time,INTERVAL $hourtime hour) WHERE path_id >= $path AND route_id = $routeId ORDER BY path_id ASC");
         $query2->bindValue(":timeduration", $hourtime);
         $query2->bindValue(":id", $path);
         $query2->bindValue(":route_id", $routeId);
         $query2->execute();
 
-        $query3 = APP::$APP->db->pdo->prepare("UPDATE stops SET departure_time = DATE_ADD(arrival_time,INTERVAL $minitetime MINUTE) WHERE path_id >= $path AND route_id = $routeId ORDER BY path_id ASC");
+        $query3 = APP::$APP->db->pdo->prepare("UPDATE stops SET departure_time = DATE_ADD(departure_time,INTERVAL $minitetime MINUTE) WHERE path_id >= $path AND route_id = $routeId ORDER BY path_id ASC");
         $query3->bindValue(":timeduration", $minitetime);
         $query3->bindValue(":id", $path);
         $query3->bindValue(":route_id", $routeId);
         $query3->execute();
 
-     
-
     }
     public function getStationId($name)
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:name");
-        $query->bindValue(":name", $name);
+        $query = APP::$APP->db->pdo->prepare("SELECT station_id FROM stations WHERE station_name=:sname");
+        $query->bindValue(":sname", $name);
 
         $query->execute();
-        $this->result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->result= $query->fetchAll(PDO::FETCH_ASSOC);
+     
         return $this->result;
 
     }
+
+    // public function routeValidators($route, $arrTime, $deptTime, $sName, $pathId)
+    // {
+    //     $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
+    //     $query->bindValue(":id", $pathId);
+    //     $query->bindValue(":route_id", $route);
+    //     $query->execute();
+    //     $this->result = $query->fetchAll(PDO::FETCH_ASSOC);
+       
+
+    // }
 
     public function getMyTrains()
     {
