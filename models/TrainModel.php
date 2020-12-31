@@ -28,7 +28,7 @@ class TrainModel extends Model
     public $searchTrain;
     private $errorArray = [];
     private $registerSetValueArray = [];
-    public $routeError = [];
+    public $stationrouteError = [];
 
     public function getMyRouts()
     {
@@ -42,7 +42,7 @@ class TrainModel extends Model
         for ($k = 0; $k < $length; $k++) {
             for ($j = $k + 1; $j < $length; $j++) {
                 if($stations[$k]["stationName"] == $stations[$j]["stationName"]){
-                    $this->routeError["station name error"] = "Dupplicate station name";
+                    $this->stationrouteError["station name error"] = "Dupplicate station name";
                 }
                 if ($stations[$k]["pathId"] > $stations[$j]["pathId"]) {
                     $temp = $stations[$k]["pathId"];
@@ -59,17 +59,24 @@ class TrainModel extends Model
         for ($j = 0; $j < $length; $j++){
             $getresult = $this->getStationId($stations[$j]["stationName"]);
             if (empty($getresult)){
-                $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
+                $updateTrainrValidation=new TrainFormValidation();
+                $validationState=$updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"],$stations);
+
+                // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
 
             }else{
-                $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
+                $updateTrainrValidation=new TrainFormValidation();
+                $validationState=$updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"],$stations);
+
+                // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
             }
             
 
         }
-        var_dump($this->routeError);
+        var_dump($validationState);
+        var_dump($this->stationrouteError);
 
-        if (empty($this->routeError)){
+        if (empty($validationState) && empty($this->stationrouteError)){
 
             for ($i = 0; $i < $length; $i++) {
                 $result = $this->getStationId($stations[$i]["stationName"]);
@@ -186,44 +193,44 @@ class TrainModel extends Model
 
     }
 
-    public function routeValidators($route, $arrTime, $deptTime, $sid, $pathId)
-    {
-        $newpathId = $pathId - 1;
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
-        $query->bindValue(":id", $newpathId);
-        $query->bindValue(":route_id", $route);
-        $query->execute();
-        $this->result1 = $query->fetchAll(PDO::FETCH_ASSOC);
+    // public function routeValidators($route, $arrTime, $deptTime, $sid, $pathId)
+    // {
+    //     $newpathId = $pathId - 1;
+    //     $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
+    //     $query->bindValue(":id", $newpathId);
+    //     $query->bindValue(":route_id", $route);
+    //     $query->execute();
+    //     $this->result1 = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        $resultArrTime = $this->result1;
+    //     $resultArrTime = $this->result1;
 
-        $query1 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
-        $query1->bindValue(":id", $pathId);
-        $query1->bindValue(":route_id", $route);
-        $query1->execute();
-        $this->result2 = $query1->fetchAll(PDO::FETCH_ASSOC);
+    //     $query1 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
+    //     $query1->bindValue(":id", $pathId);
+    //     $query1->bindValue(":route_id", $route);
+    //     $query1->execute();
+    //     $this->result2 = $query1->fetchAll(PDO::FETCH_ASSOC);
 
-        $resultDeptTime = $this->result2;
+    //     $resultDeptTime = $this->result2;
 
-        $date1 = DateTime::createFromFormat('H:i:s', $resultArrTime[0]["departure_time"]);
-        $date2 = DateTime::createFromFormat('H:i', $arrTime);
-        $date3 = DateTime::createFromFormat('H:i:s', $resultDeptTime[0]["arrival_time"]);
-        $date4 = DateTime::createFromFormat('H:i', $deptTime);
+    //     $date1 = DateTime::createFromFormat('H:i:s', $resultArrTime[0]["departure_time"]);
+    //     $date2 = DateTime::createFromFormat('H:i', $arrTime);
+    //     $date3 = DateTime::createFromFormat('H:i:s', $resultDeptTime[0]["arrival_time"]);
+    //     $date4 = DateTime::createFromFormat('H:i', $deptTime);
 
-        if ($date4 < $date2 || $date2 < $date1 || $date4 > $date3) {
-            $this->routeError["route error"] = "invalid arrTime or deptTime on pathid" . $pathId . "";
-        }
+    //     if ($date4 < $date2 || $date2 < $date1 || $date4 > $date3) {
+    //         $this->routeError["route error"] = "invalid arrTime or deptTime on pathid" . $pathId . "";
+    //     }
 
-        $query2 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE station_id = :id");
-        $query2->bindValue(":id", $sid);
-        $query2->execute();
-        $this->result3 = $query2->fetchAll(PDO::FETCH_ASSOC);
+    //     $query2 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE station_id = :id");
+    //     $query2->bindValue(":id", $sid);
+    //     $query2->execute();
+    //     $this->result3 = $query2->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!empty($this->result3)) {
-            $this->routeError["station name error"] = "invalid stationname on pathid" . $pathId . "";
-        }
+    //     if (!empty($this->result3)) {
+    //         $this->routeError["station name error"] = "invalid stationname on pathid" . $pathId . "";
+    //     }
 
-    }
+    // }
 
     public function getMyTrains()
     {

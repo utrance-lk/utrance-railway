@@ -188,11 +188,67 @@ public $routeError = [];
        }
     }
 
-    
 
+    public function routeValidators($route, $arrTime, $deptTime, $sid, $pathId,$stations)
+    {
+        
 
+        $newpathId = $pathId - 1;
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
+        $query->bindValue(":id", $newpathId);
+        $query->bindValue(":route_id", $route);
+        $query->execute();
+        $this->result1 = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    
+        $resultArrTime = $this->result1;
+
+        $query1 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
+        $query1->bindValue(":id", $pathId);
+        $query1->bindValue(":route_id", $route);
+        $query1->execute();
+        $this->result2 = $query1->fetchAll(PDO::FETCH_ASSOC);
+
+        $resultDeptTime = $this->result2;
+
+        $date1 = DateTime::createFromFormat('H:i:s', $resultArrTime[0]["departure_time"]);
+        $date2 = DateTime::createFromFormat('H:i', $arrTime);
+        $date3 = DateTime::createFromFormat('H:i:s', $resultDeptTime[0]["arrival_time"]);
+        $date4 = DateTime::createFromFormat('H:i', $deptTime);
+
+        $length = sizeof($stations);
+        for ($j = 0; $j < $length; $j++){
+            if(($pathId-1)==$stations[$j]["pathId"]){
+                $resultArrTime=$stations[$j]["deptTime"];
+                $date1 = DateTime::createFromFormat('H:i', $resultArrTime);
+
+            }
+            if(($pathId+1)==$stations[$j]["pathId"]){
+                $resultDeptTime = $stations[$j]["arrTime"];
+                $date3 = DateTime::createFromFormat('H:i', $resultDeptTime);
+            }
+            
+        }
+        var_dump($date1);
+        
+        
+
+        if ($date4 < $date2 || $date2 < $date1 || $date4 > $date3) {
+            $this->routeError["route error"] = "invalid arrTime or deptTime on pathid" . $pathId . "";
+        }
+
+        $query2 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE station_id = :id");
+        $query2->bindValue(":id", $sid);
+        $query2->execute();
+        $this->result3 = $query2->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!empty($this->result3)) {
+            $this->routeError["station name error"] = "invalid stationname on pathid" . $pathId . "";
+        }
+
+        return $this->routeError;
+
+    }
+   
 
 }
 
