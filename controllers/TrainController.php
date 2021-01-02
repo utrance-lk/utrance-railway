@@ -15,16 +15,10 @@ class TrainController extends Controller
         return $this->render('getUserDetails');
     }
 
-    public function updateRoutes($request)
+    public function updateRoutes($request, $response)
     {
         if ($request->isPost()) {
-            // $saveDetailsModel = new TrainModel();
-            // $tempBody = $request->getBody();
-            // $tempBody['index1'] = $request->getQueryParams()['index1'];
-            // $saveDetailsModel->loadData($tempBody);
-            // $trainArray = $saveDetailsModel->getMyRouts();
-            // $emailAddress = $tempBody['index1'];
-            // echo $emailAddress;
+            
 
             $saveDetailsModel = new TrainModel();
             $tempBody = $request->getBody();
@@ -32,7 +26,6 @@ class TrainController extends Controller
             $newtempBody['index2'] = $_POST['index2'];
             $saveDetailsModel->loadData($tempBody,$newtempBody);
             $trainArray = $saveDetailsModel->getMyRouts();
-
             echo json_encode($trainArray);
 
         }

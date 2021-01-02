@@ -350,13 +350,22 @@ class AdminController extends Controller
         }
     }
 
-    public function viewRoute($request) {
+    public function viewRoute($request,$response) {
         if($this->protect()) {
-            if($request->isPost()) {
-                return 'success';
+            if($request->isGet()) {
+                $saveDetailsModel = new AdminModel();
+                
+                $tempBody = $request->getBody();
+                $tempBody['id'] = $request->getQueryParams()['id'];
+                $saveDetailsModel->loadData($tempBody); 
+                
+                $updateRouteArray=$saveDetailsModel->getManagRoutes();
+               
+                return $this->render(['admin', 'updateRoute'],$updateRouteArray);
             }
 
-            return $this->render(['admin', 'updateRoute']);
+
+            // return $this->render(['admin', 'updateRoute']);
         }
     }
 

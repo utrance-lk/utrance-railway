@@ -35,13 +35,13 @@ class TrainModel extends Model
         $sum = [];
 
         $stations = $this->index1;
-        var_dump($this->index2);
+       
 
         $length = sizeof($stations);
 
         for ($k = 0; $k < $length; $k++) {
             for ($j = $k + 1; $j < $length; $j++) {
-                if($stations[$k]["stationName"] == $stations[$j]["stationName"]){
+                if ($stations[$k]["stationName"] == $stations[$j]["stationName"]) {
                     $this->stationrouteError["station name error"] = "Dupplicate station name";
                 }
                 if ($stations[$k]["pathId"] > $stations[$j]["pathId"]) {
@@ -54,54 +54,61 @@ class TrainModel extends Model
             }
 
         }
-     
 
-        for ($j = 0; $j < $length; $j++){
+        for ($j = 0; $j < $length; $j++) {
             $getresult = $this->getStationId($stations[$j]["stationName"]);
-            if (empty($getresult)){
-                $updateTrainrValidation=new TrainFormValidation();
-                $validationState=$updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"],$stations);
+            if (empty($getresult)) {
+                $updateTrainrValidation = new TrainFormValidation();
+                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations,$stations[$j]["stationName"]);
 
                 // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
 
-            }else{
-                $updateTrainrValidation=new TrainFormValidation();
-                $validationState=$updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"],$stations);
+            } else {
+                $updateTrainrValidation = new TrainFormValidation();
+                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations,$stations[$j]["stationName"]);
 
                 // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
             }
-            
 
         }
-        var_dump($validationState);
-        var_dump($this->stationrouteError);
+       
 
-        if (empty($validationState) && empty($this->stationrouteError)){
+        if (empty($validationState) && empty($this->stationrouteError)) {
 
             for ($i = 0; $i < $length; $i++) {
                 $result = $this->getStationId($stations[$i]["stationName"]);
-    
+                $resultForRoute = $this->getDestStationId($stations[$i]["pathId"],$this->index2);
+
                 if (empty($result)) {
+ 
                     $newquery = APP::$APP->db->pdo->prepare("INSERT INTO stations (station_name) VALUES (:stName)");
                     $newquery->bindValue(":stName", $stations[$i]["stationName"]);
                     $newquery->execute();
                     $result = $this->getStationId($stations[$i]["stationName"]);
-                    
+ 
                 }
-    
+                  ////////////////////////////
+                  if(empty($resultForRoute)){
+                    $newquery1 = APP::$APP->db->pdo->prepare("UPDATE routes SET dest_station_id = :id  WHERE route_id = :route_id");
+                    $newquery1->bindValue(":id", $result[0]["station_id"]);
+                    $newquery1->bindValue(":route_id", $this->index2);
+                    $newquery1->execute();
+
+                   }
+                   //////////////////
+
                 $start_t = new DateTime($stations[$i]["arrTime"]);
                 $current_t = new DateTime($stations[$i]["deptTime"]);
                 $difference = $start_t->diff($current_t);
                 $return_time = $difference->format('%H:%I:%S');
                 $this->settimeduration($stations[$i]["pathId"], $return_time, $this->index2);
                 $sum[$i] = $return_time;
-               
-    
+
                 $query = APP::$APP->db->pdo->prepare("UPDATE stops SET path_id = path_id + 1 WHERE path_id >= :id AND route_id = :route_id ORDER BY path_id ASC");
                 $query->bindValue(":id", $stations[$i]["pathId"]);
                 $query->bindValue(":route_id", $this->index2);
                 $query->execute();
-    
+
                 $query1 = APP::$APP->db->pdo->prepare("INSERT INTO stops (route_id,station_id,arrival_time,departure_time,path_id) VALUES (:route_id,:station_id,:arrTime,:depTime,:id)");
                 $query1->bindValue(":id", $stations[$i]["pathId"]);
                 $query1->bindValue(":route_id", $this->index2);
@@ -112,20 +119,28 @@ class TrainModel extends Model
                 for ($j = 0; $j < $i; $j++) {
                     $this->settimedurationForNew($stations[$i]["pathId"], $sum[$j], $this->index2);
                 }
-    
+
                 // $secs = strtotime($stations[$i]["deptTime"]);
                 // $result = date("H:i:s",strtotime($stations[$i]["arrTime"])+$secs);
-               
-    
+
             }
 
         }
 
-        
-
-        return $this->index1;
+        return $validationState;
 
     }
+    public function getDestStationId($path,$routeId){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id=:id AND route_id = :route_id");
+        $query->bindValue(":id", $path);
+        $query->bindValue(":route_id", $routeId);
+        $query->execute();
+        $this->result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->result;
+    }
+   
+
     public function settimedurationForNew($path, $time, $routeId)
     {
         $newtime = strtotime($time);
