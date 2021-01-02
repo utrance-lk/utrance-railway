@@ -33,7 +33,7 @@
                   <select name="active__status" id="active__status" class="form__input">
                     <option value="a">All</option>
                     <option value="1">Active</option>
-                    <option value="0">Deactive</option>
+                    <option value="0">Deactivated</option>
                   </select>
                 </div>
               </div>

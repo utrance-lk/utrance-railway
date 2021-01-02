@@ -36,7 +36,7 @@ const renderResults = function (trains,y,l, page = 1, resPerPage = 4) {
     if(train.train_active_status==1){
       markup +=`<div class='search__result-train-typebox'>Active</div>`;
   }else{
-      markup +=`<div class='search__result-train-typebox'>Deactive</div>`;
+      markup +=`<div class='search__result-train-typebox'>Deactivated</div>`;
   }
   
   markup +=`<a href='/utrance-railway/trains/view?id=${train.train_id}' class='btn btn-box-white margin-r-s'>

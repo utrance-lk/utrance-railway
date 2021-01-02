@@ -43,6 +43,7 @@ class AdminModel extends Model
     public $train_sleeping_berths;
     public $train_total_weight;
     public $searchTrain;
+    public $searchRoute;
     private $registerSetValueArray1 = [];
 
     private $errorArray = [];
@@ -654,4 +655,26 @@ class AdminModel extends Model
         return $this->resultArray;
 
     }
+
+    public function getRoutes()
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT o.route, sid, did FROM (SELECT routes.route_id as route,stations.station_name as sid FROM stations INNER JOIN routes WHERE routes.start_station_id=stations.station_id) as o INNER JOIN (SELECT routes.route_id as route,stations.station_name as did FROM stations INNER JOIN routes WHERE routes.dest_station_id=stations.station_id) as p WHERE p.route=o.route");
+        $query->execute();
+        $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->resultArray;  
+
+    }
+
+    public function searchRouteDetails()
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM (SELECT o.route, sid, did FROM (SELECT routes.route_id as route,stations.station_name as sid FROM stations INNER JOIN routes WHERE routes.start_station_id=stations.station_id) as o INNER JOIN (SELECT routes.route_id as route,stations.station_name as did FROM stations INNER JOIN routes WHERE routes.dest_station_id=stations.station_id) as p WHERE p.route=o.route) AS t
+         WHERE t.sid LIKE '%{$this->searchRoute}%' OR t.did LIKE '%{$this->searchRoute}%' OR t.route=:routeName");
+        $query->bindValue(":routeName", $this->searchRoute);
+        $query->execute();
+        $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+
+    
 }

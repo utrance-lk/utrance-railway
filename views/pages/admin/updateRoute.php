@@ -29,7 +29,7 @@ $dom->loadHTML('...');
 libxml_clear_errors();
 
 if (isset($routes)) {
-
+$x = $routes[0]['route_id'];
     foreach ($routes as $key => $value){
         if($value['start_station_id']==$value['station_id']){
             $satrtStation = $value['station_name'];
@@ -41,7 +41,7 @@ if (isset($routes)) {
 
     $html = "<div class='content-title'>";
     $html .= "<p>" . $satrtStation . " - " . $endStation . "</p>";
-    $html .= "<p>#" . $routes[0]['route_id'] . "</p></div>";
+    $html .= "<p id='newRouteId'>#" . $routes[0]['route_id'] . "</p></div>";
     $html .=" <div class='titles margin-t-m margin-b-s'>
     <div class='titles__id'>Path id</div>
     <div class='titles__station'>Station</div>
@@ -96,9 +96,10 @@ print_r($dom->saveHTML());
 <script>
 $(document).ready(function(){
   $("#button").click(function(){
-//  let newindex2=JSON.stringify(newStations);
+     
  let newindex2=newStations;
-let newindex3=2;
+let newindex3='<?php echo $x; ?>';
+console.log(newindex3);
     $.ajax({
       url:'newmanageRoutes',
       method:'post',
@@ -106,7 +107,7 @@ let newindex3=2;
       success : function (data) {
             
             if(data.length===2){
-               window.location.href = "/utrance-railway/routes/view?id=2";  
+               window.location.href = "/utrance-railway/routes/";  
             }else{
                 console.log(data);
             }

@@ -16,6 +16,7 @@ $app->router->get('/utrance-railway/users/activate', [AdminController::class, 'c
 $app->router->get('/utrance-railway/users/deactivate', [AdminController::class, 'changeUserStatus']);
 
 $app->router->get('/utrance-railway/routes/', [AdminController::class, 'manageRoutes']);
+$app->router->post('/utrance-railway/routes/', [AdminController::class, 'manageRoutes']);
 $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRoute']);
 $app->router->get('/utrance-railway/routes/view', [AdminController::class, 'viewRoute']);
 $app->router->get('/utrance-railway/routes/update', [AdminController::class, 'addRoute']);
