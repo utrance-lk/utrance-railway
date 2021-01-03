@@ -29,21 +29,20 @@ class TrainModel extends Model
     private $errorArray = [];
     private $registerSetValueArray = [];
     public $stationrouteError = [];
+ 
 
     public function getMyRouts()
     {
         $sum = [];
 
         $stations = $this->index1;
-       
+   
 
         $length = sizeof($stations);
 
         for ($k = 0; $k < $length; $k++) {
             for ($j = $k + 1; $j < $length; $j++) {
-                if ($stations[$k]["stationName"] == $stations[$j]["stationName"]) {
-                    $this->stationrouteError["station name error"] = "Dupplicate station name";
-                }
+                
                 if ($stations[$k]["pathId"] > $stations[$j]["pathId"]) {
                     $temp = $stations[$k]["pathId"];
                     $stations[$k]["pathId"] = $stations[$j]["pathId"];
@@ -54,28 +53,34 @@ class TrainModel extends Model
             }
 
         }
+       
+       
 
         for ($j = 0; $j < $length; $j++) {
             $getresult = $this->getStationId($stations[$j]["stationName"]);
+         
             if (empty($getresult)) {
                 $updateTrainrValidation = new TrainFormValidation();
-                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations,$stations[$j]["stationName"]);
-
+                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
+              
                 // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
 
             } else {
                 $updateTrainrValidation = new TrainFormValidation();
-                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations,$stations[$j]["stationName"]);
-
+                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
+             
                 // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
             }
-
+           break;
         }
        
 
-        if (empty($validationState) && empty($this->stationrouteError)) {
+        if (empty($validationState)) {
 
             for ($i = 0; $i < $length; $i++) {
+                $stations[$i]["stationName"]= $this->sanitizeFormUsername($stations[$i]["stationName"]);
+
+                
                 $result = $this->getStationId($stations[$i]["stationName"]);
                 $resultForRoute = $this->getDestStationId($stations[$i]["pathId"],$this->index2);
 
@@ -129,6 +134,14 @@ class TrainModel extends Model
 
         return $validationState;
 
+    }
+
+    private function sanitizeFormUsername($inputText)
+    { 
+        $inputText = strip_tags($inputText); //remove html tags
+        // $inputText = str_replace(" ", "", $inputText); // remove white spaces
+        $inputText = trim($inputText);
+        return ucfirst($inputText); // remove white spaces
     }
     public function getDestStationId($path,$routeId){
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id=:id AND route_id = :route_id");

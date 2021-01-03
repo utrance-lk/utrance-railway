@@ -105,7 +105,7 @@ console.log(newindex3);
       method:'post',
       data:{index1:newindex2,index2:newindex3},
       success : function (data) {
-            
+       
             if(data.length===2){
                window.location.href = "/utrance-railway/routes/";  
             }else{

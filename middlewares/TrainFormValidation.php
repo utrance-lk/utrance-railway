@@ -174,10 +174,11 @@ class TrainFormValidation
         }
     }
 
-    public function routeValidators($route, $arrTime, $deptTime, $sid, $pathId, $stations, $sname)
+    public function routeValidators($route, $arrTime, $deptTime, $sid, $pathId, $stations, $sname,$x)
     {
+       
 
-        $newpathId = $pathId - 1;
+        $newpathId = $pathId - 1 - $x;
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
         $query->bindValue(":id", $newpathId);
         $query->bindValue(":route_id", $route);
@@ -185,6 +186,7 @@ class TrainFormValidation
         $this->result1 = $query->fetchAll(PDO::FETCH_ASSOC);
 
         $resultArrTime = $this->result1;
+      
 
         $query1 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE path_id = :id AND route_id = :route_id");
         $query1->bindValue(":id", $pathId);
@@ -201,6 +203,7 @@ class TrainFormValidation
         }
 
         $date4 = DateTime::createFromFormat('H:i', $deptTime);
+       
 
         $length = sizeof($stations);
         for ($j = 0; $j < $length; $j++) {
@@ -219,13 +222,14 @@ class TrainFormValidation
         if (empty($resultDeptTime)) {
             if ($date4 < $date2 || $date2 < $date1) {
                 $this->routeError["route error"] = "invalid arrTime or deptTime on pathid " . $pathId . "";
-              
+          
             }
 
         } else {
             if ($date4 < $date2 || $date2 < $date1 || $date4 > $date3) {
                 $this->routeError["route error"] = "invalid arrTime or deptTime on pathid " . $pathId . "";
-
+             
+              
             }
 
         }
@@ -235,6 +239,13 @@ class TrainFormValidation
         }
         if (empty($sname)) {
             $this->routeError["route name error"] = "name is required";
+        }
+        for ($k = 0; $k < $length; $k++) {
+            for ($j = $k + 1; $j < $length; $j++) {
+                if ($stations[$k]["stationName"] == $stations[$j]["stationName"]) {
+                    $this->routeError["station name error"] = "Dupplicate station name";
+                }
+            }
         }
 
         $query2 = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE station_id = :id AND route_id = :route_id");
