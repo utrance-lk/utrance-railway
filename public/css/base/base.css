@@ -86,3 +86,36 @@ button {
 .error__placeholder::-webkit-input-placeholder {
   color: red; 
 }
+
+::-webkit-calendar-picker-indicator {
+  background-image: url("../../public/img/svg/chevron-small-down.svg");
+  outline: none;
+  transition: all 0.5s;
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
+::-webkit-inner-spin-button {
+  display: none;
+}
+
+::-webkit-datetime-edit-text {
+  color: var(--color-primary);
+  padding: 0 0.4rem;
+}
+
+input::-webkit-datetime-edit-day-field,
+input::-webkit-datetime-edit-month-field,
+input::-webkit-datetime-edit-year-field {
+  outline: none;
+  border-radius: 1rem;
+  transition: all 0.5s;
+  padding: 0.4rem;
+}
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus {
+  background-color: var(--color-primary);
+  color: #000000;
+}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "concat:css": "concat -o public/css/style.concat.css public/css/abstracts/variables.css public/css/base/base.css public/css/base/utilities.css public/css/components/buttons.css public/css/layout/footer.css public/css/layout/header.css public/css/pages/home/home.css"
+    "concat:css": "concat -o public/css/style.concat.css public/css/abstracts/variables.css public/css/base/base.css public/css/base/utilities.css public/css/base/typography.css public/css/components/buttons.css public/css/components/searchbar-main.css public/css/layout/footer.css public/css/layout/header.css public/css/pages/home/home.css"
   },
   "repository": {
     "type": "git",

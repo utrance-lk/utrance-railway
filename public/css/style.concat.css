@@ -119,6 +119,38 @@ button {
   color: red; 
 }
 
+::-webkit-calendar-picker-indicator {
+  background-image: url("../../public/img/svg/chevron-small-down.svg");
+  outline: none;
+  transition: all 0.5s;
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
+::-webkit-inner-spin-button {
+  display: none;
+}
+
+::-webkit-datetime-edit-text {
+  color: var(--color-primary);
+  padding: 0 0.4rem;
+}
+
+input::-webkit-datetime-edit-day-field,
+input::-webkit-datetime-edit-month-field,
+input::-webkit-datetime-edit-year-field {
+  outline: none;
+  border-radius: 1rem;
+  transition: all 0.5s;
+  padding: 0.4rem;
+}
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus {
+  background-color: var(--color-primary);
+  color: #000000;
+}
 .margin-r-xs {
   margin-right: 1rem;
 }
@@ -150,6 +182,7 @@ button {
 .margin-t-m {
   margin-top: 4rem;
 }
+
 .btn {
   cursor: pointer;
   outline: none;
@@ -298,6 +331,133 @@ button {
  background-color: var(--color-btn-square-background); 
  color: #fff;
 }
+.searchbar-main {
+  height: 16vh;
+  width: 70vw;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.searchbar-main__search {
+  display: flex;
+  height: 100%;
+}
+
+.searchbar-main__search > * {
+  flex: 1;
+}
+
+.searchbar-main__from-container,
+.searchbar-main__to-container {
+  height: 100%;
+  border-right: 2px solid var(--color-primary);
+  position: relative;
+}
+
+.searchbar-main__from,
+.searchbar-main__to,
+.searchbar-main__when {
+  margin: 1.5rem 2rem 0 2rem;
+  font-size: 2rem;
+  font-family: "Noto Sans JP", sans-serif;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchbar-main__station--from-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchbar-main__station--from,
+.searchbar-main__station--to,
+.searchbar-main__station--when {
+  font-size: 3.5rem;
+  font-family: "Sora", sans-serif;
+  text-transform: capitalize;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.searchbar-main__swap-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.searchbar-main__icon {
+  height: 4rem;
+  width: 4rem;
+}
+
+/* dropdown */
+
+.searchbar-main__dropdown {
+  border-radius: 5px;
+  position: absolute;
+  margin-left: 2rem;
+  position: absolute;
+  top: 52%;
+  left: 0;
+  transform: translateY(-50%);
+  display: none;
+  z-index: 90;
+}
+
+.searchbar-main__dropdown-input {
+  background-color: #fff;
+  width: 100%;
+  font-family: "Sora", sans-serif;
+  font-weight: 500;
+  font-size: 3.5rem;
+}  
+
+.searchbar-main__dropdown-search-results {
+  list-style: none;
+  background-color: #fff;
+  margin-left: 2rem;
+  border-radius: 5px;
+  width: 100% - 2rem;
+  z-index: 90;
+}
+
+.searchbar-main__dropdown-search-results-item {
+    padding: 1rem;
+  transition: all 0.5s;
+  z-index: 90;
+}
+
+.searchbar-main__dropdown-search-results-item:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.searchbar-main__search-btn {
+  height: 4rem;
+  padding: 0.5rem;
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  width: 15rem;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 10rem;
+  background-color: rgb(73, 166, 252);
+  color: #fff;
+  cursor: pointer;
+  transition: top .5s;
+  vertical-align: middle;
+}
+
+.searchbar-main__search-btn:active,
+.searchbar-main__search-btn:focus {
+  top: 85%;
+}
 .footer {
   margin-top: 10rem;
   background-color: rgba(0, 0, 0, .8);
@@ -308,9 +468,6 @@ button {
   justify-content: center;
 }
 .header {
-  /* border: 1px solid maroon; */
-  /* background-color: #eeeeee; */
-  /* border-bottom: 1px solid rgba(119, 119, 119, 0.1); */
   font-family: "Lato", sans-serif;
   border-bottom: 1px solid rgba(31, 58, 147, 0.8);
   color: #fff;
@@ -460,4 +617,13 @@ button {
 .header-user__dropdown a {
   display: flex;
   align-items: center;
+}
+
+.home__heading-primary {
+  height: 40vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(31, 58, 147, 0.8);
 }
