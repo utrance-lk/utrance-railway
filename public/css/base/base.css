@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  scroll-behavior: smooth !important;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */ /* 10px/16px */
+  font-family: "Sora", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  background-color: var(--color-primary);
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+li {
+  list-style: none;
+}
+
+/* .btn {
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+} */
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* browser prefixes */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+select {
+  outline: none;
+  border: none;
+  font-family: "Sora", sans-serif;
+}
+
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Sora", sans-serif;
+  /* transition: all .2s; */
+}
+
+.form__input {
+  padding: 1rem;
+  outline: none;
+  /* width: 60%; */
+  background-color: rgb(242, 242, 242);
+  border: none;
+  font-family: "Lato", sans-serif;
+  border-radius: 3px;
+}
+
+.error__placeholder::-webkit-input-placeholder {
+  color: red; 
+}

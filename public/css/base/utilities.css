@@ -1,0 +1,31 @@
+.margin-r-xs {
+  margin-right: 1rem;
+}
+
+.margin-r-s {
+  margin-right: 2rem;
+}
+
+.margin-l-xxs {
+    margin-left: .5rem;
+}
+
+.margin-l-xs {
+    margin-left: 1rem;
+}
+
+.margin-b-s {
+  margin-bottom: 2rem;
+}
+
+.margin-b-l {
+  margin-bottom: 5rem;
+}
+
+.margin-t-s {
+  margin-top: 2rem;
+}
+
+.margin-t-m {
+  margin-top: 4rem;
+}

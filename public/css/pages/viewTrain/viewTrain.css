@@ -30,6 +30,7 @@
 .schedule-container {
     /* border: 1px solid red; */
     margin: 0 15vw;
+    width: 40%;
 }
 
 .schedule__headings {

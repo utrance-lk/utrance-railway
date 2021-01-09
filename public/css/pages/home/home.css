@@ -301,3 +301,7 @@ input::-webkit-datetime-edit-year-field:focus {
     /* border: 1px solid brown; */
     width: 4rem;
 }
+
+@media (max-width: 600px) {
+  
+}

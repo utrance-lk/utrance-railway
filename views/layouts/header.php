@@ -1,70 +1,65 @@
-<!--?php if($_REQUEST['url'] === 'home' || $_REQUEST['url'] === 'search' || $_REQUEST['url'] === 'freight-search') : ?-->
-<nav class="nav-container">
-      <div class="navbar">
-        <div class="main__nav">
-          <div class="logobox">
-            <!-- <img src="../../../../utrance-railway/public/img/pages/home/utranceWhite.png" alt="logo" class="logo" /> -->
-          </div>
-          <div class="main__nav-items">
-            <a href="/utrance-railway/home" class="home-box nav-items-little">
-              <svg class="home__icon navbar__icon">
+<nav class="header header--blue">
+        <div class="header-main">
+          <div class="header__logobox header__logobox--white"></div>
+          <div class="header-main__items">
+            <a href="/utrance-railway/home" class="header-main__item">
+              <svg class="header__icon">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-home"></use>
               </svg>
-              <span class="nav__items-text-box">Home</span>
+              <span class="margin-l-xxs">Home</span>
             </a>
-            <a href="/utrance-railway/news" class="news-box nav-items-little">
-              <svg class="news__icon navbar__icon">
+            <a href="/utrance-railway/news" class="header-main__item">
+              <svg class="header__icon">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-news"></use>
               </svg>
-              <span class="nav__items-text-box">News</span>
+              <span class="margin-l-xxs">News</span>
             </a>
             
-            <a href="/utrance-railway/ticket-prices" class="home-box nav-items-little">
-              <svg class="ticket__icon navbar__icon">
+            <a href="/utrance-railway/ticket-prices" class="header-main__item">
+              <svg class="header__icon">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-ticket"></use>
               </svg>
-              <span class="nav__items-text-box">Ticket Prices</span>
+              <span class="margin-l-xxs">Ticket Prices</span>
             </a>
            
-            <a href="/utrance-railway/freight-search" class="freights-box nav-items-little">
-              <svg class="freights__icon navbar__icon">
+            <a href="/utrance-railway/freight-search" class="header-main__item">
+              <svg class="header__icon">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-local_shipping"></use>
               </svg>
-              <span class="nav__items-text-box">Freight Booking</span>
+              <span class="margin-l-xxs">Freight Booking</span>
             </a>
-            <!-- <a href="/utrance-railway/view-train" class="train-box nav-items-little">
-              <svg class="train__icon navbar__icon">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite2.svg#icon-train"></use>
+            <a href="/utrance-railway/view-train" class="header-main__item">
+              <svg class="header__icon">
+                <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-train"></use>
               </svg>
-              <span class="nav__items-text-box">Trains</span>
-            </a> -->
+              <span class="margin-l-xxs">Trains</span>
+            </a>
           </div>
         </div>
-        <div class="user__nav">
+        <div class="header-user">
           <?php if(App::$APP->activeUser()['role'] === 'admin') : ?>
-          <div class="notification-box">
-            <svg class="notification__icon navbar__icon">
+          <div class="header-user__notifications">
+            <svg class="header__icon">
               <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-chat"></use>
             </svg>
-            <span class="notification__numbers">13</span>
+            <span class="header-user__notification-number">13</span>
           </div>
           <?php endif; ?>
-          <div class="userdetails-box">
-             <!--?php if(isset($_SESSION['user'])) : ?-->
+          <div class="header-user__details">
              <?php if(App::$APP->user) : ?>
               <a href="#">
                 <img
                   src="../../../../utrance-railway/public/img/uploads/<?php echo App::$APP->activeUser()['user_image'];?>.jpg"
                   alt="profile picture"
-                  class="user-img"
+                  class="header-user__img"
                 />
               </a>
-              <a href="#" class="user-name"><?php echo App::$APP->activeUser()['first_name'];?></a>
-              <div class="userdetails-box--dropdown">
+              <a href="#" class="margin-l-xs"><?php echo App::$APP->activeUser()['first_name'];?></a>
+              <div class="header-user__dropdown">
                <ul>
                  <li>
                    <a href="/utrance-railway/profile">
-                    <svg class="dropdown-icon">
+                    <svg class="header-user__dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-gauge"></use>
                     </svg>
                     <span>Dashboard</span>
@@ -72,7 +67,7 @@
                  </li>
                  <li>
                    <a href="/utrance-railway/myBookings">
-                    <svg class="dropdown-icon">
+                    <svg class="header-user__dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-suitcase"></use>
                     </svg>
                     <span>My Bookings</span>
@@ -80,7 +75,7 @@
                  </li>
                  <li>
                    <a href="/utrance-railway/settings">
-                    <svg class="dropdown-icon">
+                    <svg class="header-user__dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-cog"></use>
                     </svg>
                     <span>Settings</span>
@@ -88,7 +83,7 @@
                  </li>
                  <li>
                    <a href="/utrance-railway/logout">
-                    <svg class="dropdown-icon">
+                    <svg class="header-user__dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-log-out"></use>
                     </svg>
                     <span>Logout</span>
@@ -97,14 +92,13 @@
                </ul>
              </div>
              <?php else: ?>
-              <svg class="guest-user user-img">
+              <svg class="gheader-user__img header-user__img--guest">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-user"></use>
               </svg>
               <a href="/utrance-railway/login" class="user-name">Login</a>
              <?php endif; ?>  
           </div>
         </div>
-      </div>
     </nav>
 
       
