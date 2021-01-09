@@ -26,6 +26,8 @@ class Request {
         return $this->method() == 'post';
     }
 
+    
+
     // new function
     public function getQueryParams() {
         $resultArray;

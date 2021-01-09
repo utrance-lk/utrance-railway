@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,6 +9,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/components/buttons.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerSub.css" />

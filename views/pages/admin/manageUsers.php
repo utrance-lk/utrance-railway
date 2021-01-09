@@ -21,6 +21,25 @@
                 </use>
               </svg>
             </a>
+            <div class="filters__container margin-t-s">
+                <div class="filter__item">
+                  <label for="train__type" class="margin-r-s">User Type &colon;</label>
+                  <select name="train__type" id="train__type" class="form__input">
+                    <option value="express">All</option>
+                    <option value="express">Admin</option>
+                    <option value="slow">User</option>
+                    <option value="Intercity">Details Provider</option>
+                  </select>
+                </div>
+                <div class="filter__item">
+                  <label for="active__status" class="margin-r-s">Active Status &colon;</label>
+                  <select name="active__status" id="active__status" class="form__input">
+                    <option value="active">All</option>
+                    <option value="active">Active</option>
+                    <option value="deactivated">Deactivated</option>
+                  </select>
+                </div>
+              </div>
 
            <div method="POST"  name="manage_users"  id="manage_user_form" >
               <div class="search__results-container"></div>

@@ -47,8 +47,10 @@
               <?php
                   
                   if(isset($users)){
+                   
                   
                     foreach($users as $key=>$value){
+                     
                      
                      $html ="";
                      
@@ -62,9 +64,11 @@
                     
                     $html .="<input type='text' name='first_name' class='form__input error__placeholder'  placeholder='".$updateSetValue['firstNameError']."' ></div>";
                    }else if(isset($updateSetValue['first_name'])){
+                   
                     $html .="<input type='text' name='first_name' class='form__input'   value='".trim($updateSetValue['first_name'])."'></div>";
 
                    }else{
+                    
                     $html .="<input type='text' name='first_name' class='form__input'   value='".trim($value['first_name'])." '></div>";
                    }
                     
@@ -93,6 +97,25 @@
                     }else{
                       $html .="<input type='email' name='email_id' class='form__input' value='".trim($value['email_id'])." '></div>";
                     }
+                    
+                    //var_dump(isset($updateSetValue['user_role']));
+                   
+                      if($value['user_role']==="detailsProvider"){
+                        $html .="<div class='email-box content__fields-item'>";
+                        $html .="<label for='station_name' class='form__label'>Station Name</label>";
+                       
+                        $val=$value['details_provider_station'];
+                        $html .="<input type='text' class='form__input error__placeholder' value='$val' readonly>";
+                        $html .="</div>";
+                        
+                    
+
+                    }
+                      
+                      
+                      
+                      
+                    
                     
 
                     $html .="<div class='address-box content__fields-item'>";

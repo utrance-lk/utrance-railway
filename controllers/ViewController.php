@@ -21,6 +21,8 @@ class ViewController extends Controller
         return $this->render('home');
     }
 
+   
+
     public function search($request)
     {
 

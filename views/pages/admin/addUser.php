@@ -11,7 +11,7 @@
                     libxml_use_internal_errors(true);
                     $dom->loadHTML('...');
                     libxml_clear_errors();
-                  ?>
+                ?>
                   
                <?php
                //if(isset($user)){
@@ -20,7 +20,7 @@
                 
                 
                   $html =" ";
-                  
+                 
                   $html .="<div class='content__fields'>";
                   $html .="<div class='firstname-box content__fields-item'>";
                   $html .="<label for='firstname' class='form__label'>First Name </label>";
@@ -78,12 +78,15 @@
                   if(empty($street_line1) && empty($streetLine1Error)){
                     $html .="<input type='text' name='street_line1' class='form__input' required /></div>";
                   }
+
                   if(!empty($street_line1) && empty($streetLine1Error)){
                     $html .="<input type='text' name='street_line1' class='form__input' value='$street_line1' required /></div>";
                   }
+
                   if(empty($street_line1) && !empty($streetLine1Error)){
                     $html .="<input type='text' name='email_id' class='form__input error__placeholder' placeholder='".$streetLine1Error."' required /></div>";
                   }
+                  
 
 
 
@@ -114,6 +117,7 @@
                   foreach($cityArray as $cities){
                     $html .="<option value='$cities'>$cities</option>";
                    }
+
                   //$html .="<select name='city' id='city' class='form__input'>";
                   //$html .="<option value='Matara'>Matara</option>";
                  // $html .="<option value='Colombo'>Colombo</option></select></div></div>";
@@ -135,9 +139,23 @@
                   //$html .="<input type='text' name='contact_num' class='form__input'  required/> </div>";
                   $html .="<div class='role-box content__fields-item'>";
                   $html .="<label for='role' class='form__label'>Role</label>";
-                  $html .="<select name='user_role' id='role' class='form__input'>";
+                  $html .="<select name='user_role' id='role' class='form__input' onchange='ddlselect();'>";
                   $html .="<option value='admin'>Admin</option>";
                   $html .="<option value='detailsProvider'>Details Provider</option></select></div>";
+
+
+                  $html .="<div style='visibility:hidden' class='city content__fields-item' id='city_list'>";
+                  $html .="<label for='city' class='form__label'>City</label>";
+                  $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
+                  $html .="<select name='station_details_provider' class='form__input'>";
+                  foreach($cityArray as $cities){
+                    $html .="<option value='$cities'>$cities</option>";
+                   }
+
+                  //$html .="<select name='city' id='city' class='form__input'>";
+                  //$html .="<option value='Matara'>Matara</option>";
+                 // $html .="<option value='Colombo'>Colombo</option></select></div></div>";
+                  $html .="</select></div>";
 
 
                   $html .="<div class='seperator'></div>";
@@ -183,6 +201,22 @@
           </div>
         </div>
       </div>
+
+      <script>
+        function ddlselect(){
+          console.log("hy");
+          var d=document.getElementById("role").value;
+          console.log(d);
+          if(d ==="detailsProvider"){
+            document.getElementById("city_list").style.visibility = "visible";
+
+          }else if(d==="admin"){
+            document.getElementById("city_list").style.visibility = "hidden";
+          }
+          
+         
+        }
+        </script>
              
 
 

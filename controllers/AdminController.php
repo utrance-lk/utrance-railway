@@ -74,6 +74,7 @@ class AdminController extends Controller
             $updateUserArray = $adminViewUser->getUserDetails();
             //$updateUserArray['users'][0]['id'] = $request->getQueryParams()['id'];
             //var_dump($updateUserArray);
+            
             return $this->render(['admin', 'updateUser'],$updateUserArray);
         }
 
