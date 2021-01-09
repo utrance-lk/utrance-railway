@@ -1,25 +1,44 @@
 let newStations = [];
 let newnewStations = [];
+let emptyStations=0;
 
-function addStops() {
+function addStops(x) {
   document.querySelectorAll(".stop-card__add-btn").forEach(function (item) {
     item.addEventListener("click", function (e) {
+
       const isAvailPopup = document.querySelector(".add-stop-popup");
       if (!isAvailPopup) {
         const parent = e.target.closest(".stop-card");
+        console.log(parent);
+      //  console.log(parent.firstChild.firstChild.innerText.split("#")[1] * 1);
         const markup = `
+        <style>
+        .autocom-box li{
+          display: none;  
+        }
+        .add-stop-popup__station.active .autocom-box li{
+          display: block;
+        }
+        </style>
+        
                         <div class="add-stop-popup margin-t-s margin-b-s">
-                            <form action="#" class="add-stop-popup__form">
+                            <form action="#" class="add-stop-popup__form ser">
+                              <div class="wrapper">
                                 <div class="add-stop-popup__station">
-                                    <input type="text" class="add-stop-popup__station--input">
+                                  <input type="text" class="add-stop-popup__station--input">
+                                  <div class="autocom-box">
+                                     <li>matara</li>
+                                     <li>colombo</li>
+                                  </div>
+                                </div>
                                 </div>
                                 <div class="add-stop-popup__arr-time">
-                                    <input type="time" class="add-stop-popup__arr-time--input">
+                                    <input id="arrtime" type="time" class="add-stop-popup__arr-time--input" value="" required>
                                 </div>
                                 <div class="add-stop-popup__dept-time">
-                                    <input type="time" class="add-stop-popup__dept-time--input">
+                                    <input id="deptime" type="time" class="add-stop-popup__dept-time--input" value="" required>
                                 </div>
-                                <button class="add-stop-popup__btn-add-station btn-square-small">
+                                <button id = "addButton" class="add-stop-popup__btn-add-station btn-square-small">
                                     Add Station
                                 </button>
                             </form>
@@ -32,9 +51,108 @@ function addStops() {
             `;
         parent.insertAdjacentHTML("afterend", markup);
 
+///////////////////////////////nimeshika///////////////////////////////////////////
+        // let newindex5= parent.firstChild.firstChild.innerText.split("#")[1] * 1;
+       
+        $(document).ready(function(){
+          $("#arrtime").click(function(){
+            // let newindex5= parent.firstChild.childNodes;
+            let newindex5= parent.querySelector(".stop-card__details").querySelector(".stop-card__dept-time").innerText;
+            console.log(newindex5);
+            // console.log(newindex5[2]);
+            document.querySelector(".add-stop-popup__arr-time--input").min = newindex5;
+            
+            let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
+            console.log(newIndexMax);
+            document.querySelector(".add-stop-popup__arr-time--input").max = newIndexMax;
+          })
+        });
+
+        $(document).ready(function(){
+          $("#deptime").click(function(){
+            
+            
+            
+            let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
+            console.log(newIndexMax);
+            document.querySelector(".add-stop-popup__dept-time--input").max = newIndexMax;
+          })
+        });
+
+        document.querySelector( ".add-stop-popup__dept-time--input").addEventListener("change", function (){
+          
+          document.querySelector(".add-stop-popup__dept-time--input").min = document.getElementById("arrtime").value;
+          console.log(document.getElementById("arrtime").value);
+          var startDate = document.getElementById("arrtime").value;
+          var endDate = document.getElementById("deptime").value;
+          var nextCardStartDate = document.querySelector(".add-stop-popup__dept-time--input").max;
+          var time1Date= new Date("01/01/2000 "+startDate);
+          var time2Date= new Date("01/01/2000 "+endDate); 
+          var time3Date= new Date("01/01/2000 "+nextCardStartDate);
+          // if (time1Date >= time2Date) { alert("Please enter proper date") }
+          // if (time2Date >= time3Date) { alert("Please enter proper date") }
+          const newmarkup = `<p id ="myerror">error found</p>`;
+          const newx = document.querySelector( ".add-stop-popup");
+          if (time1Date >= time2Date) { 
+             newx.insertAdjacentHTML("beforebegin", newmarkup);
+            document.getElementById("addButton").disabled = true;
+         }else if(time2Date >= time3Date){
+          newx.insertAdjacentHTML("beforebegin", newmarkup);
+            document.getElementById("addButton").disabled = true;
+         }
+         else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
+         
+          document.getElementById("addButton").disabled = false;
+         }
+        });
+
+        document.querySelector( ".add-stop-popup__arr-time--input").addEventListener("change", function (){
+        
+          var startDate = document.querySelector(".add-stop-popup__arr-time--input").min;
+          var endDate = document.getElementById("arrtime").value;
+          var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
+          var time1Date= new Date("01/01/2000 "+startDate);
+          var time2Date= new Date("01/01/2000 "+endDate); 
+          var time3Date= new Date("01/01/2000 "+nextCardStartDate);
+
+          const newmarkup = `<p id ="myerror">error found</p>`;
+          const newx = document.querySelector( ".add-stop-popup");
+          if (time1Date >= time2Date) { 
+             newx.insertAdjacentHTML("beforebegin", newmarkup);
+            document.getElementById("addButton").disabled = true;
+         }else if(time2Date >= time3Date){
+          newx.insertAdjacentHTML("beforebegin", newmarkup);
+            document.getElementById("addButton").disabled = true;
+         }
+         else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
+         
+          document.getElementById("addButton").disabled = false;
+         }
+          // if (time2Date >= time3Date) { 
+          //   alert("Please enter proper date");
+          // }else{
+          //   document.getElementById("addButton").disabled = false;
+          // }
+
+          
+
+        });
+      console.log(emptyStations);
+        if(document.querySelector(".add-stop-popup__arr-time--input").value == ""){
+          document.getElementById("addButton").disabled = true;
+        }
+        else if(document.querySelector(".add-stop-popup__dept-time--input").value == ""){
+          document.getElementById("addButton").disabled = true;
+        }else if(emptyStations==0){
+          document.getElementById("addButton").disabled = true;
+        }else{
+          document.getElementById("addButton").disabled = false;
+        }
+//////////////////////////////////hasani/////////////////////////
         const popupCloseBtn = document.querySelector(
           ".add-stop-popup__close-btn"
         );
+
 
         popupCloseBtn.addEventListener("click", function (elem) {
           const popup = elem.target.closest(".add-stop-popup");
@@ -96,12 +214,16 @@ function addStops() {
 
             }
             newStations.push(obj);
+          
+
             console.log(newStations);
 
 
+           
+            
             arrTime = timeConversion(arrTime);
             deptTime = timeConversion(deptTime);
-
+          
             // const isBackOdd = parent.classList.value
             //   .split(" ")
             //   .includes("back-odd");
@@ -138,12 +260,23 @@ function addStops() {
             parent.insertAdjacentHTML("afterend", html);
 
             changePathIdAndBG(parentPathId + 1);
-            addStops();
+            addStops(x);
+           
           });
+          
       }
+      myfun();
+      // const items = { 
+      //   inputDate: document.querySelector(".add-stop-popup__arr-time--input"),
+      // };
+
+      // items.inputDate.value = today;
+      // items.inputDate.min = today;
+        
       // document.querySelector(".add-stop-popup").style.display = 'flex';
     });
-  });
+
+  });  
 }
 
 // console.log(popupCloseBtn);
@@ -175,4 +308,100 @@ const timeConversion = function (time) {
 
 
 
+function myfun(){
+
+const searchWrapper = document.querySelector(".add-stop-popup__station");
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = searchWrapper.querySelector(".autocom-box");
+
+const suggestions = [
+  "Matara",
+    "Colombo Fort",
+    "Galle",
+    "Katugoda",
+    "Gampaha",
+    "Kandy",
+    "Puttalam",
+    "Aluthgama",
+    "Midigama",
+    "Weligama",
+    "Avissawella",
+    "Beliatta",
+    "Wewurukannala",
+    "Kekanadura",
+    "Maradana",
+    "Kalutara",
+    "Kegalle",
+];
+
+inputBox.onkeyup = (e)=>{
+  let userData = e.target.value;
+  let emptyArray = [];
+  if(userData){
+    emptyArray = suggestions.filter((data)=>{
+      return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase()); 
+    });
+    emptyArray = emptyArray.map((data)=>{
+      return data = '<li>'+ data +'</li>';
+    });
+    console.log(emptyArray);
+    searchWrapper.classList.add("active");
+    showSuggestions(emptyArray); 
+    let allList = suggBox.querySelectorAll("li");
+        for (let i = 0; i < allList.length; i++) {
+            //adding onclick attribute in all li tag
+            allList[i].setAttribute("onclick", "selected(this)");
+            
+        }
+       
+  }else{
+    searchWrapper.classList.remove("active"); //hide autocomplete box
+}
+
+
+}
+
+
+function showSuggestions(list){
+  let listData;
+  if(!list.length){
+      // userValue = inputBox.value;
+      // listData = '<li>'+ userValue +'</li>';
+  }else{
+      listData = list.join('');
+  }
+  suggBox.innerHTML = listData;
+}
+
+}
+
+
+
+function selected(element){
+  
+  emptyStations++;
+  if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && document.querySelector(".add-stop-popup__arr-time--input").value != ""){
+         
+    document.getElementById("addButton").disabled = false;
+   }
+
+
+
+  const searchWrapper = document.querySelector(".add-stop-popup__station");
+  const inputBox = searchWrapper.querySelector("input");
+  const suggBox = searchWrapper.querySelector(".autocom-box");
+  let selectUserData = element.textContent;
+  inputBox.value = selectUserData;
+  searchWrapper.classList.remove("active");
+  
+};
+
+
+
+
+
+
+
+
+        
 

@@ -30,6 +30,14 @@ class TrainModel extends Model
     private $registerSetValueArray = [];
     public $stationrouteError = [];
  
+    public function getMyRoutsTime(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM stops WHERE route_id = :route_id");
+        $query->bindValue(":route_id", $this->index2);
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+
+    }
 
     public function getMyRouts()
     {
@@ -61,21 +69,27 @@ class TrainModel extends Model
          
             if (empty($getresult)) {
                 $updateTrainrValidation = new TrainFormValidation();
-                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
+                $validationState[$j] = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
               
                 // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
 
             } else {
                 $updateTrainrValidation = new TrainFormValidation();
-                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
+                $validationState[$j] = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
              
                 // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
             }
-           break;
+         
         }
-       
+      
+      $errorlength=0;
+       for ($t = 0; $t < $length; $t++){
+        if(!empty($validationState[$t])){
+            $errorlength++;
+           }
+       }
 
-        if (empty($validationState)) {
+        if ($errorlength==0) {
 
             for ($i = 0; $i < $length; $i++) {
                 $stations[$i]["stationName"]= $this->sanitizeFormUsername($stations[$i]["stationName"]);

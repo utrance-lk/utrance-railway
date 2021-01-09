@@ -221,12 +221,14 @@ class TrainFormValidation
 
         if (empty($resultDeptTime)) {
             if ($date4 < $date2 || $date2 < $date1) {
+                $this->routeError["pathId"] =  $pathId;
                 $this->routeError["route error"] = "invalid arrTime or deptTime on pathid " . $pathId . "";
           
             }
 
         } else {
             if ($date4 < $date2 || $date2 < $date1 || $date4 > $date3) {
+                $this->routeError["pathId"] =  $pathId;
                 $this->routeError["route error"] = "invalid arrTime or deptTime on pathid " . $pathId . "";
              
               
@@ -235,14 +237,17 @@ class TrainFormValidation
         }
 
         if (empty($arrTime) || empty($deptTime)) {
+            $this->routeError["pathId"] =  $pathId;
             $this->routeError["route error"] = "time is required";
         }
         if (empty($sname)) {
+            $this->routeError["pathId"] =  $pathId;
             $this->routeError["route name error"] = "name is required";
         }
         for ($k = 0; $k < $length; $k++) {
             for ($j = $k + 1; $j < $length; $j++) {
                 if ($stations[$k]["stationName"] == $stations[$j]["stationName"]) {
+                    $this->routeError["pathId"] =  $pathId;
                     $this->routeError["station name error"] = "Dupplicate station name";
                 }
             }

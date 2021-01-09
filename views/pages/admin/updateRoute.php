@@ -29,20 +29,20 @@ $dom->loadHTML('...');
 libxml_clear_errors();
 
 if (isset($routes)) {
-$x = $routes[0]['route_id'];
-    foreach ($routes as $key => $value){
-        if($value['start_station_id']==$value['station_id']){
+    $x = $routes[0]['route_id'];
+    foreach ($routes as $key => $value) {
+        if ($value['start_station_id'] == $value['station_id']) {
             $satrtStation = $value['station_name'];
         }
-        if($value['dest_station_id']==$value['station_id']){
+        if ($value['dest_station_id'] == $value['station_id']) {
             $endStation = $value['station_name'];
         }
-    }   
+    }
 
     $html = "<div class='content-title'>";
     $html .= "<p>" . $satrtStation . " - " . $endStation . "</p>";
     $html .= "<p id='newRouteId'>#" . $routes[0]['route_id'] . "</p></div>";
-    $html .=" <div class='titles margin-t-m margin-b-s'>
+    $html .= " <div class='titles margin-t-m margin-b-s'>
     <div class='titles__id'>Path id</div>
     <div class='titles__station'>Station</div>
     <div class='titles__arr-time'>Arr. Time</div>
@@ -91,27 +91,71 @@ print_r($dom->saveHTML());
 
 
 <script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewRoute.js"></script>
-<script>addStops();</script>
+<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewaddRoutCard.js"></script>
+<script>addStops(<?php echo $x; ?>);</script>
 
 <script>
 $(document).ready(function(){
   $("#button").click(function(){
-     
+
  let newindex2=newStations;
 let newindex3='<?php echo $x; ?>';
-console.log(newindex3);
+
     $.ajax({
       url:'newmanageRoutes',
       method:'post',
       data:{index1:newindex2,index2:newindex3},
       success : function (data) {
-       
+
             if(data.length===2){
-               window.location.href = "/utrance-railway/routes/";  
+               window.location.href = "/utrance-railway/routes/";
             }else{
-                console.log(data);
+               
+                var errorResult = JSON.parse(data);
+                console.log(errorResult);
+                x1 = document.querySelectorAll(".schedule");
+                var y = document.querySelectorAll(".stop-card__details");
+
+                // console.log(z.innerText);
+                var lenthOfError = parseInt(errorResult.length);
+                  var k;
+                  var m;
+
+                   for(k =0; k<errorResult.length;k++)
+                   {
+                    for( m =0; m<y.length;m++){
+                        var samepath=y[m].querySelector(".stop-card__path-id").innerText.split("#")[1] * 1;
+                        if(samepath==errorResult[k].pathId){
+                        console.log("jj");
+                       z = y[m].querySelector(".stop-card__path-id");
+                     
+                    //   let newparentPathId = errorResult[k].pathId;
+                    //   newchangePathIdAndBG(newparentPathId);
+                    let tt = z.parentNode.parentNode;
+                    console.log(tt);
+                    tt.parentNode.removeChild(tt);
+                    // newaddStops(m);
+                
+                    var index=0;
+                    for (let n = 0; n < newStations.length; n++) {
+
+                        if (newStations[n].pathId == errorResult[k].pathId) {
+                       
+                        index = n;  
+                        }
+                    }
+                  
+                        newStations.splice(index, 1);
+                       
+                       }
+                        
+                    }
+
+                   }
+                   
+
             }
-            
+
         }
     })
 
@@ -120,4 +164,57 @@ console.log(newindex3);
 
   });
 });
+
+// var return_first;
+// function callback(response) {
+//   return_first = response;
+//   console.log(return_first);
+// }
+
+
+
+// document
+// .querySelector(".btn-update-route")
+// .addEventListener("click", function (){
+//     x = document.querySelectorAll(".schedule");
+// y = document.querySelectorAll(".stop-card__details");
+// z = y[2].querySelector(".stop-card__path-id");
+// // console.log(z.innerText);
+// let newparentPathId = 3;
+// newchangePathIdAndBG(newparentPathId);
+// let tt = z.closest(".schedule");
+// tt.parentNode.removeChild(tt);
+
+
+// });
+
+const newchangePathIdAndBG = function (changedPathId) {
+  let newpathIdCount = 0;
+  document.querySelectorAll(".stop-card").forEach(function (e) {
+    const newpathId = e.children[0].children[0].innerText.split("#")[1] * 1;
+
+    if (newpathId == changedPathId) {
+      newpathIdCount += 1;
+    }
+    if (newpathIdCount === 1) {
+      e.children[0].children[0].innerHTML = `#${newpathId - 1}`;
+      e.classList.toggle("back-odd");
+      e.classList.toggle("back-even");
+    }
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
