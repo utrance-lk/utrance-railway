@@ -1,3 +1,4 @@
+
 <section class="ticket__prices">
     <form class="search__box" method="POST" action="/utrance-railway/ticket-prices">
     <div class="from__station-container">
@@ -122,9 +123,5 @@
 
     });
           </script>
-
-
-
-
 </body>
 </html>

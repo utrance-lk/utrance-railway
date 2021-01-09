@@ -23,14 +23,13 @@ class AdminModel extends Model {
     public $user_confirm_password;
     public $searchUserByNameOrId;
     private $registerSetValueArray = [];
-    public $station_details_provider;
+    public $userRole;
     // public $addUserImage = "Chris-user-profile.jpg";
 
 
     //////////////Train//////////////////
 
-
-
+    public $Traintype;
     public $train_name;
     public $train_type;
     public $train_id;
@@ -100,7 +99,6 @@ class AdminModel extends Model {
 
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
-      
         return $this->resultArray;
     }
 
@@ -134,13 +132,20 @@ class AdminModel extends Model {
 
 
     public function updateUserDetails(){//Ashika
-        
+        //var_dump($this->city);
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city' => $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
         $updateUserValidation=new FormValidation();
         $validationState=$updateUserValidation->runUpdateValidators($array);
-        
-        
+        //var_dump($validationState);
+
         if ($validationState ==="success") {
+        
+//         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city' => $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id];
+//         $updateUserValidation=new FormValidation();
+//         $validationState=$updateUserValidation->runUpdateValidators($array);
+        
+        
+//         if ($validationState ==="success") {
           
         $this->runSanitizationAdmin();
         $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
@@ -277,10 +282,82 @@ class AdminModel extends Model {
         $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
     }
 
+    public function getMyUsers(){
+        //   $new= explode(" ",$this->Traintype);
+          $typeOfUser = substr($this->userRole,4);
+          $userstaus = $this->userRole[0];
+        if($typeOfUser!="all" && $userstaus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type  ");
+            $query->bindValue(":user_type",$typeOfUser);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray; 
+    
+        }else if($typeOfUser=="all" && $userstaus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_active_status = :user_status ");
+            $query->bindValue(":user_status",$userstaus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfUser!="all" && $userstaus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type AND user_active_status = :user_status");
+            $query->bindValue(":user_type",$typeOfUser);
+            $query->bindValue(":user_status",$userstaus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfUser=="all" && $userstaus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM users");
+            
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+        }   
+    
+        }
    
 
 
     /////////////////////////Trains model////////////////////////////////////////////
+    public function getMyTrains(){
+        //   $new= explode(" ",$this->Traintype);
+          $typeOfTrain = substr($this->Traintype,4);
+          $staus = $this->Traintype[0];
+        if($typeOfTrain!="all" && $staus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type  ");
+            $query->bindValue(":train_type",$typeOfTrain);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray; 
+    
+        }else if($typeOfTrain=="all" && $staus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_active_status = :train_status ");
+            $query->bindValue(":train_status",$staus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfTrain!="all" && $staus!="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type AND train_active_status = :train_status");
+            $query->bindValue(":train_type",$typeOfTrain);
+            $query->bindValue(":train_status",$staus);
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+    
+        }else if($typeOfTrain=="all" && $staus=="a"){
+            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains");
+            
+            $query->execute();
+            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->resultArray;
+        }
+           
+        
+    
+        }
 
     public function getTrains()
     {
@@ -337,13 +414,29 @@ class AdminModel extends Model {
         return $this->resultArray;
    
     }
+  
+    public function activeTrains(){
+        $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=1 WHERE train_id = :train_id ");
+        $query->bindValue(":train_id", $this->id);
+        $this->setRouteStatus2();
+        $query->execute();
+        
+    }
 
     public function deleteTrains(){
-        $query = APP::$APP->db->pdo->prepare("DELETE FROM trains WHERE train_id = :train_id ");
+        $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=0 WHERE train_id = :train_id ");
+
         $query->bindValue(":train_id", $this->id);
         $this->setRouteStatus();
         $query->execute();
         
+    }
+
+    public function setRouteStatus2(){
+
+        $query = APP::$APP->db->pdo->prepare("UPDATE routes SET route_status=1 WHERE route_id=(SELECT trains.route_id FROM trains INNER JOIN routes ON trains.route_id = routes.route_id WHERE trains.train_id=:train_id)");
+        $query->bindValue(":train_id", $this->id);
+        $query->execute();
     }
 
     public function setRouteStatus(){
@@ -360,8 +453,6 @@ class AdminModel extends Model {
         'train_observation_seats' => $this->train_observation_seats, 'train_sleeping_berths' => $this->train_sleeping_berths, 'train_total_weight' => $this->train_total_weight, 'train_active_status' => $this->train_active_status];
         $updateTrainrValidation=new TrainFormValidation();
         $validationState=$updateTrainrValidation->runValidators($array);
-        // var_dump($validationState);
-        
 
         if (empty($validationState)) {
             $this->runSanitization();
@@ -397,8 +488,7 @@ class AdminModel extends Model {
           
            $this->setRoute();
           
-          return 'success';
-           
+          return 'success';   
         
         }
     
@@ -540,16 +630,15 @@ class AdminModel extends Model {
         $min=$value['minlue'];
         $max=$value['maxlue'];   
     }
-    $currentTime = date('h:i:s');
-    
-    
-    
-   
+
+    $currentTime = date('H:i:s');
+       
     $results2 = 0;
 
-$date1 = DateTime::createFromFormat('h:i:s', $max);
-$date2 = DateTime::createFromFormat('h:i:s', $currentTime);
-$date3 = DateTime::createFromFormat('h:i:s', $min);
+$date1 = DateTime::createFromFormat('H:i:s', $max);
+$date2 = DateTime::createFromFormat('H:i:s', $currentTime);
+$date3 = DateTime::createFromFormat('H:i:s', $min);
+
 if ($date2 > $date3 && $date2 < $date1)
 {
     $results2 = 1;

@@ -127,8 +127,47 @@ class AdminController extends Controller
         $response->redirect('/utrance-railway/users');
     }
 
+    public function filterSearch($request)
+    {
+        
+
+         if ($request->isGet()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+             $tempBody = $request->getQueryParams();
+             $saveDetailsModel->loadData($tempBody);
+            
+
+            $trainArrays =  $saveDetailsModel->getMyUsers();
+            //  var_dump($trainArrays);
+            // // return $this->render(['admin', 'manageTrains'], $trainArrays);
+          
+            echo json_encode($trainArrays);
+         }
+    }
+
 
     // manage trains
+    
+    public function newsearch($request)
+    {
+        
+
+         if ($request->isGet()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+             $tempBody = $request->getQueryParams();
+             $saveDetailsModel->loadData($tempBody);
+            
+
+            $trainArrays =  $saveDetailsModel->getMyTrains();
+            //  var_dump($trainArrays);
+            // // return $this->render(['admin', 'manageTrains'], $trainArrays);
+          
+            echo json_encode($trainArrays);
+         }
+    }
+
     public function manageTrains($request)
     {
         if($this->protect()) {
@@ -143,9 +182,12 @@ class AdminController extends Controller
                     return $this->render(['admin', 'manageTrains'], $resultArray);
                 }
                 
-                
+               
                 $trainArrays = $searchModel->getTrains();
-                return $this->render(['admin', 'manageTrains'], $trainArrays);       
+                 return $this->render(['admin', 'manageTrains'], $trainArrays); 
+                // return $this->render($trainArrays); 
+                // return $trainArrays;
+                   
             }
         }
     }
@@ -207,8 +249,9 @@ class AdminController extends Controller
 
     }
 
-    public function deleteTrain($request) 
+    public function deleteTrain($request, $response) 
     {
+        echo "huh";
 
         if($this->protect()) {
     
@@ -218,8 +261,29 @@ class AdminController extends Controller
                 
                 $deleteTrainModel->loadData($request->getQueryParams());
                 $deleteTrainModel->deleteTrains();
-                $trainArray=$deleteTrainModel->getTrains();
-                return $this->render(['admin', 'manageTrains'],$trainArray);
+                // $trainArray=$deleteTrainModel->getTrains();
+                // return $this->render(['admin', 'manageTrains'],$trainArray);
+                return $response->redirect('/utrance-railway/trains');
+                
+            }
+        }
+        
+    }
+
+    public function activeTrain($request, $response) 
+    {
+
+        if($this->protect()) {
+    
+            if($request->isGet()) 
+            {
+                $deleteTrainModel=new AdminModel();
+                
+                $deleteTrainModel->loadData($request->getQueryParams());
+                $deleteTrainModel->activeTrains();
+                // $trainArray=$deleteTrainModel->getTrains();
+                // return $this->render(['admin', 'manageTrains'],$trainArray);
+                return $response->redirect('/utrance-railway/trains');
                 
             }
         }
@@ -284,6 +348,16 @@ class AdminController extends Controller
             }
             
             return $this->render(['admin', 'addRoute']);
+        }
+    }
+
+    public function viewRoute($request) {
+        if($this->protect()) {
+            if($request->isPost()) {
+                return 'success';
+            }
+
+            return $this->render(['admin', 'updateRoute']);
         }
     }
 
