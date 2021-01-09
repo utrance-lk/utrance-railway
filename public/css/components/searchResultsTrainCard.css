@@ -1,0 +1,116 @@
+.search-results-train-card__container {
+    margin: 2rem;
+    width: 60%;
+}
+
+.search-results-train-card {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    margin-bottom: 4rem;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.search-results-train-card--small {
+  height: 18rem;
+}
+
+.search-results-train-card--big {
+    height: 35rem;
+}
+
+.search-results-train-card__main {
+  width: 42rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 4rem; 
+}
+
+.search-results-train-card__sub {
+  flex: 1;
+  align-self: stretch;
+}
+
+.search-results-train-card__primary {
+  align-items: center; 
+  justify-content: space-between; 
+  display: flex;
+}
+
+.search-results-train-card__detailbox {
+  flex: 2;
+}
+
+.search-results-train-card__detailbox  > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.search-results-train-card__durationbox {
+  flex: 1;
+}
+
+.search-results-train-card__classbox {
+    padding: 1rem;
+    background-color:rgba(31, 58, 147, 0.8);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-results-train-card__train-time {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.search-results-train-card__train-name a {
+    color: rgb(119, 119, 119) !important;
+}
+
+.search-results-train-card__switch-card {
+  height: 8rem;
+  margin: 2rem 0;
+  background-color: #fff;
+  border-top: 1px solid rgba(119, 119, 119, .2);
+  border-bottom: 1px solid rgba(119, 119, 119, .2);
+}
+
+.search-results-train-card__switch-card-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.search-results-train-card__switch-card-main {
+  display: flex;
+  width: 42rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.search-results-train-card__switch-card-icontextbox {
+  display: flex;
+}
+
+.search-results-train-card__switch-card-icon {
+  height: 3rem;
+  width: 3rem;
+}
+
+.search-results-train-card__switch-card-textbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-results-train-card__switch-card-textbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-results-train-card__switch-card-textbox span {
+  color: rgb(119, 119, 119);
+}

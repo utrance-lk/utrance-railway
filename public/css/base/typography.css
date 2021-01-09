@@ -1,0 +1,12 @@
+.heading-primary {
+  height: 30vh;
+  background-color: rgba(31, 58, 147, 0.8);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* .heading-primary > * {
+  margin: 0 15vw;
+} */

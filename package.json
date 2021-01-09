@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "concat:css": "concat -o public/css/style.concat.css public/css/abstracts/variables.css public/css/base/base.css public/css/base/utilities.css public/css/base/typography.css public/css/components/buttons.css public/css/components/newsCardSmall.css public/css/components/searchbarMain.css public/css/layout/footer.css public/css/layout/header.css public/css/pages/home/home.css public/css/pages/home/newsfeed.css"
+    "concat:css": "concat -o public/css/style.concat.css public/css/abstracts/variables.css public/css/base/base.css public/css/base/typography.css public/css/base/utilities.css public/css/base/typography.css public/css/components/buttons.css public/css/components/newsCardSmall.css public/css/components/searchbarMain.css public/css/components/searchResultsTrainCard.css public/css/layout/footer.css public/css/layout/header.css public/css/pages/home/home.css public/css/pages/home/newsfeed.css"
   },
   "repository": {
     "type": "git",

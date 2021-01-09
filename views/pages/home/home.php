@@ -1,5 +1,8 @@
-  <section class="home__heading-primary">
-    <?php include_once "../views/components/searchbarMain.php"?>
+  <section class="heading-primary">
+    <?php 
+      include_once "../views/components/searchbarMain.php";
+        echo renderSearchBar(null, null, null);
+    ?>
   </section>
 
   <?php include_once 'newsfeed.php';?>
