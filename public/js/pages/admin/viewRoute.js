@@ -450,7 +450,6 @@ function selected(element){
 };
 
 
-console.log("h");
 
 
 
