@@ -110,48 +110,48 @@ let newindex3='<?php echo $x; ?>';
             if(data.length===2){
                window.location.href = "/utrance-railway/routes/";
             }else{
-               
-                var errorResult = JSON.parse(data);
-                console.log(errorResult);
-                x1 = document.querySelectorAll(".schedule");
-                var y = document.querySelectorAll(".stop-card__details");
+               console.log(data);
+                // var errorResult = JSON.parse(data);
+                // console.log(errorResult);
+                // x1 = document.querySelectorAll(".schedule");
+                // var y = document.querySelectorAll(".stop-card__details");
 
-                // console.log(z.innerText);
-                var lenthOfError = parseInt(errorResult.length);
-                  var k;
-                  var m;
+                // // console.log(z.innerText);
+                // var lenthOfError = parseInt(errorResult.length);
+                //   var k;
+                //   var m;
 
-                   for(k =0; k<errorResult.length;k++)
-                   {
-                    for( m =0; m<y.length;m++){
-                        var samepath=y[m].querySelector(".stop-card__path-id").innerText.split("#")[1] * 1;
-                        if(samepath==errorResult[k].pathId){
-                        console.log("jj");
-                       z = y[m].querySelector(".stop-card__path-id");
+                //    for(k =0; k<errorResult.length;k++)
+                //    {
+                //     for( m =0; m<y.length;m++){
+                //         var samepath=y[m].querySelector(".stop-card__path-id").innerText.split("#")[1] * 1;
+                //         if(samepath==errorResult[k].pathId){
+                //         console.log("jj");
+                //        z = y[m].querySelector(".stop-card__path-id");
                      
-                    //   let newparentPathId = errorResult[k].pathId;
-                    //   newchangePathIdAndBG(newparentPathId);
-                    let tt = z.parentNode.parentNode;
-                    console.log(tt);
-                    tt.parentNode.removeChild(tt);
-                    // newaddStops(m);
+                //     //   let newparentPathId = errorResult[k].pathId;
+                //     //   newchangePathIdAndBG(newparentPathId);
+                //     let tt = z.parentNode.parentNode;
+                //     console.log(tt);
+                //     tt.parentNode.removeChild(tt);
+                //     // newaddStops(m);
                 
-                    var index=0;
-                    for (let n = 0; n < newStations.length; n++) {
+                //     var index=0;
+                //     for (let n = 0; n < newStations.length; n++) {
 
-                        if (newStations[n].pathId == errorResult[k].pathId) {
+                //         if (newStations[n].pathId == errorResult[k].pathId) {
                        
-                        index = n;  
-                        }
-                    }
+                //         index = n;  
+                //         }
+                //     }
                   
-                        newStations.splice(index, 1);
+                //         newStations.splice(index, 1);
                        
-                       }
+                //        }
                         
-                    }
+                //     }
 
-                   }
+                //    }
                    
 
             }

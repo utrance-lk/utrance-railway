@@ -2,6 +2,7 @@ let newStations = [];
 let newnewStations = [];
 let emptyStations=0;
 
+
 function addStops(x) {
   document.querySelectorAll(".stop-card__add-btn").forEach(function (item) {
     item.addEventListener("click", function (e) {
@@ -265,7 +266,7 @@ function addStops(x) {
           });
           
       }
-      myfun();
+      myfun(x);
       // const items = { 
       //   inputDate: document.querySelector(".add-stop-popup__arr-time--input"),
       // };
@@ -308,31 +309,74 @@ const timeConversion = function (time) {
 
 
 
-function myfun(){
+function myfun(x){
+  var suggestions = [];
+
+  $(document).ready(function(){
+    $(".add-stop-popup__station--input").click(function(){
+         
+      let newRoutID=x;
+      $.ajax({
+        url:'newmanageRoutesValidations',
+        method:'post',
+        data:{index1:newRoutID},
+        success : function (data){
+          train=JSON.parse(data)
+          
+          let stationLength = document.querySelectorAll(".stop-card").length;
+          
+          // for(let j=0;j<stationLength;j++){
+           
+          //    console.log(document.querySelectorAll(".stop-card")[j].querySelector(".stop-card__station").innerText);
+                
+          // }
+          
+          for(let i=0;i<train.length;i++){
+            var validStations=0;
+            for(let j=0;j<stationLength;j++){
+                   if(document.querySelectorAll(".stop-card")[j].querySelector(".stop-card__station").innerText==train[i]['station_name']){
+                    validStations++;
+                  
+                   }    
+            }
+            if(validStations==0){
+              suggestions.push(train[i]['station_name']);
+            }
+
+          }
+        }
+
+      })
+  
+    }) 
+  })
+
+
+
 
 const searchWrapper = document.querySelector(".add-stop-popup__station");
 const inputBox = searchWrapper.querySelector("input");
 const suggBox = searchWrapper.querySelector(".autocom-box");
 
-const suggestions = [
-  "Matara",
-    "Colombo Fort",
-    "Galle",
-    "Katugoda",
-    "Gampaha",
-    "Kandy",
-    "Puttalam",
-    "Aluthgama",
-    "Midigama",
-    "Weligama",
-    "Avissawella",
-    "Beliatta",
-    "Wewurukannala",
-    "Kekanadura",
-    "Maradana",
-    "Kalutara",
-    "Kegalle",
-];
+// const suggestions = [
+//   "Matara",
+//     "Colombo Fort",
+//     "Galle",
+//     "Katugoda",
+//     "Gampaha",
+//     "Kandy",
+//     "Puttalam",
+//     "Aluthgama",
+//     "Midigama",
+//     "Weligama",
+//     "Avissawella",
+//     "Beliatta",
+//     "Wewurukannala",
+//     "Kekanadura",
+//     "Maradana",
+//     "Kalutara",
+//     "Kegalle",
+// ];
 
 inputBox.onkeyup = (e)=>{
   let userData = e.target.value;
