@@ -52,7 +52,7 @@ function addStops(x) {
             `;
         parent.insertAdjacentHTML("afterend", markup);
 
-///////////////////////////////nimeshika///////////////////////////////////////////
+///////////////////////////////start validation///////////////////////////////////////////
         // let newindex5= parent.firstChild.firstChild.innerText.split("#")[1] * 1;
        
         $(document).ready(function(){
@@ -81,6 +81,10 @@ function addStops(x) {
         });
 
         document.querySelector( ".add-stop-popup__dept-time--input").addEventListener("change", function (){
+
+          if(document.querySelector("#myerror")!=null){
+            document.querySelector("#myerror").remove();
+          }
           
           document.querySelector(".add-stop-popup__dept-time--input").min = document.getElementById("arrtime").value;
           console.log(document.getElementById("arrtime").value);
@@ -108,7 +112,12 @@ function addStops(x) {
         });
 
         document.querySelector( ".add-stop-popup__arr-time--input").addEventListener("change", function (){
+
         
+        if(document.querySelector("#myerror")!=null){
+          document.querySelector("#myerror").remove();
+        }
+
           var startDate = document.querySelector(".add-stop-popup__arr-time--input").min;
           var endDate = document.getElementById("arrtime").value;
           var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
@@ -138,7 +147,7 @@ function addStops(x) {
           
 
         });
-      console.log(emptyStations);
+     
         if(document.querySelector(".add-stop-popup__arr-time--input").value == ""){
           document.getElementById("addButton").disabled = true;
         }
@@ -149,7 +158,7 @@ function addStops(x) {
         }else{
           document.getElementById("addButton").disabled = false;
         }
-//////////////////////////////////hasani/////////////////////////
+//////////////////////////////////end validation/////////////////////////
         const popupCloseBtn = document.querySelector(
           ".add-stop-popup__close-btn"
         );
