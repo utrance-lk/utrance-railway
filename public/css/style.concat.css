@@ -108,11 +108,20 @@ button {
 .form__input {
   padding: 1rem;
   outline: none;
-  /* width: 60%; */
   background-color: rgb(242, 242, 242);
   border: none;
   font-family: "Lato", sans-serif;
-  border-radius: 3px;
+  /* border-radius: 3px; */
+  box-shadow: 1px 1px 2px rgba(0, 0, 0.3, 0.2);
+  border-radius: 5px;
+}
+
+.form__upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
 }
 
 .error__placeholder::-webkit-input-placeholder {
@@ -160,9 +169,14 @@ input::-webkit-datetime-edit-year-field:focus {
   justify-content: center;
 }
 
-/* .heading-primary > * {
-  margin: 0 15vw;
-} */
+.heading-secondary {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 400;
+  margin-top: 2rem;
+}
+
 .margin-r-xs {
   margin-right: 1rem;
 }
@@ -177,6 +191,10 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .margin-l-xs {
     margin-left: 1rem;
+}
+
+.margin-b-xs {
+    margin-bottom: 1rem;
 }
 
 .margin-b-s {
@@ -194,6 +212,14 @@ input::-webkit-datetime-edit-year-field:focus {
 .margin-t-m {
   margin-top: 4rem;
 }
+
+.center-block {
+  margin: 0 auto;
+}
+
+.center-text {
+  text-align: center;
+}
 .heading-primary {
   height: 30vh;
   background-color: rgba(31, 58, 147, 0.8);
@@ -203,9 +229,14 @@ input::-webkit-datetime-edit-year-field:focus {
   justify-content: center;
 }
 
-/* .heading-primary > * {
-  margin: 0 15vw;
-} */
+.heading-secondary {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 400;
+  margin-top: 2rem;
+}
+
 .btn {
   cursor: pointer;
   outline: none;
@@ -363,7 +394,8 @@ input::-webkit-datetime-edit-year-field:focus {
   padding: 1rem;
   width: 10rem;
   font-size: 1.5rem;
-  transition: all 0.3s;
+  transition: background-color 0.3s, border 0.3s, color 0.3s, box-shadow 0.3s,
+    transform 0.3s;
 }
 
 .btn-square-no-bg:hover {
@@ -377,6 +409,27 @@ input::-webkit-datetime-edit-year-field:focus {
   transform: translateY(2px);
 }
 
+/* ----- */
+.btn-square-upload {
+  padding: 5px;
+  border-bottom: 1px solid rgba(31, 58, 147, 0.8);
+  transition: all 0.3s;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.btn-square-upload:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  background-color: rgba(31, 58, 147, 0.8);
+}
+
+.seperator {
+  height: 1px;
+  margin: 5rem 0 5rem 0;
+  background-color: rgba(119, 119, 119, 0.2);
+}
 .newscard-small {
   border: 1px solid rgba(119, 119, 119, 0.2);
   width: 50rem;
@@ -838,6 +891,52 @@ input::-webkit-datetime-edit-year-field:focus {
   align-items: center;
 }
 
+.sidebar-nav {
+  width: 30%;
+  background-color: rgba(31, 58, 147, 0.8);
+  color: #fff;
+}
+
+.sidebar-nav a {
+  color: #fff;
+}
+
+.sidebar-nav__item {
+  padding: 2rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.sidebar-nav__item:hover {
+  transform: translateX(0.5rem);
+  color: rgb(250, 151, 70);
+}
+
+.sidebar-nav__item:hover .sidebar-nav__icon {
+  fill: rgb(250, 151, 70);
+}
+
+.sidebar-nav__item > * {
+  margin: 0 1rem;
+}
+
+.sidebar-nav__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: #fff;
+}
+
+.sidebar-nav__role {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 1rem;
+  margin-left: 3rem;
+  margin-top: 6rem;
+  text-transform: uppercase;
+  width: 80%;
+}
 /* .home__heading-primary {
   height: 40vh;
   background-size: cover;
@@ -858,4 +957,56 @@ input::-webkit-datetime-edit-year-field:focus {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+.dashboard {
+  margin: 10vh 10vw;
+  font-family: "Lato", sans-serif;
+  border-radius: 5px;
+  display: flex;
+}
+
+.dashboard__settings {
+  background-color: #fff;
+  width: 60vw;
+}
+
+.settings {
+  height: 100%;
+  width: 80%;
+  margin: auto auto;
+}
+
+.settings__form {
+  margin: 4rem auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.settings__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.settings__input-address {
+  text-transform: uppercase;
+}
+
+.settings__input-address,
+.settings__label {
+  font-weight: 700;
+  color: rgb(119, 119, 119);
+  margin-bottom: 1rem;
+}
+
+.settings__profile-img {
+  margin-top: 4rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.settings__btn {
+  display: flex;
+  justify-content: flex-end;
 }

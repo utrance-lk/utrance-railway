@@ -14,6 +14,10 @@
     margin-left: 1rem;
 }
 
+.margin-b-xs {
+    margin-bottom: 1rem;
+}
+
 .margin-b-s {
   margin-bottom: 2rem;
 }
@@ -28,4 +32,12 @@
 
 .margin-t-m {
   margin-top: 4rem;
+}
+
+.center-block {
+  margin: 0 auto;
+}
+
+.center-text {
+  text-align: center;
 }

@@ -7,6 +7,10 @@
   justify-content: center;
 }
 
-/* .heading-primary > * {
-  margin: 0 15vw;
-} */
+.heading-secondary {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 400;
+  margin-top: 2rem;
+}

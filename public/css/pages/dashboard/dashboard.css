@@ -1,0 +1,52 @@
+.dashboard {
+  margin: 10vh 10vw;
+  font-family: "Lato", sans-serif;
+  border-radius: 5px;
+  display: flex;
+}
+
+.dashboard__settings {
+  background-color: #fff;
+  width: 60vw;
+}
+
+.settings {
+  height: 100%;
+  width: 80%;
+  margin: auto auto;
+}
+
+.settings__form {
+  margin: 4rem auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.settings__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.settings__input-address {
+  text-transform: uppercase;
+}
+
+.settings__input-address,
+.settings__label {
+  font-weight: 700;
+  color: rgb(119, 119, 119);
+  margin-bottom: 1rem;
+}
+
+.settings__profile-img {
+  margin-top: 4rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.settings__btn {
+  display: flex;
+  justify-content: flex-end;
+}

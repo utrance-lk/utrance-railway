@@ -155,7 +155,8 @@
   padding: 1rem;
   width: 10rem;
   font-size: 1.5rem;
-  transition: all 0.3s;
+  transition: background-color 0.3s, border 0.3s, color 0.3s, box-shadow 0.3s,
+    transform 0.3s;
 }
 
 .btn-square-no-bg:hover {
@@ -167,4 +168,20 @@
 
 .btn-square-no-bg:active {
   transform: translateY(2px);
+}
+
+/* ----- */
+.btn-square-upload {
+  padding: 5px;
+  border-bottom: 1px solid rgba(31, 58, 147, 0.8);
+  transition: all 0.3s;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.btn-square-upload:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  background-color: rgba(31, 58, 147, 0.8);
 }

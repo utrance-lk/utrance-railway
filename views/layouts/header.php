@@ -58,7 +58,7 @@
               <div class="header-user__dropdown">
                <ul>
                  <li>
-                   <a href="/utrance-railway/profile">
+                   <a href="/utrance-railway/dashboard">
                     <svg class="header-user__dropdown-icon">
                       <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-gauge"></use>
                     </svg>
