@@ -33,12 +33,6 @@ li {
   list-style: none;
 }
 
-/* .btn {
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-} */
-
 .clearfix::after {
   content: "";
   clear: both;
@@ -70,7 +64,6 @@ button {
   background-color: transparent;
   cursor: pointer;
   font-family: "Sora", sans-serif;
-  /* transition: all .2s; */
 }
 
 .form__input {

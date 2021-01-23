@@ -65,12 +65,6 @@ li {
   list-style: none;
 }
 
-/* .btn {
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-} */
-
 .clearfix::after {
   content: "";
   clear: both;
@@ -102,7 +96,6 @@ button {
   background-color: transparent;
   cursor: pointer;
   font-family: "Sora", sans-serif;
-  /* transition: all .2s; */
 }
 
 .form__input {
@@ -191,6 +184,10 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .margin-l-xs {
     margin-left: 1rem;
+}
+
+.margin-b-xxs {
+  margin-bottom: .5rem;
 }
 
 .margin-b-xs {
@@ -1009,4 +1006,197 @@ input::-webkit-datetime-edit-year-field:focus {
 .settings__btn {
   display: flex;
   justify-content: flex-end;
+}
+
+.ticket-prices {
+  margin-top: 5rem;
+}
+
+.ticket-prices__search {
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 30vw;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.4);
+}
+
+.ticket-prices__search div {
+  width: 15rem;
+}
+
+.ticket-prices__search span {
+  font-size: 2rem;
+  width: 5rem;
+}
+
+.ticket-prices__search--from,
+.ticket-prices__search--to {
+  position: relative;
+  width: 15rem;
+  justify-content: space-between;
+}
+
+.ticket-prices__search-box {
+  height: 5rem;
+  width: 15rem;
+  font-size: 2rem;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 2.5;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  font-family: "Sora", Courier, monospace;
+}
+
+.ticket-prices__search-dropdown {
+  display: block;
+  width: 14.5rem;
+  height: 4rem;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 90;
+}
+
+.ticket-prices__search-dropdown-input {
+  background-color: #fff;
+  width: 100%;
+  padding: 1rem;
+  font-family: "Sora", sans-serif;
+  font-weight: 500;
+  font-size: 2.4rem;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.ticket-prices__search-dropdown-search-results {
+  list-style: none;
+  visibility: hidden;
+  overflow: hidden;
+  max-height: 8rem;
+  display: block;
+  padding: 0px;
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 90;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, .3);
+}
+
+.ticket__prices__search-dropdown-search-results-item {
+  padding: 1rem;
+  width: 100%;
+  height: 4rem;
+  transition: all 0.5s;
+  z-index: 90;
+}
+
+.ticket__prices__search-dropdown-search-results-item:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.btn-square-blue {
+  margin-top: 0;
+  padding: 1.5rem;
+  border-radius: 10rem;
+  width: 10rem;
+  justify-content: center;
+}
+
+.search__results-container {
+  /* border: 1px solid red; */
+  margin: 5rem 15vw 0 15vw;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.results__set {
+  display: flex;
+  justify-content: space-around;
+}
+
+.seat__class--box {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+}
+
+.seat__class--box-item {
+  margin: 1rem;
+}
+
+.class__icon {
+  width: 3rem;
+  height: 3rem;
+  fill: var(--color-main);
+}
+
+.class__price {
+  font-size: 2rem;
+  border: 1px solid var(--color-main);
+  padding: 0.5rem;
+}
+
+.class__name {
+  font-family: "Lato", sans-serif;
+  font-size: 1.7rem;
+}
+
+.icon__btn {
+  cursor: pointer;
+}
+
+.icon__btn:active,
+.icon__btn:focus {
+  transform: scale(0.9);
+}
+
+.number-of-persons__box {
+  /* border: 1px solid red; */
+  width: 15rem;
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+}
+#number__box {
+  width: 2.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+#number__box__name {
+  padding: 0.5rem;
+}
+
+
+.to__station-container {
+  position: relative;
+}
+
+.plus-btn {
+  background-color: rgba(31, 58, 147, 0.8);
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  border-radius: 10px;
+}
+.minus-btn {
+  background-color: rgba(31, 58, 147, 0.8);
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  border-radius: 10px;
 }

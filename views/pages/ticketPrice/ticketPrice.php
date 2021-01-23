@@ -1,40 +1,28 @@
 
-<section class="ticket__prices">
-    <form class="search__box" method="POST" action="/utrance-railway/ticket-prices">
-    <div class="from__station-container">
-    <div class="search__box--item input__from  js--from__station"  id="js--from__station"></div>
-
-      <div class="search-dropdown search-dropdown__from js--search-dropdown__from">
-            <input type="text" id="dropdown-from"   name="start" class="search-dropdown__search js--search-dropdown__search-from" >
-        </div>
-        <ul class="search-dropdown__search-results js--results__list-from"></ul>
-        </div>
-        </div>
-        <span class="search__box--item">TO</span>
-
-        <div class="to__station-container">
-          <div class="search__box--item input__to  js--to__station"  id="js--to__station"></div>
-
-
-        <!--input class="search__box--item input__from" value="Matara" name='from' type="text"!-->
-          <!--input class="search__box--item input__to" name='to' value="Galle" type="text"!-->
-      <div class="search-dropdown search-dropdown__to js--search-dropdown__to">
-            <input type="text"  id="dropdown-to" name="destination" class="search-dropdown__search js--search-dropdown__search-to">
-        </div>
-        <ul class="search-dropdown__search-results js--results__list-to"></ul>
-        </div>
-     </div>
-
-
-
-        <button class="btn-search" type="submit">
-            <svg class="btn-search__icon">
-                <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass'></use>
-            </svg>
-        </button>
-    </form>
-    <div class="search__results-container">
-       </div>
+<section class="ticket-prices">
+  <form class="ticket-prices__search" method="POST" action="/utrance-railway/ticket-prices">
+    <div class="ticket-prices__search--from">
+      <div class="ticket-prices__search-box  js--from__station"  id="js--from__station"></div>
+      <div class="ticket-prices__search-dropdown js--search-dropdown__from">
+            <input type="text" id="dropdown-from"  name="start" class="ticket-prices__search-dropdown-input js--search-dropdown__search-from" >
+      </div>
+      <ul class="ticket-prices__search-dropdown-search-results js--results__list-from"></ul>
+    </div>
+    <span class="center-text">TO</span>
+    <div class="ticket-prices__search--to">
+      <div class="ticket-prices__search-box  js--to__station"  id="js--to__station"></div>
+      <div class="ticket-prices__search-dropdown js--search-dropdown__to">
+          <input type="text"  id="dropdown-to" name="destination" class="ticket-prices__search-dropdown-input js--search-dropdown__search-to">
+      </div>
+      <ul class="ticket-prices__search-dropdown-search-results js--results__list-to"></ul>
+    </div>
+    <button class="btn-search" type="submit">
+        <svg class="btn-search__icon">
+            <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass'></use>
+        </svg>
+    </button>
+  </form>
+    <div class="search__results-container"></div>
 </section>
 
 <script type="text/javascript" src="../../../utrance-railway/public/js/components/viewPrice.js"></script>
