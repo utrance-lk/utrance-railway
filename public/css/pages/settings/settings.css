@@ -1,21 +1,3 @@
-.dashboard {
-  margin: 10vh 10vw;
-  font-family: "Lato", sans-serif;
-  border-radius: 5px;
-  display: flex;
-}
-
-.dashboard__settings {
-  background-color: #fff;
-  width: 60vw;
-}
-
-.settings {
-  height: 100%;
-  width: 80%;
-  margin: auto auto;
-}
-
 .settings__form {
   margin: 4rem auto 2rem auto;
   display: flex;

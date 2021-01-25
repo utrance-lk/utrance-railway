@@ -198,6 +198,10 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-bottom: 2rem;
 }
 
+.margin-b-m {
+  margin-bottom: 4rem;
+}
+
 .margin-b-l {
   margin-bottom: 5rem;
 }
@@ -278,7 +282,6 @@ input::-webkit-datetime-edit-year-field:focus {
 .btn-square-blue {
   display: flex;
   align-items: center;
-  margin-top: 4rem;
   width: max-content;
   padding: 1rem;
   color: var(--color-btn-square-text);
@@ -294,6 +297,17 @@ input::-webkit-datetime-edit-year-field:focus {
 .btn-square-blue:active,
 .btn-square-blue:focus {
   transform: translateY(0.2rem);
+}
+
+.btn-square-blue__text {
+  margin-right: 2rem;
+  font-size: 2rem;
+}
+
+.btn-square-blue__icon {
+  fill: #fff;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 /* ----- */
@@ -422,6 +436,17 @@ input::-webkit-datetime-edit-year-field:focus {
   background-color: rgba(31, 58, 147, 0.8);
 }
 
+.filter__container {
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem 1rem;
+  border: 1px solid rgba(119, 119, 119, 0.3);
+}
+
+.filter {
+  margin-right: 2rem;
+  cursor: pointer;
+}
 .seperator {
   height: 1px;
   margin: 5rem 0 5rem 0;
@@ -484,6 +509,38 @@ input::-webkit-datetime-edit-year-field:focus {
   fill: rgb(119, 119, 119);
 }
 
+.searchbar-admin {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar-admin__search {
+  padding: 1rem;
+  border-radius: 10rem;
+  border: none;
+  width: 70%;
+  outline: none;
+  background-color: rgb(244, 242, 242);
+  font-family: "Lato", sans-serif;
+  color: rgb(119, 119, 119);
+  transition: all 0.3s;
+}
+
+.searchbar-admin__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-left: -4rem;
+  fill: rgb(119, 119, 119);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.searchbar-admin__icon:active,
+.searchbar-admin__icon:focus {
+  transform: scale(0.9);
+}
 .searchbar-main {
   height: 16vh;
   width: 70vw;
@@ -727,6 +784,22 @@ input::-webkit-datetime-edit-year-field:focus {
 .search-results-train-card__switch-card-textbox span {
   color: rgb(119, 119, 119);
 }
+.dashboard {
+  margin: 10vh 10vw;
+  font-family: "Lato", sans-serif;
+  border-radius: 5px;
+  display: flex;
+}
+.dash-content__container {
+  background-color: #fff;
+  width: 60vw;
+}
+
+.dash-content {
+  height: 100%;
+  width: 80%;
+  margin: auto auto;
+}
 .footer {
   margin-top: 10rem;
   background-color: rgba(0, 0, 0, .8);
@@ -888,6 +961,11 @@ input::-webkit-datetime-edit-year-field:focus {
   align-items: center;
 }
 
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .sidebar-nav {
   width: 30%;
   background-color: rgba(31, 58, 147, 0.8);
@@ -955,24 +1033,34 @@ input::-webkit-datetime-edit-year-field:focus {
     justify-content: space-around;
     align-items: center;
 }
-.dashboard {
-  margin: 10vh 10vw;
-  font-family: "Lato", sans-serif;
-  border-radius: 5px;
+.manage-trains__search-results {
   display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
 }
 
-.dashboard__settings {
-  background-color: #fff;
-  width: 60vw;
+.manage-trains__result-card {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  background-color: rgb(244, 242, 242);
+  padding: 0 2rem;
 }
 
-.settings {
-  height: 100%;
-  width: 80%;
-  margin: auto auto;
+.manage-trains__result-card  > * {
+  flex: 1;
+  text-align: center;
 }
 
+.manage-trains__card-item--train-id {
+  flex: 0.5;
+}
+
+.manage-trains__card-item--train-name {
+  font-weight: 700;
+  padding: 0 2rem;
+  text-align: left;
+}
 .settings__form {
   margin: 4rem auto 2rem auto;
   display: flex;
@@ -1101,14 +1189,6 @@ input::-webkit-datetime-edit-year-field:focus {
 .ticket__prices__search-dropdown-search-results-item:hover {
   background-color: #eeeeee;
   cursor: pointer;
-}
-
-.btn-square-blue {
-  margin-top: 0;
-  padding: 1.5rem;
-  border-radius: 10rem;
-  width: 10rem;
-  justify-content: center;
 }
 
 .search__results-container {

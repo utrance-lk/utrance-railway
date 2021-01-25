@@ -7,8 +7,8 @@
         }
     ?>
 
-    <div class="dashboard__settings js--load-content-container">
-        <div class="settings">
+    <div class="dash-content__container js--load-content-container">
+        <div class="dash-content">
           <div>
             <div class="heading-secondary">
               <p class="center-text">Your Account Settings</p>

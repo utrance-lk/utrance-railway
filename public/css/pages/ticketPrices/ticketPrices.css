@@ -93,14 +93,6 @@
   cursor: pointer;
 }
 
-.btn-square-blue {
-  margin-top: 0;
-  padding: 1.5rem;
-  border-radius: 10rem;
-  width: 10rem;
-  justify-content: center;
-}
-
 .search__results-container {
   /* border: 1px solid red; */
   margin: 5rem 15vw 0 15vw;

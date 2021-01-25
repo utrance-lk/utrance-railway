@@ -1,0 +1,32 @@
+.searchbar-admin {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar-admin__search {
+  padding: 1rem;
+  border-radius: 10rem;
+  border: none;
+  width: 70%;
+  outline: none;
+  background-color: rgb(244, 242, 242);
+  font-family: "Lato", sans-serif;
+  color: rgb(119, 119, 119);
+  transition: all 0.3s;
+}
+
+.searchbar-admin__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-left: -4rem;
+  fill: rgb(119, 119, 119);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.searchbar-admin__icon:active,
+.searchbar-admin__icon:focus {
+  transform: scale(0.9);
+}

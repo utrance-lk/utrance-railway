@@ -42,7 +42,6 @@
 .btn-square-blue {
   display: flex;
   align-items: center;
-  margin-top: 4rem;
   width: max-content;
   padding: 1rem;
   color: var(--color-btn-square-text);
@@ -58,6 +57,17 @@
 .btn-square-blue:active,
 .btn-square-blue:focus {
   transform: translateY(0.2rem);
+}
+
+.btn-square-blue__text {
+  margin-right: 2rem;
+  font-size: 2rem;
+}
+
+.btn-square-blue__icon {
+  fill: #fff;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 /* ----- */

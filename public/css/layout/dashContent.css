@@ -1,0 +1,10 @@
+.dash-content__container {
+  background-color: #fff;
+  width: 60vw;
+}
+
+.dash-content {
+  height: 100%;
+  width: 80%;
+  margin: auto auto;
+}

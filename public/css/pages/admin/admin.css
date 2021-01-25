@@ -1,16 +1,15 @@
 
 /* Manage Users */
 
-.dashboard-searchbar--container {
-  /* border: 1px solid blue; */
+/* .dashboard-searchbar--container {
+  /* border: 1px solid blue; 
   margin-top: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.dashboard-searchbar {
-  /* border: 1px solid red; */
+/* .dashboard-searchbar {
   padding: 1rem;
   border-radius: 10rem;
   border: none;
@@ -20,21 +19,21 @@
   font-family: "Lato", sans-serif;
   color: rgb(119, 119, 119);
   transition: all 0.3s;
-}
+} */
 
-.search-icon__btn {
+/* .search-icon__btn {
   height: 2.5rem;
   width: 2.5rem;
   margin-left: -4rem;
   fill: rgb(119, 119, 119);
   cursor: pointer;
   transition: all 0.5s;
-}
+} */
 
-.search-icon__btn:active,
+/* .search-icon__btn:active,
 .search-icon__btn:focus {
   transform: scale(0.9);
-}
+} */
 
 .dashboard-searchbar__dropdown {
   height: 3.5rem;
@@ -80,31 +79,11 @@ select {
     text-align: center; */
 }
 
-.search__results-container {
-  /* border: 1px solid pink; */
-  display: flex;
-  flex-direction: column;
-  margin-top: 4rem;
-}
 
-.search__result-card {
-  /* border: 1px solid purple; */
-  height: 8rem;
-  display: flex;
-  align-items: center;
-  background-color: rgb(244, 242, 242);
-  padding: 0 2rem;
-}
-
-.search__result-card {
-  margin-bottom: 4rem;
-}
-
-.search__result-card > * {
-  /* border: 1px solid green; */
+/* .search__result-card > * {
   flex: 1;
   text-align: center;
-}
+} */
 
 .search__result-mainbox {
   display: flex;
@@ -153,15 +132,15 @@ select {
 }
 
 /* specially for trains  */
-.search__result-train-idbox {
+/* .search__result-train-idbox {
   flex: 0.5;
-}
+} */
 
-.search__result-train-namebox {
+/* .search__result-train-namebox {
   font-weight: 700;
   padding: 0 2rem;
   text-align: left;
-}
+} */
 
 .traintaveldays-box {
   border: none;
@@ -448,24 +427,11 @@ select {
   text-align: center;
 }
 
-/* buttons */
-
-.addbtn-text {
-  margin-right: 2rem;
-  font-size: 2rem;
-}
-
-.addbtn-img {
-  fill: #fff;
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
-.btn__container {
+/* .btn__container {
   display: flex;
   justify-content: flex-end;
-}
-.filters__container {
+} */
+/* .filters__container {
   display: flex;
   flex-direction: row;
   padding: 1.5rem 1rem;
@@ -475,7 +441,7 @@ select {
 .filter__item {
   margin-right: 2rem;
   cursor: pointer;
-}
+} */
 
 .schedule {
   /* border: 1px solid red; */
