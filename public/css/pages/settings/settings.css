@@ -1,11 +1,4 @@
-.settings__form {
-  margin: 4rem auto 2rem auto;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-
-.settings__input {
+/* .settings__input {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
@@ -20,7 +13,7 @@
   font-weight: 700;
   color: rgb(119, 119, 119);
   margin-bottom: 1rem;
-}
+} */
 
 .settings__profile-img {
   margin-top: 4rem;

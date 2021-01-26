@@ -10,15 +10,12 @@
     <div class="dash-content__container js--load-content-container">
         <div class="dash-content">
           <div>
-            <div class="heading-secondary">
+            <div class="heading-secondary margin-b-m margin-t-m">
               <p class="center-text">Your Account Settings</p>
             </div>
             
             <?php
-              $dom = new DOMDocument;
-              libxml_use_internal_errors(true);
-              $dom->loadHTML('...');
-              libxml_clear_errors();
+              include '../views/layouts/helpers.php';
             ?>
 
             <?php
@@ -28,9 +25,9 @@
                 $value='';
                 $id = App::$APP->activeUser()['id'];
                 
-                $html .="<form action='/utrance-railway/settings' class='settings__form' method='POST' enctype='multipart/form-data'>";
-                $html .= "<div class='settings__input'>";
-                $html .= "<label for='firstname' class='settings__label'>First Name</label>";
+                $html .="<form action='/utrance-railway/settings' class='dash-content__form' method='POST' enctype='multipart/form-data'>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<label for='firstname' class='dash-content__label'>First Name</label>";
                 if(isset($firstNameError)){
                   $html .= "<input type='text' name='first_name' class='form__input error__placeholder'  placeholder='".$firstNameError."'   ></div>"; 
                  
@@ -39,8 +36,8 @@
                   
                 }
                
-                $html .= "<div class='settings__input'>";
-                $html .= "<label for='lastname' class='settings__label'>Last Name</label>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<label for='lastname' class='dash-content__label'>Last Name</label>";
 
                 if(isset($lastNameError)){
                   $html .= "<input type='text' name='last_name' class='form__input error__placeholder'  placeholder='".$lastNameError."'   ></div>"; 
@@ -49,8 +46,8 @@
                   $html .= "<input type='text' name='last_name' class='form__input'   value='".App::$APP->activeUser()['last_name']."' ></div>"; 
                   
                 }
-                $html .= "<div class='settings__input'>";
-                $html .= "<label for='email' class='settings__label'>Email</label>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<label for='email' class='dash-content__label'>Email</label>";
                 if(isset($email_id_error)){
                   $html .= "<input type='text' name='email_id' class='form__input error__placeholder'  placeholder='".$email_id_error."'   ></div>"; 
                  
@@ -59,10 +56,10 @@
                   
                 }
                 
-                $html .= "<div class='settings__input'>";
-                $html .= "<span class='settings__input-address'>Address</span>";
-                $html .= "<div class='settings__input'>";
-                $html .= "<label for='stl1' class='settings__label'>Street Line 1</label>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<span class='dash-content__input-address'>Address</span>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<label for='stl1' class='dash-content__label'>Street Line 1</label>";
                 if(isset($streetLine1Error)){
                   $html .= "<input type='text' name='street_line1' class='form__input error__placeholder' placeholder='".$streetLine1Error."' ></div>";
                 }else{
@@ -70,8 +67,8 @@
                   
                 }
                 
-                $html .= "<div class='settings__input'>";
-                $html .= "<label for='stl2' class='settings__label'>Street Line 2</label>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<label for='stl2' class='dash-content__label'>Street Line 2</label>";
 
                 if(isset($streetLine2Error)){
                   $html .= "<input type='text' name='street_line2' class='form__input error__placeholder' placeholder='".$streetLine2Error."' ></div>";
@@ -81,8 +78,8 @@
                 }
 
                 
-                $html .= "<div class='settings__input'>";
-                $html .= "<label for='city' class='settings__label'>City</label>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<label for='city' class='dash-content__label'>City</label>";
                
                   $cityArray=array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunagala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliye","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
 
@@ -96,8 +93,8 @@
                   $html .="</select></div></div>";
 
                 
-                $html .= "<div class='settings__input'>";
-                $html .= "<label for='contactno' class='settings__label'>Contact No</label>";
+                $html .= "<div class='dash-content__input'>";
+                $html .= "<label for='contactno' class='dash-content__label'>Contact No</label>";
                 if(isset($contactNumError)){
                   $html .= "<input type='text' name='contact_num' class='form__input error__placeholder' placeholder='".$contactNumError."' ></div>";
                 }else{
@@ -132,7 +129,7 @@
             <?php
             
               $html = "";
-              $html .= "<div class='settings__input'>";
+              $html .= "<div class='dash-content__input'>";
               $html .= "<label for='currentpassword' class='settings__label'>Current Password</label>";
               
               if(isset($passwordError)){
@@ -141,7 +138,7 @@
                 $html .= "<input type='password' name='user_password' placeholder='****************'  class='form__input'/></div>";
               }
 
-              $html .= "<div class='settings__input'>";
+              $html .= "<div class='dash-content__input'>";
               $html .= "<label for='newpassword' class='settings__label'>New Password</label>";
               
               if(isset($passwordMatchError)){
@@ -150,7 +147,7 @@
                 $html .= "<input type='password' name='user_new_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit'   class='form__input'/></div>";
               }
 
-              $html .= "<div class='settings__input'>";
+              $html .= "<div class='dash-content__input'>";
               $html .= "<label for='confirmpassword' class='settings__label'>Confirm Password</label>";
               $html .= "<input type='password' name='user_confirm_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' class='form__input'></div>";
 

@@ -7,19 +7,19 @@
 }
 
 .margin-l-xxs {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .margin-l-xs {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .margin-b-xxs {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .margin-b-xs {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .margin-b-s {
@@ -49,3 +49,33 @@
 .center-text {
   text-align: center;
 }
+
+.space {
+  padding: 1rem;
+}
+
+/* FLEX */
+.flex-sa-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-st-center {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.flex--row {
+  flex-direction: row;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+

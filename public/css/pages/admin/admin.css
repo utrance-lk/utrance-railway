@@ -79,12 +79,6 @@ select {
     text-align: center; */
 }
 
-
-/* .search__result-card > * {
-  flex: 1;
-  text-align: center;
-} */
-
 .search__result-mainbox {
   display: flex;
   height: 100%;
@@ -125,62 +119,40 @@ select {
 .search__result-user-emailbox {
   /* padding: 0 1rem; */
 }
-
+/* 
 .number__input {
   width: 30%;
   height: 70%;
-}
-
-/* specially for trains  */
-/* .search__result-train-idbox {
-  flex: 0.5;
-} */
-
-/* .search__result-train-namebox {
-  font-weight: 700;
-  padding: 0 2rem;
-  text-align: left;
 } */
 
 .traintaveldays-box {
   border: none;
 }
 
-.classess-box {
+/* .classess-box {
   border: 1px solid rgba(119, 119, 119, 0.3);
-}
+} */
 
-.checkbox__horizontal {
+/* .checkbox__horizontal {
   display: flex;
-  /* border: 1px solid red; */
   justify-content: space-between;
-}
+} */
 
-.checkbox__label {
-  margin-left: 1rem;
-}
 
-.content__fields > * {
-  /*delete this */
-  /* border: 1px solid brown; */
-}
-
-.content__fields-item:not(:last-child) {
-  /*delete this */
+/* .content__fields-item:not(:last-child) {
   margin-bottom: 3rem;
-}
+} */
 
-.trainactive-box,
+/* .trainactive-box,
 .freightallowed-box {
   flex-direction: row;
   align-items: center;
-}
+} */
 
-.form__label--active,
+/* .form__label--active,
 .form__label--freights-allowed {
-  /* border: 1px solid blue; */
   margin-bottom: 0;
-}
+} */
 
 .form__label--active + input,
 .form__label--freights-allowed + input {
@@ -194,21 +166,6 @@ select {
 
 .reservation-categorybox__container:not(:last-child) {
   margin-bottom: 2rem;
-}
-
-/* .reservation-categorybox__container > *:not(:last-child) {
-  margin-right: 1rem;
-} */
-
-.reservation__category-item {
-  display: flex;
-  /* border: 1px solid brown; */
-  justify-content: space-around;
-  align-items: center;
-}
-
-.reservation__category-item input {
-  /* border: 1px solid blueviolet; */
 }
 
 .seatbox-observation--saloon {
@@ -396,18 +353,16 @@ select {
   margin: 0 0 0 40vw;
 }
 
-.route_id,
-.freights-quantity__number-input #sleepingberths,
+/* .route_id, */
+/* .freights-quantity__number-input #sleepingberths,
 #secondclass,
 #firstclass {
-  /* border: 1px solid red; */
   margin-left: 2rem;
   border-radius: 5px;
-  /* width: 6rem; */
   padding: 0.5rem 1rem;
   background-color: rgb(242, 242, 242);
   text-align: center;
-}
+} */
 
 #freightsallowed {
   margin-left: 2rem;
@@ -417,30 +372,13 @@ select {
   display: flex;
 }
 
-#route_id {
-  /* border: 1px solid red; */
+/* #route_id {
   padding: 0.8rem;
   margin-left: 1rem;
   width: 4rem;
   background-color: rgb(242, 242, 242);
   border-radius: 5px;
   text-align: center;
-}
-
-/* .btn__container {
-  display: flex;
-  justify-content: flex-end;
-} */
-/* .filters__container {
-  display: flex;
-  flex-direction: row;
-  padding: 1.5rem 1rem;
-  border: 1px solid rgba(119, 119, 119, 0.3);
-}
-
-.filter__item {
-  margin-right: 2rem;
-  cursor: pointer;
 } */
 
 .schedule {

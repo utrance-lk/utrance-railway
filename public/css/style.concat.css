@@ -60,7 +60,6 @@ a {
   cursor: pointer;
 }
 
-
 li {
   list-style: none;
 }
@@ -79,7 +78,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -88,7 +87,6 @@ select {
   border: none;
   font-family: "Sora", sans-serif;
 }
-
 
 button {
   outline: none;
@@ -109,6 +107,14 @@ button {
   border-radius: 5px;
 }
 
+.form__number {
+  margin-left: 2rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(242, 242, 242);
+  text-align: center;
+}
+
 .form__upload {
   width: 0.1px;
   height: 0.1px;
@@ -118,7 +124,7 @@ button {
 }
 
 .error__placeholder::-webkit-input-placeholder {
-  color: red; 
+  color: red;
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -153,6 +159,7 @@ input::-webkit-datetime-edit-year-field:focus {
   background-color: var(--color-primary);
   color: #000000;
 }
+
 .heading-primary {
   height: 30vh;
   background-color: rgba(31, 58, 147, 0.8);
@@ -167,7 +174,6 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   color: rgba(31, 58, 147, 0.8);
   font-weight: 400;
-  margin-top: 2rem;
 }
 
 .margin-r-xs {
@@ -179,19 +185,19 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .margin-l-xxs {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .margin-l-xs {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .margin-b-xxs {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .margin-b-xs {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .margin-b-s {
@@ -221,6 +227,37 @@ input::-webkit-datetime-edit-year-field:focus {
 .center-text {
   text-align: center;
 }
+
+.space {
+  padding: 1rem;
+}
+
+/* FLEX */
+.flex-sa-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-st-center {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.flex--row {
+  flex-direction: row;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+
 .heading-primary {
   height: 30vh;
   background-color: rgba(31, 58, 147, 0.8);
@@ -235,7 +272,6 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   color: rgba(31, 58, 147, 0.8);
   font-weight: 400;
-  margin-top: 2rem;
 }
 
 .btn {
@@ -790,16 +826,52 @@ input::-webkit-datetime-edit-year-field:focus {
   border-radius: 5px;
   display: flex;
 }
+
+
 .dash-content__container {
   background-color: #fff;
   width: 60vw;
 }
 
 .dash-content {
-  height: 100%;
   width: 80%;
   margin: auto auto;
 }
+
+.dash-content__form {
+  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.dash-content__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.dash-content__input--horizontal {
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dash-content__input--border {
+  border: 1px solid rgba(119, 119, 119, 0.3);
+}
+
+.dash-content__input-address {
+  text-transform: uppercase;
+}
+
+.dash-content__input-address,
+.dash-content__label {
+  font-weight: 700;
+  color: rgb(119, 119, 119);
+  margin-bottom: 1rem;
+}
+
 .footer {
   margin-top: 10rem;
   background-color: rgba(0, 0, 0, .8);
@@ -1012,6 +1084,18 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   width: 80%;
 }
+.add-train__new-train {
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-train__travel-days {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* .home__heading-primary {
   height: 40vh;
   background-size: cover;
@@ -1061,14 +1145,7 @@ input::-webkit-datetime-edit-year-field:focus {
   padding: 0 2rem;
   text-align: left;
 }
-.settings__form {
-  margin: 4rem auto 2rem auto;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-
-.settings__input {
+/* .settings__input {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
@@ -1083,7 +1160,7 @@ input::-webkit-datetime-edit-year-field:focus {
   font-weight: 700;
   color: rgb(119, 119, 119);
   margin-bottom: 1rem;
-}
+} */
 
 .settings__profile-img {
   margin-top: 4rem;
