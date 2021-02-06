@@ -134,11 +134,12 @@ class AdminController extends Controller
     public function filterSearch($request)
     {
 
-        if ($request->isGet()) {
+        if ($request->isPost()) {
             $saveDetailsModel = new AdminModel();
             $tempBody = $request->getBody();
-            $tempBody = $request->getQueryParams();
-            $saveDetailsModel->loadData($tempBody);
+            $tempBody['index1'] = $_POST['index1'];
+            $newtempBody['index2'] = $_POST['index2'];
+            $saveDetailsModel->loadData($tempBody,$newtempBody);
 
             $trainArrays = $saveDetailsModel->getMyUsers();
             //  var_dump($trainArrays);
@@ -153,11 +154,12 @@ class AdminController extends Controller
     public function newsearch($request)
     {
 
-        if ($request->isGet()) {
+        if ($request->isPost()) {
             $saveDetailsModel = new AdminModel();
             $tempBody = $request->getBody();
-            $tempBody = $request->getQueryParams();
-            $saveDetailsModel->loadData($tempBody);
+            $tempBody['index1'] = $_POST['index1'];
+            $newtempBody['index2'] = $_POST['index2'];
+            $saveDetailsModel->loadData($tempBody,$newtempBody);
 
             $trainArrays = $saveDetailsModel->getMyTrains();
             //  var_dump($trainArrays);

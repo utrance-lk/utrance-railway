@@ -44,6 +44,8 @@ class AdminModel extends Model
     public $train_total_weight;
     public $searchTrain;
     public $searchRoute;
+    public $index1;
+    public $index2;
     private $registerSetValueArray1 = [];
 
     private $errorArray = [];
@@ -277,37 +279,48 @@ class AdminModel extends Model
     public function getMyUsers()
     {
         //   $new= explode(" ",$this->Traintype);
-        $typeOfUser = substr($this->userRole, 4);
-        $userstaus = $this->userRole[0];
-        if ($typeOfUser != "all" && $userstaus == "a") {
+        if($this->index1!="all-active__status"){
+            if($this->index1=="active"){
+                $activestate=1;
+            }else if($this->index1=="deactivated"){
+                $activestate = 0;
+            }
+           
+        }
+        if($this->index2=="details provider"){
+            $this->index2="detailsProvider";
+        }
+         if ($this->index2!="all-user__role" && $this->index1 == "all-active__status") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type  ");
-            $query->bindValue(":user_type", $typeOfUser);
+            $query->bindValue(":user_type", $this->index2);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        
             return $this->resultArray;
-
-        } else if ($typeOfUser == "all" && $userstaus != "a") {
+         
+        } else if ($this->index1!="all-active__status" && $this->index2 == "all-user__role") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_active_status = :user_status ");
-            $query->bindValue(":user_status", $userstaus);
+            $query->bindValue(":user_status", $activestate);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
 
-        } else if ($typeOfUser != "all" && $userstaus != "a") {
+        } else if ($this->index1!="all-active__status" && $this->index2!="all-user__role") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type AND user_active_status = :user_status");
-            $query->bindValue(":user_type", $typeOfUser);
-            $query->bindValue(":user_status", $userstaus);
+            $query->bindValue(":user_type", $this->index2);
+            $query->bindValue(":user_status", $activestate);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
 
-        } else if ($typeOfUser == "all" && $userstaus == "a") {
+        } else if ($this->index1 == "all-active__status" && $this->index2 == "all-user__role") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM users");
 
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
         }
+      
 
     }
 
@@ -315,32 +328,38 @@ class AdminModel extends Model
     public function getMyTrains()
     {
 
-        //   $new= explode(" ",$this->Traintype);
-        $typeOfTrain = substr($this->Traintype, 4);
-        $staus = $this->Traintype[0];
-        if ($typeOfTrain != "all" && $staus == "a") {
+        if($this->index1!="all-active__status"){
+            if($this->index1=="active"){
+                $activestate=1;
+            }else if($this->index1=="deactivated"){
+                $activestate = 0;
+            }
+           
+        }
+       
+         if ($this->index2!="all-train__type" && $this->index1 == "all-active__status") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type  ");
-            $query->bindValue(":train_type", $typeOfTrain);
+            $query->bindValue(":train_type",$this->index2);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
-
-        } else if ($typeOfTrain == "all" && $staus != "a") {
+         
+        } else if ($this->index1!="all-active__status" && $this->index2 == "all-train__type") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_active_status = :train_status ");
-            $query->bindValue(":train_status", $staus);
+            $query->bindValue(":train_status", $activestate);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
 
-        } else if ($typeOfTrain != "all" && $staus != "a") {
+        } else if ($this->index1!="all-active__status" && $this->index2!="all-train__type") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type AND train_active_status = :train_status");
-            $query->bindValue(":train_type", $typeOfTrain);
-            $query->bindValue(":train_status", $staus);
+            $query->bindValue(":train_type", $this->index2);
+            $query->bindValue(":train_status", $activestate);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
 
-        } else if ($typeOfTrain == "all" && $staus == "a") {
+        } else if ($this->index1 == "all-active__status" && $this->index2 == "all-train__type") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains");
 
             $query->execute();
