@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
 
     <title>Utrance Railway</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="../../../utrance-railway/public/css/base.css"
     />
@@ -15,7 +15,7 @@
     <link
       rel="stylesheet"
       href="../../../utrance-railway/public/css/layout/footer.css"
-    />
+    /> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
       rel="stylesheet"
@@ -25,11 +25,9 @@
       rel="stylesheet"
     />
 
-    <style>
-      .error {
-        color: #ff0001;
-        font-size: 1rem;
-      }
-    </style>
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.concat.css" />
+
   </head>
 </html>
+
+<body>

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/newsFeed/newsFeed.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
 
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.concat.css" />
+
     
   </head>
 <body>

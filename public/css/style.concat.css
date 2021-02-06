@@ -1283,6 +1283,123 @@ input::-webkit-datetime-edit-year-field:focus {
     justify-content: space-around;
     align-items: center;
 }
+
+.register__container {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.register__container-item {
+  font-family: "Lato", sans-serif;
+}
+
+.register__form-box {
+  flex: 1;
+  position: relative;
+  background-color: #fff;
+}
+
+.new-account-box-container {
+  height: 10rem;
+}
+
+.new-account-box--1 {
+  color: rgb(119, 119, 119);
+}
+
+.new-account-box--2:link,
+.new-account-box--2:active {
+  color: #000000;
+  transition: all .5s;
+}
+
+.new-account-box--2:hover {
+  color: #1F3A93;
+}
+
+.register-text {
+  font-size: 4rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.register__img-box {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size:  cover;
+  background-position: center;
+  background-image: url("/utrance-railway/public/img/pages/register/train-cover.jpg");
+}
+
+.form__container {
+  color: #1F3A93;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form__container-item {
+  padding: 1.5rem;
+}
+
+.firstname-box {
+    margin-top: 2.5rem;
+}
+
+.register__form--inputs {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.register__form--inputs label {
+    margin-right: 3rem;
+    width: 32%;
+}
+
+.username-box {
+  margin-bottom: 1rem;
+}
+
+.form__container-item input {
+  border-bottom: 1px solid #1F3A93;
+  width: 60%;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.forgot-password-box {
+  margin-top: 1rem;
+}
+
+.register-btn {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border: 1px solid #1F3A93;
+  width: 11rem;
+  text-align: center;
+  border-radius: 10rem;
+  align-self: flex-end;
+  font-size: 1.75rem;
+  font-family: "Poppins", sans-serif;
+  transition: all .2s;
+}
+
+.register-btn:hover {
+  background-color: #1F3A93;
+  color: #fff;
+}
 .manage-trains__search-results {
   display: flex;
   flex-direction: column;

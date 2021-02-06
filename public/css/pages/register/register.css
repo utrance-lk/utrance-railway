@@ -1,13 +1,11 @@
 
 .register__container {
-  /* border: 1px solid red; */
   display: flex;
   align-items: stretch;
   height: 100vh;
 }
 
 .register__container-item {
-  /* border: 1px solid green; */
   font-family: "Lato", sans-serif;
 }
 
@@ -15,7 +13,6 @@
   flex: 1;
   position: relative;
   background-color: #fff;
-  /* background-color: rgb(224, 235, 253); */
 }
 
 .new-account-box-container {
@@ -44,8 +41,6 @@
 
 .register__img-box {
   flex: 1;
-  /* background-color: #fff; */
-  /* border: 1px solid red; */
   height: 100%;
   width: 100%;
   background-color: #fff;
@@ -60,9 +55,7 @@
   letter-spacing: 1px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  /* height: 70vh; */
   width: 70%;
-  /* border: 1px solid greenyellow; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -73,7 +66,6 @@
 }
 
 .form__container-item {
-  /* border: 1px solid maroon; */
   padding: 1.5rem;
 }
 
@@ -83,26 +75,14 @@
 
 .register__form--inputs {
   display: flex;
-  /* flex-direction: column; */
-  /* height: 8rem; */
-  /* justify-content: space-around; */
   font-size: 1.5rem;
   align-items: center;
-  /* border: 1px solid violet; */
-}
-
-.register__form--inputs > *::placeholder {
-  /* color: red; */
 }
 
 .register__form--inputs label {
     margin-right: 3rem;
     width: 32%;
 }
-
-/*.register__form--inputs > * {
-    /* border: 1px solid red; */
-
 
 .username-box {
   margin-bottom: 1rem;
@@ -111,9 +91,6 @@
 .form__container-item input {
   border-bottom: 1px solid #1F3A93;
   width: 60%;
-  /* padding: 1rem 0; */
-  /* border-radius: 10rem; */
-  /* background-color: rgba(119, 119, 119, 0.2); */
   font-family: "Noto Sans JP", sans-serif;
 }
 

@@ -57,6 +57,11 @@ class AuthController extends Controller
     public function register($request, $response)
     {
 
+        // if the user logged in redirect to home page
+        if(isset(App::$APP->activeUser()['id'])) {
+            return $this->render('home');
+        }
+
         $registerModel = new UserModel();
         if ($request->isPost()) {
             $registerModel->loadData($request->getBody());
