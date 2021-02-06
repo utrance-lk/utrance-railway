@@ -40,7 +40,7 @@ const renderButtons = function (page, numResults, resPerPage) {
 
   if(button) { 
     document
-    .querySelector(".btn__container")
+    .getElementById("pagination")
     .insertAdjacentHTML("afterbegin", button);
   }
 };

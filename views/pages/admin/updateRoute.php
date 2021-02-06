@@ -1,4 +1,7 @@
-    <div class="load-content-container">
+<div class="dashboard">
+    <?php include_once '../views/layouts/adminSideNav.php';?>
+
+<div class="load-content-container">
         <div class="load-content">
             <div class="load-content--stations">
                 <?php

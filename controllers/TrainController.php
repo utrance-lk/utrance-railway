@@ -39,11 +39,8 @@ class TrainController extends Controller
             $saveDetailsModel->loadData($tempBody,$newtempBody);
             $trainArray = $saveDetailsModel->getMyRouts();
             echo json_encode($trainArray);
-
         }
-
     }
-
     public function newsearch($request)
     {
 
@@ -196,7 +193,6 @@ class TrainController extends Controller
 
         }
         $getrouteArray = $saveTrainDetails->getAvailableRoute();
-        // var_dump($getrouteArray);
 
         return $this->render(['admin', 'addTrain'], $getrouteArray);
 

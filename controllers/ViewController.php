@@ -51,6 +51,11 @@ class ViewController extends Controller
 
     public function viewTrain($request) {
         if($request->isGet()) {
+
+            $viewTrainStopsModel = new ViewModel();
+            $viewTrainStopsModel->loadData($request->getBody());
+
+
             return $this->render('viewTrain');
         }
 

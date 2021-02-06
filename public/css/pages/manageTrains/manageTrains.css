@@ -1,0 +1,28 @@
+.manage-trains__search-results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.manage-trains__result-card {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  background-color: rgb(244, 242, 242);
+  padding: 0 2rem;
+}
+
+.manage-trains__result-card  > * {
+  flex: 1;
+  text-align: center;
+}
+
+.manage-trains__card-item--train-id {
+  flex: 0.5;
+}
+
+.manage-trains__card-item--train-name {
+  font-weight: 700;
+  padding: 0 2rem;
+  text-align: left;
+}

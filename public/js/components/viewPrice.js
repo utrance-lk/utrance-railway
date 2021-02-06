@@ -125,7 +125,7 @@ const clearResults = function (direction) {
 
 const renderCity = function (direction, city) {
     const markup = `
-    <li class="search-dropdown__search-results-item js--results__list-item ">${city}</li>
+    <li class="ticket__prices__search-dropdown-search-results-item js--results__list-item ">${city}</li>
 `;
 
     if (direction === "from") {

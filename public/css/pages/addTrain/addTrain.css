@@ -1,0 +1,11 @@
+.add-train__new-train {
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-train__travel-days {
+  display: flex;
+  justify-content: space-between;
+}

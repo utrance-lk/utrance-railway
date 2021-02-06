@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  scroll-behavior: smooth !important;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */ /* 10px/16px */
+  font-family: "Sora", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  background-color: var(--color-primary);
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* browser prefixes */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+select {
+  outline: none;
+  border: none;
+  font-family: "Sora", sans-serif;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Sora", sans-serif;
+}
+
+.form__input {
+  padding: 1rem;
+  outline: none;
+  background-color: rgb(242, 242, 242);
+  border: none;
+  font-family: "Lato", sans-serif;
+  /* border-radius: 3px; */
+  box-shadow: 1px 1px 2px rgba(0, 0, 0.3, 0.2);
+  border-radius: 5px;
+}
+
+.form__number {
+  margin-left: 2rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(242, 242, 242);
+  text-align: center;
+}
+
+.form__upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+}
+
+.error__placeholder::-webkit-input-placeholder {
+  color: red;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-image: url("../../public/img/svg/chevron-small-down.svg");
+  outline: none;
+  transition: all 0.5s;
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
+::-webkit-inner-spin-button {
+  display: none;
+}
+
+::-webkit-datetime-edit-text {
+  color: var(--color-primary);
+  padding: 0 0.4rem;
+}
+
+input::-webkit-datetime-edit-day-field,
+input::-webkit-datetime-edit-month-field,
+input::-webkit-datetime-edit-year-field {
+  outline: none;
+  border-radius: 1rem;
+  transition: all 0.5s;
+  padding: 0.4rem;
+}
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus {
+  background-color: var(--color-primary);
+  color: #000000;
+}

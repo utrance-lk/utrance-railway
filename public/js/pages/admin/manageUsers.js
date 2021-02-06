@@ -20,26 +20,27 @@ const renderResults = function (users, actUser, page = 1, resPerPage = 10) {
 
 const renderUser = function (user) {
   let markup = `
-    <form class='search__result-card' id='form-card' method='get'>
-        <div class='search__result-user-mainbox search__result-mainbox'>
-            <div class='user-mainbox__img-box'>
+    <div class='manage-users__result-card margin-b-m'>
+        <div class='manage-users__user'>
+            <div class='margin-r-xs'>
                 <img src='/utrance-railway/public/img/uploads/${
                   user.user_image
-                }.jpg' alt='profile-avatar' class='profile__avatar'/>
+                }.jpg' alt='profile-avatar' class='manage-users__avatar'/>
             </div>
-            <div class='user-mainbox__other'>
-                <div class ='user-mainbox__other-name'>${user.first_name}</div>
-                <div class ='user-mainbox__other-id'>
+            <div class='manage-users__nametag'>
+                <div class ='manage-users__nametage-name'>${
+                  user.first_name
+                }</div>
+                <div class ='manage-users__nametage-id'>
                     <span>#</span>
                     <span class='user__id'>${user.id}</span>
                 </div>
             </div>
         </div>
-        <div class='search__result-user-emailbox'>
-       
-            ${user.user_active_status==1 ? "Active" : "Deactivated"}
+        <div>
+            ${user.user_active_status == 1 ? "Active" : "Deactivated"}
         </div>
-        <div class='search__result-user-rolebox'>
+        <div>
             ${
               user.user_role === "admin"
                 ? "Admin"
@@ -69,23 +70,22 @@ const renderUser = function (user) {
     }
   }
 
-  markup += `</form>`;
+  markup += `</div>`;
 
-  // console.log(markup);
   document
-    .querySelector(".search__results-container")
+    .getElementById("manage-users__search-results")
     .insertAdjacentHTML("beforeend", markup);
 };
 
 const clearResults = function () {
-  document.querySelector(".search__results-container").innerHTML = "";
-  document.querySelector(".btn__container").innerHTML = "";
+  document.getElementById("manage-users__search-results").innerHTML = "";
+  document.getElementById("pagination").innerHTML = "";
 };
 
 // EVENT LISTNERS
 
 document
-  .querySelector(".btn__container")
+  .getElementById("pagination")
   .addEventListener("click", function (e) {
     const btn = e.target.closest(".btn-round-pagination");
     if (btn) {

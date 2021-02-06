@@ -1,0 +1,43 @@
+.dash-content__container {
+  background-color: #fff;
+  width: 60vw;
+}
+
+.dash-content {
+  width: 80%;
+  margin: auto auto;
+}
+
+.dash-content__form {
+  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.dash-content__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.dash-content__input--horizontal {
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dash-content__input--border {
+  border: 1px solid rgba(119, 119, 119, 0.3);
+}
+
+.dash-content__input-address {
+  text-transform: uppercase;
+}
+
+.dash-content__input-address,
+.dash-content__label {
+  font-weight: 700;
+  color: rgb(119, 119, 119);
+  margin-bottom: 1rem;
+}
