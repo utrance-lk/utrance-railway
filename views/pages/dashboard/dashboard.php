@@ -121,16 +121,16 @@
             </form>
 
             <div class="seperator"></div>
-            <div class="heading-secondary center-text">
+            <div class="heading-secondary center-text margin-b-m">
               <p>Password Change</p>
             </div>
             
-            <form action="/utrance-railway/update-password" method="POST" class="settings__form">
+            <form action="/utrance-railway/update-password" method="POST" class="dash-content__form">
             <?php
             
               $html = "";
               $html .= "<div class='dash-content__input'>";
-              $html .= "<label for='currentpassword' class='settings__label'>Current Password</label>";
+              $html .= "<label for='currentpassword' class='dash-content__label'>Current Password</label>";
               
               if(isset($passwordError)){
                 $html .= "<input type='password' name='user_password' placeholder='".$passwordError."'  class='form__input error__placeholder'/></div>";
@@ -139,7 +139,7 @@
               }
 
               $html .= "<div class='dash-content__input'>";
-              $html .= "<label for='newpassword' class='settings__label'>New Password</label>";
+              $html .= "<label for='newpassword' class='dash-content__label'>New Password</label>";
               
               if(isset($passwordMatchError)){
                 $html .= "<input type='password' name='user_new_password'  placeholder='".$passwordMatchError."' class='form__input error__placeholder'></div>";
@@ -148,7 +148,7 @@
               }
 
               $html .= "<div class='dash-content__input'>";
-              $html .= "<label for='confirmpassword' class='settings__label'>Confirm Password</label>";
+              $html .= "<label for='confirmpassword' class='dash-content__label'>Confirm Password</label>";
               $html .= "<input type='password' name='user_confirm_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' class='form__input'></div>";
 
               $html .= "<div class='settings__btn'>";

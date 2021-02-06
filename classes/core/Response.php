@@ -1,5 +1,4 @@
 <?php
-
 class Response {
     
     public function setStatusCode($code) {

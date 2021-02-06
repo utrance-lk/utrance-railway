@@ -1,5 +1,5 @@
 <style>
-
+/* 
 .textinput {
     float: left;
     width: 100%;
@@ -11,7 +11,7 @@
     border-color: Transparent;
     overflow: auto;
     outline: none;
-}
+} */
 .newsimage {
     float: left;
     width: 100%;
@@ -28,77 +28,65 @@
 
 <div class="dashboard">
     <?php include_once '../views/layouts/adminSideNav.php';?>
+    <div class="dash-content__container">
+      <div class="dash-content">
+        <div class="heading-secondary margin-b-m margin-t-m">
+          <p class="center-text">Manage News</p>
+        </div>
 
-<div class="load-content-container ">
-        <div class="load-content">
-          <div class="load-content--manage-trains">
-            <div class="content-title">
-              <p> Manage News</p>
-            </div>
-    
-          <form action="/utrance-railway/manage-news" method="POST" >
-          <div class="content__fields">
-
-            <fieldset class="classess-box content__fields-item">
-                        <legend class="form__label">News Type</legend>
-                        <div class="reservation-categorybox__container checkbox__horizontal">
-                         
-                            <div class="seatbox-sleepingberths reservation__category-item">
-                                <label for="train_schedule">Train Schedule</label>
-                                <input type="radio" value="train_schedule" name="details_type" id="train_schedule" >
-                            </div>
-                            <div class="seatbox-sleepingberths reservation__category-item">
-                                <label for="ticket_price">Ticket Price</label>
-                                <input type="radio" value="ticket_price" name="details_type" id="ticket_price" >
-                            </div>
-                            <div class="seatbox-sleepingberths reservation__category-item">
-                                <label for="other">Other</label>
-                                <input type="radio" value="other" name="details_type" id="other" >
-                            </div>
-                           
-                        </div> 
-                        <br>
-                                
-                    </fieldset>
-              
-                <fieldset class="classess-box content__fields-item">
-                <legend class="form__label">News</legend>
-                <div class="emai-box content__fields-item">
+        <form action="/utrance-railway/manage-news" method="POST" >
+          <fieldset class="margin-b-xs">
+            <legend class="topic-greyed topic-greyed--dark padding-xxs">News Type</legend>
+            <div class="flex-row-sa-center margin-tb-s">
+              <div>
+                  <label for="train_schedule">Train Schedule</label>
+                  <input type="radio" value="train_schedule" name="details_type" id="train_schedule" >
+              </div>
+              <div>
+                  <label for="ticket_price">Ticket Price</label>
+                  <input type="radio" value="ticket_price" name="details_type" id="ticket_price" >
+              </div>
+              <div>
+                  <label for="other">Other</label>
+                  <input type="radio" value="other" name="details_type" id="other" >
+              </div>
+            </div>                   
+          </fieldset>
              
+          <fieldset class="margin-b-xs">
+            <legend class="topic-greyed topic-greyed--dark padding-xxs">News</legend>
+            <div class="flex-col-sa-center margin-tb-s">
+              <div class="dash-content__input width-full padding-lr-s">
                 <input type="text" name="news_headline" class="form__input" placeholder="Headline">
-                </div>
-                <textarea class="textinput" rows="10" cols="60" name="detail" placeholder=" Enter the news here..."></textarea>
-                </fieldset>
-                <fieldset class="classess-box content__fields-item">
-                <legend class="form__label">Image</legend>
-                
-                <div class="">
-                 <img 
-                    src="../../../../utrance-railway/public/img/pages/admin/train.jpg"
-                    alt="news-picutre"
-                    class="newsimage"
-                  />
-                    <input
-                    type="file"
-                    name="photo"
-                    accept="image/*"
-                    class="form__upload"
-                    id="photo"
-                  />
-                  <label for="photo">Choose Photo</label>
-                </div>
-                </fieldset>
-                <div class="btn__save-box">
-                <input type="submit" class="btn__save btn-settings"  name="submit" value="Post"></div>
+              </div>
+              <textarea class="textinput" rows="10" cols="60" name="detail" placeholder=" Enter the news here..."></textarea>
+            </div>
+          </fieldset>
 
-               
-      
-          </div>
-          </div>
-          </div>
-          </form>
+          <fieldset class="margin-b-xs">
+            <legend class="topic-greyed topic-greyed--dark padding-xxs">Image</legend>   
+            <div class="">
+              <img 
+                src="../../../../utrance-railway/public/img/pages/admin/train.jpg"
+                alt="news-picutre"
+                class="newsimage"
+              />
+                <input
+                type="file"
+                name="photo"
+                accept="image/*"
+                class="form__upload"
+                id="photo"
+              />
+              <label for="photo" class="btn-square-upload margin-b-s">Choose Photo</label>
+            </div>
+          </fieldset>
 
-       
-          </div>
+          <button class="btn btn-round-blue margin-b-l margin-t-s" type="submit">Post</button>
+
+        </form>
+      </div>
+          
+    </div>
         </div>
       </div>

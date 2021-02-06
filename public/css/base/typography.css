@@ -29,3 +29,7 @@
   font-size: 1.7rem;
   color: rgb(119, 119, 119);
 }
+
+.topic-greyed--dark {
+  font-weight: 700;
+}

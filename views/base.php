@@ -1,7 +1,7 @@
 {{main}}
 
 <?php
-if ($_REQUEST['url'] !== 'resetPassword' && $_REQUEST['url'] !== 'forgotPassword' && $_REQUEST['url'] !== 'login' && $_REQUEST['url'] !== 'register'): ?>
+if ($_REQUEST['url'] !== 'resetPassword' && $_REQUEST['url'] !== 'forgotPassword' && $_REQUEST['url'] !== 'register'): ?>
         {{header}}
     <?php endif;?>
 

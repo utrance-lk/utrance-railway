@@ -92,7 +92,7 @@
                </ul>
              </div>
              <?php else: ?>
-              <svg class="gheader-user__img header-user__img--guest">
+              <svg class="gheader-user__img header-user__img--guest margin-r-xs">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-user"></use>
               </svg>
               <a href="/utrance-railway/login" class="user-name">Login</a>
