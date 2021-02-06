@@ -1,0 +1,56 @@
+.manage-users__search-results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.manage-users__result-card {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  background-color: rgb(244, 242, 242);
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.manage-users__result-card > * {
+  flex: 1;
+  text-align: center;
+}
+
+.manage-users__card-item--train-id {
+  flex: 0.5;
+}
+
+.manage-users__card-item--train-name {
+  font-weight: 700;
+  padding: 0 2rem;
+  text-align: left;
+}
+
+.manage-users__user {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: fit-content;
+}
+
+.manage-users__avatar {
+  height: 5rem;
+  border-radius: 10rem;
+}
+
+.manage-users__nametag {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.manage-users__nametage-name {
+  font-weight: 700;
+}
+
+.manage-users__nametage-id {
+  display: flex;
+}
