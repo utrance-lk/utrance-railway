@@ -314,6 +314,7 @@ class AdminModel extends Model
     /////////////////////////Trains model////////////////////////////////////////////
     public function getMyTrains()
     {
+
         //   $new= explode(" ",$this->Traintype);
         $typeOfTrain = substr($this->Traintype, 4);
         $staus = $this->Traintype[0];
