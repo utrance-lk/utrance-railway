@@ -1,54 +1,18 @@
-.login__container {
-  /* border: 1px solid red; */
+.login {
   display: flex;
   align-items: stretch;
   height: 100vh;
-}
-
-.login__container-item {
-  /* border: 1px solid green; */
   font-family: "Lato", sans-serif;
 }
 
-.login__form-box {
+.login input {
+  border-bottom: 1px solid #1F3A93;
+  padding: 1rem 0;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.login__img {
   flex: 1;
-  position: relative;
-  background-color: #fff;
-  /* background-color: rgb(224, 235, 253); */
-}
-
-.new-account-box-container {
-  height: 10rem;
-}
-
-.new-account-box-container > * {
-  /* border: 1px solid salmon; */
-}
-
-.new-account-box--1 {
-  color: rgb(119, 119, 119);
-}
-
-.new-account-box--2:link,
-.new-account-box--2:active {
-  color: #000000;
-  transition: all .5s;
-}
-
-.new-account-box--2:hover {
-  color: #1F3A93;
-}
-
-.login-text {
-  font-size: 4rem;
-  text-transform: capitalize;
-  margin-bottom: 1rem;
-}
-
-.login__img-box {
-  flex: 1;
-  /* background-color: #fff; */
-  /* border: 1px solid red; */
   height: 100%;
   width: 100%;
   background-color: #fff;
@@ -58,14 +22,18 @@
   background-image: url("/utrance-railway/public/img/pages/login/train-cover.jpg");
 }
 
-.form__container {
+.login__form {
+  flex: 1;
+  position: relative;
+  background-color: #fff;
+}
+
+.login__form-container {
   color: #1F3A93;
   letter-spacing: 1px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  /* height: 70vh; */
   width: 70%;
-  /* border: 1px solid greenyellow; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -75,50 +43,34 @@
   justify-content: center;
 }
 
-.form__container-item {
-  /* border: 1px solid maroon; */
+.login__big-box {
+  height: 10rem;
 }
 
-.username-box,
-.password-box {
+.login__text {
+  font-size: 4rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.login__new-account--1 {
+  color: rgb(119, 119, 119);
+}
+
+.login__new-account--2:link,
+.login__new-account--2:active {
+  color: #000000;
+  transition: all .5s;
+}
+
+.login__new-account--2:hover {
+  color: #1F3A93;
+}
+
+.login__credentials {
   display: flex;
   flex-direction: column;
   height: 8rem;
   justify-content: space-around;
   font-size: 1.5rem;
-  /* border: 1px solid violet; */
-}
-
-.username-box {
-  margin-bottom: 1rem;
-}
-
-.form__container-item input {
-  border-bottom: 1px solid #1F3A93;
-  padding: 1rem 0;
-  /* border-radius: 10rem; */
-  /* background-color: rgba(119, 119, 119, 0.2); */
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-.forgot-password-box {
-  margin-top: 1rem;
-}
-
-.login-btn {
-  margin-top: 2rem;
-  padding: 1.2rem;
-  border: 1px solid #1F3A93;
-  width: 11rem;
-  text-align: center;
-  border-radius: 10rem;
-  align-self: flex-end;
-  font-size: 1.75rem;
-  font-family: "Poppins", sans-serif;
-  transition: all .2s;
-}
-
-.login-btn:hover {
-  background-color: #1F3A93;
-  color: #fff;
 }

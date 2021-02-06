@@ -19,6 +19,12 @@ class AuthController extends Controller
 
     public function login($request, $response)
     {
+
+        // if the user logged in redirect to home page
+        if(isset(App::$APP->activeUser()['id'])) {
+            return $this->render('home');
+        }
+
         if ($request->isPost()) {
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
@@ -50,6 +56,11 @@ class AuthController extends Controller
 
     public function register($request, $response)
     {
+
+        // if the user logged in redirect to home page
+        if(isset(App::$APP->activeUser()['id'])) {
+            return $this->render('home');
+        }
 
         $registerModel = new UserModel();
         if ($request->isPost()) {

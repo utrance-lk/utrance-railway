@@ -1,24 +1,18 @@
-<div class="load-content-container">
-        <div class="load-content">
-          <div class="load-content--manage-trains">
-            <form class="dashboard-searchbar--container">
-              <input
-                type="text"
-                class="dashboard-searchbar"
-                placeholder="Search routes by name"
-              />
-              <svg class="search-icon__btn">
-                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass"></use>
-              </svg>
-            </form>
-            <a href="/utrance-railway/routes/add" class="btn btn-square-blue">
-              <div class="addbtn-text">Add Route</div>
-              <svg class="addbtn-img">
-                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus">
-                </use>
-              </svg> 
-            </a>
-            <div class="search__results-container">
+<div class="dashboard">
+    <?php include_once '../views/layouts/adminSideNav.php';?>
+    <div class="dash-content__container">
+        <div class="dash-content">
+          <?php
+            include_once "../views/components/searchbarAdmin.php";
+            echo renderAdminSearch(['routes', 'name', 'id'], '');
+          ?>
+          <a href="/utrance-railway/trains/add" class="btn btn-square-blue margin-t-m">
+            <div class="btn-square-blue__text">Add Route</div>
+            <svg class="btn-square-blue__icon">
+              <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
+            </svg>
+          </a>
+            <!-- <div class="search__results-container">
               <div class="search__result-card">
                 
                 <div class="search__result-route-idbox">
@@ -43,7 +37,7 @@
                   <div class="btn-box-white btn-box-white--delete">Delete</div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
 </div>
         </div>

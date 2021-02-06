@@ -21,7 +21,7 @@
                 $value='';
                 $id = App::$APP->activeUser()['id'];
                 
-                $html .="<form action='/utrance-railway/settings' class='form__user-data' method='POST' enctype='multipart/form-data'>";
+                $html .="<form action='/utrance-railway/settings' class='dashboard__form' method='POST' enctype='multipart/form-data'>";
                 $html .="<div class='content__fields'>";
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";

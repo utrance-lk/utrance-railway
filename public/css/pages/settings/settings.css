@@ -1,0 +1,27 @@
+/* .settings__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.settings__input-address {
+  text-transform: uppercase;
+}
+
+.settings__input-address,
+.settings__label {
+  font-weight: 700;
+  color: rgb(119, 119, 119);
+  margin-bottom: 1rem;
+} */
+
+.settings__profile-img {
+  margin-top: 4rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.settings__btn {
+  display: flex;
+  justify-content: flex-end;
+}
