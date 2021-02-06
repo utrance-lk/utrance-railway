@@ -160,6 +160,8 @@ input::-webkit-datetime-edit-year-field:focus {
   color: #000000;
 }
 
+/* HEADINGS */
+
 .heading-primary {
   height: 30vh;
   background-color: rgba(31, 58, 147, 0.8);
@@ -174,6 +176,20 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   color: rgba(31, 58, 147, 0.8);
   font-weight: 400;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 500;
+  padding: 1rem;
+}
+
+/* TOPICS */
+
+.topic-greyed {
+  font-size: 1.7rem;
+  color: rgb(119, 119, 119);
 }
 
 .margin-r-xs {
@@ -210,6 +226,10 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .margin-b-l {
   margin-bottom: 5rem;
+}
+
+.margin-b-huge {
+  margin-bottom: 10rem;
 }
 
 .margin-t-s {
@@ -257,6 +277,15 @@ input::-webkit-datetime-edit-year-field:focus {
   flex-wrap: wrap;
 }
 
+.flex-col-stretch-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  text-align: center;
+}
+
+
+/* HEADINGS */
 
 .heading-primary {
   height: 30vh;
@@ -272,6 +301,20 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   color: rgba(31, 58, 147, 0.8);
   font-weight: 400;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 500;
+  padding: 1rem;
+}
+
+/* TOPICS */
+
+.topic-greyed {
+  font-size: 1.7rem;
+  color: rgb(119, 119, 119);
 }
 
 .btn {
@@ -1413,4 +1456,42 @@ input::-webkit-datetime-edit-year-field:focus {
   height: 2rem;
   color: white;
   border-radius: 10px;
+}
+
+.view-train__schedule {
+  margin: 0 15vw;
+  width: 40%;
+}
+
+.view-train__table-heading {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(31, 58, 147, 0.8);
+  color: #fff;
+}
+
+.view-train__table-heading-text {
+  width: 15rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.view-train__result-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.view-train__result-row--odd {
+  background-color: rgba(119, 119, 119, 0.2);
+}
+
+.view-train__result-row--even {
+  background-color: rgba(119, 119, 119, 0.4);
+}
+
+.view-train__result-row-item {
+  width: 15rem;
+  text-align: center;
 }

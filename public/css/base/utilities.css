@@ -34,6 +34,10 @@
   margin-bottom: 5rem;
 }
 
+.margin-b-huge {
+  margin-bottom: 10rem;
+}
+
 .margin-t-s {
   margin-top: 2rem;
 }
@@ -77,5 +81,12 @@
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.flex-col-stretch-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  text-align: center;
 }
 

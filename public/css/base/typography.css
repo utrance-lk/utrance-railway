@@ -1,3 +1,5 @@
+/* HEADINGS */
+
 .heading-primary {
   height: 30vh;
   background-color: rgba(31, 58, 147, 0.8);
@@ -12,4 +14,18 @@
   text-transform: uppercase;
   color: rgba(31, 58, 147, 0.8);
   font-weight: 400;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 500;
+  padding: 1rem;
+}
+
+/* TOPICS */
+
+.topic-greyed {
+  font-size: 1.7rem;
+  color: rgb(119, 119, 119);
 }

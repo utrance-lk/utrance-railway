@@ -18,7 +18,7 @@
         </p>
       </div>
 
-      <form action="/utrance-railway/users/update?id=<?php echo $users[0]['id']; ?>" method="POST">
+      <form action="/utrance-railway/users/update?id=<?php echo $users[0]['id']; ?>" class="dash-content__form" method="POST">
             <?php if (isset($users)): ?>
               <?php
                 if (!isset($updateSetValue)) {
