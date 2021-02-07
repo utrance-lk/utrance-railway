@@ -19,8 +19,10 @@
 
   <?php
     if (isset($directPaths)) {
+        $i = 0;
         foreach ($directPaths as $key => $value) {
-            $html = renderDirectPathCard($value);
+            $i++;
+            $html = renderDirectPathCard($value, $i);
             $dom = new DOMDocument();
             $dom->loadHTML($html);
             print_r($dom->saveHTML());
@@ -30,8 +32,10 @@
 
   <?php
     if (isset($intersections)) {
+        $i = 0;
         foreach ($intersections as $key => $value) {
-            $html = renderIntersectCard($value);
+            $i++;
+            $html = renderIntersectCard($value, $i);
             $dom = new DOMDocument();
             $dom->loadHTML($html);
             print_r($dom->saveHTML());

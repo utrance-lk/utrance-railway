@@ -702,8 +702,7 @@ class TicketModel extends Model
                             $j = $j + 1;
                         }
                     }
-                    //var_dump($get_mid_value);
-                    //var_dump($get_end_value);
+
                     $get_final_value = [];
                     for ($i = 0; $i < sizeof($train_class); $i++) {
                         $get_final_value[$i] = $get_end_value[$i] + $get_mid_value[$i];
@@ -717,6 +716,7 @@ class TicketModel extends Model
                     }
                     $result["tickets"]["start"]=$this->start;
                     $result["tickets"]["destination"]=$this->destination;
+                    var_dump($result);
                     return $result;
 
                 }
