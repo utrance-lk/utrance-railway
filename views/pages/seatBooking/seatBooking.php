@@ -22,8 +22,8 @@
         ?>
         <div class="seat-booking__total-price">
             <span class="margin-r-xs">final amount&nbsp;&colon;</span>
-            <div class="card__price">
-                <span>Rs</span>&nbsp;<span class="ticket__price">500</span>
+            <div>
+                <span>Rs</span>&nbsp;<span>500</span>
             </div>
         </div>
         <div class="seat-booking__btn-container">

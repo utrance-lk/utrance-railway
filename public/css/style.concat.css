@@ -1471,18 +1471,6 @@ input::-webkit-datetime-edit-year-field:focus {
   background-color: #1F3A93;
   color: #fff;
 }
-.booking__form {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-}
-
-/* .journey__time-box,
-.journey__date-box {
-  font-size: 1.7rem;
-  color: rgb(119, 119, 119);
-  margin-bottom: 0.5rem;
-} */
 
 .seat-booking__day{
   position: relative;
@@ -1494,7 +1482,13 @@ input::-webkit-datetime-edit-year-field:focus {
   left: 2.5rem;
 }
 
-.total-price__box {
+.seat-booking__form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;   
+}
+
+.seat-booking__total-price {
   border: 1px solid rgba(31, 58, 147, 0.8);
   font-size: 2rem;
   font-weight: 400;
@@ -1504,11 +1498,7 @@ input::-webkit-datetime-edit-year-field:focus {
   /* width: 40rem; */
 }
 
-.total-price__box--text {
-  margin-right: 1rem;
-}
-
-.btn__container {
+.seat-booking__btn-container {
   align-self: center;
 }
 
