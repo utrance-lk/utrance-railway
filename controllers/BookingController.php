@@ -34,14 +34,14 @@ class BookingController extends Controller {
 
     }
 
-    public function createBooking($request) {
+    public function createSeatBooking($request) {
         if (!$this->authMiddleware->isLoggedIn()) {
             return 'You are not logged in!';
         }
 
         if ($request->isGet()) {
             // return selected booking
-            return $this->render('booking');
+            return $this->render('seatBooking');
         }
 
     }
