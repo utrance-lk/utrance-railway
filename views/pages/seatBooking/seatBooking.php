@@ -19,15 +19,17 @@
         <?php
 include_once "../views/components/seatBookingCard.php";
 
+$i = 0;
 foreach ($trains as $key => $value) {
-    echo renderTrainBookingCard($value);
+    $i++;
+    echo renderTrainBookingCard($value, $i);
 }
 
 ?>
         <div class="seat-booking__total-price">
             <span class="margin-r-xs">final amount&nbsp;&colon;</span>
             <div>
-                <span>Rs</span>&nbsp;<span>500</span>
+                <span>Rs</span>&nbsp;<span id="finalAmount">500</span>
             </div>
         </div>
         <div class="seat-booking__btn-container">
@@ -37,6 +39,7 @@ foreach ($trains as $key => $value) {
         </div>
     </form>
 </div>
+<script type="text/javascript" src="../../../utrance-railway/public/js/pages/seatBooking.js"></script>
 
 <?php
 function calcFullJourneyTime($train1Time, $train2Time = null, $waitTime = null)

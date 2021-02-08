@@ -1,6 +1,6 @@
 <?php
 
-function renderTrainBookingCard($train)
+function renderTrainBookingCard($train, $id)
 {
 
     $timeDecide = timeDecider(substr($train['from_dept'], 0, 2));
@@ -25,7 +25,7 @@ function renderTrainBookingCard($train)
                 </div>
                 <div class='seat-booking-card__train-details'>
                     <div class='padding-xs'>
-                        <span>{$train['from']}</span> &ndash; <span>{$train['to']}</span>
+                        <span id='from{$id}'>{$train['from']}</span> &ndash; <span id='to{$id}'>{$train['to']}</span>
                     </div>
                     <div class='padding-xs'>
                         <span class='margin-r-xs'>{$train['train_name']}</span><span class='seat-booking-card__train-type'>null</span>
@@ -35,18 +35,18 @@ function renderTrainBookingCard($train)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <input type='number' class='seat-booking-card__person-count' name='person__count' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
+                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <select name='train_class' id='train_class' class='seat-booking-card__train-class'>
+                    <select name='train_class' id='train_class{$id}' class='seat-booking-card__train-class'>
                         <option value='firstClass'>first class</option>
-                        <option value='secondClass'>second class</option>
+                        <option value='secondClass' selected>second class</option>
                     </select>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box seat-booking-card__price'>
-                    <span>Rs&nbsp;</span><span>null</span>
+                    <span>Rs&nbsp;</span><span id='tickprice{$id}'></span>
                 </div>
             </div>
     ";

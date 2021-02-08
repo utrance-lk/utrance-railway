@@ -22,6 +22,8 @@ const stationsArray = [
   "Aluthgama",
   "Midigama",
   "Weligama",
+  "Beliatta",
+  "Maradana"
 ];
 
 const searchStates = function (searchText, direction) {

@@ -716,9 +716,7 @@ class TicketModel extends Model
                     }
                     $result["tickets"]["start"]=$this->start;
                     $result["tickets"]["destination"]=$this->destination;
-                    var_dump($result);
                     return $result;
-
                 }
 
             }
