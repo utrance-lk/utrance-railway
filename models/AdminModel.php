@@ -29,7 +29,12 @@ class AdminModel extends Model
 
     //////////////Train//////////////////
 
+    public $from;
+    public $to;
     public $Traintype;
+    public $newindex2;
+    public $index1;
+    public $index2;
     public $train_name;
     public $train_type;
     public $train_id;
@@ -44,11 +49,8 @@ class AdminModel extends Model
     public $train_total_weight;
     public $searchTrain;
     public $searchRoute;
-    public $index1;
-    public $index2;
-    private $registerSetValueArray1 = [];
-
     private $errorArray = [];
+    public $stationrouteError = [];
 
     private function populateValues()
     {
@@ -279,33 +281,33 @@ class AdminModel extends Model
     public function getMyUsers()
     {
         //   $new= explode(" ",$this->Traintype);
-        if($this->index1!="all-active__status"){
-            if($this->index1=="active"){
-                $activestate=1;
-            }else if($this->index1=="deactivated"){
+        if ($this->index1 != "all-active__status") {
+            if ($this->index1 == "active") {
+                $activestate = 1;
+            } else if ($this->index1 == "deactivated") {
                 $activestate = 0;
             }
-           
+
         }
-        if($this->index2=="details provider"){
-            $this->index2="detailsProvider";
+        if ($this->index2 == "details provider") {
+            $this->index2 = "detailsProvider";
         }
-         if ($this->index2!="all-user__role" && $this->index1 == "all-active__status") {
+        if ($this->index2 != "all-user__role" && $this->index1 == "all-active__status") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type  ");
             $query->bindValue(":user_type", $this->index2);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-        
+
             return $this->resultArray;
-         
-        } else if ($this->index1!="all-active__status" && $this->index2 == "all-user__role") {
+
+        } else if ($this->index1 != "all-active__status" && $this->index2 == "all-user__role") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_active_status = :user_status ");
             $query->bindValue(":user_status", $activestate);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
 
-        } else if ($this->index1!="all-active__status" && $this->index2!="all-user__role") {
+        } else if ($this->index1 != "all-active__status" && $this->index2 != "all-user__role") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM users WHERE user_role = :user_type AND user_active_status = :user_status");
             $query->bindValue(":user_type", $this->index2);
             $query->bindValue(":user_status", $activestate);
@@ -320,7 +322,6 @@ class AdminModel extends Model
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
         }
-      
 
     }
 
@@ -328,30 +329,30 @@ class AdminModel extends Model
     public function getMyTrains()
     {
 
-        if($this->index1!="all-active__status"){
-            if($this->index1=="active"){
-                $activestate=1;
-            }else if($this->index1=="deactivated"){
+        if ($this->index1 != "all-active__status") {
+            if ($this->index1 == "active") {
+                $activestate = 1;
+            } else if ($this->index1 == "deactivated") {
                 $activestate = 0;
             }
-           
+
         }
-       
-         if ($this->index2!="all-train__type" && $this->index1 == "all-active__status") {
+
+        if ($this->index2 != "all-train__type" && $this->index1 == "all-active__status") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type  ");
-            $query->bindValue(":train_type",$this->index2);
+            $query->bindValue(":train_type", $this->index2);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
-         
-        } else if ($this->index1!="all-active__status" && $this->index2 == "all-train__type") {
+
+        } else if ($this->index1 != "all-active__status" && $this->index2 == "all-train__type") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_active_status = :train_status ");
             $query->bindValue(":train_status", $activestate);
             $query->execute();
             $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
             return $this->resultArray;
 
-        } else if ($this->index1!="all-active__status" && $this->index2!="all-train__type") {
+        } else if ($this->index1 != "all-active__status" && $this->index2 != "all-train__type") {
             $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type AND train_active_status = :train_status");
             $query->bindValue(":train_type", $this->index2);
             $query->bindValue(":train_status", $activestate);
@@ -671,7 +672,6 @@ class AdminModel extends Model
         $query->execute();
         $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
 
-      
         return $this->resultArray;
 
     }
@@ -682,7 +682,7 @@ class AdminModel extends Model
         $query->execute();
         $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        return $this->resultArray;  
+        return $this->resultArray;
 
     }
 
@@ -696,5 +696,117 @@ class AdminModel extends Model
         return $this->resultArray;
     }
 
-    
+    public function getMyRoutsStations()
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT stations.station_name FROM stations");
+        // $query->bindValue(":route_id", $this->index1);
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+
+    }
+
+    public function getMyRouts()
+    {
+        $sum = [];
+
+        $stations = $this->index1;
+
+        $length = sizeof($stations);
+
+        for ($k = 0; $k < $length; $k++) {
+            for ($j = $k + 1; $j < $length; $j++) {
+
+                if ($stations[$k]["pathId"] > $stations[$j]["pathId"]) {
+                    $temp = $stations[$k]["pathId"];
+                    $stations[$k]["pathId"] = $stations[$j]["pathId"];
+                    $stations[$j]["pathId"] = $temp;
+
+                }
+
+            }
+
+        }
+
+        for ($j = 0; $j < $length; $j++) {
+            $getresult = $this->getStationId($stations[$j]["stationName"]);
+
+            if (empty($getresult)) {
+                $updateTrainrValidation = new TrainFormValidation();
+                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations, $stations[$j]["stationName"], $j);
+
+                // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
+
+            } else {
+                $updateTrainrValidation = new TrainFormValidation();
+                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations, $stations[$j]["stationName"], $j);
+
+                // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
+            }
+            if (!empty($validationState)) {
+                break;
+            }
+
+        }
+
+        if (empty($validationState)) {
+
+            for ($i = 0; $i < $length; $i++) {
+                $stations[$i]["stationName"] = $this->sanitizeFormUsername($stations[$i]["stationName"]);
+
+                $result = $this->getStationId($stations[$i]["stationName"]);
+                $resultForRoute = $this->getDestStationId($stations[$i]["pathId"], $this->index2);
+
+                if (empty($result)) {
+
+                    $newquery = APP::$APP->db->pdo->prepare("INSERT INTO stations (station_name) VALUES (:stName)");
+                    $newquery->bindValue(":stName", $stations[$i]["stationName"]);
+                    $newquery->execute();
+                    $result = $this->getStationId($stations[$i]["stationName"]);
+
+                }
+                ////////////////////////////
+                if (empty($resultForRoute)) {
+                    $newquery1 = APP::$APP->db->pdo->prepare("UPDATE routes SET dest_station_id = :id  WHERE route_id = :route_id");
+                    $newquery1->bindValue(":id", $result[0]["station_id"]);
+                    $newquery1->bindValue(":route_id", $this->index2);
+                    $newquery1->execute();
+
+                }
+                //////////////////
+
+                $start_t = new DateTime($stations[$i]["arrTime"]);
+                $current_t = new DateTime($stations[$i]["deptTime"]);
+                $difference = $start_t->diff($current_t);
+                $return_time = $difference->format('%H:%I:%S');
+                $this->settimeduration($stations[$i]["pathId"], $return_time, $this->index2);
+                $sum[$i] = $return_time;
+
+                $query = APP::$APP->db->pdo->prepare("UPDATE stops SET path_id = path_id + 1 WHERE path_id >= :id AND route_id = :route_id ORDER BY path_id ASC");
+                $query->bindValue(":id", $stations[$i]["pathId"]);
+                $query->bindValue(":route_id", $this->index2);
+                $query->execute();
+
+                $query1 = APP::$APP->db->pdo->prepare("INSERT INTO stops (route_id,station_id,arrival_time,departure_time,path_id) VALUES (:route_id,:station_id,:arrTime,:depTime,:id)");
+                $query1->bindValue(":id", $stations[$i]["pathId"]);
+                $query1->bindValue(":route_id", $this->index2);
+                $query1->bindValue(":station_id", $result[0]["station_id"]);
+                $query1->bindValue(":arrTime", $stations[$i]["arrTime"]);
+                $query1->bindValue(":depTime", $stations[$i]["deptTime"]);
+                $query1->execute();
+                for ($j = 0; $j < $i; $j++) {
+                    $this->settimedurationForNew($stations[$i]["pathId"], $sum[$j], $this->index2);
+                }
+
+                // $secs = strtotime($stations[$i]["deptTime"]);
+                // $result = date("H:i:s",strtotime($stations[$i]["arrTime"])+$secs);
+
+            }
+
+        }
+
+        return $validationState;
+
+    }
+
 }

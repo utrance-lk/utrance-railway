@@ -139,7 +139,7 @@ class AdminController extends Controller
             $tempBody = $request->getBody();
             $tempBody['index1'] = $_POST['index1'];
             $newtempBody['index2'] = $_POST['index2'];
-            $saveDetailsModel->loadData($tempBody,$newtempBody);
+            $saveDetailsModel->loadData($tempBody, $newtempBody);
 
             $trainArrays = $saveDetailsModel->getMyUsers();
             //  var_dump($trainArrays);
@@ -159,7 +159,7 @@ class AdminController extends Controller
             $tempBody = $request->getBody();
             $tempBody['index1'] = $_POST['index1'];
             $newtempBody['index2'] = $_POST['index2'];
-            $saveDetailsModel->loadData($tempBody,$newtempBody);
+            $saveDetailsModel->loadData($tempBody, $newtempBody);
 
             $trainArrays = $saveDetailsModel->getMyTrains();
             //  var_dump($trainArrays);
@@ -317,6 +317,32 @@ class AdminController extends Controller
     }
 
     // manage routes
+    public function getRoutesStations($request, $response)
+    {
+        if ($request->isPost()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $saveDetailsModel->loadData($tempBody);
+            $trainArray = $saveDetailsModel->getMyRoutsStations();
+            echo json_encode($trainArray);
+        }
+
+    }
+
+    public function updateRoutes($request, $response)
+    {
+        if ($request->isPost()) {
+
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $newtempBody['index2'] = $_POST['index2'];
+            $saveDetailsModel->loadData($tempBody, $newtempBody);
+            $trainArray = $saveDetailsModel->getMyRouts();
+            echo json_encode($trainArray);
+        }
+    }
 
     public function manageRoutes($request)
     {
@@ -325,16 +351,16 @@ class AdminController extends Controller
             $searchModel = new AdminModel();
             $searchModel->loadData($request->getBody());
             if ($request->isGet()) {
-               
+
                 $resultArray = $searchModel->getRoutes();
-            
+
                 return $this->render(['admin', 'manageRoutes'], $resultArray);
-             
-            } else if ($request->isPost()){
+
+            } else if ($request->isPost()) {
                 $resultArray = $searchModel->searchRouteDetails();
-          
-                    return $this->render(['admin', 'manageRoutes'], $resultArray);
-                   
+
+                return $this->render(['admin', 'manageRoutes'], $resultArray);
+
             }
 
         }

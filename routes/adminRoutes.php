@@ -25,4 +25,8 @@ $app->router->get('/utrance-railway/manage-news', [AdminController::class, 'mana
 
 $app->router->get('/utrance-railway/newmanageUsers', [AdminController::class, 'filterSearch']);
 $app->router->post('/utrance-railway/newmanageUsers', [AdminController::class, 'filterSearch']);
+
+$app->router->post('/utrance-railway/routes/newmanageRoutesValidations', [AdminController::class, 'getRoutesStations']);
+$app->router->post('/utrance-railway/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
+$app->router->get('/utrance-railway/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
 ?>
