@@ -693,7 +693,6 @@ class AdminModel extends Model
         $query->bindValue(":routeName", $this->searchRoute);
         $query->execute();
         $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($this->resultArray);
         return $this->resultArray;
     }
 

@@ -327,12 +327,14 @@ class AdminController extends Controller
             if ($request->isGet()) {
                
                 $resultArray = $searchModel->getRoutes();
+            
                 return $this->render(['admin', 'manageRoutes'], $resultArray);
-            } else {
-                $resultArray = $searchModel->searchRouteDetails();
              
+            } else if ($request->isPost()){
+                $resultArray = $searchModel->searchRouteDetails();
+          
                     return $this->render(['admin', 'manageRoutes'], $resultArray);
-
+                   
             }
 
         }
