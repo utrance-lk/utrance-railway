@@ -38,7 +38,7 @@ echo renderAdminSearch(['routes', 'name', 'id'], '');
                 </div>
               </div>
             </div> -->
-            <div class="search__results-container">
+            <div class="flex-col-stretch-center margin-t-m">
 
               <?php
               $dom = new DOMDocument;
@@ -50,7 +50,7 @@ echo renderAdminSearch(['routes', 'name', 'id'], '');
 
                   foreach ($routes as $key => $value) {
 
-                      $html = "<div class='search__result-card'>";
+                      $html = "<div class='manage-routes__route margin-b-m'>";
                       $html .= "<div class='search__result-route-idbox'>";
                       $html .= "#<span class='route__id'>" . $value['route'] . "</span></div>";
                       $html .= "<div class='search__result-route-start'>" . $value['sid'] . "</div>";
