@@ -1,6 +1,6 @@
 <?php
 
-function renderDirectPathCard($value)
+function renderDirectPathCard($value, $option)
 {
     $html = "<div class='search-results-train-card search-results-train-card--small'>
                 <div class='search-results-train-card__main'>
@@ -44,11 +44,15 @@ function renderDirectPathCard($value)
     $html .= "<div class='search-results-train-card__sub'>";
 
     $html .= "<div class='search-results-train-card__classbox'>";
-    $html .= "<a href='/utrance-railway/book-seats' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
+
+    $option = "op" . $option;
+    $_SESSION[$option] = $value;
+
+    $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
     return $html;
 }
 
-function renderIntersectCard($value)
+function renderIntersectCard($value, $option)
 {
     $html = "<div class='search-results-train-card search-results-train-card--big'>
                 <div class='search-results-train-card__main'>
@@ -155,7 +159,11 @@ function renderIntersectCard($value)
     $html .= "<div class='search-results-train-card__sub '>";
 
     $html .= "<div class='search-results-train-card__classbox'>";
-    $html .= "<a href='/utrance-railway/book-seats' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
+
+    $option = "op" . $option;
+    $_SESSION[$option] = $value;
+
+    $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=intersect' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
 
     return $html;
 }
