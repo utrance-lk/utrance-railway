@@ -43,12 +43,12 @@
         index = $('#train__type').val();
         newindex = $('#active__status').val();
         console.log(index);
-        console.log(newindex +" "+index);
-        newindex2=newindex +" "+index;
+        console.log(newindex);
+        
         $.ajax({
-          url:'newmanageTrains?Traintype='+newindex2,
-          method:'get',
-          data:{index1:newindex2}
+          url:'newmanageTrains',
+          method:'post',
+          data:{index1:newindex,index2:index}
         }).done(function(train){
           console.log(train)
           trains=JSON.parse(train)
