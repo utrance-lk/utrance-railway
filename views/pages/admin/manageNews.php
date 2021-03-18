@@ -40,7 +40,7 @@
             <div class="flex-row-sa-center margin-tb-s">
               <div>
                   <label for="train_schedule">Train Schedule</label>
-                  <input type="radio" value="train_schedule" name="details_type" id="train_schedule" >
+                  <input type="radio" value="train_schedule" name="details_type" id="train_schedule" checked>
               </div>
               <div>
                   <label for="ticket_price">Ticket Price</label>
@@ -57,9 +57,9 @@
             <legend class="topic-greyed topic-greyed--dark padding-xxs">News</legend>
             <div class="flex-col-sa-center margin-tb-s">
               <div class="dash-content__input width-full padding-lr-s">
-                <input type="text" name="news_headline" class="form__input" placeholder="Headline">
+                <input type="text" name="news_headline" class="form__input" placeholder="Headline" required>
               </div>
-              <textarea class="textinput" rows="10" cols="60" name="detail" placeholder=" Enter the news here..."></textarea>
+              <textarea class="textinput" rows="10" cols="60" name="detail" placeholder=" Enter the news here..." required></textarea>
             </div>
           </fieldset>
 

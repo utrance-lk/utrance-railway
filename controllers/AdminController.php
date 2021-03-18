@@ -246,7 +246,7 @@ class AdminController extends Controller
 
     public function deleteTrain($request, $response)
     {
-        echo "huh";
+       
 
         if ($this->protect()) {
 
@@ -358,7 +358,7 @@ class AdminController extends Controller
 
             } else if ($request->isPost()) {
                 $resultArray = $searchModel->searchRouteDetails();
-
+              
                 return $this->render(['admin', 'manageRoutes'], $resultArray);
 
             }
@@ -405,18 +405,17 @@ class AdminController extends Controller
 
     }
 
-    public function manageNews($request) //daranya
+    public function manageNews($request) //hasani
 
     {
         if ($this->protect()) {
             $manageNewsModel = new AdminModel();
+            $manageNewsModel->loadData($request->getBody());
 
             if ($request->isPost()) {
-                $manageNewsModel->loadData($request->getbody());
-                $addNewss = $manageNewsModel->manageNews();
-                $updateUserArray = $adminViewUser->getUserDetails();
-                //var_dump($addDetails);
-                return $this->render(['admin', 'manageNews']);
+                $getNewsArray = $manageNewsModel->uploadNews();
+                 return $response->redirect('/utrance-railway/manage-news');
+                // return $this->render(['admin', 'manageNews']);
 
             }
             return $this->render(['admin', 'manageNews']);

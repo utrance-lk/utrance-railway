@@ -52,9 +52,13 @@ class AdminModel extends Model
     private $errorArray = [];
     public $stationrouteError = [];
 
+    public $details_type;
+    public $news_headline;
+    public $detail;
+
     private function populateValues()
     {
-        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status];
+        return ['first_name' => details_typefirst_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status];
     }
 
     public function getUsers()
@@ -688,9 +692,10 @@ class AdminModel extends Model
 
     public function searchRouteDetails()
     {
+      
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM (SELECT o.route, sid, did FROM (SELECT routes.route_id as route,stations.station_name as sid FROM stations INNER JOIN routes WHERE routes.start_station_id=stations.station_id) as o INNER JOIN (SELECT routes.route_id as route,stations.station_name as did FROM stations INNER JOIN routes WHERE routes.dest_station_id=stations.station_id) as p WHERE p.route=o.route) AS t
-         WHERE t.sid LIKE '%{$this->searchRoute}%' OR t.did LIKE '%{$this->searchRoute}%' OR t.route=:routeName");
-        $query->bindValue(":routeName", $this->searchRoute);
+         WHERE t.sid LIKE '%{$this->searchTrain}%' OR t.did LIKE '%{$this->searchTrain}%' OR t.route=:routeName");
+        $query->bindValue(":routeName", $this->searchTrain);
         $query->execute();
         $this->resultArray['routes'] = $query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
@@ -807,6 +812,16 @@ class AdminModel extends Model
 
         return $validationState;
 
+    }
+
+    public function uploadNews()
+    {
+        var_dump($this->details_type);
+        $query = APP::$APP->db->pdo->prepare("INSERT INTO news_feed (News_type,Headline,Content) VALUES (:News_type,:Headline,:Content)");
+        $query->bindValue(":News_type", $this->details_type);
+        $query->bindValue(":Headline", $this->news_headline);
+        $query->bindValue(":Content", $this->detail);
+        $query->execute();
     }
 
 }
