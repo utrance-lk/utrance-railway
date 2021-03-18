@@ -32,7 +32,7 @@ class ViewController extends Controller
             $searchTourModel->loadData($request->getBody());
 
             $pathArrays = $searchTourModel->getTours();
-
+            //var_dump($pathArrays);
             return $this->render('searchResults', $pathArrays);
 
         }

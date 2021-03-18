@@ -27,7 +27,7 @@ function renderDirectPathCard($value, $option)
 
     $html .= "<span> $timeDecide[1] </span></div>
                 <div class='search-results-train-card__train-name'>";
-
+    $train_id=$value['train_id'];
     $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" . $value['train_name'] . "</a></div>";
     $html .= "<div>";
     $html .= "<span>" . $value['fssn'] . "</span>";
@@ -74,7 +74,7 @@ function renderIntersectCard($value, $option)
     $html .= "<span> : </span>";
     $html .= "<span>" . substr($value['fsiat'], 3, 2) . "</span>";
     $html .= "<span> $timeDecide[1] </span></div>";
-
+    $train_id=$value['train_id'];
     $html .= "<div class='search-results-train-card__train-name'>";
     $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" . $value['frtn'] . "</a></div>";
     $html .= "<div class='search__card-detailbox--train-journey'>";
@@ -136,7 +136,7 @@ function renderIntersectCard($value, $option)
     $html .= "<span> : </span>";
     $html .= "<span>" . substr($value['tseat'], 3, 2) . "</span>";
     $html .= "<span> $timeDecide[1] </span></div>";
-
+    $train_id=$value['train_id'];
     $html .= "<div class='search-results-train-card__train-name'>";
     $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" . $value['trtn'] . "</a></div>";
     $html .= "<div class='search__card-detailbox--train-journey'>";

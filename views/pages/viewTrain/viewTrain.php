@@ -1,20 +1,20 @@
-<section class="view__train--container">
-    <div class="topic">
+<section class="margin-t-m">
+    <div class="flex-col-stretch-center margin-b-huge">
     <?php
     if(isset($x)){
       
         $html="";
     
-        $html.="<div class='train__name-box'>" .$x['train_name']. "</div>";
-        $html.="<div class='station__text-box'>";
+        $html.="<div class='heading-tertiary'>" .$x['train_name']. "</div>";
+        $html.="<div class='topic-greyed margin-b-xxs'>";
         $html.="<span class='start__station' id='start'>" .$x['start_station']. "</span>&nbsp;to&nbsp;<span class='destination__station' id='end'>" .$x['dest_station']. "</span>";
         $html.="</div>";
-        $html.="<div class='journey__date-box'>";
+        $html.="<div class='topic-greyed margin-b-xxs'>";
         $html.="<span>journey days : </span>&nbsp;&nbsp;<span class='journey__date-day'>";
         $html.="<span class='day'>" .ucwords($x['train_travel_days']). "</span>";
         $html.="</span>";
         $html.="</div>";
-        $html.="<div class='journey__time-box'>";
+        $html.="<div class='topic-greyed margin-b-xxs'>";
         $html.="<span>journey time</span>&nbsp;&nbsp;<span class='total__journey-time'>" .$x['total_time']. "</span>";
         $html.="</div>";
 
@@ -68,17 +68,17 @@
      if(isset($get_train_details)){
            
             $html = "";
-            $html.="<div class='schedule-container'>";
-            $html.="<div class='schedule__headings'>";
-            $html.="<div class='topic__station'>Station</div>";
-            $html.="<div class='topic__arrival-time'>Arrival time</div>";
-            $html.="<div class='topic__departure-time'>Departure time</div>";
+            $html.="<div class='view-train__schedule'>";
+            $html.="<div class='view-train__table-heading'>";
+            $html.="<div class='view-train__table-heading-text'>Station</div>";
+            $html.="<div class='view-train__table-heading-text-time'>Arrival time</div>";
+            $html.="<div class='view-train__table-heading-text-time'>Departure time</div>";
             $html.="</div>";
         foreach($get_train_details as $key => $value) {
-            $html.="<div class='schedule__results--odd'>";
-            $html.="<div class='result__station'>" .$value['station_name'][0]['station_name']. "</div>";
-            $html.="<div class='result__arrival-time'>" .$value[0]['arrival_time']. "</div>";
-            $html.="<div class='result__departure-time'>" .$value[0]['departure_time']. "</div>";
+            $html.="<div class='view-train__result-row view-train__result-row--odd'>";
+            $html.="<div class='view-train__result-row-item'>" .$value['station_name'][0]['station_name']. "</div>";
+            $html.="<div class='view-train__result-row-item'>" .$value[0]['arrival_time']. "</div>";
+            $html.="<div class='view-train__result-row-item'>" .$value[0]['departure_time']. "</div>";
             $html.="</div>";
             
 
