@@ -7,7 +7,7 @@ $app->router->get('/utrance-railway/myBookings', [BookingController::class, 'get
 $app->router->get('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
 $app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
 
-$app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createBooking']);
+$app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createSeatBooking']);
 
 $app->router->get('/utrance-railway/book-freights', [BookingController::class, 'bookFreight']);
 

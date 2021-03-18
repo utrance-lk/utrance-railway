@@ -16,7 +16,7 @@ class UserController extends Controller
         
         if($this->authMiddleware->isLoggedIn()) {
             if ($request->isGet()) {
-                return $this->render('settings');
+                return $this->render('dashboard');
             }
         } else {
             return 'You are not logged in!';

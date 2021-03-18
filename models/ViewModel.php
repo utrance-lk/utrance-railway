@@ -237,4 +237,15 @@ class ViewModel extends Model
         return $seachInterectionPath->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getTrainStations($trainId, $routeId) {
+
+        $getRouteIdFromTrainId = APP::$APP->db->pdo->prepare('SELECT route_id FROM trains WHERE train_id=:id');
+        $getRouteIdFromTrainId->bindValue(':id', $trainId);
+        $getRouteIdFromTrainId->execute();
+
+        return $getRouteIdFromTrainId->fetch(PDO::FETCH_ASSOC);
+
+    }
+
+
 }

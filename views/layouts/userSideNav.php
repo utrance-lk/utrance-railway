@@ -1,19 +1,16 @@
-<div class="main-container">
-      <div class="sidebar">
-        <div class="sidebar__nav">
-          <div class="sidebar__nav-common-items">
-            <a href="/utrance-railway/settings" class="sidebar__nav-settings sidebar__nav-item js--sidebar__nav-settings">
-              <svg class="settings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-cog"></use>
-              </svg>
-              <span class="settings-name">Settings</span>
-            </a>
-            <a href="/utrance-railway/myBookings" class="sidebar__nav-mybookings sidebar__nav-item">
-              <svg class="mybookings-icon sidebar__nav-icon">
-                <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-suitcase"></use>
-              </svg>
-              <span class="mybookings-name">My bookings</span>
-            </a>
-          </div>
-        </div>
-      </div>
+<div class="sidebar-nav">
+  <div class="sidebar-nav__common">
+    <a href="/utrance-railway/settings" class="margin-t-m sidebar-nav__item js--sidebar__nav-settings">
+      <svg class="sidebar-nav__icon">
+        <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-cog"></use>
+      </svg>
+      <span>Settings</span>
+    </a>
+    <a href="/utrance-railway/myBookings" class="sidebar-nav__item">
+      <svg class="sidebar-nav__icon">
+        <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-suitcase"></use>
+      </svg>
+      <span>My bookings</span>
+    </a>
+  </div>
+</div>

@@ -27,6 +27,7 @@ $config = [
 $app = new App(dirname(__DIR__), $config);
 
 require_once "../routes/adminRoutes.php";
+require_once "../routes/ajaxRoutes.php";
 require_once "../routes/authRoutes.php";
 require_once "../routes/bookingRoutes.php";
 require_once "../routes/detailsProviderRoutes.php";

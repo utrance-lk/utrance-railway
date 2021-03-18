@@ -1,7 +1,5 @@
-<body>
 <div class="register__container">
-		<div class="register__img-box register__container-item">
-
+		<div class="register__img-box register__container-item">  
         </div>
 		<div class="register__form-box register__container-item">
 			<form class="form__container" method="POST" action="/utrance-railway/register">
@@ -84,6 +82,7 @@
                     <label for="password-confirm">Password Confirm</label>
                     <input type="password" id="password-confirm" name="user_confirm_password" placeholder="<?php echo isset($passwordError) ? $passwordError : '***************'; ?>" class="<?php echo isset($passwordError) ? 'error__placeholder' : ''; ?>" required>
                 </div>
+<<<<<<< HEAD
                 <!--?php
 
                 var_dump($userError);
@@ -105,6 +104,8 @@
 				<!-- <div class="forgot-password-box form__container-item">
 					<a href="#" class="forgort-password-box">Forgot Password?</a>
 				</div> -->
+=======
+>>>>>>> 2833bc74c022c171d9746af0d9f3d5784c46d937
 				<button type="submit" class="register-btn form__container-item">
 						Register
 				</button>
@@ -112,7 +113,3 @@
 		</div>
 		</div>
 	</div>
-</body>
-
-
-</html>
