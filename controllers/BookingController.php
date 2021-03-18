@@ -140,7 +140,6 @@ class BookingController extends Controller
             }
 
             $train1['train_no'] = 1;
-            
 
             // train 2
 
@@ -177,7 +176,6 @@ class BookingController extends Controller
             $train['all_start'] = $fullTrainDetails['fssn'];
             $train['all_end'] = $fullTrainDetails['tsen'];
             $train['wait_time'] = $fullTrainDetails['wait_time'];
-
 
             return $train;
         }
@@ -267,6 +265,18 @@ class BookingController extends Controller
             }
         } else {
             return 'You are not logged in!';
+        }
+    }
+
+    // checkout
+    public function checkout($request)
+    {
+        if ($this->authMiddleware->isLoggedIn()) {
+            
+            if ($request->isGet()) {
+                return $this->render('checkout');
+            }
+
         }
     }
 

@@ -4,7 +4,6 @@ require_once "../classes/core/App.php";
 include_once "../models/UserModel.php";
 require_once "../vendor/autoload.php";
 
-
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
@@ -31,6 +30,7 @@ require_once "../routes/ajaxRoutes.php";
 require_once "../routes/authRoutes.php";
 require_once "../routes/bookingRoutes.php";
 require_once "../routes/detailsProviderRoutes.php";
+require_once "../routes/paymentRoutes.php";
 require_once "../routes/trainRoutes.php";
 require_once "../routes/userRoutes.php";
 require_once "../routes/viewRoutes.php";
