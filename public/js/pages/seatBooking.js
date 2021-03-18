@@ -52,7 +52,7 @@ function setTicketPrice(fromStation, toStation, id) {
         return acc + i;
       });
 
-      finalAmountElement.innerText = cardAcc;
+      finalAmountElement.value = cardAcc;
 
       selectElement.addEventListener("change", function () {
         var trainclass = selectElement.value;
@@ -71,7 +71,7 @@ function setTicketPrice(fromStation, toStation, id) {
           return acc + i;
         });
 
-        finalAmountElement.innerText = cardAcc;
+        finalAmountElement.value = cardAcc;
       });
 
       personsElement.addEventListener("change", function (e) {
@@ -97,7 +97,7 @@ function setTicketPrice(fromStation, toStation, id) {
           return acc + i;
         });
 
-        finalAmountElement.innerText = cardAcc;
+        finalAmountElement.value = cardAcc;
       });
     } else {
       console.log("station not found");

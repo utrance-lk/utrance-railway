@@ -10,12 +10,7 @@ class ViewController extends Controller
     {
 
         if ($request->isPost()) {
-            // $searchTourModel = new ViewModel();
-            // $searchTourModel->loadData($request->getBody());
-
-            // $pathArrays = $searchTourModel->getTours();
-
-            // return $this->render('searchResults', $pathArrays);
+            ///
         }
 
         return $this->render('home');
