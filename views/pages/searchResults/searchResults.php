@@ -117,9 +117,18 @@
         $html .= "<span>" . substr($value['tseat'], 3, 2) . "</span>";
         $html .= "<span> $dayTime </span></div>";
               
-        $html .= "<div class='search__card-detailbox--train-name'>";       
-        $html .= "<a href='/utrance-railway/view-train'>" .$value['train_name'] . "</a></div>";
+        $html .= "<div class='search__card-detailbox--train-name' >";
+        $start_station=$value['fssn']; 
+        $dest_station=$value['tsen'];  
+        $train_id=$value['train_id'];
+        //var_dump($value['train_id']);
+        //var_dump($start_station);
+       // var_dump($dest_station);
+        
+        $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" .$value['train_name'] . "</a></div>";
         $html .= "<div class='search__card-detailbox--train-journey'>";
+        
+        //var_dump($start_station);
         $html .= "<span>" . $value['fssn'] . "</span>";
         $html .= "<span> to </span>";
         $html .= "<span>" . $value['tsen'] . "</span></div></div>";
@@ -174,8 +183,11 @@
         $html .= "<span>" . substr($value['fsiat'], 3, 2) . "</span>";
         $html .= "<span> $dayTime </span></div>";
 
+         
+        $train_id=$value['frti'];
+
         $html .= "<div class='search__card-detailbox--train-name'>";
-        $html .= "<a href='/utrance-railway/view-train'>" . $value['frtn'] . "</a></div>";
+        $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" .$value['frtn']. "</a></div>";
         $html .= "<div class='search__card-detailbox--train-journey'>";
         $html .= "<span>" . $value['fssn'] . "</span>";
         $html .= "<span> to </span>";
@@ -247,9 +259,10 @@
         $html .= "<span> : </span>";
         $html .= "<span>" . substr($value['tseat'], 3, 2) . "</span>";
         $html .= "<span> $dayTime </span></div>";
-
+        
+        $train_id=$value['trti'];
         $html .= "<div class='search__card-detailbox--train-name'>";
-        $html .= "<a href='/utrance-railway/view-train'>" . $value['trtn'] . "</a></div>";
+        $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" . $value['trtn'] . "</a></div>";
         $html .= "<div class='search__card-detailbox--train-journey'>";
         $html .= "<span>" . $value['isn'] . "</span>";
         $html .= "<span> to </span>";

@@ -23,35 +23,20 @@
             </a>
             <div class="filters__container margin-t-s">
                 <div class="filter__item">
-<<<<<<< HEAD
-                  <label for="train__type" class="margin-r-s">User Type &colon;</label>
-                  <select name="train__type" id="train__type" class="form__input">
-                    <option value="express">All</option>
-                    <option value="express">Admin</option>
-                    <option value="slow">User</option>
-                    <option value="Intercity">Details Provider</option>
-=======
                   <label for="train__type" class="margin-r-s">User Role &colon;</label>
                   <select name="User_Role"  id="User_Role" class="form__input">
                     <option value="all">All</option>
                     <option value="admin">Admin</option>
                     <option value="user">User</option>
                     <option value="detailsProvider">Details Provider</option>
->>>>>>> 324631ff3404270e3411579482d6652f78650ddb
                   </select>
                 </div>
                 <div class="filter__item">
                   <label for="active__status" class="margin-r-s">Active Status &colon;</label>
                   <select name="active__status" id="active__status" class="form__input">
-<<<<<<< HEAD
-                    <option value="active">All</option>
-                    <option value="active">Active</option>
-                    <option value="deactivated">Deactivated</option>
-=======
                     <option value="a">All</option>
                     <option value="1">Active</option>
                     <option value="0">Deactivate</option>
->>>>>>> 324631ff3404270e3411579482d6652f78650ddb
                   </select>
                 </div>
               </div>
