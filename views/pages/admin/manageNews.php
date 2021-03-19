@@ -67,16 +67,17 @@
             <legend class="topic-greyed topic-greyed--dark padding-xxs">Image</legend>   
             <div class="">
            
-              <!-- <img 
-                src="../../../../utrance-railway/public/img/NewsImages/picture.jpg"
+              <img 
+                src="../../../../utrance-railway/public/img/NewsImages/newtrain.jpeg"
                 alt="news-picutre"
                 class="newsimage"
-              /> -->
+                width="500" height="360"
+              />
                 <input
                 type="file"
                 name="photo"
                 accept="image/*"
-             
+                 
                 id="photo"
               />
               <!-- class="form__upload" -->
