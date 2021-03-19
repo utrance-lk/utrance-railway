@@ -20,4 +20,10 @@ $app->router->get('/utrance-railway/freight-search', [BookingController::class, 
 $app->router->get('/utrance-railway/freight-bookings', [BookingController::class, 'manageFreights']);
 $app->router->get('/utrance-railway/freight-booking-train', [BookingController::class, 'freightBookingForTrain']);
 
+// booking
+$app->router->get('/utrance-railway/checkout', [BookingController::class, 'checkout']);
+$app->router->post('/utrance-railway/checkout', [BookingController::class, 'checkout']);
+
+
+
 ?>

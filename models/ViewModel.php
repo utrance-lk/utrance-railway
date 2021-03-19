@@ -73,58 +73,38 @@ class ViewModel extends Model
         $query->bindValue(":train_id",$this->train_id);
         $query->execute();
         $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($this->resultArray);
         $this->train_basic_details=$this->findTrainDetails($this->resultArray);
-       // var_dump($this->train_basic_details);
-        
-
+       
         
         $query = APP::$APP->db->pdo->prepare("SELECT station_id  FROM stops WHERE route_id=:route_id");
         $query->bindValue(":route_id",$this->resultArray[0]['route_id']);
         $query->execute();
         $this->station_value_set['get_train_details']= $query->fetchAll(PDO::FETCH_ASSOC);
         
-        $size=sizeof($this->station_value_set['get_train_details']);
         
-        $j=1;
-        $k=0;
-        for($j=1;$j<=$size;$j++){
-           //var_dump(strval($j));
-            $query=APP::$APP->db->pdo->prepare("SELECT station_id,arrival_time,departure_time FROM stops WHERE path_id=:path_id AND route_id=:route_id");
-            
-            $query->bindValue(":path_id",strval($j));
-            $query->bindValue(":route_id",$this->resultArray[0]['route_id']);
-            $query->execute();
-
-            $this->station_final_value_set['get_train_details'][$k]=$query->fetchAll(PDO::FETCH_ASSOC);
-            $k++;
-            
-            
-        }
-        $i=0;
-        $k=0;
-        for($i=0;$i<$size;$i++){
-           
-            $query=APP::$APP->db->pdo->prepare("SELECT station_name FROM stations WHERE station_id=:station_id");
-            $query->bindValue(":station_id",$this->station_final_value_set['get_train_details'][$k][0]['station_id']);
-            $query->execute();
-            $this->station_final_value_set['get_train_details'][$k]['station_name']=$query->fetchAll(PDO::FETCH_ASSOC);
-            $k++;
-           
-        }
+       $query=APP::$APP->db->pdo->prepare("SELECT stn.station_name,stn.longitude,stn.latitude,stn.station_id,stp.arrival_time,stp.departure_time FROM stations stn  INNER JOIN stops stp ON stp.station_id=stn.station_id  WHERE stp.route_id=:route_id ORDER BY stp.path_id ASC");
+       $query->bindValue(":route_id",$this->resultArray[0]['route_id']);
+       $query->execute();
+       $this->station_final_value_set['get_train_details']=$query->fetchAll(PDO::FETCH_ASSOC);
+      
+    
         $this->station_final_value_set['x']['train_name']=$this->train_basic_details[0]['train_name'];
         $this->station_final_value_set['x']['train_travel_days']=$this->train_basic_details[0]['train_travel_days'];
         $this->station_final_value_set['x']['total_time']=$this->train_basic_details['total_time'][0]['total_time'];
         $this->station_final_value_set['x']['start_station']=$this->train_basic_details['start_station'][0]['station_name'];
         $this->station_final_value_set['x']['dest_station']=$this->train_basic_details['dest_station'][0]['station_name'];
 
-      //var_dump($this->station_final_value_set);
+      
         return $this->station_final_value_set;
         
       
 
 
     }
+
+
+    
+    
 
     public function findTrainDetails($array1){
         $query=APP::$APP->db->pdo->prepare("SELECT total_time FROM routes WHERE route_id=:route_id");
@@ -138,12 +118,12 @@ class ViewModel extends Model
         $query->execute();
         $array1['start_dest']=$query->fetchAll(PDO::FETCH_ASSOC);
        //var_dump($array1);
-        $query=APP::$APP->db->pdo->prepare("SELECT station_name FROM stations WHERE station_id=:station_id");
+        $query=APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
         $query->bindValue(":station_id",$array1['start_dest'][0]['start_station_id']);
         $query->execute();
         $array1['start_station']=$query->fetchAll(PDO::FETCH_ASSOC);
 
-        $query=APP::$APP->db->pdo->prepare("SELECT station_name FROM stations WHERE station_id=:station_id");
+        $query=APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
         $query->bindValue(":station_id",$array1['start_dest'][0]['dest_station_id']);
         $query->execute();
         $array1['dest_station']=$query->fetchAll(PDO::FETCH_ASSOC);

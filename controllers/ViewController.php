@@ -10,12 +10,7 @@ class ViewController extends Controller
     {
 
         if ($request->isPost()) {
-            // $searchTourModel = new ViewModel();
-            // $searchTourModel->loadData($request->getBody());
-
-            // $pathArrays = $searchTourModel->getTours();
-
-            // return $this->render('searchResults', $pathArrays);
+            ///
         }
 
         return $this->render('home');
@@ -51,6 +46,9 @@ class ViewController extends Controller
 
     }
 
+
+   
+
     public function viewTrain($request) {
         /*if($request->isGet()) {
             $viewTrainDetails = new ViewModel();
@@ -64,14 +62,11 @@ class ViewController extends Controller
             $viewTrainDetailsModel = new ViewModel();
             $tempBody = $request->getBody();
             $tempBody['train_id'] = $request->getQueryParams()['train_id'];
-            //$tempBody['start_station'] = $request->getQueryParams()['start_station'];
-           // $tempBody['destination_station'] = $request->getQueryParams()['destination_station'];
+          
             
             $viewTrainDetailsModel->loadData($tempBody);
             $trainScheduleArray=$viewTrainDetailsModel->getTrainSchedules();
             
-          
-           // var_dump($trainScheduleArray);
             return $this->render('viewTrain',$trainScheduleArray);
         }
        

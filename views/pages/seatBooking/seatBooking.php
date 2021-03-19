@@ -15,8 +15,9 @@
             <span>journey time</span>&nbsp;&ndash;&nbsp;<span><?php echo isset($trains['t2']) ? calcFullJourneyTime($trains['t1']['journey_time'], $trains['t2']['journey_time'], $wait_time) : calcFullJourneyTime($trains['t1']['journey_time']) ?></span>
         </div>
     </div>
-    <form action="#" class="seat-booking__form">
+    <div class="seat-booking__form">
         <?php
+        // var_dump(App::$APP->activeUser());
 include_once "../views/components/seatBookingCard.php";
 
 $i = 0;
@@ -26,18 +27,34 @@ foreach ($trains as $key => $value) {
 }
 
 ?>
-        <div class="seat-booking__total-price">
-            <span class="margin-r-xs">final amount&nbsp;&colon;</span>
-            <div>
-                <span>Rs</span>&nbsp;<span id="finalAmount">500</span>
+        <form action="https://sandbox.payhere.lk/pay/checkout" class="flex-col-stretch-center" method="POST">
+            <div class="seat-booking__total-price margin-b-m">
+                <span class="margin-r-xs">final amount&nbsp;&colon;</span>
+                <div>
+                    <span>Rs</span>&nbsp;<input readonly name="amount" id="finalAmount"></input>
+                </div>
             </div>
-        </div>
-        <div class="seat-booking__btn-container">
-            <button class="btn btn-round-blue">
-                Book now
-            </button>
-        </div>
-    </form>
+            <input type="hidden" name="merchant_id" value="1216669">    <!-- Replace your Merchant ID -->
+            <input type="hidden" name="return_url" value="http://localhost/utrance-railway/payment">
+            <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
+            <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">  
+            <input type="text" name="order_id" value="ItemNo12345" hidden readonly>
+            <input type="text" name="items" value="<?php echo $all_start . ' to ' . $all_end;?>" hidden readonly>
+            <input type="text" name="currency" value="LKR" hidden readonly>
+            <input type="text" name="first_name" value="<?php echo App::$APP->activeUser()['first_name']; ?>" hidden readonly>
+            <input type="text" name="last_name" value="<?php echo App::$APP->activeUser()['last_name']; ?>" hidden readonly>
+            <input type="text" name="email" value="<?php echo App::$APP->activeUser()['email_id']; ?>" hidden readonly>
+            <input type="text" name="phone" value="<?php echo App::$APP->activeUser()['contact_num']; ?>" hidden readonly>
+            <input type="text" name="address" value="<?php echo App::$APP->activeUser()['street_line1']; ?>" hidden readonly>
+            <input type="text" name="city" value="<?php echo App::$APP->activeUser()['city']; ?>" hidden readonly>
+            <input type="hidden" name="country" value="Sri Lanka" hidden readonly>
+            <div class="seat-booking__btn-container">
+                <button class="btn btn-round-blue" type="submit">
+                    Book now
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 <script type="text/javascript" src="../../../utrance-railway/public/js/pages/seatBooking.js"></script>
 
