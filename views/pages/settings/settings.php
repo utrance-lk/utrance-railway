@@ -1,3 +1,4 @@
+
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
@@ -6,13 +7,13 @@
             </div>
             <!--form  action='/utrance-railway/settings' class='form__user-data' method='POST' enctype='multipart/form-data'>
             <div class="content__fields"!-->
-            
+
             <?php
-              $dom = new DOMDocument;
-              libxml_use_internal_errors(true);
-              $dom->loadHTML('...');
-              libxml_clear_errors();
-            ?>
+$dom = new DOMDocument;
+libxml_use_internal_errors(true);
+$dom->loadHTML('...');
+libxml_clear_errors();
+?>
 
             <?php
               if (isset($_SESSION['user'] ) ) {
@@ -122,54 +123,89 @@
 ?>
 
               </div>
-              </form>
+
+
+               <!--form action="/utrance-railway/upload" method="POST" enctype="multipart/form-data">
+              <div class="userpicture-box" id="image_box" name="image_box">
+              <img src="../../../../utrance-railway/public/img/uploads/Sugath.jpg" alt="user-profile-picture" name="image_preview"  id="image_preview" />
+              <input type="file" name="file" accept="image/*"  class="form__upload" id="photo">
+
+              <label for="photo">Choose New Photo</label></div>
+
+              <div class="btn__upload-box">
+              <input type="submit" class="btn btn-round-blue margin-b-l margin-t-s" name="upload" value="Upload Image"  id="upload-btn">
+              </div>
+              </form!-->
+
+              <?php
+
+$html = "";
+$html .= "<form action='/utrance-railway/upload' method='POST' enctype='multipart/form-data'>";
+$html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
+$image_name = App::$APP->activeUser()['user_image'];
+
+$html .= "<img src='../../../../utrance-railway/public/img/uploads/$image_name' alt='user-profile-picture' name='image_preview' onClick='triggerClick()'  id='image_preview' />";
+
+$html .= "<input type='file' name='file' onChange='displayImage(this)'   accept='image/*' class='form__upload' id='photo' >";
+
+$html .= "<label for='photo'>Choose New Photo</label></div>";
+
+$html .= "<div class='btn__upload-box'>";
+
+$html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' name='upload' value='Upload Image'  id='upload-btn'></div></form>";
+
+$dom = new DOMDocument();
+$dom->loadHTML($html);
+print_r($dom->saveHTML());
+
+?>
+
 
             <div class="seperator"></div>
             <div class="content-title">
               <p>Password Change</p>
             </div>
-            
+
             <form action="/utrance-railway/update-password" method="POST" class="password__change">
               <div class="content__fields">
             <?php
-            
-              $html = "";
-              $html .= "<div class='currentpassword-box content__fields-item'>";
-              $html .= "<label for='currentpassword' class='form__label'>Current Password</label>";
-              
-              if(isset($passwordError)){
-                $html .= "<input type='password' name='user_password' placeholder='".$passwordError."'  class='form__input error__placeholder'/></div>";
-              }else{
-                
-                $html .= "<input type='password' name='user_password' placeholder='****************'  class='form__input'/></div>";
-              }
-             // $html .= "<input type='password' name='user_password' class='form__input'/></div>";
 
-              $html .= "<div class='newpassword-box content__fields-item'>";
-              $html .= "<label for='newpassword' class='form__label'>New Password</label>";
-              
-              if(isset($passwordMatchError)){
-                $html .= "<input type='password' name='user_new_password'  placeholder='".$passwordMatchError."' class='form__input error__placeholder'></div>";
-              }else{
-                $html .= "<input type='password' name='user_new_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit'   class='form__input'/></div>";
-              }
+$html = "";
+$html .= "<div class='currentpassword-box content__fields-item'>";
+$html .= "<label for='currentpassword' class='form__label'>Current Password</label>";
 
-             // $html .= "<input type='password' name='user_new_password' class='form__input'></div>";
+if (isset($passwordError)) {
+    $html .= "<input type='password' name='user_password' placeholder='" . $passwordError . "'  class='form__input error__placeholder'/></div>";
+} else {
 
-              $html .= "<div class='confirmpassword-box content__fields-item'>";
-              $html .= "<label for='confirmpassword' class='form__label'>Confirm Password</label>";
-              $html .= "<input type='password' name='user_confirm_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' class='form__input'></div>";
+    $html .= "<input type='password' name='user_password' placeholder='****************'  class='form__input'/></div>";
+}
+// $html .= "<input type='password' name='user_password' class='form__input'/></div>";
 
-              $html .= "<div class='btn__save-box'>";
+$html .= "<div class='newpassword-box content__fields-item'>";
+$html .= "<label for='newpassword' class='form__label'>New Password</label>";
 
-              //$html .= "<div class='btn__save btn__password'>Save Password</div></div>";
-              $html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' value='Save Password'></div>";
-          
+if (isset($passwordMatchError)) {
+    $html .= "<input type='password' name='user_new_password'  placeholder='" . $passwordMatchError . "' class='form__input error__placeholder'></div>";
+} else {
+    $html .= "<input type='password' name='user_new_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit'   class='form__input'/></div>";
+}
 
-              $dom = new DOMDocument();
-              $dom->loadHTML($html);
-              print_r($dom->saveHTML());
-            ?>
+// $html .= "<input type='password' name='user_new_password' class='form__input'></div>";
+
+$html .= "<div class='confirmpassword-box content__fields-item'>";
+$html .= "<label for='confirmpassword' class='form__label'>Confirm Password</label>";
+$html .= "<input type='password' name='user_confirm_password' placeholder='Password should contain at least 1 lowercase, 1 uppercase, 1 special character and a digit' class='form__input'></div>";
+
+$html .= "<div class='btn__save-box'>";
+
+//$html .= "<div class='btn__save btn__password'>Save Password</div></div>";
+$html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' value='Save Password'></div>";
+
+$dom = new DOMDocument();
+$dom->loadHTML($html);
+print_r($dom->saveHTML());
+?>
               </div>
             </form>
           </div>
@@ -177,55 +213,73 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/viewUserImage.js"></script>
 </body>
 </html>
 
-<!--script>
-//load Image ///Ashika
-var loadFile=function(event){
-  var image=document.getElementById('image_preview');
-  image.src=URL.createObjectURL(event.target.files[0]);
-}
-</script!-->
+
+<?php
+
+//     $fileNameNew="";
+//     if(isset($_POST["upload"])){
+//      $file=$_FILES['file'];
+
+//      $fileName=$_FILES['file']['name'];
+//      $fileTmpName=$_FILES['file']['tmp_name'];
+//      $fileSize=$_FILES['file']['size'];
+//      $fileError=$_FILES['file']['error'];
+//      $fileType=$_FILES['file']['type'];
+
+//      $fileExt=explode('.',$fileName);
+//      $fileActualExt=strtolower(end($fileExt));
+
+//      $allowed=array('jpg','jpeg','png');
+
+//      if(in_array($fileActualExt,$allowed)){
+//         if($fileError === 0){
+//             if($fileSize < 1000000){
+//                $fileNameNew=uniqid('',true).".".$fileActualExt;
+//                $fileDestination='img/uploads/'.$fileNameNew;
+//                move_uploaded_file($fileTmpName,$fileDestination);
+//                echo "file Added Successfully";
+//                var_dump($fileNameNew);
+//                return $fileNameNew;
+//             }else{
+//                echo "Your file is too big!!!";
+//             }
+//         }else{
+//            echo "There Was an error uploading your file!!!";
+//         }
+
+//      }else{
+//         echo "You Can not Upload files of this type!!!";
+//      }
+
+//    /* if($_FILES["photo"]["name"]!= ''){
+
+//        $test=explode(".",$_FILES["photo"]["name"]);
+
+//        $extension=end($test);
+//        $name=rand(100,999).".".$extension;
+//        var_dump($name);
+//        $location='../../../../utrance-railway/public/img/uploads/'.$name;
+//        move_uploaded_file($_FILES["photo"]["tmp_name"],$location);
+//        echo "Image Upload Successfully";
+
+//    }*/
+// }
+
+?>
 
 
-</body>
-</html>
-<!--?php
-var_dump($_POST['save']);
-if(isset($_POST['save'])){ //Ashika
-  //echo "Hello1234";
-  $file=$_FILES['photo'];
-  $name=$_POST['first_name'];
-  $fileName=$_FILES['photo']['name'];
-  $fileTempName=$_FILES['photo']['tmp_name'];
-  $fileSize=$_FILES['photo']['size'];
-  $fileError=$_FILES['photo']['error'];
-  $fileType=$_FILES['photo']['type'];
-  
 
-  $fileExt=explode('.',$fileName);
-  $fileActualExt=strtolower(end($fileExt));
-  $allowed=array('jpg','jpeg','png');
 
-  if(in_array($fileActualExt,$allowed)){
-    if($fileError === 0){
-      if($fileSize < 1000000){
-            $fileNameNew=$name.".".$fileActualExt;
-            $fileDestination='img/uploads/'.$fileNameNew;
-            move_uploaded_file($fileNameNew,$fileDestination);
-            echo "file added succesfully!!";
-            
-      }else{
-        echo "Your file is too big!!!";
-      }
-          
-    }else{
-      echo "There was an error uploading your file!!";
-    }
 
-  }else{
-    echo "You can not upload files of this type!!!";
-  }
-}
+
+
+
+
+
+
 

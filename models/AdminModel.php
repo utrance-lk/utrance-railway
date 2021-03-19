@@ -57,11 +57,19 @@ class AdminModel extends Model
         return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status];
     }
 
-    public function getUsers()
-    {
+
+    private function populateValuesForAddUser() {
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status,'details_provider_station' =>$this->station_details_provider];
+    }
+
+
+    
+
+    public function getUsers() {
         $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status,user_image FROM users  ORDER BY user_active_status DESC");
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+       // var_dump($this->resultArray);
         return $this->resultArray;
     }
 
@@ -82,16 +90,15 @@ class AdminModel extends Model
             $this->runSanitizationAdmin();
             $this->runPasswordSanitization();
             $createUser = new HandlerFactory();
-            return $createUser->createOne('users', $this->populateValues());
+            return $createUser->createOne('users', $this->populateValuesForAddUser());
         }
 
         return $validationState;
     }
 
     public function getUserDetails() ///Ashika ///After Click the view button
-
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num FROM users WHERE id=:id ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num,details_provider_station,user_role FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
 
         $query->execute();
@@ -204,6 +211,7 @@ class AdminModel extends Model
         if (empty($registerSetValueArray['cityError'])) {
             $registerSetValueArray['city'] = $this->city;
         }
+        
         return $registerSetValueArray;
 
     }
