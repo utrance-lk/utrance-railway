@@ -413,9 +413,10 @@ class AdminController extends Controller
             $manageNewsModel->loadData($request->getBody());
 
             if ($request->isPost()) {
-                $getNewsArray = $manageNewsModel->uploadNews();
-                 return $response->redirect('/utrance-railway/manage-news');
-                // return $this->render(['admin', 'manageNews']);
+                $getNewsArray['image'] = $manageNewsModel->uploadNews();
+               
+                return $response->redirect('/utrance-railway/news');
+                // return $this->render(['admin', 'manageNews'],$getNewsArray);
 
             }
             return $this->render(['admin', 'manageNews']);

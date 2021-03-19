@@ -34,7 +34,7 @@
           <p class="center-text">Manage News</p>
         </div>
 
-        <form action="/utrance-railway/manage-news" method="POST" >
+        <form action="/utrance-railway/manage-news" method="POST" enctype="multipart/form-data">
           <fieldset class="margin-b-xs">
             <legend class="topic-greyed topic-greyed--dark padding-xxs">News Type</legend>
             <div class="flex-row-sa-center margin-tb-s">
@@ -66,19 +66,21 @@
           <fieldset class="margin-b-xs">
             <legend class="topic-greyed topic-greyed--dark padding-xxs">Image</legend>   
             <div class="">
-              <img 
-                src="../../../../utrance-railway/public/img/pages/admin/train.jpg"
+           
+              <!-- <img 
+                src="../../../../utrance-railway/public/img/NewsImages/picture.jpg"
                 alt="news-picutre"
                 class="newsimage"
-              />
+              /> -->
                 <input
                 type="file"
                 name="photo"
                 accept="image/*"
-                class="form__upload"
+             
                 id="photo"
               />
-              <label for="photo" class="btn-square-upload margin-b-s">Choose Photo</label>
+              <!-- class="form__upload" -->
+              <!-- <label for="photo" class="btn-square-upload margin-b-s">Choose Photo</label> -->
             </div>
           </fieldset>
 

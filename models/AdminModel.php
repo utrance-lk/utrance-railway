@@ -816,12 +816,24 @@ class AdminModel extends Model
 
     public function uploadNews()
     {
-        var_dump($this->details_type);
-        $query = APP::$APP->db->pdo->prepare("INSERT INTO news_feed (News_type,Headline,Content) VALUES (:News_type,:Headline,:Content)");
+        $file_name = $_FILES['photo']['name'];
+        $file_type = $_FILES['photo']['type'];
+        $file_size = $_FILES['photo']['size'];
+        $temp_name = $_FILES['photo']['tmp_name'];
+        $upload_to = '../public/img/NewsImages/';
+
+        $file_uploaded = move_uploaded_file($temp_name,$upload_to . $file_name);
+
+        
+        $query = APP::$APP->db->pdo->prepare("INSERT INTO news_feed (News_type,Headline,Content,NewsImage) VALUES (:News_type,:Headline,:Content,:file_nam)");
         $query->bindValue(":News_type", $this->details_type);
         $query->bindValue(":Headline", $this->news_headline);
         $query->bindValue(":Content", $this->detail);
+        $query->bindValue(":file_nam", $file_name);
         $query->execute();
+        if($file_uploaded){
+            return "success";
+        }
     }
 
 }
