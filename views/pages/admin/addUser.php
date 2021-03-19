@@ -65,12 +65,12 @@ $cityArray = array("Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo",
               <div class='seperator'></div>
 
               <div class="dash-content__input">
-                <label for='newpassword' class='dash-content__label'>Create Password</label>
+                <label for='user_password' class='dash-content__label'>Create Password</label>
                 <input type='password' name='user_password' class='form__input' placeholder="<?php echo (empty($user_password) && !empty($passwordError)) ? $passwordError : ''; ?>" required />
               </div>
 
               <div class="dash-content__input">
-                <label for='confirmpassword' class='dash-content__label'>Confirm Password</label>
+                <label for='user_confirm_password' class='dash-content__label'>Confirm Password</label>
                 <input type='password' name='user_confirm_password' class='form__input' required />
               </div>
 
@@ -80,4 +80,3 @@ $cityArray = array("Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo",
         </div>
       </div>
 </div>
-

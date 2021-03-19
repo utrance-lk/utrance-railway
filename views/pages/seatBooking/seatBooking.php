@@ -17,7 +17,6 @@
     </div>
     <div class="seat-booking__form">
         <?php
-        // var_dump(App::$APP->activeUser());
 include_once "../views/components/seatBookingCard.php";
 
 $i = 0;
@@ -83,4 +82,3 @@ function calcFullJourneyTime($train1Time, $train2Time = null, $waitTime = null)
     return $fullHr . " h " . $fullMin . " m";
 }
 
-?>
