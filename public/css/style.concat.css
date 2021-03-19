@@ -213,6 +213,10 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-left: 1rem;
 }
 
+.margin-l-l {
+  margin-left: 5rem;
+}
+
 .margin-b-xxs {
   margin-bottom: 0.5rem;
 }
@@ -339,6 +343,10 @@ input::-webkit-datetime-edit-year-field:focus {
 /* WIDTH */
 .width-full {
   width: 100%;
+}
+
+.width-half {
+  width: 50%;
 }
 
 .btn {
@@ -1242,6 +1250,7 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   width: 80%;
 }
+
 .add-train__new-train {
   display: flex;
   height: 90vh;
@@ -1914,8 +1923,8 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .view-train__schedule {
-  margin: 0 15vw;
-  width: 40%;
+  padding: 0 5rem;
+  width: 50%;
 }
 
 .view-train__table-heading {
@@ -1949,4 +1958,14 @@ input::-webkit-datetime-edit-year-field:focus {
 .view-train__result-row-item {
   width: 15rem;
   text-align: center;
+}
+
+#map {
+        /* width: 400px; */
+    position: absolute;
+    top: 16vh;
+    bottom: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
 }

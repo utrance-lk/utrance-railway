@@ -1,12 +1,12 @@
 <section class="margin-t-m">
-    <div class="flex-col-stretch-center margin-b-huge">
+    <div class="center-text margin-b-huge width-half">
     
     <?php
     if(isset($x)){
       
         $html="";
     
-        $html.="<div class='heading-tertiary'>" .$x['train_name']. "</div>";
+        $html.="<div class='heading-tertiary'>".$x['train_name']."</div>";
         $html.="<div class='topic-greyed margin-b-xxs'>";
         $html.="<span class='start__station' id='start'>" .$x['start_station']. "</span>&nbsp;to&nbsp;<span class='destination__station' id='end'>" .$x['dest_station']. "</span>";
         $html.="</div>";
@@ -27,7 +27,7 @@
     ?>
     </div>
 
-    <div style="display:flex;justify-content:space-around">
+    <div>
     
 
     <?php
@@ -36,7 +36,7 @@
          
            
             $html = "";
-            $html.="<div class='view-train__schedule' style='margin: 0 0 0 15vw'>";
+            $html.="<div class='view-train__schedule'>";
             $html.="<div class='view-train__table-heading'>";
             $html.="<div class='view-train__table-heading-text'>Station</div>";
             $html.="<div class='view-train__table-heading-text-time'>Arrival time</div>";
@@ -53,7 +53,7 @@
 
              
         }
-        //var_dump($station);
+
         $html.="</div>";
             $dom = new DOMDocument();
              $dom->loadHTML($html);
@@ -67,7 +67,7 @@
     
     
    
-    <div id='map' data-locations="<?php echo htmlspecialchars(json_encode($get_train_details));?>"  style='width: 400px; height: 300px;margin-bottom:3rem'></div>
+    <div id='map' data-locations="<?php echo htmlspecialchars(json_encode($get_train_details));?>"></div>
     </div>
    
 </section>

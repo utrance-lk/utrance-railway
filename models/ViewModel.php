@@ -127,11 +127,7 @@ class ViewModel extends Model
         $query->bindValue(":station_id",$array1['start_dest'][0]['dest_station_id']);
         $query->execute();
         $array1['dest_station']=$query->fetchAll(PDO::FETCH_ASSOC);
-
-
-
         
-       // var_dump($array1);
         return $array1;
     }
 
