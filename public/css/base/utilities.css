@@ -16,6 +16,10 @@
   margin-left: 1rem;
 }
 
+.margin-l-l {
+  margin-left: 5rem;
+}
+
 .margin-b-xxs {
   margin-bottom: 0.5rem;
 }
@@ -142,4 +146,8 @@
 /* WIDTH */
 .width-full {
   width: 100%;
+}
+
+.width-half {
+  width: 50%;
 }

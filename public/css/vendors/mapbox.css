@@ -1,0 +1,9 @@
+#map {
+        /* width: 400px; */
+    position: absolute;
+    top: 16vh;
+    bottom: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+}

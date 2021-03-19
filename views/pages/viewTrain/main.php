@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Utrance Railway</title>
 
+    
+<!--map box javascript --Ashika!-->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+<!--map box javascript --Ashika!-->
+
+
     <link
     href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=Sora:wght@400;500&display=swap"
     rel="stylesheet"

@@ -21,6 +21,12 @@ class UserModel extends Model
     public $user_confirm_password;
     public $user_new_password;
     public $id;
+    public $photo;
+    public $fd;
+    public $save;
+    
+    public $file;
+
     // public $photo = "Chris-user-profile.jpg";
      public $user_image = "default";
     
@@ -65,8 +71,6 @@ class UserModel extends Model
         $validationState=$registerValidation->runValidators($array);
         if($validationState ==="success"){
             $this->runSanitization();
-            // $user_image = $this->first_name;
-            // $this->user_image = strtolower($user_image);
             $createUser = new HandlerFactory();
             return $createUser->createOne('users', $this->populateValues());
          }else{
@@ -74,9 +78,68 @@ class UserModel extends Model
          }
         
     }
+    public function uploadImage($user_id){
+         
+          $file = $_FILES['file'];
+          
+          $fileName = $_FILES['file']['name'];
+          $fileTmpName = $_FILES['file']['tmp_name'];
+          $fileSize = $_FILES['file']['size'];
+          $image_dimension = getimagesize($fileTmpName); 
+          //var_dump($image_dimension);
+          $fileError = $_FILES['file']['error'];
+          $fileType = $_FILES['file']['type'];
+        
+          $fileExt = explode('.', $fileName);
+          $fileActualExt = strtolower(end($fileExt));
+        
+          $allowed = array('jpg', 'jpeg', 'png');
+        
+          if (in_array($fileActualExt, $allowed)) {
+              if ($fileError === 0) {
+                  //if ($image_dimension[0] > 200 && $image_dimension[1] >200 ) {
+                      $newOne=$user_id+"/";
+                      var_dump($newOne);
+                      $fileNameNew = uniqid(" ",true) . "." . $fileActualExt;
+                      $fileDestination = 'img/uploads/' . $fileNameNew;
+                      move_uploaded_file($fileTmpName, $fileDestination);
+                      var_dump($fileNameNew);
+
+                      $query = App::$APP->db->pdo->prepare("UPDATE users SET user_image=:image_value WHERE id=:id");
+                      $query->bindValue(":id", $user_id);
+                      $query->bindValue(":image_value",$fileNameNew);
+                      $query->execute();
+                      return "Success";
+
+                      echo "file Added Successfully";
+                      
+                  //} else {
+                //      return  "Your file is too big!!!";
+                //  }
+              } else {
+                  echo "There Was an error uploading your file!!!";
+              }
+        
+          } else {
+              echo "You Can not Upload files of this type!!!";
+          }
+         
+          
+     
+      $query = App::$APP->db->pdo->prepare("SELECT user_image FROM users WHERE id=:id");
+      $query->bindValue(":id", $this->id);
+      $query->execute();
+      $uploadImageName=$query->fetchAll(PDO::FETCH_ASSOC);
+     
+      return $uploadImageName[0]['user_image'];
+
+
+
+    }
 
     public function updateMyProfile() {
-        
+        //$this->checkImageUpdate($this->photo);
+       
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_role' =>$this->user_role];
         $updateValidation=new FormValidation();
         $validationState=$updateValidation->runUpdateValidators($array);
@@ -94,6 +157,7 @@ class UserModel extends Model
         }
         
     }
+  
 
     public function forgotUpdatePassword() {
         $passwordValidation = new FormValidation();
@@ -210,7 +274,7 @@ class UserModel extends Model
 
     private function sanitizeFormStreet($inputText){
         $inputText = strip_tags($inputText);
-        $inputText = strtolower($inputText); // lowering the text
+       // $inputText = strtolower($inputText); // lowering the text
         $inputText=trim($inputText); 
         return ucfirst($inputText); // capitalize first letter
   
