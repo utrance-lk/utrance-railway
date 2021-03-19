@@ -9,7 +9,13 @@ class ViewModel extends Model
     public $to;
     public $when;
     public $resultsArr;
-    public $trainId;
+    public $train_id;
+    public $dest_station;
+    public $start_station;
+    public $result_array;
+    public $station_value_set;
+    public $station_final_value_set;
+    public $train_basic_deatils;
 
     public function rules()
     {
@@ -58,11 +64,82 @@ class ViewModel extends Model
         }
 
     }
+//Ashika 
+    public function getTrainSchedules(){
+        
+           
+        
+        $query = APP::$APP->db->pdo->prepare("SELECT route_id,train_name,train_travel_days FROM trains WHERE train_id=:train_id");
+        $query->bindValue(":train_id",$this->train_id);
+        $query->execute();
+        $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->train_basic_details=$this->findTrainDetails($this->resultArray);
+       
+        
+        $query = APP::$APP->db->pdo->prepare("SELECT station_id  FROM stops WHERE route_id=:route_id");
+        $query->bindValue(":route_id",$this->resultArray[0]['route_id']);
+        $query->execute();
+        $this->station_value_set['get_train_details']= $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        
+       $query=APP::$APP->db->pdo->prepare("SELECT stn.station_name,stn.longitude,stn.latitude,stn.station_id,stp.arrival_time,stp.departure_time FROM stations stn  INNER JOIN stops stp ON stp.station_id=stn.station_id  WHERE stp.route_id=:route_id ORDER BY stp.path_id ASC");
+       $query->bindValue(":route_id",$this->resultArray[0]['route_id']);
+       $query->execute();
+       $this->station_final_value_set['get_train_details']=$query->fetchAll(PDO::FETCH_ASSOC);
+      
+    
+        $this->station_final_value_set['x']['train_name']=$this->train_basic_details[0]['train_name'];
+        $this->station_final_value_set['x']['train_travel_days']=$this->train_basic_details[0]['train_travel_days'];
+        $this->station_final_value_set['x']['total_time']=$this->train_basic_details['total_time'][0]['total_time'];
+        $this->station_final_value_set['x']['start_station']=$this->train_basic_details['start_station'][0]['station_name'];
+        $this->station_final_value_set['x']['dest_station']=$this->train_basic_details['dest_station'][0]['station_name'];
+
+      
+        return $this->station_final_value_set;
+        
+      
+
+
+    }
+
+
+    
+    
+
+    public function findTrainDetails($array1){
+        $query=APP::$APP->db->pdo->prepare("SELECT total_time FROM routes WHERE route_id=:route_id");
+        $query->bindValue(":route_id",$array1[0]['route_id']);
+        $query->execute();
+        $array1['total_time']=$query->fetchAll(PDO::FETCH_ASSOC);
+
+
+        $query=APP::$APP->db->pdo->prepare("SELECT start_station_id,dest_station_id FROM routes WHERE route_id=:route_id");
+        $query->bindValue(":route_id",$array1[0]['route_id']);
+        $query->execute();
+        $array1['start_dest']=$query->fetchAll(PDO::FETCH_ASSOC);
+       //var_dump($array1);
+        $query=APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
+        $query->bindValue(":station_id",$array1['start_dest'][0]['start_station_id']);
+        $query->execute();
+        $array1['start_station']=$query->fetchAll(PDO::FETCH_ASSOC);
+
+        $query=APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
+        $query->bindValue(":station_id",$array1['start_dest'][0]['dest_station_id']);
+        $query->execute();
+        $array1['dest_station']=$query->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+        
+       // var_dump($array1);
+        return $array1;
+    }
+
 
     protected function searchForDirectPath($fromId, $toId)
     {
         $searchDirectPath = APP::$APP->db->pdo->prepare(
-            "SELECT fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, tsen, train_name, timediff(tseat, fssdt) as total_time from
+            "SELECT fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, tsen,train_id,train_name, timediff(tseat, fssdt) as total_time from
                 (select route_id, fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, station_name as tsen from
                     (select route_id, fssid, fssdt, fsspi, tseid, tseat, tsepi, station_name as fssn from
                         (select * from
@@ -95,8 +172,8 @@ class ViewModel extends Model
     protected function searchForIntersection($fromId, $toId)
     {
         $seachInterectionPath = APP::$APP->db->pdo->prepare(
-            "SELECT isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, frtn, train_name as trtn, timediff(tsidt, fsiat) as wait_time, timediff(fsiat, fssdt) as ftitt, timediff(tseat, tsidt) as iterr from
-                (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, train_name as frtn from
+            "SELECT isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, frtn,frti,train_id as trti,train_name as trtn, timediff(tsidt, fsiat) as wait_time, timediff(fsiat, fssdt) as ftitt, timediff(tseat, tsidt) as iterr from
+                (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen,train_id as frti,train_name as frtn from
                     (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, station_name as tsen from
                         (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, station_name as fssn from
                             (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, station_name as isn from
