@@ -396,6 +396,19 @@ function myfun(x) {
   // ];
 
   inputBox.onkeyup = (e) => {
+
+    function getUnique(array){
+      var uniqueArray = [];
+      
+      // Loop through array values
+      for(i=0; i < array.length; i++){
+          if(uniqueArray.indexOf(array[i]) === -1) {
+              uniqueArray.push(array[i]);
+          }
+      }
+      return uniqueArray;
+  }
+
     let userData = e.target.value;
     let emptyArray = [];
     if (userData) {
@@ -404,6 +417,8 @@ function myfun(x) {
           .toLocaleLowerCase()
           .startsWith(userData.toLocaleLowerCase());
       });
+
+      emptyArray = getUnique(emptyArray);
       emptyArray = emptyArray.map((data) => {
         return (data = "<li>" + data + "</li>");
       });
