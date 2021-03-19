@@ -14,6 +14,10 @@ $app->router->get('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']
 
 $app->router->post('/utrance-railway/news', [UserController::class, 'newsFeed']);
 $app->router->get('/utrance-railway/news', [UserController::class, 'newsFeed']);
+
+$app->router->post('/utrance-railway/news', [AdminController::class, 'newsFeed']);
+$app->router->get('/utrance-railway/news', [AdminController::class, 'newsFeed']);
+
 $app->router->get('/utrance-railway/news/news01', [UserController::class, 'newsFeed01']);
 $app->router->get('/utrance-railway/news/news02', [UserController::class, 'newsFeed02']);
 $app->router->get('/utrance-railway/news/news03', [UserController::class, 'newsFeed03']);

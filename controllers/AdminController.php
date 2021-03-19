@@ -405,7 +405,7 @@ class AdminController extends Controller
 
     }
 
-    public function manageNews($request) //hasani
+    public function manageNews($request, $response) //hasani
 
     {
         if ($this->protect()) {
@@ -415,13 +415,18 @@ class AdminController extends Controller
             if ($request->isPost()) {
                 $getNewsArray['image'] = $manageNewsModel->uploadNews();
                
-                return $response->redirect('/utrance-railway/news');
+                return $response->redirect('/utrance-railway/home');
                 // return $this->render(['admin', 'manageNews'],$getNewsArray);
 
             }
             return $this->render(['admin', 'manageNews']);
         }
 
+    }
+
+    public function newsFeed(){
+       
+        return $this->render('newsFeed');
     }
 
 }
