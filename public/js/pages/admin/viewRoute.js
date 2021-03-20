@@ -3,11 +3,11 @@ let newnewStations = [];
 let emptyStations = 0;
 
 function addStops(x) {
-  document.querySelectorAll(".view-routes__btn-add").forEach(function (item) {  
+  document.querySelectorAll(".view-routes__btn-add").forEach(function (item) { //  .stop-card__add-btn
     item.addEventListener("click", function (e) {
       const isAvailPopup = document.querySelector(".add-stop-popup");
       if (!isAvailPopup) {
-        const parent = e.target.closest(".view-routes__stop");
+        const parent = e.target.closest(".view-routes__stop"); //.stop-card
         console.log(parent);
         const markup = `
         <style>
