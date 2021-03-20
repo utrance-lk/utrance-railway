@@ -10,9 +10,9 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
     
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/admin/admin.css" />
+    <link rel="stylesheet" href="/public/css/pages/admin/admin.css" />
 
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.concat.css" />
+    <link rel="stylesheet" href="/public/css/style.concat.css" />
 
   </head>
 

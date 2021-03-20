@@ -12,7 +12,7 @@
                 placeholder="Search trains by name or id"  name="searchUserByNameOrId"
               />
               <svg class="search-icon__btn">
-                <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
+                <use xlink:href="public/img/pages/admin/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
             </form>
             <div class="filters">

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/login/login.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" /> -->
 
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.concat.css" />
+    <link rel="stylesheet" href="/public/css/style.concat.css" />
 
   </head>
   <body>

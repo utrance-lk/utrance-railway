@@ -7,8 +7,8 @@
 
   <?php include_once 'newsfeed.php';?>
 
-  <script type="text/javascript" src="../../../utrance-railway/public/js/components/mainSearch.js"></script>
-  <script type="text/javascript" src="../../../utrance-railway/public/js/components/currentDate.js"></script>
+  <script type="text/javascript" src="/public/js/components/mainSearch.js"></script>
+  <script type="text/javascript" src="/public/js/components/currentDate.js"></script>
   <script>
     document.querySelector(".js--from__station").textContent = stationsArray[3];
     document.querySelector(".js--to__station").textContent = stationsArray[0];

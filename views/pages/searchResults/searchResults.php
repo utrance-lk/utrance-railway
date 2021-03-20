@@ -45,7 +45,7 @@
   </div>
 </section>
 
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/mainSearch.js"></script>
+<script type="text/javascript" src="/public/js/components/mainSearch.js"></script>
 
   </body>
 </html>

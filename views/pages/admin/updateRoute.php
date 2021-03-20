@@ -47,7 +47,7 @@ if (isset($routes)) {
         $html .= "<div>" . $value['departure_time'] . "</div></div>";
         $html .= "<div class='view-routes__btn-add'>";
         $html .= "<svg class='view-routes__btn-add-icon'>
-        <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use></svg></div></div></div>";
+        <use xlink:href='/public/img/svg/sprite2.svg#icon-add_circle_outline'></use></svg></div></div></div>";
 
     }
 
@@ -67,8 +67,8 @@ print_r($dom->saveHTML());
 </div>
 
 
-<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewRoute.js"></script>
-<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewaddRoutCard.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/viewRoute.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/viewaddRoutCard.js"></script>
 <script>addStops(<?php echo $x; ?>);</script>
 
 <script>

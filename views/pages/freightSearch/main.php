@@ -18,10 +18,10 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
 
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/searchResults/searchResults.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
+    <link rel="stylesheet" href="/public/css/base.css" />
+    <link rel="stylesheet" href="/public/css/layout/headerMain.css" />
+    <link rel="stylesheet" href="/public/css/pages/searchResults/searchResults.css" />
+    <link rel="stylesheet" href="/public/css/layout/footer.css" />
 
   </head>
 

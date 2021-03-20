@@ -105,7 +105,7 @@
 
                 $user_img = App::$APP->activeUser()['user_image'];
                 $html .= "<div id='image_box' name='image_box'>";
-                $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class='settings__profile-img'/>";
+                $html .= "<img src='/public/img/uploads/$user_img.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class='settings__profile-img'/>";
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo'    />";
                 
                 $html .= "<label for='photo' class='btn-square-upload' >Choose New Photo</label></div>";

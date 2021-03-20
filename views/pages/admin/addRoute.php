@@ -14,13 +14,13 @@
                 <span class="btn btn-square-blue" id="add-first-stop">
                     <div class="btn-square-blue__text">Add First Stop</div>
                     <svg class="btn-square-blue__icon">
-                        <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
+                        <use xlink:href="/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
                     </svg>
                 </span>
           </div>
          </div>
 </div>
-<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/addRoute.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/addRoute.js"></script>
 <script>
     addRouteEvents();
 </script>

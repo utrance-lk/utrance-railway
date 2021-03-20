@@ -25,8 +25,8 @@
     </div>
 </div>
 
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/pagination.js"></script>
-<script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/manageUsers.js"></script>
+<script type="text/javascript" src="/public/js/components/pagination.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/manageUsers.js"></script>
 <?php if (isset($users)): ?>
   <script>
     renderResults(<?php echo json_encode($users); ?>, <?php echo json_encode(App::$APP->activeUser()); ?>);

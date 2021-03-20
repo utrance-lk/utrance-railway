@@ -9,7 +9,7 @@
                       <div class="from__station js--from__station" id="js--from__station">Matara</div>
                       <div class="swap-button js--swap-btn">
                         <svg class="swap-icon">
-                          <use xlink:href="../../../../utrance-railway/public/img/pages/home/svg/sprite.svg#icon-swap"></use>
+                          <use xlink:href="/public/img/pages/home/svg/sprite.svg#icon-swap"></use>
                         </svg>
                       </div>
                     </div>
