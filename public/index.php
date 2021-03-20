@@ -5,7 +5,10 @@ include_once "../models/UserModel.php";
 require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
-$dotenv->load();
+
+if (file_exists(".env")) {
+    $dotenv->load();
+}
 
 // databse configuration (getting the details from the config.env)
 $config = [
