@@ -86,7 +86,7 @@ class UserModel extends Model
           $fileTmpName = $_FILES['file']['tmp_name'];
           $fileSize = $_FILES['file']['size'];
           $image_dimension = getimagesize($fileTmpName); 
-          //var_dump($image_dimension);
+          
           $fileError = $_FILES['file']['error'];
           $fileType = $_FILES['file']['type'];
         
@@ -97,9 +97,8 @@ class UserModel extends Model
         
           if (in_array($fileActualExt, $allowed)) {
               if ($fileError === 0) {
-                  //if ($image_dimension[0] > 200 && $image_dimension[1] >200 ) {
-                      $newOne=$user_id+"/";
-                      var_dump($newOne);
+                 
+                  
                       $fileNameNew = uniqid(" ",true) . "." . $fileActualExt;
                       $fileDestination = 'img/uploads/' . $fileNameNew;
                       move_uploaded_file($fileTmpName, $fileDestination);
@@ -110,12 +109,9 @@ class UserModel extends Model
                       $query->bindValue(":image_value",$fileNameNew);
                       $query->execute();
                       return "Success";
-
                       echo "file Added Successfully";
                       
-                  //} else {
-                //      return  "Your file is too big!!!";
-                //  }
+             
               } else {
                   echo "There Was an error uploading your file!!!";
               }
@@ -130,7 +126,7 @@ class UserModel extends Model
       $query->bindValue(":id", $this->id);
       $query->execute();
       $uploadImageName=$query->fetchAll(PDO::FETCH_ASSOC);
-     
+      var_dump($uploadImageName);
       return $uploadImageName[0]['user_image'];
 
 
@@ -138,7 +134,7 @@ class UserModel extends Model
     }
 
     public function updateMyProfile() {
-        //$this->checkImageUpdate($this->photo);
+        
        
         $array=['id'=>$this->id,'first_name'=> $this->first_name,'last_name'=>$this->last_name,'street_line1' => $this->street_line1,'street_line2' => $this->street_line2,'city'=> $this->city,'contact_num' => $this->contact_num,'email_id' => $this->email_id,'user_role' =>$this->user_role];
         $updateValidation=new FormValidation();
@@ -164,14 +160,14 @@ class UserModel extends Model
         $passwordValidation->validatePassword($this->user_password, $this->user_confirm_password);
         if(empty($passwordValidation->errorArray)) {
             $this->passwordHashing();
-            //var_dump($this->user_password);
+            
             $query = App::$APP->db->pdo->prepare("UPDATE users SET user_password=:up WHERE email_id=:email");
             $query->bindValue(":up", $this->user_password);
             $query->bindValue(":email", $this->email_id);
             $query->execute();
             return 'success';
         } else {
-            //var_dump($passwordValidation->errorArray);
+            
             return 'failed';
         }
 

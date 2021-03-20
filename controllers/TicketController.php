@@ -8,6 +8,7 @@ class TicketController extends Controller
         $viewTicketPrice = new TicketModel();
 
         $viewTicketPrice->loadData($request->getBody());
+       
 
         if ($request->isPost()) {
             $getResultPrice = $viewTicketPrice->getTicketPrice();

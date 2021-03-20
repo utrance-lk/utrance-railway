@@ -50,14 +50,7 @@ class ViewController extends Controller
    
 
     public function viewTrain($request) {
-        /*if($request->isGet()) {
-            $viewTrainDetails = new ViewModel();
-            $viewTrainDetails->loadData($request->getQueryParams());
-            $updateUserArray = $adminViewUser->getUserDetails();
-
-            return $this->render('viewTrain');
-        }*/
-        
+       
         if($request -> isGet()){
             $viewTrainDetailsModel = new ViewModel();
             $tempBody = $request->getBody();

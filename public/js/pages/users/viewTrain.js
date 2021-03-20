@@ -19,6 +19,13 @@
            }).setLngLat([loc.longitude,loc.latitude]).addTo(map);
            bounds.extend([loc.longitude,loc.latitude])
    });
-    map.fitBounds(bounds);
+   map.fitBounds(bounds, {
+    padding: {
+      top: 200,
+      bottom: 200,
+      left: 100,
+      right: 100,
+    },
+  });
     
     

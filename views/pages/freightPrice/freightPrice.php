@@ -1,6 +1,6 @@
 
 <section class="ticket-prices">
-  <form class="ticket-prices__search" method="POST" action="/utrance-railway/Freight-prices">
+  <form class="ticket-prices__search" method="POST" action="/utrance-railway/freight-prices">
     <div class="ticket-prices__search--from">
       <div class="ticket-prices__search-box  js--from__station"  id="js--from__station"></div>
       <div class="ticket-prices__search-dropdown js--search-dropdown__from">
@@ -28,21 +28,21 @@
 <script type="text/javascript" src="../../../utrance-railway/public/js/components/viewFreightPrice.js"></script>
 
 
-<?php if (isset($tickets)): ?>
+<?php if (isset($freight)): ?>
         <script >
-        let x=<?php echo json_encode($tickets); ?>;
+        let x=<?php echo json_encode($freight); ?>;
+        console.log(x);
         document.querySelector(".js--from__station").textContent = x.start;
         document.querySelector(".js--to__station").textContent = x.destination;
         document.querySelector(".js--search-dropdown__search-from").value = x.start;
         document.querySelector(".js--search-dropdown__search-to").value = x.destination;
-         renderResults(<?php echo json_encode($tickets); ?>);
-
-
-        </script>
+         renderResults(<?php echo json_encode($freight); ?>);
+       </script>
+        
       <?php endif;?>
 
 
-      <?php if (!(isset($tickets))): ?>
+      <?php if (!(isset($freight))): ?>
         <script>
         document.querySelector(".js--from__station").textContent = stationsArray[3];
         document.querySelector(".js--to__station").textContent = stationsArray[0];
@@ -57,8 +57,7 @@
       <script>
        document.querySelector(".minus-btn").setAttribute("disabled","disabled");
        let valueCount;
-       let onePerson="Person";
-       let twoPerson="Persons";
+       let weight="kg";
        let firstClassPrice=document.getElementById("first_class").innerText;
        firstClassPrice=firstClassPrice.match(/\d+/g);
        console.log(firstClassPrice)
@@ -87,10 +86,10 @@
         if(valueCount >1){
             document.querySelector(".minus-btn").removeAttribute("disabled");
             document.querySelector(".minus-btn").classList.remove("disabled");
-            document.getElementById("number__box__name").textContent=twoPerson;
+            document.getElementById("number__box__name").textContent=weight;
 
             }else{
-                document.getElementById("number__box__name").textContent=onePerson;
+                document.getElementById("number__box__name").textContent=weight;
             }
             getPriceTotal();
       });
@@ -102,10 +101,10 @@
          document.getElementById("number__box").value=valueCount;
          if(valueCount ==1){
              document.querySelector(".minus-btn").setAttribute("disabled","disabled");
-             document.getElementById("number__box__name").textContent=onePerson;
+             document.getElementById("number__box__name").textContent=weight;
 
          }else{
-            document.getElementById("number__box__name").textContent=twoPerson;
+            document.getElementById("number__box__name").textContent=weight;
          }
          getPriceTotal();
 

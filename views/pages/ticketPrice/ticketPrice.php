@@ -31,6 +31,7 @@
 <?php if (isset($tickets)): ?>
         <script >
         let x=<?php echo json_encode($tickets); ?>;
+        
         document.querySelector(".js--from__station").textContent = x.start;
         document.querySelector(".js--to__station").textContent = x.destination;
         document.querySelector(".js--search-dropdown__search-from").value = x.start;
