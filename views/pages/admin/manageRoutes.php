@@ -9,7 +9,7 @@ echo renderAdminSearch(['routes', 'name', 'id'], '');
           <a href="/utrance-railway/routes/add" class="btn btn-square-blue margin-t-m">
             <div class="btn-square-blue__text">Add Route</div>
             <svg class="btn-square-blue__icon">
-              <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
+              <use xlink:href="/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
             </svg>
           </a>
             <div class="flex-col-stretch-center margin-t-m">

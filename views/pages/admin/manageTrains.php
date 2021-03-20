@@ -9,7 +9,7 @@
         <a href="/utrance-railway/trains/add" class="btn btn-square-blue margin-t-m">
           <div class="btn-square-blue__text">Add Train</div>
           <svg class="btn-square-blue__icon">
-            <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
+            <use xlink:href="/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
           </svg>
         </a>
         <div class="filter__container margin-t-s">
@@ -25,8 +25,8 @@
   </div>
 </div>
 
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/pagination.js"></script>
-<script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/manageTrains.js"></script>
+<script type="text/javascript" src="/public/js/components/pagination.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/manageTrains.js"></script>
 
 <?php if (isset($trains)): ?>
   <script>

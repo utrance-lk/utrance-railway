@@ -55,7 +55,7 @@ foreach ($trains as $key => $value) {
         </form>
     </div>
 </div>
-<script type="text/javascript" src="../../../utrance-railway/public/js/pages/seatBooking.js"></script>
+<script type="text/javascript" src="/public/js/pages/seatBooking.js"></script>
 
 <?php
 function calcFullJourneyTime($train1Time, $train2Time = null, $waitTime = null)

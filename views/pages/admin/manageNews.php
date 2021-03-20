@@ -67,7 +67,7 @@
             <legend class="topic-greyed topic-greyed--dark padding-xxs">Image</legend>   
             <div class="">
               <img 
-                src="../../../../utrance-railway/public/img/pages/admin/train.jpg"
+                src="/public/img/pages/admin/train.jpg"
                 alt="news-picutre"
                 class="newsimage"
               />
