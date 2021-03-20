@@ -1443,7 +1443,8 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .add-stop-popup input {
-  /* padding: 1rem; */
+  padding: 1rem;
+  width: 13rem;
 }
 
 .add-stop-popup__close-btn {
