@@ -107,7 +107,7 @@ function addStops(x) {
             var time3Date = new Date("01/01/2000 " + nextCardStartDate);
             // if (time1Date >= time2Date) { alert("Please enter proper date") }
             // if (time2Date >= time3Date) { alert("Please enter proper date") }
-            const newmarkup = `<p id ="myerror">error found</p>`;
+            const newmarkup = `<p id ="myerror">Please enter valid time</p>`;
             const newx = document.querySelector(".add-stop-popup");
             if (time1Date >= time2Date) {
               newx.insertAdjacentHTML("beforebegin", newmarkup);
@@ -145,7 +145,7 @@ function addStops(x) {
             var time2Date = new Date("01/01/2000 " + endDate);
             var time3Date = new Date("01/01/2000 " + nextCardStartDate);
 
-            const newmarkup = `<p id ="myerror">error found</p>`;
+            const newmarkup = `<p id ="myerror">Please enter valid time</p>`;
             const newx = document.querySelector(".add-stop-popup");
             if (time1Date >= time2Date) {
               newx.insertAdjacentHTML("beforebegin", newmarkup);
@@ -244,7 +244,7 @@ function addStops(x) {
             }
             newStations.push(obj);
 
-            console.log(newStations);
+         
 
             arrTime = timeConversion(arrTime);
             deptTime = timeConversion(deptTime);
@@ -254,7 +254,6 @@ function addStops(x) {
             //   .includes("back-odd");
 
             const isBackOdd = parent.classList.contains("back-odd");
-
             const html = `
                     <div class="stop-card ${
                       isBackOdd ? "back-even" : "back-odd"

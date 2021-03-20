@@ -1,3 +1,4 @@
+let newStations = [];
 // import { items } from "./components.js";
 
 // let stopValues;
@@ -138,7 +139,72 @@ function addRouteEvents() {
     });
     const addRouteElement = document.getElementById("addroute");
     addRouteElement.insertAdjacentHTML('beforeend', renderAddStation());
+  ////hasani////////
+    document
+    .querySelector(".add-stop-popup__btn-add-station")
+    .addEventListener("click", function (elem){
+        const stationName = document.querySelector(
+            ".add-stop-popup__station--input"
+            ).value;
+            let arrTime = document.querySelector(
+            ".add-stop-popup__arr-time--input"
+            ).value;
+            let deptTime = document.querySelector(
+            ".add-stop-popup__dept-time--input"
+            ).value;
+            
+   
+
+    const obj = {
+        stationName,
+        arrTime,
+        deptTime,
+        };
+        
+    newStations.push(obj);
+    arrTime = timeConversion(arrTime);
+    deptTime = timeConversion(deptTime);
+
+    isBackOdd = "true";
+
+    const html = `
+                        <div class="stop-card ${
+                            isBackOdd ? "back-even" : "back-odd"
+                        }">
+                        <div class="stop-card__details">
+                            <div class="stop-card__path-id">
+                                #${1}
+                            </div>
+                            <div class="stop-card__station">
+                                ${stationName}
+                            </div>
+                            <div class="stop-card__arr-time">
+                                ${arrTime}
+                            </div>
+                            <div class="stop-card__dept-time">
+                                ${deptTime}
+                            </div>
+                        </div>
+                        <div class="stop-card__add-btn">
+                            <svg class="add-icon">
+                                <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
+                            </svg>
+                        </div>
+                    </div>
+                `;
+                let myobj = document.querySelector(".add-stop-popup")
+                myobj.remove();
+                addRouteElement.insertAdjacentHTML('beforeend', html);
+            });
+                
 }
 
-
-                
+const timeConversion = function (time) {
+    const arrTimeHour = time.split(":")[0] * 1;
+  
+    if (arrTimeHour < 12) {
+      return `${time} AM`;
+    }
+  
+    return `0${arrTimeHour - 12}:${time.split(":")[1]} PM`;
+  };
