@@ -37,7 +37,7 @@ foreach ($trains as $key => $value) {
             <input type="hidden" name="return_url" value="http://localhost/utrance-railway/payment">
             <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
             <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">  
-            <input type="text" name="order_id" value="ItemNo12345" hidden readonly>
+            <input type="text" name="order_id" value="" hidden readonly>
             <input type="text" name="items" value="<?php echo $all_start . ' to ' . $all_end;?>" hidden readonly>
             <input type="text" name="currency" value="LKR" hidden readonly>
             <input type="text" name="first_name" value="<?php echo App::$APP->activeUser()['first_name']; ?>" hidden readonly>
