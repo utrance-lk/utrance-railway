@@ -17,7 +17,7 @@ class AdminController extends Controller
         }
 
         if (!$authMiddleware->restrictTo('admin')) {
-            echo 'You are unorthorized to perform this action!!';
+            echo 'You are unauthorized to perform this action!!';
             return false;
         }
         return true;
