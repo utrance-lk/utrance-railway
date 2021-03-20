@@ -127,6 +127,7 @@
   left: 50%;
   display: none;
   border-radius: 5px;
+  z-index: 20;
 }
 
 .header-user__details:active .header-user__dropdown,
