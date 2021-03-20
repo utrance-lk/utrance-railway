@@ -3,7 +3,7 @@ let newnewStations = [];
 let emptyStations = 0;
 
 function addStops(x) {
-  document.querySelectorAll(".view-routes__btn-add").forEach(function (item) {
+  document.querySelectorAll(".view-routes__btn-add").forEach(function (item) {  
     item.addEventListener("click", function (e) {
       const isAvailPopup = document.querySelector(".add-stop-popup");
       if (!isAvailPopup) {
