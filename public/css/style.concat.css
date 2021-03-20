@@ -213,6 +213,10 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-left: 1rem;
 }
 
+.margin-l-l {
+  margin-left: 5rem;
+}
+
 .margin-b-xxs {
   margin-bottom: 0.5rem;
 }
@@ -339,6 +343,10 @@ input::-webkit-datetime-edit-year-field:focus {
 /* WIDTH */
 .width-full {
   width: 100%;
+}
+
+.width-half {
+  width: 50%;
 }
 
 .btn {
@@ -906,6 +914,77 @@ input::-webkit-datetime-edit-year-field:focus {
 .search-results-train-card__switch-card-textbox span {
   color: rgb(119, 119, 119);
 }
+.seat-booking-card {
+  height: 25rem;
+  padding: 1rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  margin-bottom: 10rem;
+}
+
+.seat-booking-card__train-no {
+  position: absolute;
+  padding: 1rem;
+  top: -1rem;
+  left: -1rem;
+  width: 10rem;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.seat-booking-card__train-details {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.seat-booking-card__train-type {
+  font-size: 1rem;
+  border: 1px solid rgb(119, 119, 119);
+  border-radius: 10rem;
+  padding: 0.2rem;
+}
+
+.seat-booking-card__seperator {
+  width: 2px;
+  height: 20%;
+  background-color: rgb(119, 119, 119);
+  align-self: center;
+}
+
+.seat-booking-card__mini-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seat-booking-card__person-count {
+  width: 3rem;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: rgb(242, 242, 242);
+  border-radius: 5px;
+}
+
+.seat-booking-card__train-class {
+  padding: 1rem;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+.seat-booking-card__price {
+  font-size: 2rem;
+  color: rgba(31, 58, 147);
+}
+
 .dashboard {
   margin: 10vh 10vw;
   font-family: "Lato", sans-serif;
@@ -1096,6 +1175,7 @@ input::-webkit-datetime-edit-year-field:focus {
   left: 50%;
   display: none;
   border-radius: 5px;
+  z-index: 20;
 }
 
 .header-user__details:active .header-user__dropdown,
@@ -1171,6 +1251,7 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   width: 80%;
 }
+
 .add-train__new-train {
   display: flex;
   height: 90vh;
@@ -1269,6 +1350,119 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 .manage-news__partition-topic {
     padding: .5rem;
+}
+.manage-routes__route {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  background-color: rgb(244, 242, 242);
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.manage-routes__route > * {
+  flex: 1;
+}
+
+.view-routes__title {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(31, 58, 147);
+  font-weight: 600;
+  padding: 2rem;
+}
+
+.view-routes__title > * {
+  text-align: center;
+}
+
+.view-routes__stop {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  position: relative;
+}
+
+.view-routes__stop--even {
+  background-color: rgba(119, 119, 119, 0.2);
+}
+
+.view-routes__stop--even {
+  background-color: rgb(242, 242, 242);
+}
+
+.view-routes__stop-details {
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+}
+
+.view-routes__stop-station {
+  width: 10rem;
+  text-align: center;
+}
+
+.view-routes__btn-add {
+  position: absolute;
+  left: 98.5%;
+  top: 81%;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+}
+
+.view-routes__btn-add:active,
+.view-routes__btn-add:focus {
+  transform: scale(0.9);
+}
+
+.view-routes__stop:hover .view-routes__btn-add {
+  display: block;
+}
+
+.view-routes__btn-add-icon {
+  width: 2rem;
+  height: 2rem;
+  fill: rgba(31, 58, 147, 0.8);
+}
+
+.add-stop-popup {
+  background-color: rgba(119, 119, 119, 0.2);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.add-stop-popup__form {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-stop-popup input {
+  /* padding: 1rem; */
+}
+
+.add-stop-popup__close-btn {
+  /* border: 1px solid green; */
+  position: absolute;
+  left: 97.2%;
+  top: 7%;
+  cursor: pointer;
+}
+
+.add-stop-popup__close-btn:active,
+.add-stop-popup__close-btn:focus {
+  transform: scale(0.9);
+}
+
+.close-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--color-btn-box-text-delete);
 }
 .newsfeed {
     padding: 10rem 5rem;
@@ -1400,6 +1594,37 @@ input::-webkit-datetime-edit-year-field:focus {
   background-color: #1F3A93;
   color: #fff;
 }
+
+.seat-booking__day{
+  position: relative;
+}
+
+.seat-booking__day-up {
+  position: absolute;
+  top: -0.5rem;
+  left: 2.5rem;
+}
+
+.seat-booking__form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;   
+}
+
+.seat-booking__total-price {
+  border: 1px solid rgba(31, 58, 147, 0.8);
+  font-size: 2rem;
+  font-weight: 400;
+  padding: 1rem;
+  align-self: flex-start;
+  display: flex;
+  /* width: 40rem; */
+}
+
+.seat-booking__btn-container {
+  align-self: center;
+}
+
 .manage-trains__search-results {
   display: flex;
   flex-direction: column;
@@ -1699,8 +1924,8 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .view-train__schedule {
-  margin: 0 15vw;
-  width: 40%;
+  padding: 0 5rem;
+  width: 50%;
 }
 
 .view-train__table-heading {
@@ -1734,4 +1959,14 @@ input::-webkit-datetime-edit-year-field:focus {
 .view-train__result-row-item {
   width: 15rem;
   text-align: center;
+}
+
+#map {
+        /* width: 400px; */
+    position: absolute;
+    top: 16vh;
+    bottom: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
 }

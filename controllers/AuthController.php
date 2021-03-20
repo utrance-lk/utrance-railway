@@ -69,9 +69,7 @@ class AuthController extends Controller
             if ($registrationState === 'success') {
                 return $this->login($request, $response);
             } else {
-                $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika
-                
-
+                $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika       
             }
             return $this->render('register', $registerSetValue); //Ashika
             //  return $this->render('register', $registrationState);
@@ -103,10 +101,11 @@ class AuthController extends Controller
 
             $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
 
-            App::$APP->email->sendEmail([
+            App::$APP->email->sendRestPasswordEmail([
                 'email' => $user[0]['email_id'],
                 'subject' => 'Your password reset token (valid for 10 minutes)',
                 'message' => $message,
+                'resetURL' => $resetURL
             ]);
 
             return '';

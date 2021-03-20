@@ -1,0 +1,30 @@
+
+.seat-booking__day{
+  position: relative;
+}
+
+.seat-booking__day-up {
+  position: absolute;
+  top: -0.5rem;
+  left: 2.5rem;
+}
+
+.seat-booking__form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;   
+}
+
+.seat-booking__total-price {
+  border: 1px solid rgba(31, 58, 147, 0.8);
+  font-size: 2rem;
+  font-weight: 400;
+  padding: 1rem;
+  align-self: flex-start;
+  display: flex;
+  /* width: 40rem; */
+}
+
+.seat-booking__btn-container {
+  align-self: center;
+}

@@ -26,6 +26,8 @@ class Request {
         return $this->method() == 'post';
     }
 
+    
+
     // new function
     public function getQueryParams() {
         $resultArray;
@@ -42,7 +44,9 @@ class Request {
 
         foreach($list as $key => $value) {
             $item = explode("=", $value);
+            
             $resultArray[$item[0]] = $item[1];
+            
         }
        
         return $resultArray;
