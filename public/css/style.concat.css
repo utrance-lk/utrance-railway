@@ -1293,7 +1293,7 @@ input::-webkit-datetime-edit-year-field:focus {
   background-repeat: no-repeat;
   background-size:  cover;
   background-position: center;
-  background-image: url("/utrance-railway/public/img/pages/login/train-cover.jpg");
+  background-image: url("/public/img/pages/login/train-cover.jpg");
 }
 
 .login__form {

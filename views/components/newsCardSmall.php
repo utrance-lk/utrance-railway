@@ -3,7 +3,7 @@
 function renderNewsCard() {
     return "<div class='newscard-small'>
                 <div class='newscard-small__img-box'>
-                    <img src='/public/img/pages/newsFeed/train1.jpg' class='newscard-small__img' alt='news-img'>
+                    <img src='/public/img/pages/newsFeed/train1-min.jpg' class='newscard-small__img' alt='news-img'>
                     <div class='newscard-small__view-btn'>
                     <a href='/news/news01'>
                         <span>View</span>
