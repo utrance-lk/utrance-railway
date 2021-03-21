@@ -75,7 +75,7 @@
                     Rs 500
                 </div>
                 <div class="btn__container">
-                    <a href="/utrance-railway/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
+                    <a href="/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
                         View more
                     </a>
                 </div>
@@ -124,7 +124,7 @@
                     Rs 500
                 </div>
                 <div class="btn__container">
-                    <a href="/utrance-railway/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
+                    <a href="/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
                         View more
                     </a>
                 </div>
@@ -173,7 +173,7 @@
                     Rs 500
                 </div>
                 <div class="btn__container">
-                    <a href="/utrance-railway/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
+                    <a href="/booked-tour" class="btn btn-round-blue margin-r-s margin-b-s">
                         View more
                     </a>
                 </div>

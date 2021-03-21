@@ -22,7 +22,7 @@ libxml_clear_errors();
                 $value='';
                 $id = App::$APP->activeUser()['id'];
                 
-                $html .="<form action='/utrance-railway/settings' class='dashboard__form' method='POST' enctype='multipart/form-data'>";
+                $html .="<form action='/settings' class='dashboard__form' method='POST' enctype='multipart/form-data'>";
                 $html .="<div class='content__fields'>";
                 $html .= "<div class='firstname-box content__fields-item'>";
                 $html .= "<label for='firstname' class='form__label'>First Name</label>";
@@ -125,9 +125,9 @@ libxml_clear_errors();
               </div>
 
 
-               <!--form action="/utrance-railway/upload" method="POST" enctype="multipart/form-data">
+               <!--form action="/upload" method="POST" enctype="multipart/form-data">
               <div class="userpicture-box" id="image_box" name="image_box">
-              <img src="../../../../utrance-railway/public/img/uploads/Sugath.jpg" alt="user-profile-picture" name="image_preview"  id="image_preview" />
+              <img src="../../../../public/img/uploads/Sugath.jpg" alt="user-profile-picture" name="image_preview"  id="image_preview" />
               <input type="file" name="file" accept="image/*"  class="form__upload" id="photo">
 
               <label for="photo">Choose New Photo</label></div>
@@ -140,7 +140,7 @@ libxml_clear_errors();
               <?php
 
 $html = "";
-$html .= "<form action='/utrance-railway/upload' method='POST' enctype='multipart/form-data'>";
+$html .= "<form action='/upload' method='POST' enctype='multipart/form-data'>";
 $html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
 $image_name = App::$APP->activeUser()['user_image'];
 
@@ -166,7 +166,7 @@ print_r($dom->saveHTML());
               <p>Password Change</p>
             </div>
 
-            <form action="/utrance-railway/update-password" method="POST" class="password__change">
+            <form action="/update-password" method="POST" class="password__change">
               <div class="content__fields">
             <?php
 
@@ -263,7 +263,7 @@ print_r($dom->saveHTML());
 //        $extension=end($test);
 //        $name=rand(100,999).".".$extension;
 //        var_dump($name);
-//        $location='../../../../utrance-railway/public/img/uploads/'.$name;
+//        $location='/public/img/uploads/'.$name;
 //        move_uploaded_file($_FILES["photo"]["tmp_name"],$location);
 //        echo "Image Upload Successfully";
 

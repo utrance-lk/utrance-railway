@@ -85,7 +85,7 @@ let newindex3='<?php echo $x; ?>';
       success : function (data) {
 
             if(data.length===2){
-               window.location.href = "/utrance-railway/routes/";
+               window.location.href = "/routes/";
             }else{
                console.log(data);
             }

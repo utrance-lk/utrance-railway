@@ -1,5 +1,5 @@
 <body>
-    <form action="/utrance-railway/resetPassword?email_id=<?php echo $user['email_id'];?>" method="POST" class="form__container">
+    <form action="/resetPassword?email_id=<?php echo $user['email_id'];?>" method="POST" class="form__container">
 
         <div class="password__container">
             <label for="user_password">Enter new password</label>

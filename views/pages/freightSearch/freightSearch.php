@@ -54,7 +54,7 @@
               ><span> am </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="/utrance-railway/view-train">Dakshina Intercity</a>
+              <a href="/view-train">Dakshina Intercity</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
@@ -68,7 +68,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-freights"
+            href="/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >
@@ -86,7 +86,7 @@
               ><span> am </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="/utrance-railway/view-train">Ruhunu Kumari</a>
+              <a href="/view-train">Ruhunu Kumari</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
@@ -100,7 +100,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-freights"
+            href="/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >
@@ -118,7 +118,7 @@
               ><span> am </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="/utrance-railway/view-train">Galu Kumari</a>
+              <a href="/view-train">Galu Kumari</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
@@ -132,7 +132,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-freights"
+            href="/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >
@@ -150,7 +150,7 @@
               ><span> pm </span>
             </div>
             <div class="search__card-detailbox--train-name">
-              <a href="/utrance-railway/view-train">Matara - Galle train</a>
+              <a href="/view-train">Matara - Galle train</a>
             </div>
             <div class="search__card-detailbox--train-journey">
               <span>Matara</span><span> to </span><span>Galle</span>
@@ -164,7 +164,7 @@
       <div class="search__results-card-sub">
         <div class="search__card-classbox">
           <a
-            href="/utrance-railway/book-freights"
+            href="/book-freights"
             class="search__card-classbox--btnproceed"
             ><p>Proceed</p></a
           >

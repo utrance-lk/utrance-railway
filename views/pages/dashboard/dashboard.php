@@ -27,7 +27,7 @@
                 $value='';
                 $id = App::$APP->activeUser()['id'];
                 
-                $html .="<form action='/utrance-railway/settings' class='dash-content__form' method='POST' enctype='multipart/form-data'>";
+                $html .="<form action='/settings' class='dash-content__form' method='POST' enctype='multipart/form-data'>";
                 $html .= "<div class='dash-content__input'>";
                 $html .= "<label for='firstname' class='dash-content__label'>First Name</label>";
                 if(isset($firstNameError)){
@@ -127,7 +127,7 @@
               <p>Password Change</p>
             </div>
             
-            <form action="/utrance-railway/update-password" method="POST" class="dash-content__form">
+            <form action="/update-password" method="POST" class="dash-content__form">
             <?php
             
               $html = "";

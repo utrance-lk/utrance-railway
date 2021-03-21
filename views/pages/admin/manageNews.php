@@ -34,7 +34,7 @@
           <p class="center-text">Manage News</p>
         </div>
 
-        <form action="/utrance-railway/manage-news" method="POST" >
+        <form action="/manage-news" method="POST" >
           <fieldset class="margin-b-xs">
             <legend class="topic-greyed topic-greyed--dark padding-xxs">News Type</legend>
             <div class="flex-row-sa-center margin-tb-s">

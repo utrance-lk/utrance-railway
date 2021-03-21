@@ -4,7 +4,7 @@
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--manage-bookings">
-            <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/users">
+            <form class="dashboard-searchbar--container" method='POST' action="/users">
 
               <input
                 type="text"
@@ -66,7 +66,7 @@
                             1 / 1
                         </div>
                     </div>
-                    <a href="/utrance-railway/booking-train" class="btn btn-box-white">
+                    <a href="/booking-train" class="btn btn-box-white">
                         view
                     </a>
                 </div>
@@ -105,7 +105,7 @@
                             0 / 1
                         </div>
                     </div>
-                    <a href="/utrance-railway/booking-train" class="btn btn-box-white">
+                    <a href="/booking-train" class="btn btn-box-white">
                         view
                     </a>
                 </div>
