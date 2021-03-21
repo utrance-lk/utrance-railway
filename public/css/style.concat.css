@@ -1044,6 +1044,7 @@ input::-webkit-datetime-edit-year-field:focus {
   color: #fff;
   display: flex;
   justify-content: center;
+  height: 16vh;
 }
 .header {
   font-family: "Lato", sans-serif;
@@ -1925,7 +1926,6 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .view-train__schedule {
   padding: 0 5rem;
-  width: 50%;
 }
 
 .view-train__table-heading {
@@ -1961,12 +1961,21 @@ input::-webkit-datetime-edit-year-field:focus {
   text-align: center;
 }
 
+.map-container {
+    position: relative;
+    height: calc(100vh - 8rem);
+    width: 50vw;
+}
+
 #map {
         /* width: 400px; */
-    position: absolute;
+    /* position: absolute;
     top: 16vh;
     bottom: 0;
     left: 50%;
     width: 50%;
-    height: 100%;
+    height: 100%; */
+    position: relative;
+    height: inherit;
+    width: inherit;
 }

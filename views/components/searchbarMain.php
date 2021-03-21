@@ -3,7 +3,7 @@
 function renderSearchBar($from, $to, $when)
 {
     return "
-                <form class='searchbar-main' method='POST' action='/search'>
+                <form class='searchbar-main' method='POST' action='/utrance-railway/search'>
                     <div class='searchbar-main__search'>
                         <div class='searchbar-main__from-container'>
                             <div class='searchbar-main__from'>
