@@ -36,7 +36,7 @@ class AuthController extends Controller
                 $verifyPassword = password_verify($loginUser->user_password, $result[0]['user_password']);
                 if ($verifyPassword) {
                     App::$APP->session->set('user', $result[0]['id']);
-                    return $response->redirect('/utrance-railway/home');
+                    return $response->redirect('/home');
                 }
             }
 
@@ -49,7 +49,7 @@ class AuthController extends Controller
     {
         App::$APP->user = null;
         App::$APP->session->remove('user');
-        return $response->redirect('/utrance-railway/home');
+        return $response->redirect('/home');
     }
 
     //public function register($request)
@@ -97,7 +97,7 @@ class AuthController extends Controller
             $resetToken = $userForgotPassword->createPasswordResetToken();
 
             // 3) Send it to user's email
-            $resetURL = $_SERVER['HTTP_HOST'] . "/utrance-railway/resetPassword?token=" . $resetToken;
+            $resetURL = $_SERVER['HTTP_HOST'] . "/resetPassword?token=" . $resetToken;
 
             $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
 
@@ -155,7 +155,7 @@ class AuthController extends Controller
         $resetPasswordUser->loadData($tempBody);
         $passwordChangeState = $resetPasswordUser->forgotUpdatePassword();
         if($passwordChangeState === 'success') {
-            return $response->redirect('/utrance-railway/login');
+            return $response->redirect('/login');
         } else {
             // $registerSetValue = $resetPasswordUser->registerSetValue($passwordChangeState); 
             // var_dump($registerSetValue);
@@ -180,7 +180,7 @@ class AuthController extends Controller
                 $updatePasswordState = $updatePasswordUserModel->updatePassword();
                 
                 if ($updatePasswordState === 'success') {
-                    return $response->redirect('/utrance-railway/logout');
+                    return $response->redirect('/logout');
                 }else{
                     $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);
                     // if($user_role === "admin"){

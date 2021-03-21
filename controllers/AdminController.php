@@ -58,7 +58,7 @@ class AdminController extends Controller
             $state = $adminFunction->addUser();
 
             if ($state === "success") {
-                return $response->redirect('/utrance-railway/users/add');
+                return $response->redirect('/users/add');
             } else {
                 $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
                 return $this->render(['admin', 'addUser'], $addUserSetValue); //Ashika
@@ -106,7 +106,7 @@ class AdminController extends Controller
             $state = $saveDetailsModel->updateUserDetails();
 
             if ($state === "success") {
-                return $response->redirect('/utrance-railway/users/view?id=' . $id);
+                return $response->redirect('/users/view?id=' . $id);
             } else {
                 $commonArray = $saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"] = $saveDetailsModel->registerSetValue($state); //Ashika
@@ -128,7 +128,7 @@ class AdminController extends Controller
             $changeStatusArray = $changeUserStatusModel->getUsers();
 
         }
-        $response->redirect('/utrance-railway/users');
+        $response->redirect('/users');
     }
 
     public function filterSearch($request)
@@ -230,7 +230,7 @@ class AdminController extends Controller
 
                 if ($validationState === "success") {
 
-                    return $response->redirect('/utrance-railway/trains/view?id=' . $id);
+                    return $response->redirect('/trains/view?id=' . $id);
                 } else {
 
                     $trainArray = $saveDetailsModel->getManagTrains();
@@ -257,7 +257,7 @@ class AdminController extends Controller
                 $deleteTrainModel->deleteTrains();
                 // $trainArray=$deleteTrainModel->getTrains();
                 // return $this->render(['admin', 'manageTrains'],$trainArray);
-                return $response->redirect('/utrance-railway/trains');
+                return $response->redirect('/trains');
 
             }
         }
@@ -276,7 +276,7 @@ class AdminController extends Controller
                 $deleteTrainModel->activeTrains();
                 // $trainArray=$deleteTrainModel->getTrains();
                 // return $this->render(['admin', 'manageTrains'],$trainArray);
-                return $response->redirect('/utrance-railway/trains');
+                return $response->redirect('/trains');
 
             }
         }
@@ -297,7 +297,7 @@ class AdminController extends Controller
                     // $getrouteArray = $saveTrainDetails->getAvailableRoute();
 
                     // return $this->render(['admin', 'addTrain'],$getrouteArray);
-                    return $response->redirect('/utrance-railway/trains/add');
+                    return $response->redirect('/trains/add');
                 } else {
 
                     $trainArray = $saveTrainDetails->trainSetValue($validationState);
