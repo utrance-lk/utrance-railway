@@ -18,7 +18,7 @@ var basePrices = [];
 
 function setTicketPrice(fromStation, toStation, id) {
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("POST", "/utrance-railway/ajax-ticket-price", true);
+  xmlHttp.open("POST", "/ajax-ticket-price", true);
   xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xmlHttp.responseType = "json";
   xmlHttp.onreadystatechange = async function () {
