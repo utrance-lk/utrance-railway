@@ -25,6 +25,8 @@ function setTicketPrice(fromStation, toStation, id) {
     if (this.readyState === 4 && this.status === 200) {
       var trainvalues = await this.response;
 
+      console.log(trainvalues);
+
     //   if(!trainvalues) {
     //       // recurse until get the values
     //       setTicketPrice(fromStation, toStation, id);

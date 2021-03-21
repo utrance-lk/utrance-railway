@@ -67,4 +67,4 @@
 </div>
    
 </section>
-<script type="text/javascript" src="../../../utrance-railway/public/js/pages/users/viewTrain.js"></script>
+<script type="text/javascript" src="public/js/pages/users/viewTrain.js"></script>
