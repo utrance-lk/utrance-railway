@@ -3,7 +3,7 @@
 function renderSearchBar($from, $to, $when)
 {
     return "
-                <form class='searchbar-main' method='POST' action='/utrance-railway/search'>
+                <form class='searchbar-main' method='POST' action='/search'>
                     <div class='searchbar-main__search'>
                         <div class='searchbar-main__from-container'>
                             <div class='searchbar-main__from'>
@@ -12,7 +12,7 @@ function renderSearchBar($from, $to, $when)
                                     <div class='searchbar-main__station--from js--from__station' id='js--from__station'>$from</div>
                                     <div class='searchbar-main__swap-btn js--swap-btn'>
                                         <svg class='searchbar-main__icon'>
-                                            <use href='/public/img/svg/sprite.svg#icon-swap'></use>
+                                            <use xlink:href='../../../../public/img/svg/sprite.svg#icon-swap'></use>
                                         </svg>
                                     </div>
                                 </div>

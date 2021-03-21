@@ -74,7 +74,7 @@
                  <li>
                    <a href="/utrance-railway/myBookings">
                     <svg class="header-user__dropdown-icon">
-                      <use href="/public/img/svg/sprite.svg#icon-suitcase"></use>
+                      <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-suitcase"></use>
                     </svg>
                     <span>My Bookings</span>
                    </a>
