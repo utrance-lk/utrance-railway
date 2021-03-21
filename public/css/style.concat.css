@@ -1038,7 +1038,6 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .footer {
-  margin-top: 10rem;
   background-color: rgba(0, 0, 0, .8);
   flex: 1;
   padding: 4rem;
@@ -1275,7 +1274,7 @@ input::-webkit-datetime-edit-year-field:focus {
 .login {
   display: flex;
   align-items: stretch;
-  height: 100vh;
+  height: 84vh;
   font-family: "Lato", sans-serif;
 }
 
@@ -1293,7 +1292,7 @@ input::-webkit-datetime-edit-year-field:focus {
   background-repeat: no-repeat;
   background-size:  cover;
   background-position: center;
-  background-image: url("/public/img/pages/login/train-cover.jpg");
+  background-image: url("/public/img/pages/login/train-cover2-min.png");
 }
 
 .login__form {
