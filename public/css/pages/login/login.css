@@ -1,7 +1,7 @@
 .login {
   display: flex;
   align-items: stretch;
-  height: 100vh;
+  height: 84vh;
   font-family: "Lato", sans-serif;
 }
 
@@ -19,7 +19,7 @@
   background-repeat: no-repeat;
   background-size:  cover;
   background-position: center;
-  background-image: url("/public/img/pages/login/train-cover.jpg");
+  background-image: url("/public/img/pages/login/train-cover2-min.jpg");
 }
 
 .login__form {
