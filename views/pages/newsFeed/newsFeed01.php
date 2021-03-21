@@ -1,12 +1,13 @@
+
 <div class="main-container">
-<div class="load-content-container js--load-content-container">
+  <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--settings">
             <div class="content-title">
               <p>Colombo to Kandy train will not depart the fort station</p>
               <br>
             </div>
-<div class="row">
+  <div class="row">
   <div class="columnFull">
     <div class="cardFull">
       <img src="/utrance-railway/public/img/pages/newsFeed/train1.jpg" style="width:100%">
@@ -114,3 +115,23 @@
 
 </body>
 </html>
+
+<script type="text/javascript" src="../../../utrance-railway/public/js/pages/admin/news.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $.ajax({
+        url: "getmyNewNews",
+        method: "get",
+        success: function (data) {
+            console.log(data);
+            news=JSON.parse(data);
+            renderNewsCard(news);
+            
+        }
+       
+
+    });         
+ });
+</script>

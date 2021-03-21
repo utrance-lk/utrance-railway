@@ -413,9 +413,16 @@ class AdminController extends Controller
             $manageNewsModel->loadData($request->getBody());
 
             if ($request->isPost()) {
-                $getNewsArray['image'] = $manageNewsModel->uploadNews();
+                $getNewsArray['error'] = $manageNewsModel->uploadNews();
                
+               if(empty($getNewsArray['error'])){
+              
+              
                 return $response->redirect('/utrance-railway/home');
+               }else{
+                return $this->render(['admin', 'manageNews'],$getNewsArray);
+               }
+                
                 // return $this->render(['admin', 'manageNews'],$getNewsArray);
 
             }
@@ -427,6 +434,39 @@ class AdminController extends Controller
     public function newsFeed(){
        
         return $this->render('newsFeed');
+    }
+
+    public function getNews($request, $response){
+        
+        if ($request->isGet()){
+            $getNewsModel = new AdminModel();
+            $getNewsModel->loadData($request->getBody());
+
+            $trainArray = $getNewsModel->getNews();
+            echo json_encode($trainArray);
+        }else{
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $saveDetailsModel->loadData($tempBody);
+            $trainArray = $saveDetailsModel->getMyNews();
+            echo json_encode($trainArray);
+
+        }
+
+    }
+
+    public function newsFeed01($request, $response){
+        var_dump('hh');
+        $saveDetailsModel = new AdminModel();
+
+        $tempBody = $request->getBody();
+        $tempBody['id'] = $request->getQueryParams()['id'];
+        $saveDetailsModel->loadData($tempBody);
+
+        $updateRouteArray = $saveDetailsModel->getMyNews();
+                var_dump($updateRouteArray);
+                return $this->render(['newsFeed','newsFeed01'],$updateRouteArray);
     }
 
 }

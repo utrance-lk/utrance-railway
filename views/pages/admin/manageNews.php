@@ -73,6 +73,7 @@
                 class="newsimage"
                 width="500" height="360"
               />
+              <div class="errorclass" style= "color:red; margin:10px; font-weight: bold;"><?php if (isset($error)) {echo $error;}?></div>
                 <input
                 type="file"
                 name="photo"
@@ -80,6 +81,7 @@
                  
                 id="photo"
               />
+             
               <!-- class="form__upload" -->
               <!-- <label for="photo" class="btn-square-upload margin-b-s">Choose Photo</label> -->
             </div>

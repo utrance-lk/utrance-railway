@@ -30,4 +30,11 @@ $app->router->post('/utrance-railway/newmanageUsers', [AdminController::class, '
 $app->router->post('/utrance-railway/routes/newmanageRoutesValidations', [AdminController::class, 'getRoutesStations']);
 $app->router->post('/utrance-railway/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
 $app->router->get('/utrance-railway/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
+
+$app->router->get('/utrance-railway/getNewNews', [AdminController::class, 'getNews']);
+$app->router->post('/utrance-railway/getNewNews', [AdminController::class, 'getNews']);
+
+$app->router->get('/utrance-railway/news/getmyNewNews', [AdminController::class, 'getNews']);
+
+$app->router->get('/utrance-railway/news/news01', [AdminController::class, 'newsFeed01']);
 ?>
