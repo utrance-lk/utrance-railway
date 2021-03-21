@@ -4,42 +4,42 @@ require_once "../controllers/TrainController.php";
 
 require_once "../controllers/AdminController.php";
 
-$app->router->get('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
-$app->router->Post('/utrance-railway/trains', [AdminController::class, 'manageTrains']);
+$app->router->get('/trains', [AdminController::class, 'manageTrains']);
+$app->router->Post('/trains', [AdminController::class, 'manageTrains']);
 
-$app->router->get('/utrance-railway/newmanageTrains', [AdminController::class, 'newsearch']);
-$app->router->post('/utrance-railway/newmanageTrains', [AdminController::class, 'newsearch']);
+$app->router->get('/newmanageTrains', [AdminController::class, 'newsearch']);
+$app->router->post('/newmanageTrains', [AdminController::class, 'newsearch']);
 
-$app->router->get('/utrance-railway/trains/view', [AdminController::class, 'viewTrain']);
-
-
-$app->router->get('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
-$app->router->post('/utrance-railway/trains/add', [AdminController::class, 'addTrain']);
-
-$app->router->post('/utrance-railway/trains/update', [AdminController::class, 'updateTrain']);
-
-$app->router->get('/utrance-railway/trains/deleted', [AdminController::class, 'deleteTrain']);
-$app->router->post('/utrance-railway/trains/deleted', [AdminController::class, 'deleteTrain']);
-
-$app->router->get('/utrance-railway/trains/Deactivated', [AdminController::class, 'deleteTrain']);
-$app->router->post('/utrance-railway/trains/Deactivated', [AdminController::class, 'deleteTrain']);
-
-$app->router->get('/utrance-railway/trains/Activated', [AdminController::class, 'activeTrain']);
-$app->router->post('/utrance-railway/trains/Activated', [AdminController::class, 'activeTrain']);
-
-$app->router->get('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
-$app->router->post('/utrance-railway/ticket-prices', [TrainController::class, 'ticketPrice']);
-
-$app->router->get('/utrance-railway/frieght-prices', [TrainController::class, 'freightPrice']);
-$app->router->post('/utrance-railway/freight-prices', [TrainController::class, 'freightPrice']);
+$app->router->get('/trains/view', [AdminController::class, 'viewTrain']);
 
 
-$app->router->post('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
-$app->router->get('/utrance-railway/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
-$app->router->post('/utrance-railway/ticket', [TrainController::class, 'ticket']);
-$app->router->get('/utrance-railway/ticket', [TrainController::class, 'ticket']);
+$app->router->get('/trains/add', [AdminController::class, 'addTrain']);
+$app->router->post('/trains/add', [AdminController::class, 'addTrain']);
+
+$app->router->post('/trains/update', [AdminController::class, 'updateTrain']);
+
+$app->router->get('/trains/deleted', [AdminController::class, 'deleteTrain']);
+$app->router->post('/trains/deleted', [AdminController::class, 'deleteTrain']);
+
+$app->router->get('/trains/Deactivated', [AdminController::class, 'deleteTrain']);
+$app->router->post('/trains/Deactivated', [AdminController::class, 'deleteTrain']);
+
+$app->router->get('/trains/Activated', [AdminController::class, 'activeTrain']);
+$app->router->post('/trains/Activated', [AdminController::class, 'activeTrain']);
+
+$app->router->get('/ticket-prices', [TrainController::class, 'ticketPrice']);
+$app->router->post('/ticket-prices', [TrainController::class, 'ticketPrice']);
+
+$app->router->get('/frieght-prices', [TrainController::class, 'freightPrice']);
+$app->router->post('/freight-prices', [TrainController::class, 'freightPrice']);
 
 
-$app->router->get('/utrance-railway/trains/search', [TrainController::class, 'newsearch']);
+$app->router->post('/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
+$app->router->get('/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
+$app->router->post('/ticket', [TrainController::class, 'ticket']);
+$app->router->get('/ticket', [TrainController::class, 'ticket']);
+
+
+$app->router->get('/trains/search', [TrainController::class, 'newsearch']);
 
 ?>

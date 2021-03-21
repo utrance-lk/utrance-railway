@@ -4,9 +4,9 @@
       <div class="dash-content">
         <?php
           include_once "../views/components/searchbarAdmin.php";
-          echo renderAdminSearch(['trains', 'name', 'id'], '/utrance-railway/trains');
+          echo renderAdminSearch(['trains', 'name', 'id'], '/trains');
         ?>
-        <a href="/utrance-railway/trains/add" class="btn btn-square-blue margin-t-m">
+        <a href="/trains/add" class="btn btn-square-blue margin-t-m">
           <div class="btn-square-blue__text">Add Train</div>
           <svg class="btn-square-blue__icon">
             <use xlink:href="/public/img/svg/sprite.svg#icon-circle-with-plus"></use>

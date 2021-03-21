@@ -28,7 +28,7 @@ function renderDirectPathCard($value, $option)
     $html .= "<span> $timeDecide[1] </span></div>
                 <div class='search-results-train-card__train-name'>";
     $train_id=$value['train_id'];
-    $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" . $value['train_name'] . "</a></div>";
+    $html .= "<a href='/view-train?train_id=$train_id'>" . $value['train_name'] . "</a></div>";
     $html .= "<div>";
     $html .= "<span>" . $value['fssn'] . "</span>";
     $html .= "<span> to </span>";
@@ -48,7 +48,7 @@ function renderDirectPathCard($value, $option)
     $option = "op" . $option;
     $_SESSION[$option] = $value;
 
-    $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
+    $html .= "<a href='/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
     return $html;
 }
 
@@ -76,7 +76,7 @@ function renderIntersectCard($value, $option)
     $html .= "<span> $timeDecide[1] </span></div>";
     $train_id=$value['frti'];
     $html .= "<div class='search-results-train-card__train-name'>";
-    $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" . $value['frtn'] . "</a></div>";
+    $html .= "<a href='/view-train?train_id=$train_id'>" . $value['frtn'] . "</a></div>";
     $html .= "<div class='search__card-detailbox--train-journey'>";
     $html .= "<span>" . $value['fssn'] . "</span>";
     $html .= "<span> to </span>";
@@ -96,7 +96,7 @@ function renderIntersectCard($value, $option)
                 <div class='search-results-train-card__switch-card-icontextbox'>
                   <div class='margin-r-xs'>
                     <svg class='search-results-train-card__switch-card-icon'>
-                      <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-swap'></use>
+                      <use xlink:href='/public/img/svg/sprite.svg#icon-swap'></use>
                     </svg>
                   </div>
                   <div>
@@ -138,7 +138,7 @@ function renderIntersectCard($value, $option)
     $html .= "<span> $timeDecide[1] </span></div>";
     $train_id=$value['trti'];
     $html .= "<div class='search-results-train-card__train-name'>";
-    $html .= "<a href='/utrance-railway/view-train?train_id=$train_id'>" . $value['trtn'] . "</a></div>";
+    $html .= "<a href='/view-train?train_id=$train_id'>" . $value['trtn'] . "</a></div>";
     $html .= "<div class='search__card-detailbox--train-journey'>";
     $html .= "<span>" . $value['isn'] . "</span>";
     $html .= "<span> to </span>";
@@ -163,7 +163,7 @@ function renderIntersectCard($value, $option)
     $option = "op" . $option;
     $_SESSION[$option] = $value;
 
-    $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=intersect' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
+    $html .= "<a href='/book-seats?op=$option&mode=intersect' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
 
     return $html;
 }

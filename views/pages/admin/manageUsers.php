@@ -4,12 +4,12 @@
       <div class="dash-content">
           <?php
             include_once "../views/components/searchbarAdmin.php";
-            echo renderAdminSearch(['users', 'name', 'id'], '/utrance-railway/users');
+            echo renderAdminSearch(['users', 'name', 'id'], '/users');
           ?>
-          <a href="/utrance-railway/users/add" class="btn btn-square-blue margin-t-m">
+          <a href="/users/add" class="btn btn-square-blue margin-t-m">
             <div class="btn-square-blue__text">Add User</div>
             <svg class="btn-square-blue__icon">
-              <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
+              <use xlink:href="/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
             </svg>
           </a>
           <div class="filter__container margin-t-s">

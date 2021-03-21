@@ -5,7 +5,7 @@
             <div class="heading-secondary margin-b-m margin-t-m">
               <p class="center-text">New Train Profile Settings</p>
             </div>
-            <form action="/utrance-railway/trains/add" class="dash-content__form" method='post' >
+            <form action="/trains/add" class="dash-content__form" method='post' >
             <?php if (isset($TravalDaysError)) {echo $TravalDaysError;}?>
                 <div class="dash-content__input">
                     <label for="trainname" class="dash-content__label">Train Name</label>

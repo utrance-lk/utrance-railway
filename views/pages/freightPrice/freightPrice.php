@@ -1,6 +1,6 @@
 
 <section class="ticket-prices">
-  <form class="ticket-prices__search" method="POST" action="/utrance-railway/Freight-prices">
+  <form class="ticket-prices__search" method="POST" action="/Freight-prices">
     <div class="ticket-prices__search--from">
       <div class="ticket-prices__search-box  js--from__station"  id="js--from__station"></div>
       <div class="ticket-prices__search-dropdown js--search-dropdown__from">
@@ -18,14 +18,14 @@
     </div>
     <button class="btn-search" type="submit">
         <svg class="btn-search__icon">
-            <use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass'></use>
+            <use xlink:href='/public/img/svg/sprite.svg#icon-magnifying-glass'></use>
         </svg>
     </button>
   </form>
     <div class="search__results-container"></div>
 </section>
 
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/viewFreightPrice.js"></script>
+<script type="text/javascript" src="/public/js/components/viewFreightPrice.js"></script>
 
 
 <?php if (isset($tickets)): ?>

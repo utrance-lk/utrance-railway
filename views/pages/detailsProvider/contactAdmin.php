@@ -6,7 +6,7 @@
                <p> Contact Admin</p>
             </div>
     
-            <form action="/utrance-railway/contact-admin" method="POST" >
+            <form action="/contact-admin" method="POST" >
             <div class="content__fields">
 
                <?php

@@ -5,7 +5,7 @@
             <div class="heading-secondary margin-b-m margin-t-m">
               <p class="center-text">New User Account Settings</p>
             </div>
-            <form action="/utrance-railway/users/add" class="dash-content__form" method="POST">
+            <form action="/users/add" class="dash-content__form" method="POST">
             <?php
 $dom = new DOMDocument;
 libxml_use_internal_errors(true);

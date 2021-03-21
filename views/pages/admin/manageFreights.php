@@ -4,7 +4,7 @@
 <div class="load-content-container js--load-content-container">
         <div class="load-content">
           <div class="load-content--manage-bookings">
-            <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/users">
+            <form class="dashboard-searchbar--container" method='POST' action="/users">
 
               <input
                 type="text"
@@ -12,7 +12,7 @@
                 placeholder="Search trains by name or id"  name="searchUserByNameOrId"
               />
               <svg class="search-icon__btn">
-                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-magnifying-glass"></use>
+                <use xlink:href="/public/img/svg/sprite.svg#icon-magnifying-glass"></use>
               </svg>
             </form>
             <div class="filters">
@@ -34,7 +34,7 @@
                             20 / 50 kg
                         </div>
                     </div>
-                    <a href="/utrance-railway/freight-booking-train" class="btn btn-box-white">
+                    <a href="/freight-booking-train" class="btn btn-box-white">
                         view
                     </a>
                 </div>
@@ -49,7 +49,7 @@
                             20 / 50 kg
                         </div>
                     </div>
-                    <a href="/utrance-railway/freight-booking-train" class="btn btn-box-white">
+                    <a href="/freight-booking-train" class="btn btn-box-white">
                         view
                     </a>
                 </div>
