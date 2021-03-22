@@ -12,16 +12,18 @@ class PaymentController extends Controller
         $authMiddleware = new AuthMiddleware();
 
         if ($authMiddleware->isLoggedIn()) {
-            if ($request->isGet()) {
+            if ($request->isPost()) {
                 var_dump($request->getBody());
                 $payment = new PaymentModel();
                 $payment->loadData($request->getBody());
                 $payment->recordPayment();
 
-                return '';
-                // return $this->render('checkout');
+                return $this->render('home');
 
             }
+
+            return $this->render('payment');
+            
         }
     }
 }
