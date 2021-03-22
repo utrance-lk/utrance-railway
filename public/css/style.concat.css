@@ -333,6 +333,13 @@ input::-webkit-datetime-edit-year-field:focus {
   align-items: center;
 }
 
+.flex-row-st-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+
 .flex-col-sa-center {
   display: flex;
   flex-direction: column;
@@ -1626,6 +1633,11 @@ input::-webkit-datetime-edit-year-field:focus {
   align-self: center;
 }
 
+
+.seat-booking__final-amount {
+  font-family: inherit;
+  font-size: 2rem;
+}
 .manage-trains__search-results {
   display: flex;
   flex-direction: column;
@@ -1968,13 +1980,6 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 #map {
-        /* width: 400px; */
-    /* position: absolute;
-    top: 16vh;
-    bottom: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%; */
     position: relative;
     height: inherit;
     width: inherit;

@@ -97,6 +97,10 @@ class BookingController extends Controller
                 $train1['journey_time'] = $fullTrainDetails['total_time'];
             }
 
+            if (isset($fullTrainDetails['train_type'])) {
+                $train1['train_type'] = $fullTrainDetails['train_type'];
+            }
+
             if(isset($fullTrainDetails['train1Price'])) {
                 $train1['ticket_fc'] = $fullTrainDetails['train1Price']['first_class'];
                 $train1['ticket_sc'] = $fullTrainDetails['train1Price']['second_class'];
@@ -145,6 +149,10 @@ class BookingController extends Controller
                 $train1['journey_time'] = $fullTrainDetails['ftitt'];
             }
 
+            if (isset($fullTrainDetails['frtt'])) {
+                $train1['train_type'] = $fullTrainDetails['frtt'];
+            }
+
             if(isset($fullTrainDetails['train1Price'])) {
                 $train1['ticket_fc'] = $fullTrainDetails['train1Price']['first_class'];
                 $train1['ticket_sc'] = $fullTrainDetails['train1Price']['second_class'];
@@ -177,6 +185,10 @@ class BookingController extends Controller
 
             if (isset($fullTrainDetails['iterr'])) {
                 $train2['journey_time'] = $fullTrainDetails['iterr'];
+            }
+
+            if (isset($fullTrainDetails['trtt'])) {
+                $train2['train_type'] = $fullTrainDetails['trtt'];
             }
 
             if(isset($fullTrainDetails['train2Price'])) {

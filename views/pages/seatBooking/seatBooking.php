@@ -1,4 +1,4 @@
-<div class="flex-col-stretch-center margin-t-m">
+<div class="flex-col-stretch-center margin-t-m margin-b-m">
     <div class="flex-col-stretch-center margin-b-huge">
         <div class="heading-tertiary">
             <span><?php echo $all_start; ?></span>&nbsp;to&nbsp;<span><?php echo $all_end; ?></span>
@@ -27,10 +27,10 @@ foreach ($trains as $key => $value) {
 
 ?>
         <form action="https://sandbox.payhere.lk/pay/checkout" class="flex-col-stretch-center" method="POST">
-            <div class="seat-booking__total-price margin-b-m">
+            <div class="seat-booking__total-price margin-b-m flex-row-st-center">
                 <span class="margin-r-xs">final amount&nbsp;&colon;</span>
-                <div>
-                    <span>Rs</span>&nbsp;<input readonly name="amount" id="finalAmount"></input>
+                <div class="padding-xs" style="background-color: #fff;">
+                    <span>Rs</span>&nbsp;<input readonly name="amount" id="finalAmount" class="seat-booking__final-amount"></input>
                 </div>
             </div>
             <input type="hidden" name="merchant_id" value="1216669">    <!-- Replace your Merchant ID -->

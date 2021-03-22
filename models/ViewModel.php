@@ -117,7 +117,6 @@ class ViewModel extends Model
         $query->bindValue(":route_id",$array1[0]['route_id']);
         $query->execute();
         $array1['start_dest']=$query->fetchAll(PDO::FETCH_ASSOC);
-       //var_dump($array1);
         $query=APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
         $query->bindValue(":station_id",$array1['start_dest'][0]['start_station_id']);
         $query->execute();
@@ -135,7 +134,7 @@ class ViewModel extends Model
     protected function searchForDirectPath($fromId, $toId)
     {
         $searchDirectPath = APP::$APP->db->pdo->prepare(
-            "SELECT fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, tsen,train_id,train_name, timediff(tseat, fssdt) as total_time from
+            "SELECT fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, tsen, train_id, train_name, train_type, timediff(tseat, fssdt) as total_time from
                 (select route_id, fssid, fssdt, fsspi, tseid, tseat, tsepi, fssn, station_name as tsen from
                     (select route_id, fssid, fssdt, fsspi, tseid, tseat, tsepi, station_name as fssn from
                         (select * from
@@ -168,8 +167,8 @@ class ViewModel extends Model
     protected function searchForIntersection($fromId, $toId)
     {
         $seachInterectionPath = APP::$APP->db->pdo->prepare(
-            "SELECT isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, frtn,frti,train_id as trti,train_name as trtn, timediff(tsidt, fsiat) as wait_time, timediff(fsiat, fssdt) as ftitt, timediff(tseat, tsidt) as iterr from
-                (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen,train_id as frti,train_name as frtn from
+            "SELECT isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, frtn, frti, train_id as trti,train_name as trtn, frtt,  train_type as trtt, timediff(tsidt, fsiat) as wait_time, timediff(fsiat, fssdt) as ftitt, timediff(tseat, tsidt) as iterr from
+                (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, tsen, train_id as frti, train_name as frtn, train_type as frtt from
                     (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, fssn, station_name as tsen from
                         (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, isn, station_name as fssn from
                             (select isid, from_route_id, fssid, fssdt, fsiat, tsidt, tseat, tseid, to_route_id, station_name as isn from
