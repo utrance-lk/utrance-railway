@@ -19,6 +19,7 @@ class TrainFormValidation
         $this->validateTrainSleepingB(trim($array['train_sleeping_berths']));
         $this->validateTrainweight(trim($array['train_total_weight']));
         return $this->errorArray;
+      
 
     }
 

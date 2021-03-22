@@ -226,7 +226,8 @@ class AdminController extends Controller
                 $saveDetailsModel->loadData($tempBody);
 
                 $validationState = $saveDetailsModel->updateTrainDetails();
-                //  var_dump($validationState);
+                
+                  var_dump($validationState);
 
                 if ($validationState === "success") {
 
