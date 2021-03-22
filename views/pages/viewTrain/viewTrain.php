@@ -1,34 +1,31 @@
-<section class="margin-t-m">
-    <div class="center-text margin-b-huge width-half">
-    
-    <?php
-    if(isset($x)){
-      
-        $html="";
-    
-        $html.="<div class='heading-tertiary'>".$x['train_name']."</div>";
-        $html.="<div class='topic-greyed margin-b-xxs'>";
-        $html.="<span class='start__station' id='start'>" .$x['start_station']. "</span>&nbsp;to&nbsp;<span class='destination__station' id='end'>" .$x['dest_station']. "</span>";
-        $html.="</div>";
-        $html.="<div class='topic-greyed margin-b-xxs'>";
-        $html.="<span>journey days : </span>&nbsp;&nbsp;<span class='journey__date-day'>";
-        $html.="<span class='day'>" .ucwords($x['train_travel_days']). "</span>";
-        $html.="</span>";
-        $html.="</div>";
-        $html.="<div class='topic-greyed margin-b-xxs'>";
-        $html.="<span>journey time</span>&nbsp;&nbsp;<span class='total__journey-time'>" .$x['total_time']. "</span>";
-        $html.="</div>";
-
-        $dom = new DOMDocument();
-        $dom->loadHTML($html);
-        print_r($dom->saveHTML());
-    }
-    
-    ?>
-    </div>
-
+<section class="margin-t-m margin-b-m flex-row-sa-center">
     <div>
-    
+        <div class="center-text margin-b-huge">
+            <?php
+            if(isset($x)){
+            
+                $html="";
+            
+                $html.="<div class='heading-tertiary'>".$x['train_name']."</div>";
+                $html.="<div class='topic-greyed margin-b-xxs'>";
+                $html.="<span class='start__station' id='start'>" .$x['start_station']. "</span>&nbsp;to&nbsp;<span class='destination__station' id='end'>" .$x['dest_station']. "</span>";
+                $html.="</div>";
+                $html.="<div class='topic-greyed margin-b-xxs'>";
+                $html.="<span>journey days : </span>&nbsp;&nbsp;<span class='journey__date-day'>";
+                $html.="<span class='day'>" .ucwords($x['train_travel_days']). "</span>";
+                $html.="</span>";
+                $html.="</div>";
+                $html.="<div class='topic-greyed margin-b-xxs'>";
+                $html.="<span>journey time</span>&nbsp;&nbsp;<span class='total__journey-time'>" .$x['total_time']. "</span>";
+                $html.="</div>";
+
+                $dom = new DOMDocument();
+                $dom->loadHTML($html);
+                print_r($dom->saveHTML());
+            }
+            
+            ?>
+        </div>
 
     <?php
     $i=0;
@@ -58,17 +55,16 @@
             $dom = new DOMDocument();
              $dom->loadHTML($html);
              print_r($dom->saveHTML());
-
-
-        
      }
 
     ?>
     
     
    
+</div>
+<div class="map-container">
     <div id='map' data-locations="<?php echo htmlspecialchars(json_encode($get_train_details));?>"></div>
-    </div>
+</div>
    
 </section>
 <script type="text/javascript" src="/public/js/pages/users/viewTrain.js"></script>
