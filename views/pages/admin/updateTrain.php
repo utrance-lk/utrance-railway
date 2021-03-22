@@ -114,10 +114,7 @@ function renderDay($day, $trains)
         }
     }
 
-    $markup = "
-            <div>
-                <input type='hidden' name='train_travel_days[]' value='' >
-    ";
+    $markup = "<div>";
 
     if ($isChecked) {
         $markup .= "
