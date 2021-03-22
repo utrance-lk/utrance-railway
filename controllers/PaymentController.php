@@ -22,8 +22,8 @@ class PaymentController extends Controller
 
             }
 
-            return $this->render('payment');
             
         }
+        return $this->render('payment');
     }
 }
