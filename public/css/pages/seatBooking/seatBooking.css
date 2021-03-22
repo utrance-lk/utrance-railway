@@ -28,3 +28,9 @@
 .seat-booking__btn-container {
   align-self: center;
 }
+
+
+.seat-booking__final-amount {
+  font-family: inherit;
+  font-size: 2rem;
+}

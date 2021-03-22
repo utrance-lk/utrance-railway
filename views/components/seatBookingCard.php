@@ -28,7 +28,7 @@ function renderTrainBookingCard($train, $id)
                         <span id='from{$id}'>{$train['from']}</span> &ndash; <span id='to{$id}'>{$train['to']}</span>
                     </div>
                     <div class='padding-xs'>
-                        <span class='margin-r-xs'>{$train['train_name']}</span><span class='seat-booking-card__train-type'>null</span>
+                        <span class='margin-r-xs'>{$train['train_name']}</span><span class='seat-booking-card__train-type'>{$train['train_type']}</span>
                     </div>
                     <div class='padding-xs'>$fromHr&nbsp;&colon;&nbsp;$fromMin&nbsp;$fromDayTime&nbsp;&ndash;&nbsp;$toHr&nbsp;&colon;&nbsp;$toMin&nbsp;$toDayTime</div>
                     <div class='padding-xs'>$fullHr&nbsp;h&nbsp;$fullMin&nbsp;m</div>
@@ -46,7 +46,7 @@ function renderTrainBookingCard($train, $id)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box seat-booking-card__price'>
-                    <span>Rs&nbsp;</span><span id='tickprice{$id}'></span>
+                    <span>Rs&nbsp;</span><span id='tickprice{$id}'>{$train['ticket_sc']}</span>
                 </div>
             </div>
     ";

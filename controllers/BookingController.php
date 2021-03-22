@@ -97,6 +97,16 @@ class BookingController extends Controller
                 $train1['journey_time'] = $fullTrainDetails['total_time'];
             }
 
+            if (isset($fullTrainDetails['train_type'])) {
+                $train1['train_type'] = $fullTrainDetails['train_type'];
+            }
+
+            if(isset($fullTrainDetails['train1Price'])) {
+                $train1['ticket_fc'] = $fullTrainDetails['train1Price']['first_class'];
+                $train1['ticket_sc'] = $fullTrainDetails['train1Price']['second_class'];
+                $train1['ticket_tc'] = $fullTrainDetails['train1Price']['third_class'];
+            }
+
             $train1['train_no'] = 1;
 
             $trains['t1'] = $train1;
@@ -139,6 +149,16 @@ class BookingController extends Controller
                 $train1['journey_time'] = $fullTrainDetails['ftitt'];
             }
 
+            if (isset($fullTrainDetails['frtt'])) {
+                $train1['train_type'] = $fullTrainDetails['frtt'];
+            }
+
+            if(isset($fullTrainDetails['train1Price'])) {
+                $train1['ticket_fc'] = $fullTrainDetails['train1Price']['first_class'];
+                $train1['ticket_sc'] = $fullTrainDetails['train1Price']['second_class'];
+                $train1['ticket_tc'] = $fullTrainDetails['train1Price']['third_class'];
+            }
+
             $train1['train_no'] = 1;
 
             // train 2
@@ -165,6 +185,16 @@ class BookingController extends Controller
 
             if (isset($fullTrainDetails['iterr'])) {
                 $train2['journey_time'] = $fullTrainDetails['iterr'];
+            }
+
+            if (isset($fullTrainDetails['trtt'])) {
+                $train2['train_type'] = $fullTrainDetails['trtt'];
+            }
+
+            if(isset($fullTrainDetails['train2Price'])) {
+                $train2['ticket_fc'] = $fullTrainDetails['train2Price']['first_class'];
+                $train2['ticket_sc'] = $fullTrainDetails['train2Price']['second_class'];
+                $train2['ticket_tc'] = $fullTrainDetails['train2Price']['third_class'];
             }
 
             $train2['train_no'] = 2;
