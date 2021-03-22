@@ -30,11 +30,14 @@ class ViewController extends Controller
             $pathArrays = $searchTourModel->getTours();
 
             $train1PriceModel = new TicketModel();
-            // var_dump($request->getBody());
             
             if($pathArrays['directPaths']) {
                 $train1PriceModel->loadData(['start' => $pathArrays['directPaths'][0]['fssn'], 'destination' => $pathArrays['directPaths'][0]['tsen']]);
-                $pathArrays['directPaths']['train1Price'] = $train1PriceModel->getTicketPrice();
+                $index = 0;
+                foreach($pathArrays['directPaths'] as $key => $value) {
+                    $pathArrays['directPaths'][$index]['train1Price'] = $train1PriceModel->getTicketPrice()['tickets'];
+                    $index++;
+                }
             }
             if ($pathArrays['intersections']) {
                 $train2PriceModel = new TicketModel();
@@ -44,9 +47,6 @@ class ViewController extends Controller
                 $pathArrays['intersections'][0]['train1Price'] = $train1PriceModel->getTicketPrice()['tickets'];
                 $pathArrays['intersections'][0]['train2Price'] = $train2PriceModel->getTicketPrice()['tickets'];
             }
-
-            // var_dump($pathArrays['intersections']);
-
 
             return $this->render('searchResults', $pathArrays);
 

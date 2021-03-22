@@ -3,8 +3,6 @@
 function renderTrainBookingCard($train, $id)
 {
 
-    var_dump($train);
-
     $timeDecide = timeDecider(substr($train['from_dept'], 0, 2));
     
     $fromHr = $timeDecide[0];

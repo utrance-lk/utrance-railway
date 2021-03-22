@@ -4,7 +4,6 @@ function getValues(arr) {
   var basePrices = arr;
 
   basePrices.forEach(function (e, i) {
-    console.log(e);
     setTicketPrice(i + 1);
   });
 

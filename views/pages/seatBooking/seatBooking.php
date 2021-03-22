@@ -56,6 +56,13 @@ foreach ($trains as $key => $value) {
     </div>
 </div>
 <script type="text/javascript" src="../../../utrance-railway/public/js/pages/seatBooking.js"></script>
+<?php
+    $train2Available = isset($trains['t2']);
+    if(!$train2Available) {
+        $train2Available = 0;
+    }
+?>
+
 <script>
     var arr = [];
     var t1 = {}; 
@@ -64,9 +71,12 @@ foreach ($trains as $key => $value) {
     t1.fcBasePrice = "<?php echo $trains['t1']['ticket_fc'];?>" * 1;
     t1.scBasePrice = "<?php echo $trains['t1']['ticket_sc'];?>" * 1;
     arr.push(t1);
-    t2.fcBasePrice = "<?php echo $trains['t2']['ticket_fc'];?>" * 1;
-    t2.scBasePrice = "<?php echo $trains['t2']['ticket_sc'];?>" * 1;
-    arr.push(t2);
+    var train2Available = "<?php echo $train2Available;?>" * 1;
+    if(train2Available) {
+        t2.fcBasePrice = "<?php echo isset($trains['t2']) ? $trains['t2']['ticket_fc'] : 0;?>" * 1;
+        t2.scBasePrice = "<?php echo isset($trains['t2']) ? $trains['t2']['ticket_sc'] : 0;?>" * 1;
+        arr.push(t2);
+    }
     getValues(arr);
 </script>
 
