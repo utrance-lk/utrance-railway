@@ -66,8 +66,9 @@
           <fieldset class="margin-b-xs">
             <legend class="topic-greyed topic-greyed--dark padding-xxs">Image</legend>   
             <div class="">
+            <!-- <img id="output" width="500" height="360"/> -->
            
-              <img 
+              <img id="output"
                 src="../../../../utrance-railway/public/img/NewsImages/newtrain.jpeg"
                 alt="news-picutre"
                 class="newsimage"
@@ -80,6 +81,7 @@
                 accept="image/*"
                  
                 id="photo"
+                onchange="loadFile(event)"
               />
              
               <!-- class="form__upload" -->
@@ -95,3 +97,12 @@
     </div>
         </div>
       </div>
+
+<script>
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+
+ 
+};
+</script>

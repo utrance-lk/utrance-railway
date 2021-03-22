@@ -50,10 +50,7 @@ function myFunction1(){
                 success: function (data) {
                    
                     console.log(data);
-                    
-                 
-
-                     const html = `<p>hhhhh</p>`;
+                
                      console.log(document.querySelector(".content-title"));
                      document.querySelector(".content-title").insertAdjacentHTML("beforeend",html);
                 }

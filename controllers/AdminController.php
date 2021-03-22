@@ -417,7 +417,6 @@ class AdminController extends Controller
                
                if(empty($getNewsArray['error'])){
               
-              
                 return $response->redirect('/utrance-railway/home');
                }else{
                 return $this->render(['admin', 'manageNews'],$getNewsArray);
@@ -431,9 +430,20 @@ class AdminController extends Controller
 
     }
 
-    public function newsFeed(){
-       
-        return $this->render('newsFeed');
+    public function newsFeed($request, $response){
+        if ($this->protect()){
+            if ($request->isGet()){
+                $getNewsModel = new AdminModel();
+                $getNewsModel->loadData($request->getBody());
+    
+                $trainArray['news'] = $getNewsModel->getAllNews();
+         
+                return $this->render('newsFeed',$trainArray);
+            }
+
+        }
+        
+        
     }
 
     public function getNews($request, $response){
@@ -457,15 +467,17 @@ class AdminController extends Controller
     }
 
     public function newsFeed01($request, $response){
-        var_dump('hh');
+      
         $saveDetailsModel = new AdminModel();
 
         $tempBody = $request->getBody();
         $tempBody['id'] = $request->getQueryParams()['id'];
         $saveDetailsModel->loadData($tempBody);
 
-        $updateRouteArray = $saveDetailsModel->getMyNews();
-                var_dump($updateRouteArray);
+        $updateRouteArray['news'] = $saveDetailsModel->getMyNews();
+        $updateRouteArray['allnews']= $saveDetailsModel->getAllNews();
+       
+               
                 return $this->render(['newsFeed','newsFeed01'],$updateRouteArray);
     }
 

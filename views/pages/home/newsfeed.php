@@ -33,29 +33,7 @@
           
  });
 
-  $(document).ready(function(){
-    
-//     // newsID =  document.querySelector('.newscard-small__content').textContent;
-//     // console.log(newsID);
-//     $("#view").click(function (e){
-        
-//         const parent = e.target.closest(".newscard-small");
-//         newsID =  parent.querySelector('.newscard-small__content');
-// console.log(parent);
-//     // $.ajax({
-//     //     url: "getNewNews",
-//     //     method: "get",
-       
-//     //     success: function (data) {
-//     //         console.log(data);
-//     //         news=JSON.parse(data);
-//     //         renderNewsCard(news)
-          
-//     //     }
 
-//     // });
-//   });
-  });
 
 
  

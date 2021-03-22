@@ -1,35 +1,29 @@
-
 <div class="main-container">
-  <div class="load-content-container js--load-content-container">
-        <div class="load-content">
-          <div class="load-content--settings">
-            <div class="content-title">
-              <p>Colombo to Kandy train will not depart the fort station</p>
-              <br>
-            </div>
-  <div class="row">
-  <div class="columnFull">
-    <div class="cardFull">
-      <img src="/utrance-railway/public/img/pages/newsFeed/train1.jpg" style="width:100%">
-      <div class="container">
-       <br>
-        <p style="text-align:justify;">The train from Colombo to Kandy will not depart from Colombo today due to Corona lockdown process in the western province. The ministry of health and the ministry of railway have decided to implement this throughout the weekend. More details will be published in the news today night. The passengers are asked to stay safe in their homes throughout the weekend.The new schedule and the detailed safety procedure regarding the pandemic will also be published. Passengers will be supervised and fined when they break the rules. The goverment has asked to supervise each and every pasenger. As railway stations are place where so many people gather, it is required to follow the safety measures strictly, specially in Western province. People will also be supervised from drones and cctv footages. The requirements to all these will be first implemented, then the werstern railway stations will function normally. Untill then no one is allowed into the stations for any reasons.</p>
-        <br>
-      </div>
-    </div>
-  </div>
+<?php
+$dom = new DOMDocument;
+libxml_use_internal_errors(true);
+$dom->loadHTML('...');
+libxml_clear_errors();
 
+if (isset($news)){
+  
+  $html ="<div class='load-content-container js--load-content-container'>";
+  $html .="<div class='load-content'>";
+  $html .="<div class='load-content--settings'>";
+  $html .="<div class='content-title'>";
+  $html .="<p>" . $news[0]['Headline'] . "</p><br></div>";
+  $html .="<div class='row'><div class='columnFull'><div class='cardFull'>";
+  $html .="<img src='/utrance-railway/public/img/NewsImages/" . $news[0]['NewsImage'] . "' style='width:100%' width='365px' height='460px'>";
+  $html .="<div class='container'><br>";
+  $html .="<p style='text-align:justify;'>".$news[0]['Content']."</p><br></div></div></div></div></div></div></div>";
   
 
-</div>
+}
+$dom = new DOMDocument();
+$dom->loadHTML($html);
+print_r($dom->saveHTML());
+ ?>
 
-
-
-          </div>
-     </div>
-
-     
-</div>
 
 <div class="sidebar">
         <div class="sidebar__nav">
@@ -47,7 +41,35 @@
             <div class="userrole-name">Recent Headlines</div>
             <br>
 
-            <a href="/utrance-railway/news/news02" class="sidebar__nav-manage--trains sidebar__nav-item">
+            <?php
+              $dom = new DOMDocument;
+              libxml_use_internal_errors(true);
+              $dom->loadHTML('...');
+              libxml_clear_errors();
+
+              if (isset($allnews)){
+                $count = 0;
+                foreach ($allnews as $key => $value){
+                  if($count<5){
+                    $html = "<a href='/utrance-railway/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
+                    $html .="<svg class='bookings-icon sidebar__nav-icon'>";
+                    $html .="<use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-news'></use></svg>";
+                    $html .="<span class='manage--bookings-name'>" . $value['Headline'] . " ...</span></a>";
+                    
+                  
+                    
+                    $dom = new DOMDocument();
+                    $dom->loadHTML($html);
+                    print_r($dom->saveHTML());
+                    
+                  }
+                  $count++;
+                }
+               
+              }
+              ?>
+
+            <!-- <a href="/utrance-railway/news/news02" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="freights-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
@@ -78,11 +100,38 @@
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="manage--freights-name">Nothern line ...</span>
-            </a>
+            </a> -->
            
               <div class="userrole-name">Old Headlines</div>
+
+              <?php
+              $dom = new DOMDocument;
+              libxml_use_internal_errors(true);
+              $dom->loadHTML('...');
+              libxml_clear_errors();
+
+              if (isset($allnews)){
+                $count = 0;
+                foreach ($allnews as $key => $value){
+                  if($count>4 && $count<11){
+                    $html = "<a href='/utrance-railway/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
+                    $html .="<svg class='bookings-icon sidebar__nav-icon'>";
+                    $html .="<use xlink:href='../../../../utrance-railway/public/img/svg/sprite.svg#icon-news'></use></svg>";
+                    $html .="<span class='manage--bookings-name'>" . $value['Headline'] . " ...</span></a>";
+                    
+                  
+                    
+                    $dom = new DOMDocument();
+                    $dom->loadHTML($html);
+                    print_r($dom->saveHTML());
+                    
+                  }
+                  $count++;
+                }
+              }
+              ?>
            
-              <a href="/utrance-railway/news/news07" class="sidebar__nav-manage--trains sidebar__nav-item">
+              <!-- <a href="/utrance-railway/news/news07" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
@@ -105,7 +154,7 @@
                 <use xlink:href="../../../../utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="manage--freights-name">Remodel trains ...</span>
-            </a>
+            </a> -->
             
           </div>
         </div>
@@ -120,18 +169,5 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script>
-$(document).ready(function(){
-    $.ajax({
-        url: "getmyNewNews",
-        method: "get",
-        success: function (data) {
-            console.log(data);
-            news=JSON.parse(data);
-            renderNewsCard(news);
-            
-        }
-       
 
-    });         
- });
 </script>

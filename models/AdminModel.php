@@ -834,6 +834,9 @@ class AdminModel extends Model
         if($file_type == 'image/jpeg' ||  $file_type == 'image/jpg' ||  $file_type == 'image/png'){
             $file_uploaded = move_uploaded_file($temp_name,$upload_to . $file_name);
 
+            $this->news_headline = $this->sanitizeFormStreet($this->news_headline);
+            $this->detail = $this->sanitizeFormStreet($this->detail);
+
             $query = APP::$APP->db->pdo->prepare("INSERT INTO news_feed (News_type,Headline,Content,NewsImage) VALUES (:News_type,:Headline,:Content,:file_nam)");
             $query->bindValue(":News_type", $this->details_type);
             $query->bindValue(":Headline", $this->news_headline);
@@ -861,13 +864,29 @@ class AdminModel extends Model
     }
 
     public function getMyNews(){
-      var_dump($this->id);
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_id  = :content");
+     
+       $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_id  = :content");
        $query->bindValue(":content", $this->id);
        $query->execute();
        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
        return $this->resultArray;
 
+    }
+
+    public function getAllNews(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed order by News_id DESC");
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+
+        // $query1 = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_type  = 'ticket_price' order by News_id DESC LIMIT 2");
+        // $query1->execute();
+        // $resultArray2 =$query1->fetchAll(PDO::FETCH_ASSOC);
+
+        // $query2 = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_type  = 'ticket_price' order by News_id DESC LIMIT 2");
+        // $query2->execute();
+        // $resultArray3 =$query2->fetchAll(PDO::FETCH_ASSOC);
+        // $this->resultArray = array_merge($resultArray1,$resultArray2,$resultArray3);
+        return $this->resultArray;
     }
 
 }
