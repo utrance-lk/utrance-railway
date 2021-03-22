@@ -45,10 +45,7 @@
             $html.="<div class='view-train__result-row-item'>" .$value['station_name']. "</div>";
             $html.="<div class='view-train__result-row-item'>" .$value['arrival_time']. "</div>";
             $html.="<div class='view-train__result-row-item'>" .$value['departure_time']. "</div>";
-            $html.="</div>";
-            
-
-             
+            $html.="</div>";        
         }
 
         $html.="</div>";
