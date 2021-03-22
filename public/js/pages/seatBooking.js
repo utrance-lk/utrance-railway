@@ -17,19 +17,18 @@ var cardPrices = [];
 var basePrices = [];
 
 function setTicketPrice(fromStation, toStation, id) {
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("POST", "/ajax-ticket-price", true);
-  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xmlHttp.responseType = "json";
-  xmlHttp.onreadystatechange = async function () {
-    if (this.readyState === 4 && this.status === 200) {
-      var trainvalues = await this.response;
 
-    //   if(!trainvalues) {
-    //       // recurse until get the values
-    //       setTicketPrice(fromStation, toStation, id);
-    //   }
-
+  $.ajax({
+    url: "ajax-ticket-price",
+    method: "post",
+    data: {
+      start: fromStation,
+      destination: toStation,
+    },
+    error: console.log("errorr"),
+    success: function (trainvalues) {
+      console.log(trainvalues);
+      trainvalues = JSON.parse(trainvalues);
       var obj = {
         fcBasePrice: trainvalues.first_class,
         scBasePrice: trainvalues.second_class,
@@ -99,46 +98,6 @@ function setTicketPrice(fromStation, toStation, id) {
 
         finalAmountElement.value = cardAcc;
       });
-    } else {
-      console.log("station not found");
-    }
-  };
-
-  xmlHttp.send(`start=${fromStation}&destination=${toStation}`);
+    },
+  });
 }
-
-// $.ajax({
-//   url: "/utrance-railway/ajax-ticket-price",
-//   type: "post",
-//   data: {
-//     start: fromArray[0],
-//     destination: toArray[0],
-//   },
-//   async: false,
-// }).done(function (res) {
-//   train1Prices = JSON.parse(res);
-//   console.log(train1Prices);
-// });
-
-// if (fromArray.length > 1) {
-//   $.ajax({
-//     url: "/utrance-railway/ajax-ticket-price",
-//     type: "post",
-//     data: {
-//       start: fromArray[1],
-//       destination: toArray[1],
-//     },
-//     async: false,
-//   }).done(function (res) {
-//     train2Prices = JSON.parse(res);
-//   });
-// }
-
-// console.log(train1Prices);
-
-//  success: function (response) {
-//      console.log(JSON.parse(response));
-//    },
-//    error: function (jqXHR, textStatus, errorThrown) {
-//      console.log(textStatus, errorThrown);
-//    },
