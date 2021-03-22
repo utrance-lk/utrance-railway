@@ -34,11 +34,11 @@ foreach ($trains as $key => $value) {
                 </div>
             </div>
             <input type="hidden" name="merchant_id" value="1216669">    <!-- Replace your Merchant ID -->
-            <!-- <input type="hidden" name="return_url" value="http://utrance-railway.herokuapp.com/home"> -->
-            <input type="hidden" name="return_url" value="http://localhost/utrance-railway/home">
+            <input type="hidden" name="return_url" value="http://utrance-railway.herokuapp.com/home">
+            <!-- <input type="hidden" name="return_url" value="http://localhost/utrance-railway/home"> -->
             <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
-            <!-- <input type="hidden" name="notify_url" value="http://utrance-railway.herokuapp.com/payment">   -->
-            <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">  
+            <input type="hidden" name="notify_url" value="http://utrance-railway.herokuapp.com/payment">  
+            <!-- <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">   -->
             <input type="text" name="order_id" value="" hidden readonly>
             <input type="text" name="items" value="<?php echo $all_start . ' to ' . $all_end;?>" hidden readonly>
             <input type="text" name="currency" value="LKR" hidden readonly>
