@@ -1,103 +1,76 @@
-var fromArray = [];
-var toArray = [];
-
-document.querySelectorAll("span[id^='from']").forEach((e) => {
-  fromArray.push(e.innerHTML);
-});
-
-document.querySelectorAll("span[id^='to']").forEach((e) => {
-  toArray.push(e.innerHTML);
-});
-
-fromArray.forEach(function (e, i) {
-  setTicketPrice(fromArray[i], toArray[i], i + 1);
-});
-
 var cardPrices = [];
-var basePrices = [];
 
-function setTicketPrice(fromStation, toStation, id) {
+function getValues(arr) {
+  var basePrices = arr;
 
-  $.ajax({
-    url: "ajax-ticket-price",
-    method: "post",
-    data: {
-      start: fromStation,
-      destination: toStation,
-    },
-    error: console.log("errorr"),
-    success: function (trainvalues) {
-      console.log(trainvalues);
-      trainvalues = JSON.parse(trainvalues);
-      var obj = {
-        fcBasePrice: trainvalues.first_class,
-        scBasePrice: trainvalues.second_class,
-      };
+  basePrices.forEach(function (e, i) {
+    console.log(e);
+    setTicketPrice(i + 1);
+  });
 
-      basePrices.push(obj);
+  function setTicketPrice(id) {
 
-      var selectElement = document.getElementById("train_class" + id);
+    var selectElement = document.getElementById("train_class" + id);
 
-      cardPrices[id - 1] = basePrices[id - 1].scBasePrice; //default
-      var ticketPrice = document.getElementById("tickprice" + id);
-      ticketPrice.innerText = cardPrices[id - 1]; //default
+    cardPrices[id - 1] = basePrices[id - 1].scBasePrice; //default
+    var ticketPrice = document.getElementById("tickprice" + id);
+    ticketPrice.innerText = cardPrices[id - 1]; //default
 
-      var personsElement = document.getElementById("persons" + id);
+    var personsElement = document.getElementById("persons" + id);
 
-      var finalAmountElement = document.getElementById("finalAmount");
+    var finalAmountElement = document.getElementById("finalAmount");
 
-      // basic accumulator
-      var cardAcc = cardPrices.reduce(function (acc, i) {
+    // basic accumulator
+    var cardAcc = cardPrices.reduce(function (acc, i) {
+      return acc + i;
+    });
+
+    finalAmountElement.value = cardAcc;
+
+    selectElement.addEventListener("change", function () {
+      var trainclass = selectElement.value;
+      if (trainclass === "firstClass") {
+        cardPrices[id - 1] =
+          personsElement.value * 1 * basePrices[id - 1].fcBasePrice;
+        ticketPrice.innerText = cardPrices[id - 1];
+      }
+      if (trainclass === "secondClass") {
+        cardPrices[id - 1] =
+          personsElement.value * 1 * basePrices[id - 1].scBasePrice;
+        ticketPrice.innerText = cardPrices[id - 1];
+      }
+
+      cardAcc = cardPrices.reduce(function (acc, i) {
         return acc + i;
       });
 
       finalAmountElement.value = cardAcc;
+    });
 
-      selectElement.addEventListener("change", function () {
-        var trainclass = selectElement.value;
-        if (trainclass === "firstClass") {
-          cardPrices[id - 1] =
-            personsElement.value * 1 * basePrices[id - 1].fcBasePrice;
-          ticketPrice.innerText = cardPrices[id - 1];
-        }
-        if (trainclass === "secondClass") {
-          cardPrices[id - 1] =
-            personsElement.value * 1 * basePrices[id - 1].scBasePrice;
-          ticketPrice.innerText = cardPrices[id - 1];
-        }
+    personsElement.addEventListener("change", function (e) {
+      if (e.target.value > 10) {
+        e.target.value = 10;
+      }
+      if (e.target.value < 1) {
+        e.target.value = 1;
+      }
 
-        cardAcc = cardPrices.reduce(function (acc, i) {
-          return acc + i;
-        });
+      if (selectElement.value === "firstClass") {
+        cardPrices[id - 1] =
+          basePrices[id - 1].fcBasePrice * (personsElement.value * 1);
+      }
+      if (selectElement.value === "secondClass") {
+        cardPrices[id - 1] =
+          basePrices[id - 1].scBasePrice * (personsElement.value * 1);
+      }
 
-        finalAmountElement.value = cardAcc;
+      ticketPrice.innerText = cardPrices[id - 1];
+
+      cardAcc = cardPrices.reduce(function (acc, i) {
+        return acc + i;
       });
 
-      personsElement.addEventListener("change", function (e) {
-        if (e.target.value > 10) {
-          e.target.value = 10;
-        }
-        if (e.target.value < 1) {
-          e.target.value = 1;
-        }
-
-        if (selectElement.value === "firstClass") {
-          cardPrices[id - 1] =
-            basePrices[id - 1].fcBasePrice * (personsElement.value * 1);
-        }
-        if (selectElement.value === "secondClass") {
-          cardPrices[id - 1] =
-            basePrices[id - 1].scBasePrice * (personsElement.value * 1);
-        }
-
-        ticketPrice.innerText = cardPrices[id - 1];
-
-        cardAcc = cardPrices.reduce(function (acc, i) {
-          return acc + i;
-        });
-
-        finalAmountElement.value = cardAcc;
-      });
-    },
-  });
+      finalAmountElement.value = cardAcc;
+    });
+  }
 }

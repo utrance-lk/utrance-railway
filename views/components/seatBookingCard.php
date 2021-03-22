@@ -3,6 +3,8 @@
 function renderTrainBookingCard($train, $id)
 {
 
+    var_dump($train);
+
     $timeDecide = timeDecider(substr($train['from_dept'], 0, 2));
     
     $fromHr = $timeDecide[0];
@@ -46,7 +48,7 @@ function renderTrainBookingCard($train, $id)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box seat-booking-card__price'>
-                    <span>Rs&nbsp;</span><span id='tickprice{$id}'></span>
+                    <span>Rs&nbsp;</span><span id='tickprice{$id}'>{$train['ticket_sc']}</span>
                 </div>
             </div>
     ";
