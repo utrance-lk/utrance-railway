@@ -19,7 +19,7 @@ var basePrices = [];
 function setTicketPrice(fromStation, toStation, id) {
 
   $.ajax({
-    url: "ajax-ticket-price",
+    url: "utrance-railway/ajax-ticket-price",
     method: "post",
     data: {
       start: fromStation,
