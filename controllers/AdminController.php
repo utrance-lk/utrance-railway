@@ -227,8 +227,7 @@ class AdminController extends Controller
 
                 $validationState = $saveDetailsModel->updateTrainDetails();
                 
-                  var_dump($validationState);
-
+                  
                 if ($validationState === "success") {
 
                     return $response->redirect('/utrance-railway/trains/view?id=' . $id);

@@ -7,7 +7,7 @@
                 <p class="center-text"><?php echo $trains[0]['train_name']?></p>
             </div>
             <form action="/utrance-railway/trains/update?id=<?php echo $trains[0]['train_id']?>" class="dash-content__form" method='post' >
-            <?php if (isset($TravalDaysError)) {echo $TravalDaysError;}?>
+            <?php if(isset($newtrains['TravalDaysError'])){echo $newtrains['TravalDaysError'];}; ?>
                 <div class="dash-content__input">
                     <label for="trainname" class="dash-content__label">Train Name</label>
                     <input type="text" name="train_name" class="form__input" placeholder="<?php echo isset($newtrains['TrainNameError']) ? $newtrains['TrainNameError'] : 'Enter train name'; ?>" value="<?php echo isset($trains) ? $trains[0]['train_name'] : ''; ?>" required>
