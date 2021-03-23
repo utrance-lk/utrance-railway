@@ -140,3 +140,15 @@
     width: 1.5rem;
     fill: var(--color-btn-box-text-delete);
   }
+
+  .titles {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(31, 58, 147);
+    font-weight: 600;
+    padding: 2rem;
+  }
+  
+  .titles > * {
+    text-align: center;
+  }

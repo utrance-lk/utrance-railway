@@ -101,13 +101,16 @@ function addStops(x) {
           if (time1Date >= time2Date) { 
              newx.insertAdjacentHTML("beforebegin", newmarkup);
             document.getElementById("addButton").disabled = true;
+            document.getElementById("addButton").style.opacity = "0.5";
          }else if(time2Date >= time3Date){
           newx.insertAdjacentHTML("beforebegin", newmarkup);
             document.getElementById("addButton").disabled = true;
+            document.getElementById("addButton").style.opacity = "0.5";
          }
          else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
          
           document.getElementById("addButton").disabled = false;
+          document.getElementById("addButton").style.opacity = "1";
          }
         });
 
@@ -130,13 +133,16 @@ function addStops(x) {
           if (time1Date >= time2Date) { 
              newx.insertAdjacentHTML("beforebegin", newmarkup);
             document.getElementById("addButton").disabled = true;
+            document.getElementById("addButton").style.opacity = "0.5";
          }else if(time2Date >= time3Date){
           newx.insertAdjacentHTML("beforebegin", newmarkup);
             document.getElementById("addButton").disabled = true;
+            document.getElementById("addButton").style.opacity = "0.5";
          }
          else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
          
           document.getElementById("addButton").disabled = false;
+          document.getElementById("addButton").style.opacity = "1";
          }
           // if (time2Date >= time3Date) { 
           //   alert("Please enter proper date");
@@ -150,13 +156,18 @@ function addStops(x) {
      
         if(document.querySelector(".add-stop-popup__arr-time--input").value == ""){
           document.getElementById("addButton").disabled = true;
+          document.getElementById("addButton").style.opacity = "0.5";
+
         }
         else if(document.querySelector(".add-stop-popup__dept-time--input").value == ""){
           document.getElementById("addButton").disabled = true;
+          document.getElementById("addButton").style.opacity = "0.5";
         }else if(emptyStations==0){
           document.getElementById("addButton").disabled = true;
+          document.getElementById("addButton").style.opacity = "0.5";
         }else{
           document.getElementById("addButton").disabled = false;
+          document.getElementById("addButton").style.opacity = "1";
         }
 //////////////////////////////////end validation/////////////////////////
         const popupCloseBtn = document.querySelector(
@@ -454,6 +465,7 @@ function selected(element){
   if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && document.querySelector(".add-stop-popup__arr-time--input").value != ""){
          
     document.getElementById("addButton").disabled = false;
+    document.getElementById("addButton").style.opacity = "1";
    }
 
 
