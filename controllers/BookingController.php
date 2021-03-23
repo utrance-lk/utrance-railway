@@ -53,6 +53,8 @@ class BookingController extends Controller
             $fullTrainDetails = App::$APP->session->get($option);
             $train = $this->travellingTrains($mode, $fullTrainDetails);
 
+            var_dump($train);
+
             // remove the session after making a booking
             // $i = 0;
             // foreach($_SESSION as $key => $value) {
@@ -63,8 +65,15 @@ class BookingController extends Controller
             //     $i++;
             // }
 
+
+
             return $this->render('seatBooking', $train);
         }
+
+        if($request->isPost()) {
+
+        }
+
 
     }
 
@@ -114,6 +123,7 @@ class BookingController extends Controller
             $train['trains'] = $trains;
             $train['all_start'] = $fullTrainDetails['fssn'];
             $train['all_end'] = $fullTrainDetails['tsen'];
+            $train['when'] = $fullTrainDetails['when'];
 
             return $train;
 
@@ -206,6 +216,7 @@ class BookingController extends Controller
             $train['all_start'] = $fullTrainDetails['fssn'];
             $train['all_end'] = $fullTrainDetails['tsen'];
             $train['wait_time'] = $fullTrainDetails['wait_time'];
+            $train['when'] = $fullTrainDetails['when'];
 
             return $train;
         }

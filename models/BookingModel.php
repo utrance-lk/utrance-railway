@@ -14,4 +14,11 @@ class BookingModel extends Model
     public $base_price;
     public $total_amount;
     public $other_booking;
+
+    
+
+
+
+
+
 }

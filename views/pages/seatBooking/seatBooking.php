@@ -5,17 +5,20 @@
         </div>
         <div class="topic-greyed margin-b-xxs">
             <span>journey date</span>&nbsp;&ndash;&nbsp;<span class="seat-booking__day">
-                <span>28</span>
+                <span><?php echo explode("-",$when)[2];?></span>
                 <span class="seat-booking__day-up">th</span>&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
-            <span>November</span>&nbsp;
-            <span>2020</span>
+            <span><?php echo date("F", mktime(0, 0, 0, date("m", strtotime($when)), 10)) ;?></span>&nbsp;
+            <span><?php echo explode("-",$when)[0];?></span>
         </div>
         <div class="topic-greyed">
             <span>journey time</span>&nbsp;&ndash;&nbsp;<span><?php echo isset($trains['t2']) ? calcFullJourneyTime($trains['t1']['journey_time'], $trains['t2']['journey_time'], $wait_time) : calcFullJourneyTime($trains['t1']['journey_time']) ?></span>
         </div>
     </div>
     <div class="seat-booking__form">
+        <div class="seat-booking__remaining-seats">
+            50 seats left!
+        </div>
         <?php
 include_once "../views/components/seatBookingCard.php";
 

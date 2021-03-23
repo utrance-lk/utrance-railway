@@ -52,14 +52,23 @@ class ViewModel extends Model
 
             $unixTimestamp = strtotime($this->when);
             $dayOfWeek = strtolower(date("l", $unixTimestamp));
-            // var_dump($dayOfWeek);
-
 
             // 1) search for a direct path
             $this->resultsArr['directPaths'] = $this->searchForDirectPath($fromId, $toId, $dayOfWeek);
 
+            $i = 0;
+            foreach($this->resultsArr['directPaths'] as $unit) {
+                $this->resultsArr['directPaths'][$i]['when'] = $this->when;
+                $i++;
+            }
+
             // 2) search for an intersection
             $this->resultsArr['intersections'] = $this->searchForIntersection($fromId, $toId, $dayOfWeek);
+            $i = 0;
+            foreach($this->resultsArr['intersections'] as $unit) {
+                $this->resultsArr['intersections'][$i]['when'] = $this->when;
+                $i++;
+            }
 
             return $this->resultsArr;
 
@@ -160,7 +169,7 @@ class ViewModel extends Model
                 inner join trains
                 on to_station_name.route_id = trains.route_id) train_only
             inner join
-                (select train_id, train_travel_days from trains where train_travel_days like :dayOfWeek) train_days
+                (select train_id, train_travel_days from trains where train_travel_days like :dayOfWeek and train_active_status = 1) train_days
             on train_only.train_id = train_days.train_id    
             order by fssdt"
         );
@@ -218,10 +227,10 @@ class ViewModel extends Model
                     inner join trains
                     on to_route_id = trains.route_id) train_only
                 inner join 
-                    (select train_id, train_travel_days from trains where train_travel_days like :dayOfWeek) train_days1
+                    (select train_id, train_travel_days from trains where train_travel_days like :dayOfWeek and train_active_status = 1) train_days1
                 on train_only.frti = train_days1.train_id) day_include1
             inner join
-                (select train_id, train_travel_days from trains where train_travel_days like :dayOfWeek) train_days2
+                (select train_id, train_travel_days from trains where train_travel_days like :dayOfWeek and train_active_status = 1) train_days2
             on day_include1.trti = train_days2.train_id
             order by fssdt");
 
