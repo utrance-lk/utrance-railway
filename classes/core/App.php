@@ -42,7 +42,6 @@ class App {
             $this->user = $this->userClass::getUser($activeUserId);
         }
         
-
         if(!empty($this->user)) {
             $this->isActiveAccount();
         }

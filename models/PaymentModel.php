@@ -14,7 +14,7 @@ class PaymentModel extends Model
     public $md5sig;
     private $local_md5sig;
 
-    private $merchant_secret = '4pFoEGQkmjF49WTOwj17bQ4uTQbUJMUqc8W7p20s5aQW';
+    private $merchant_secret = '8n0ck29St9u8X4vE9oBWCf48ZRGqRnNub4pAfRwqobaq';
 
     public function recordPayment()
     {
