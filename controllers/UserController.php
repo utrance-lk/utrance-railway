@@ -13,38 +13,65 @@ class UserController extends Controller
     }
 
     public function getMe($request, $response) {
+        
         if($this->authMiddleware->isLoggedIn()) {
             if ($request->isGet()) {
-                return $this->render('settings');
+                return $this->render('dashboard');
             }
         } else {
             return 'You are not logged in!';
         }
     }
 
+    public function upload($request, $response){
+        if($request->isPost()){
+            
+            $updateUserDetailsModel = new UserModel();
+            $tempUpdateUserBody = $request->getBody();
+            $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+            $tempUpdateUserBody['file']=$_FILES;
+            $updateUserDetailsModel->loadData($tempUpdateUserBody);
+            $array=$updateUserDetailsModel->uploadImage(App::$APP->activeUser()['id']);
+            if($array === "Success"){
+                return $response->redirect('/utrance-railway/settings');
+            }else{
+                var_dump($array);
+            }
+            
+            
+        }
+        return $this->render('settings');
+
+
+
+            
+         }
+
     public function updateMe($request, $response) {
        
         $updateUserDetailsModel = new UserModel();
         
         if ($request->isPost()) {
-                
+              
             $tempUpdateUserBody = $request->getBody();
 
             $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
             $tempUpdateUserBody['user_role']=App::$APP->activeUser()['role'];
-
+            $tempUpdateUserBody['user_profile_image']=App::$APP->activeUser()['user_image'];
+            
             $updateUserDetailsModel->loadData($tempUpdateUserBody);
            
             $state = $updateUserDetailsModel->updateMyProfile();
            
             if ($state === 'success') { 
+                
                 return $response->redirect('/utrance-railway/settings');
             } else {
                 $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
-                return $this->render('settings', $updateUserDetailsSetValue);
+               return $this->render('settings', $updateUserDetailsSetValue);
             }
         }
-        //return "HEllo";
+    
         
     }
 

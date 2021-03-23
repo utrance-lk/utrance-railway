@@ -1,0 +1,46 @@
+.sidebar-nav {
+  width: 30%;
+  background-color: rgba(31, 58, 147, 0.8);
+  color: #fff;
+}
+
+.sidebar-nav a {
+  color: #fff;
+}
+
+.sidebar-nav__item {
+  padding: 2rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.sidebar-nav__item:hover {
+  transform: translateX(0.5rem);
+  color: rgb(250, 151, 70);
+}
+
+.sidebar-nav__item:hover .sidebar-nav__icon {
+  fill: rgb(250, 151, 70);
+}
+
+.sidebar-nav__item > * {
+  margin: 0 1rem;
+}
+
+.sidebar-nav__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: #fff;
+}
+
+.sidebar-nav__role {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 1rem;
+  margin-left: 3rem;
+  margin-top: 6rem;
+  text-transform: uppercase;
+  width: 80%;
+}

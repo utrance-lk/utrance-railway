@@ -1,0 +1,11 @@
+.map-container {
+    position: relative;
+    height: calc(100vh - 8rem);
+    width: 50vw;
+}
+
+#map {
+    position: relative;
+    height: inherit;
+    width: inherit;
+}

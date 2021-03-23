@@ -22,6 +22,8 @@ const stationsArray = [
   "Aluthgama",
   "Midigama",
   "Weligama",
+  "Beliatta",
+  "Maradana"
 ];
 
 const searchStates = function (searchText, direction) {
@@ -109,7 +111,7 @@ const clearResults = function (direction) {
 
 const renderCity = function (direction, city) {
   const markup = `
-        <li class="search-dropdown__search-results-item js--results__list-item">${city}</li>
+        <li class="searchbar-main__dropdown-search-results-item js--results__list-item">${city}</li>
     `;
 
   if (direction === "from") {

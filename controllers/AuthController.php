@@ -19,6 +19,12 @@ class AuthController extends Controller
 
     public function login($request, $response)
     {
+
+        // if the user logged in redirect to home page
+        if(isset(App::$APP->activeUser()['id'])) {
+            return $this->render('home');
+        }
+
         if ($request->isPost()) {
             $loginUser = new UserModel();
             $loginUser->loadData($request->getBody());
@@ -51,6 +57,11 @@ class AuthController extends Controller
     public function register($request, $response)
     {
 
+        // if the user logged in redirect to home page
+        if(isset(App::$APP->activeUser()['id'])) {
+            return $this->render('home');
+        }
+
         $registerModel = new UserModel();
         if ($request->isPost()) {
             $registerModel->loadData($request->getBody());
@@ -58,9 +69,7 @@ class AuthController extends Controller
             if ($registrationState === 'success') {
                 return $this->login($request, $response);
             } else {
-                $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika
-                
-
+                $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika       
             }
             return $this->render('register', $registerSetValue); //Ashika
             //  return $this->render('register', $registrationState);
@@ -92,10 +101,11 @@ class AuthController extends Controller
 
             $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
 
-            App::$APP->email->sendEmail([
+            App::$APP->email->sendRestPasswordEmail([
                 'email' => $user[0]['email_id'],
                 'subject' => 'Your password reset token (valid for 10 minutes)',
                 'message' => $message,
+                'resetURL' => $resetURL
             ]);
 
             return '';
