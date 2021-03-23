@@ -24,7 +24,7 @@ const nextBtn = document.querySelector('#nextBtn');
 
 let counter = 1;
 
-// const size = carouselImages[0].clientWidth;
+// const size = carouselSlide.clientWidth;
 // console.log(size);
 
 // carouselSlide.style.transform = 'translate('+(-size*counter)+'px)';

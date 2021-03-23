@@ -389,7 +389,7 @@ class AdminController extends Controller
 
                 $updateRouteArray = $saveDetailsModel->getManagRoutes();
 
-                return $this->render(['admin', 'updateRoute'], $updateRouteArray);
+                return $this->render(['admin', 'updateRoute2'], $updateRouteArray);
             }
 
             // return $this->render(['admin', 'updateRoute']);

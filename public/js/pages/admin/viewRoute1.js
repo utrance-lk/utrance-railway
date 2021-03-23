@@ -56,7 +56,7 @@ function addStops(x) {
           $("#arrtime").click(function () {
             // let newindex5= parent.firstChild.childNodes;
             let newindex5 = parent
-              .querySelector(".stop-card__details")
+              .querySelector(".view-routes__stop-details")
               .querySelector(".stop-card__dept-time").innerText;
             console.log(newindex5);
             // console.log(newindex5[2]);
@@ -253,16 +253,16 @@ function addStops(x) {
             //   .split(" ")
             //   .includes("back-odd");
 
-            const isBackOdd = parent.classList.contains("back-odd");
+            const isBackOdd = parent.classList.contains("view-routes__stop--odd");
             const html = `
-                    <div class="stop-card ${
-                      isBackOdd ? "back-even" : "back-odd"
+                    <div class="${
+                      isBackOdd ? "view-routes__stop view-routes__stop--even" : "view-routes__stop view-routes__stop--odd"
                     }">
-                        <div class="stop-card__details">
+                        <div class="view-routes__stop-details">
                             <div class="stop-card__path-id">
                                 #${parentPathId + 1}
                             </div>
-                            <div class="stop-card__station">
+                            <div class="view-routes__stop-station">
                                 ${stationName}
                             </div>
                             <div class="stop-card__arr-time">
@@ -272,8 +272,8 @@ function addStops(x) {
                                 ${deptTime}
                             </div>
                         </div>
-                        <div class="stop-card__add-btn">
-                            <svg class="add-icon">
+                        <div class="view-routes__btn-add">
+                            <svg class="view-routes__btn-add-icon">
                                 <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
                             </svg>
                         </div>
@@ -305,15 +305,15 @@ function addStops(x) {
 
 const changePathIdAndBG = function (changedPathId) {
   let pathIdCount = 0;
-  document.querySelectorAll(".stop-card").forEach(function (e) {
+  document.querySelectorAll(".view-routes__stop").forEach(function (e) {
     const pathId = e.children[0].children[0].innerText.split("#")[1] * 1;
     if (pathId === changedPathId) {
       pathIdCount += 1;
     }
     if (pathIdCount === 2) {
       e.children[0].children[0].innerHTML = `#${pathId + 1}`;
-      e.classList.toggle("back-odd");
-      e.classList.toggle("back-even");
+      e.classList.toggle("view-routes__stop--odd");
+      e.classList.toggle("view-routes__stop--even");
     }
   });
 };
@@ -341,7 +341,7 @@ function myfun(x) {
         success: function (data) {
           train = JSON.parse(data);
 
-          let stationLength = document.querySelectorAll(".stop-card").length;
+          let stationLength = document.querySelectorAll(".view-routes__stop").length;
 
           // for(let j=0;j<stationLength;j++){
 
@@ -354,8 +354,8 @@ function myfun(x) {
             for (let j = 0; j < stationLength; j++) {
               if (
                 document
-                  .querySelectorAll(".stop-card")
-                  [j].querySelector(".stop-card__station").innerText ==
+                  .querySelectorAll(".view-routes__stop")
+                  [j].querySelector(".view-routes__stop-station").innerText ==
                 train[i]["station_name"]
               ) {
                 validStations++;

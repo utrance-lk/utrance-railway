@@ -466,12 +466,3 @@ function selected(element){
   searchWrapper.classList.remove("active");
   
 };
-
-
-
-
-
-
-
-        
-
