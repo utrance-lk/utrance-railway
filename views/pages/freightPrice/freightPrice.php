@@ -38,7 +38,7 @@
         document.querySelector(".js--search-dropdown__search-to").value = x.destination;
          renderResults(<?php echo json_encode($freight); ?>);
        </script>
-        
+
       <?php endif;?>
 
 
@@ -55,60 +55,75 @@
 
 
       <script>
-       document.querySelector(".minus-btn").setAttribute("disabled","disabled");
+      // document.querySelector(".minus-btn").setAttribute("disabled","disabled");
        let valueCount;
        let weight="kg";
-       let firstClassPrice=document.getElementById("first_class").innerText;
-       firstClassPrice=firstClassPrice.match(/\d+/g);
-       console.log(firstClassPrice)
-       let secondClassPrice=document.getElementById("second_class").innerText;
-       secondClassPrice=secondClassPrice.match(/\d+/g);
-       let thirdClassPrice=document.getElementById("third_class").innerText;
-       thirdClassPrice=thirdClassPrice.match(/\d+/g);
-       console.log(firstClassPrice);
-
-       function getPriceTotal(){
-                let firstTotal=firstClassPrice * valueCount;
-                let secondTotal=secondClassPrice * valueCount;
-                let thirdTotal=thirdClassPrice * valueCount;
-                document.getElementById("first_class").innerText="Rs "+firstTotal;
-                document.getElementById("second_class").innerText="Rs "+secondTotal;
-                document.getElementById("third_class").innerText="Rs "+thirdTotal;
+       let timberPrice=document.getElementById("first_class").innerText;
+       timberPrice=timberPrice.match(/\d+/g);
+       console.log(timberPrice)
+       let metalPrice=document.getElementById("second_class").innerText;
+       metalPrice=metalPrice.match(/\d+/g);
+       let textilePrice=document.getElementById("third_class").innerText;
+       textilePrice=textilePrice.match(/\d+/g);
+       let agriculturalPrice=document.getElementById("agricultural__class").innerText;
+       agriculturalPrice=agriculturalPrice.match(/\d+/g);
+       console.log(agriculturalPrice);
 
 
 
+        function getSelectValue()
+        {
+            var selectedValue = document.getElementById("select-weight__range").value;
+            let timber_price=0;
+            let metal_price=0;
+            let textile_price=0;
+            let agriculture_price=0;
+            if(selectedValue == 2){
+
+              timber_price=parseInt(timberPrice)+200;
+              metal_price=parseInt(metalPrice)+200;
+              textile_price=parseInt(textilePrice)+200;
+              agriculture_price=parseInt(agriculturalPrice)+200;
+
+
+
+            }else if(selectedValue == 3){
+              timber_price=parseInt(timberPrice)+500;
+              metal_price=parseInt(metalPrice)+500;
+              textile_price=parseInt(textilePrice)+500;
+              agriculture_price=parseInt(agriculturalPrice)+500;
+
+
+            }else if(selectedValue == 4){
+              timber_price=parseInt(timberPrice)+700;
+              metal_price=parseInt(metalPrice)+700;
+              textile_price=parseInt(textilePrice)+700;
+              agriculture_price=parseInt(agriculturalPrice)+700;
+            }else if(selectedValue == 5){
+              timber_price=parseInt(timberPrice)+1200;
+              metal_price=parseInt(metalPrice)+1200;
+              textile_price=parseInt(textilePrice)+1200;
+              agriculture_price=parseInt(agriculturalPrice)+1200;
+            }else if(selectedValue == 6){
+              timber_price=parseInt(timberPrice)+1800;
+              metal_price=parseInt(metalPrice)+1800;
+              textile_price=parseInt(textilePrice)+1800;
+              agriculture_price=parseInt(agriculturalPrice)+1800;
+            }else if(selectedValue == 1){
+              timber_price=parseInt(timberPrice);
+              metal_price=parseInt(metalPrice);
+              textile_price=parseInt(textilePrice);
+              agriculture_price=parseInt(agriculturalPrice);
             }
-        document.querySelector(".plus-btn").addEventListener("click",function(){
-        valueCount=document.getElementById("number__box").value;
-        valueCount++;
-         document.getElementById("number__box").value=valueCount;
-         console.log(valueCount);
-        if(valueCount >1){
-            document.querySelector(".minus-btn").removeAttribute("disabled");
-            document.querySelector(".minus-btn").classList.remove("disabled");
-            document.getElementById("number__box__name").textContent=weight;
 
-            }else{
-                document.getElementById("number__box__name").textContent=weight;
-            }
-            getPriceTotal();
-      });
+             document.getElementById("first_class").innerText="Rs "+timber_price;
+              document.getElementById("second_class").innerText="Rs "+metal_price;
+              document.getElementById("third_class").innerText="Rs "+textile_price;
+              document.getElementById("agricultural__class").innerText="Rs "+agriculture_price;
+           console.log(selectedValue);
+        }
 
-       document.querySelector(".minus-btn").addEventListener("click",function(){
-         valueCount=document.getElementById("number__box").value;
-         valueCount--;
 
-         document.getElementById("number__box").value=valueCount;
-         if(valueCount ==1){
-             document.querySelector(".minus-btn").setAttribute("disabled","disabled");
-             document.getElementById("number__box__name").textContent=weight;
-
-         }else{
-            document.getElementById("number__box__name").textContent=weight;
-         }
-         getPriceTotal();
-
-    });
           </script>
 </body>
 </html>

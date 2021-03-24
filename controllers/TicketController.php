@@ -8,11 +8,10 @@ class TicketController extends Controller
         $viewTicketPrice = new TicketModel();
 
         $viewTicketPrice->loadData($request->getBody());
-       
 
         if ($request->isPost()) {
             $getResultPrice = $viewTicketPrice->getTicketPrice();
-            var_dump($getResultPrice);
+            //var_dump($getResultPrice);
             // echo json_encode($getResultPrice['tickets']);
             return $this->render('ticketPrice', $getResultPrice);
         }
@@ -20,10 +19,11 @@ class TicketController extends Controller
         return $this->render('ticketPrice');
     }
 
-    public function getTicketPrices($request) {
+    public function getTicketPrices($request)
+    {
         $viewTicketPrice = new TicketModel();
         $viewTicketPrice->loadData($request->getBody());
-            
+
         if ($request->isPost()) {
             $getResultPrice = $viewTicketPrice->getTicketPrice();
             // var_dump($getResultPrice);
@@ -31,7 +31,5 @@ class TicketController extends Controller
         }
 
     }
-
-
 
 }

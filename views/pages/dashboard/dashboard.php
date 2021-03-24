@@ -1,3 +1,7 @@
+
+
+      
+    
 <div class="dashboard">
     <?php
         if(App::$APP->activeUser()['role'] == 'admin') {
@@ -6,6 +10,46 @@
             include_once '../views/layouts/userSideNav.php';
         }
     ?>
+
+<?php
+if (isset($_SESSION['operation'] ) ) {
+ 
+     if(App::$APP->session->get('operation')=='fail'){
+  
+    
+    $html="<div class='alert hide'>";
+    $html.="<span class='fas fa-exclamation-circle'></span>";
+    $html.="<span class='msg'>Error:Something Went Wrong!!</span>";
+    $html.="<span class='close-btn'>";
+    $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+
+               
+  }else if(App::$APP->session->get('operation')=='success'){
+    
+    $html="<div class='alert-Success hide-Success'>";
+    $html.="<span class='fas fa-check-circle'></span>";
+    $html.="<span class='msg-Success'>Sucess:Your File has been uploaded!!</span>";
+    $html.="<span class='close-btn-Success'>";
+     $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+  }
+  App::$APP->session->remove('operation');
+}
+
+?>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+
+
+
 
     <div class="dash-content__container js--load-content-container">
         <div class="dash-content">
@@ -100,13 +144,14 @@
                 }else{
                   $html .= "<input type='text' name='contact_num' class='form__input'  value='" .App::$APP->activeUser()['contact_num']."'></div>";
                 }
+                //asimdu
 
-                $user_img = App::$APP->activeUser()['user_image'];
+                /*$user_img = App::$APP->activeUser()['user_image'];
                 $html .= "<div id='image_box' name='image_box'>";
-                $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class='settings__profile-img'/>";
+                $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img' alt='user-profile-picture' name='image_preview' id='image_preview' class='settings__profile-img'/>";
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo'    />";
                 
-                $html .= "<label for='photo' class='btn-square-upload' >Choose New Photo</label></div>";
+                $html .= "<label for='photo' class='btn-square-upload' >Choose New Photo</label></div>";*/
                
                 $html .= "<div class='settings__btn'>";
                 
@@ -119,6 +164,30 @@
             }
           ?>
             </form>
+
+
+            <?php
+
+          $html = "";
+          $html .= "<form action='/utrance-railway/upload' method='POST' enctype='multipart/form-data'>";
+          $html .= "<div class='userpicture-box' id='image_box' name='image_box' >";
+          $image_name = App::$APP->activeUser()['user_image'];
+
+          $html .= "<img src='../../../../utrance-railway/public/img/uploads/$image_name' alt='user-profile-picture' name='image_preview' onClick='triggerClick()'  id='image_preview' style='width:128px;height:128px' />";
+
+          $html .= "<input type='file' name='file' onChange='displayImage(this)'   accept='image/*' class='form__upload' id='photo' >";
+
+          $html .= "<label for='photo'>Choose New Photo</label></div>";
+
+          $html .= "<div class='btn__upload-box'>";
+
+          $html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' name='upload' value='Upload Image'  id='upload-btn'></div></form>";
+
+          $dom = new DOMDocument();
+          $dom->loadHTML($html);
+         print_r($dom->saveHTML());
+
+          ?>
 
             <div class="seperator"></div>
             <div class="heading-secondary center-text margin-b-m">
@@ -164,6 +233,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/viewUserImage.js"></script>
 </body>
 </html>
 

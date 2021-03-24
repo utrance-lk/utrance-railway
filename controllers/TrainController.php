@@ -127,10 +127,12 @@ class TrainController extends Controller
             if ($validationState === 'success') {
 
                 $trainArray = $saveDetailsModel->getTrains();
+                App::$APP->session->set('operation','success');
                 return $this->render(['admin', 'manageTrains'], $trainArray);
             } else {
                 $trainArray = $saveDetailsModel->getManageTrains();
                 // var_dump($validationState);
+                App::$APP->session->set('operation','fail');
                 return $this->render(['admin', 'updateTrain'], $trainArray, $validationState);
                 //     $registerSetValue = $saveDetailsModel->registerSetValue($validationState);
 
@@ -179,14 +181,14 @@ class TrainController extends Controller
 
             if ($validationState === 'success') {
                 $getrouteArray = $saveTrainDetails->getAvailableRoute();
-
+                App::$APP->session->set('operation','success');
                 return $this->render(['admin', 'addTrain'], $getrouteArray);
             } else {
                 $registerSetValue = $saveTrainDetails->registerSetValue($validationState);
                 //    var_dump($getrouteArray);
                 // var_dump( $registerSetValue['train_travel_days']);
                 // $this->render(['admin', 'addTrain'], $getrouteArray);
-
+                App::$APP->session->set('operation','fail');
                 return $this->render(['admin', 'addTrain'], $registerSetValue);
 
             }

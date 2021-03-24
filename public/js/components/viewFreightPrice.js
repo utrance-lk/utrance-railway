@@ -200,7 +200,7 @@ document.addEventListener("click", function (e) {
 
 
 const renderResults = function (user) {
-console.log(user);
+
     let markup = `
       
         <div class='results__set'>
@@ -230,7 +230,7 @@ console.log(user);
                     <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-spa'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Agriculture </div>
-                <div class='seat__class--box-item class__price'>Rs ${user.agricultural_products}</div>
+                <div class='seat__class--box-item class__price' id='agricultural__class'>Rs ${user.agricultural_products}</div>
             </div>
             <!--div class='seat__class--box observartion__saloon--box'>
                 <svg class='seat__class--box-item class__icon'>
@@ -241,14 +241,16 @@ console.log(user);
             </div!-->
         </div>
 
+       
         <div class='number-of-persons__box'>
-            <button class='btn minus-btn disabled' type='button'>-</button>
-            
-            <!--span class='number__box '>1</span!-->
-            <input id='number__box' value=1>
-            <button class='btn plus-btn' type='button'>+</button>
-            
-            <span id='number__box__name'>kg</span>
+        <select id='select-weight__range' style='font-size: 1.5rem;height: 30px;width: 100px;border: 1px solid var(--color-main);' onchange='getSelectValue();'>
+        <option value='1'>01 - 05 kg</option>
+        <option value='2'>05 - 10 kg</option>
+        <option value='3'>10 - 20 kg</option>
+        <option value='4'>20 - 40 kg</option>
+        <option value='5'>40 - 70 kg</option>
+        <option value='6'>70 - 99 kg</option>
+        </select>
         </div>
         
 
@@ -299,7 +301,7 @@ const renderDefaultResults = function () {
                     <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-spa'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Agricultural</div>
-                <div class='seat__class--box-item class__price'>Rs 400</div>
+                <div class='seat__class--box-item class__price' id='agricultural__class'>Rs 400</div>
             </div>
             <!--div class='seat__class--box observartion__saloon--box'>
                 <svg class='seat__class--box-item class__icon'>
@@ -310,13 +312,16 @@ const renderDefaultResults = function () {
             </div!-->
         </div>
 
+        
         <div class='number-of-persons__box'>
-            <button class='btn minus-btn disabled' type='button' > -</button>
-           
-            <input id='number__box' value=1>
-            <button class='btn plus-btn' type='button'>+</button>
-            
-            <span id='number__box__name'>kg</span>
+        <select id='select-weight__range' style='font-size: 1.5rem;height: 30px;width: 100px;border: 1px solid var(--color-main);' onchange="getSelectValue();">
+        <option value='1'>01 - 05 kg</option>
+        <option value='2'>05 - 10 kg</option>
+        <option value='3'>10 - 20 kg</option>
+        <option value='4'>20 - 40 kg</option>
+        <option value='5'>40 - 70 kg</option>
+        <option value='6' >70 - 99 kg</option>
+        </select>
         </div>
     `
 

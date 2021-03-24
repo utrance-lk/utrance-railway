@@ -2,6 +2,60 @@
 		<div class="register__img-box register__container-item">  
         </div>
 		<div class="register__form-box register__container-item">
+
+		<?php
+if (isset($_SESSION['operation'] ) ) {
+ 
+     if(App::$APP->session->get('operation')=='fail'){
+  
+    
+    $html="<div class='alert hide'>";
+    $html.="<span class='fas fa-exclamation-circle'></span>";
+    $html.="<span class='msg'>Error:Something Went Wrong!!</span>";
+    $html.="<span class='close-btn'>";
+    $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+
+               
+  }else if(App::$APP->session->get('operation')=='success'){
+    
+    $html="<div class='alert-Success hide-Success'>";
+    $html.="<span class='fas fa-check-circle'></span>";
+    $html.="<span class='msg-Success'>Sucess:Your File has been uploaded!!</span>";
+    $html.="<span class='close-btn-Success'>";
+     $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+  }
+  App::$APP->session->remove('operation');
+}
+
+?>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<form class="form__container" method="POST" action="/utrance-railway/register">
 				<div class="new-account-box-container form__container-item">
 					<div class="register-text">
@@ -82,30 +136,6 @@
                     <label for="password-confirm">Password Confirm</label>
                     <input type="password" id="password-confirm" name="user_confirm_password" placeholder="<?php echo isset($passwordError) ? $passwordError : '***************'; ?>" class="<?php echo isset($passwordError) ? 'error__placeholder' : ''; ?>" required>
                 </div>
-<<<<<<< HEAD
-                <!--?php
-
-                var_dump($userError);
-                   switch($userError){
-
-                       case 1:echo "<script>alert('$first_name_error');</script>";break;
-                       case 2:echo "<script>alert('$last_name_error');</script>";break;
-                       case 3:echo "<script>alert('$email_id_error');</script>";break;
-                       case 4:echo "<script>alert('$street_line1_error');</script>";break;
-                       case 5:echo "<script>alert('$street_line2_error');</script>";break;
-                       case 6:echo "<script>alert('$city_error');</script>";break;
-                       case 7:echo "<script>alert('$contact_num_error');</script>";break;
-                       case 8:echo "<script>alert('$user_confirm_password_error');</script>";
-
-
-                   }
-                   ?-->
-
-				<!-- <div class="forgot-password-box form__container-item">
-					<a href="#" class="forgort-password-box">Forgot Password?</a>
-				</div> -->
-=======
->>>>>>> 2833bc74c022c171d9746af0d9f3d5784c46d937
 				<button type="submit" class="register-btn form__container-item">
 						Register
 				</button>

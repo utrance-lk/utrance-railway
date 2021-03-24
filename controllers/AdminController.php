@@ -58,9 +58,11 @@ class AdminController extends Controller
             $state = $adminFunction->addUser();
 
             if ($state === "success") {
+                App::$APP->session->set('operation','success');
                 return $response->redirect('/utrance-railway/users/add');
             } else {
                 $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
+                App::$APP->session->set('operation','fail');
                 return $this->render(['admin', 'addUser'], $addUserSetValue); //Ashika
             }
 
@@ -106,10 +108,12 @@ class AdminController extends Controller
             $state = $saveDetailsModel->updateUserDetails();
 
             if ($state === "success") {
+                App::$APP->session->set('operation','success');
                 return $response->redirect('/utrance-railway/users/view?id=' . $id);
             } else {
                 $commonArray = $saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"] = $saveDetailsModel->registerSetValue($state); //Ashika
+                App::$APP->session->set('operation','fail');
                 return $this->render(['admin', 'updateUser'], $commonArray); //Ashika
             }
 
@@ -229,12 +233,13 @@ class AdminController extends Controller
                 //  var_dump($validationState);
 
                 if ($validationState === "success") {
-
+                    App::$APP->session->set('operation','success');
                     return $response->redirect('/utrance-railway/trains/view?id=' . $id);
                 } else {
 
                     $trainArray = $saveDetailsModel->getManagTrains();
                     $registerSetValue = $saveDetailsModel->trainSetValue($validationState);
+                    App::$APP->session->set('operation','fail');
                     return $this->render(['admin', 'updateTrain'], $trainArray, $registerSetValue);
 
                 }
@@ -297,6 +302,7 @@ class AdminController extends Controller
                     // $getrouteArray = $saveTrainDetails->getAvailableRoute();
 
                     // return $this->render(['admin', 'addTrain'],$getrouteArray);
+                    App::$APP->session->set('operation','success');
                     return $response->redirect('/utrance-railway/trains/add');
                 } else {
 
@@ -305,7 +311,7 @@ class AdminController extends Controller
 
                     // var_dump( $registerSetValue['train_travel_days']);
                     // $this->render(['admin', 'addTrain'], $getrouteArray);
-
+                    App::$APP->session->set('operation','fail');
                     return $this->render(['admin', 'addTrain'], $trainArray);
                 }
 

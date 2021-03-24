@@ -1,3 +1,43 @@
+<?php
+if (isset($_SESSION['operation'] ) ) {
+ 
+     if(App::$APP->session->get('operation')=='fail'){
+  
+    
+    $html="<div class='alert hide'>";
+    $html.="<span class='fas fa-exclamation-circle'></span>";
+    $html.="<span class='msg'>Error:Something Went Wrong!!</span>";
+    $html.="<span class='close-btn'>";
+    $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+
+               
+  }else if(App::$APP->session->get('operation')=='success'){
+    
+    $html="<div class='alert-Success hide-Success'>";
+    $html.="<span class='fas fa-check-circle'></span>";
+    $html.="<span class='msg-Success'>Sucess:Your File has been uploaded!!</span>";
+    $html.="<span class='close-btn-Success'>";
+     $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+  }
+  App::$APP->session->remove('operation');
+}
+
+?>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+
+
+
+
 
 <div class="load-content-container js--load-content-container">
         <div class="load-content">

@@ -3,10 +3,50 @@
     <div class="dash-content__container">
         <div class="dash-content">
             <?php include_once '../views/layouts/helpers.php';?>
+
+
+
+            <?php
+if (isset($_SESSION['operation'])) {
+
+    if (App::$APP->session->get('operation') == 'fail') {
+
+        $html = "<div class='alert hide'>";
+        $html .= "<span class='fas fa-exclamation-circle'></span>";
+        $html .= "<span class='msg'>Error:Something Went Wrong!!</span>";
+        $html .= "<span class='close-btn'>";
+        $html .= "<span class='fas fa-times'></span></span></div>";
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($html);
+        print_r($dom->saveHTML());
+
+    } else if (App::$APP->session->get('operation') == 'success') {
+
+        $html = "<div class='alert-Success hide-Success'>";
+        $html .= "<span class='fas fa-check-circle'></span>";
+        $html .= "<span class='msg-Success'>Sucess:Your File has been uploaded!!</span>";
+        $html .= "<span class='close-btn-Success'>";
+        $html .= "<span class='fas fa-times'></span></span></div>";
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($html);
+        print_r($dom->saveHTML());
+
+    }
+    App::$APP->session->remove('operation');
+}
+
+?>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+
+
+
+
             <div class="heading-secondary margin-b-m margin-t-m">
-                <p class="center-text"><?php echo $trains[0]['train_name']?></p>
+                <p class="center-text"><?php echo $trains[0]['train_name'] ?></p>
             </div>
-            <form action="/utrance-railway/trains/update?id=<?php echo $trains[0]['train_id']?>" class="dash-content__form" method='post' >
+            <form action="/utrance-railway/trains/update?id=<?php echo $trains[0]['train_id'] ?>" class="dash-content__form" method='post' >
             <?php if (isset($TravalDaysError)) {echo $TravalDaysError;}?>
                 <div class="dash-content__input">
                     <label for="trainname" class="dash-content__label">Train Name</label>
@@ -22,17 +62,17 @@
                 </div>
                 <div class="dash-content__input">
                     <label for="routeid" class="dash-content__label">Route Id</label>
-                    <input type='number' min='0' value="<?php echo $trains[0]['route_id']?>" name='route_id' id='routeid' class='form__input' readonly>
+                    <input type='number' min='0' value="<?php echo $trains[0]['route_id'] ?>" name='route_id' id='routeid' class='form__input' readonly>
                 </div>
                 <fieldset class="dash-content__input dash-content__input--border space">
                     <legend class="dash-content__label">Train Travel Days</legend>
                     <div class="add-train__travel-days" required>
                         <?php
-                            $week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-                            foreach ($week as $day) {
-                                echo renderDay($day, $trains);
-                            }
-                        ?>
+$week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+foreach ($week as $day) {
+    echo renderDay($day, $trains);
+}
+?>
                     </div>
                 </fieldset>
                 <div class="flex-st-center margin-b-s">
