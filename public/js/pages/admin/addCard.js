@@ -1,15 +1,15 @@
-let newStations = [];
-let newnewStations = [];
-let emptyStations=0;
+
 
 
 function addStops(x) {
+   
   document.querySelectorAll(".stop-card__add-btn").forEach(function (item) {
     item.addEventListener("click", function (e) {
 
       const isAvailPopup = document.querySelector(".add-stop-popup");
       if (!isAvailPopup) {
         const parent = e.target.closest(".stop-card");
+        
         console.log(parent);
       //  console.log(parent.firstChild.firstChild.innerText.split("#")[1] * 1);
         const markup = `
@@ -52,7 +52,7 @@ function addStops(x) {
             `;
         parent.insertAdjacentHTML("afterend", markup);
 
- ///////////////////////////////start validation///////////////////////////////////////////
+///////////////////////////////start validation///////////////////////////////////////////
         // let newindex5= parent.firstChild.firstChild.innerText.split("#")[1] * 1;
        
         $(document).ready(function(){
@@ -169,7 +169,7 @@ function addStops(x) {
           document.getElementById("addButton").disabled = false;
           document.getElementById("addButton").style.opacity = "1";
         }
- //////////////////////////////////end validation/////////////////////////
+//////////////////////////////////end validation/////////////////////////
         const popupCloseBtn = document.querySelector(
           ".add-stop-popup__close-btn"
         );
@@ -297,10 +297,11 @@ function addStops(x) {
       // document.querySelector(".add-stop-popup").style.display = 'flex';
     });
 
-  });  
+  }); 
+
 }
 
-// console.log(popupCloseBtn);
+
 
 const changePathIdAndBG = function (changedPathId) {
   let pathIdCount = 0;
@@ -317,15 +318,7 @@ const changePathIdAndBG = function (changedPathId) {
   });
 };
 
-const timeConversion = function (time) {
-  const arrTimeHour = time.split(":")[0] * 1;
 
-  if (arrTimeHour < 12) {
-    return `${time} AM`;
-  }
-
-  return `0${arrTimeHour - 12}:${time.split(":")[1]} PM`;
-};
 
 
 
@@ -478,3 +471,18 @@ function selected(element){
   searchWrapper.classList.remove("active");
   
 };
+
+// function addStops(x) {
+//   console.log(document.querySelectorAll(".stop-card__add-btn"));
+//   // document.querySelectorAll(".stop-card__add-btn")
+//   // .forEach(function (item) {
+    
+
+//   //       });
+//   //     });
+    
+
+// }
+
+console.log("hasani nimeshika");
+console.log(document.querySelectorAll(".stop-card__add-btn")[0]); 

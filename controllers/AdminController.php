@@ -370,7 +370,7 @@ class AdminController extends Controller
     {
         if ($this->protect()) {
             if ($request->isPost()) {
-                return 'success';
+                return $this->render(['admin', 'addRoute']);
             }
 
             return $this->render(['admin', 'addRoute']);

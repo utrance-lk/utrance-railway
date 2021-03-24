@@ -165,12 +165,10 @@ function addRouteEvents() {
     arrTime = timeConversion(arrTime);
     deptTime = timeConversion(deptTime);
 
-    isBackOdd = "true";
+    isBackOdd = "false";
 
     const html = `
-                        <div class="stop-card ${
-                            isBackOdd ? "back-even" : "back-odd"
-                        }">
+                        <div class="stop-card back-odd">
                         <div class="stop-card__details">
                             <div class="stop-card__path-id">
                                 #${1}
@@ -185,7 +183,7 @@ function addRouteEvents() {
                                 ${deptTime}
                             </div>
                         </div>
-                        <div class="stop-card__add-btn">
+                        <div class="stop-card__add-btn id = "hhh">
                             <svg class="add-icon">
                                 <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
                             </svg>
@@ -195,8 +193,12 @@ function addRouteEvents() {
                 let myobj = document.querySelector(".add-stop-popup")
                 myobj.remove();
                 addRouteElement.insertAdjacentHTML('beforeend', html);
+                console.log(document.querySelector(".stop-card"));
+                addStops(39);
             });
-                
+                //   addStops(39);    
+
+                 
 }
 
 const timeConversion = function (time) {
@@ -208,3 +210,5 @@ const timeConversion = function (time) {
   
     return `0${arrTimeHour - 12}:${time.split(":")[1]} PM`;
   };
+
+

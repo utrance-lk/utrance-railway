@@ -10,17 +10,28 @@
                 <div>Path id</div>
                 <div>Station</div>
                 <div>Arr. Time</div>
-                <div>Dept. Time</div></div>
+                <div>Dept. Time</div>
+            </div>
                 <span class="btn btn-square-blue" id="add-first-stop">
                     <div class="btn-square-blue__text">Add First Stop</div>
                     <svg class="btn-square-blue__icon">
                         <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-plus"></use>
                     </svg>
                 </span>
-          </div>
-         </div>
+        </div>
+    </div>
 </div>
+
+
+
+
+<?php $x=39 ?>
 <script type="text/javascript" src="/utrance-railway/public/js/pages/admin/addRoute.js"></script>
+<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewaddRoutCard.js"></script>
+<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/addCard.js"></script>
 <script>
     addRouteEvents();
+</script>
+<script>
+    // addStops(39);
 </script>
