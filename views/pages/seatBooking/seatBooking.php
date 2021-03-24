@@ -15,12 +15,11 @@
             <span>journey time</span>&nbsp;&ndash;&nbsp;<span><?php echo isset($trains['t2']) ? calcFullJourneyTime($trains['t1']['journey_time'], $trains['t2']['journey_time'], $wait_time) : calcFullJourneyTime($trains['t1']['journey_time']) ?></span>
         </div>
     </div>
-    <div class="seat-booking__form">
-        <div class="seat-booking__remaining-seats">
-            50 seats left!
-        </div>
+    <form class="seat-booking__form" action="/utrance-railway/book-seats" method="POST">
         <?php
 include_once "../views/components/seatBookingCard.php";
+
+// var_dump($trains);
 
 $i = 0;
 foreach ($trains as $key => $value) {
@@ -29,7 +28,13 @@ foreach ($trains as $key => $value) {
 }
 
 ?>
-        <form action="https://sandbox.payhere.lk/pay/checkout" class="flex-col-stretch-center" method="POST">
+        <!-- <form action="https://sandbox.payhere.lk/pay/checkout" class="flex-col-stretch-center" method="POST"> -->
+        <div class="flex-col-stretch-center" >
+        <input type="text" name="when" value="<?php echo $when;?>" hidden>
+            <input type="text" name="train1_id" value="<?php echo $trains['t1']['train_id'];?>" hidden>
+            <?php if($trains['t2']):?>
+                <input type="text" name="train2_id" value="<?php echo $trains['t2']['train_id'];?>" hidden>
+            <?php endif;?>
             <div class="seat-booking__total-price margin-b-m flex-row-st-center">
                 <span class="margin-r-xs">final amount&nbsp;&colon;</span>
                 <div class="padding-xs" style="background-color: #fff;">
@@ -53,12 +58,22 @@ foreach ($trains as $key => $value) {
             <input type="text" name="city" value="<?php echo App::$APP->activeUser()['city']; ?>" hidden readonly>
             <input type="hidden" name="country" value="Sri Lanka" hidden readonly>
             <div class="seat-booking__btn-container">
-                <button class="btn btn-round-blue" type="submit">
-                    Book now
-                </button>
+                <?php if ($trains['t1']['sa_first_class'] == 0 || $trains['t1']['sa_second_class'] == 0) : ?>
+                    <?php  if(isset($trains['t2'])) : ?> 
+                        <?php if ($trains['t2']['sa_first_class'] == 0 || $trains['t2']['sa_second_class'] == 0) : ?>
+                            <button class="btn btn-round-blue button-inactive" id="btn-book-now" type="submit" disabled>
+                                Book now
+                            </button>
+                        <?php endif;?>
+                    <?php endif;?>
+                <?php else: ?>
+                    <button class="btn btn-round-blue" id="btn-book-now" type="submit">
+                        Book now
+                    </button>
+                <?php endif;?>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 <script type="text/javascript" src="../../../utrance-railway/public/js/pages/seatBooking.js"></script>
 <?php
@@ -82,7 +97,23 @@ foreach ($trains as $key => $value) {
         t2.scBasePrice = "<?php echo isset($trains['t2']) ? $trains['t2']['ticket_sc'] : 0;?>" * 1;
         arr.push(t2);
     }
-    getValues(arr);
+
+    var seatArr = [];
+    var tt1 = {};
+    var tt2 = {};
+
+    tt1.fcSeats = "<?php echo $trains['t1']['sa_first_class'];?>" * 1;
+    tt1.scSeats = "<?php echo $trains['t1']['sa_second_class'];?>" * 1;
+
+    seatArr.push(tt1);
+
+    if(train2Available) {
+        tt2.fcSeats = "<?php echo isset($trains['t2']) ? $trains['t2']['sa_first_class'] : 0;?>" * 1;
+        tt2.scSeats = "<?php echo isset($trains['t2']) ? $trains['t2']['sa_second_class'] : 0;?>" * 1;
+        seatArr.push(tt2);
+    }
+
+    getValues(arr, seatArr);
 </script>
 
 <?php

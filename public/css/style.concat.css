@@ -356,6 +356,11 @@ input::-webkit-datetime-edit-year-field:focus {
   width: 50%;
 }
 
+/* BUTTONS */
+.button-inactive {
+  background-color: grey !important;
+}
+
 .btn {
   cursor: pointer;
   outline: none;
@@ -1649,6 +1654,15 @@ input::-webkit-datetime-edit-year-field:focus {
   padding: 1rem 3rem;
   color: #fff;
   border-radius: 2rem;
+}
+
+.seat-booking__no-seats {
+  font-family: inherit;
+  background-color: transparent;
+  color: #fff;
+  font-size: inherit;
+  display: inline-block;
+  width: 3rem;
 }
 
 .manage-trains__search-results {

@@ -46,3 +46,12 @@
   color: #fff;
   border-radius: 2rem;
 }
+
+.seat-booking__no-seats {
+  font-family: inherit;
+  background-color: transparent;
+  color: #fff;
+  font-size: inherit;
+  display: inline-block;
+  width: 3rem;
+}
