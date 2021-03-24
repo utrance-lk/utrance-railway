@@ -15,7 +15,7 @@
             <span>journey time</span>&nbsp;&ndash;&nbsp;<span><?php echo isset($trains['t2']) ? calcFullJourneyTime($trains['t1']['journey_time'], $trains['t2']['journey_time'], $wait_time) : calcFullJourneyTime($trains['t1']['journey_time']) ?></span>
         </div>
     </div>
-    <form class="seat-booking__form" action="/utrance-railway/book-seats" method="POST">
+    <form class="seat-booking__form" action="book-seats" method="POST">
         <?php
 include_once "../views/components/seatBookingCard.php";
 
