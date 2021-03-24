@@ -19,6 +19,9 @@ function renderTrainBookingCard($train, $id)
 
 
     return "
+            <div class='seat-booking__remaining-seats' id='remaining-seats{$id}'>
+                <span id='no-seats-remain{$id}'>{$train['sa_second_class']}</span> seats left!
+            </div>
             <div class='seat-booking-card'>
                 <div class='seat-booking-card__train-no'>
                     train {$train['train_no']}
@@ -35,11 +38,11 @@ function renderTrainBookingCard($train, $id)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
+                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count{$id}' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <select name='train_class' id='train_class{$id}' class='seat-booking-card__train-class'>
+                    <select name='train_class{$id}' id='train_class{$id}' class='seat-booking-card__train-class'>
                         <option value='firstClass'>first class</option>
                         <option value='secondClass' selected>second class</option>
                     </select>

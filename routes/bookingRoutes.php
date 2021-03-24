@@ -8,6 +8,7 @@ $app->router->get('/bookings', [BookingController::class, 'manageBookings']);
 $app->router->post('/bookings', [BookingController::class, 'manageBookings']);
 
 $app->router->get('/book-seats', [BookingController::class, 'createSeatBooking']);
+$app->router->post('/book-seats', [BookingController::class, 'createSeatBooking']);
 
 $app->router->get('/book-freights', [BookingController::class, 'bookFreight']);
 
