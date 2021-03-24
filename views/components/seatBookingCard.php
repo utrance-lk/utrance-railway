@@ -38,7 +38,7 @@ function renderTrainBookingCard($train, $id)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
+                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count{$id}' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>

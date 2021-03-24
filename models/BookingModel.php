@@ -26,4 +26,8 @@ class BookingModel extends Model
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function createBooking() {
+        //sdf
+    }
+
 }

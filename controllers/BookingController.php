@@ -38,7 +38,7 @@ class BookingController extends Controller
 
     }
 
-    public function createSeatBooking($request)
+    public function createSeatBooking($request, $response)
     {
         if (!$this->authMiddleware->isLoggedIn()) {
             return 'You are not logged in!';
@@ -46,6 +46,7 @@ class BookingController extends Controller
 
         if ($request->isGet()) {
             // return selected booking
+
 
             $option = $request->getQueryParams()['op'];
             $mode = $request->getQueryParams()['mode'];
@@ -75,12 +76,12 @@ class BookingController extends Controller
         }
 
         if ($request->isPost()) {
+
             $seatAvailability1 = new BookingModel();
             $seatAvailability1->loadData(['train_id' => $_POST['train1_id'], 'when' => $_POST['when']]);
             $availbleSeats1 = $seatAvailability1->getAvailableSeatsCount();
             $availbleSeats2 = null;
 
-            var_dump($_POST);
             if (isset($_POST['train2_id'])) {
                 $seatAvailability2 = new BookingModel();
                 $seatAvailability2->loadData(['train_id' => $_POST['train2_id'], 'when' => $_POST['when']]);
@@ -88,26 +89,30 @@ class BookingController extends Controller
             }
 
             if ($_POST['train_class1'] == 'firstClass') {
-                if ($availbleSeats1[0]['sa_first_class'] == 0) {
+                if ($availbleSeats1[0]['sa_first_class'] < $_POST['person__count1']) {
                     return 'booking cannot be done';
                 }
-            } elseif ($_POST['train_class1'] == 'secondClass') {
-                if ($availbleSeats1[0]['sa_second_class'] == 0) {
+            } 
+            if ($_POST['train_class1'] == 'secondClass') {
+                if ($availbleSeats1[0]['sa_second_class'] < $_POST['person__count1']) {
                     return 'booking cannot be done';
                 }
-            } elseif (isset($_POST['train_class2'])) {
+            } 
+            if (isset($_POST['train_class2'])) {
                 if ($_POST['train_class2'] == 'firstClass') {
-                    if ($availbleSeats2[0]['sa_first_class'] == 0) {
+                    if ($availbleSeats2[0]['sa_first_class'] < $_POST['person__count2']) {
                         return 'booking cannot be done';
                     }
-                } elseif ($_POST['train_class2'] == 'secondClass') {
-                    if ($availbleSeats2[0]['sa_second_class'] == 0) {
+                } 
+                if ($_POST['train_class2'] == 'secondClass') {
+                    if ($availbleSeats2[0]['sa_second_class'] < $_POST['person__count2']) {
                         return 'booking cannot be done';
                     }
                 }
-            } else {
-                return $this->redirect('/utrance-railway/payment');
-            }
+            } 
+                
+            return $response->redirect('/utrance-railway/payment');
+            
         }
 
     }
@@ -127,6 +132,10 @@ class BookingController extends Controller
 
             if (isset($fullTrainDetails['train_name'])) {
                 $train1['train_name'] = $fullTrainDetails['train_name'];
+            }
+
+            if (isset($fullTrainDetails['train_id'])) {
+                $train1['train_id'] = $fullTrainDetails['train_id'];
             }
 
             if (isset($fullTrainDetails['fssdt'])) {

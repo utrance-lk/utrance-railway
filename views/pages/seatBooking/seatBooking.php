@@ -19,8 +19,6 @@
         <?php
 include_once "../views/components/seatBookingCard.php";
 
-// var_dump($trains);
-
 $i = 0;
 foreach ($trains as $key => $value) {
     $i++;
@@ -32,7 +30,7 @@ foreach ($trains as $key => $value) {
         <div class="flex-col-stretch-center" >
         <input type="text" name="when" value="<?php echo $when;?>" hidden>
             <input type="text" name="train1_id" value="<?php echo $trains['t1']['train_id'];?>" hidden>
-            <?php if($trains['t2']):?>
+            <?php if(isset($trains['t2'])):?>
                 <input type="text" name="train2_id" value="<?php echo $trains['t2']['train_id'];?>" hidden>
             <?php endif;?>
             <div class="seat-booking__total-price margin-b-m flex-row-st-center">
@@ -58,19 +56,21 @@ foreach ($trains as $key => $value) {
             <input type="text" name="city" value="<?php echo App::$APP->activeUser()['city']; ?>" hidden readonly>
             <input type="hidden" name="country" value="Sri Lanka" hidden readonly>
             <div class="seat-booking__btn-container">
-                <?php if ($trains['t1']['sa_first_class'] == 0 || $trains['t1']['sa_second_class'] == 0) : ?>
-                    <?php  if(isset($trains['t2'])) : ?> 
-                        <?php if ($trains['t2']['sa_first_class'] == 0 || $trains['t2']['sa_second_class'] == 0) : ?>
-                            <button class="btn btn-round-blue button-inactive" id="btn-book-now" type="submit" disabled>
-                                Book now
-                            </button>
-                        <?php endif;?>
+                <?php if ($trains['t1']['sa_second_class'] == 0) : ?>
+                    <button class="btn btn-round-blue button-inactive" id="btn-book-now" type="submit" disabled>
+                        Book now
+                    </button>
+                <?php elseif(isset($trains['t2'])) : ?> 
+                    <?php if ($trains['t2']['sa_second_class'] == 0) : ?>
+                        <button class="btn btn-round-blue button-inactive" id="btn-book-now" type="submit" disabled>
+                            Book now
+                        </button> 
                     <?php endif;?>
                 <?php else: ?>
                     <button class="btn btn-round-blue" id="btn-book-now" type="submit">
                         Book now
                     </button>
-                <?php endif;?>
+                <?php endif;?>    
             </div>
         </div>
     </form>
