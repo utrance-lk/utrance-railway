@@ -8,7 +8,6 @@ $app->router->get('/home', [ViewController::class, 'home']);
 $app->router->post('/search', [ViewController::class, 'search']);
 
 $app->router->get('/view-train', [ViewController::class, 'viewTrain']);
-//$app->router->get('/view-train', [ViewController::class, 'viewTrainBasic']);
 
 $app->router->get('/ticket-prices', [TicketController::class, 'ViewticketPrice']);
 $app->router->post('/ticket-prices', [TicketController::class, 'ViewticketPrice']);
