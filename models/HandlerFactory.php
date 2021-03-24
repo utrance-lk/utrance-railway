@@ -61,6 +61,30 @@ class HandlerFactory{
         
         return 'success';
     }
+
+    // public function getOneUsingManyFields($table, $fieldValues, $returnColumns) {
+    //     $query = App::$APP->db->pdo->prepare("SELECT * FROM $table WHERE $fields[0]=:field LIMIT 1");
+
+    //     $queryString = "SELECT ";
+    //     foreach ($returnColumns as $column) {
+    //         $queryString .= $column . ",";
+    //     }
+
+    //     substr_replace($queryString ,"",-1);
+    //     $queryString .= " FROM " . $table . " WHERE ";
+
+    //     foreach ($fieldValues as $key => $value) {
+    //         $queryString .= $key . " = " . $value . " AND";
+    //     }
+
+
+
+
+    //     $query->bindValue(":field", $value);
+    //     $query->execute();
+    //     return $query->fetchAll(PDO::FETCH_ASSOC);
+    // } 
+
 }
 
 ?>

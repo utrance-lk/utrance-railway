@@ -1,5 +1,4 @@
-
-.seat-booking__day{
+.seat-booking__day {
   position: relative;
 }
 
@@ -12,7 +11,7 @@
 .seat-booking__form {
   display: flex;
   flex-direction: column;
-  width: 60%;   
+  width: 60%;
 }
 
 .seat-booking__total-price {
@@ -29,8 +28,30 @@
   align-self: center;
 }
 
-
 .seat-booking__final-amount {
   font-family: inherit;
   font-size: 2rem;
+}
+
+.seat-booking__remaining-seats {
+  background-color: red;
+  transform: translateY(-4rem);
+  height: 4rem;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.5;
+  width: max-content;
+  margin: 0 auto;
+  padding: 1rem 3rem;
+  color: #fff;
+  border-radius: 2rem;
+}
+
+.seat-booking__no-seats {
+  font-family: inherit;
+  background-color: transparent;
+  color: #fff;
+  font-size: inherit;
+  display: inline-block;
+  width: 3rem;
 }
