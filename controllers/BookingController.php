@@ -38,7 +38,7 @@ class BookingController extends Controller
 
     }
 
-    public function createSeatBooking($request)
+    public function createSeatBooking($request, $response)
     {
         if (!$this->authMiddleware->isLoggedIn()) {
             return 'You are not logged in!';
@@ -46,6 +46,7 @@ class BookingController extends Controller
 
         if ($request->isGet()) {
             // return selected booking
+
 
             $option = $request->getQueryParams()['op'];
             $mode = $request->getQueryParams()['mode'];
@@ -63,10 +64,101 @@ class BookingController extends Controller
             //     $i++;
             // }
 
+            foreach ($train['trains'] as $key => $value) {
+                $seatAvailability = new BookingModel();
+                $seatAvailability->loadData(['train_id' => $value['train_id'], 'when' => $train['when']]);
+                $availbleSeats = $seatAvailability->getAvailableSeatsCount();
+                $train['trains'][$key]['sa_first_class'] = $availbleSeats[0]['sa_first_class'];
+                $train['trains'][$key]['sa_second_class'] = $availbleSeats[0]['sa_second_class'];
+            }
+
+            App::$APP->session->set('booking', null);
+
             return $this->render('seatBooking', $train);
         }
 
+        if ($request->isPost()) {
+
+            $seatAvailability1 = new BookingModel();
+            $seatAvailability1->loadData(['train_id' => $_POST['train1_id'], 'when' => $_POST['when']]);
+            $availbleSeats1 = $seatAvailability1->getAvailableSeatsCount();
+            $availbleSeats2 = null;
+
+            if (isset($_POST['train2_id'])) {
+                $seatAvailability2 = new BookingModel();
+                $seatAvailability2->loadData(['train_id' => $_POST['train2_id'], 'when' => $_POST['when']]);
+                $availbleSeats2 = $seatAvailability2->getAvailableSeatsCount();
+            }
+
+            if ($_POST['train_class1'] == 'firstClass') {
+                if ($availbleSeats1[0]['sa_first_class'] < $_POST['person__count1']) {
+                    return 'booking cannot be done';
+                }
+            } 
+            if ($_POST['train_class1'] == 'secondClass') {
+                if ($availbleSeats1[0]['sa_second_class'] < $_POST['person__count1']) {
+                    return 'booking cannot be done';
+                }
+            } 
+            if (isset($_POST['train_class2'])) {
+                if ($_POST['train_class2'] == 'firstClass') {
+                    if ($availbleSeats2[0]['sa_first_class'] < $_POST['person__count2']) {
+                        return 'booking cannot be done';
+                    }
+                } 
+                if ($_POST['train_class2'] == 'secondClass') {
+                    if ($availbleSeats2[0]['sa_second_class'] < $_POST['person__count2']) {
+                        return 'booking cannot be done';
+                    }
+                }
+            } 
+
+            
+            $index = 1;
+            foreach ($_SESSION['booking'] as $key => $value) {
+                $_SESSION['booking'][$index]['passengers'] = $_POST['person__count'.$index];
+                $_SESSION['booking'][$index]['class'] = $_POST['train_class'.$index];
+                $_SESSION['booking'][$index]['base_price'] = $_POST['tickpricetrain'.$index];
+                $_SESSION['booking'][$index]['total_amount'] = $_POST['amount'];
+                $index++;
+            }
+                
+            return $this->render('payment', $_POST);
+            
+        }
+
     }
+
+    public function bookingSuccess($request, $response) {
+        if($request->isGet()) {
+            $str = null;
+            foreach($_SESSION['booking'][1] as $key => $value) {
+                $str .= $value;
+            }
+
+            if(isset($_SESSION['booking'][2])) {
+                foreach($_SESSION['booking'][2] as $key => $value) {
+                    $str .= $value;
+                }
+            }
+            
+            $bookingVar = $_SESSION['booking'];
+            $hashStr = md5($str);
+
+            foreach($bookingVar as $key => $value) {
+                $storeBooking = new BookingModel();
+                $storeBooking->loadData(['customer_id' => (int)$value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int)$value['train_id'], 'passengers' => (int)$value['passengers'], 'class' => $value['class'], 'base_price' => (int)$value['base_price'], 'total_amount' => (int)$value['total_amount'], 'other_booking' => $hashStr]);
+                $storeBooking->createBooking();
+                $storeBooking->reduceSeatAvailableCount();
+            }
+
+            App::$APP->session->remove('booking');
+
+            $response->redirect('home');
+
+        }
+    }
+
 
     private function travellingTrains($mode, $fullTrainDetails)
     {
@@ -85,6 +177,10 @@ class BookingController extends Controller
                 $train1['train_name'] = $fullTrainDetails['train_name'];
             }
 
+            if (isset($fullTrainDetails['train_id'])) {
+                $train1['train_id'] = $fullTrainDetails['train_id'];
+            }
+
             if (isset($fullTrainDetails['fssdt'])) {
                 $train1['from_dept'] = $fullTrainDetails['fssdt'];
             }
@@ -101,7 +197,7 @@ class BookingController extends Controller
                 $train1['train_type'] = $fullTrainDetails['train_type'];
             }
 
-            if(isset($fullTrainDetails['train1Price'])) {
+            if (isset($fullTrainDetails['train1Price'])) {
                 $train1['ticket_fc'] = $fullTrainDetails['train1Price']['first_class'];
                 $train1['ticket_sc'] = $fullTrainDetails['train1Price']['second_class'];
                 $train1['ticket_tc'] = $fullTrainDetails['train1Price']['third_class'];
@@ -114,6 +210,7 @@ class BookingController extends Controller
             $train['trains'] = $trains;
             $train['all_start'] = $fullTrainDetails['fssn'];
             $train['all_end'] = $fullTrainDetails['tsen'];
+            $train['when'] = $fullTrainDetails['when'];
 
             return $train;
 
@@ -137,6 +234,10 @@ class BookingController extends Controller
                 $train1['train_name'] = $fullTrainDetails['frtn'];
             }
 
+            if (isset($fullTrainDetails['frti'])) {
+                $train1['train_id'] = $fullTrainDetails['frti'];
+            }
+
             if (isset($fullTrainDetails['fssdt'])) {
                 $train1['from_dept'] = $fullTrainDetails['fssdt'];
             }
@@ -153,7 +254,7 @@ class BookingController extends Controller
                 $train1['train_type'] = $fullTrainDetails['frtt'];
             }
 
-            if(isset($fullTrainDetails['train1Price'])) {
+            if (isset($fullTrainDetails['train1Price'])) {
                 $train1['ticket_fc'] = $fullTrainDetails['train1Price']['first_class'];
                 $train1['ticket_sc'] = $fullTrainDetails['train1Price']['second_class'];
                 $train1['ticket_tc'] = $fullTrainDetails['train1Price']['third_class'];
@@ -175,6 +276,10 @@ class BookingController extends Controller
                 $train2['train_name'] = $fullTrainDetails['trtn'];
             }
 
+            if (isset($fullTrainDetails['trti'])) {
+                $train2['train_id'] = $fullTrainDetails['trti'];
+            }
+
             if (isset($fullTrainDetails['tsidt'])) {
                 $train2['from_dept'] = $fullTrainDetails['tsidt'];
             }
@@ -191,7 +296,7 @@ class BookingController extends Controller
                 $train2['train_type'] = $fullTrainDetails['trtt'];
             }
 
-            if(isset($fullTrainDetails['train2Price'])) {
+            if (isset($fullTrainDetails['train2Price'])) {
                 $train2['ticket_fc'] = $fullTrainDetails['train2Price']['first_class'];
                 $train2['ticket_sc'] = $fullTrainDetails['train2Price']['second_class'];
                 $train2['ticket_tc'] = $fullTrainDetails['train2Price']['third_class'];
@@ -206,6 +311,7 @@ class BookingController extends Controller
             $train['all_start'] = $fullTrainDetails['fssn'];
             $train['all_end'] = $fullTrainDetails['tsen'];
             $train['wait_time'] = $fullTrainDetails['wait_time'];
+            $train['when'] = $fullTrainDetails['when'];
 
             return $train;
         }
@@ -302,7 +408,7 @@ class BookingController extends Controller
     public function checkout($request)
     {
         if ($this->authMiddleware->isLoggedIn()) {
-            
+
             if ($request->isGet()) {
                 return $this->render('checkout');
             }

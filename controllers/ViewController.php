@@ -29,6 +29,7 @@ class ViewController extends Controller
 
             $pathArrays = $searchTourModel->getTours();
 
+            // adding ticket prices for the request
             $train1PriceModel = new TicketModel();
             
             if($pathArrays['directPaths']) {
@@ -47,6 +48,9 @@ class ViewController extends Controller
                 $pathArrays['intersections'][0]['train1Price'] = $train1PriceModel->getTicketPrice()['tickets'];
                 $pathArrays['intersections'][0]['train2Price'] = $train2PriceModel->getTicketPrice()['tickets'];
             }
+
+            // adding available seats for the request
+
 
             return $this->render('searchResults', $pathArrays);
 
