@@ -481,4 +481,33 @@ class AdminController extends Controller
                 return $this->render(['newsFeed','newsFeed01'],$updateRouteArray);
     }
 
+    public function getaddRoutesStations($request, $response){
+        if ($this->protect()){
+            if ($request->isGet()){
+                $getNewsModel = new AdminModel();
+                $getNewsModel->loadData($request->getBody());
+    
+                $trainArray = $getNewsModel->getaddRoutesStations();
+                echo json_encode($trainArray);
+         
+                
+            }
+
+        }
+
+    }
+
+    public function addupdateRoutes($request, $response)
+    {
+        if ($request->isGet()) {
+            $getNewsModel = new AdminModel();
+            $getNewsModel->loadData($request->getBody());
+    
+            $trainArray = $getNewsModel->getMyaddRouts();
+
+            echo json_encode($trainArray);
+        }
+    }
+
+
 }

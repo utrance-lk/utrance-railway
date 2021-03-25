@@ -723,6 +723,7 @@ class AdminModel extends Model
 
     public function getMyRouts()
     {
+        $validationState =[];
         $sum = [];
 
         $stations = $this->index1;
@@ -743,33 +744,61 @@ class AdminModel extends Model
             }
 
         }
+        
        
-       
+        // if(strpos( $this->index2," ")){
+            
+           
 
-        for ($j = 0; $j < $length; $j++) {
-            $getresult = $this->getStationId($stations[$j]["stationName"]);
+        //     $validationState =[];
          
-            if (empty($getresult)) {
-                $updateTrainrValidation = new TrainFormValidation();
-                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
-              
-                // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
 
-            } else {
-                $updateTrainrValidation = new TrainFormValidation();
-                $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
+        // }else{
+            for ($j = 0; $j < $length-1; $j++) {
+                $getresult = $this->getStationId($stations[$j]["stationName"]);
+                for ($p = $j+1; $p < $length; $p++){
+                    if($stations[$j]["stationName"] == $stations[$p]["stationName"]){
+                        $validationState = "Train name error";
+                    }
+
+                }
              
-                // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
+                // if (empty($getresult)) {
+                //     $updateTrainrValidation = new TrainFormValidation();
+                //     $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], 0, $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
+                  
+                //     // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"],0, $stations[$j]["pathId"]);
+    
+                // } else {
+                //     $updateTrainrValidation = new TrainFormValidation();
+                //     $validationState = $updateTrainrValidation->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"], $stations,$stations[$j]["stationName"],$j);
+                 
+                //     // $this->routeValidators($this->index2, $stations[$j]["arrTime"], $stations[$j]["deptTime"], $getresult[0]["station_id"], $stations[$j]["pathId"]);
+                // }
+                // if(!empty($validationState)){
+                //     break;
+                // }
+             
             }
-            if(!empty($validationState)){
-                break;
-            }
-         
-        }
+
+        // }
+       
+
+        
       
      
 
         if (empty($validationState)) {
+            if(strpos( $this->index2," ")){
+                $this->index2 = explode(" ", $this->index2);
+                $lineType = $this->index2[1];
+                $this->index2 = $this->index2[0];  
+                $enterNewRoute = $this->addRouteId($stations[0]["stationName"],$stations[$length-1]["stationName"],$this->index2,$lineType);
+            }
+
+            
+        
+           
 
             for ($i = 0; $i < $length; $i++) {
                 $stations[$i]["stationName"]= $this->sanitizeFormUsername1($stations[$i]["stationName"]);
@@ -777,6 +806,7 @@ class AdminModel extends Model
                 
                 $result = $this->getStationId($stations[$i]["stationName"]);
                 $resultForRoute = $this->getDestStationId($stations[$i]["pathId"],$this->index2);
+               
 
                 if (empty($result)) {
  
@@ -827,6 +857,18 @@ class AdminModel extends Model
         }
 
         return $validationState;
+
+    }
+
+    public function addRouteId($startStation, $endStation, $route,$lineType){
+        $result1 = $this->getStationId($startStation);
+        $result2 = $this->getStationId($endStation);
+        
+        $query = APP::$APP->db->pdo->prepare("INSERT INTO routes (route_id,start_station_id,dest_station_id,total_time,line,route_status) VALUES ($this->index2,:result1,:result2,'01:23:00',:result3,1)");
+        $query->bindValue(":result1", $result1[0]["station_id"]);
+        $query->bindValue(":result2", $result2[0]["station_id"]);
+        $query->bindValue(":result3", $lineType);
+        $query->execute();
 
     }
 
@@ -980,5 +1022,21 @@ class AdminModel extends Model
         // $this->resultArray = array_merge($resultArray1,$resultArray2,$resultArray3);
         return $this->resultArray;
     }
+
+    public function getaddRoutesStations(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM stations");
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+
+    public function getMyaddRouts(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM routes order by route_id DESC LIMIT 1");
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+
+   
 
 }

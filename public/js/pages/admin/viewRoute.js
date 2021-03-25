@@ -52,7 +52,7 @@ function addStops(x) {
             `;
         parent.insertAdjacentHTML("afterend", markup);
 
- ///////////////////////////////start validation///////////////////////////////////////////
+       ///////////////////////////////start validation///////////////////////////////////////////
         // let newindex5= parent.firstChild.firstChild.innerText.split("#")[1] * 1;
        
         $(document).ready(function(){
@@ -62,21 +62,28 @@ function addStops(x) {
             console.log(newindex5);
             // console.log(newindex5[2]);
             document.querySelector(".add-stop-popup__arr-time--input").min = newindex5;
+
+            if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+              let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
+              console.log(newIndexMax);
+              document.querySelector(".add-stop-popup__arr-time--input").max = newIndexMax;
+
+            }
             
-            let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
-            console.log(newIndexMax);
-            document.querySelector(".add-stop-popup__arr-time--input").max = newIndexMax;
           })
         });
 
         $(document).ready(function(){
           $("#deptime").click(function(){
             
-            
-            
-            let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
+            if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+              let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
             console.log(newIndexMax);
             document.querySelector(".add-stop-popup__dept-time--input").max = newIndexMax;
+
+            }
+            
+            
           })
         });
 
@@ -87,31 +94,49 @@ function addStops(x) {
           }
           
           document.querySelector(".add-stop-popup__dept-time--input").min = document.getElementById("arrtime").value;
+          
           console.log(document.getElementById("arrtime").value);
           var startDate = document.getElementById("arrtime").value;
           var endDate = document.getElementById("deptime").value;
-          var nextCardStartDate = document.querySelector(".add-stop-popup__dept-time--input").max;
+          
           var time1Date= new Date("01/01/2000 "+startDate);
           var time2Date= new Date("01/01/2000 "+endDate); 
-          var time3Date= new Date("01/01/2000 "+nextCardStartDate);
+          
           // if (time1Date >= time2Date) { alert("Please enter proper date") }
           // if (time2Date >= time3Date) { alert("Please enter proper date") }
           const newmarkup = `<p id ="myerror">error found</p>`;
           const newx = document.querySelector( ".add-stop-popup");
-          if (time1Date >= time2Date) { 
+          if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+            var nextCardStartDate = document.querySelector(".add-stop-popup__dept-time--input").max;
+            var time3Date= new Date("01/01/2000 "+nextCardStartDate);
+
+            if (time1Date >= time2Date) { 
+              newx.insertAdjacentHTML("beforebegin", newmarkup);
+             document.getElementById("addButton").disabled = true;
+              document.getElementById("addButton").style.opacity = "0.5";
+            }else if(time2Date >= time3Date){
              newx.insertAdjacentHTML("beforebegin", newmarkup);
-            document.getElementById("addButton").disabled = true;
-            document.getElementById("addButton").style.opacity = "0.5";
-         }else if(time2Date >= time3Date){
-          newx.insertAdjacentHTML("beforebegin", newmarkup);
-            document.getElementById("addButton").disabled = true;
-            document.getElementById("addButton").style.opacity = "0.5";
-         }
-         else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
-         
-          document.getElementById("addButton").disabled = false;
-          document.getElementById("addButton").style.opacity = "1";
-         }
+             document.getElementById("addButton").disabled = true;
+             document.getElementById("addButton").style.opacity = "0.5";
+            }
+            else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
+          
+            document.getElementById("addButton").disabled = false;
+            document.getElementById("addButton").style.opacity = "1";
+            }
+          }else{
+            if (time1Date >= time2Date) { 
+              newx.insertAdjacentHTML("beforebegin", newmarkup);
+             document.getElementById("addButton").disabled = true;
+              document.getElementById("addButton").style.opacity = "0.5";
+            }else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
+          
+            document.getElementById("addButton").disabled = false;
+            document.getElementById("addButton").style.opacity = "1";
+            }
+
+          }
+          
         });
 
         document.querySelector( ".add-stop-popup__arr-time--input").addEventListener("change", function (){
@@ -123,27 +148,47 @@ function addStops(x) {
 
           var startDate = document.querySelector(".add-stop-popup__arr-time--input").min;
           var endDate = document.getElementById("arrtime").value;
-          var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
+      
+          console.log(document.getElementById("arrtime").value);
+          
           var time1Date= new Date("01/01/2000 "+startDate);
           var time2Date= new Date("01/01/2000 "+endDate); 
-          var time3Date= new Date("01/01/2000 "+nextCardStartDate);
-
+         
           const newmarkup = `<p id ="myerror">error found</p>`;
           const newx = document.querySelector( ".add-stop-popup");
-          if (time1Date >= time2Date) { 
+          if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+            var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
+            var time3Date= new Date("01/01/2000 "+nextCardStartDate);
+
+
+            if (time1Date >= time2Date) { 
+              newx.insertAdjacentHTML("beforebegin", newmarkup);
+             document.getElementById("addButton").disabled = true;
+             document.getElementById("addButton").style.opacity = "0.5";
+            }else if(time2Date >= time3Date){
              newx.insertAdjacentHTML("beforebegin", newmarkup);
-            document.getElementById("addButton").disabled = true;
-            document.getElementById("addButton").style.opacity = "0.5";
-         }else if(time2Date >= time3Date){
-          newx.insertAdjacentHTML("beforebegin", newmarkup);
-            document.getElementById("addButton").disabled = true;
-            document.getElementById("addButton").style.opacity = "0.5";
-         }
-         else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
-         
-          document.getElementById("addButton").disabled = false;
-          document.getElementById("addButton").style.opacity = "1";
-         }
+             document.getElementById("addButton").disabled = true;
+             document.getElementById("addButton").style.opacity = "0.5";
+            }
+            else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
+          
+            document.getElementById("addButton").disabled = false;
+            document.getElementById("addButton").style.opacity = "1";
+               }
+
+          }else{
+            if (time1Date >= time2Date) { 
+              newx.insertAdjacentHTML("beforebegin", newmarkup);
+             document.getElementById("addButton").disabled = true;
+             document.getElementById("addButton").style.opacity = "0.5";
+            }else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
+          
+            document.getElementById("addButton").disabled = false;
+            document.getElementById("addButton").style.opacity = "1";
+           }
+
+          }         //////new
+          
           // if (time2Date >= time3Date) { 
           //   alert("Please enter proper date");
           // }else{
@@ -169,7 +214,7 @@ function addStops(x) {
           document.getElementById("addButton").disabled = false;
           document.getElementById("addButton").style.opacity = "1";
         }
- //////////////////////////////////end validation/////////////////////////
+           ///////////////////////////end validation/////////////////////////
         const popupCloseBtn = document.querySelector(
           ".add-stop-popup__close-btn"
         );
