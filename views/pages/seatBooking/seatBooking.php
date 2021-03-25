@@ -26,7 +26,6 @@ foreach ($trains as $key => $value) {
 }
 
 ?>
-        <!-- <form action="https://sandbox.payhere.lk/pay/checkout" class="flex-col-stretch-center" method="POST"> -->
         <div class="flex-col-stretch-center" >
         <input type="text" name="when" value="<?php echo $when;?>" hidden>
             <input type="text" name="train1_id" value="<?php echo $trains['t1']['train_id'];?>" hidden>
@@ -39,22 +38,6 @@ foreach ($trains as $key => $value) {
                     <span>Rs</span>&nbsp;<input readonly name="amount" id="finalAmount" class="seat-booking__final-amount"></input>
                 </div>
             </div>
-            <input type="hidden" name="merchant_id" value="1216669">    <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="https://utrance-railway.herokuapp.com/home">
-            <!-- <input type="hidden" name="return_url" value="http://localhost/utrance-railway/home"> -->
-            <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
-            <input type="hidden" name="notify_url" value="https://utrance-railway.herokuapp.com/payment">  
-            <!-- <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">   -->
-            <input type="text" name="order_id" value="" hidden readonly>
-            <input type="text" name="items" value="<?php echo $all_start . ' to ' . $all_end;?>" hidden readonly>
-            <input type="text" name="currency" value="LKR" hidden readonly>
-            <input type="text" name="first_name" value="<?php echo App::$APP->activeUser()['first_name']; ?>" hidden readonly>
-            <input type="text" name="last_name" value="<?php echo App::$APP->activeUser()['last_name']; ?>" hidden readonly>
-            <input type="text" name="email" value="<?php echo App::$APP->activeUser()['email_id']; ?>" hidden readonly>
-            <input type="text" name="phone" value="<?php echo App::$APP->activeUser()['contact_num']; ?>" hidden readonly>
-            <input type="text" name="address" value="<?php echo App::$APP->activeUser()['street_line1']; ?>" hidden readonly>
-            <input type="text" name="city" value="<?php echo App::$APP->activeUser()['city']; ?>" hidden readonly>
-            <input type="hidden" name="country" value="Sri Lanka" hidden readonly>
             <div class="seat-booking__btn-container">
                 <?php if ($trains['t1']['sa_second_class'] == 0) : ?>
                     <button class="btn btn-round-blue button-inactive" id="btn-book-now" type="submit" disabled>
@@ -73,6 +56,7 @@ foreach ($trains as $key => $value) {
                 <?php endif;?>    
             </div>
         </div>
+        <input type="text" name="items" value="<?php echo $all_start . ' to ' . $all_end; ?>" hidden readonly>
     </form>
 </div>
 <script type="text/javascript" src="/public/js/pages/seatBooking.js"></script>

@@ -9,4 +9,8 @@ class Response {
         header('Location:'.$url);
     }
 
+    public function redirectWithQP(string $url, $qp) {
+        // header('Location:'.$url?);
+    }
+
 }
