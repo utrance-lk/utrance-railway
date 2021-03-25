@@ -118,6 +118,7 @@ function renderAddStation() {
                 <div class="add-stop-popup__station">
                 <input type="text" class="add-stop-popup__station--input">
                 <div class="autocom-box">
+
                     <li>matara</li>
                     <li>colombo</li>
                 </div>
@@ -173,7 +174,7 @@ function addRouteEvents() {
         if(document.querySelector("#myerror")!=null){
             document.querySelector("#myerror").remove();
           }
-            const newmarkup = `<p id ="myerror">error found</p>`;
+            const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid time</p>`;
             const newx = document.querySelector( ".add-stop-popup");
             var endDate = document.getElementById("arrtime").value;
             var startDate =  document.getElementById("deptime").value;
@@ -273,7 +274,7 @@ function addRouteEvents() {
 
                 let myobj = document.querySelector(".add-stop-popup")
                 myobj.remove();
-                const newaddRouteElement = document.querySelector(".dash-content__input");
+                const newaddRouteElement = document.querySelector(".view-routes__title");
                 newaddRouteElement.insertAdjacentHTML('afterend', html);
                 console.log(document.querySelector(".stop-card"));
                 addStops(39);

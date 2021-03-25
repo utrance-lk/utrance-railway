@@ -810,10 +810,12 @@ class AdminModel extends Model
 
                 if (empty($result)) {
  
-                    $newquery = APP::$APP->db->pdo->prepare("INSERT INTO stations (station_name) VALUES (:stName)");
-                    $newquery->bindValue(":stName", $stations[$i]["stationName"]);
-                    $newquery->execute();
-                    $result = $this->getStationId($stations[$i]["stationName"]);
+                    // $newquery = APP::$APP->db->pdo->prepare("INSERT INTO stations (station_name) VALUES (:stName)");
+                    // $newquery->bindValue(":stName", $stations[$i]["stationName"]);
+                    // $newquery->execute();
+                    // $result = $this->getStationId($stations[$i]["stationName"]);
+
+                    $validationState = "Please enter valid Station name";      //////////////commit one///////////////
  
                 }
                   ////////////////////////////

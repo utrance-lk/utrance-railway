@@ -1652,7 +1652,7 @@ margin-right: 20px;
 }
 #prevBtn{
     position: absolute;
-    top: 50%;
+    top: 45%;
     z-index: 10;
      left: 2%; 
     font-size: 50px;
@@ -1664,7 +1664,7 @@ margin-right: 20px;
 
 #nextBtn{
     position: absolute;
-    top: 50%;
+    top: 45%;
     z-index: 10;
      right: 2%; 
     font-size: 50px;

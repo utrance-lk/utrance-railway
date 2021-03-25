@@ -104,7 +104,7 @@ function addStops(x) {
           
           // if (time1Date >= time2Date) { alert("Please enter proper date") }
           // if (time2Date >= time3Date) { alert("Please enter proper date") }
-          const newmarkup = `<p id ="myerror">error found</p>`;
+          const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid time</p>`;
           const newx = document.querySelector( ".add-stop-popup");
           if(parent.parentNode.nextElementSibling){
             var nextCardStartDate = document.querySelector(".add-stop-popup__dept-time--input").max;
@@ -152,7 +152,7 @@ function addStops(x) {
           var time2Date= new Date("01/01/2000 "+endDate); 
          
 
-          const newmarkup = `<p id ="myerror">error found</p>`;
+          const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid time</p>`;
           const newx = document.querySelector( ".add-stop-popup");
           if(parent.parentNode.nextElementSibling){
             var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
