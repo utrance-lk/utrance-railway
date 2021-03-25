@@ -1,6 +1,6 @@
 <?php
 
-function renderTrainBookingCard($train, $id)
+function renderTrainBookingCard($train, $id, $when)
 {
 
     $timeDecide = timeDecider(substr($train['from_dept'], 0, 2));
@@ -17,6 +17,12 @@ function renderTrainBookingCard($train, $id)
     $fullHr = substr($train['journey_time'], 0, 2);
     $fullMin = substr($train['journey_time'], 3, 2);
 
+    // var_dump($train);
+    $_SESSION['booking'][$id]['customer_id'] =  App::$APP->activeUser()['id'];
+    $_SESSION['booking'][$id]['train_date'] =  $when;
+    $_SESSION['booking'][$id]['train_id'] =  $train['train_id'];
+
+    // var_dump($booking[$id]);
 
     return "
             <div class='seat-booking__remaining-seats' id='remaining-seats{$id}'>
@@ -49,7 +55,7 @@ function renderTrainBookingCard($train, $id)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box seat-booking-card__price'>
-                    <span>Rs&nbsp;</span><span id='tickprice{$id}'>{$train['ticket_sc']}</span>
+                    <span>Rs&nbsp;</span><input type='text' name='tickpricetrain{$id}' id='tickprice{$id}' value='{$train['ticket_sc']}'>
                 </div>
             </div>
     ";
@@ -65,4 +71,3 @@ function timeDecider($time)
     }
     return [$time, $dayTime];
 }
-

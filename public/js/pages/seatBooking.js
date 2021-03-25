@@ -14,7 +14,7 @@ function getValues(arr, seatArr) {
 
     cardPrices[id - 1] = basePrices[id - 1].scBasePrice; //default
     var ticketPrice = document.getElementById("tickprice" + id);
-    ticketPrice.innerText = cardPrices[id - 1]; //default
+    ticketPrice.value = cardPrices[id - 1]; //default
 
     var personsElement = document.getElementById("persons" + id);
 
@@ -36,7 +36,7 @@ function getValues(arr, seatArr) {
       if (trainclass === "firstClass") {
         cardPrices[id - 1] =
           personsElement.value * 1 * basePrices[id - 1].fcBasePrice;
-        ticketPrice.innerText = cardPrices[id - 1];
+        ticketPrice.value = cardPrices[id - 1];
         seatsAvailElement.innerText = seatArr[id - 1].fcSeats + " seats left!";
         if (seatArr[id - 1].fcSeats === 0) {
           bookBtnElement.disabled = true;
@@ -49,7 +49,7 @@ function getValues(arr, seatArr) {
       if (trainclass === "secondClass") {
         cardPrices[id - 1] =
         personsElement.value * 1 * basePrices[id - 1].scBasePrice;
-        ticketPrice.innerText = cardPrices[id - 1];
+        ticketPrice.value = cardPrices[id - 1];
         seatsAvailElement.innerText = seatArr[id - 1].scSeats + " seats left!";
         if (seatArr[id - 1].scSeats === 0) {
           bookBtnElement.disabled = true;
@@ -84,7 +84,7 @@ function getValues(arr, seatArr) {
           basePrices[id - 1].scBasePrice * (personsElement.value * 1);
       }
 
-      ticketPrice.innerText = cardPrices[id - 1];
+      ticketPrice.value = cardPrices[id - 1];
 
       cardAcc = cardPrices.reduce(function (acc, i) {
         return acc + i;

@@ -22,7 +22,7 @@ include_once "../views/components/seatBookingCard.php";
 $i = 0;
 foreach ($trains as $key => $value) {
     $i++;
-    echo renderTrainBookingCard($value, $i);
+    echo renderTrainBookingCard($value, $i, $when);
 }
 
 ?>

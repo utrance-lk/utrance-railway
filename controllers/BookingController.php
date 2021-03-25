@@ -3,6 +3,7 @@
 include_once "../classes/core/Controller.php";
 include_once "../models/BookingModel.php";
 include_once "../middlewares/AuthMiddleware.php";
+include '../qrlib.php';
 
 class BookingController extends Controller
 {
@@ -72,6 +73,8 @@ class BookingController extends Controller
                 $train['trains'][$key]['sa_second_class'] = $availbleSeats[0]['sa_second_class'];
             }
 
+            App::$APP->session->set('booking', null);
+
             return $this->render('seatBooking', $train);
         }
 
@@ -109,13 +112,58 @@ class BookingController extends Controller
                         return 'booking cannot be done';
                     }
                 }
-            } 
+            }
+            
+            $index = 1;
+            foreach ($_SESSION['booking'] as $key => $value) {
+                $_SESSION['booking'][$index]['passengers'] = $_POST['person__count'.$index];
+                $_SESSION['booking'][$index]['class'] = $_POST['train_class'.$index];
+                $_SESSION['booking'][$index]['base_price'] = $_POST['tickpricetrain'.$index];
+                $_SESSION['booking'][$index]['total_amount'] = $_POST['amount'];
+                $index++;
+            }
                 
             return $this->render('payment', $_POST);
             
         }
 
     }
+
+    public function bookingSuccess($request, $response) {
+        if($request->isGet()) {
+            $str = null;
+            foreach($_SESSION['booking'][1] as $key => $value) {
+                $str .= $value;
+            }
+
+            if(isset($_SESSION['booking'][2])) {
+                foreach($_SESSION['booking'][2] as $key => $value) {
+                    $str .= $value;
+                }
+            }
+            
+            $bookingVar = $_SESSION['booking'];
+            $hashStr = md5($str);
+
+            foreach($bookingVar as $key => $value) {
+                $storeBooking = new BookingModel();
+                $storeBooking->loadData(['customer_id' => (int)$value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int)$value['train_id'], 'passengers' => (int)$value['passengers'], 'class' => $value['class'], 'base_price' => (int)$value['base_price'], 'total_amount' => (int)$value['total_amount'], 'other_booking' => $hashStr]);
+                $storeBooking->createBooking();
+                $storeBooking->reduceSeatAvailableCount();
+            }
+
+            App::$APP->session->remove('booking');
+
+            // QR generator
+            QRcode::png($hashStr);
+            
+
+
+            $response->redirect('home');
+
+        }
+    }
+
 
     private function travellingTrains($mode, $fullTrainDetails)
     {
