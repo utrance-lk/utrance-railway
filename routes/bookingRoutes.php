@@ -25,6 +25,6 @@ $app->router->get('/utrance-railway/freight-booking-train', [BookingController::
 $app->router->get('/utrance-railway/checkout', [BookingController::class, 'checkout']);
 $app->router->post('/utrance-railway/checkout', [BookingController::class, 'checkout']);
 
-
+$app->router->get('/utrance-railway/booking-success', [BookingController::class, 'bookingSuccess']);
 
 ?>
