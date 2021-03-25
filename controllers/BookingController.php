@@ -122,8 +122,6 @@ class BookingController extends Controller
                 $_SESSION['booking'][$index]['total_amount'] = $_POST['amount'];
                 $index++;
             }
-            
-            // var_dump($_POST);
                 
             return $this->render('payment', $_POST);
             

@@ -26,10 +26,6 @@ class BookingModel extends Model
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function reduceSeatAvailableCount() {
-        
-    }
-
     public function createBooking()
     {
         $query = APP::$APP->db->pdo->prepare("INSERT INTO ticket_booking (customer_id, train_date, train_id, passengers, class, base_price, total_amount, other_booking) VALUES (:customer_id, :train_date, :train_id, :passengers, :class, :base_price, :total_amount, :other_booking)");
