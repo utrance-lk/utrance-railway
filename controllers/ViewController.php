@@ -19,7 +19,7 @@ class ViewController extends Controller
 
    
 
-    public function search($request)
+    public function search($request, $response)
     {
 
         if ($request->isPost()) {
@@ -28,6 +28,11 @@ class ViewController extends Controller
             $searchTourModel->loadData($request->getBody());
 
             $pathArrays = $searchTourModel->getTours();
+
+            if(!$pathArrays) {
+                $response->setStatusCode(404);
+                return $this->render(['error', 'station not found']);
+            }
 
             // adding ticket prices for the request
             $train1PriceModel = new TicketModel();
