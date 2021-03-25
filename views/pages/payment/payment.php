@@ -2,10 +2,8 @@
     <input readonly name="amount" id="finalAmount" value="<?php echo $_POST['amount'] ;?>" hidden>
     <input type="hidden" name="merchant_id" value="1216669">    <!-- Replace your Merchant ID -->
     <input type="hidden" name="return_url" value="http://localhost/utrance-railway/booking-success">
-            <!-- <input type="hidden" name="return_url" value="http://localhost/utrance-railway/home"> -->
     <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
     <input type="hidden" name="notify_url" value="https://utrance-railway.herokuapp.com/payment">
-            <!-- <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">   -->
     <input type="text" name="order_id" value="" hidden readonly>
     <input type="text" name="items" value="<?php echo $_POST['items'] ;?>" hidden readonly>
     <input type="text" name="currency" value="LKR" hidden readonly>

@@ -3,6 +3,7 @@
 include_once "../classes/core/Controller.php";
 include_once "../models/BookingModel.php";
 include_once "../middlewares/AuthMiddleware.php";
+include '../qrlib.php';
 
 class BookingController extends Controller
 {
@@ -111,8 +112,7 @@ class BookingController extends Controller
                         return 'booking cannot be done';
                     }
                 }
-            } 
-
+            }
             
             $index = 1;
             foreach ($_SESSION['booking'] as $key => $value) {
@@ -153,6 +153,11 @@ class BookingController extends Controller
             }
 
             App::$APP->session->remove('booking');
+
+            // QR generator
+            QRcode::png($hashStr);
+            
+
 
             $response->redirect('home');
 
