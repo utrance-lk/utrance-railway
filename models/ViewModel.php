@@ -73,8 +73,7 @@ class ViewModel extends Model
             return $this->resultsArr;
 
         } else {
-            echo 'station not found!';
-            return 'station not found!!';
+            return false;
         }
 
     }
