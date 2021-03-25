@@ -1,0 +1,14 @@
+.error__text--heading {
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.error__text--sub {
+    font-size: 2rem;
+}
+
+
+.error__img {
+    height: 20rem;
+    width: 20rem;
+}

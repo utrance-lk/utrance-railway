@@ -253,6 +253,10 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-top: 4rem;
 }
 
+.margin-t-l {
+  margin-top: 5rem;
+}
+
 .margin-tb-xs {
   margin: 1rem 0;
 }
@@ -1264,6 +1268,20 @@ input::-webkit-datetime-edit-year-field:focus {
   width: 80%;
 }
 
+.error__text--heading {
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.error__text--sub {
+    font-size: 2rem;
+}
+
+
+.error__img {
+    height: 20rem;
+    width: 20rem;
+}
 .add-train__new-train {
   display: flex;
   height: 90vh;

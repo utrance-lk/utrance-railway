@@ -147,7 +147,7 @@ class BookingController extends Controller
 
             foreach($bookingVar as $key => $value) {
                 $storeBooking = new BookingModel();
-                $storeBooking->loadData(['customer_id' => (int)$value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int)$value['train_id'], 'passengers' => (int)$value['passengers'], 'class' => $value['class'], 'base_price' => (int)$value['base_price'], 'total_amount' => (int)$value['total_amount'], 'other_booking' => $hashStr]);
+                $storeBooking->loadData(['customer_id' => (int)$value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int)$value['train_id'], 'from_station' => $value['from'], 'to_station' => $value['to'], 'passengers' => (int)$value['passengers'], 'class' => $value['class'], 'base_price' => (int)$value['base_price'], 'total_amount' => (int)$value['total_amount'], 'other_booking' => $hashStr]);
                 $storeBooking->createBooking();
             }
 

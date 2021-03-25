@@ -51,7 +51,6 @@ class ViewController extends Controller
 
             // adding available seats for the request
 
-
             return $this->render('searchResults', $pathArrays);
 
         }
