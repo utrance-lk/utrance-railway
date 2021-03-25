@@ -3,7 +3,7 @@
 include_once "../classes/core/Controller.php";
 include_once "../models/BookingModel.php";
 include_once "../middlewares/AuthMiddleware.php";
-include '../qrlib.php';
+// include '../qrlib.php';
 
 class BookingController extends Controller
 {
@@ -149,16 +149,13 @@ class BookingController extends Controller
                 $storeBooking = new BookingModel();
                 $storeBooking->loadData(['customer_id' => (int)$value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int)$value['train_id'], 'passengers' => (int)$value['passengers'], 'class' => $value['class'], 'base_price' => (int)$value['base_price'], 'total_amount' => (int)$value['total_amount'], 'other_booking' => $hashStr]);
                 $storeBooking->createBooking();
-                $storeBooking->reduceSeatAvailableCount();
             }
 
             App::$APP->session->remove('booking');
 
             // QR generator
-            QRcode::png($hashStr);
+            // QRcode::png($hashStr);
             
-
-
             $response->redirect('home');
 
         }
