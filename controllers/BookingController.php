@@ -111,7 +111,7 @@ class BookingController extends Controller
                 }
             } 
                 
-            return $response->redirect('/utrance-railway/payment');
+            return $this->render('payment', $_POST);
             
         }
 

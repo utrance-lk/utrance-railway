@@ -18,4 +18,4 @@
   </head>
 </html>
 
-<body>
+<body style="background-color: rgb(223, 227, 232);">
