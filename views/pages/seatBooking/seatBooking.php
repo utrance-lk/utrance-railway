@@ -39,6 +39,7 @@ foreach ($trains as $key => $value) {
                 </div>
             </div>
             <div class="seat-booking__btn-container">
+                <!--?php var_dump($trains)  ;?-->    
                 <?php if ($trains['t1']['sa_second_class'] == 0) : ?>
                     <button class="btn btn-round-blue button-inactive" id="btn-book-now" type="submit" disabled>
                         Book now
@@ -49,6 +50,9 @@ foreach ($trains as $key => $value) {
                             Book now
                         </button> 
                     <?php endif;?>
+                    <button class="btn btn-round-blue" id="btn-book-now" type="submit">
+                        Book now
+                    </button>
                 <?php else: ?>
                     <button class="btn btn-round-blue" id="btn-book-now" type="submit">
                         Book now

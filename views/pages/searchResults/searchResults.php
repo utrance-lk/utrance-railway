@@ -6,7 +6,23 @@
   ?>
 </section>
 
+<?php if(isset($error)):?>
+
+<section class="error">
+  <div class="error-box margin-t-l margin-b-l flex-col-stretch-center">
+      <div class="error__text center-text margin-b-l">
+          <div class="error__text--sub">
+              Station Not Found!
+          </div>
+      </div>
+      <img src="/utrance-railway/public/img/pages/error/stationNotFound.png" alt="Error image" class="error__img--small">
+  </div>
+</section>
+  
+<?php else: ?>
+
 <section class="searchResults">
+
   <div class="filters-container"></div>
   <div class="search-results-train-card__container">
 
@@ -43,6 +59,8 @@
     }
 ?>
   </div>
+
+<?php endif;?>  
 </section>
 
 <script type="text/javascript" src="../../../utrance-railway/public/js/components/mainSearch.js"></script>

@@ -31,7 +31,8 @@ class ViewController extends Controller
 
             if(!$pathArrays) {
                 $response->setStatusCode(404);
-                return $this->render(['error', 'station not found']);
+                $pathArrays['error'] = true;
+                return $this->render('searchResults', $pathArrays);
             }
 
             // adding ticket prices for the request

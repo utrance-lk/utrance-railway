@@ -3,7 +3,15 @@
 include_once "../classes/core/Controller.php";
 include_once "../models/BookingModel.php";
 include_once "../middlewares/AuthMiddleware.php";
-// include '../qrlib.php';
+
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 
 class BookingController extends Controller
 {
@@ -52,7 +60,6 @@ class BookingController extends Controller
         if ($request->isGet()) {
             // return selected booking
 
-
             $option = $request->getQueryParams()['op'];
             $mode = $request->getQueryParams()['mode'];
 
@@ -99,72 +106,99 @@ class BookingController extends Controller
                 if ($availbleSeats1[0]['sa_first_class'] < $_POST['person__count1']) {
                     return 'booking cannot be done';
                 }
-            } 
+            }
             if ($_POST['train_class1'] == 'secondClass') {
                 if ($availbleSeats1[0]['sa_second_class'] < $_POST['person__count1']) {
                     return 'booking cannot be done';
                 }
-            } 
+            }
             if (isset($_POST['train_class2'])) {
                 if ($_POST['train_class2'] == 'firstClass') {
                     if ($availbleSeats2[0]['sa_first_class'] < $_POST['person__count2']) {
                         return 'booking cannot be done';
                     }
-                } 
+                }
                 if ($_POST['train_class2'] == 'secondClass') {
                     if ($availbleSeats2[0]['sa_second_class'] < $_POST['person__count2']) {
                         return 'booking cannot be done';
                     }
                 }
             }
-            
+
             $index = 1;
             foreach ($_SESSION['booking'] as $key => $value) {
-                $_SESSION['booking'][$index]['passengers'] = $_POST['person__count'.$index];
-                $_SESSION['booking'][$index]['class'] = $_POST['train_class'.$index];
-                $_SESSION['booking'][$index]['base_price'] = $_POST['tickpricetrain'.$index];
+                $_SESSION['booking'][$index]['passengers'] = $_POST['person__count' . $index];
+                $_SESSION['booking'][$index]['class'] = $_POST['train_class' . $index];
+                $_SESSION['booking'][$index]['base_price'] = $_POST['tickpricetrain' . $index];
                 $_SESSION['booking'][$index]['total_amount'] = $_POST['amount'];
                 $index++;
             }
-                
+
             return $this->render('payment', $_POST);
-            
+
         }
 
     }
 
-    public function bookingSuccess($request, $response) {
-        if($request->isGet()) {
+    public function bookingSuccess($request, $response)
+    {
+        if ($request->isGet()) {
             $str = null;
-            foreach($_SESSION['booking'][1] as $key => $value) {
+            foreach ($_SESSION['booking'][1] as $key => $value) {
                 $str .= $value;
             }
 
-            if(isset($_SESSION['booking'][2])) {
-                foreach($_SESSION['booking'][2] as $key => $value) {
+            if (isset($_SESSION['booking'][2])) {
+                foreach ($_SESSION['booking'][2] as $key => $value) {
                     $str .= $value;
                 }
             }
-            
+
             $bookingVar = $_SESSION['booking'];
             $hashStr = md5($str);
 
-            foreach($bookingVar as $key => $value) {
+            foreach ($bookingVar as $key => $value) {
                 $storeBooking = new BookingModel();
-                $storeBooking->loadData(['customer_id' => (int)$value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int)$value['train_id'], 'from_station' => $value['from'], 'to_station' => $value['to'], 'passengers' => (int)$value['passengers'], 'class' => $value['class'], 'base_price' => (int)$value['base_price'], 'total_amount' => (int)$value['total_amount'], 'other_booking' => $hashStr]);
+                $storeBooking->loadData(['customer_id' => (int) $value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int) $value['train_id'], 'from_station' => $value['from'], 'to_station' => $value['to'], 'passengers' => (int) $value['passengers'], 'class' => $value['class'], 'base_price' => (int) $value['base_price'], 'total_amount' => (int) $value['total_amount'], 'other_booking' => $hashStr]);
                 $storeBooking->createBooking();
             }
 
             App::$APP->session->remove('booking');
 
             // QR generator
-            // QRcode::png($hashStr);
-            
-            $response->redirect('home');
+            $this->generateQR($hashStr);
+
+            // $response->redirect('home');
 
         }
     }
 
+    private function generateQR($hashStr)
+    {
+        $writer = new PngWriter();
+        $qrCode = QrCode::create($hashStr)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
+
+            var_dump(__DIR__);
+
+        // $logo = Logo::create('/utrance-railway/public/img/logo/utranceLogoBlack.png')
+            // ->setResizeToWidth(50);
+
+        // $label = Label::create('Utrance-railway')
+            // ->setTextColor(new Color(255, 0, 0))
+            // ->setBackgroundColor(new Color(0, 0, 0));
+
+        $result = $writer->write($qrCode);
+
+        $result->saveToFile('C:/xampp/htdocs/utrance-railway/public/img/QR/' . $hashStr . '.png');
+
+    }
 
     private function travellingTrains($mode, $fullTrainDetails)
     {
