@@ -1,9 +1,10 @@
 
-<div class="load-content-container">
-    <div class="load-content">
-        <div class="load-content--manage-trains">
-            <div class="content-title">
-               <p> Contact Admin</p>
+<div class="dashboard">
+<?php include_once '../views/layouts/detailsProviderSideNav.php';?>
+    <div class="dash-content__container">
+        <div class="dash-content">
+            <div class="heading-secondary margin-b-m margin-t-m">
+               <p class="center-text"> Contact Admin</p>
             </div>
     
             <form action="/utrance-railway/contact-admin" method="POST" >

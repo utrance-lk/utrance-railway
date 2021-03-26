@@ -1,8 +1,8 @@
 <div class="dashboard">
     <?php include_once '../views/layouts/adminSideNav.php';?>
 
-<div class="load-content-container js--load-content-container">
-        <div class="load-content">
+<div class="dash-content__container">
+        <div class="dash-content">
           <div class="load-content--manage-bookings">
             <form class="dashboard-searchbar--container" method='POST' action="/utrance-railway/users">
 

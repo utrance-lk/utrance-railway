@@ -8,6 +8,8 @@
             include_once '../views/layouts/adminSideNav.php';
         } else if(App::$APP->activeUser()['role'] == 'user') {
             include_once '../views/layouts/userSideNav.php';
+          } else if(App::$APP->activeUser()['role'] == 'detailsProvider') {
+            include_once '../views/layouts/detailsProviderSideNav.php';
         }
     ?>
 

@@ -96,7 +96,7 @@ class UserModel extends Model
         $fileTmpName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
         $image_dimension = getimagesize($fileTmpName);
-       // var_dump($fileTmpName);
+        // var_dump($fileTmpName);
 
         $fileError = $_FILES['file']['error'];
         $fileType = $_FILES['file']['type'];
@@ -117,26 +117,21 @@ class UserModel extends Model
                 $fileNameNew = uniqid(" ", true) . "." . $fileActualExt;
                 unlink($filePrevDestination);
                 $fileDestination = 'img/uploads/' . $fileNameNew;
-                
 
-                $compressedImage = $this->compressImage($fileTmpName, $fileDestination, 70); 
-             
-                if($compressedImage){ 
+                $compressedImage = $this->compressImage($fileTmpName, $fileDestination, 70);
+
+                if ($compressedImage) {
                     $compressedImageSize = filesize($compressedImage);
-    
-                    $status = 'success'; 
-                    // $statusMsg = "Image compressed successfully."; 
-                }else{ 
-                    $statusMsg = "Image compress failed!"; 
-                } 
-               
-               
-                
+
+                    $status = 'success';
+                    // $statusMsg = "Image compressed successfully.";
+                } else {
+                    $statusMsg = "Image compress failed!";
+                }
+
                 //$compressedImage=$this->compressedImage($fileNameNew, $fileDestination, 75);
-               
+
                 //move_uploaded_file($fileTmpName, $fileDestination);
-               
-               
 
                 $query = App::$APP->db->pdo->prepare("UPDATE users SET user_image=:image_value WHERE id=:id");
                 $query->bindValue(":id", $user_id);
@@ -162,32 +157,33 @@ class UserModel extends Model
 
     }
 
-    function compressImage($source, $destination, $quality) { 
-        // Get image info 
-        $imgInfo = getimagesize($source); 
-        $mime = $imgInfo['mime']; 
-         
-        // Create a new image from file 
-        switch($mime){ 
-            case 'image/jpeg': 
-                $image = imagecreatefromjpeg($source); 
-                break; 
-            case 'image/png': 
-                $image = imagecreatefrompng($source); 
-                break; 
-            case 'image/gif': 
-                $image = imagecreatefromgif($source); 
-                break; 
-            default: 
-                $image = imagecreatefromjpeg($source); 
-        } 
-         
-        // Save image 
-        imagejpeg($image, $destination, $quality); 
-         
-        // Return compressed image 
-        return $destination; 
-    } 
+    public function compressImage($source, $destination, $quality)
+    {
+        // Get image info
+        $imgInfo = getimagesize($source);
+        $mime = $imgInfo['mime'];
+
+        // Create a new image from file
+        switch ($mime) {
+            case 'image/jpeg':
+                $image = imagecreatefromjpeg($source);
+                break;
+            case 'image/png':
+                $image = imagecreatefrompng($source);
+                break;
+            case 'image/gif':
+                $image = imagecreatefromgif($source);
+                break;
+            default:
+                $image = imagecreatefromjpeg($source);
+        }
+
+        // Save image
+        imagejpeg($image, $destination, $quality);
+
+        // Return compressed image
+        return $destination;
+    }
 
     public function updateMyProfile()
     {

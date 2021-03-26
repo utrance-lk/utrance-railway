@@ -1,10 +1,38 @@
-    <div class="upcoming__trips-container">
+    <div class="upcoming__trips-container margin-b-huge">
         <div class="upcoming__trips--header">
             <div class="upcoming__trips--header-text">
                 Upcoming trips
             </div>
         </div>
-        <div class="upcoming__trips--cards-container">
+        
+        <?php
+    if (isset($other_reference) && isset($bookings) ) {
+        $i = 0;
+        foreach ($bookings as $key => $value) {
+            $i++;
+            $html = renderIntersectionCard($value, $other_reference);
+            $dom = new DOMDocument();
+            $dom->loadHTML($html);
+            print_r($dom->saveHTML());
+        }
+    }
+  ?>
+        <!--?php
+            include_once "../views/components/manageBookingCards.php";
+            echo renderIntersectionCard();
+       ?!-->
+
+       <!--?php
+             include_once "../views/components/manageBookingCards.php";
+             echo renderSinglePath();
+        ?!-->
+
+      <!--?php
+             include_once "../views/components/manageBookingCards.php";
+             echo renderSinglePath();
+        ?!-->
+
+        <!--div class="upcoming__trips--cards-container ">
             <div class="upcoming__trips--card">
                 <div class="start-destination--box">
                     <span>Matara</span>&nbsp;&ndash;&nbsp;<span>Kandy</span>
@@ -43,7 +71,7 @@
                         <div class="train__details--box-text">
                             First class
                         </div>
-                    </div>     
+                    </div>
                 </div>
                 <div class="train__details--box">
                     <div class="train train__details--box-item">
@@ -69,7 +97,7 @@
                         <div class="train__details--box-text">
                             Second class
                         </div>
-                    </div>     
+                    </div>
                 </div>
                 <div class="price--box">
                     Rs 500
@@ -79,8 +107,10 @@
                         View more
                     </a>
                 </div>
-            </div>
-            <div class="upcoming__trips--card">
+            </div!-->
+
+
+            <!--div class="upcoming__trips--card">
                 <div class="start-destination--box">
                     <span>Matara</span>&nbsp;&ndash;&nbsp;<span>Kandy</span>
                 </div>
@@ -118,7 +148,7 @@
                         <div class="train__details--box-text">
                             First class
                         </div>
-                    </div>     
+                    </div>
                 </div>
                 <div class="price--box">
                     Rs 500
@@ -128,8 +158,9 @@
                         View more
                     </a>
                 </div>
-            </div>
-            <div class="upcoming__trips--card">
+            </div!-->
+
+            <!--div class="upcoming__trips--card">
                 <div class="start-destination--box">
                     <span>Matara</span>&nbsp;&ndash;&nbsp;<span>Kandy</span>
                 </div>
@@ -167,7 +198,7 @@
                         <div class="train__details--box-text">
                             First class
                         </div>
-                    </div>     
+                    </div>
                 </div>
                 <div class="price--box">
                     Rs 500
@@ -177,7 +208,7 @@
                         View more
                     </a>
                 </div>
-            </div>
+            </div!-->
         </div>
     </div>
 

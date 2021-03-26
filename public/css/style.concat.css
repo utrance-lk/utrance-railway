@@ -333,6 +333,13 @@ input::-webkit-datetime-edit-year-field:focus {
   align-items: center;
 }
 
+.flex-row-st-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+
 .flex-col-sa-center {
   display: flex;
   flex-direction: column;
@@ -1038,13 +1045,13 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .footer {
-  margin-top: 10rem;
   background-color: rgba(0, 0, 0, .8);
   flex: 1;
   padding: 4rem;
   color: #fff;
   display: flex;
   justify-content: center;
+  height: 16vh;
 }
 .header {
   font-family: "Lato", sans-serif;
@@ -1175,6 +1182,7 @@ input::-webkit-datetime-edit-year-field:focus {
   left: 50%;
   display: none;
   border-radius: 5px;
+  z-index: 20;
 }
 
 .header-user__details:active .header-user__dropdown,
@@ -1274,7 +1282,7 @@ input::-webkit-datetime-edit-year-field:focus {
 .login {
   display: flex;
   align-items: stretch;
-  height: 100vh;
+  height: 84vh;
   font-family: "Lato", sans-serif;
 }
 
@@ -1292,7 +1300,7 @@ input::-webkit-datetime-edit-year-field:focus {
   background-repeat: no-repeat;
   background-size:  cover;
   background-position: center;
-  background-image: url("/utrance-railway/public/img/pages/login/train-cover.jpg");
+  background-image: url("/utrance-railway/public/img/pages/login/train-cover2-min.png");
 }
 
 .login__form {
@@ -1443,6 +1451,7 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .add-stop-popup input {
   padding: 1rem;
+  width: 13rem;
 }
 
 .add-stop-popup__close-btn {
@@ -1624,6 +1633,11 @@ input::-webkit-datetime-edit-year-field:focus {
   align-self: center;
 }
 
+
+.seat-booking__final-amount {
+  font-family: inherit;
+  font-size: 2rem;
+}
 .manage-trains__search-results {
   display: flex;
   flex-direction: column;
@@ -1924,7 +1938,6 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .view-train__schedule {
   padding: 0 5rem;
-  width: 50%;
 }
 
 .view-train__table-heading {
@@ -1960,12 +1973,14 @@ input::-webkit-datetime-edit-year-field:focus {
   text-align: center;
 }
 
+.map-container {
+    position: relative;
+    height: calc(100vh - 8rem);
+    width: 50vw;
+}
+
 #map {
-        /* width: 400px; */
-    position: absolute;
-    top: 16vh;
-    bottom: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
+    position: relative;
+    height: inherit;
+    width: inherit;
 }

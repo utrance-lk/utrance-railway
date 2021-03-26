@@ -16,6 +16,22 @@ $app->router->post('/utrance-railway/ticket-prices', [TicketController::class, '
 $app->router->get('/utrance-railway/freight-prices', [FreightController::class, 'viewFreightPrice']);
 $app->router->post('/utrance-railway/freight-prices', [FreightController::class, 'viewFreightPrice']);
 
+$app->router->get('/utrance-railway/train-details', [ViewController::class, 'viewAllTrainDetails']);
+$app->router->post('/utrance-railway/train-details', [ViewController::class, 'viewAllTrainDetails']);
+
+$app->router->get('/utrance-railway/getSelect', [ViewController::class, 'newSearchResults']);
+$app->router->post('/utrance-railway/getSelect', [ViewController::class, 'newSearchResults']);
+
+$app->router->get('/utrance-railway/getSelect', [ViewController::class, 'newSearchResults']);
+$app->router->post('/utrance-railway/getSelect', [ViewController::class, 'newSearchResults']);
+
+
+
+
+
+
+
+
 
 
 

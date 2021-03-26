@@ -32,8 +32,8 @@
 
   <?php
     if (isset($intersections)) {
-        $i = 0;
-        foreach ($intersections as $key => $value) {
+      $i = 0;
+      foreach ($intersections as $key => $value) {
             $i++;
             $html = renderIntersectCard($value, $i);
             $dom = new DOMDocument();

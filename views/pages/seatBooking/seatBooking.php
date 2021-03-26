@@ -1,4 +1,4 @@
-<div class="flex-col-stretch-center margin-t-m">
+<div class="flex-col-stretch-center margin-t-m margin-b-m">
     <div class="flex-col-stretch-center margin-b-huge">
         <div class="heading-tertiary">
             <span><?php echo $all_start; ?></span>&nbsp;to&nbsp;<span><?php echo $all_end; ?></span>
@@ -27,17 +27,19 @@ foreach ($trains as $key => $value) {
 
 ?>
         <form action="https://sandbox.payhere.lk/pay/checkout" class="flex-col-stretch-center" method="POST">
-            <div class="seat-booking__total-price margin-b-m">
+            <div class="seat-booking__total-price margin-b-m flex-row-st-center">
                 <span class="margin-r-xs">final amount&nbsp;&colon;</span>
-                <div>
-                    <span>Rs</span>&nbsp;<input readonly name="amount" id="finalAmount"></input>
+                <div class="padding-xs" style="background-color: #fff;">
+                    <span>Rs</span>&nbsp;<input readonly name="amount" id="finalAmount" class="seat-booking__final-amount"></input>
                 </div>
             </div>
             <input type="hidden" name="merchant_id" value="1216669">    <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="http://localhost/utrance-railway/payment">
+            <input type="hidden" name="return_url" value="https://utrance-railway.herokuapp.com/home">
+            <!-- <input type="hidden" name="return_url" value="http://localhost/utrance-railway/home"> -->
             <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
-            <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">  
-            <input type="text" name="order_id" value="ItemNo12345" hidden readonly>
+            <input type="hidden" name="notify_url" value="https://utrance-railway.herokuapp.com/payment">  
+            <!-- <input type="hidden" name="notify_url" value="http://localhost/utrance-railway/payment">   -->
+            <input type="text" name="order_id" value="" hidden readonly>
             <input type="text" name="items" value="<?php echo $all_start . ' to ' . $all_end;?>" hidden readonly>
             <input type="text" name="currency" value="LKR" hidden readonly>
             <input type="text" name="first_name" value="<?php echo App::$APP->activeUser()['first_name']; ?>" hidden readonly>
@@ -56,6 +58,29 @@ foreach ($trains as $key => $value) {
     </div>
 </div>
 <script type="text/javascript" src="../../../utrance-railway/public/js/pages/seatBooking.js"></script>
+<?php
+    $train2Available = isset($trains['t2']);
+    if(!$train2Available) {
+        $train2Available = 0;
+    }
+?>
+
+<script>
+    var arr = [];
+    var t1 = {}; 
+    var t2 = {};
+
+    t1.fcBasePrice = "<?php echo $trains['t1']['ticket_fc'];?>" * 1;
+    t1.scBasePrice = "<?php echo $trains['t1']['ticket_sc'];?>" * 1;
+    arr.push(t1);
+    var train2Available = "<?php echo $train2Available;?>" * 1;
+    if(train2Available) {
+        t2.fcBasePrice = "<?php echo isset($trains['t2']) ? $trains['t2']['ticket_fc'] : 0;?>" * 1;
+        t2.scBasePrice = "<?php echo isset($trains['t2']) ? $trains['t2']['ticket_sc'] : 0;?>" * 1;
+        arr.push(t2);
+    }
+    getValues(arr);
+</script>
 
 <?php
 function calcFullJourneyTime($train1Time, $train2Time = null, $waitTime = null)

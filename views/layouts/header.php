@@ -28,7 +28,7 @@
               </svg>
               <span class="margin-l-xxs">Freight Booking</span>
             </a>
-            <a href="/utrance-railway/view-train" class="header-main__item">
+            <a href="/utrance-railway/train-details" class="header-main__item">
               <svg class="header__icon">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-train"></use>
               </svg>
