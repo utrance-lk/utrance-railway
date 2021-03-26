@@ -1277,10 +1277,14 @@ input::-webkit-datetime-edit-year-field:focus {
     font-size: 2rem;
 }
 
-
 .error__img {
     height: 20rem;
     width: 20rem;
+}
+
+.error__img--small {
+    height: 10rem;
+    width: 10rem;
 }
 .add-train__new-train {
   display: flex;
