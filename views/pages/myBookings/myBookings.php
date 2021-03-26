@@ -6,7 +6,7 @@
         </div>
         
         <?php
-    if (isset($other_reference) && isset($bookings) ) {
+    if ( isset($bookings) ) {
         $i = 0;
         foreach ($bookings as $key => $value) {
             $i++;

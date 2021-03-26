@@ -6,9 +6,7 @@ require_once "../vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 
-// if (file_exists(".env")) {
-    $dotenv->load();
-// }
+$dotenv->load();
 
 // databse configuration (getting the details from the config.env)
 $config = [
@@ -25,8 +23,8 @@ $config = [
         'port' => $_ENV['EMAIL_PORT'],
     ],
     'payment' => [
-        'merchant_secret' =>$_ENV['PAYMENT_MERCHANT_SECRET']
-    ]
+        'merchant_secret' => $_ENV['PAYMENT_MERCHANT_SECRET'],
+    ],
 ];
 
 $app = new App(dirname(__DIR__), $config);

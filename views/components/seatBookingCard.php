@@ -1,6 +1,6 @@
 <?php
 
-function renderTrainBookingCard($train, $id)
+function renderTrainBookingCard($train, $id, $when)
 {
 
     $timeDecide = timeDecider(substr($train['from_dept'], 0, 2));
@@ -17,8 +17,16 @@ function renderTrainBookingCard($train, $id)
     $fullHr = substr($train['journey_time'], 0, 2);
     $fullMin = substr($train['journey_time'], 3, 2);
 
+    $_SESSION['booking'][$id]['customer_id'] =  App::$APP->activeUser()['id'];
+    $_SESSION['booking'][$id]['train_date'] =  $when;
+    $_SESSION['booking'][$id]['train_id'] =  $train['train_id'];
+    $_SESSION['booking'][$id]['from'] =  $train['from'];
+    $_SESSION['booking'][$id]['to'] =  $train['to'];
 
     return "
+            <div class='seat-booking__remaining-seats' id='remaining-seats{$id}'>
+                <span id='no-seats-remain{$id}'>{$train['sa_second_class']}</span> seats left!
+            </div>
             <div class='seat-booking-card'>
                 <div class='seat-booking-card__train-no'>
                     train {$train['train_no']}
@@ -35,18 +43,18 @@ function renderTrainBookingCard($train, $id)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
+                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count{$id}' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <select name='train_class' id='train_class{$id}' class='seat-booking-card__train-class'>
+                    <select name='train_class{$id}' id='train_class{$id}' class='seat-booking-card__train-class'>
                         <option value='firstClass'>first class</option>
                         <option value='secondClass' selected>second class</option>
                     </select>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box seat-booking-card__price'>
-                    <span>Rs&nbsp;</span><span id='tickprice{$id}'>{$train['ticket_sc']}</span>
+                    <span>Rs&nbsp;</span><input type='text' name='tickpricetrain{$id}' id='tickprice{$id}' value='{$train['ticket_sc']}'>
                 </div>
             </div>
     ";
@@ -62,4 +70,3 @@ function timeDecider($time)
     }
     return [$time, $dayTime];
 }
-

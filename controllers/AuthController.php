@@ -103,7 +103,6 @@ class AuthController extends Controller
 
             if (!$user) {
                 return 'There is no user with that email address.';
-                // return $response->setStatusCode('404');
             }
 
             // 2) Generate the random reset token

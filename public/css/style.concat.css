@@ -253,6 +253,10 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-top: 4rem;
 }
 
+.margin-t-l {
+  margin-top: 5rem;
+}
+
 .margin-tb-xs {
   margin: 1rem 0;
 }
@@ -354,6 +358,11 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .width-half {
   width: 50%;
+}
+
+/* BUTTONS */
+.button-inactive {
+  background-color: grey !important;
 }
 
 .btn {
@@ -1259,6 +1268,20 @@ input::-webkit-datetime-edit-year-field:focus {
   width: 80%;
 }
 
+.error__text--heading {
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.error__text--sub {
+    font-size: 2rem;
+}
+
+
+.error__img {
+    height: 20rem;
+    width: 20rem;
+}
 .add-train__new-train {
   display: flex;
   height: 90vh;
@@ -1602,8 +1625,7 @@ input::-webkit-datetime-edit-year-field:focus {
   background-color: #1F3A93;
   color: #fff;
 }
-
-.seat-booking__day{
+.seat-booking__day {
   position: relative;
 }
 
@@ -1616,7 +1638,7 @@ input::-webkit-datetime-edit-year-field:focus {
 .seat-booking__form {
   display: flex;
   flex-direction: column;
-  width: 60%;   
+  width: 60%;
 }
 
 .seat-booking__total-price {
@@ -1633,11 +1655,34 @@ input::-webkit-datetime-edit-year-field:focus {
   align-self: center;
 }
 
-
 .seat-booking__final-amount {
   font-family: inherit;
   font-size: 2rem;
 }
+
+.seat-booking__remaining-seats {
+  background-color: red;
+  transform: translateY(-4rem);
+  height: 4rem;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.5;
+  width: max-content;
+  margin: 0 auto;
+  padding: 1rem 3rem;
+  color: #fff;
+  border-radius: 2rem;
+}
+
+.seat-booking__no-seats {
+  font-family: inherit;
+  background-color: transparent;
+  color: #fff;
+  font-size: inherit;
+  display: inline-block;
+  width: 3rem;
+}
+
 .manage-trains__search-results {
   display: flex;
   flex-direction: column;
