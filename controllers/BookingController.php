@@ -65,16 +65,6 @@ class BookingController extends Controller
             App::$APP->session->remove($option);
             $train = $this->travellingTrains($mode, $fullTrainDetails);
 
-            // remove the session after making a booking
-            // $i = 0;
-            // foreach($_SESSION as $key => $value) {
-            //     $str = 'op' . $i;
-            //     if($str === $key) {
-            //         App::$APP->session->remove($str);
-            //     }
-            //     $i++;
-            // }
-
             foreach ($train['trains'] as $key => $value) {
                 $seatAvailability = new BookingModel();
                 $seatAvailability->loadData(['train_id' => $value['train_id'], 'when' => $train['when']]);
@@ -178,7 +168,7 @@ class BookingController extends Controller
             // send ticket
             $this->sendTicketWithQR($hashStr, $bookingVar);
 
-            // $response->redirect('home');
+            $response->redirect('home');
 
         }
     }
@@ -194,15 +184,6 @@ class BookingController extends Controller
             ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
             ->setForegroundColor(new Color(0, 0, 0))
             ->setBackgroundColor(new Color(255, 255, 255));
-
-        // var_dump(__DIR__);
-
-        // $logo = Logo::create('/utrance-railway/public/img/logo/utranceLogoBlack.png')
-        // ->setResizeToWidth(50);
-
-        // $label = Label::create('Utrance-railway')
-        // ->setTextColor(new Color(255, 0, 0))
-        // ->setBackgroundColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode);
 

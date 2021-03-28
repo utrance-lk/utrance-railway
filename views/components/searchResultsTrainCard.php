@@ -2,6 +2,11 @@
 
 function renderDirectPathCard($value, $option)
 {
+  $dateTimeStr = $value['when'] . ' ' . $value['fssdt'];
+  $d1 = new DateTime($dateTimeStr);
+  $currentDate = new DateTime(date('m/d/Y h:i:s a', strtotime('+30 minutes')));
+  $isEligible = $d1 > $currentDate;
+
     $html = "<div class='search-results-train-card search-results-train-card--small'>
                 <div class='search-results-train-card__main'>
                     <div class='search-results-train-card__primary'>
@@ -48,7 +53,14 @@ function renderDirectPathCard($value, $option)
     $option = "op" . $option;
     $_SESSION[$option] = $value;
 
-    $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
+    if($isEligible) {
+      $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a>";
+    } else {
+      $html .= "<div class='btn-square-no-bg--disabled'><p>Not Available</p></div>";
+    }
+
+    $html .= "</div></div></div>";
+
     return $html;
 }
 
