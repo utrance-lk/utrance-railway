@@ -1,5 +1,5 @@
 let mydate;
-let count=0;
+let count;
 
 const renderResults = function (trains,date){
     count=0;
@@ -56,15 +56,15 @@ const renderCard = function (train){
 
                 document.querySelector(".train-booking__stat-card--container").insertAdjacentHTML("beforeend", markup);
                  
-                // if(document.querySelectorAll(".fcseats__seatnos")[count-1].innerText==="50 / 50"  && document.querySelectorAll(".scseats__seatnos")[count-1].innerText==="50 / 50" && document.querySelectorAll(".sleeping-berths__seatnos")[count-1].innerText==="30 / 30"
-                // && document.querySelectorAll(".observation__seatnos")[count-1].innerText==="2 / 2")
-                // {
+                if(document.querySelectorAll(".fcseats__seatnos")[count-1].innerText==="50 / 50"  && document.querySelectorAll(".scseats__seatnos")[count-1].innerText==="50 / 50" && document.querySelectorAll(".sleeping-berths__seatnos")[count-1].innerText==="30 / 30"
+                && document.querySelectorAll(".observation__seatnos")[count-1].innerText==="2 / 2")
+                {
                     
-                // //     document.querySelectorAll(".block")[count-1].remove();
-                // var element = document.querySelectorAll(".btn")[count-1];
-                // element.remove();
+                //     document.querySelectorAll(".block")[count-1].remove();
+                var element = document.querySelectorAll(".btn")[count-1];
+                element.remove();
                 
-                // }
+                }
 }
 
 const clearResults = function () {

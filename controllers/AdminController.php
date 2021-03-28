@@ -509,5 +509,17 @@ class AdminController extends Controller
         }
     }
 
+    public function getNewBookingTrain($request, $response){
+        if ($request->isPost()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $saveDetailsModel->loadData($tempBody);
+            $trainArray = $saveDetailsModel->getNewBookingTrain();
+
+            echo json_encode($trainArray);
+        }
+    }
+
 
 }

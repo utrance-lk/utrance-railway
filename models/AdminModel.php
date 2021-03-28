@@ -1053,6 +1053,17 @@ class AdminModel extends Model
         return $this->resultArray;
     }
 
+    public function getNewBookingTrain(){
+       
+       $query = APP::$APP->db->pdo->prepare("SELECT * FROM ticket_booking WHERE train_id = :train_id LIMIT 1");
+       $query->bindValue(":train_id", $this->index1);
+       $query->execute();
+       $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+       return $this->resultArray;
+
+
+    }
+
    
 
 }

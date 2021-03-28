@@ -38,7 +38,7 @@ class Email
                 $this->mail->AltBody = $options['message'];
             }
             if ($callbackHTML === 'renderTicketInvoiceEmail') {
-                $imgPath = 'C:/xampp/htdocs/utrance-railway/public/img/QR/' . $options['hash'] . '.png';
+                $imgPath = 'E:/xwapp/htdocs/utrance-railway/public/img/QR/' . $options['hash'] . '.png';
                 $this->mail->AddEmbeddedImage($imgPath, 'qr', $options['hash'] . '.png');
             }
             $this->mail->send();
