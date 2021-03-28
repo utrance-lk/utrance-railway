@@ -14,6 +14,11 @@ class ViewController extends Controller
             ///
         }
 
+        $getStationsModel = new ViewModel();
+        $stationsArray['stations'] = $getStationsModel->getStations(); 
+        
+        App::$APP->session->set('stationArray', $stationsArray);
+
         return $this->render('home');
     }
 
@@ -59,7 +64,7 @@ class ViewController extends Controller
 
             return $this->render('searchResults', $pathArrays);
 
-        }
+        } 
 
         return $this->render('searchResults');
 

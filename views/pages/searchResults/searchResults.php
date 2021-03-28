@@ -6,6 +6,10 @@
   ?>
 </section>
 
+<script>
+  var stations = <?php echo json_encode(App::$APP->session->get('stationArray')['stations']);?>;
+</script>
+
 <?php if(isset($error)):?>
 
 <section class="error">
