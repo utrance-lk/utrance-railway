@@ -13,6 +13,8 @@ class BookingModel extends Model
     public $to_station;
     public $passengers;
     public $class;
+    public $id1;
+    public $id2;
     public $base_price;
     public $total_amount;
     public $other_booking;
@@ -27,7 +29,7 @@ class BookingModel extends Model
     public function getAllMyBookings(){
         $this->customer_id = App::$APP->activeUser()['id'];
 
-        $query = App::$APP->db->pdo->prepare("SELECT tb.customer_id,tb.other_booking FROM ticket_booking tb  GROUP BY other_booking HAVING COUNT(tb.other_booking) >1");
+        $query = App::$APP->db->pdo->prepare("SELECT tb.customer_id,tb.id,tb.other_booking FROM ticket_booking tb  GROUP BY other_booking HAVING COUNT(tb.other_booking) >1");
         $query->execute();
         $this->getAllMyBookingArray["duplicate_other_bookings"] = $query->fetchAll(PDO::FETCH_ASSOC);
         $this->bookArray=$this->findIntersect($this->getAllMyBookingArray);
@@ -43,12 +45,22 @@ class BookingModel extends Model
         
         
        
-        var_dump($this->bookArray);
+        //var_dump($this->bookArray);
         return $this->bookArray;
 
         
         
         
+
+    }
+
+    public function getBookedTourIntersect(){
+        var_dump($this->id2);
+        $query = App::$APP->db->pdo->prepare("SELECT tb.from_station,tb.to_station,tb.base_price,,tb.total_amount,tb.class,tb.passengers,tr.train_type,tr.train_name FROM ticket_booking tb INNER JOIN trains tr ON tb.train_id=tr.train_id INNER JOIN stops st ON  WHERE tb.customer_id=:cus_id");
+        $query->execute();
+
+    }
+    public function getBookedTourDirect(){
 
     }
 
@@ -58,11 +70,14 @@ class BookingModel extends Model
         $j=0;
         for($i=0;$i<$size;$i++){
           if(($arryIntersect["duplicate_other_bookings"][$i]['customer_id']==$this->customer_id)){
-              $query = App::$APP->db->pdo->prepare("SELECT tb.train_id,tb.passengers,tb.class,tb.total_amount,tb.other_booking,tr.train_name,tb.from_station,tb.to_station FROM ticket_booking tb INNER JOIN trains tr ON tb.train_id=tr.train_id WHERE tb.customer_id=:cus_id AND tb.other_booking=:other_booking");
+              $date=date("Y-m-d");
+             
+              $query = App::$APP->db->pdo->prepare("SELECT tb.train_id,tb.id,tb.passengers,tb.class,tb.total_amount,tb.other_booking,tr.train_name,tb.from_station,tb.to_station,tb.train_date FROM ticket_booking tb INNER JOIN trains tr ON tb.train_id=tr.train_id WHERE tb.customer_id=:cus_id AND tb.other_booking=:other_booking AND tb.train_date >= $date ORDER BY tb.train_date ASC");
               $query->bindValue(":cus_id", $this->customer_id);
               $query->bindValue(":other_booking", $arryIntersect["duplicate_other_bookings"][$i]['other_booking']);
               $query->execute();
               $this->getBooking["intersect"][$j] = $query->fetchAll(PDO::FETCH_ASSOC);
+              
                $j++;
 
           }
@@ -79,9 +94,10 @@ class BookingModel extends Model
         $this->customer_id = App::$APP->activeUser()['id'];
         $i=0;
         $j=0;
+        
+        $date=date("Y-m-d");
         for($i=0;$i<$size;$i++){
-            
-                $query = App::$APP->db->pdo->prepare("SELECT tb.train_id,tb.passengers,tb.class,tb.total_amount,tb.other_booking,tr.train_name,tb.from_station,tb.to_station FROM ticket_booking tb INNER JOIN trains tr ON tb.train_id=tr.train_id WHERE tb.customer_id=:cus_id AND tb.other_booking=:other_booking");
+                $query = App::$APP->db->pdo->prepare("SELECT tb.train_id,tb.id,tb.passengers,tb.class,tb.total_amount,tb.other_booking,tr.train_name,tb.from_station,tb.to_station,tb.train_date FROM ticket_booking tb INNER JOIN trains tr ON tb.train_id=tr.train_id WHERE tb.customer_id=:cus_id AND tb.other_booking=:other_booking AND tb.train_date >= $date ORDER BY tb.train_date ASC");
                 $query->bindValue(":cus_id", $this->customer_id);
                 $query->bindValue(":other_booking", $arryDirect["no_duplicates"][$i]['other_booking']);
                 $query->execute();

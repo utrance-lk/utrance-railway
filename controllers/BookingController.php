@@ -29,11 +29,11 @@ class BookingController extends Controller
             return 'You are not logged in!!';
         }
         if ($request->isGet()) {
-            var_dump("hy");
+            //var_dump("hy");
             $getAllBookingsModel = new BookingModel();
             $getAllBookingsModel->loadData($request->getBody());
             $getAllBookingArray = $getAllBookingsModel->getAllMyBookings();
-            //var_dump($getAllBookingArray);
+            
             return $this->render('myBookings',$getAllBookingArray);
         }
     }
@@ -359,11 +359,36 @@ class BookingController extends Controller
         return false;
     }
 
-    public function bookedTour($request)
+    public function bookedTourIntersect($request)
     {
         if ($this->authMiddleware->isLoggedIn()) {
             if ($request->isGet()) {
-                return $this->render('bookedTour');
+
+                $bookedTourModel = new BookingModel();
+                $tempBody = $request->getBody();
+                $tempBody['id1'] = $request->getQueryParams()['id1'];
+                $tempBody['id2'] = $request->getQueryParams()['id2'];
+                var_dump($tempBody['id1']);
+                $bookedTourModel->loadData($tempBody);
+                $getBookedTourArray=$bookedTourModel->getBookedTourIntersect();
+                 return $this->render('bookedTour',$getBookedTourArray);
+            }
+        } else {
+            return 'your not logged in!';
+        }
+    }
+
+    public function bookedTourDirect($request){
+        if ($this->authMiddleware->isLoggedIn()) {
+            if ($request->isGet()) {
+
+                $bookedTourModel = new BookingModel();
+                $tempBody = $request->getBody();
+                $tempBody['id1'] = $request->getQueryParams()['id1'];
+                var_dump($tempBody['id1']);
+                $bookedTourModel->loadData($tempBody);
+                $getBookedTourArray=$bookedTourModel->getBookedTourDirect();
+                 return $this->render('bookedTour',$getBookedTourArray);
             }
         } else {
             return 'your not logged in!';
