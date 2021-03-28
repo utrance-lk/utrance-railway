@@ -8,8 +8,6 @@ use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
 use Endroid\QrCode\QrCode;
-use Endroid\QrCode\Logo\Logo;
-use Endroid\QrCode\Label\Label;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
@@ -151,6 +149,7 @@ class BookingController extends Controller
             }
 
             $bookingVar = $_SESSION['booking'];
+
             $hashStr = md5($str);
 
             foreach ($bookingVar as $key => $value) {
@@ -164,7 +163,10 @@ class BookingController extends Controller
             // QR generator
             $this->generateQR($hashStr);
 
-            // $response->redirect('home');
+            // send ticket
+            $this->sendTicketWithQR($hashStr, $bookingVar);
+
+            $response->redirect('home');
 
         }
     }
@@ -181,18 +183,28 @@ class BookingController extends Controller
             ->setForegroundColor(new Color(0, 0, 0))
             ->setBackgroundColor(new Color(255, 255, 255));
 
-            var_dump(__DIR__);
+        // var_dump(__DIR__);
 
         // $logo = Logo::create('/utrance-railway/public/img/logo/utranceLogoBlack.png')
-            // ->setResizeToWidth(50);
+        // ->setResizeToWidth(50);
 
         // $label = Label::create('Utrance-railway')
-            // ->setTextColor(new Color(255, 0, 0))
-            // ->setBackgroundColor(new Color(0, 0, 0));
+        // ->setTextColor(new Color(255, 0, 0))
+        // ->setBackgroundColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode);
 
         $result->saveToFile('C:/xampp/htdocs/utrance-railway/public/img/QR/' . $hashStr . '.png');
+        
+    }
+
+    private function sendTicketWithQR($hashStr, $bookingVar)
+    {
+        App::$APP->email->sendTicket(App::$APP->activeUser()['email_id'], 'INVOICE', [
+            'first_name' => App::$APP->activeUser()['first_name'],
+            'hash' => $hashStr,
+            'booking_details' => $bookingVar
+        ]);
 
     }
 
