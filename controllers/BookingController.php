@@ -57,7 +57,12 @@ class BookingController extends Controller
             $option = $request->getQueryParams()['op'];
             $mode = $request->getQueryParams()['mode'];
 
+            if(empty($_SESSION[$option])) {
+                return $response->redirect('home');
+            }
+
             $fullTrainDetails = App::$APP->session->get($option);
+            App::$APP->session->remove($option);
             $train = $this->travellingTrains($mode, $fullTrainDetails);
 
             // remove the session after making a booking
@@ -137,6 +142,13 @@ class BookingController extends Controller
     public function bookingSuccess($request, $response)
     {
         if ($request->isGet()) {
+
+
+            if (empty($_SESSION['booking'])) {
+                return $response->redirect('home');
+            }
+
+
             $str = null;
             foreach ($_SESSION['booking'][1] as $key => $value) {
                 $str .= $value;
@@ -166,7 +178,7 @@ class BookingController extends Controller
             // send ticket
             $this->sendTicketWithQR($hashStr, $bookingVar);
 
-            $response->redirect('home');
+            // $response->redirect('home');
 
         }
     }
