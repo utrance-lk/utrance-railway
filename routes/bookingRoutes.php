@@ -10,6 +10,7 @@ $app->router->get('/utrance-railway/bookings', [BookingController::class, 'manag
 
 
 $app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createSeatBooking']);
+$app->router->post('/utrance-railway/book-seats', [BookingController::class, 'createSeatBooking']);
 
 $app->router->get('/utrance-railway/book-freights', [BookingController::class, 'bookFreight']);
 
@@ -28,5 +29,6 @@ $app->router->post('/utrance-railway/checkout', [BookingController::class, 'chec
 
 $app->router->get('/utrance-railway/getBookings', [BookingController::class, 'bookingDetails']);
 $app->router->post('/utrance-railway/getBookings', [BookingController::class, 'bookingDetails']);
+$app->router->get('/utrance-railway/booking-success', [BookingController::class, 'bookingSuccess']);
 
 ?>

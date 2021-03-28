@@ -34,7 +34,7 @@ class DetailsProviderController extends Controller
         {
             $contactAdminModel->loadData($request->getbody());
             $addDetails = $contactAdminModel->contactAdmin();
-            //var_dump($addDetails);
+            
             return $this->render(['detailsProvider','contactAdmin']); 
         
         }

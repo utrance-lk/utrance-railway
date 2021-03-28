@@ -56,6 +56,10 @@
   margin-top: 4rem;
 }
 
+.margin-t-l {
+  margin-top: 5rem;
+}
+
 .margin-tb-xs {
   margin: 1rem 0;
 }
@@ -136,6 +140,13 @@
   align-items: center;
 }
 
+.flex-row-st-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+
 .flex-col-sa-center {
   display: flex;
   flex-direction: column;
@@ -150,4 +161,9 @@
 
 .width-half {
   width: 50%;
+}
+
+/* BUTTONS */
+.button-inactive {
+  background-color: grey !important;
 }

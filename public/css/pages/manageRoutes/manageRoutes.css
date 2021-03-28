@@ -91,7 +91,11 @@
 
 .add-stop-popup input {
   padding: 1rem;
+<<<<<<< HEAD
   width:13rem;
+=======
+  width: 13rem;
+>>>>>>> 9c85d5d6e541a2e16d9318c00b1b5892f84c31cb
 }
 
 .add-stop-popup__close-btn {

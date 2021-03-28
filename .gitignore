@@ -3,7 +3,7 @@
 .*/
 ticketPrice.xlsx
 ~$ticketPrice.xlsx
-composer.lock
 node_modules
 .metals
 .vsode
+QR

@@ -69,9 +69,7 @@ class AuthController extends Controller
             if ($registrationState === 'success') {
                 return $this->login($request, $response);
             } else {
-                $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika
-                
-
+                $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika       
             }
             return $this->render('register', $registerSetValue); //Ashika
             //  return $this->render('register', $registrationState);
@@ -92,7 +90,6 @@ class AuthController extends Controller
 
             if (!$user) {
                 return 'There is no user with that email address.';
-                // return $response->setStatusCode('404');
             }
 
             // 2) Generate the random reset token
@@ -103,10 +100,9 @@ class AuthController extends Controller
 
             $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
 
-            App::$APP->email->sendEmail([
-                'email' => $user[0]['email_id'],
-                'subject' => 'Your password reset token (valid for 10 minutes)',
+            App::$APP->email->sendRestPasswordEmail($user[0]['email_id'], 'Your password reset token (valid for 10 minutes)', [
                 'message' => $message,
+                'resetURL' => $resetURL
             ]);
 
             return '';
