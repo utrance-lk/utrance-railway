@@ -113,9 +113,7 @@ class AuthController extends Controller
 
             $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
 
-            App::$APP->email->sendRestPasswordEmail([
-                'email' => $user[0]['email_id'],
-                'subject' => 'Your password reset token (valid for 10 minutes)',
+            App::$APP->email->sendRestPasswordEmail($user[0]['email_id'], 'Your password reset token (valid for 10 minutes)', [
                 'message' => $message,
                 'resetURL' => $resetURL
             ]);
