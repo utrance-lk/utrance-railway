@@ -5,7 +5,9 @@ require_once "../controllers/BookingController.php";
 $app->router->get('/utrance-railway/myBookings', [BookingController::class, 'getAllBookings']);
 
 $app->router->get('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
-$app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
+// $app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
+// $app->router->post('/utrance-railway/getSearchbookings', [BookingController::class, 'SearchManageBookings']);
+
 
 $app->router->get('/utrance-railway/book-seats', [BookingController::class, 'createSeatBooking']);
 
@@ -24,6 +26,7 @@ $app->router->get('/utrance-railway/freight-booking-train', [BookingController::
 $app->router->get('/utrance-railway/checkout', [BookingController::class, 'checkout']);
 $app->router->post('/utrance-railway/checkout', [BookingController::class, 'checkout']);
 
-
+$app->router->get('/utrance-railway/getBookings', [BookingController::class, 'bookingDetails']);
+$app->router->post('/utrance-railway/getBookings', [BookingController::class, 'bookingDetails']);
 
 ?>

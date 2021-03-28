@@ -967,29 +967,43 @@ class AdminModel extends Model
         $temp_name = $_FILES['photo']['tmp_name'];
         $upload_to = '../public/img/NewsImages/';
 
+        
+        
+
         if($file_type == 'image/jpeg' ||  $file_type == 'image/jpg' ||  $file_type == 'image/png'){
             $file_uploaded = move_uploaded_file($temp_name,$upload_to . $file_name);
 
-            $this->news_headline = $this->sanitizeFormStreet($this->news_headline);
-            $this->detail = $this->sanitizeFormStreet($this->detail);
+            $this->callQuery($file_name);
+            
+            
+        }else if(!empty($file_name)){
+            $this->imageError = "Only JPEG/PNG/JPG are allowed.";
+        }
 
+        if(empty($file_name)){
+            $file_name = "newtrain.jpeg";
+            $this->callQuery($file_name);
+        }
+
+        
+        if(!empty($this->imageError)){
+            return $this->imageError;
+        }
+ 
+        
+
+    }
+
+    public function callQuery($file_name){
+        $this->news_headline = $this->sanitizeFormStreet($this->news_headline);
+        $this->detail = $this->sanitizeFormStreet($this->detail);
             $query = APP::$APP->db->pdo->prepare("INSERT INTO news_feed (News_type,Headline,Content,NewsImage) VALUES (:News_type,:Headline,:Content,:file_nam)");
             $query->bindValue(":News_type", $this->details_type);
             $query->bindValue(":Headline", $this->news_headline);
             $query->bindValue(":Content", $this->detail);
             $query->bindValue(":file_nam", $file_name);
             $query->execute();
-            
-        }else{
-            $this->imageError = "Only JPEG/PNG/JPG are allowed.";
-        }
 
-       
-        
-        
-        if(!empty($this->imageError)){
-            return $this->imageError;
-        }
     }
 
     public function getNews(){

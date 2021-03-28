@@ -9,10 +9,13 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&amp;family=Sora:wght@400;500&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
+    <!-- <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/bookingForAtrain/bookingForAtrain.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" /> -->
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.concat.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/bookingForAtrain/bookingForAtrain.css" />
+    <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
   </head>
 
   <body>
