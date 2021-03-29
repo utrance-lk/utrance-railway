@@ -29,7 +29,7 @@ class Email
     public function sendEmail($email, $subject, $options, $callbackHTML)
     {
         try {
-            $this->mail->setFrom('ashvg.dev@gmail.com', 'Admin');
+            $this->mail->setFrom('utrancerailway@gmail.com', 'Admin');
             $this->mail->addAddress($email);
 
             $this->mail->isHTML(true);
