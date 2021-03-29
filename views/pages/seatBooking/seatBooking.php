@@ -1,4 +1,6 @@
-<div class="flex-col-stretch-center margin-t-m margin-b-m">
+<?php include_once '../views/components/backButton.php';?>
+
+<div class="flex-col-stretch-center margin-b-m">
     <div class="flex-col-stretch-center margin-b-huge">
         <div class="heading-tertiary">
             <span><?php echo $all_start; ?></span>&nbsp;to&nbsp;<span><?php echo $all_end; ?></span>

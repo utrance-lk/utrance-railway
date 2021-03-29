@@ -8,27 +8,12 @@ class FreightController extends Controller
         $viewFreightPrice = new FreightModel();
 
         $viewFreightPrice->loadData($request->getBody());
-        var_dump($request->getBody());
 
         if ($request->isPost()) {
             $getResultPrice = $viewFreightPrice->getFreightPrice();
-            var_dump($getResultPrice);
-            // echo json_encode($getResultPrice['tickets']);
             return $this->render('freightPrice', $getResultPrice);
         }
 
         return $this->render('freightPrice');
-    }
-
-    public function getFreightPrices($request) {
-        /*$viewFreightPrice = new FreightModel();
-        $viewFreightPrice->loadData($request->getBody());
-            
-        if ($request->isPost()) {
-            $getResultPrice = $viewFreightPrice->getFreightPrice();
-            // var_dump($getResultPrice);
-            return json_encode($getResultPrice['freights']);
-        }*/
-
     }
 }
