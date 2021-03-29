@@ -2,6 +2,19 @@
 
 function renderDirectPathCard($value, $option)
 {
+
+  // date validating
+  $dateTimeStr = $value['when'] . ' ' . $value['fssdt'];
+  $d1 = new DateTime($dateTimeStr);
+  $currentDate = new DateTime(date('m/d/Y h:i:s a', strtotime('+30 minutes')));
+  $isEligible = $d1 > $currentDate;
+
+  // ticket price validating
+  $isPriceAvailable = false;
+  if($value['train1Price']) {
+    $isPriceAvailable = true;
+  }
+
     $html = "<div class='search-results-train-card search-results-train-card--small'>
                 <div class='search-results-train-card__main'>
                     <div class='search-results-train-card__primary'>
@@ -48,12 +61,38 @@ function renderDirectPathCard($value, $option)
     $option = "op" . $option;
     $_SESSION[$option] = $value;
 
-    $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
+    if($isEligible && $isPriceAvailable) {
+      $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a>";
+    } else if(!$isPriceAvailable) {
+      $html .= "<div class='btn-square-no-bg--disabled'><p>Ticket Prices Not Available</p></div>";
+    }
+     else {
+      $html .= "<div class='btn-square-no-bg--disabled'><p>Not Available</p></div>";
+    }
+
+    $html .= "</div></div></div>";
+
     return $html;
 }
 
 function renderIntersectCard($value, $option)
 {
+
+  // date validating
+  $dateTimeStr1 = $value['when'] . ' ' . $value['fssdt'];
+  $d1 = new DateTime($dateTimeStr1);
+  $dateTimeStr2 = $value['when'] . ' ' . $value['tsidt'];
+  $d2 = new DateTime($dateTimeStr2);
+  $currentDate = new DateTime(date('m/d/Y h:i:s a', strtotime('+30 minutes')));
+  $isEligible = $d1 > $currentDate && $d2 > $currentDate;
+
+  // ticket price validating
+$isPriceAvailable = false;
+if ($value['train1Price'] && $value['train2Price']) {
+    $isPriceAvailable = true;
+}
+
+
     $html = "<div class='search-results-train-card search-results-train-card--big'>
                 <div class='search-results-train-card__main'>
                 <div class='search-results-train-card__primary'>
@@ -163,7 +202,15 @@ function renderIntersectCard($value, $option)
     $option = "op" . $option;
     $_SESSION[$option] = $value;
 
-    $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=intersect' class='btn-square-no-bg'><p>Proceed</p></a></div></div></div>";
+    if($isEligible && $isPriceAvailable) {
+      $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=intersect' class='btn-square-no-bg'><p>Proceed</p></a>";
+    } else if(!$isPriceAvailable) {
+      $html .= "<div class='btn-square-no-bg--disabled'><p>Ticket Prices Not Available</p></div>";
+    } else {
+      $html .= "<div class='btn-square-no-bg--disabled'><p>Not Available</p></div>";
+    }
+
+    $html .= "</div></div></div>";
 
     return $html;
 }

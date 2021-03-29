@@ -7,6 +7,9 @@
 
   <?php include_once 'newsfeed.php';?>
 
+  <script>
+    var stations = <?php echo json_encode(App::$APP->session->get('stationArray')['stations']);?>;
+  </script>
   <script type="text/javascript" src="../../../utrance-railway/public/js/components/mainSearch.js"></script>
   <script type="text/javascript" src="../../../utrance-railway/public/js/components/currentDate.js"></script>
   <script>
