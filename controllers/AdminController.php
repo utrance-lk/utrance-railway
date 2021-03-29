@@ -324,21 +324,28 @@ class AdminController extends Controller
             }
         }
 
-        // var_dump($getrouteArray)
         return $this->render(['admin', 'addTrain'], $getrouteArray);
     }
 
     // manage routes
     public function getRoutesStations($request, $response)
     {
-        if ($request->isPost()) {
-            $saveDetailsModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $saveDetailsModel->loadData($tempBody);
-            $trainArray = $saveDetailsModel->getMyRoutsStations();
-            echo json_encode($trainArray);
+
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $saveDetailsModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $saveDetailsModel->loadData($tempBody);
+                $trainArray = $saveDetailsModel->getMyRoutsStations();
+                echo json_encode($trainArray);
+                return true;
+            }
         }
+
+        $response->setStatusCode(403);
+        $response->redirect('/utrance-railway/home');
 
     }
 
@@ -426,11 +433,6 @@ class AdminController extends Controller
     }
 
     ////////////////////////
-
-    public function aboutUs()
-    {
-        return $this->render('aboutUs');
-    }
 
     public function manageNews($request, $response)
     {
