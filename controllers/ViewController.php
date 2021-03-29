@@ -57,17 +57,12 @@ class ViewController extends Controller
                 foreach($pathArrays['intersections'] as $key => $value) {
                     $train1PriceModel->loadData(['start' => $pathArrays['intersections'][$index]['fssn'], 'destination' => $pathArrays['intersections'][$index]['isn']]);
                     $train2PriceModel->loadData(['start' => $pathArrays['intersections'][$index]['isn'], 'destination' => $pathArrays['intersections'][$index]['tsen']]);
-
+                    
                     $pathArrays['intersections'][$index]['train1Price'] = $train1PriceModel->getTicketPrice()['tickets'];
                     $pathArrays['intersections'][$index]['train2Price'] = $train2PriceModel->getTicketPrice()['tickets'];
                     $index++;
                 }
-                
-
-                
-
             }
-
             // adding available seats for the request
 
             return $this->render('searchResults', $pathArrays);
