@@ -3,6 +3,8 @@
 function renderIntersectionCard($value)
 {
 
+   
+
     $time = strtotime($value[0]['train_date']);
     $date=date("d",$time);
     $month = date("F", $time);

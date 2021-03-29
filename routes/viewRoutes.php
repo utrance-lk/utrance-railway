@@ -33,9 +33,4 @@ $app->router->post('/utrance-railway/getSelect', [ViewController::class, 'newSea
 
 
 
-
-
-
-
-
 ?>

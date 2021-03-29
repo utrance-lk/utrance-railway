@@ -50,6 +50,7 @@
             </svg>
             <span class="header-user__notification-number">13</span>
           </div>
+          
           <?php endif; ?>
           <div class="header-user__details">
              <?php if(App::$APP->user) : ?>

@@ -249,76 +249,16 @@ class ViewModel extends Model
 
     }
 
-    public function getAllTrainResults()
-    {
-        $query = APP::$APP->db->pdo->prepare("SELECT train_id,train_name,train_type,train_active_status FROM trains WHERE train_active_status = 1");
+    public function getStations() {
+        $query=APP::$APP->db->pdo->prepare("SELECT station_name FROM stations");
         $query->execute();
-        $array['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $array;
-    }
-
-    public function getAllTrainsDetails()
-    {
-
-        // if ($this->index1 != "all-active__status") {
-        //     if ($this->index1 == "active") {
-        //         $activestate = 1;
-        //     } else if ($this->index1 == "deactivated") {
-        //         $activestate = 0;
-        //     }
-
-        // }
-
-        if ($this->index2 != "all-train__type") {
-            $this->active_status = 1;
-            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type AND train_active_status =:active_status ");
-            $query->bindValue(":train_type", $this->index2);
-            $query->bindValue(":active_status", $this->active_status);
-            $query->execute();
-            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-            return $this->resultArray;
-        } else if ($this->index2 == "all-train__type") {
-            $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_active_status = :train_status ");
-            $query->bindValue(":train_status", $this->active_status);
-            $query->execute();
-            $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-            return $this->resultArray;
+        $stationsArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        $stations = [];
+        foreach ($stationsArray as $key => $value) {
+            array_push($stations, $value['station_name']);
         }
+        return $stations;
     }
 
-    // } else if ($this->index1 != "all-active__status" && $this->index2 == "all-train__type") {
-    //     $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_active_status = :train_status ");
-    //     $query->bindValue(":train_status", $activestate);
-    //     $query->execute();
-    //     $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-    //     return $this->resultArray;
-
-    // } else if ($this->index1 != "all-active__status" && $this->index2 != "all-train__type") {
-    //     $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_type = :train_type AND train_active_status = :train_status");
-    //     $query->bindValue(":train_type", $this->index2);
-    //     $query->bindValue(":train_status", $activestate);
-    //     $query->execute();
-    //     $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-    //     return $this->resultArray;
-
-    // } else if ($this->index1 == "all-active__status" && $this->index2 == "all-train__type") {
-    //     $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains");
-
-    //     $query->execute();
-    //     $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-    //     return $this->resultArray;
-    // }
-
-    public function searchTrainDetails()
-    {
-
-        $this->train_name = $this->searchTrain;
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%' OR train_id=:trainName");
-        $query->bindValue(":trainName", $this->train_name);
-        $query->execute();
-        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $this->resultArray;
-
-    }
 
 }

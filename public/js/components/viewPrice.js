@@ -226,20 +226,6 @@ const renderResults = function (user) {
                 <div class='seat__class--box-item class__name'>Third class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item third__class__price' id='third_class'> Rs ${user.third_class}</div>
             </div>
-            <div class='seat__class--box sleeping__berth--box'>
-                <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-airline_seat_flat'></use>
-                </svg>
-                <div class='seat__class--box-item class__name'>Sleeping berths</div>
-                <div class='seat__class--box-item class__price'>Rs 400</div>
-            </div>
-            <div class='seat__class--box observartion__saloon--box'>
-                <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-filter_hdr'></use>
-                </svg>
-                <div class='seat__class--box-item class__name'>Observation S</div>
-                <div class='seat__class--box-item class__price'>Rs 700</div>
-            </div>
         </div>
 
         <div class='number-of-persons__box'>
@@ -294,20 +280,6 @@ const renderDefaultResults = function () {
                 </svg>
                 <div class='seat__class--box-item class__name'>Third class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item third__class__price'  id='third_class'>Rs 600</div>
-            </div>
-            <div class='seat__class--box sleeping__berth--box'>
-                <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-airline_seat_flat'></use>
-                </svg>
-                <div class='seat__class--box-item class__name'>Sleeping berths</div>
-                <div class='seat__class--box-item class__price'>Rs 400</div>
-            </div>
-            <div class='seat__class--box observartion__saloon--box'>
-                <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-filter_hdr'></use>
-                </svg>
-                <div class='seat__class--box-item class__name'>Observation S</div>
-                <div class='seat__class--box-item class__price'>Rs 700</div>
             </div>
         </div>
 

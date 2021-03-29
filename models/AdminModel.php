@@ -103,6 +103,7 @@ class AdminModel extends Model
 
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        
         return $this->resultArray;
     }
 
@@ -162,7 +163,6 @@ class AdminModel extends Model
             $query->bindValue(":contact_num", $this->contact_num);
             $query->bindValue(":email_id", $this->email_id);
             $query->execute();
-            var_dump("HEllo");
             return "success";
         } else {
             return $validationState;

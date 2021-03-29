@@ -78,6 +78,7 @@ class AdminController extends Controller
             $adminViewUser = new AdminModel();
             $adminViewUser->loadData($request->getQueryParams());
             $updateUserArray = $adminViewUser->getUserDetails();
+            
             //$updateUserArray['users'][0]['id'] = $request->getQueryParams()['id'];
             //var_dump($updateUserArray);
             return $this->render(['admin', 'updateUser'], $updateUserArray);
@@ -116,6 +117,7 @@ class AdminController extends Controller
                 $commonArray = $saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"] = $saveDetailsModel->registerSetValue($state); //Ashika
                 App::$APP->session->set('operation','fail');
+                
                 return $this->render(['admin', 'updateUser'], $commonArray); //Ashika
             }
 

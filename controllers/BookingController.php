@@ -61,18 +61,15 @@ class BookingController extends Controller
             $option = $request->getQueryParams()['op'];
             $mode = $request->getQueryParams()['mode'];
 
-            $fullTrainDetails = App::$APP->session->get($option);
-            $train = $this->travellingTrains($mode, $fullTrainDetails);
+            if(empty($_SESSION[$option])) {
+                return $response->redirect('home');
+            }
 
-            // remove the session after making a booking
-            // $i = 0;
-            // foreach($_SESSION as $key => $value) {
-            //     $str = 'op' . $i;
-            //     if($str === $key) {
-            //         App::$APP->session->remove($str);
-            //     }
-            //     $i++;
-            // }
+            $fullTrainDetails = App::$APP->session->get($option);
+
+            App::$APP->session->remove($option);
+
+            $train = $this->travellingTrains($mode, $fullTrainDetails);
 
             foreach ($train['trains'] as $key => $value) {
                 $seatAvailability = new BookingModel();
@@ -141,6 +138,13 @@ class BookingController extends Controller
     public function bookingSuccess($request, $response)
     {
         if ($request->isGet()) {
+
+
+            if (empty($_SESSION['booking'])) {
+                return $response->redirect('home');
+            }
+
+
             $str = null;
             foreach ($_SESSION['booking'][1] as $key => $value) {
                 $str .= $value;
@@ -186,15 +190,6 @@ class BookingController extends Controller
             ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
             ->setForegroundColor(new Color(0, 0, 0))
             ->setBackgroundColor(new Color(255, 255, 255));
-
-        // var_dump(__DIR__);
-
-        // $logo = Logo::create('/utrance-railway/public/img/logo/utranceLogoBlack.png')
-        // ->setResizeToWidth(50);
-
-        // $label = Label::create('Utrance-railway')
-        // ->setTextColor(new Color(255, 0, 0))
-        // ->setBackgroundColor(new Color(0, 0, 0));
 
         $result = $writer->write($qrCode);
 

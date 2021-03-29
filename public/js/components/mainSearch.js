@@ -12,19 +12,25 @@ const items = {
   swapBtn: document.querySelector(".js--swap-btn"),
 };
 
-const stationsArray = [
-  "Matara",
-  "Colombo-Fort",
-  "Galle",
-  "Gampaha",
-  "Kandy",
-  "Puttalam",
-  "Aluthgama",
-  "Midigama",
-  "Weligama",
-  "Beliatta",
-  "Maradana"
-];
+// const stationsArray = [
+//   "Matara",
+//   "Colombo-Fort",
+//   "Galle",
+//   "Gampaha",
+//   "Kandy",
+//   "Puttalam",
+//   "Aluthgama",
+//   "Midigama",
+//   "Weligama",
+//   "Beliatta",
+//   "Maradana"
+// ];
+
+var stationsArray = undefined;
+
+if(stations) {
+  stationsArray = stations;
+}
 
 const searchStates = function (searchText, direction) {
   clearResults(direction);
@@ -159,7 +165,6 @@ document.addEventListener("click", function (e) {
     items.searchDropdownFrom.style.display = "none";
     items.cityListFrom.style.display = "none";
     items.inputSearchFrom.value = items.fromStationLabel.textContent;
-    console.log(items.inputSearchFrom.value);
     searchStates("", "from");
   }
 });

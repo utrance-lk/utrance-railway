@@ -26,7 +26,11 @@ class TicketModel extends Model
         $query->execute();
         $this->resultLine = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        return $this->resultLine[0]['availability_lines'];
+        if($this->resultLine) {
+            return $this->resultLine[0]['availability_lines'];
+        }
+
+        return null;        
 
     }
 
@@ -80,9 +84,6 @@ class TicketModel extends Model
 
         $lineLengthStart = strlen($this->availabiltyLines($this->start));
         $lineLengthEnd = strlen($this->availabiltyLines($this->destination));
-
-        //var_dump($lineLengthStart);
-        //var_dump($lineLengthEnd);
 
         $this->intLineStart = $this->availabiltyLines($this->start);
         $this->intLineEnd = $this->availabiltyLines($this->destination);
