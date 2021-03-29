@@ -1,6 +1,6 @@
 <div class="dashboard">
 
-  <div class="dash-content__container">
+  <div class="dash-content__container" style="margin:auto">
       <div class="dash-content">
         <?php
 include_once "../views/components/searchbarAdmin.php";

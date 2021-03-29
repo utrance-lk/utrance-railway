@@ -380,9 +380,10 @@ class BookingController extends Controller
                 $tempBody = $request->getBody();
                 $tempBody['id1'] = $request->getQueryParams()['id1'];
                 $tempBody['id2'] = $request->getQueryParams()['id2'];
-                var_dump($tempBody['id1']);
+                
                 $bookedTourModel->loadData($tempBody);
                 $getBookedTourArray=$bookedTourModel->getBookedTourIntersect();
+            //var_dump($getBookedTourArray);
                  return $this->render('bookedTour',$getBookedTourArray);
             }
         } else {
@@ -397,9 +398,10 @@ class BookingController extends Controller
                 $bookedTourModel = new BookingModel();
                 $tempBody = $request->getBody();
                 $tempBody['id1'] = $request->getQueryParams()['id1'];
-                var_dump($tempBody['id1']);
+                //var_dump($tempBody['id1']);
                 $bookedTourModel->loadData($tempBody);
                 $getBookedTourArray=$bookedTourModel->getBookedTourDirect();
+                //var_dump($getBookedTourArray);
                  return $this->render('bookedTour',$getBookedTourArray);
             }
         } else {

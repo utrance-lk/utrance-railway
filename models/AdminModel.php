@@ -98,7 +98,7 @@ class AdminModel extends Model
 
     public function getUserDetails() ///Ashika ///After Click the view button
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num,details_provider_station,user_role FROM users WHERE id=:id ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num,user_role FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
 
         $query->execute();
@@ -109,13 +109,14 @@ class AdminModel extends Model
     public function getSearchUserResult() // selected user
 
     { //Ashika
-        $this->id = $this->searchUserByNameOrId;
-        $this->first_name = $this->searchUserByNameOrId;
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status,user_image FROM users  WHERE first_name LIKE '%{$this->first_name}%' OR id LIKE '%{$this->id}%' ");
-        $query->bindValue(":id", $this->id);
-        $query->bindValue(":fn", $this->first_name);
+        
+        $this->user_name = $this->searchTrain;
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status,user_image FROM users  WHERE first_name LIKE '%{$this->user_name}%' OR id=:id");
+        $query->bindValue(":id",$this->user_name);
+        
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($this->resultArray);
         return $this->resultArray;
 
     }
@@ -151,7 +152,7 @@ class AdminModel extends Model
 //         if ($validationState ==="success") {
 
             $this->runSanitizationAdmin();
-            $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
+            $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id,city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
             $query->bindValue(":id", $this->id);
             $query->bindValue(":first_name", $this->first_name);
             $query->bindValue(":last_name", $this->last_name);
@@ -161,6 +162,7 @@ class AdminModel extends Model
             $query->bindValue(":contact_num", $this->contact_num);
             $query->bindValue(":email_id", $this->email_id);
             $query->execute();
+            var_dump("HEllo");
             return "success";
         } else {
             return $validationState;
@@ -389,6 +391,7 @@ class AdminModel extends Model
     public function searchTrainDetails()
     {
         $this->train_name = $this->searchTrain;
+        
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%' OR train_id=:trainName");
         $query->bindValue(":trainName", $this->train_name);
         $query->execute();

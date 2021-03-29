@@ -23,7 +23,7 @@ if (isset($_SESSION['operation'])) {
 
         $html = "<div class='alert-Success hide-Success'>";
         $html .= "<span class='fas fa-check-circle'></span>";
-        $html .= "<span class='msg-Success'>Sucess:Your File has been uploaded!!</span>";
+        $html .= "<span class='msg-Success'>Sucess:Your Registration is successfull!!</span>";
         $html .= "<span class='close-btn-Success'>";
         $html .= "<span class='fas fa-times'></span></span></div>";
 

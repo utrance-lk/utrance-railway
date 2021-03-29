@@ -32,17 +32,18 @@ class AdminController extends Controller
     {
 
         if ($this->protect()) {
-            $manageUserModel = new AdminModel();
+            $searchUser = new AdminModel();
+            $searchUser->loadData($request->getBody());
 
             if ($request->isPost()) {
-                $searchUser = new AdminModel();
-                $searchUser->loadData($request->getBody());
+               // var_dump($request->getBody());
                 $getSearchResult = $searchUser->getSearchUserResult();
+                
                 return $this->render(['admin', 'manageUsers'], $getSearchResult);
             }
 
-            $manageUserModel->loadData($request->getBody());
-            $getUserArray = $manageUserModel->getUsers();
+            $searchUser->loadData($request->getBody());
+            $getUserArray = $searchUser->getUsers();
             return $this->render(['admin', 'manageUsers'], $getUserArray);
 
         }
@@ -106,10 +107,11 @@ class AdminController extends Controller
             $tempBody['id'] = $id;
             $saveDetailsModel->loadData($tempBody);
             $state = $saveDetailsModel->updateUserDetails();
+           // var_dump($saveDetailsModel->loadData($tempBody));
 
             if ($state === "success") {
                 App::$APP->session->set('operation','success');
-                return $response->redirect('/utrance-railway/users/view?id=' . $id);
+                return $response->redirect('/utrance-railway/users/view?id='. $id);
             } else {
                 $commonArray = $saveDetailsModel->getUserDetails();
                 $commonArray["updateSetValue"] = $saveDetailsModel->registerSetValue($state); //Ashika
@@ -181,7 +183,7 @@ class AdminController extends Controller
             $searchModel->loadData($request->getBody());
             if ($this->protect()) {
                 if ($request->isPost()) {
-
+                    
                     $resultArray = $searchModel->searchTrainDetails();
                     return $this->render(['admin', 'manageTrains'], $resultArray);
                 }

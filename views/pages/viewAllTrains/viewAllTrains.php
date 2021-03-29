@@ -1,6 +1,6 @@
 <div class="dashboard">
   <?php include_once '../views/layouts/adminSideNav.php';?>
-  <div class="dash-content__container">
+  <div class="dash-content__container" >
       <div class="dash-content">
         <?php
           include_once "../views/components/searchbarAdmin.php";

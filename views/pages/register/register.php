@@ -8,7 +8,6 @@ if (isset($_SESSION['operation'] ) ) {
  
      if(App::$APP->session->get('operation')=='fail'){
   
-    
     $html="<div class='alert hide'>";
     $html.="<span class='fas fa-exclamation-circle'></span>";
     $html.="<span class='msg'>Error:Something Went Wrong!!</span>";
