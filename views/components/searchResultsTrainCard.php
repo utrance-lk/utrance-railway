@@ -58,10 +58,9 @@ function renderDirectPathCard($value, $option)
 
     $html .= "<div class='search-results-train-card__classbox'>";
 
-    $option = "op" . $option;
-    $_SESSION[$option] = $value;
-
     if($isEligible && $isPriceAvailable) {
+      $option = "op" . $option;
+      $_SESSION[$option] = $value;
       $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=direct' class='btn-square-no-bg'><p>Proceed</p></a>";
     } else if(!$isPriceAvailable) {
       $html .= "<div class='btn-square-no-bg--disabled'><p>Ticket Prices Not Available</p></div>";
@@ -199,10 +198,9 @@ if ($value['train1Price'] && $value['train2Price']) {
 
     $html .= "<div class='search-results-train-card__classbox'>";
 
-    $option = "op" . $option;
-    $_SESSION[$option] = $value;
-
     if($isEligible && $isPriceAvailable) {
+      $option = "op" . $option;
+      $_SESSION[$option] = $value;
       $html .= "<a href='/utrance-railway/book-seats?op=$option&mode=intersect' class='btn-square-no-bg'><p>Proceed</p></a>";
     } else if(!$isPriceAvailable) {
       $html .= "<div class='btn-square-no-bg--disabled'><p>Ticket Prices Not Available</p></div>";

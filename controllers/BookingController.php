@@ -62,7 +62,9 @@ class BookingController extends Controller
             }
 
             $fullTrainDetails = App::$APP->session->get($option);
+
             App::$APP->session->remove($option);
+
             $train = $this->travellingTrains($mode, $fullTrainDetails);
 
             foreach ($train['trains'] as $key => $value) {
