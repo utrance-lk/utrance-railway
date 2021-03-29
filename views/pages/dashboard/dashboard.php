@@ -1,3 +1,4 @@
+    <?php include_once '../views/components/backButton.php';?>
 <div class="dashboard">
     <?php
         if(App::$APP->activeUser()['role'] == 'admin') {

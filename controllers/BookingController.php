@@ -71,6 +71,10 @@ class BookingController extends Controller
                 $seatAvailability = new BookingModel();
                 $seatAvailability->loadData(['train_id' => $value['train_id'], 'when' => $train['when']]);
                 $availbleSeats = $seatAvailability->getAvailableSeatsCount();
+                if(!$availbleSeats) {
+                    $response->setStatusCode(500);
+                    return $this->render(['error', 'seatAvailabilityError']);
+                }
                 $train['trains'][$key]['sa_first_class'] = $availbleSeats[0]['sa_first_class'];
                 $train['trains'][$key]['sa_second_class'] = $availbleSeats[0]['sa_second_class'];
             }

@@ -38,6 +38,8 @@
   
 <?php else: ?>
 
+<?php include_once '../views/components/backButton.php';?>
+
 <section class="searchResults">
 
   <div class="filters-container"></div>
