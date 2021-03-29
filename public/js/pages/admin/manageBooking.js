@@ -1,8 +1,10 @@
 let mydate;
 let count;
+let mycount;
 
 const renderResults = function (trains,date){
     count=0;
+    mycount=0
     mydate=date;
     clearResults();
     trains.forEach(renderCard);
@@ -11,7 +13,7 @@ const renderResults = function (trains,date){
 
 const renderCard = function (train){
     count++;
-
+    mycount++;
     let markup = `<div class='train-booking__stat-card'>
                     <div class='train-booking__stat-card--train-id'>#${train.train_id}</div>
                     <div class='train-booking__stat-card--train-name'>${train.train_name}</div>
@@ -31,22 +33,7 @@ const renderCard = function (train){
                         ${train.sa_first_class} / 50
                         </div>
                     </div>
-                    <div class='train-booking__stat-card--seating sleeping-berths'>
-                        <div class='sleeping-berths__text'>
-                            Sleeping berths
-                        </div>
-                        <div class='sleeping-berths__seatnos'>
-                        ${train.sa_sleeping_births} / 30
-                        </div>
-                    </div>
-                    <div class='train-booking__stat-card--seating observation'>
-                        <div class='observation__text'>
-                            OS
-                        </div>
-                        <div class='observation__seatnos'>
-                        ${train.sa_observation_class} / 2
-                        </div>
-                    </div>
+                    
                     <a href='/utrance-railway/booking-train?id=${train.train_id}&date=${mydate}' class='btn btn-box-white'>
                         view
                     </a>
@@ -56,13 +43,12 @@ const renderCard = function (train){
 
                 document.querySelector(".train-booking__stat-card--container").insertAdjacentHTML("beforeend", markup);
                  
-                if(document.querySelectorAll(".fcseats__seatnos")[count-1].innerText==="50 / 50"  && document.querySelectorAll(".scseats__seatnos")[count-1].innerText==="50 / 50" && document.querySelectorAll(".sleeping-berths__seatnos")[count-1].innerText==="30 / 30"
-                && document.querySelectorAll(".observation__seatnos")[count-1].innerText==="2 / 2")
+                if(document.querySelectorAll(".fcseats__seatnos")[count-1].innerText==="50 / 50"  && document.querySelectorAll(".scseats__seatnos")[count-1].innerText==="50 / 50")
                 {
                     
-                //     document.querySelectorAll(".block")[count-1].remove();
-                var element = document.querySelectorAll(".btn")[count-1];
+                var element = document.querySelectorAll(".btn")[mycount-1];
                 element.remove();
+                mycount--;
                 
                 }
 }

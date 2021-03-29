@@ -35,6 +35,13 @@
   </script>
 <?php endif;?>
 
+<!-- <?php if (isset($result)): ?>
+  <script>
+    alert("Canot delete Train");
+    
+  </script>
+<?php endif;?> -->
+
 <script>
     var index;
     var newindex;

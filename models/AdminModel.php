@@ -103,7 +103,7 @@ class AdminModel extends Model
 
     public function getUserDetails() ///Ashika ///After Click the view button
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num,details_provider_station,user_role FROM users WHERE id=:id ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num,user_role FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
 
         $query->execute();
@@ -450,13 +450,32 @@ class AdminModel extends Model
 
     public function deleteTrains()
     {
-        $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=0 WHERE train_id = :train_id ");
+        $result=$this->getNewBookingTrain($this->id);
+        var_dump($result);
+        if(empty($result)){
+            $query = APP::$APP->db->pdo->prepare("UPDATE trains SET train_active_status=0 WHERE train_id = :train_id ");
 
-        $query->bindValue(":train_id", $this->id);
-        $this->setRouteStatus();
-        $query->execute();
+            $query->bindValue(":train_id", $this->id);
+            $this->setRouteStatus();
+            $query->execute();
+            return 1;
+        }else{
+            return 0;
+        }
+        
 
     }
+
+    public function getNewBookingTrain($id){
+       
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM ticket_booking WHERE train_id = :train_id LIMIT 1");
+        $query->bindValue(":train_id",$id);
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+ 
+ 
+     }
 
     public function setRouteStatus2()
     {
@@ -1053,16 +1072,7 @@ class AdminModel extends Model
         return $this->resultArray;
     }
 
-    public function getNewBookingTrain(){
-       
-       $query = APP::$APP->db->pdo->prepare("SELECT * FROM ticket_booking WHERE train_id = :train_id LIMIT 1");
-       $query->bindValue(":train_id", $this->index1);
-       $query->execute();
-       $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
-       return $this->resultArray;
-
-
-    }
+    
 
    
 

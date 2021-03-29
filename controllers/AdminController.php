@@ -254,10 +254,10 @@ class AdminController extends Controller
                 $deleteTrainModel = new AdminModel();
 
                 $deleteTrainModel->loadData($request->getQueryParams());
-                $deleteTrainModel->deleteTrains();
-                // $trainArray=$deleteTrainModel->getTrains();
-                // return $this->render(['admin', 'manageTrains'],$trainArray);
-                return $response->redirect('/utrance-railway/trains');
+                $getResult['result']=$deleteTrainModel->deleteTrains();
+                     return $response->redirect('/utrance-railway/trains');
+               
+                
 
             }
         }
