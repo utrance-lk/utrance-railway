@@ -44,20 +44,28 @@ class ViewController extends Controller
             $train1PriceModel = new TicketModel();
             
             if($pathArrays['directPaths']) {
-                $train1PriceModel->loadData(['start' => $pathArrays['directPaths'][0]['fssn'], 'destination' => $pathArrays['directPaths'][0]['tsen']]);
                 $index = 0;
                 foreach($pathArrays['directPaths'] as $key => $value) {
+                    $train1PriceModel->loadData(['start' => $pathArrays['directPaths'][$index]['fssn'], 'destination' => $pathArrays['directPaths'][$index]['tsen']]);
                     $pathArrays['directPaths'][$index]['train1Price'] = $train1PriceModel->getTicketPrice()['tickets'];
                     $index++;
                 }
             }
             if ($pathArrays['intersections']) {
                 $train2PriceModel = new TicketModel();
-                $train1PriceModel->loadData(['start' => $pathArrays['intersections'][0]['fssn'], 'destination' => $pathArrays['intersections'][0]['isn']]);
-                $train2PriceModel->loadData(['start' => $pathArrays['intersections'][0]['isn'], 'destination' => $pathArrays['intersections'][0]['tsen']]);
+                $index = 0;
+                foreach($pathArrays['intersections'] as $key => $value) {
+                    $train1PriceModel->loadData(['start' => $pathArrays['intersections'][$index]['fssn'], 'destination' => $pathArrays['intersections'][$index]['isn']]);
+                    $train2PriceModel->loadData(['start' => $pathArrays['intersections'][$index]['isn'], 'destination' => $pathArrays['intersections'][$index]['tsen']]);
+
+                    $pathArrays['intersections'][$index]['train1Price'] = $train1PriceModel->getTicketPrice()['tickets'];
+                    $pathArrays['intersections'][$index]['train2Price'] = $train2PriceModel->getTicketPrice()['tickets'];
+                    $index++;
+                }
                 
-                $pathArrays['intersections'][0]['train1Price'] = $train1PriceModel->getTicketPrice()['tickets'];
-                $pathArrays['intersections'][0]['train2Price'] = $train2PriceModel->getTicketPrice()['tickets'];
+
+                
+
             }
 
             // adding available seats for the request
@@ -85,14 +93,6 @@ class ViewController extends Controller
    
 
     public function viewTrain($request) {
-        /*if($request->isGet()) {
-            $viewTrainDetails = new ViewModel();
-            $viewTrainDetails->loadData($request->getQueryParams());
-            $updateUserArray = $adminViewUser->getUserDetails();
-
-            return $this->render('viewTrain');
-        }*/
-        
         if($request -> isGet()){
             $viewTrainDetailsModel = new ViewModel();
             $tempBody = $request->getBody();
