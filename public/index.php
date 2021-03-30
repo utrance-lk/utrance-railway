@@ -23,10 +23,8 @@ $config = [
         'password' => $_ENV['EMAIL_PASSWORD'],
         'host' => $_ENV['EMAIL_HOST'],
         'port' => $_ENV['EMAIL_PORT'],
-    ],
-    'payment' => [
-        'merchant_secret' => $_ENV['PAYMENT_MERCHANT_SECRET'],
-    ],
+    ]
+    
 ];
 
 $app = new App(dirname(__DIR__), $config);

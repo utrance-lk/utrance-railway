@@ -10,7 +10,7 @@ function addStops(x) {
       const isAvailPopup = document.querySelector(".add-stop-popup");
       if (!isAvailPopup) {
         const parent = e.target.closest(".stop-card");
-        
+        console.log(parent);
       //  console.log(parent.firstChild.firstChild.innerText.split("#")[1] * 1);
         const markup = `
         <style>
@@ -52,38 +52,31 @@ function addStops(x) {
             `;
         parent.insertAdjacentHTML("afterend", markup);
 
-       ///////////////////////////////start validation///////////////////////////////////////////
+///////////////////////////////start validation///////////////////////////////////////////
         // let newindex5= parent.firstChild.firstChild.innerText.split("#")[1] * 1;
        
         $(document).ready(function(){
           $("#arrtime").click(function(){
             // let newindex5= parent.firstChild.childNodes;
             let newindex5= parent.querySelector(".stop-card__details").querySelector(".stop-card__dept-time").innerText;
-            
+            console.log(newindex5);
             // console.log(newindex5[2]);
             document.querySelector(".add-stop-popup__arr-time--input").min = newindex5;
-
-            if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
-              let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
-              
-              document.querySelector(".add-stop-popup__arr-time--input").max = newIndexMax;
-
-            }
             
+            let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
+            console.log(newIndexMax);
+            document.querySelector(".add-stop-popup__arr-time--input").max = newIndexMax;
           })
         });
 
         $(document).ready(function(){
           $("#deptime").click(function(){
             
-            if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
-              let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
             
+            
+            let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
+            console.log(newIndexMax);
             document.querySelector(".add-stop-popup__dept-time--input").max = newIndexMax;
-
-            }
-            
-            
           })
         });
 
@@ -94,49 +87,28 @@ function addStops(x) {
           }
           
           document.querySelector(".add-stop-popup__dept-time--input").min = document.getElementById("arrtime").value;
-          
-          
+          console.log(document.getElementById("arrtime").value);
           var startDate = document.getElementById("arrtime").value;
           var endDate = document.getElementById("deptime").value;
-          
+          var nextCardStartDate = document.querySelector(".add-stop-popup__dept-time--input").max;
           var time1Date= new Date("01/01/2000 "+startDate);
           var time2Date= new Date("01/01/2000 "+endDate); 
-          
+          var time3Date= new Date("01/01/2000 "+nextCardStartDate);
           // if (time1Date >= time2Date) { alert("Please enter proper date") }
           // if (time2Date >= time3Date) { alert("Please enter proper date") }
-          const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid time</p>`;
+          const newmarkup = `<p id ="myerror">error found</p>`;
           const newx = document.querySelector( ".add-stop-popup");
-          if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
-            var nextCardStartDate = document.querySelector(".add-stop-popup__dept-time--input").max;
-            var time3Date= new Date("01/01/2000 "+nextCardStartDate);
-
-            if (time1Date >= time2Date) { 
-              newx.insertAdjacentHTML("beforebegin", newmarkup);
-             document.getElementById("addButton").disabled = true;
-              document.getElementById("addButton").style.opacity = "0.5";
-            }else if(time2Date >= time3Date){
+          if (time1Date >= time2Date) { 
              newx.insertAdjacentHTML("beforebegin", newmarkup);
-             document.getElementById("addButton").disabled = true;
-             document.getElementById("addButton").style.opacity = "0.5";
-            }
-            else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
-          
-            document.getElementById("addButton").disabled = false;
-            document.getElementById("addButton").style.opacity = "1";
-            }
-          }else{
-            if (time1Date >= time2Date) { 
-              newx.insertAdjacentHTML("beforebegin", newmarkup);
-             document.getElementById("addButton").disabled = true;
-              document.getElementById("addButton").style.opacity = "0.5";
-            }else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
-          
-            document.getElementById("addButton").disabled = false;
-            document.getElementById("addButton").style.opacity = "1";
-            }
-
-          }
-          
+            document.getElementById("addButton").disabled = true;
+         }else if(time2Date >= time3Date){
+          newx.insertAdjacentHTML("beforebegin", newmarkup);
+            document.getElementById("addButton").disabled = true;
+         }
+         else if(document.querySelector(".add-stop-popup__arr-time--input").value != "" && emptyStations!=0){
+         
+          document.getElementById("addButton").disabled = false;
+         }
         });
 
         document.querySelector( ".add-stop-popup__arr-time--input").addEventListener("change", function (){
@@ -148,47 +120,24 @@ function addStops(x) {
 
           var startDate = document.querySelector(".add-stop-popup__arr-time--input").min;
           var endDate = document.getElementById("arrtime").value;
-      
-          
-          
+          var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
           var time1Date= new Date("01/01/2000 "+startDate);
           var time2Date= new Date("01/01/2000 "+endDate); 
-         
-          const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid time</p>`;
+          var time3Date= new Date("01/01/2000 "+nextCardStartDate);
+
+          const newmarkup = `<p id ="myerror">error found</p>`;
           const newx = document.querySelector( ".add-stop-popup");
-          if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
-            var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
-            var time3Date= new Date("01/01/2000 "+nextCardStartDate);
-
-
-            if (time1Date >= time2Date) { 
-              newx.insertAdjacentHTML("beforebegin", newmarkup);
-             document.getElementById("addButton").disabled = true;
-             document.getElementById("addButton").style.opacity = "0.5";
-            }else if(time2Date >= time3Date){
+          if (time1Date >= time2Date) { 
              newx.insertAdjacentHTML("beforebegin", newmarkup);
-             document.getElementById("addButton").disabled = true;
-             document.getElementById("addButton").style.opacity = "0.5";
-            }
-            else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
-          
-            document.getElementById("addButton").disabled = false;
-            document.getElementById("addButton").style.opacity = "1";
-               }
-
-          }else{
-            if (time1Date >= time2Date) { 
-              newx.insertAdjacentHTML("beforebegin", newmarkup);
-             document.getElementById("addButton").disabled = true;
-             document.getElementById("addButton").style.opacity = "0.5";
-            }else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
-          
-            document.getElementById("addButton").disabled = false;
-            document.getElementById("addButton").style.opacity = "1";
-           }
-
-          }         //////new
-          
+            document.getElementById("addButton").disabled = true;
+         }else if(time2Date >= time3Date){
+          newx.insertAdjacentHTML("beforebegin", newmarkup);
+            document.getElementById("addButton").disabled = true;
+         }
+         else if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && emptyStations!=0){
+         
+          document.getElementById("addButton").disabled = false;
+         }
           // if (time2Date >= time3Date) { 
           //   alert("Please enter proper date");
           // }else{
@@ -201,20 +150,15 @@ function addStops(x) {
      
         if(document.querySelector(".add-stop-popup__arr-time--input").value == ""){
           document.getElementById("addButton").disabled = true;
-          document.getElementById("addButton").style.opacity = "0.5";
-
         }
         else if(document.querySelector(".add-stop-popup__dept-time--input").value == ""){
           document.getElementById("addButton").disabled = true;
-          document.getElementById("addButton").style.opacity = "0.5";
         }else if(emptyStations==0){
           document.getElementById("addButton").disabled = true;
-          document.getElementById("addButton").style.opacity = "0.5";
         }else{
           document.getElementById("addButton").disabled = false;
-          document.getElementById("addButton").style.opacity = "1";
         }
-           ///////////////////////////end validation/////////////////////////
+//////////////////////////////////end validation/////////////////////////
         const popupCloseBtn = document.querySelector(
           ".add-stop-popup__close-btn"
         );
@@ -263,7 +207,7 @@ function addStops(x) {
               }
 
             }
-            
+            console.log(l);
 
             if (l != 0) {
               for (let n = 0; n < newStations.length; n++) {
@@ -282,7 +226,7 @@ function addStops(x) {
             newStations.push(obj);
           
 
-            
+            console.log(newStations);
 
 
            
@@ -389,7 +333,7 @@ function myfun(x){
           train=JSON.parse(data)
           
           let stationLength = document.querySelectorAll(".stop-card").length;
-          
+          console.log(stationLength);
           // for(let j=0;j<stationLength;j++){
            
           //    console.log(document.querySelectorAll(".stop-card")[j].querySelector(".stop-card__station").innerText);
@@ -470,7 +414,7 @@ inputBox.onkeyup = (e)=>{
     emptyArray = emptyArray.map((data)=>{
       return data = '<li>'+ data +'</li>';
     });
-    
+    console.log(emptyArray);
 
     searchWrapper.classList.add("active");
     showSuggestions(emptyArray); 
@@ -510,7 +454,6 @@ function selected(element){
   if(document.querySelector(".add-stop-popup__dept-time--input").value != "" && document.querySelector(".add-stop-popup__arr-time--input").value != ""){
          
     document.getElementById("addButton").disabled = false;
-    document.getElementById("addButton").style.opacity = "1";
    }
 
 
@@ -523,3 +466,12 @@ function selected(element){
   searchWrapper.classList.remove("active");
   
 };
+
+
+
+
+
+
+
+        
+
