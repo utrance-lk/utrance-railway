@@ -1,9 +1,6 @@
 
 <section class="newsfeed">
     <div class="newsfeed__slider">
-
-        <!-- <i class="fas fa-angle-double-left" id='prevBtn'></i> -->
-        <!-- <i class="fas fa-angle-double-right" id='nextBtn'></i> -->
         <svg id="prevBtn">
             <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-chevron-thin-left"></use>
         </svg>

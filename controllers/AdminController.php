@@ -656,8 +656,7 @@ class AdminController extends Controller
                 $getCountModel->loadData($tempBody);
                 $messageArray = $getCountModel->getCount();
 
-                echo json_encode($messageArray);
-                return true;
+                return json_encode($messageArray);
             }
         }
 
