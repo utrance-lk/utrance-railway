@@ -26,12 +26,27 @@ $app->router->get('/routes/add', [AdminController::class, 'addRoute']);
 
 $app->router->get('/routes/view', [AdminController::class, 'viewRoute']);
 
-#TODO: why is this duplicated route?
-$app->router->get('/routes/update', [AdminController::class, 'addRoute']);
+$app->router->get('/manage-news', [AdminController::class, 'manageNews']);
+$app->router->post('/manage-news', [AdminController::class, 'manageNews']);
 
 $app->router->get('/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
 $app->router->post('/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
 
 $app->router->post('/routes/newmanageRoutesValidations', [AdminController::class, 'getRoutesStations']);
 
-$app->router->get('/manage-news', [AdminController::class, 'manageNews']);
+$app->router->post('/routes/addnewmanageRoutes', [AdminController::class, 'addupdateRoutes']);
+$app->router->get('/routes/addnewmanageRoutes', [AdminController::class, 'addupdateRoutes']);
+
+$app->router->get('/getNewNews', [ViewController::class, 'getNews']);
+$app->router->post('/getNewBookingTrain', [AdminController::class, 'getNewBookingTrain']);
+
+$app->router->get('/news/getmyNewNews', [ViewController::class, 'getNews']);
+
+$app->router->get('/news/news01', [ViewController::class, 'newsFeed01']); //TODO:
+$app->router->get('/routes/addnewmanageRoutesValidations', [AdminController::class, 'getaddRoutesStations']);
+
+$app->router->post('/getMessages', [AdminController::class, 'getMessages']);
+$app->router->post('/getCount', [AdminController::class, 'getCount']);
+
+$app->router->post('/news', [ViewController::class, 'newsFeed']);
+$app->router->get('/news', [ViewController::class, 'newsFeed']);

@@ -1,0 +1,110 @@
+.dashboard-searchbar--container {
+    /* border: 1px solid blue; */
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dashboard-searchbar {
+    /* border: 1px solid red; */
+    padding: 1rem;
+    border-radius: 10rem;
+    border: none;
+    width: 70%;
+    outline: none;
+    background-color: rgb(244, 242, 242);
+    font-family: "Lato", sans-serif;
+    color: rgb(119, 119, 119);
+    transition: all 0.3s;
+  }
+
+  .search-icon__btn {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: -4rem;
+    fill: rgb(119, 119, 119);
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  
+  .search-icon__btn:active,
+  .search-icon__btn:focus {
+    transform: scale(0.9);
+  }
+
+  .filters {
+    /* border: 1px solid green; */
+    padding: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+    align-items: center;
+  }
+  
+  .filters > * {
+    /* border: 1px solid slateblue; */
+  }
+
+  .filters__container {
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem 1rem;
+    border: 1px solid rgba(119, 119, 119, 0.3);
+  }
+  .train-booking__stat-card--container {
+    /* border: 1px solid pink; */
+    margin-top: 4rem;
+  }
+
+  .train-booking__stat-card {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8rem;
+    background-color: rgb(244, 242, 242);
+    padding: 0 2rem;
+  }
+
+  .train-booking__stat-card > * {
+    flex: 1;
+  }
+  
+  .train-booking__stat-card:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+  
+  .train-booking__stat-card--train-id {
+    flex: 0.5;
+  }
+  
+  .train-booking__stat-card--train-name {
+    width: 15rem;
+    text-align: center;
+  }
+
+.fcseats,
+.scseats,
+.sleeping-berths,
+.observation,
+.weight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.filter__label {
+    padding: 0.5rem;
+    /* border: 1px solid greenyellow; */
+    background-color: rgba(31, 58, 147, 0.8);
+    color: #fff;
+    margin-right: 1rem;
+
+  }
+
+  .date__selecting--box{
+    margin-top: 10px;
+    width: 80%;
+  }

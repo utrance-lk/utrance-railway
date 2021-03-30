@@ -6,18 +6,18 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="../../../../utrance-railway/public/css/admin/add_notices_admin.css"
+      href="/public/css/admin/add_notices_admin.css"
     />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link
       rel="stylesheet"
-      href="../../../utrance-railway/public/css/layout/footer.css"
+      href="/public/css/layout/footer.css"
     />
     <link
       rel="stylesheet"
-      href="../../../utrance-railway/public/css/base.css"
+      href="/public/css/base.css"
     />
     <link
       rel="stylesheet"

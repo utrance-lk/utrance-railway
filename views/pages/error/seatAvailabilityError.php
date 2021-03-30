@@ -12,6 +12,6 @@
                 Cannot complete the request
             </div>
         </div>
-        <img src="/utrance-railway/public/img/pages/error/error404.png" alt="Error image" class="error__img">
+        <img src="/public/img/pages/error/error404.png" alt="Error image" class="error__img">
     </div>
 </section>

@@ -1,5 +1,8 @@
+
 let trainsSet;
 let trainnew;
+let Mycount;
+let mycount;
 
 var trainctive;
 var i = 0;
@@ -7,6 +10,8 @@ let k;
 
 const renderResults = function (trains, y, l, page = 1, resPerPage = 4) {
   clearResults();
+  Mycount=0;
+  mycount=0;
   // render results of current page
   trainnew = y;
   trainctive = l;
@@ -20,6 +25,7 @@ const renderResults = function (trains, y, l, page = 1, resPerPage = 4) {
 };
 
 const renderUser = function (train) {
+ 
   let markup = `<div class='manage-trains__result-card margin-b-m'>
                   <div class='manage-trains__card-item--train-id'>#<span name='id'>${train.train_id}</span></div>
                   <div class='manage-trains__card-item--train-name'>${train.train_name}</div>
@@ -31,13 +37,13 @@ const renderUser = function (train) {
     markup += `<div>Deactive</div>`;
   }
 
-  markup += `<a href='/utrance-railway/trains/view?id=${train.train_id}' class='btn btn-box-white margin-r-s'>View</a>`;
+  markup += `<a href='/trains/view?id=${train.train_id}' class='btn btn-box-white margin-r-s'>View</a>`;
 
   if (train.train_active_status == 1) {
-    markup += `<a href='/utrance-railway/trains/Deactivated?id=${train.train_id}' class='btn btn-box-white btn-box-white--delete' id='isActive' onclick=\"return confirm('Are you sure?');\">
+    markup += `<a href='/trains/Deactivated?id=${train.train_id}' class='btn btn-box-white btn-box-white--delete' id='isActive' onclick=\"return confirm('Are you sure?');\">
       Deactivate</a>`;
   } else {
-    markup += `<a href='/utrance-railway/trains/Activated?id=${train.train_id}' class='btn btn-box-white btn-box-white--activate' id='isActive' onclick=\"return confirm('Are you sure?');\">
+    markup += `<a href='/trains/Activated?id=${train.train_id}' class='btn btn-box-white btn-box-white--activate' id='isActive' onclick=\"return confirm('Are you sure?');\">
       Activate</a>`;
   }
 
@@ -46,6 +52,41 @@ const renderUser = function (train) {
   document
     .getElementById("manage-trains__search-results")
     .insertAdjacentHTML("beforeend", markup);
+
+              
+                  // let newindex = train.train_id;
+                
+                  // $(document).ready(function(){
+                  //  if(document.querySelector(".btn-box-white--delete")){
+                  //   Mycount++;
+                  //   mycount++;
+                  //   if(document.querySelectorAll(".btn-box-white--delete")[Mycount-1].innerText == "Deactivate"){
+                  //     $.ajax({
+                  //       url:'getNewBookingTrain',
+                  //       method:'post',
+                  //       data:{index1:newindex}
+                  //     }).done(function(train){
+                  //       console.log(train)
+                  //       trains=JSON.parse(train)
+                  //       if(trains.length==0){
+                  //         var element = document.querySelectorAll(".btn-box-white--delete")[mycount-1];
+                  //             element.remove();
+                  //             mycount--;
+
+                  //       }
+                        
+                  //     })
+                      
+                  //   }
+                     
+                  //  }
+                    
+                      
+                    
+                  // });
+                    
+              
+
 };
 
 const clearResults = function () {

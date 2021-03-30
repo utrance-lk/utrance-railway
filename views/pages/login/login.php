@@ -7,7 +7,7 @@
 						Log in
 					</div>
 					<div>
-						<span class="login__new-account--1">Don't have an account?</span>&nbsp;<a href="/utrance-railway/register" class="login__new-account--2">Create account</a>
+						<span class="login__new-account--1">Don't have an account?</span>&nbsp;<a href="/register" class="login__new-account--2">Create account</a>
 					</div>
 				</div>
 				<div class="login__credentials margin-b-xs">
@@ -19,7 +19,7 @@
 					<input type="password" id="password" name="user_password" placeholder="*****************" required>
 				</div>
 				<div class="margin-t-xs">
-					<a href="/utrance-railway/forgotPassword" class="forgort-password-box">Forgot Password?</a>
+					<a href="/forgotPassword" class="forgort-password-box">Forgot Password?</a>
 				</div>
 				<button type="submit" class="btn-login" formaction="#">
 					Login

@@ -19,7 +19,7 @@
               Station Not Found!
           </div>
       </div>
-      <img src="/utrance-railway/public/img/pages/error/stationNotFound.png" alt="Error image" class="error__img--small">
+      <img src="/public/img/pages/error/stationNotFound.png" alt="Error image" class="error__img--small">
   </div>
 </section>
 
@@ -32,7 +32,7 @@
               No trains Available!
           </div>
       </div>
-      <img src="/utrance-railway/public/img/pages/error/noTrainAvail.png" alt="Error image" class="error__img--small">
+      <img src="/public/img/pages/error/noTrainAvail.png" alt="Error image" class="error__img--small">
   </div>
 </section>
   
@@ -82,12 +82,8 @@
 <?php endif;?>  
 </section>
 
-<<<<<<< HEAD
 <script type="text/javascript" src="/public/js/components/mainSearch.js"></script>
-=======
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/mainSearch.js"></script>
-  <script type="text/javascript" src="../../../utrance-railway/public/js/components/currentDate.js"></script>
->>>>>>> master
+  <script type="text/javascript" src="/public/js/components/currentDate.js"></script>
 
   </body>
 </html>
