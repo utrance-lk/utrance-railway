@@ -43,4 +43,9 @@ $app->router->get('/utrance-railway/news/getmyNewNews', [AdminController::class,
 
 $app->router->get('/utrance-railway/news/news01', [AdminController::class, 'newsFeed01']);
 $app->router->get('/utrance-railway/routes/addnewmanageRoutesValidations', [AdminController::class, 'getaddRoutesStations']);
+
+$app->router->post('/utrance-railway/getMessages', [AdminController::class, 'getMessages']);
+$app->router->post('/utrance-railway/getCount', [AdminController::class, 'getCount']);
+
+
 ?>

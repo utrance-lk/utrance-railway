@@ -101,7 +101,7 @@ $(document).ready(function(){
       
       let newindex4=document.getElementById("line_type").value;
       let newindex3=index4 + " " +newindex4;
-      console.log(newindex3);
+      
     //   const markup1 = `<div class="center-text">#<span>${index4}</span></div>`;
     //   const newx1 = document.querySelector( ".dash-content__container");
     //   newx1.insertAdjacentHTML("beforeend", markup1);
@@ -120,7 +120,7 @@ $(document).ready(function(){
                 const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid station name.</p>`;
                  const newx = document.querySelector( ".dash-content__input");
                  newx.insertAdjacentHTML("afterend", newmarkup);
-               console.log(data);
+               
                
                window.location.href = "/utrance-railway/routes/add";
 

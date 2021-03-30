@@ -45,11 +45,13 @@
         <div class="header-user">
           <?php if(App::$APP->activeUser()['role'] === 'admin') : ?>
           <div class="header-user__notifications">
-            <svg class="header__icon">
+            <svg class="header__icon" id = "pop-notification">
               <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-chat"></use>
             </svg>
-            <span class="header-user__notification-number">13</span>
+            <span class="header-user__notification-number"></span>
+           
           </div>
+          <?php include_once '../views/pages/admin/pop_up.php'?>
           <?php endif; ?>
           <div class="header-user__details">
              <?php if(App::$APP->user) : ?>
@@ -106,5 +108,3 @@
           </div>
         </div>
     </nav>
-
-      

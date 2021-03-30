@@ -252,5 +252,16 @@ class ViewModel extends Model
 
     }
 
+    public function getStations() {
+        $query=APP::$APP->db->pdo->prepare("SELECT station_name FROM stations");
+        $query->execute();
+        $stationsArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        $stations = [];
+        foreach ($stationsArray as $key => $value) {
+            array_push($stations, $value['station_name']);
+        }
+        return $stations;
+    }
+
 
 }

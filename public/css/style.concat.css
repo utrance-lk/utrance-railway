@@ -547,6 +547,15 @@ input::-webkit-datetime-edit-year-field:focus {
   transform: translateY(2px);
 }
 
+.btn-square-no-bg--disabled {
+  border: 1px solid rgb(238, 238, 238);
+  text-align: center;
+  color: rgb(238, 238, 238);
+  padding: 1rem;
+  width: 10rem;
+  font-size: 1.5rem;
+}
+
 /* ----- */
 .btn-square-upload {
   padding: 5px;
@@ -2166,6 +2175,21 @@ margin-right: 20px;
   display: flex;
 }
 
+
+
+
+.form-popup{
+position: absolute;
+background-color: red;
+z-index: 100;
+left: 0;
+top: 110%;
+width: 25rem;
+padding: 1rem;
+border-radius: 5px;
+height: 20rem;
+
+}
 /* .settings__input {
   display: flex;
   flex-direction: column;

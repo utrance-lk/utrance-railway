@@ -99,7 +99,7 @@ print_r($dom->saveHTML());
 <script>
 $(document).ready(function(){
   $("#button").click(function(){
-
+   
  let newindex2=newStations;
 let newindex3='<?php echo $x; ?>';
 
@@ -109,15 +109,24 @@ let newindex3='<?php echo $x; ?>';
       data:{index1:newindex2,index2:newindex3},
       success : function (data) {
       console.log(data.length);
-            if(data.length===4){
+            if(data.length==6){
                window.location.href = "/utrance-railway/routes/";
-            }else{
-               console.log(data);
-
-
-
-
             }
+            else{
+                if(!document.getElementById("myerror")){
+                    const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid station name.</p>`;
+                 const newx = document.querySelector( ".dash-content__input");
+                 newx.insertAdjacentHTML("afterend", newmarkup);
+                 
+               
+                  window.location.href = "/utrance-railway/routes/view?id='<?php echo $x; ?>'";
+                }
+                
+
+
+
+
+             }
 
         }
     })

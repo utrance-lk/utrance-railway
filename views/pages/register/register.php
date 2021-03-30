@@ -82,30 +82,6 @@
                     <label for="password-confirm">Password Confirm</label>
                     <input type="password" id="password-confirm" name="user_confirm_password" placeholder="<?php echo isset($passwordError) ? $passwordError : '***************'; ?>" class="<?php echo isset($passwordError) ? 'error__placeholder' : ''; ?>" required>
                 </div>
-<<<<<<< HEAD
-                <!--?php
-
-                var_dump($userError);
-                   switch($userError){
-
-                       case 1:echo "<script>alert('$first_name_error');</script>";break;
-                       case 2:echo "<script>alert('$last_name_error');</script>";break;
-                       case 3:echo "<script>alert('$email_id_error');</script>";break;
-                       case 4:echo "<script>alert('$street_line1_error');</script>";break;
-                       case 5:echo "<script>alert('$street_line2_error');</script>";break;
-                       case 6:echo "<script>alert('$city_error');</script>";break;
-                       case 7:echo "<script>alert('$contact_num_error');</script>";break;
-                       case 8:echo "<script>alert('$user_confirm_password_error');</script>";
-
-
-                   }
-                   ?-->
-
-				<!-- <div class="forgot-password-box form__container-item">
-					<a href="#" class="forgort-password-box">Forgot Password?</a>
-				</div> -->
-=======
->>>>>>> 2833bc74c022c171d9746af0d9f3d5784c46d937
 				<button type="submit" class="register-btn form__container-item">
 						Register
 				</button>

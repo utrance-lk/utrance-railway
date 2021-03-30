@@ -1,0 +1,15 @@
+
+
+
+.form-popup{
+position: absolute;
+background-color: red;
+z-index: 100;
+left: 0;
+top: 110%;
+width: 25rem;
+padding: 1rem;
+border-radius: 5px;
+height: 20rem;
+
+}

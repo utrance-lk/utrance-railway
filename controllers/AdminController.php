@@ -522,4 +522,31 @@ class AdminController extends Controller
     }
 
 
+
+    ///////////////Daranya///////////////////
+    public function getMessages($request){
+        if ($request->isPost()){
+            $getMessagesModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $getMessagesModel->loadData($tempBody);
+            $messageArray = $getMessagesModel->getMessages();
+
+            echo json_encode($messageArray);
+        }
+    }
+
+    public function getCount($request){
+        if ($request->isPost()){
+            $getCountModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $getCountModel->loadData($tempBody);
+            $messageArray = $getCountModel->getCount();
+
+            echo json_encode($messageArray);
+        }
+    }
+
+
 }

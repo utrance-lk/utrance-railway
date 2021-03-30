@@ -63,8 +63,8 @@ carouselSlide.addEventListener('transitionend',()=>{
 
 
   
-        document.querySelector(".carousel-slide").insertAdjacentHTML("beforebegin", htm);
-        document.querySelector(".carousel-slide").insertAdjacentHTML("beforeend", firsthtml);
+        // document.querySelector(".carousel-slide").insertAdjacentHTML("beforebegin", htm);
+        // document.querySelector(".carousel-slide").insertAdjacentHTML("beforeend", firsthtml);
    
     myFunction1();
   
