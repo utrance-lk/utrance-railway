@@ -1,7 +1,7 @@
 /* section searchresults */
 .searchResults {
     /* border: 1px solid red; */
-    margin: 10rem 10vw 0 10vw;
+    margin: 0 10vw 0 10vw;
     display: flex;
 }
 

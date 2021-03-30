@@ -42,11 +42,19 @@
 }
 
 .header__logobox--white {
+<<<<<<< HEAD
   background-image: url(../../img/logo/utranceWhite-min.png);
 }
 
 .header__logobox--black {
   background-image: url(../../img/logo/utranceLogoBlack-min.png);
+=======
+  background-image: url(/utrance-railway/public/img/logo/utranceWhite.png);
+}
+
+.header__logobox--black {
+  background-image: url(/utrance-railway/public/img/logo/utranceLogoBlack.png);
+>>>>>>> master
 }
 
 .header-main__items {

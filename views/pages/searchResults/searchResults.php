@@ -6,7 +6,42 @@
   ?>
 </section>
 
+<script>
+  var stations = <?php echo json_encode(App::$APP->session->get('stationArray')['stations']);?>;
+</script>
+
+<?php if(isset($error)):?>
+
+<section class="error">
+  <div class="error-box margin-t-l margin-b-l flex-col-stretch-center">
+      <div class="error__text center-text margin-b-l">
+          <div class="error__text--sub">
+              Station Not Found!
+          </div>
+      </div>
+      <img src="/utrance-railway/public/img/pages/error/stationNotFound.png" alt="Error image" class="error__img--small">
+  </div>
+</section>
+
+<?php elseif(empty($directPaths) && empty($intersections)):?>
+
+<section class="error">
+  <div class="error-box margin-t-l margin-b-l flex-col-stretch-center">
+      <div class="error__text center-text margin-b-l">
+          <div class="error__text--sub">
+              No trains Available!
+          </div>
+      </div>
+      <img src="/utrance-railway/public/img/pages/error/noTrainAvail.png" alt="Error image" class="error__img--small">
+  </div>
+</section>
+  
+<?php else: ?>
+
+<?php include_once '../views/components/backButton.php';?>
+
 <section class="searchResults">
+
   <div class="filters-container"></div>
   <div class="search-results-train-card__container">
 
@@ -43,9 +78,16 @@
     }
 ?>
   </div>
+
+<?php endif;?>  
 </section>
 
+<<<<<<< HEAD
 <script type="text/javascript" src="/public/js/components/mainSearch.js"></script>
+=======
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/mainSearch.js"></script>
+  <script type="text/javascript" src="../../../utrance-railway/public/js/components/currentDate.js"></script>
+>>>>>>> master
 
   </body>
 </html>

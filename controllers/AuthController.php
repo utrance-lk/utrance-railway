@@ -100,14 +100,12 @@ class AuthController extends Controller
 
             $message = "Forgot you password? Change it here: " . $resetURL . "\nIf you didn't forget your password, please ignore this email!";
 
-            App::$APP->email->sendRestPasswordEmail([
-                'email' => $user[0]['email_id'],
-                'subject' => 'Your password reset token (valid for 10 minutes)',
+            App::$APP->email->sendRestPasswordEmail($user[0]['email_id'], 'Your password reset token (valid for 10 minutes)', [
                 'message' => $message,
                 'resetURL' => $resetURL
             ]);
 
-            return '';
+            return $this->render(['success', 'forgotPasswordSuccess']);
         }
 
         return $this->render('forgotPassword');
@@ -181,18 +179,7 @@ class AuthController extends Controller
                 if ($updatePasswordState === 'success') {
                     return $response->redirect('/logout');
                 }else{
-                    $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);
-                    // if($user_role === "admin"){
-                        //     return $this->render('admin',$updatePasswordSetValue);
-                        // }
-                        
-                        // if($user_role === "user"){
-                            //     return $this->render('registeredUser',$updatePasswordSetValue); 
-                            // }
-                            
-                            // if($user_role === "detailsProvider"){
-                                //     return $this->render('detailsProvider',$updatePasswordSetValue);
-                                // }     
+                    $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);   
                     return $this->render('settings', $updatePasswordSetValue);   
                                 
                 }

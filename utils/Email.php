@@ -1,10 +1,13 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
 
 include_once "../views/email/resetPasswordEmail.php";
+include_once "../views/email/bookingTicketEmail.php";
 
 class Email
 {
@@ -20,31 +23,39 @@ class Email
         $this->mail->Username = $config['user'];
         $this->mail->Password = $config['password'];
         $this->mail->Port = $config['port'];
+        $this->mail->SMTPSecure = "tls";
     }
 
-    public function sendEmail($options, $callbackHTML)
+    public function sendEmail($email, $subject, $options, $callbackHTML)
     {
         try {
             $this->mail->setFrom('utrancerailway@gmail.com', 'Admin');
-            $this->mail->addAddress($options['email']);
+            $this->mail->addAddress($email);
 
             $this->mail->isHTML(true);
-            $this->mail->Subject = $options['subject'];
-            $this->mail->Body = $callbackHTML([
-                'url' => $options['resetURL'],
-            ]);
-            $this->mail->AltBody = $options['message'];
-
+            $this->mail->Subject = $subject;
+            $this->mail->Body = $callbackHTML($options);
+            // if (isset($options['message'])) {
+            //     $this->mail->AltBody = $options['message'];
+            // }
+            if ($callbackHTML === 'renderTicketInvoiceEmail') {
+                $imgPath = 'C:/xampp/htdocs/utrance-railway/public/img/QR/' . $options['hash'] . '.png';
+                $this->mail->AddEmbeddedImage($imgPath, 'qr', $options['hash'] . '.png');
+            }
             $this->mail->send();
-            echo 'message has been sent!';
         } catch (Execption $e) {
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
 
-    public function sendRestPasswordEmail($options)
+    public function sendRestPasswordEmail($email, $subject, $options = null)
     {
-        $this->sendEmail($options, 'renderResetPassword');
+        $this->sendEmail($email, $subject, $options, 'renderResetPassword');
+    }
+
+    public function sendTicket($email, $subject, $options = null)
+    {
+        $this->sendEmail($email, $subject, $options, 'renderTicketInvoiceEmail');
     }
 
 }
