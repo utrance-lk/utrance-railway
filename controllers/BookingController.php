@@ -193,7 +193,9 @@ class BookingController extends Controller
 
         $result = $writer->write($qrCode);
 
-        $result->saveToFile('E:/xwapp/htdocs/utrance-railway/public/img/QR/' . $hashStr . '.png');
+        $path = dirname(__DIR__, 1) . '/public/img/QR/' . $hashStr . '.png';
+
+        $result->saveToFile($path);
         
     }
 
