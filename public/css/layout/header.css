@@ -52,7 +52,6 @@
 .header-main__items {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid green; */
   margin-left: 3rem;
 }
 
