@@ -47,7 +47,7 @@ class AdminController extends Controller
         }
 
         $response->setStatusCode(403);
-        return $response->redirect('/utrance-railway/home');
+        return $response->redirect('/home');
 
     }
 
@@ -63,7 +63,7 @@ class AdminController extends Controller
                 $state = $adminFunction->addUser();
 
                 if ($state === "success") {
-                    return $response->redirect('/utrance-railway/users/add');
+                    return $response->redirect('/users/add');
                 } else {
                     $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
                     return $this->render(['admin', 'addUser'], $addUserSetValue); //Ashika
@@ -74,7 +74,7 @@ class AdminController extends Controller
         }
 
         $response->setStatusCode(403);
-        return $response->redirect('/utrance-railway/home');
+        return $response->redirect('/home');
 
     }
 
@@ -91,7 +91,7 @@ class AdminController extends Controller
         }
 
         $response->setStatusCode(403);
-        return $response->redirect('/utrance-railway/home');
+        return $response->redirect('/home');
 
     }
 
@@ -109,7 +109,7 @@ class AdminController extends Controller
         }
 
         $response->setStatusCode(403);
-        return $response->redirect('/utrance-railway/home');
+        return $response->redirect('/home');
 
     }
 
@@ -152,7 +152,7 @@ class AdminController extends Controller
             }
         }
         $response->setStatusCode(403);
-        $response->redirect('/utrance-railway/home');
+        $response->redirect('/home');
     }
 
     public function filterSearch($request, $response)
@@ -174,7 +174,7 @@ class AdminController extends Controller
         }
 
         $response->setStatusCode(403);
-        $response->redirect('/utrance-railway/home');
+        $response->redirect('/home');
 
     }
 
@@ -277,7 +277,7 @@ class AdminController extends Controller
 
                 $deleteTrainModel->loadData($request->getQueryParams());
                 $deleteTrainModel->deleteTrains();
-                return $response->redirect('/utrance-railway/trains');
+                return $response->redirect('/trains');
 
             }
         }
@@ -294,7 +294,7 @@ class AdminController extends Controller
 
                 $deleteTrainModel->loadData($request->getQueryParams());
                 $deleteTrainModel->activeTrains();
-                return $response->redirect('/utrance-railway/trains');
+                return $response->redirect('/trains');
 
             }
         }
