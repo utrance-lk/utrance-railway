@@ -1,0 +1,154 @@
+.load-content-container {
+    background-color: #fff;
+    /* border: 1px solid yellow; */
+    width: 60vw;
+  }
+  
+  .load-content {
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 80%;
+    margin: auto auto;
+  }
+  
+  .content-title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    /* color: #59abe3; */
+    color: rgba(31, 58, 147, 0.8);
+    font-weight: 400;
+    /* display: inline-block; */
+    margin-top: 2rem;
+    /* margin-left: 50%; */
+    /* transform: translateX(-50%); */
+  }
+  
+  .content-title p,
+  .content-title div {
+    margin: 0 auto;
+    width: max-content;
+  }
+  
+  .stop-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .stop-card > * {
+    /* border: 1px solid blue; */
+  }
+  
+  .stop-card__details {
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+  }
+  
+  .stop-card__station {
+    width: 10rem;
+    text-align: center;
+  }
+  
+  .back-odd {
+    background-color: rgb(242, 242, 242);
+  }
+  
+  .back-even {
+    background-color: rgba(119, 119, 119, 0.2);
+  }
+  
+  .stop-card__add-btn {
+    position: absolute;
+    left: 98.5%;
+    top: 81%;
+    cursor: pointer;
+    display: none;
+    z-index: 10;
+  }
+  
+  .stop-card__add-btn:active,
+  .stop-card__add-btn:focus {
+    transform: scale(0.9);
+  }
+  
+  
+  
+  .stop-card:hover .stop-card__add-btn {
+    display: block;
+  }
+  
+  .schedule {
+    /* border: 1px solid red; */
+  }
+  
+  .stop-card__details {
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+  }
+  
+  .add-icon {
+    width: 2rem;
+    height: 2rem;
+    fill: rgba(31, 58, 147, 0.8);
+  }
+  
+  .btn-update-route {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .add-stop-popup__form {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-stop-popup input {
+    padding: 1rem;
+  }
+  
+  .add-stop-popup__close-btn {
+    /* border: 1px solid green; */
+    position: absolute;
+    left: 97.2%;
+    top: 7%;
+    cursor: pointer;
+  }
+  
+  .add-stop-popup__close-btn:active,
+  .add-stop-popup__close-btn:focus {
+    transform: scale(0.9);
+  }
+  
+  .add-stop-popup {
+    background-color: rgba(119, 119, 119, 0.2);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    /* display: none; */
+  }
+  
+  
+  .close-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: var(--color-btn-box-text-delete);
+  }
+  
+  .titles {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(31, 58, 147);
+    font-weight: 600;
+    padding: 2rem;
+  }
+  
+  .titles > * {
+    text-align: center;
+  }

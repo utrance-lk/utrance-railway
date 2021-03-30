@@ -36,6 +36,8 @@
   </script>
 <?php endif;?>
 
+
+
 <script>
     var index;
     var newindex;
@@ -43,15 +45,14 @@
       $(".form__input").on('change', function() {
         index = $('#train__type').val();
         newindex = $('#active__status').val();
-        console.log(index);
-        console.log(newindex);
+        
         
         $.ajax({
           url:'newmanageTrains',
           method:'post',
           data:{index1:newindex,index2:index}
         }).done(function(train){
-          console.log(train)
+          
           trains=JSON.parse(train)
           renderResults(trains);
           renderButtons();

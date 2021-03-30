@@ -44,15 +44,14 @@
       
       index = $('#user__role').val();
       newindex = $('#active__status').val();
-      console.log(index);
-      console.log(newindex);
+      
     
       $.ajax({
         url:'newmanageUsers',
         method:'post',
         data:{index1:newindex,index2:index}
       }).done(function(user){
-        console.log(user)
+       
         users=JSON.parse(user)
         renderResults(users,<?php echo json_encode(App::$APP->activeUser()); ?>);
         renderButtons();

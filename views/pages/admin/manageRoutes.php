@@ -31,7 +31,7 @@ echo renderAdminSearch(['routes', 'name', 'id'], '');
                       $html .= "<div class='search__result-route-destination'>" . $value['did'] . "</div>";
                       $html .= "<a href='/utrance-railway/routes/view?id=" . $value['route'] . "' class='btn btn-box-white margin-r-s'>View</a>";
                       $html .= "<div class='btn'>";
-                      $html .= "<div class='btn-box-white btn-box-white--delete'>Delete</div></div></div>";
+                      $html .= "</div></div>";
 
                       $dom = new DOMDocument();
                       $dom->loadHTML($html);

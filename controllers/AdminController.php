@@ -235,14 +235,20 @@ class AdminController extends Controller
 
     public function deleteTrain($request, $response)
     {
+
         if ($this->protect()) {
 
             if ($request->isGet()) {
                 $deleteTrainModel = new AdminModel();
 
                 $deleteTrainModel->loadData($request->getQueryParams());
-                $deleteTrainModel->deleteTrains();
-                return $response->redirect('/utrance-railway/trains');
+
+                $getResult['result']=$deleteTrainModel->deleteTrains();
+                     return $response->redirect('/utrance-railway/trains');
+               
+                
+
+   
 
             }
         }
@@ -335,7 +341,7 @@ class AdminController extends Controller
 
             } else if ($request->isPost()) {
                 $resultArray = $searchModel->searchRouteDetails();
-
+              
                 return $this->render(['admin', 'manageRoutes'], $resultArray);
 
             }
@@ -347,7 +353,7 @@ class AdminController extends Controller
     {
         if ($this->protect()) {
             if ($request->isPost()) {
-                return 'success';
+                return $this->render(['admin', 'addRoute']);
             }
 
             return $this->render(['admin', 'addRoute']);
@@ -366,7 +372,7 @@ class AdminController extends Controller
 
                 $updateRouteArray = $saveDetailsModel->getManagRoutes();
 
-                return $this->render(['admin', 'updateRoute'], $updateRouteArray);
+                return $this->render(['admin', 'updateRoute2'], $updateRouteArray);
             }
 
         }
@@ -379,22 +385,149 @@ class AdminController extends Controller
         return $this->render('aboutUs');
     }
 
-    public function manageNews($request) //daranya
+    public function manageNews($request, $response) //hasani
 
     {
         if ($this->protect()) {
             $manageNewsModel = new AdminModel();
+            $manageNewsModel->loadData($request->getBody());
 
             if ($request->isPost()) {
-                $manageNewsModel->loadData($request->getbody());
-                $addNewss = $manageNewsModel->manageNews();
-                $updateUserArray = $adminViewUser->getUserDetails();
-                return $this->render(['admin', 'manageNews']);
+
+                $getNewsArray['error'] = $manageNewsModel->uploadNews();
+               
+               if(empty($getNewsArray['error'])){
+              
+                return $response->redirect('/utrance-railway/home');
+               }else{
+                return $this->render(['admin', 'manageNews'],$getNewsArray);
+               }
+                
+                // return $this->render(['admin', 'manageNews'],$getNewsArray)
 
             }
             return $this->render(['admin', 'manageNews']);
         }
 
     }
+
+    public function newsFeed($request, $response){
+        if ($this->protect()){
+            if ($request->isGet()){
+                $getNewsModel = new AdminModel();
+                $getNewsModel->loadData($request->getBody());
+    
+                $trainArray['news'] = $getNewsModel->getAllNews();
+         
+                return $this->render('newsFeed',$trainArray);
+            }
+
+        }
+        
+        
+    }
+
+    public function getNews($request, $response){
+        
+        if ($request->isGet()){
+            $getNewsModel = new AdminModel();
+            $getNewsModel->loadData($request->getBody());
+
+            $trainArray = $getNewsModel->getNews();
+            echo json_encode($trainArray);
+        }else{
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $saveDetailsModel->loadData($tempBody);
+            $trainArray = $saveDetailsModel->getMyNews();
+            echo json_encode($trainArray);
+
+        }
+
+    }
+
+    public function newsFeed01($request, $response){
+      
+        $saveDetailsModel = new AdminModel();
+
+        $tempBody = $request->getBody();
+        $tempBody['id'] = $request->getQueryParams()['id'];
+        $saveDetailsModel->loadData($tempBody);
+
+        $updateRouteArray['news'] = $saveDetailsModel->getMyNews();
+        $updateRouteArray['allnews']= $saveDetailsModel->getAllNews();
+       
+               
+                return $this->render(['newsFeed','newsFeed01'],$updateRouteArray);
+    }
+
+    public function getaddRoutesStations($request, $response){
+        if ($this->protect()){
+            if ($request->isGet()){
+                $getNewsModel = new AdminModel();
+                $getNewsModel->loadData($request->getBody());
+    
+                $trainArray = $getNewsModel->getaddRoutesStations();
+                echo json_encode($trainArray);
+         
+                
+            }
+
+        }
+
+    }
+
+    public function addupdateRoutes($request, $response)
+    {
+        if ($request->isGet()) {
+            $getNewsModel = new AdminModel();
+            $getNewsModel->loadData($request->getBody());
+    
+            $trainArray = $getNewsModel->getMyaddRouts();
+
+            echo json_encode($trainArray);
+        }
+    }
+
+    public function getNewBookingTrain($request, $response){
+        if ($request->isPost()) {
+            $saveDetailsModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $saveDetailsModel->loadData($tempBody);
+            $trainArray = $saveDetailsModel->getNewBookingTrain();
+
+            echo json_encode($trainArray);
+        }
+    }
+
+
+
+    ///////////////Daranya///////////////////
+    public function getMessages($request){
+        if ($request->isPost()){
+            $getMessagesModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $getMessagesModel->loadData($tempBody);
+            $messageArray = $getMessagesModel->getMessages();
+
+            echo json_encode($messageArray);
+        }
+    }
+
+    public function getCount($request){
+        if ($request->isPost()){
+            $getCountModel = new AdminModel();
+            $tempBody = $request->getBody();
+            $tempBody['index1'] = $_POST['index1'];
+            $getCountModel->loadData($tempBody);
+            $messageArray = $getCountModel->getCount();
+
+            echo json_encode($messageArray);
+        }
+    }
+
 
 }

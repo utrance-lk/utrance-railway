@@ -11,3 +11,46 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.slider-container{
+   
+    margin-left: 0px;
+    width: 95%;
+    position: relative;
+
+}
+.newscard-small{
+margin-left: 20px;
+margin-right: 20px;
+}
+
+.carousel-slide{
+    display: flex;
+    flex-direction: row;
+	flex-wrap: nowrap;
+    width: 100%;
+
+}
+#prevBtn{
+    position: absolute;
+    top: 45%;
+    z-index: 10;
+     left: 2%; 
+    font-size: 50px;
+    color: black;
+    cursor: pointer;
+    opacity: 0.8;
+
+}
+
+#nextBtn{
+    position: absolute;
+    top: 45%;
+    z-index: 10;
+     right: 2%; 
+    font-size: 50px;
+    color: black;
+    cursor: pointer;
+    opacity: 0.8;
+
+}

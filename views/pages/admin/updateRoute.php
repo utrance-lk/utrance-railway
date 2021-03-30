@@ -42,10 +42,10 @@ if (isset($routes)) {
             $html .= "<div class='view-routes__stop view-routes__stop--odd'>";
         }
         $html .= "<div class='view-routes__stop-details'>";
-        $html .= "<div>#" . $value['path_id'] . "</div>";
+        $html .= "<div class='stop-card__path-id'>#" . $value['path_id'] . "</div>";
         $html .= "<div class='view-routes__stop-station'>" . $value['station_name'] . "</div>";
-        $html .= "<div>" . $value['arrival_time'] . "</div>";
-        $html .= "<div>" . $value['departure_time'] . "</div></div>";
+        $html .= "<div lass='stop-card__arr-time'>" . $value['arrival_time'] . "</div>";
+        $html .= "<div class='stop-card__dept-time'>" . $value['departure_time'] . "</div></div>";
         $html .= "<div class='view-routes__btn-add'>";
         $html .= "<svg class='view-routes__btn-add-icon'>
         <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use></svg></div></div></div>";
