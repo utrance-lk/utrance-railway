@@ -516,29 +516,26 @@ class AdminController extends Controller
     public function getNews($request, $response)
     {
 
-        if ($this->protect()) {
+        // if ($this->protect()) {
 
             if ($request->isGet()) {
                 $getNewsModel = new AdminModel();
                 $getNewsModel->loadData($request->getBody());
-
                 $trainArray = $getNewsModel->getNews();
-                echo json_encode($trainArray);
-                return true;
+                return json_encode($trainArray);
             } else {
                 $saveDetailsModel = new AdminModel();
                 $tempBody = $request->getBody();
                 $tempBody['index1'] = $_POST['index1'];
                 $saveDetailsModel->loadData($tempBody);
                 $trainArray = $saveDetailsModel->getMyNews();
-                echo json_encode($trainArray);
-                return true;
+                return json_encode($trainArray);
             }
 
-        }
+        // }
 
-        $response->setStatusCode(403);
-        return $response->redirect('/utrance-railway/home');
+        // $response->setStatusCode(403);
+        // return $response->redirect('/utrance-railway/home');
     }
 
     public function newsFeed01($request, $response)
