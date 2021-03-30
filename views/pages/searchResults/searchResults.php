@@ -82,12 +82,8 @@
 <?php endif;?>  
 </section>
 
-<<<<<<< HEAD
 <script type="text/javascript" src="/public/js/components/mainSearch.js"></script>
-=======
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/mainSearch.js"></script>
-  <script type="text/javascript" src="../../../utrance-railway/public/js/components/currentDate.js"></script>
->>>>>>> master
+  <script type="text/javascript" src="/public/js/components/currentDate.js"></script>
 
   </body>
 </html>
