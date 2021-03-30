@@ -31,8 +31,8 @@
             $html .="<div class='booking__users--id'>#" . $value['id'] . "</div>";
             $html .="<div class='booking__users--email'>" . $value['email_id'] . "</div>";
             $html .="<div class='booking__users--booking-date'>" . $date . "</div>";
-            $html .="<div class='booking__users--booking-time'>" . $Time . "</div>";
-            $html .="<a class='btn__refund'>Refund</a></div>";
+            $html .="<div class='booking__users--booking-time'>" . $Time . "</div></div>";
+            
            
            
         }
