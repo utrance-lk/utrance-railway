@@ -32,6 +32,7 @@
   margin-right: 1.5rem;
   margin-top: 1.5rem;
   align-self: center;
+  overflow: hidden;
 }
 
 .newscard-small__view-btn {

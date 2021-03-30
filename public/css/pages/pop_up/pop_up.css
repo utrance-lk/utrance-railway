@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -13,3 +14,37 @@ border-radius: 5px;
 height: 20rem;
 
 }
+=======
+.form-popup {
+  position: absolute;
+  background-color: rgb(31, 58, 147);
+  z-index: 100;
+  left: 0;
+  top: 110%;
+  width: 25rem;
+  padding: 1rem;
+  border-radius: 5px;
+  height: 26rem;
+  overflow-y: scroll;
+}
+
+.form-popup a:link,
+.form-popup a:active,
+.form-popup a:visited {
+  color: var(--color-btn-round-background--hover);
+}
+
+.form-container {
+  position: relative;
+}
+
+.form-popup__btn-close {
+  position: absolute;
+  height: 2.5rem;
+  width: 2.5rem;
+  top: 5px;
+  right: 5px;
+  fill: red;
+  cursor: pointer;
+}
+>>>>>>> 128dcd72d2aa03a5b676c58f6bea72066f67c897

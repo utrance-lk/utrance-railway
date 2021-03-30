@@ -288,4 +288,31 @@ class ViewModel extends Model
     }
 
 
+    public function getAllNews(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed order by News_id DESC");
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->resultArray;
+    }
+
+    public function getMyNews(){
+     
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_id  = :content");
+        $query->bindValue(":content", $this->id);
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+ 
+     }
+
+     
+    public function getNews(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed order by News_id DESC LIMIT 6");
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+
+
 }

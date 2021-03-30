@@ -25,27 +25,6 @@ const items = {
 };
 
 const stationsArray = [
-<<<<<<< HEAD
-    "Matara",
-    "Colombo Fort",
-    "Galle",
-    "Badulla",
-    "Peradeniya",
-    "Matale",
-    "Ragama",
-    "Noor Nagar",
-    "Polgahawela",
-    "Kankesanthurai",
-    "Mannar Line",
-    "Talaimannar",
-    "Beliatta",
-    "Wewurukannala",
-    "Gal Oya",
-    "Traincomalee",
-    "Maho Juction",
-    "Batticaloa",
-    "Maradana"
-=======
   "Matara",
   "Colombo Fort",
   "Galle",
@@ -64,8 +43,7 @@ const stationsArray = [
   "Traincomalee",
   "Maho Juction",
   "Batticaloa",
-  "Beliatta",
->>>>>>> c19a2ed8fc431d1121d00d468356c5b2d50586b5
+  
 ];
 let from;
 let destination;
@@ -239,7 +217,6 @@ const renderResults = function (user) {
 
        
         <div class='number-of-persons__box'>
-<<<<<<< HEAD
         <select id='select-weight__range' style='font-size: 1.5rem;height: 30px;width: 100px;border: 1px solid var(--color-main);' onchange='getSelectValue();'>
         <option value='1'>01 - 05 kg</option>
         <option value='2'>05 - 10 kg</option>
@@ -258,24 +235,13 @@ const renderResults = function (user) {
 
 
 
-    document
-        .querySelector(".search__results-container")
-        .insertAdjacentHTML("beforeend", markup);
+//     document
+//         .querySelector(".search__results-container")
+//         .insertAdjacentHTML("beforeend", markup);
 
-}
+// }
 
 
-=======
-            <button class='btn minus-btn disabled' type='button'>-</button>
-            
-            <!--span class='number__box '>1</span!-->
-            <input id='number__box' value=1>
-            <button class='btn plus-btn' type='button'>+</button>
-            
-            <span id='number__box__name'>kg</span>
-        </div> 
-    `;
->>>>>>> c19a2ed8fc431d1121d00d468356c5b2d50586b5
 
   document
     .querySelector(".search__results-container")

@@ -669,6 +669,7 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-right: 1.5rem;
   margin-top: 1.5rem;
   align-self: center;
+  overflow: hidden;
 }
 
 .newscard-small__view-btn {
@@ -1150,17 +1151,16 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .header__logobox--white {
-  background-image: url(../../img/logo/utranceWhite.png);
+  background-image: url(/utrance-railway/public/img/logo/utranceWhite.png);
 }
 
 .header__logobox--black {
-  background-image: url(../../img/logo/utranceLogoBlack.png);
+  background-image: url(/utrance-railway/public/img/logo/utranceLogoBlack.png);
 }
 
 .header-main__items {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid green; */
   margin-left: 3rem;
 }
 
@@ -1311,7 +1311,260 @@ input::-webkit-datetime-edit-year-field:focus {
   text-transform: uppercase;
   width: 80%;
 }
+.load-content-container {
+    background-color: #fff;
+    /* border: 1px solid yellow; */
+    width: 60vw;
+  }
+  
+  .load-content {
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 80%;
+    margin: auto auto;
+  }
+  
+  .content-title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    /* color: #59abe3; */
+    color: rgba(31, 58, 147, 0.8);
+    font-weight: 400;
+    /* display: inline-block; */
+    margin-top: 2rem;
+    /* margin-left: 50%; */
+    /* transform: translateX(-50%); */
+  }
+  
+  .content-title p,
+  .content-title div {
+    margin: 0 auto;
+    width: max-content;
+  }
+  
+  .stop-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .stop-card > * {
+    /* border: 1px solid blue; */
+  }
+  
+  .stop-card__details {
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+  }
+  
+  .stop-card__station {
+    width: 10rem;
+    text-align: center;
+  }
+  
+  .back-odd {
+    background-color: rgb(242, 242, 242);
+  }
+  
+  .back-even {
+    background-color: rgba(119, 119, 119, 0.2);
+  }
+  
+  .stop-card__add-btn {
+    position: absolute;
+    left: 98.5%;
+    top: 81%;
+    cursor: pointer;
+    display: none;
+    z-index: 10;
+  }
+  
+  .stop-card__add-btn:active,
+  .stop-card__add-btn:focus {
+    transform: scale(0.9);
+  }
+  
+  
+  
+  .stop-card:hover .stop-card__add-btn {
+    display: block;
+  }
+  
+  .schedule {
+    /* border: 1px solid red; */
+  }
+  
+  .stop-card__details {
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+  }
+  
+  .add-icon {
+    width: 2rem;
+    height: 2rem;
+    fill: rgba(31, 58, 147, 0.8);
+  }
+  
+  .btn-update-route {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .add-stop-popup__form {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-stop-popup input {
+    padding: 1rem;
+  }
+  
+  .add-stop-popup__close-btn {
+    /* border: 1px solid green; */
+    position: absolute;
+    left: 97.2%;
+    top: 7%;
+    cursor: pointer;
+  }
+  
+  .add-stop-popup__close-btn:active,
+  .add-stop-popup__close-btn:focus {
+    transform: scale(0.9);
+  }
+  
+  .add-stop-popup {
+    background-color: rgba(119, 119, 119, 0.2);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    /* display: none; */
+  }
+  
+  
+  .close-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: var(--color-btn-box-text-delete);
+  }
+  
+  .titles {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(31, 58, 147);
+    font-weight: 600;
+    padding: 2rem;
+  }
+  
+  .titles > * {
+    text-align: center;
+  }
+.add-train__new-train {
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.add-train__travel-days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking__users {
+    /* border: 1px solid red; */
+    margin-top: 6rem;
+}
+
+.booking__users--topic {
+    /* border: 1px solid purple; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.topic__text {
+    color: rgba(31, 58, 147, 0.8);
+    font-family: "Sora", 'sans-serif';
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.topic__travel-date {
+    font-size: 1.7rem;
+    color: rgb(119, 119, 119);
+    margin-bottom: .5rem;
+}
+
+.booking__users--card-container {
+    margin: 0 15vw;
+    border: 1px solid rgba(31, 58, 147, 0.8);
+}
+
+.booking__users--card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.booking__users--card:not(:last-child) {
+    border-bottom: 1px solid rgba(31, 58, 147, 0.8);
+}
+
+.btn__refund,
+.btn__refund-all {
+    background-color: rgba(31, 58, 147, 0.8);
+    padding: .5rem;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn__refund-all {
+    display: block;
+    width: 10rem;
+    margin: 0 auto;
+    margin-top: 6rem;
+}
+
+.userdetails-box--dropdown {
+    background-color: rgb(31, 58, 147);
+    border-radius: 5px;
+}
+
+.userdetails-box--dropdown a {
+    color: #fff !important;
+}
+
+.booking__users--id {
+    width: 5rem;
+    text-align: left;
+}
+
+.booking__users--email {
+    width: 20rem;
+    text-align: left;
+}
+
+.booking__users--weight {
+    width: 5rem;
+    text-align: left;
+}
+
+.booking__users--booking-date {
+    /* border: 1px solid red; */
+    width: 15rem;
+    text-align: left;
+}
 .error__text--heading {
     font-size: 5rem;
     font-weight: 500;
@@ -1329,174 +1582,6 @@ input::-webkit-datetime-edit-year-field:focus {
 .error__img--small {
     height: 10rem;
     width: 10rem;
-}
-.add-train__new-train {
-  display: flex;
-  height: 90vh;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.add-train__travel-days {
-  display: flex;
-  justify-content: space-between;
-}
-
-.booking__container {
-    margin-top: 4rem;
-    /* border: 1px solid red; */
-    /* height: 75vh; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.topic {
-    /* border: 1px solid green; */
-    /* width: 30rem; */
-    height: 10rem;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-bottom: 10rem;
-}
-
-.booking__form {
-    /* border: 1px solid blue; */
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-}
-
-.station__text-box {
-    font-size: 3rem;
-    color:  rgba(31, 58, 147, 0.8);
-    font-weight: 500;
-    padding: 1rem;
-}
-
-.journey__time-box,
-.journey__date-box {
-    font-size: 1.7rem;
-    color: rgb(119, 119, 119);
-    margin-bottom: .5rem;
-}
-
-.journey__date-day {
-    position: relative;
-    /* border: 1px solid green; */
-}
-
-.day__upper {
-    position: absolute;
-    top: -.5rem;
-    left: 2.5rem;
-}
-
-.train__booking-card {
-    height: 25rem;
-    /* border: 1px solid orangered; */
-    padding: 1rem;
-    display: flex;
-    position: relative;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
-    background-color: #fff;
-    margin-bottom: 10rem;
-}
-
-.card__persons,
-.card__class,
-.card__price {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card__price {
-    font-size: 2rem;
-    color: rgba(31, 58, 147);
-}
-
-.seperator {
-    width: 2px;
-    height: 20%;
-    background-color:  rgb(119, 119, 119);
-    align-self: center;
-}
-
-.card__item {
-    /* border: 1px solid violet; */
-}
-
-.card__train-details {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.train__details-item {
-    /* border: 1px solid rosybrown; */
-    padding: 1rem;
-}
-
-.train__name--name {
-    margin-right: 1rem;
-}
-
-.train__type {
-    font-size: 1rem;
-    border: 1px solid rgb(119, 119, 119);
-    border-radius: 10rem;
-    padding: .2rem;
-}
-
-.train__number-box {
-    /* border: 1px solid rebeccapurple; */
-    position: absolute;
-    padding: 1rem;
-    top: -1rem;
-    left: -1rem;
-    width: 10rem;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.3);
-    z-index: 10;
-}
-
-.person__count {
-    width: 3rem;
-    padding: .5rem;
-    text-align: center;
-    /* border: 1px solid red; */
-    background-color: rgb(242, 242, 242);
-    border-radius: 5px;
-}
-
-.train_class {
-    padding: 1rem;
-    background-color: transparent;
-    font-size: 1.5rem;
-}
-
-.total-price__box {
-    border: 1px solid rgba(31, 58, 147, 0.8);
-    font-size: 2rem;
-    font-weight: 400;
-    padding: 1rem;
-    align-self: flex-start;
-    display: flex;
-    /* width: 40rem; */
-}
-
-.total-price__box--text {
-    margin-right: 1rem;
-}
-
-.btn__container {
-    align-self: center;
 }
 /* .home__heading-primary {
   height: 40vh;
@@ -1582,6 +1667,116 @@ input::-webkit-datetime-edit-year-field:focus {
   justify-content: space-around;
   font-size: 1.5rem;
 }
+.dashboard-searchbar--container {
+    /* border: 1px solid blue; */
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dashboard-searchbar {
+    /* border: 1px solid red; */
+    padding: 1rem;
+    border-radius: 10rem;
+    border: none;
+    width: 70%;
+    outline: none;
+    background-color: rgb(244, 242, 242);
+    font-family: "Lato", sans-serif;
+    color: rgb(119, 119, 119);
+    transition: all 0.3s;
+  }
+
+  .search-icon__btn {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: -4rem;
+    fill: rgb(119, 119, 119);
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  
+  .search-icon__btn:active,
+  .search-icon__btn:focus {
+    transform: scale(0.9);
+  }
+
+  .filters {
+    /* border: 1px solid green; */
+    padding: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+    align-items: center;
+  }
+  
+  .filters > * {
+    /* border: 1px solid slateblue; */
+  }
+
+  .filters__container {
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem 1rem;
+    border: 1px solid rgba(119, 119, 119, 0.3);
+  }
+  .train-booking__stat-card--container {
+    /* border: 1px solid pink; */
+    margin-top: 4rem;
+  }
+
+  .train-booking__stat-card {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8rem;
+    background-color: rgb(244, 242, 242);
+    padding: 0 2rem;
+  }
+
+  .train-booking__stat-card > * {
+    flex: 1;
+  }
+  
+  .train-booking__stat-card:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+  
+  .train-booking__stat-card--train-id {
+    flex: 0.5;
+  }
+  
+  .train-booking__stat-card--train-name {
+    width: 15rem;
+    text-align: center;
+  }
+
+.fcseats,
+.scseats,
+.sleeping-berths,
+.observation,
+.weight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.filter__label {
+    padding: 0.5rem;
+    /* border: 1px solid greenyellow; */
+    background-color: rgba(31, 58, 147, 0.8);
+    color: #fff;
+    margin-right: 1rem;
+
+  }
+
+  .date__selecting--box{
+    margin-top: 10px;
+    width: 80%;
+  }
 .manage-news__partition-topic {
     padding: .5rem;
 }
@@ -1678,7 +1873,7 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .add-stop-popup input {
   padding: 1rem;
-  width: 13rem;
+  width:13rem;
 }
 
 .add-stop-popup__close-btn {
@@ -1700,33 +1895,70 @@ input::-webkit-datetime-edit-year-field:focus {
   fill: var(--color-btn-box-text-delete);
 }
 .newsfeed {
-    padding: 10rem 5rem;
-    margin: 0 10vw;
-    transform: translateY(-2rem);
-    height: 50rem;
-    border-radius: 5px;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  /* padding: 10rem 5rem; */
+  margin: 0 10vw;
+  transform: translateY(-2rem);
+  height: 50rem;
+  border-radius: 5px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-
-
-.form-popup{
-position: absolute;
-background-color: red;
-z-index: 100;
-left: 0;
-top: 110%;
-width: 25rem;
-padding: 1rem;
-border-radius: 5px;
-height: 20rem;
-
+.newsfeed__slider {
+  width: 90%;
+  height: 100%;
+  margin: 0 7rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
+
+.slider-container {
+  /* margin-left: 0px;
+    width: 95%;
+    position: relative; */
+}
+.newscard-small {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.carousel-slide {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+#prevBtn {
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+  left: 3%;
+  font-size: 50px;
+  color: black;
+  cursor: pointer;
+  opacity: 0.8;
+  height: 3rem;
+  width: 3rem;
+}
+
+#nextBtn {
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+  right: 3%;
+  font-size: 50px;
+  color: black;
+  cursor: pointer;
+  opacity: 0.8;
+  height: 3rem;
+  width: 3rem;
+}
+
 
 .register__container {
   display: flex;
@@ -1987,6 +2219,39 @@ height: 20rem;
   display: flex;
 }
 
+.form-popup {
+  position: absolute;
+  background-color: rgb(31, 58, 147);
+  z-index: 100;
+  left: 0;
+  top: 110%;
+  width: 25rem;
+  padding: 1rem;
+  border-radius: 5px;
+  height: 26rem;
+  overflow-y: scroll;
+}
+
+.form-popup a:link,
+.form-popup a:active,
+.form-popup a:visited {
+  color: var(--color-btn-round-background--hover);
+}
+
+.form-container {
+  position: relative;
+}
+
+.form-popup__btn-close {
+  position: absolute;
+  height: 2.5rem;
+  width: 2.5rem;
+  top: 5px;
+  right: 5px;
+  fill: red;
+  cursor: pointer;
+}
+
 /* .settings__input {
   display: flex;
   flex-direction: column;
@@ -2200,6 +2465,160 @@ height: 20rem;
   border-radius: 10px;
 }
 
+.load-content-container {
+  background-color: #fff;
+  /* border: 1px solid yellow; */
+  width: 60vw;
+}
+
+.load-content {
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 80%;
+  margin: auto auto;
+}
+
+.content-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  /* color: #59abe3; */
+  color: rgba(31, 58, 147, 0.8);
+  font-weight: 400;
+  /* display: inline-block; */
+  margin-top: 2rem;
+  /* margin-left: 50%; */
+  /* transform: translateX(-50%); */
+}
+
+.content-title p,
+.content-title div {
+  margin: 0 auto;
+  width: max-content;
+}
+
+.stop-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  position: relative;
+}
+
+.stop-card > * {
+  /* border: 1px solid blue; */
+}
+
+.stop-card__details {
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+}
+
+.stop-card__station {
+  width: 10rem;
+  text-align: center;
+}
+
+.back-odd {
+  background-color: rgb(242, 242, 242);
+}
+
+.back-even {
+  background-color: rgba(119, 119, 119, 0.2);
+}
+
+.stop-card__add-btn {
+  position: absolute;
+  left: 98.5%;
+  top: 81%;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+}
+
+.stop-card__add-btn:active,
+.stop-card__add-btn:focus {
+  transform: scale(0.9);
+}
+
+
+
+.stop-card:hover .stop-card__add-btn {
+  display: block;
+}
+
+.schedule {
+  /* border: 1px solid red; */
+}
+
+.stop-card__details {
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+}
+
+.add-icon {
+  width: 2rem;
+  height: 2rem;
+  fill: rgba(31, 58, 147, 0.8);
+}
+
+.btn-update-route {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-stop-popup__form {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-stop-popup input {
+  padding: 1rem;
+}
+
+.add-stop-popup__close-btn {
+  /* border: 1px solid green; */
+  position: absolute;
+  left: 97.2%;
+  top: 7%;
+  cursor: pointer;
+}
+
+.add-stop-popup__close-btn:active,
+.add-stop-popup__close-btn:focus {
+  transform: scale(0.9);
+}
+
+.add-stop-popup {
+  background-color: rgba(119, 119, 119, 0.2);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  /* display: none; */
+}
+
+
+.close-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--color-btn-box-text-delete);
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(31, 58, 147);
+  font-weight: 600;
+  padding: 2rem;
+}
+
+.titles > * {
+  text-align: center;
+}
 .view-train__schedule {
   padding: 0 5rem;
 }

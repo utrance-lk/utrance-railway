@@ -42,17 +42,16 @@
 }
 
 .header__logobox--white {
-  background-image: url(../../img/logo/utranceWhite.png);
+  background-image: url(/utrance-railway/public/img/logo/utranceWhite.png);
 }
 
 .header__logobox--black {
-  background-image: url(../../img/logo/utranceLogoBlack.png);
+  background-image: url(/utrance-railway/public/img/logo/utranceLogoBlack.png);
 }
 
 .header-main__items {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid green; */
   margin-left: 3rem;
 }
 

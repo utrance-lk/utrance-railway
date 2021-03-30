@@ -2,14 +2,20 @@ let countMessages;
 const messagerenderResults = function (messages){
     countMessages=0;
     // clearResults();
-    let html =`<div class='form-popup' id='myForm'>
+    let html = `<div class='form-popup' id='myForm'>
             <form action='' class='form-container' method='GET'>
-           <h3 id = 'newMessage'><br>New Message</h3><br></br>
+            <svg class='form-popup__btn-close'>
+                <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-circle-with-cross'>
+                </use
+            </svg>
+           <h3 id = 'newMessage'><br>New Messages</h3><br></br>
     
     
           <button type='button' class='btn cancel' onclick='closeForm()'>
           </button>
-        </form></div>`;
+        </form>
+        <a>View all messages</a>
+        </div>`;
         document.getElementById("pop-notification").insertAdjacentHTML("afterend", html);
     messages.forEach(renderCard);
    
