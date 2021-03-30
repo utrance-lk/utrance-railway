@@ -22,6 +22,7 @@ class ViewModel extends Model
     public $active_status = 1;
     public $train_name;
     public $train_type;
+    public $id;
 
     public function rules()
     {

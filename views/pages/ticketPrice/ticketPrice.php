@@ -1,3 +1,4 @@
+<?Php include_once "../views/components/backButton.php";?>
 
 <section class="ticket-prices margin-b-l">
   <form class="ticket-prices__search" method="POST" action="/utrance-railway/ticket-prices">
