@@ -39,6 +39,7 @@ if (isset($_SESSION['operation'] ) ) {
 
 
 
+<?php include_once '../views/components/backButton.php';?>
 <div class="dashboard">
     <?php include_once '../views/layouts/adminSideNav.php';?>
     <div class="dash-content__container">
@@ -84,7 +85,7 @@ libxml_clear_errors();
                     $cityArray = array("Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunagala", "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliye", "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya");
                 ?>
                 <select name='city' id='city' class='form__input'>
-                <option  value='<?php echo $city; ?>'><?php echo $city; ?></option>
+                
                   <?php foreach ($cityArray as $city1): ?>
                      <option  value='<?php echo $city1; ?>'><?php echo $city1; ?></option>
                   <?php endforeach;?>

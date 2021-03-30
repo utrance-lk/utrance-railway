@@ -20,6 +20,14 @@
   margin-left: 5rem;
 }
 
+.margin-l-huge {
+  margin-left: 10rem;
+}
+
+.margin-l-xl {
+  margin-left: 20rem;
+}
+
 .margin-b-xxs {
   margin-bottom: 0.5rem;
 }
@@ -60,6 +68,10 @@
   margin-top: 5rem;
 }
 
+.margin-t-huge {
+  margin-top: 10rem;
+}
+
 .margin-tb-xs {
   margin: 1rem 0;
 }
@@ -87,6 +99,10 @@
 
 .padding-xs {
   padding: 1rem;
+}
+
+.padding-s {
+  padding: 2rem;
 }
 
 .padding-xxs {

@@ -25,6 +25,7 @@ class AdminModel extends Model
     public $searchUserByNameOrId;
     private $registerSetValueArray = [];
     public $userRole;
+    public $user_image = "default.jpg";
     // public $addUserImage = "Chris-user-profile.jpg";
 
     //////////////Train//////////////////
@@ -59,7 +60,7 @@ class AdminModel extends Model
 
 
     private function populateValuesForAddUser() {
-        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status,'details_provider_station' =>$this->station_details_provider];
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status,'user_image' => $this->user_image];
     }
 
 
@@ -819,5 +820,31 @@ class AdminModel extends Model
         return $validationState;
 
     }
+
+    public function getCount(){
+        $query = APP::$APP->db->pdo->prepare("SELECT COUNT(details_id) AS myCount FROM give_details WHERE email_id=:email_id");
+        $query->bindValue(":email_id", $this->index1);
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+       
+        return $this->resultArray;
+    }
+
+
+    public function getMessages(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM give_details WHERE email_id=:email_id");
+        $query->bindValue(":email_id", $this->index1);
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+
+
+
+
+
+
+
+   
 
 }

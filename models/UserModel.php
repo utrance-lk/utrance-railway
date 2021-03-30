@@ -298,47 +298,43 @@ class UserModel extends Model
 
     }
 
-    public function getUpdateUserDetails() ////Ashika
-
-    {
-        $this->resultArray['first_name'] = $this->first_name;
-        $this->resultArray['last_name'] = $this->last_name;
-        $this->resultArray['street_line1'] = $this->street_line1;
-        $this->resultArray['street_line2'] = $this->street_line2;
-        $this->resultArray['contact_num'] = $this->contact_num;
-        $this->resultArray['city'] = $this->city;
-        $this->resultArray['email_id'] = $this->email_id;
-        return $this->resultArray;
+    public function getUpdateUserDetails() {////Ashika {
+    $this->resultArray['first_name'] = $this->first_name;
+    $this->resultArray['last_name'] = $this->last_name;
+    $this->resultArray['street_line1'] = $this->street_line1;
+    $this->resultArray['street_line2'] = $this->street_line2;
+    $this->resultArray['contact_num'] = $this->contact_num;
+    $this->resultArray['city'] = $this->city;
+    $this->resultArray['email_id'] = $this->email_id;
+    return $this->resultArray;
     }
 
-    // asindu - sanitization
+// asindu - sanitization
 
-    private function runSanitization()
-    {
-        $this->first_name = $this->sanitizeFormUsername($this->first_name);
-        $this->last_name = $this->sanitizeFormUsername($this->last_name);
-        $this->email_id = $this->sanitizeFormEmail($this->email_id);
-        $this->street_line1 = $this->sanitizeFormStreet($this->street_line1);
-        $this->street_line2 = $this->sanitizeFormStreet($this->street_line2);
-        $this->city = $this->sanitizeFormString($this->city);
-        $this->contact_num = $this->sanitizeContactNumber($this->contact_num);
-        $this->user_password = $this->sanitizeFormPassword($this->user_password);
-        // $this->user_image = $this->sanitizeFormUsername($this->user_image);
-        $this->passwordHashing();
-    }
+private function runSanitization()
+{
+    $this->first_name = $this->sanitizeFormUsername($this->first_name);
+    $this->last_name = $this->sanitizeFormUsername($this->last_name);
+    $this->email_id = $this->sanitizeFormEmail($this->email_id);
+    $this->street_line1 = $this->sanitizeFormStreet($this->street_line1);
+    $this->street_line2 = $this->sanitizeFormStreet($this->street_line2);
+    $this->city = $this->sanitizeFormString($this->city);
+    $this->contact_num = $this->sanitizeContactNumber($this->contact_num);
+    $this->user_password = $this->sanitizeFormPassword($this->user_password);
+    // $this->user_image = $this->sanitizeFormUsername($this->user_image);
+    $this->passwordHashing();
+}
 
-    private function sanitizeFormString($inputText) //Asindu
-
-    {
-        $inputText = strip_tags($inputText); //remove html tags
-        $inputText = str_replace(" ", "", $inputText); // remove white spaces
-        $inputText = strtolower($inputText);
-        $inputText = trim($inputText); // lowering the text
-        return ucfirst($inputText); // capitalize first letter
-    }
+private function sanitizeFormString($inputText){ //Asindu {
+$inputText = strip_tags($inputText); //remove html tags
+$inputText = str_replace(" ", "", $inputText); // remove white spaces
+$inputText = strtolower($inputText);
+$inputText = trim($inputText); // lowering the text
+return ucfirst($inputText); // capitalize first letter
+}
 
     private function sanitizeFormStreet($inputText)
-    {
+{
         $inputText = strip_tags($inputText);
         // $inputText = strtolower($inputText); // lowering the text
         $inputText = trim($inputText);
@@ -347,14 +343,14 @@ class UserModel extends Model
     }
 
     private function sanitizeContactNumber($inputText)
-    {
+{
         $inputText = strip_tags($inputText);
         $inputText = trim($inputText);
         return $inputText;
     }
 
     private function sanitizeFormUsername($inputText)
-    { //Asindu
+{ //Asindu
         $inputText = strip_tags($inputText); //remove html tags
         $inputText = str_replace(" ", "", $inputText); // remove white spaces
         $inputText = ucfirst($inputText);
@@ -363,25 +359,25 @@ class UserModel extends Model
     }
 
     private function sanitizeFormPassword($inputText)
-    {
+{
         $inputText = trim($inputText);
         return strip_tags($inputText); //remove html tags
     }
 
     private function sanitizeFormEmail($inputText)
-    { //Asindu
+{ //Asindu
         $inputText = strip_tags($inputText); //remove html tags
         $inputText = trim($inputText);
         return str_replace(" ", "", $inputText); // remove white spaces
     }
 
     private function passwordHashing()
-    {
+{
         $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
     }
 
     public function createPasswordResetToken()
-    {
+{
         $resetToken = bin2hex(random_bytes(32));
         $resetTokenEncrypted = hash('sha256', $resetToken);
         $query = App::$APP->db->pdo->prepare("UPDATE users SET password_reset_token=:prt WHERE email_id=:email");

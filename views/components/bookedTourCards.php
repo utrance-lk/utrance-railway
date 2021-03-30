@@ -52,7 +52,7 @@ function renderIntersectionCard($value)
     $html .= "<div class='train__name train__details-item'>";
     $html .= "<span class='train__name--name'>" . $value[0]['train_name'] . "</span><span class='train__type'>" . $value[0]['train_type'] . "</span>";
     $html .= "</div>";
-    $html .= "<div class='journey__start__end-time train__details-item'>" . $value[0]['time_1'][0][0]['arrival_time'] . " am - " . $value[0]['time_1'][1][0]['arrival_time'] . " am</div>";
+    $html .= "<div class='journey__start__end-time train__details-item'>" . $value[0]['time_1'][0][0]['arrival_time'] . "-" . $value[0]['time_1'][1][0]['arrival_time'] . " </div>";
     $html .= "<div class='journey__time train__details-item'>{$since_start2->h} h {$since_start2->i} min</div>";
     $html .= "</div>";
     $html .= "<div class='seperator'></div>";
@@ -88,7 +88,7 @@ function renderIntersectionCard($value)
     $html .= "<div class='train__name train__details-item'>";
     $html .= "<span class='train__name--name'>" . $value[1]['train_name'] . "</span><span class='train__type'>" . $value[1]['train_type'] . "</span>";
     $html .= "</div>";
-    $html .= "<div class='journey__start__end-time train__details-item'>" . $value[1]['time_2'][0][0]['arrival_time'] . "am - " . $value[1]['time_2'][1][0]['arrival_time'] . " am</div>";
+    $html .= "<div class='journey__start__end-time train__details-item'>" . $value[1]['time_2'][0][0]['arrival_time'] . " - " . $value[1]['time_2'][1][0]['arrival_time'] . " </div>";
     $html .= "<div class='journey__time train__details-item'>{$since_start3->h} h {$since_start3->i}min</div>";
     $html .= "</div>";
     $html .= "<div class='seperator'></div>";
@@ -101,7 +101,13 @@ function renderIntersectionCard($value)
     $html .= "</div>";
     $html .= "<div class='seperator'></div>";
     $html .= "<div class='card__class card__item'>";
-    $html .= "<span>" . $value[1]['class'] . "</span>";
+    //$html .= "<span>" . $value[1]['class'] . "</span>";
+    if( $value[1]['class'] =="secondClass"){
+        $html .= "<span>Second Class</span>";
+    }
+    if( $value[1]['class'] =="firstClass"){
+        $html .= "<span>First Class</span>";
+    }
     $html .= "</div>";
     $html .= "<div class='seperator'></div>";
     $html .= "<div class='card__price card__item'>";
@@ -114,9 +120,9 @@ function renderIntersectionCard($value)
     $html .= "<span>Rs</span>&nbsp;<span class='ticket__price'>" . $value[1]['total_amount'] . "</span>";
     $html .= "</div>";
     $html .= "</div>";
-    $html .= "<div class='btn__container'>";
-    $html .= "<button class='btn btn-round-blue'>Cancel Booking</button>";
-    $html .= "</div>";
+    // $html .= "<div class='btn__container'>";
+    // $html .= "<button class='btn btn-round-blue'>Cancel Booking</button>";
+    // $html .= "</div>";
     $dom = new DOMDocument();
     $dom->loadHTML($html);
     print_r($dom->saveHTML());
@@ -200,9 +206,9 @@ function renderDirectCard($value)
     $html .= "<span>Rs</span>&nbsp;<span class='ticket__price'>" . $value[0]['total_amount'] . "</span>";
     $html .= "</div>";
     $html .= "</div>";
-    $html .= "<div class='btn__container'>";
-    $html .= "<button class='btn btn-round-blue'>Cancel Booking</button>";
-    $html .= "</div>";
+    // $html .= "<div class='btn__container'>";
+    // $html .= "<button class='btn btn-round-blue'>Cancel Booking</button>";
+    // $html .= "</div>";
     $dom = new DOMDocument();
     $dom->loadHTML($html);
     print_r($dom->saveHTML());

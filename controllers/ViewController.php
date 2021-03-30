@@ -134,10 +134,11 @@ class ViewController extends Controller
             $viewTrainDetailsModel = new ViewModel();
             $tempBody = $request->getBody();
             $tempBody['train_id'] = $request->getQueryParams()['train_id'];
-          
+            
             
             $viewTrainDetailsModel->loadData($tempBody);
             $trainScheduleArray=$viewTrainDetailsModel->getTrainSchedules();
+            
             
             return $this->render('viewTrain',$trainScheduleArray);
         }

@@ -118,7 +118,7 @@ class AuthController extends Controller
                 'resetURL' => $resetURL
             ]);
 
-            return '';
+            return $this->render(['success', 'forgotPasswordSuccess']);
         }
 
         return $this->render('forgotPassword');
@@ -192,21 +192,10 @@ class AuthController extends Controller
 
                 if ($updatePasswordState === 'success') {
                     return $response->redirect('/utrance-railway/logout');
-                } else {
-                    $updatePasswordSetValue = $updatePasswordUserModel->registerSetValue($updatePasswordState);
-                    // if($user_role === "admin"){
-                    //     return $this->render('admin',$updatePasswordSetValue);
-                    // }
-
-                    // if($user_role === "user"){
-                    //     return $this->render('registeredUser',$updatePasswordSetValue);
-                    // }
-
-                    // if($user_role === "detailsProvider"){
-                    //     return $this->render('detailsProvider',$updatePasswordSetValue);
-                    // }
-                    return $this->render('settings', $updatePasswordSetValue);
-
+                }else{
+                    $updatePasswordSetValue=$updatePasswordUserModel->registerSetValue($updatePasswordState);   
+                    return $this->render('settings', $updatePasswordSetValue);   
+                                
                 }
             }
 

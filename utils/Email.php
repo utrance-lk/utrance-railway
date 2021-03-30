@@ -23,6 +23,7 @@ class Email
         $this->mail->Username = $config['user'];
         $this->mail->Password = $config['password'];
         $this->mail->Port = $config['port'];
+        $this->mail->SMTPSecure = "tls";
     }
 
     public function sendEmail($email, $subject, $options, $callbackHTML)
@@ -34,9 +35,9 @@ class Email
             $this->mail->isHTML(true);
             $this->mail->Subject = $subject;
             $this->mail->Body = $callbackHTML($options);
-            if (isset($options['message'])) {
-                $this->mail->AltBody = $options['message'];
-            }
+            // if (isset($options['message'])) {
+            //     $this->mail->AltBody = $options['message'];
+            // }
             if ($callbackHTML === 'renderTicketInvoiceEmail') {
                 $imgPath = 'C:/xampp/htdocs/utrance-railway/public/img/QR/' . $options['hash'] . '.png';
                 $this->mail->AddEmbeddedImage($imgPath, 'qr', $options['hash'] . '.png');

@@ -1,4 +1,3 @@
-
 <section class="ticket-prices">
   <form class="ticket-prices__search" method="POST" action="/utrance-railway/freight-prices">
     <div class="ticket-prices__search--from">

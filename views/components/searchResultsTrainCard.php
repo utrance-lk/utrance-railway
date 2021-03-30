@@ -2,7 +2,6 @@
 
 function renderDirectPathCard($value, $option)
 {
-
   // date validating
   $dateTimeStr = $value['when'] . ' ' . $value['fssdt'];
   $d1 = new DateTime($dateTimeStr);

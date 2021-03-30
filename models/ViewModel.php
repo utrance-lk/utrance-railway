@@ -113,6 +113,33 @@ class ViewModel extends Model
 
     }
 
+    public function getAllTrainResults()
+    {
+
+        $query = APP::$APP->db->pdo->prepare("SELECT train_id, train_name, train_type, train_active_status FROM trains WHERE train_active_status=1");
+
+        $query->execute();
+
+        $this->resultArray['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->resultArray;
+
+    }
+
+
+    
+
+
+    public function searchTrainDetails()
+    {
+        $this->train_name = $this->searchTrain;
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%' OR train_id=:trainName");
+        $query->bindValue(":trainName", $this->train_name);
+        $query->execute();
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+
     public function findTrainDetails($array1)
     {
         $query = APP::$APP->db->pdo->prepare("SELECT total_time FROM routes WHERE route_id=:route_id");
@@ -206,7 +233,7 @@ class ViewModel extends Model
                                                         left join stops s
                                                         on trt.route_id = s.route_id) tota
                                                     on fromta.fsiid = tota.tsiid) matching_station
-                                                where fsspi <= fsipi and tsepi >= tsipi and fsiat <= tsidt and fssdt < fsiat and tsidt < tseat and fssid != isid and isid != tseid  and (from_route_id != to_route_id)) as big_table
+                                            where fsspi <= fsipi and tsepi >= tsipi and fsiat <= tsidt and fssdt < fsiat and tsidt < tseat and fssid != isid and isid != tseid  and (from_route_id != to_route_id)) as big_table
                                         left join
                                             (select route_id as path_indexer_route_id, path_id as fsdnppi from stops where station_id =:to) path_indexer
                                         on path_indexer.path_indexer_route_id = big_table.from_route_id

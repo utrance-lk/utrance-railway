@@ -11,7 +11,6 @@ class AdminController extends Controller
         $authMiddleware = new AuthMiddleware();
 
         if (!$authMiddleware->isLoggedIn()) {
-            //return 'Your are not logged in!';
             echo 'Your are not logged in!';
             return false;
         }
@@ -92,7 +91,6 @@ class AdminController extends Controller
             $adminViewTrain = new AdminModel();
             $adminViewTrain->loadData($request->getQueryParams());
             $updateTrainArray = $adminViewTrain->getTrainDetails();
-            //$updateTrainArray['trains'][0]['trains_id']=$request->getQueryParams()['trains_id'];
             return $this->render(['admin', 'updateUser'], $updateTrainArray);
         }
     }
@@ -150,8 +148,6 @@ class AdminController extends Controller
             $saveDetailsModel->loadData($tempBody, $newtempBody);
 
             $trainArrays = $saveDetailsModel->getMyUsers();
-            //  var_dump($trainArrays);
-            // // return $this->render(['admin', 'manageTrains'], $trainArrays);
 
             echo json_encode($trainArrays);
         }
@@ -170,8 +166,6 @@ class AdminController extends Controller
             $saveDetailsModel->loadData($tempBody, $newtempBody);
 
             $trainArrays = $saveDetailsModel->getMyTrains();
-            //  var_dump($trainArrays);
-            // // return $this->render(['admin', 'manageTrains'], $trainArrays);
 
             echo json_encode($trainArrays);
         }
@@ -192,8 +186,6 @@ class AdminController extends Controller
 
                 $trainArrays = $searchModel->getTrains();
                 return $this->render(['admin', 'manageTrains'], $trainArrays);
-                // return $this->render($trainArrays);
-                // return $trainArrays;
 
             }
         }
@@ -234,7 +226,6 @@ class AdminController extends Controller
                 $saveDetailsModel->loadData($tempBody);
 
                 $validationState = $saveDetailsModel->updateTrainDetails();
-                //  var_dump($validationState);
 
                 if ($validationState === "success") {
                     App::$APP->session->set('operation','success');
@@ -255,8 +246,6 @@ class AdminController extends Controller
 
     public function deleteTrain($request, $response)
     {
-        echo "huh";
-
         if ($this->protect()) {
 
             if ($request->isGet()) {
@@ -264,8 +253,6 @@ class AdminController extends Controller
 
                 $deleteTrainModel->loadData($request->getQueryParams());
                 $deleteTrainModel->deleteTrains();
-                // $trainArray=$deleteTrainModel->getTrains();
-                // return $this->render(['admin', 'manageTrains'],$trainArray);
                 return $response->redirect('/utrance-railway/trains');
 
             }
@@ -283,8 +270,6 @@ class AdminController extends Controller
 
                 $deleteTrainModel->loadData($request->getQueryParams());
                 $deleteTrainModel->activeTrains();
-                // $trainArray=$deleteTrainModel->getTrains();
-                // return $this->render(['admin', 'manageTrains'],$trainArray);
                 return $response->redirect('/utrance-railway/trains');
 
             }
@@ -402,7 +387,6 @@ class AdminController extends Controller
                 return $this->render(['admin', 'updateRoute'], $updateRouteArray);
             }
 
-            // return $this->render(['admin', 'updateRoute']);
         }
     }
 
@@ -410,9 +394,7 @@ class AdminController extends Controller
 
     public function aboutUs()
     {
-
         return $this->render('aboutUs');
-
     }
 
     public function manageNews($request) //daranya
@@ -425,12 +407,59 @@ class AdminController extends Controller
                 $manageNewsModel->loadData($request->getbody());
                 $addNewss = $manageNewsModel->manageNews();
                 $updateUserArray = $adminViewUser->getUserDetails();
-                //var_dump($addDetails);
                 return $this->render(['admin', 'manageNews']);
 
             }
             return $this->render(['admin', 'manageNews']);
         }
+
+    }
+
+
+
+
+    public function getMessages($request, $response)
+    {
+
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $getMessagesModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $getMessagesModel->loadData($tempBody);
+                $messageArray = $getMessagesModel->getMessages();
+    
+                return  json_encode($messageArray);
+            
+            }
+        }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+
+    }
+
+
+    public function getCount($request, $response)
+    {
+
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $getCountModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $getCountModel->loadData($tempBody);
+                $messageArray = $getCountModel->getCount();
+
+            return  json_encode($messageArray);
+                
+            }
+        }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
