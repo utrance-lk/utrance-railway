@@ -60,7 +60,6 @@ class BookingController extends Controller
     public function createSeatBooking($request, $response)
     {
         if (!$this->authMiddleware->isLoggedIn()) {
-            // return 'You are not logged in!';
             $response->redirect('/utrance-railway/login');
 
         }

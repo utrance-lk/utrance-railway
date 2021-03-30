@@ -1,3 +1,4 @@
+<?Php include_once "../views/components/backButton.php";?>
 <section class="ticket-prices">
   <form class="ticket-prices__search" method="POST" action="/utrance-railway/freight-prices">
     <div class="ticket-prices__search--from">
@@ -21,7 +22,7 @@
         </svg>
     </button>
   </form>
-    <div class="search__results-container"></div>
+    <div class="search__results-container margin-b-l"></div>
 </section>
 
 <script type="text/javascript" src="../../../utrance-railway/public/js/components/viewFreightPrice.js"></script>

@@ -176,7 +176,7 @@ if (isset($_SESSION['operation'] ) ) {
 
           $html .= "<input type='file' name='file' onChange='displayImage(this)'   accept='image/*' class='form__upload' id='photo' >";
 
-          $html .= "<label for='photo'>Choose New Photo</label></div>";
+          $html .= "<label for='photo' class='btn btn-square-upload'>Choose New Photo</label></div>";
 
           $html .= "<div class='btn__upload-box'>";
 

@@ -1,3 +1,4 @@
+<?Php include_once "../views/components/backButton.php";?>
 <div class="dashboard">
 
   <div class="dash-content__container" style="margin:auto">
