@@ -103,6 +103,74 @@ class ViewController extends Controller
 
     }
 
+    public function newsFeed($request, $response)
+    {
+
+        
+
+         
+                if ($request->isGet()) {
+                    $getNewsModel = new ViewModel();
+                    $getNewsModel->loadData($request->getBody());
+
+                    $trainArray['news'] = $getNewsModel->getAllNews();
+
+                    return $this->render('newsFeed', $trainArray);
+                }
+
+            
+        
+
+    }
+
+    public function getNews($request, $response)
+    {
+
+      
+
+            if ($request->isGet()) {
+                $getNewsModel = new ViewModel();
+                $getNewsModel->loadData($request->getBody());
+
+                $trainArray = $getNewsModel->getNews();
+                return json_encode($trainArray);
+                
+            } else {
+                $saveDetailsModel = new ViewModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $saveDetailsModel->loadData($tempBody);
+                $trainArray = $saveDetailsModel->getMyNews();
+                return json_encode($trainArray);
+                
+            }
+
+     
+
+      
+    }
+
+    public function newsFeed01($request, $response)
+    {
+
+      
+
+            $saveDetailsModel = new ViewModel();
+
+            $tempBody = $request->getBody();
+            $tempBody['id'] = $request->getQueryParams()['id'];
+            $saveDetailsModel->loadData($tempBody);
+
+            $updateRouteArray['news'] = $saveDetailsModel->getMyNews();
+            $updateRouteArray['allnews'] = $saveDetailsModel->getAllNews();
+
+            return $this->render(['newsFeed', 'newsFeed01'], $updateRouteArray);
+        
+
+        
+
+    }
+
 
     
     

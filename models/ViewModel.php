@@ -16,6 +16,7 @@ class ViewModel extends Model
     public $station_value_set;
     public $station_final_value_set;
     public $train_basic_deatils;
+    public $id;
 
     public function rules()
     {
@@ -261,6 +262,33 @@ class ViewModel extends Model
             array_push($stations, $value['station_name']);
         }
         return $stations;
+    }
+
+
+    public function getAllNews(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed order by News_id DESC");
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->resultArray;
+    }
+
+    public function getMyNews(){
+     
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_id  = :content");
+        $query->bindValue(":content", $this->id);
+        $query->execute();
+        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+ 
+     }
+
+     
+    public function getNews(){
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed order by News_id DESC LIMIT 6");
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
     }
 
 

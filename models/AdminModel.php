@@ -1026,38 +1026,10 @@ class AdminModel extends Model
 
     }
 
-    public function getNews(){
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed order by News_id DESC LIMIT 6");
-        $query->execute();
-        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $this->resultArray;
-    }
 
-    public function getMyNews(){
-     
-       $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_id  = :content");
-       $query->bindValue(":content", $this->id);
-       $query->execute();
-       $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
-       return $this->resultArray;
+    
 
-    }
-
-    public function getAllNews(){
-        $query = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed order by News_id DESC");
-        $query->execute();
-        $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
-
-        // $query1 = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_type  = 'ticket_price' order by News_id DESC LIMIT 2");
-        // $query1->execute();
-        // $resultArray2 =$query1->fetchAll(PDO::FETCH_ASSOC);
-
-        // $query2 = APP::$APP->db->pdo->prepare("SELECT * FROM news_feed WHERE News_type  = 'ticket_price' order by News_id DESC LIMIT 2");
-        // $query2->execute();
-        // $resultArray3 =$query2->fetchAll(PDO::FETCH_ASSOC);
-        // $this->resultArray = array_merge($resultArray1,$resultArray2,$resultArray3);
-        return $this->resultArray;
-    }
+    
 
     public function getaddRoutesStations(){
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM stations");
