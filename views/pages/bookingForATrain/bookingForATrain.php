@@ -36,7 +36,7 @@
            
            
         }
-        $html .="</div><a class='btn__refund-all'>Refund all</a>";
+        $html .="</div>";
         $dom = new DOMDocument();
         $dom->loadHTML($html);
         print_r($dom->saveHTML());

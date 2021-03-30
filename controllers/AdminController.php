@@ -173,8 +173,8 @@ class AdminController extends Controller
 
                 $trainArrays = $saveDetailsModel->getMyUsers();
 
-                echo json_encode($trainArrays);
-                return true;
+                return json_encode($trainArrays);
+                
             }
         }
 
@@ -197,8 +197,8 @@ class AdminController extends Controller
 
                 $trainArrays = $saveDetailsModel->getMyTrains();
 
-                echo json_encode($trainArrays);
-                return true;
+                return json_encode($trainArrays);
+               
             }
         }
 
@@ -368,8 +368,8 @@ class AdminController extends Controller
                 $tempBody['index1'] = $_POST['index1'];
                 $saveDetailsModel->loadData($tempBody);
                 $trainArray = $saveDetailsModel->getMyRoutsStations();
-                echo json_encode($trainArray);
-                return true;
+                return json_encode($trainArray);
+                
             }
         }
 
@@ -391,8 +391,8 @@ class AdminController extends Controller
                 $newtempBody['index2'] = $_POST['index2'];
                 $saveDetailsModel->loadData($tempBody, $newtempBody);
                 $trainArray = $saveDetailsModel->getMyRouts();
-                echo json_encode($trainArray);
-                return true;
+                return json_encode($trainArray);
+                
             }
         }
 
@@ -490,75 +490,7 @@ class AdminController extends Controller
     }
 
     // TODO: is this function needed?
-    public function newsFeed($request, $response)
-    {
-
-        if ($this->protect()) {
-
-            if ($this->protect()) {
-                if ($request->isGet()) {
-                    $getNewsModel = new AdminModel();
-                    $getNewsModel->loadData($request->getBody());
-
-                    $trainArray['news'] = $getNewsModel->getAllNews();
-
-                    return $this->render('newsFeed', $trainArray);
-                }
-
-            }
-        }
-
-        $response->setStatusCode(403);
-        return $response->redirect('/utrance-railway/home');
-
-    }
-
-    public function getNews($request, $response)
-    {
-
-        // if ($this->protect()) {
-
-            if ($request->isGet()) {
-                $getNewsModel = new AdminModel();
-                $getNewsModel->loadData($request->getBody());
-                $trainArray = $getNewsModel->getNews();
-                return json_encode($trainArray);
-            } else {
-                $saveDetailsModel = new AdminModel();
-                $tempBody = $request->getBody();
-                $tempBody['index1'] = $_POST['index1'];
-                $saveDetailsModel->loadData($tempBody);
-                $trainArray = $saveDetailsModel->getMyNews();
-                return json_encode($trainArray);
-            }
-
-        // }
-
-        // $response->setStatusCode(403);
-        // return $response->redirect('/utrance-railway/home');
-    }
-
-    public function newsFeed01($request, $response)
-    {
-
-        if ($this->protect()) {
-
-            $saveDetailsModel = new AdminModel();
-
-            $tempBody = $request->getBody();
-            $tempBody['id'] = $request->getQueryParams()['id'];
-            $saveDetailsModel->loadData($tempBody);
-
-            $updateRouteArray['news'] = $saveDetailsModel->getMyNews();
-            $updateRouteArray['allnews'] = $saveDetailsModel->getAllNews();
-
-            return $this->render(['newsFeed', 'newsFeed01'], $updateRouteArray);
-        }
-
-        $response->setStatusCode(403);
-        return $response->redirect('/utrance-railway/home');
-
-    }
+    
 
     public function getaddRoutesStations($request, $response)
     {
@@ -569,8 +501,8 @@ class AdminController extends Controller
                 $getNewsModel->loadData($request->getBody());
 
                 $trainArray = $getNewsModel->getaddRoutesStations();
-                echo json_encode($trainArray);
-                return true;
+                return json_encode($trainArray);
+                
             }
 
         }
@@ -591,8 +523,8 @@ class AdminController extends Controller
 
                 $trainArray = $getNewsModel->getMyaddRouts();
 
-                echo json_encode($trainArray);
-                return true;
+                return json_encode($trainArray);
+                
             }
         }
 
@@ -612,8 +544,8 @@ class AdminController extends Controller
                 $saveDetailsModel->loadData($tempBody);
                 $trainArray = $saveDetailsModel->getNewBookingTrain();
 
-                echo json_encode($trainArray);
-                return true;
+                return json_encode($trainArray);
+                
             }
         }
 
@@ -634,8 +566,8 @@ class AdminController extends Controller
                 $getMessagesModel->loadData($tempBody);
                 $messageArray = $getMessagesModel->getMessages();
 
-                echo json_encode($messageArray);
-                return true;
+                return json_encode($messageArray);
+                
             }
         }
 
@@ -657,6 +589,7 @@ class AdminController extends Controller
                 $messageArray = $getCountModel->getCount();
 
                 return json_encode($messageArray);
+                
             }
         }
 
