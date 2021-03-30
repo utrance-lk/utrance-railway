@@ -8,6 +8,6 @@
                 Check your mailbox
             </div>
         </div>
-        <img src="/utrance-railway/public/img/pages/success/mailbox.png" alt="Mailbox image" class="error__img">
+        <img src="/public/img/pages/success/mailbox.png" alt="Mailbox image" class="error__img">
     </div>
 </section>
