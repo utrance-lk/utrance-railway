@@ -22,31 +22,47 @@ class BookingModel extends Model
     public $interSectArray=[];
     public $getBooking=[];
     public $bookArray=[];
+    public $cus_id;
 
 
 
 
     public function getAllMyBookings(){
-        $this->customer_id = App::$APP->activeUser()['id'];
+        // $this->customer_id = App::$APP->activeUser()['id'];
 
-        $query = App::$APP->db->pdo->prepare("SELECT tb.customer_id,tb.id,tb.other_booking FROM ticket_booking tb  GROUP BY other_booking HAVING COUNT(tb.other_booking) >1");
-        $query->execute();
-        $this->getAllMyBookingArray["duplicate_other_bookings"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        $this->bookArray=$this->findIntersect($this->getAllMyBookingArray);
+        // $query = App::$APP->db->pdo->prepare("SELECT tb.customer_id,tb.id,tb.other_booking FROM ticket_booking tb  GROUP BY other_booking HAVING COUNT(tb.other_booking) >1");
+        // $query->execute();
+        // $this->getAllMyBookingArray["duplicate_other_bookings"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        // $this->bookArray=$this->findIntersect($this->getAllMyBookingArray);
         
 
-        $query = App::$APP->db->pdo->prepare("SELECT tb.customer_id,tb.other_booking FROM ticket_booking tb  GROUP BY other_booking HAVING COUNT(tb.other_booking) =1");
+        // $query = App::$APP->db->pdo->prepare("SELECT tb.customer_id,tb.other_booking FROM ticket_booking tb  GROUP BY other_booking HAVING COUNT(tb.other_booking) =1");
+        // $query->execute();
+        // $this->getAllMyBookingArray["no_duplicates"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        // $this->bookArray=$this->findDirect($this->getAllMyBookingArray);
+         
+
+
+        $this->cus_id= App::$APP->activeUser()['id'];
+        $query = App::$APP->db->pdo->prepare("SELECT  group_concat(id) As 'booking_id',tb.customer_id, tb.train_date, group_concat(train_id) As 'train_id', group_concat(from_station) as 'from_stations', group_concat(to_station) As 'to_stations', group_concat(passengers) As total_passengers, group_concat(class) As class, group_concat(base_price) As 'base_price', tb.total_amount from ticket_booking tb group BY other_booking HAVING customer_id=:cus_id AND COUNT(tb.other_booking) >1 ");
+        $query->bindValue(":cus_id", $this->cus_id);
         $query->execute();
-        $this->getAllMyBookingArray["no_duplicates"] = $query->fetchAll(PDO::FETCH_ASSOC);
-        $this->bookArray=$this->findDirect($this->getAllMyBookingArray);
-        
-        
-        
-        
-        
-       
-        
-        return $this->bookArray;
+        $this->getAllMyBookingArray["Intersection_results"][0] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+        $this->cus_id= App::$APP->activeUser()['id'];
+        $query1 = App::$APP->db->pdo->prepare("SELECT  tb.id As 'booking_id',tb.customer_id, tb.train_date, tb.train_id As 'train_id', tb.from_station as 'from_station', tb.to_station As 'to_station',tb.passengers As total_passengers, tb.class As class, tb.base_price As 'base_price', tb.total_amount from ticket_booking tb group BY other_booking HAVING customer_id=:cus_id AND COUNT(tb.other_booking) =1 ");
+        $query1->bindValue(":cus_id", $this->cus_id);
+        $query1->execute();
+        $this->getAllMyBookingArray["Direct_results"][0] = $query1->fetchAll(PDO::FETCH_ASSOC);
+
+
+        // $query = App::$APP->db->pdo->prepare("SELECT tb.customer_id,tb.other_booking FROM ticket_booking tb  GROUP BY other_booking HAVING COUNT(tb.other_booking) =1");
+        // $query->execute();
+        // $this->getAllMyBookingArray1["no_duplicates"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        // $this->getAllMyBookingArray["direction_results"]=$this->findDirect($this->getAllMyBookingArray1);
+        // var_dump($this->getAllMyBookingArray["Direct_results"][0]);
+        return $this->getAllMyBookingArray;
 
         
         
@@ -237,18 +253,22 @@ class BookingModel extends Model
         $i=0;
         $j=0;
         
+        //var_dump($arryDirect);
         $date=date("Y-m-d");
         for($i=0;$i<$size;$i++){
                 $query = App::$APP->db->pdo->prepare("SELECT tb.train_id,tb.id,tb.passengers,tb.class,tb.total_amount,tb.other_booking,tr.train_name,tb.from_station,tb.to_station,tb.train_date FROM ticket_booking tb INNER JOIN trains tr ON tb.train_id=tr.train_id WHERE tb.customer_id=:cus_id AND tb.other_booking=:other_booking AND tb.train_date >= $date ORDER BY tb.train_date ASC");
                 $query->bindValue(":cus_id", $this->customer_id);
                 $query->bindValue(":other_booking", $arryDirect["no_duplicates"][$i]['other_booking']);
                 $query->execute();
-                $this->getBooking["direct"][$j] = $query->fetchAll(PDO::FETCH_ASSOC);
+                $this->getBooking['direct'][$j] = $query->fetchAll(PDO::FETCH_ASSOC);
+                
+                var_dump($this->getBooking['direct'][$j]);
                  $j++;
   
             
         
         }
+        
         return $this->getBooking;
 
     }

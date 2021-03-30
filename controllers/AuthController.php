@@ -79,8 +79,7 @@ class AuthController extends Controller
             $registrationState = $registerModel->register();
             if ($registrationState === 'success') {
                 App::$APP->session->set('operation', 'success');
-                //return $this->login($request, $response);
-                return $this->render('login');
+                return $response->redirect('/utrance-railway/login');
             } else {
                 App::$APP->session->set('operation', 'fail');
                 $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika       

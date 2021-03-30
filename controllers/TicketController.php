@@ -11,8 +11,6 @@ class TicketController extends Controller
 
         if ($request->isPost()) {
             $getResultPrice = $viewTicketPrice->getTicketPrice();
-            //var_dump($getResultPrice);
-            // echo json_encode($getResultPrice['tickets']);
             return $this->render('ticketPrice', $getResultPrice);
         }
 
@@ -26,7 +24,7 @@ class TicketController extends Controller
 
         if ($request->isPost()) {
             $getResultPrice = $viewTicketPrice->getTicketPrice();
-            // var_dump($getResultPrice);
+
             return json_encode($getResultPrice['tickets']);
         }
 

@@ -21,9 +21,9 @@ libxml_clear_errors();
 
 <?php
 
-if (isset($intersect)) {
-
-    renderIntersectionCard($intersect);
+if (isset($Intersection_results)) {
+ 
+    renderIntersectionCard($Intersection_results);
 }
 
 // if(isset($intersect)){
@@ -39,14 +39,13 @@ if (isset($intersect)) {
 
 // }
 
-if (isset($direct)) {
-    $i = 0;
-    // var_dump($direct);
-    foreach ($direct as $key => $value) {
-        $i++;
-        renderSinglePath($value, $i++);
+if (isset($Direct_results)) {
+    
+    
+        
+        renderSinglePath($Direct_results);
 
-    }
+    
 }
 
 ?>

@@ -27,13 +27,18 @@ class BookingController extends Controller
             return 'You are not logged in!!';
         }
         if ($request->isGet()) {
-            //var_dump("hy");
-            $getAllBookingsModel = new BookingModel();
-            $getAllBookingsModel->loadData($request->getBody());
-            $getAllBookingArray = $getAllBookingsModel->getAllMyBookings();
             
+            $getAllBookingsModel = new BookingModel();
+            $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+          
+            $getAllBookingsModel->loadData($tempUpdateUserBody);
+            
+            $getAllBookingArray = $getAllBookingsModel->getAllMyBookings();
+            //var_dump($getAllBookingArray);
             return $this->render('myBookings',$getAllBookingArray);
         }
+
+        
     }
 
     public function getBooking($request)

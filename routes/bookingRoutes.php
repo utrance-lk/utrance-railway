@@ -3,6 +3,7 @@
 require_once "../controllers/BookingController.php";
 
 $app->router->get('/utrance-railway/myBookings', [BookingController::class, 'getAllBookings']);
+$app->router->post('/utrance-railway/myBookings', [BookingController::class, 'getAllBookings']);
 
 $app->router->get('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
 $app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);

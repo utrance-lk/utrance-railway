@@ -4,52 +4,53 @@ function renderIntersectionCard($value){
     $i=0;
     $j=0;
    
-    $arraySize=sizeof($value);
+    $arraySize=sizeof($value[0]);
     
-  
-
-
   for($i=0; $i<$arraySize;$i++){
-      for($j=0;$j<1;$j++){
-    if($value[$i][$j]['other_booking']==$value[$i][$j+1]['other_booking']){
-        // var_dump($value[$i][$j]['from_station']);
-        // var_dump($value[$i][$j]['to_station']);
+     
+        
         $html="<div class='upcoming__trips--card margin-b-l'>";
         $html.="<div class='start-destination--box'>";
-        $html.="<span>". $value[$i][$j]['from_station'] ."</span>&nbsp;&ndash;&nbsp;<span>". $value[$i][$j+1]['to_station'] ."</span>";
+
+        $arra1=explode(",",$value[0][$i]['from_stations']);
+        $arra2=explode(",",$value[0][$i]['to_stations']);
+        $html.="<span>". $arra1[0]."</span>&nbsp;&ndash;&nbsp;<span>". $arra2[1] ."</span>";
         $html.="</div>";
         $html.="<div class='basic__details--box'>";
         $html.="<div class='date__box'>";
         $html.="<svg class='basic__detials--box-icon'>";
         $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-calendar'></use>";
         $html.="</svg>";
-        $html.="<div class='basic__details--box-text'>" . $value[$i][$j]['train_date'] . "</div></div></div>";
+        $html.="<div class='basic__details--box-text'>" . $value[0][$i]['train_date'] . "</div></div></div>";
         $html.="<div class='train__details--box'>";
         $html.="<div class='train train__details--box-item'>";
         $html.="<svg class='train__detials--box-icon'>";
         $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-directions_train'></use>";
         $html.="</svg>";
-        $html.="<div class='train__details--box-text'>" . $value[$i][$j]['train_name'] . "</div>";
+        $html.="<div class='train__details--box-text'>Train 1</div>";
         $html.="</div>";
         $html.="<div class='people__box train__details--box-item'>";
         $html.="<svg class='train__detials--box-icon'>";
         $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-users'></use>";
         $html.="</svg>";
         //$html.="<div class='train__details--box-text'>" . $value[$i]['passengers'] . " people</div>";
-        if($value[$i][$j]['passengers'] == 1){
-            $html.="<div class='train__details--box-text'>". $value[$i][$j]['passengers'] . " Person </div>";
-        }else if($value[$i][$j]['passengers'] > 1){
-            $html.="<div class='train__details--box-text'>". $value[$i][$j]['passengers'] . " Persons </div>";
+        $arra1=explode(",",$value[0][$i]['total_passengers']);
+        
+        if($arra1[0] == 1){
+            $html.="<div class='train__details--box-text'>". $arra1[0] . " Person </div>";
+        }else if($arra1[0] > 1){
+            $html.="<div class='train__details--box-text'>" .$arra1[0] . " Persons </div>";
         }
         $html.="</div>";
         $html.="<div class='class__box train__details--box-item'>";
-        if($value[$i][$j]['class'] == 'secondClass'){
+        $arra1=explode(",",$value[0][$i]['class']);
+        if($arra1[0] == 'secondClass'){
             $html.="<svg class='train__detials--box-icon'>";
             $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-emoji-neutral'></use>";
             $html.="</svg>";
             $html.="<div class='train__details--box-text'>Second Class</div>";
         }
-        if($value[$i][$j]['class'] == 'firstClass'){
+        if($arra1[0] == 'firstClass'){
             $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-emoji-happy'></use>";
             $html.="</svg>";
             $html.="<div class='train__details--box-text'>Second Class</div>";
@@ -62,29 +63,30 @@ function renderIntersectionCard($value){
         $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-directions_train'></use>";
         $html.="</svg>";
         
-        $html.="<div class='train__details--box-text'>". $value[$i][$j]['train_name'] . "</div>";
+        $html.="<div class='train__details--box-text'>Train 2</div>";
         $html.="</div>";
         $html.="<div class='people__box train__details--box-item'>";
         $html.="<svg class= 'train__detials--box-icon'>";
         $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-users'></use>";
         $html.="</svg>";
-        if($value[$i][$j]['passengers'] == 1){
-            $html.="<div class='train__details--box-text'>". $value[$i][$j]['passengers'] . " Person </div>";
-        }else if($value[$i][$j]['passengers'] > 1){
-            $html.="<div class='train__details--box-text'>". $value[$i][$j]['passengers'] . " Persons </div>";
+        $arra1=explode(",",$value[0][$i]['total_passengers']);
+        if($arra1[1] == 1){
+            $html.="<div class='train__details--box-text'>". $arra1[1] . " Person </div>";
+        }else if($arra1[1] > 1){
+            $html.="<div class='train__details--box-text'>". $arra1[1] . " Persons </div>";
         }
         
         $html.="</div>";
         
-        
-        if($value[$i][$j]['class'] == 'secondClass'){
+        $arra1=explode(",",$value[0][$i]['class']);
+        if($arra1[1] == 'secondClass'){
             $html.="<div class='class__box train__details--box-item'>";
             $html.="<svg class='train__detials--box-icon'>";
             $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-emoji-neutral'></use>";
             $html.="</svg>";
             $html.="<div class='train__details--box-text'>Second Class</div>";
         }
-        if($value[$i][$j]['class'] == 'firstClass'){
+        if($arra1[1] == 'firstClass'){
             $html.="<div class='class__box train__details--box-item'>";
             $html.="<svg class='train__detials--box-icon'>";
             $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-emoji-happy'></use>";
@@ -94,10 +96,13 @@ function renderIntersectionCard($value){
         
         $html.="</div>";     
         $html.="</div>";
-        $html.="<div class='price--box'>Rs " . $value[$i][$j]['total_amount'] . "</div>";
+        $arra1=explode(",",$value[0][$i]['total_amount']);
+        
+        $html.="<div class='price--box'>Rs " . $arra1[0] . "</div>";
         $html.="<div class='btn__container'>";
         
-        $html.="<a href='/utrance-railway/booked-tourIntersect?id1=".$value[$i][$j]['id']."&id2=" . $value[$i][$j+1]['id']. "' class='btn btn-round-blue margin-r-s margin-b-s'>";
+        $arra1=explode(",",$value[0][$i]['booking_id']);
+        $html.="<a href='/utrance-railway/booked-tourIntersect?id1=".$arra1[0]."&id2=" . $arra1[1]. "' class='btn btn-round-blue margin-r-s margin-b-s'>";
         $html.="View more";
         $html.="</a></div>";
 
@@ -107,8 +112,7 @@ function renderIntersectionCard($value){
         
 
     }
-    }
-    }
+    
 }
 
     
@@ -118,52 +122,53 @@ function renderIntersectionCard($value){
 
     
 
-function renderSinglePath($value,$k){
+function renderSinglePath($value){
     
     $i=0;
     $j=0;
-    $sizeOfArray=sizeof($value);
+    $sizeOfArray=sizeof($value[0]);
+   
    
     for($i=0;$i<$sizeOfArray;$i++){
-        
+       
     $html="<div class='upcoming__trips--card margin-b-l' >";
     $html.= "<div class='start-destination--box'>";
-    $html.="<span>". $value[$i]['from_station']."</span>&nbsp;&ndash;&nbsp;<span>". $value[$i]['to_station']."</span></div>";
+    $html.="<span>". $value[0][$i]['from_station'] ."</span>&nbsp;&ndash;&nbsp;<span>". $value[0][$i]['to_station'] ."</span></div>";
     $html.="<div class='basic__details--box'>";
     $html.="<div class='date__box'>";
     $html.="<svg class='basic__detials--box-icon'>";
     $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-calendar'></use></svg>";
-    $html.="<div class='basic__details--box-text'>". $value[$i]['train_date']."</div></div></div>";
+    $html.="<div class='basic__details--box-text'>". $value[0][$i]['train_date']."</div></div></div>";
     $html.="<div class='train__details--box one__train'>";
     $html.="<div class='train train__details--box-item'>";
     $html.="<svg class='train__detials--box-icon'>";
     $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-directions_train'></use></svg>";
-    $html.="<div class='train__details--box-text'>". $value[$i]['train_name']."</div>";
+    $html.="<div class='train__details--box-text'>Train 1</div>";
     $html.="</div>";
     $html.="<div class='people__box train__details--box-item'>";
     $html.="<svg class='train__detials--box-icon'>";
     $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-users'></use>";
     $html.="</svg>";
-    if($value[$i]['passengers'] == 1){
-    $html.="<div class='train__details--box-text'>".$value[$i]['passengers']." Person</div></div>";
-    }else if($value[$i]['passengers'] > 1){
-        $html.="<div class='train__details--box-text'>".$value[$i]['passengers']." People</div></div>";
+    if($value[0][$i]['total_passengers'] == 1){
+    $html.="<div class='train__details--box-text'>".$value[0][$i]['total_passengers']." Person</div></div>";
+    }else if($value[0][$i]['total_passengers'] > 1){
+        $html.="<div class='train__details--box-text'>".$value[0][$i]['total_passengers']." People</div></div>";
     }
     $html.="<div class='class__box train__details--box-item'>";
     $html.="<svg class='train__detials--box-icon'>";
-    if($value[$i]['class'] == 'firstClass' ){
+    if($value[0][$i]['class'] == 'firstClass' ){
         $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-emoji-happy'></use>";
         $html.="</svg>";
         $html.="<div class='train__details--box-text'>First class</div></div></div>";
-    }else if($value[$i]['class'] == 'secondClass' ){
+    }else if($value[0][$i]['class'] == 'secondClass' ){
         $html.="<use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-emoji-neutral'></use>";
         $html.="</svg>";
         $html.="<div class='train__details--box-text'>Second class</div></div></div>";
     }
     
-    $html.="<div class='price--box'>Rs " .$value[$i]['total_amount'] ."</div>";
+    $html.="<div class='price--box'>Rs " .$value[0][$i]['total_amount'] ."</div>";
     $html.="<div class='btn__container'>";
-    $html.="<a href='/utrance-railway/booked-tourDirect?id1=" . $value[$i]['id'] ."' class='btn btn-round-blue margin-r-s margin-b-s'>View more</a></div></div>";
+    $html.="<a href='/utrance-railway/booked-tourDirect?id1=" . $value[0][$i]['booking_id'] ."' class='btn btn-round-blue margin-r-s margin-b-s'>View more</a></div></div>";
     $dom = new DOMDocument();
     $dom->loadHTML($html);
     print_r($dom->saveHTML());   
