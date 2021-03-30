@@ -74,6 +74,48 @@ class ViewController extends Controller
     }
 
 
+
+    
+    public function viewAllTrainDetails($request){
+        $viewAllTrainDetailsModel = new ViewModel();
+        if($request->isGet()){
+           
+            $viewAllTrainDetailsModel->loadData($request->getBody());
+            $getAllTrainResults = $viewAllTrainDetailsModel->getAllTrainResults();
+           return $this->render('viewAllTrainDetails', $getAllTrainResults);
+        }
+        
+        if ($request->isPost()) {
+            $searchTrainDetailsModel = new  ViewModel();
+
+            $searchTrainDetailsModel->loadData($request->getBody());
+
+            $searchResultArray = $searchTrainDetailsModel->searchTrainDetails();
+
+            return $this->render('viewAllTrainDetails', $searchResultArray);
+
+        }
+
+    }
+
+    public function newSearchResults($request){
+
+        if ($request->isPost()) {
+            $saveDetailsModel = new ViewModel();
+            $tempBody = $request->getBody();
+            //$tempBody['index1'] = $_POST['index1'];
+            $tempBody['index2'] = $_POST['index2'];
+            $saveDetailsModel->loadData($tempBody);
+
+            $trainArrays = $saveDetailsModel->getAllTrainsDetails();
+             
+           
+            echo json_encode($trainArrays);
+        }
+
+    }
+
+
     public function bookSeat($request) {
         if($request->isPost()) {
             // form submission
@@ -92,10 +134,11 @@ class ViewController extends Controller
             $viewTrainDetailsModel = new ViewModel();
             $tempBody = $request->getBody();
             $tempBody['train_id'] = $request->getQueryParams()['train_id'];
-          
+            
             
             $viewTrainDetailsModel->loadData($tempBody);
             $trainScheduleArray=$viewTrainDetailsModel->getTrainSchedules();
+            
             
             return $this->render('viewTrain',$trainScheduleArray);
         }

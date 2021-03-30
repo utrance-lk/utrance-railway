@@ -12,7 +12,9 @@ class FreightController extends Controller
         if ($request->isPost()) {
             $getResultPrice = $viewFreightPrice->getFreightPrice();
             return $this->render('freightPrice', $getResultPrice);
+            
         }
+        
 
         return $this->render('freightPrice');
     }

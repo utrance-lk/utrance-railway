@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+
+
+
+.form-popup{
+position: absolute;
+background-color: red;
+z-index: 100;
+left: 0;
+top: 110%;
+width: 25rem;
+padding: 1rem;
+border-radius: 5px;
+height: 20rem;
+
+}
+=======
 .form-popup {
   position: absolute;
   background-color: rgb(31, 58, 147);
@@ -30,3 +47,4 @@
   fill: red;
   cursor: pointer;
 }
+>>>>>>> 128dcd72d2aa03a5b676c58f6bea72066f67c897

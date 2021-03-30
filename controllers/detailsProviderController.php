@@ -26,19 +26,28 @@ class DetailsProviderController extends Controller
 
     }
 
-    public function contactAdmin($request)
+    public function contactAdmin($request,$response)
     { 
         $contactAdminModel = new DetailsProviderModel();
 
         if ($request->isPost()) 
         {
             $contactAdminModel->loadData($request->getbody());
-            $addDetails = $contactAdminModel->contactAdmin();
-            
-            return $this->render(['detailsProvider','contactAdmin']); 
+            var_dump($request->getbody());
+             $contactAdminModel->contactAdmin();
+
+            return $response->redirect('/utrance-railway/contact-admin');
+        
         
         }
-        return $this->render(['detailsProvider','contactAdmin']); 
+        if($request ->isGet()){
+            $contactAdminModel->loadData($request->getBody());
+            $getAllAdminEmailResults = $contactAdminModel->getAdminEmails();
+           
+            return $this->render(['detailsProvider','contactAdmin'],$getAllAdminEmailResults); 
+          
+        }
+        
 
     }
 

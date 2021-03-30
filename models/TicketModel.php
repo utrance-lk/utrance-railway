@@ -17,9 +17,7 @@ class TicketModel extends Model
     public $intLineStart = [];
     public $intLineEnd = [];
     public $end_lines = [];
-    public $result=[];
-    
-
+    public $result = [];
 
     public function availabiltyLines($find_line)
     {
@@ -107,11 +105,11 @@ class TicketModel extends Model
                         $start_val = $this->calculateTicketPrice($this->start, $train_class[$i]);
                         $end_val = $this->calculateTicketPrice($this->destination, $train_class[$i]);
                         $total_ticket_amount[$j] = $this->totalTicketPrice($start_val, $end_val);
-                        $result["tickets"][$train_class[$j]]= $total_ticket_amount[$j];
+                        $result["tickets"][$train_class[$j]] = $total_ticket_amount[$j];
                         $j = $j + 1;
                     }
-                    $result["tickets"]["start"]=$this->start;
-                    $result["tickets"]["destination"]=$this->destination;
+                    $result["tickets"]["start"] = $this->start;
+                    $result["tickets"]["destination"] = $this->destination;
                     return $result; // print all class values;
 
                 } else {
@@ -241,14 +239,14 @@ class TicketModel extends Model
                     $total_value = [];
                     for ($i = 0; $i < sizeof($train_class); $i++) {
                         $total_value[$i] = $intersect_start[$i] + $intersect_end[$i];
-                        $result["tickets"][$train_class[$i]]=$total_value[$i];
+                        $result["tickets"][$train_class[$i]] = $total_value[$i];
                     }
 
                     /*for ($i = 0; $i < sizeof($train_class); $i++) {
-                        var_dump($total_value[$i]);
+                    var_dump($total_value[$i]);
                     }*/
-                    $result["tickets"]["start"]=$this->start;
-                    $result["tickets"]["destination"]=$this->destination;
+                    $result["tickets"]["start"] = $this->start;
+                    $result["tickets"]["destination"] = $this->destination;
                     return $result;
 
                 }
@@ -326,10 +324,10 @@ class TicketModel extends Model
 
                     for ($i = 0; $i < sizeof($train_class); $i++) {
 
-                        $result["tickets"][$train_class[$j]]=$get_value[$i];
+                        $result["tickets"][$train_class[$j]] = $get_value[$i];
                     }
-                    $result["tickets"]["start"]=$this->start;
-                    $result["tickets"]["destination"]=$this->destination;
+                    $result["tickets"]["start"] = $this->start;
+                    $result["tickets"]["destination"] = $this->destination;
                     return $result;
 
                 } else {
@@ -358,7 +356,10 @@ class TicketModel extends Model
 
                     $common1 = [];
                     $line_New = [];
-                    $i = 0;$j=0;$n1=0;$p=0;
+                    $i = 0;
+                    $j = 0;
+                    $n1 = 0;
+                    $p = 0;
                     $intLineStart1 = [];
                     $intLineStart1 = $this->explodeValues($this->intLineStart);
                     $n1 = sizeof($intLineStart1);
@@ -479,12 +480,12 @@ class TicketModel extends Model
                     }
 
                     for ($i = 0; $i < sizeof($train_class); $i++) {
-                       
-                        $result["tickets"][$train_class[$j]]=$get_final_value[$i];
+
+                        $result["tickets"][$train_class[$j]] = $get_final_value[$i];
 
                     }
-                    $result["tickets"]["start"]=$this->start;
-                    $result["tickets"]["destination"]=$this->destination;
+                    $result["tickets"]["start"] = $this->start;
+                    $result["tickets"]["destination"] = $this->destination;
                     return $result;
 
                 }
@@ -532,7 +533,7 @@ class TicketModel extends Model
                     }
 
                 }
-                
+
                 $get_ticket_price_start = [];
                 $get_explode_price_start = [];
                 $get_ticket_price_end = [];
@@ -552,7 +553,7 @@ class TicketModel extends Model
                     }
 
                     $j = 0;
-                    
+
                     for ($i = 0; $i < sizeof($train_class); $i++) {
                         if ($get_explode_price_end[$i][$p2_end] > $get_explode_price_start[$i][$p1_start]) {
                             $get_value[$j] = $get_explode_price_end[$i][$p2_end] - $get_explode_price_start[$i][$p1_start];
@@ -564,10 +565,10 @@ class TicketModel extends Model
                     }
 
                     for ($i = 0; $i < sizeof($train_class); $i++) {
-                        $result["tickets"][$train_class[$i]]=$get_value[$i];
+                        $result["tickets"][$train_class[$i]] = $get_value[$i];
                     }
-                    $result["tickets"]["start"]=$this->start;
-                    $result["tickets"]["destination"]=$this->destination;
+                    $result["tickets"]["start"] = $this->start;
+                    $result["tickets"]["destination"] = $this->destination;
                     return $result;
 
                 } else { // example beliatta line 1 maradna line 2,3 find intesect station and get a value
@@ -712,11 +713,11 @@ class TicketModel extends Model
 
                     for ($i = 0; $i < sizeof($train_class); $i++) {
 
-                        $result["tickets"][$train_class[$i]]=$get_final_value[$i];
+                        $result["tickets"][$train_class[$i]] = $get_final_value[$i];
 
                     }
-                    $result["tickets"]["start"]=$this->start;
-                    $result["tickets"]["destination"]=$this->destination;
+                    $result["tickets"]["start"] = $this->start;
+                    $result["tickets"]["destination"] = $this->destination;
                     return $result;
                 }
 
@@ -725,7 +726,5 @@ class TicketModel extends Model
         }
 
     }
-
-
 
 }

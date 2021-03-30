@@ -9,9 +9,9 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/base.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerSub.css" />
     <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/detailsProvider/style.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
+    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.concat.css" />
+    
   </head>
 
   <body>
