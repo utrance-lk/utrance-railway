@@ -1,3 +1,44 @@
+<?php
+if (isset($_SESSION['operation'] ) ) {
+ 
+     if(App::$APP->session->get('operation')=='fail'){
+  
+    
+    $html="<div class='alert hide'>";
+    $html.="<span class='fas fa-exclamation-circle'></span>";
+    $html.="<span class='msg'>Error:Something Went Wrong!!</span>";
+    $html.="<span class='close-btn'>";
+    $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+
+               
+  }else if(App::$APP->session->get('operation')=='success'){
+    
+    $html="<div class='alert-Success hide-Success'>";
+    $html.="<span class='fas fa-check-circle'></span>";
+    $html.="<span class='msg-Success'>Sucess:Your File has been uploaded!!</span>";
+    $html.="<span class='close-btn-Success'>";
+     $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+  }
+  App::$APP->session->remove('operation');
+}
+
+?>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+
+
+
+
+
 <?php include_once '../views/components/backButton.php';?>
 <div class="dashboard">
     <?php include_once '../views/layouts/adminSideNav.php';?>
@@ -41,11 +82,12 @@ libxml_clear_errors();
               <div class="dash-content__input">
                 <label for='city' class='dash-content__label'>City</label>
                 <?php
-$cityArray = array("Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunagala", "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliye", "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya");
-?>
+                    $cityArray = array("Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunagala", "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliye", "Polonnaruwa", "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya");
+                ?>
                 <select name='city' id='city' class='form__input'>
-                  <?php foreach ($cityArray as $city): ?>
-                    <option  value='<?php echo $city; ?>'><?php echo $city; ?></option>
+                
+                  <?php foreach ($cityArray as $city1): ?>
+                     <option  value='<?php echo $city1; ?>'><?php echo $city1; ?></option>
                   <?php endforeach;?>
                 </select>
               </div>

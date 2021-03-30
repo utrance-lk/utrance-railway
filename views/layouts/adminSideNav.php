@@ -6,6 +6,7 @@
         </svg>
         <span>Settings</span>
       </a>
+     
       <a href="/utrance-railway/myBookings" class="sidebar-nav__item">
         <svg class="sidebar-nav__icon">
           <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-suitcase"></use>

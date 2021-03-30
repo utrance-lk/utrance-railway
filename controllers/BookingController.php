@@ -27,9 +27,18 @@ class BookingController extends Controller
             return 'You are not logged in!!';
         }
         if ($request->isGet()) {
-            // return database results
-            return $this->render('myBookings');
+            
+            $getAllBookingsModel = new BookingModel();
+            $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+          
+            $getAllBookingsModel->loadData($tempUpdateUserBody);
+            
+            $getAllBookingArray = $getAllBookingsModel->getAllMyBookings();
+            //var_dump($getAllBookingArray);
+            return $this->render('myBookings',$getAllBookingArray);
         }
+
+        
     }
 
     public function getBooking($request, $response)
@@ -373,11 +382,38 @@ class BookingController extends Controller
         return false;
     }
 
-    public function bookedTour($request)
+    public function bookedTourIntersect($request)
     {
         if ($this->authMiddleware->isLoggedIn()) {
             if ($request->isGet()) {
-                return $this->render('bookedTour');
+
+                $bookedTourModel = new BookingModel();
+                $tempBody = $request->getBody();
+                $tempBody['id1'] = $request->getQueryParams()['id1'];
+                $tempBody['id2'] = $request->getQueryParams()['id2'];
+                
+                $bookedTourModel->loadData($tempBody);
+                $getBookedTourArray=$bookedTourModel->getBookedTourIntersect();
+            //var_dump($getBookedTourArray);
+                 return $this->render('bookedTour',$getBookedTourArray);
+            }
+        } else {
+            return 'your not logged in!';
+        }
+    }
+
+    public function bookedTourDirect($request){
+        if ($this->authMiddleware->isLoggedIn()) {
+            if ($request->isGet()) {
+
+                $bookedTourModel = new BookingModel();
+                $tempBody = $request->getBody();
+                $tempBody['id1'] = $request->getQueryParams()['id1'];
+                //var_dump($tempBody['id1']);
+                $bookedTourModel->loadData($tempBody);
+                $getBookedTourArray=$bookedTourModel->getBookedTourDirect();
+                //var_dump($getBookedTourArray);
+                 return $this->render('bookedTour',$getBookedTourArray);
             }
         } else {
             return 'your not logged in!';

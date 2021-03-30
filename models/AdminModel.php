@@ -25,6 +25,8 @@ class AdminModel extends Model
     public $searchUserByNameOrId;
     private $registerSetValueArray = [];
     public $userRole;
+    public $user_image = "default.jpg";
+    
 
     //////////////Train//////////////////
 
@@ -63,7 +65,7 @@ class AdminModel extends Model
 
 
     private function populateValuesForAddUser() {
-        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status,'details_provider_station' =>$this->station_details_provider];
+        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'street_line1' => $this->street_line1, 'street_line2' => $this->street_line2, 'city' => $this->city, 'contact_num' => $this->contact_num, 'email_id' => $this->email_id, 'user_role' => $this->user_role, 'user_password' => $this->user_password, 'user_active_status' => $this->user_active_status,'user_image' => $this->user_image];
     }
 
 
@@ -107,19 +109,21 @@ class AdminModel extends Model
 
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        
         return $this->resultArray;
     }
 
     public function getSearchUserResult() // selected user
 
     { //Ashika
-        $this->id = $this->searchUserByNameOrId;
-        $this->first_name = $this->searchUserByNameOrId;
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status,user_image FROM users  WHERE first_name LIKE '%{$this->first_name}%' OR id LIKE '%{$this->id}%' ");
-        $query->bindValue(":id", $this->id);
-        $query->bindValue(":fn", $this->first_name);
+        
+        $this->user_name = $this->searchTrain;
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,user_role,first_name,user_active_status,user_image FROM users  WHERE first_name LIKE '%{$this->user_name}%' OR id=:id");
+        $query->bindValue(":id",$this->user_name);
+        
         $query->execute();
         $this->resultArray["users"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($this->resultArray);
         return $this->resultArray;
 
     }
@@ -154,7 +158,7 @@ class AdminModel extends Model
 //         if ($validationState ==="success") {
 
             $this->runSanitizationAdmin();
-            $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id, city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
+            $query = App::$APP->db->pdo->prepare("UPDATE users SET first_name =:first_name, last_name=:last_name, email_id=:email_id,city=:city,street_line1=:street_line1,street_line2=:street_line2,contact_num=:contact_num WHERE id=:id");
             $query->bindValue(":id", $this->id);
             $query->bindValue(":first_name", $this->first_name);
             $query->bindValue(":last_name", $this->last_name);
@@ -392,6 +396,7 @@ class AdminModel extends Model
     public function searchTrainDetails()
     {
         $this->train_name = $this->searchTrain;
+        
         $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%' OR train_id=:trainName");
         $query->bindValue(":trainName", $this->train_name);
         $query->execute();

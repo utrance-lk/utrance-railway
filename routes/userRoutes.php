@@ -16,6 +16,15 @@ $app->router->get('/utrance-railway/upload', [UserController::class, 'upload']);
 $app->router->post('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
 $app->router->get('/utrance-railway/aboutUs', [UserController::class, 'aboutUs']);
 
+$app->router->post('/utrance-railway/viewAllTrains', [UserController::class, 'viewAllTrains']);
+$app->router->get('/utrance-railway/viewAllTrains', [UserController::class, 'viewAllTrains']);
+
+
+
+
+$app->router->post('/utrance-railway/news', [UserController::class, 'newsFeed']);
+$app->router->get('/utrance-railway/news', [UserController::class, 'newsFeed']);
+$app->router->get('/utrance-railway/news/news01', [UserController::class, 'newsFeed01']);
 // $app->router->post('/utrance-railway/news', [UserController::class, 'newsFeed']);
 // $app->router->get('/utrance-railway/news', [UserController::class, 'newsFeed']);
 

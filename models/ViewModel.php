@@ -16,7 +16,12 @@ class ViewModel extends Model
     public $station_value_set;
     public $station_final_value_set;
     public $train_basic_deatils;
-    public $id;
+    public $searchTrain;
+    public $searchRoute;
+    public $index2;
+    public $active_status = 1;
+    public $train_name;
+    public $train_type;
 
     public function rules()
     {
@@ -78,69 +83,86 @@ class ViewModel extends Model
         }
 
     }
-//Ashika 
-    public function getTrainSchedules(){
-        
-           
-        
-        $query = APP::$APP->db->pdo->prepare("SELECT route_id,train_name,train_travel_days FROM trains WHERE train_id=:train_id");
-        $query->bindValue(":train_id",$this->train_id);
-        $query->execute();
-        $this->resultArray= $query->fetchAll(PDO::FETCH_ASSOC);
-        $this->train_basic_details=$this->findTrainDetails($this->resultArray);
-       
-        
-        $query = APP::$APP->db->pdo->prepare("SELECT station_id  FROM stops WHERE route_id=:route_id");
-        $query->bindValue(":route_id",$this->resultArray[0]['route_id']);
-        $query->execute();
-        $this->station_value_set['get_train_details']= $query->fetchAll(PDO::FETCH_ASSOC);
-        
-        
-       $query=APP::$APP->db->pdo->prepare("SELECT stn.station_name,stn.longitude,stn.latitude,stn.station_id,stp.arrival_time,stp.departure_time FROM stations stn  INNER JOIN stops stp ON stp.station_id=stn.station_id  WHERE stp.route_id=:route_id ORDER BY stp.path_id ASC");
-       $query->bindValue(":route_id",$this->resultArray[0]['route_id']);
-       $query->execute();
-       $this->station_final_value_set['get_train_details']=$query->fetchAll(PDO::FETCH_ASSOC);
-      
-    
-        $this->station_final_value_set['x']['train_name']=$this->train_basic_details[0]['train_name'];
-        $this->station_final_value_set['x']['train_travel_days']=$this->train_basic_details[0]['train_travel_days'];
-        $this->station_final_value_set['x']['total_time']=$this->train_basic_details['total_time'][0]['total_time'];
-        $this->station_final_value_set['x']['start_station']=$this->train_basic_details['start_station'][0]['station_name'];
-        $this->station_final_value_set['x']['dest_station']=$this->train_basic_details['dest_station'][0]['station_name'];
+//Ashika
+    public function getTrainSchedules()
+    {
 
-      
+        $query = APP::$APP->db->pdo->prepare("SELECT route_id,train_name,train_travel_days FROM trains WHERE train_id=:train_id");
+        $query->bindValue(":train_id", $this->train_id);
+        $query->execute();
+        $this->resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->train_basic_details = $this->findTrainDetails($this->resultArray);
+
+        $query = APP::$APP->db->pdo->prepare("SELECT station_id  FROM stops WHERE route_id=:route_id");
+        $query->bindValue(":route_id", $this->resultArray[0]['route_id']);
+        $query->execute();
+        $this->station_value_set['get_train_details'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $query = APP::$APP->db->pdo->prepare("SELECT stn.station_name,stn.longitude,stn.latitude,stn.station_id,stp.arrival_time,stp.departure_time FROM stations stn  INNER JOIN stops stp ON stp.station_id=stn.station_id  WHERE stp.route_id=:route_id ORDER BY stp.path_id ASC");
+        $query->bindValue(":route_id", $this->resultArray[0]['route_id']);
+        $query->execute();
+        $this->station_final_value_set['get_train_details'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->station_final_value_set['x']['train_name'] = $this->train_basic_details[0]['train_name'];
+        $this->station_final_value_set['x']['train_travel_days'] = $this->train_basic_details[0]['train_travel_days'];
+        $this->station_final_value_set['x']['total_time'] = $this->train_basic_details['total_time'][0]['total_time'];
+        $this->station_final_value_set['x']['start_station'] = $this->train_basic_details['start_station'][0]['station_name'];
+        $this->station_final_value_set['x']['dest_station'] = $this->train_basic_details['dest_station'][0]['station_name'];
+
         return $this->station_final_value_set;
 
     }
 
+    public function getAllTrainResults()
+    {
 
-    
-    
+        $query = APP::$APP->db->pdo->prepare("SELECT train_id, train_name, train_type, train_active_status FROM trains WHERE train_active_status=1");
 
-    public function findTrainDetails($array1){
-        $query=APP::$APP->db->pdo->prepare("SELECT total_time FROM routes WHERE route_id=:route_id");
-        $query->bindValue(":route_id",$array1[0]['route_id']);
         $query->execute();
-        $array1['total_time']=$query->fetchAll(PDO::FETCH_ASSOC);
 
+        $this->resultArray['trains'] = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        $query=APP::$APP->db->pdo->prepare("SELECT start_station_id,dest_station_id FROM routes WHERE route_id=:route_id");
-        $query->bindValue(":route_id",$array1[0]['route_id']);
-        $query->execute();
-        $array1['start_dest']=$query->fetchAll(PDO::FETCH_ASSOC);
-        $query=APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
-        $query->bindValue(":station_id",$array1['start_dest'][0]['start_station_id']);
-        $query->execute();
-        $array1['start_station']=$query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
 
-        $query=APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
-        $query->bindValue(":station_id",$array1['start_dest'][0]['dest_station_id']);
-        $query->execute();
-        $array1['dest_station']=$query->fetchAll(PDO::FETCH_ASSOC);
-        
-        return $array1;
     }
 
+
+    
+
+
+    public function searchTrainDetails()
+    {
+        $this->train_name = $this->searchTrain;
+        $query = APP::$APP->db->pdo->prepare("SELECT * FROM trains WHERE train_name LIKE '%{$this->train_name}%' OR train_id=:trainName");
+        $query->bindValue(":trainName", $this->train_name);
+        $query->execute();
+        $this->resultArray["trains"] = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $this->resultArray;
+    }
+
+    public function findTrainDetails($array1)
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT total_time FROM routes WHERE route_id=:route_id");
+        $query->bindValue(":route_id", $array1[0]['route_id']);
+        $query->execute();
+        $array1['total_time'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $query = APP::$APP->db->pdo->prepare("SELECT start_station_id,dest_station_id FROM routes WHERE route_id=:route_id");
+        $query->bindValue(":route_id", $array1[0]['route_id']);
+        $query->execute();
+        $array1['start_dest'] = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query = APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
+        $query->bindValue(":station_id", $array1['start_dest'][0]['start_station_id']);
+        $query->execute();
+        $array1['start_station'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $query = APP::$APP->db->pdo->prepare("SELECT station_name,longitude,latitude FROM stations WHERE station_id=:station_id");
+        $query->bindValue(":station_id", $array1['start_dest'][0]['dest_station_id']);
+        $query->execute();
+        $array1['dest_station'] = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $array1;
+    }
 
     protected function searchForDirectPath($fromId, $toId, $dayOfWeek)
     {
@@ -243,7 +265,8 @@ class ViewModel extends Model
         return $seachInterectionPath->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getTrainStations($trainId, $routeId) {
+    public function getTrainStations($trainId, $routeId)
+    {
 
         $getRouteIdFromTrainId = APP::$APP->db->pdo->prepare('SELECT route_id FROM trains WHERE train_id=:id');
         $getRouteIdFromTrainId->bindValue(':id', $trainId);

@@ -1,5 +1,60 @@
         <div class="booking__container">
-            <div class="topic">
+
+        <?php
+include_once '../views/components/bookedTourCards.php';
+?>
+        <?php
+$dom = new DOMDocument;
+libxml_use_internal_errors(true);
+$dom->loadHTML('...');
+libxml_clear_errors();
+?>
+
+<?php
+
+if (isset($train_1) && isset($train_2)) {
+
+    $i = 0;
+    $newArray = [];
+    array_push($newArray, $train_1);
+    array_push($newArray, $train_2);
+
+    $html = renderIntersectionCard($newArray);
+
+}
+
+if(isset($train_1) && !(isset($train_2))){
+    $i = 0;
+    $newArray = [];
+    array_push($newArray, $train_1);
+    $html = renderDirectCard($newArray);
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="topic">
                 <div class="station__text-box">
                     <span class="start__station">Matara</span>&nbsp;to&nbsp;<span class="destination__station">Kandy</span>
                 </div>
@@ -81,7 +136,7 @@
                         Cancel Booking
                     </button>
                 </div>
+                </div> -->
                 </div>
         </div>
 
-    

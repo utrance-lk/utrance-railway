@@ -1,6 +1,6 @@
 <section class="margin-t-m margin-b-m flex-row-sa-center">
-    <div>
-        <div class="center-text margin-b-huge">
+    <div style="height:calc(100vh - 8rem)">
+        <div class="center-text margin-b-l">
             <?php
             if(isset($x)){
             
@@ -33,7 +33,7 @@
          
            
             $html = "";
-            $html.="<div class='view-train__schedule'>";
+            $html.="<div class='view-train__schedule' style='overflow-y:scroll;overflow-x:hidden;height:70%'>";
             $html.="<div class='view-train__table-heading'>";
             $html.="<div class='view-train__table-heading-text'>Station</div>";
             $html.="<div class='view-train__table-heading-text-time'>Arrival time</div>";
