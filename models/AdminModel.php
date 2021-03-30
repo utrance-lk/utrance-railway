@@ -748,19 +748,19 @@ class AdminModel extends Model
 
         $length = sizeof($stations);
 
-        for ($k = 0; $k < $length; $k++) {
-            for ($j = $k + 1; $j < $length; $j++) {
+        // for ($k = 0; $k < $length; $k++) {
+        //     for ($j = $k + 1; $j < $length; $j++) {
                 
-                if ($stations[$k]["pathId"] > $stations[$j]["pathId"]) {
-                    $temp = $stations[$k]["pathId"];
-                    $stations[$k]["pathId"] = $stations[$j]["pathId"];
-                    $stations[$j]["pathId"] = $temp;
+        //         if ($stations[$k]["pathId"] > $stations[$j]["pathId"]) {
+        //             $temp = $stations[$k]["pathId"];
+        //             $stations[$k]["pathId"] = $stations[$j]["pathId"];
+        //             $stations[$j]["pathId"] = $temp;
 
-                }
+        //         }
 
-            }
+        //     }
 
-        }
+        // }
         
        
         // if(strpos( $this->index2," ")){
