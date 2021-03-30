@@ -130,6 +130,7 @@ class UserModel extends Model
       $query->bindValue(":id", $this->id);
       $query->execute();
       $uploadImageName=$query->fetchAll(PDO::FETCH_ASSOC);
+      
      
       return $uploadImageName[0]['user_image'];
 

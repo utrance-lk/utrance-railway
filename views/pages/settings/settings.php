@@ -103,7 +103,7 @@ libxml_clear_errors();
 
                 $user_img = App::$APP->activeUser()['user_image'];
                 $html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
-                $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class=''/>";
+                $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img' alt='user-profile-picture' name='image_preview' id='image_preview' class=''/>";
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo'    />";
                 
                 $html .= "<label for='photo'>Choose New Photo</label></div>";
@@ -112,7 +112,6 @@ libxml_clear_errors();
                 $html .= "<div class='btn__save-box'>";
                 
                 $html .= "<input type='submit' class='btn btn-round-blue margin-b-l margin-t-s' name='save' value='Save Settings'></div></div>";
-                 
 
                $dom = new DOMDocument();
                 $dom->loadHTML($html);

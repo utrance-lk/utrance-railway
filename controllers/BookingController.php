@@ -193,7 +193,7 @@ class BookingController extends Controller
 
         $result = $writer->write($qrCode);
 
-        $result->saveToFile('C:/xampp/htdocs/utrance-railway/public/img/QR/' . $hashStr . '.png');
+        $result->saveToFile('E:/xwapp/htdocs/utrance-railway/public/img/QR/' . $hashStr . '.png');
         
     }
 
@@ -391,8 +391,13 @@ class BookingController extends Controller
     public function bookingForTrain($request)
     {
         if ($this->authMiddleware->restrictTo('admin')) {
-            if ($request->isGet()) {
-                return $this->render('bookingForATrain');
+            if ($request->isGet()) { 
+                $changeStatusModel = new BookingModel();
+                $changeStatusModel->loadData($request->getQueryParams());
+               
+                $resultArray['reArray'] = $changeStatusModel->getDetails();
+
+                return $this->render('bookingForATrain',$resultArray);
             }
         } else {
             return 'You are not authorized';
@@ -416,11 +421,32 @@ class BookingController extends Controller
         if ($this->authMiddleware->restrictTo('admin')) {
             if ($request->isGet()) {
                 return $this->render(['admin', 'manageBookings']);
+            }else{
+                // $getNewsModel = new BookingModel();
+                // $getNewsModel->loadData($request->getBody());
+        
+                // $trainArray['resultArray'] = $getNewsModel->searchBookingTrain();
+                // return $this->render(['admin', 'manageBookings'],$trainArray);
             }
         } else {
             return 'You are not authorized';
         }
     }
+
+    // public function SearchManageBookings($request){
+    //     if ($request->isPost()){
+    //         $saveDetailsModel = new BookingModel();
+    //         $tempBody = $request->getBody();
+    //         $tempBody['index1'] = $_POST['index1'];
+    //         $newtempBody['index2'] = $_POST['index2'];
+    //         $saveDetailsModel->loadData($tempBody, $newtempBody);
+
+    //         $resultArray = $saveDetailsModel->newsearchBookingTrain(); 
+           
+    //         echo json_encode($resultArray);
+    //     }
+
+    // }
 
     public function freightBookingForTrain($request)
     {
@@ -461,6 +487,23 @@ class BookingController extends Controller
             }
 
         }
+    }
+
+    public function bookingDetails($request){
+        if ($this->authMiddleware->isLoggedIn()){
+            if ($request->isPost()){
+                $saveDetailsModel = new BookingModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $saveDetailsModel->loadData($tempBody);
+                $bookingArray = $saveDetailsModel->getBookinDetails();
+                echo json_encode($bookingArray);
+                
+            }
+
+        }
+        
+
     }
 
 }

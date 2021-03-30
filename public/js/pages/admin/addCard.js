@@ -1,9 +1,12 @@
-let newStations = [];
+
+
 let newnewStations = [];
 let emptyStations=0;
 
-
 function addStops(x) {
+  document.getElementById("updatebutton").disabled = false;
+  document.getElementById("updatebutton").style.opacity = "1";
+   
   document.querySelectorAll(".stop-card__add-btn").forEach(function (item) {
     item.addEventListener("click", function (e) {
 
@@ -11,6 +14,7 @@ function addStops(x) {
       if (!isAvailPopup) {
         const parent = e.target.closest(".stop-card");
         
+      
       //  console.log(parent.firstChild.firstChild.innerText.split("#")[1] * 1);
         const markup = `
         <style>
@@ -52,38 +56,35 @@ function addStops(x) {
             `;
         parent.insertAdjacentHTML("afterend", markup);
 
-       ///////////////////////////////start validation///////////////////////////////////////////
+///////////////////////////////start validation///////////////////////////////////////////
         // let newindex5= parent.firstChild.firstChild.innerText.split("#")[1] * 1;
        
         $(document).ready(function(){
           $("#arrtime").click(function(){
             // let newindex5= parent.firstChild.childNodes;
             let newindex5= parent.querySelector(".stop-card__details").querySelector(".stop-card__dept-time").innerText;
-            
+      
             // console.log(newindex5[2]);
             document.querySelector(".add-stop-popup__arr-time--input").min = newindex5;
 
-            if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+            if(parent.parentNode.nextElementSibling){
               let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
               
               document.querySelector(".add-stop-popup__arr-time--input").max = newIndexMax;
 
             }
-            
           })
         });
 
         $(document).ready(function(){
           $("#deptime").click(function(){
             
-            if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+            if(parent.parentNode.nextElementSibling){
               let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
             
             document.querySelector(".add-stop-popup__dept-time--input").max = newIndexMax;
 
             }
-            
-            
           })
         });
 
@@ -95,7 +96,6 @@ function addStops(x) {
           
           document.querySelector(".add-stop-popup__dept-time--input").min = document.getElementById("arrtime").value;
           
-          
           var startDate = document.getElementById("arrtime").value;
           var endDate = document.getElementById("deptime").value;
           
@@ -106,7 +106,7 @@ function addStops(x) {
           // if (time2Date >= time3Date) { alert("Please enter proper date") }
           const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid time</p>`;
           const newx = document.querySelector( ".add-stop-popup");
-          if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+          if(parent.parentNode.nextElementSibling){
             var nextCardStartDate = document.querySelector(".add-stop-popup__dept-time--input").max;
             var time3Date= new Date("01/01/2000 "+nextCardStartDate);
 
@@ -136,27 +136,25 @@ function addStops(x) {
             }
 
           }
-          
         });
 
         document.querySelector( ".add-stop-popup__arr-time--input").addEventListener("change", function (){
 
         
-        if(document.querySelector("#myerror")!=null){
-          document.querySelector("#myerror").remove();
-        }
+          if(document.querySelector("#myerror")!=null){
+            document.querySelector("#myerror").remove();
+          }
 
           var startDate = document.querySelector(".add-stop-popup__arr-time--input").min;
           var endDate = document.getElementById("arrtime").value;
-      
-          
           
           var time1Date= new Date("01/01/2000 "+startDate);
           var time2Date= new Date("01/01/2000 "+endDate); 
          
+
           const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid time</p>`;
           const newx = document.querySelector( ".add-stop-popup");
-          if(parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time")){
+          if(parent.parentNode.nextElementSibling){
             var nextCardStartDate = document.querySelector(".add-stop-popup__arr-time--input").max;
             var time3Date= new Date("01/01/2000 "+nextCardStartDate);
 
@@ -187,8 +185,7 @@ function addStops(x) {
             document.getElementById("addButton").style.opacity = "1";
            }
 
-          }         //////new
-          
+          }
           // if (time2Date >= time3Date) { 
           //   alert("Please enter proper date");
           // }else{
@@ -214,7 +211,7 @@ function addStops(x) {
           document.getElementById("addButton").disabled = false;
           document.getElementById("addButton").style.opacity = "1";
         }
-           ///////////////////////////end validation/////////////////////////
+//////////////////////////////////end validation/////////////////////////
         const popupCloseBtn = document.querySelector(
           ".add-stop-popup__close-btn"
         );
@@ -282,7 +279,7 @@ function addStops(x) {
             newStations.push(obj);
           
 
-            
+           
 
 
            
@@ -342,10 +339,11 @@ function addStops(x) {
       // document.querySelector(".add-stop-popup").style.display = 'flex';
     });
 
-  });  
+  }); 
+
 }
 
-// console.log(popupCloseBtn);
+
 
 const changePathIdAndBG = function (changedPathId) {
   let pathIdCount = 0;
@@ -362,15 +360,7 @@ const changePathIdAndBG = function (changedPathId) {
   });
 };
 
-const timeConversion = function (time) {
-  const arrTimeHour = time.split(":")[0] * 1;
 
-  if (arrTimeHour < 12) {
-    return `${time} AM`;
-  }
-
-  return `0${arrTimeHour - 12}:${time.split(":")[1]} PM`;
-};
 
 
 
@@ -389,7 +379,7 @@ function myfun(x){
           train=JSON.parse(data)
           
           let stationLength = document.querySelectorAll(".stop-card").length;
-          
+         
           // for(let j=0;j<stationLength;j++){
            
           //    console.log(document.querySelectorAll(".stop-card")[j].querySelector(".stop-card__station").innerText);
@@ -523,3 +513,17 @@ function selected(element){
   searchWrapper.classList.remove("active");
   
 };
+
+// function addStops(x) {
+//   console.log(document.querySelectorAll(".stop-card__add-btn"));
+//   // document.querySelectorAll(".stop-card__add-btn")
+//   // .forEach(function (item) {
+    
+
+//   //       });
+//   //     });
+    
+
+// }
+
+

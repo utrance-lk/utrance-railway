@@ -99,10 +99,10 @@ class UserController extends Controller
         return $this->render('newsFeed');
     }
 
-    public function newsFeed01(){
+    // public function newsFeed01(){
        
-        return $this->render(['newsFeed','newsFeed01']);
-    }
+    //     return $this->render(['newsFeed','newsFeed01']);
+    // }
 
     public function newsFeed02(){
        

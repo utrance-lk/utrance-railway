@@ -26,12 +26,24 @@ $app->router->get('/utrance-railway/routes/add', [AdminController::class, 'addRo
 
 $app->router->get('/utrance-railway/routes/view', [AdminController::class, 'viewRoute']);
 
-#TODO: why is this duplicated route?
-$app->router->get('/utrance-railway/routes/update', [AdminController::class, 'addRoute']);
+$app->router->get('/utrance-railway/manage-news', [AdminController::class, 'manageNews']);
+$app->router->post('/utrance-railway/manage-news', [AdminController::class, 'manageNews']);
 
 $app->router->get('/utrance-railway/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
 $app->router->post('/utrance-railway/routes/newmanageRoutes', [AdminController::class, 'updateRoutes']);
 
 $app->router->post('/utrance-railway/routes/newmanageRoutesValidations', [AdminController::class, 'getRoutesStations']);
 
-$app->router->get('/utrance-railway/manage-news', [AdminController::class, 'manageNews']);
+$app->router->post('/utrance-railway/routes/addnewmanageRoutes', [AdminController::class, 'addupdateRoutes']);
+$app->router->get('/utrance-railway/routes/addnewmanageRoutes', [AdminController::class, 'addupdateRoutes']);
+
+$app->router->get('/utrance-railway/getNewNews', [AdminController::class, 'getNews']);
+$app->router->post('/utrance-railway/getNewBookingTrain', [AdminController::class, 'getNewBookingTrain']);
+
+$app->router->get('/utrance-railway/news/getmyNewNews', [AdminController::class, 'getNews']);
+
+$app->router->get('/utrance-railway/news/news01', [AdminController::class, 'newsFeed01']); //TODO:
+$app->router->get('/utrance-railway/routes/addnewmanageRoutesValidations', [AdminController::class, 'getaddRoutesStations']);
+
+$app->router->post('/utrance-railway/getMessages', [AdminController::class, 'getMessages']);
+$app->router->post('/utrance-railway/getCount', [AdminController::class, 'getCount']);
