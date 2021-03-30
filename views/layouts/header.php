@@ -21,13 +21,6 @@
               </svg>
               <span class="margin-l-xxs">Ticket Prices</span>
             </a>
-           
-            <a href="/utrance-railway/freight-search" class="header-main__item">
-              <svg class="header__icon">
-                <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-local_shipping"></use>
-              </svg>
-              <span class="margin-l-xxs">Freight Booking</span>
-            </a>
             <a href="/utrance-railway/view-train" class="header-main__item">
               <svg class="header__icon">
                 <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-train"></use>
@@ -36,7 +29,7 @@
             </a>
             <a href="/utrance-railway/freight-prices" class="header-main__item">
               <svg class="header__icon">
-                <use xlink:href="/utrance-railway/public/img/svg/sprite2.svg#icon-train"></use>
+                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-text-document-inverted"></use>
               </svg>
               <span class="margin-l-xxs">Freight Prices</span>
             </a>
