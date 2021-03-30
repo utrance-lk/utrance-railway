@@ -32,10 +32,13 @@ class BookingController extends Controller
         }
     }
 
-    public function getBooking($request)
+    public function getBooking($request, $response)
     {
         if (!$this->authMiddleware->isLoggedIn()) {
-            return 'You are not logged in!';
+            // flash msg
+            // return 'You are not logged in!';
+            $response->redirect('/utrance-railway/login');
+
         }
 
         if ($request->isGet()) {
@@ -48,7 +51,9 @@ class BookingController extends Controller
     public function createSeatBooking($request, $response)
     {
         if (!$this->authMiddleware->isLoggedIn()) {
-            return 'You are not logged in!';
+            // return 'You are not logged in!';
+            $response->redirect('/utrance-railway/login');
+
         }
 
         if ($request->isGet()) {
@@ -193,7 +198,9 @@ class BookingController extends Controller
 
         $result = $writer->write($qrCode);
 
-        $result->saveToFile('E:/xwapp/htdocs/utrance-railway/public/img/QR/' . $hashStr . '.png');
+        $path = dirname(__DIR__, 1) . '/public/img/QR/' . $hashStr . '.png';
+
+        $result->saveToFile($path);
         
     }
 
