@@ -38,7 +38,7 @@ if (isset($_SESSION['operation'] ) ) {
 }
 
 ?>
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+<script type="text/javascript" src="/public/js/components/flashMessages.js"></script>
 
     <div class="dash-content__container">
         <div class="dash-content">

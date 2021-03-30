@@ -78,13 +78,13 @@ function myFunction(news){
    if(count==6){
             const markup = `<div class='newscard-small' id='lastclone'>
             <div class='newscard-small__img-box'>
-                <img src='/utrance-railway/public/img/NewsImages/${news.NewsImage}' class='newscard-small__img' alt='news-img' width='60' height='60'>
+                <img src='/public/img/NewsImages/${news.NewsImage}' class='newscard-small__img' alt='news-img' width='60' height='60'>
                 <div class='newscard-small__view-btn'>
-                <a class="parentclass" href='/utrance-railway/news/news01?id=${news.News_id}'>
+                <a class="parentclass" href='/news/news01?id=${news.News_id}'>
                     <span id ='view' class='view'>View</span>
                 </a>
                     <svg class='newscard-small__icon'>
-                        <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-right'></use>
+                        <use xlink:href='/public/img/svg/sprite.svg#icon-chevron-right'></use>
                     </svg>
                 </div>
             </div>
@@ -103,13 +103,13 @@ function myFunction2(news){
     count++;
     const markup = `<div class='newscard-small' id=${count}>
     <div class='newscard-small__img-box'>
-        <img src='/utrance-railway/public/img/NewsImages/${news.NewsImage}' class='newscard-small__img' alt='news-img' width='60' height='60'>
+        <img src='/public/img/NewsImages/${news.NewsImage}' class='newscard-small__img' alt='news-img' width='60' height='60'>
         <div class='newscard-small__view-btn'>
-        <a class="parentclass" href='/utrance-railway/news/news01?id=${news.News_id}'>
+        <a class="parentclass" href='/news/news01?id=${news.News_id}'>
             <span id ='view' class='view'>View</span>
         </a>
             <svg class='newscard-small__icon'>
-                <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-right'></use>
+                <use xlink:href='/public/img/svg/sprite.svg#icon-chevron-right'></use>
             </svg>
         </div>
     </div>
@@ -127,13 +127,13 @@ function myFunction3(news){
    if(count==1){
             const markup = `<div class='newscard-small' id='firstclone'>
             <div class='newscard-small__img-box'>
-                <img src='/utrance-railway/public/img/NewsImages/${news.NewsImage}' class='newscard-small__img' alt='news-img' width='60' height='60'>
+                <img src='/public/img/NewsImages/${news.NewsImage}' class='newscard-small__img' alt='news-img' width='60' height='60'>
                 <div class='newscard-small__view-btn'>
-                <a class="parentclass" href='/utrance-railway/news/news01?id=${news.News_id}'>
+                <a class="parentclass" href='/news/news01?id=${news.News_id}'>
                     <span id ='view' class='view'>View</span>
                 </a>
                     <svg class='newscard-small__icon'>
-                        <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-right'></use>
+                        <use xlink:href='/public/img/svg/sprite.svg#icon-chevron-right'></use>
                     </svg>
                 </div>
             </div>

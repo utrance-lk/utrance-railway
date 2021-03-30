@@ -18,13 +18,13 @@
       href="https://fonts.googleapis.com/css?family=Lato:300,300i,700"
     />
 
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/base.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/components/buttons.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/headerMain.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/myBookings/myBookings.css" />
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/layout/footer.css" />
+    <link rel="stylesheet" href="/public/css/base.css" />
+    <link rel="stylesheet" href="/public/css/components/buttons.css" />
+    <link rel="stylesheet" href="/public/css/layout/headerMain.css" />
+    <link rel="stylesheet" href="/public/css/pages/myBookings/myBookings.css" />
+    <link rel="stylesheet" href="/public/css/layout/footer.css" />
 
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/style.concat.css" />
+    <link rel="stylesheet" href="/public/css/style.concat.css" />
 
   </head>
 

@@ -76,7 +76,7 @@ let newStations = [];
 //               inputValues.departureTime
 //             }</div>
 //             <svg class="stop__delete-btn" id="js--stop__delete-btn">
-//                 <use xlink:href="/utrance-railway/public/img/pages/admin/svg/sprite.svg#icon-cross"></use>
+//                 <use xlink:href="//public/img/pages/admin/svg/sprite.svg#icon-cross"></use>
 //             </svg>
 //         </div>
 //     `;
@@ -136,7 +136,7 @@ function renderAddStation() {
             </form>
             <div class="add-stop-popup__close-btn">
                 <svg class="close-icon">
-                    <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-clear'></use>
+                    <use xlink:href='/public/img/svg/sprite2.svg#icon-clear'></use>
                 </svg>
             </div>
         </div>
@@ -265,7 +265,7 @@ function addRouteEvents() {
                         </div>
                         <div class="stop-card__add-btn id = "hhh">
                             <svg class="add-icon">
-                                <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
+                                <use xlink:href='/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
                             </svg>
                         </div>
                     </div>

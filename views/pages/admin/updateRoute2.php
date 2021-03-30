@@ -68,7 +68,7 @@ if (isset($routes)) {
         $html .= "<div class='stop-card__dept-time'>" . $value['departure_time'] . "</div></div>";
         $html .= "<div class='stop-card__add-btn'>";
         $html .= "<svg class='add-icon'>
-        <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use></svg></div></div></div>";
+        <use xlink:href='/public/img/svg/sprite2.svg#icon-add_circle_outline'></use></svg></div></div></div>";
 
     }
 
@@ -92,8 +92,8 @@ print_r($dom->saveHTML());
 </div>
 
 
-<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewRoute.js"></script>
-<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewaddRoutCard.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/viewRoute.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/viewaddRoutCard.js"></script>
 <script>addStops(<?php echo $x; ?>);</script>
 
 <script>
@@ -110,7 +110,7 @@ let newindex3='<?php echo $x; ?>';
       success : function (data) {
       console.log(data.length);
             if(data.length==6){
-               window.location.href = "/utrance-railway/routes/";
+               window.location.href = "/routes/";
             }
             else{
                 if(!document.getElementById("myerror")){
@@ -119,7 +119,7 @@ let newindex3='<?php echo $x; ?>';
                  newx.insertAdjacentHTML("afterend", newmarkup);
                  
                
-                  window.location.href = "/utrance-railway/routes/view?id='<?php echo $x; ?>'";
+                  window.location.href = "/routes/view?id='<?php echo $x; ?>'";
                 }
                 
 

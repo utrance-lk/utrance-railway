@@ -37,13 +37,13 @@ const renderUser = function (train) {
     markup += `<div>Deactive</div>`;
   }
 
-  markup += `<a href='/utrance-railway/trains/view?id=${train.train_id}' class='btn btn-box-white margin-r-s'>View</a>`;
+  markup += `<a href='/trains/view?id=${train.train_id}' class='btn btn-box-white margin-r-s'>View</a>`;
 
   if (train.train_active_status == 1) {
-    markup += `<a href='/utrance-railway/trains/Deactivated?id=${train.train_id}' class='btn btn-box-white btn-box-white--delete' id='isActive' onclick=\"return confirm('Are you sure?');\">
+    markup += `<a href='/trains/Deactivated?id=${train.train_id}' class='btn btn-box-white btn-box-white--delete' id='isActive' onclick=\"return confirm('Are you sure?');\">
       Deactivate</a>`;
   } else {
-    markup += `<a href='/utrance-railway/trains/Activated?id=${train.train_id}' class='btn btn-box-white btn-box-white--activate' id='isActive' onclick=\"return confirm('Are you sure?');\">
+    markup += `<a href='/trains/Activated?id=${train.train_id}' class='btn btn-box-white btn-box-white--activate' id='isActive' onclick=\"return confirm('Are you sure?');\">
       Activate</a>`;
   }
 

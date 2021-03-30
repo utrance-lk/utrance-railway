@@ -34,7 +34,7 @@ const myrenderCard = function (train){
                         </div>
                     </div>
                     
-                    <a href='/utrance-railway/booking-train?id=${train.train_id}&date=${mydate}' id = 'bookMyId'class='btn btn-box-white'>
+                    <a href='/booking-train?id=${train.train_id}&date=${mydate}' id = 'bookMyId'class='btn btn-box-white'>
                         view
                     </a>
                 </div>`;

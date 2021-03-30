@@ -34,11 +34,7 @@
           <p class="center-text">Manage News</p>
         </div>
 
-<<<<<<< HEAD
-        <form action="/manage-news" method="POST" >
-=======
         <form action="" method="POST" enctype="multipart/form-data">
->>>>>>> master
           <fieldset class="margin-b-xs">
             <legend class="topic-greyed topic-greyed--dark padding-xxs">News Type</legend>
             <div class="flex-row-sa-center margin-tb-s">
@@ -70,15 +66,10 @@
           <fieldset class="margin-b-xs">
             <legend class="topic-greyed topic-greyed--dark padding-xxs">Image</legend>   
             <div class="">
-<<<<<<< HEAD
-              <img 
-                src="/public/img/pages/admin/train.jpg"
-=======
             <!-- <img id="output" width="500" height="360"/> -->
            
               <img id="output"
-                src="../../../../utrance-railway/public/img/NewsImages/newtrain.jpeg"
->>>>>>> master
+                src="/public/img/NewsImages/newtrain.jpeg"
                 alt="news-picutre"
                 class="newsimage"
                 width="500" height="360"

@@ -33,7 +33,7 @@ class UserController extends Controller
             $updateUserDetailsModel->loadData($tempUpdateUserBody);
             $array=$updateUserDetailsModel->uploadImage(App::$APP->activeUser()['id']);
             if($array === "Success"){
-                return $response->redirect('/utrance-railway/settings');
+                return $response->redirect('/settings');
             }else{
                 var_dump($array);
             }
@@ -65,7 +65,7 @@ class UserController extends Controller
            
             if ($state === 'success') { 
                 
-                return $response->redirect('/utrance-railway/settings');
+                return $response->redirect('/settings');
             } else {
                 $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
                return $this->render('settings', $updateUserDetailsSetValue);

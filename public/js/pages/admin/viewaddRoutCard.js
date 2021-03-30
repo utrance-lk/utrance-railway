@@ -37,7 +37,7 @@ function newaddStops(m){
                         </form>
                         <div class="add-stop-popup__close-btn">
                             <svg class="close-icon">
-                                <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-clear'></use>
+                                <use xlink:href='/public/img/svg/sprite2.svg#icon-clear'></use>
                             </svg>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ function newaddStops(m){
                     </div>
                     <div class="stop-card__add-btn">
                         <svg class="add-icon">
-                            <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
+                            <use xlink:href='/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
                         </svg>
                     </div>
                 </div>

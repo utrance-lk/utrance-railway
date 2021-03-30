@@ -23,7 +23,7 @@ const renderUser = function (user) {
     <div class='manage-users__result-card margin-b-m'>
         <div class='manage-users__user'>
             <div class='margin-r-xs'>
-                <img src='/utrance-railway/public/img/uploads/${
+                <img src='/public/img/uploads/${
                   user.user_image
                 }.jpg' alt='profile-avatar' class='manage-users__avatar'/>
             </div>
@@ -51,20 +51,20 @@ const renderUser = function (user) {
         </div>`;
 
   if (user.user_role === "admin" && user.first_name === activeUser.first_name) {
-    markup += `<a href='/utrance-railway/settings' class='btn btn-box-white margin-r-s'>View</a>`;
+    markup += `<a href='/settings' class='btn btn-box-white margin-r-s'>View</a>`;
   } else {
-    markup += `<a href='/utrance-railway/users/view?id=${user.id}' class='btn btn-box-white margin-r-s'>View</a>`;
+    markup += `<a href='/users/view?id=${user.id}' class='btn btn-box-white margin-r-s'>View</a>`;
   }
 
   if (user.user_active_status==1) {
     if (user.user_role !== "admin") {
-      markup += `<a href='/utrance-railway/users/deactivate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--delete'>Deactivate</a>`;
+      markup += `<a href='/users/deactivate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--delete'>Deactivate</a>`;
     } else {
       markup += `<a style='visibility: hidden'></a>`;
     }
   } else {
     if (user.user_role !== "admin") {
-      markup += `<a href='/utrance-railway/users/activate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--activate'>Activate</a>`;
+      markup += `<a href='/users/activate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--activate'>Activate</a>`;
     } else {
       markup += `<a style='visibility: hidden'></a>`;
     }

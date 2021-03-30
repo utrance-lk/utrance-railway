@@ -66,7 +66,7 @@ document
                     </div>
                     <div class="stop-card__add-btn">
                         <svg class="add-icon">
-                            <use xlink:href='/utrance-railway/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
+                            <use xlink:href='/public/img/svg/sprite2.svg#icon-add_circle_outline'></use>
                         </svg>
                     </div>
                 </div>

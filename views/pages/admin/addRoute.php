@@ -42,17 +42,11 @@
     </div>
                 
 </div>
-<<<<<<< HEAD
-<script type="text/javascript" src="/public/js/pages/admin/addRoute.js"></script>
-=======
-
-
-
 
 <?php $x=39 ?>
-<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/addRoute.js"></script>
-<!-- <script type="text/javascript" src="/utrance-railway/public/js/pages/admin/viewaddRoutCard.js"></script> -->
-<script type="text/javascript" src="/utrance-railway/public/js/pages/admin/addCard.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/addRoute.js"></script>
+<!-- <script type="text/javascript" src="/public/js/pages/admin/viewaddRoutCard.js"></script> -->
+<script type="text/javascript" src="/public/js/pages/admin/addCard.js"></script>
 <script>
 
 
@@ -86,7 +80,6 @@ $(document).ready(function(){
 
 </script>
 
->>>>>>> master
 <script>
 $(document).ready(function(){
     
@@ -122,14 +115,14 @@ $(document).ready(function(){
     
      console.log(data.length);
             if(data.length===6){
-               window.location.href = "/utrance-railway/routes/";
+               window.location.href = "/routes/";
             }else{
                 const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid station name.</p>`;
                  const newx = document.querySelector( ".dash-content__input");
                  newx.insertAdjacentHTML("afterend", newmarkup);
                
                
-               window.location.href = "/utrance-railway/routes/add";
+               window.location.href = "/routes/add";
 
 
             }

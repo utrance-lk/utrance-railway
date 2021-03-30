@@ -1,11 +1,6 @@
 
-<<<<<<< HEAD
-<section class="ticket-prices">
-  <form class="ticket-prices__search" method="POST" action="/ticket-prices">
-=======
 <section class="ticket-prices margin-b-l">
-  <form class="ticket-prices__search" method="POST" action="/utrance-railway/ticket-prices">
->>>>>>> master
+  <form class="ticket-prices__search" method="POST" action="/ticket-prices">
     <div class="ticket-prices__search--from">
       <div class="ticket-prices__search-box  js--from__station"  id="js--from__station"></div>
       <div class="ticket-prices__search-dropdown js--search-dropdown__from">

@@ -4,15 +4,10 @@ require_once "../controllers/BookingController.php";
 
 $app->router->get('/myBookings', [BookingController::class, 'getAllBookings']);
 
-<<<<<<< HEAD
 $app->router->get('/bookings', [BookingController::class, 'manageBookings']);
-$app->router->post('/bookings', [BookingController::class, 'manageBookings']);
-=======
-$app->router->get('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
-// $app->router->post('/utrance-railway/bookings', [BookingController::class, 'manageBookings']);
-// $app->router->post('/utrance-railway/getSearchbookings', [BookingController::class, 'SearchManageBookings']);
+// $app->router->post('/bookings', [BookingController::class, 'manageBookings']);
+// $app->router->post('/getSearchbookings', [BookingController::class, 'SearchManageBookings']);
 
->>>>>>> master
 
 $app->router->get('/book-seats', [BookingController::class, 'createSeatBooking']);
 $app->router->post('/book-seats', [BookingController::class, 'createSeatBooking']);
@@ -32,12 +27,8 @@ $app->router->get('/freight-booking-train', [BookingController::class, 'freightB
 $app->router->get('/checkout', [BookingController::class, 'checkout']);
 $app->router->post('/checkout', [BookingController::class, 'checkout']);
 
-<<<<<<< HEAD
+$app->router->get('/getBookings', [BookingController::class, 'bookingDetails']);
+$app->router->post('/getBookings', [BookingController::class, 'bookingDetails']);
 $app->router->get('/booking-success', [BookingController::class, 'bookingSuccess']);
-=======
-$app->router->get('/utrance-railway/getBookings', [BookingController::class, 'bookingDetails']);
-$app->router->post('/utrance-railway/getBookings', [BookingController::class, 'bookingDetails']);
-$app->router->get('/utrance-railway/booking-success', [BookingController::class, 'bookingSuccess']);
->>>>>>> master
 
 ?>
