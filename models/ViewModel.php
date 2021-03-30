@@ -210,7 +210,7 @@ class ViewModel extends Model
                                                         left join stops s
                                                         on trt.route_id = s.route_id) tota
                                                     on fromta.fsiid = tota.tsiid) matching_station
-                                            where fsspi <= fsipi and tsepi >= tsipi and fsiat <= tsidt and fssid != isid and isid != tseid  and (from_route_id != to_route_id)) as big_table
+                                            where fsspi <= fsipi and tsepi >= tsipi and fsiat <= tsidt and fssdt < fsiat and tsidt < tseat and fssid != isid and isid != tseid  and (from_route_id != to_route_id)) as big_table
                                         left join
                                             (select route_id as path_indexer_route_id, path_id as fsdnppi from stops where station_id =:to) path_indexer
                                         on path_indexer.path_indexer_route_id = big_table.from_route_id
