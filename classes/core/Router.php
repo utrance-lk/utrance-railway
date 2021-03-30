@@ -1,6 +1,7 @@
 <?php {
 
     include_once "../middlewares/AuthMiddleware.php";
+    include_once "../classes/core/controller.php";
     class Router
     {
         public $request;
@@ -31,7 +32,8 @@
 
             if ($callback === false) {
                 $this->response->setStatusCode(404);
-                return "Not found";
+                $controller = new Controller();
+                return $controller->render(['error', 'error404']);
             }
 
             if (is_string($callback)) {

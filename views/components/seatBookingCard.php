@@ -17,12 +17,11 @@ function renderTrainBookingCard($train, $id, $when)
     $fullHr = substr($train['journey_time'], 0, 2);
     $fullMin = substr($train['journey_time'], 3, 2);
 
-    // var_dump($train);
     $_SESSION['booking'][$id]['customer_id'] =  App::$APP->activeUser()['id'];
     $_SESSION['booking'][$id]['train_date'] =  $when;
     $_SESSION['booking'][$id]['train_id'] =  $train['train_id'];
-
-    // var_dump($booking[$id]);
+    $_SESSION['booking'][$id]['from'] =  $train['from'];
+    $_SESSION['booking'][$id]['to'] =  $train['to'];
 
     return "
             <div class='seat-booking__remaining-seats' id='remaining-seats{$id}'>

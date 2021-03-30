@@ -217,6 +217,14 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-left: 5rem;
 }
 
+.margin-l-huge {
+  margin-left: 10rem;
+}
+
+.margin-l-xl {
+  margin-left: 20rem;
+}
+
 .margin-b-xxs {
   margin-bottom: 0.5rem;
 }
@@ -253,6 +261,14 @@ input::-webkit-datetime-edit-year-field:focus {
   margin-top: 4rem;
 }
 
+.margin-t-l {
+  margin-top: 5rem;
+}
+
+.margin-t-huge {
+  margin-top: 10rem;
+}
+
 .margin-tb-xs {
   margin: 1rem 0;
 }
@@ -280,6 +296,10 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .padding-xs {
   padding: 1rem;
+}
+
+.padding-s {
+  padding: 2rem;
 }
 
 .padding-xxs {
@@ -543,6 +563,15 @@ input::-webkit-datetime-edit-year-field:focus {
   transform: translateY(2px);
 }
 
+.btn-square-no-bg--disabled {
+  border: 1px solid rgb(238, 238, 238);
+  text-align: center;
+  color: rgb(238, 238, 238);
+  padding: 1rem;
+  width: 10rem;
+  font-size: 1.5rem;
+}
+
 /* ----- */
 .btn-square-upload {
   padding: 5px;
@@ -563,19 +592,31 @@ input::-webkit-datetime-edit-year-field:focus {
 .btn-login {
   margin-top: 2rem;
   padding: 1.2rem;
-  border: 1px solid #1F3A93;
+  border: 1px solid #1f3a93;
   width: 11rem;
   text-align: center;
   border-radius: 10rem;
   align-self: flex-end;
   font-size: 1.75rem;
   font-family: "Poppins", sans-serif;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .btn-login:hover {
-  background-color: #1F3A93;
+  background-color: #1f3a93;
   color: #fff;
+}
+
+/* BACK BUTTON */
+.btn-back__icon {
+  width: 4rem;
+  height: 4rem;
+  fill: var(--color-btn-round-background);
+  transition: all 0.5s;
+}
+
+.btn-back:hover .btn-back__icon {
+  fill: var(--color-btn-round-background--hover);
 }
 
 .filter__container {
@@ -950,6 +991,13 @@ input::-webkit-datetime-edit-year-field:focus {
   z-index: 10;
 }
 
+.seat-booking-card input {
+  font-size: 2.3rem;
+  width: 9rem;
+  padding: 1rem;
+  color: inherit;
+}
+
 .seat-booking-card__train-details {
   width: 30%;
   display: flex;
@@ -998,7 +1046,7 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .dashboard {
-  margin: 10vh 10vw;
+  margin: 5vh 10vw;
   font-family: "Lato", sans-serif;
   border-radius: 5px;
   display: flex;
@@ -1102,11 +1150,11 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .header__logobox--white {
-  background-image: url(../../img/logo/utranceWhite-min.png);
+  background-image: url(/public/img/logo/utranceWhite.png);
 }
 
 .header__logobox--black {
-  background-image: url(../../img/logo/utranceLogoBlack-min.png);
+  background-image: url(/public/img/logo/utranceLogoBlack.png);
 }
 
 .header-main__items {
@@ -1264,6 +1312,24 @@ input::-webkit-datetime-edit-year-field:focus {
   width: 80%;
 }
 
+.error__text--heading {
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.error__text--sub {
+    font-size: 2rem;
+}
+
+.error__img {
+    height: 20rem;
+    width: 20rem;
+}
+
+.error__img--small {
+    height: 10rem;
+    width: 10rem;
+}
 .add-train__new-train {
   display: flex;
   height: 90vh;

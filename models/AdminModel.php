@@ -98,7 +98,7 @@ class AdminModel extends Model
 
     public function getUserDetails() ///Ashika ///After Click the view button
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num,details_provider_station,user_role FROM users WHERE id=:id ");
+        $query = APP::$APP->db->pdo->prepare("SELECT id,last_name,first_name,street_line1,street_line2,email_id,city,contact_num,user_role FROM users WHERE id=:id ");
         $query->bindValue(":id", $this->id);
 
         $query->execute();

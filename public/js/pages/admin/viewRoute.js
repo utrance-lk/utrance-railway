@@ -363,26 +363,6 @@ function myfun(x) {
   const inputBox = searchWrapper.querySelector("input");
   const suggBox = searchWrapper.querySelector(".autocom-box");
 
-  // const suggestions = [
-  //   "Matara",
-  //     "Colombo Fort",
-  //     "Galle",
-  //     "Katugoda",
-  //     "Gampaha",
-  //     "Kandy",
-  //     "Puttalam",
-  //     "Aluthgama",
-  //     "Midigama",
-  //     "Weligama",
-  //     "Avissawella",
-  //     "Beliatta",
-  //     "Wewurukannala",
-  //     "Kekanadura",
-  //     "Maradana",
-  //     "Kalutara",
-  //     "Kegalle",
-  // ];
-
   inputBox.onkeyup = (e) => {
     let userData = e.target.value;
     let emptyArray = [];
