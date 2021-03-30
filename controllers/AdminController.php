@@ -598,4 +598,48 @@ class AdminController extends Controller
 
     }
 
+    public function messageFull($request) 
+    {
+
+        if($this->protect()) {
+    
+            if($request->isGet()) 
+            {
+                $messageFull=new AdminModel();
+                
+                $tempBody=$request->getBody();
+                $details_id = $request->getQueryParams()['details_id'];
+                $tempBody['details_id']=$details_id;
+       
+                $messageFull->loadData($tempBody);
+                $messageArray=$messageFull->messageFull();
+                
+                return $this->render(['admin','messageFull'],$messageArray);
+                
+            }
+            return "success";
+        }
+        
+    }
+
+     public function message($request) 
+    {
+
+        if($this->protect()) {
+    
+            if($request->isGet()) 
+            {
+                $message=new AdminModel();
+
+                $messageArray=$message->message();
+             
+                return $this->render(['admin','message'],$messageArray);
+                
+            }
+            return "success";
+                
+        }
+        
+    }
+
 }

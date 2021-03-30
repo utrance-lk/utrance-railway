@@ -53,3 +53,10 @@ $app->router->post('/utrance-railway/getCount', [AdminController::class, 'getCou
 
 $app->router->post('/utrance-railway/news', [ViewController::class, 'newsFeed']);
 $app->router->get('/utrance-railway/news', [ViewController::class, 'newsFeed']);
+
+$app->router->get('/utrance-railway/message', [AdminController::class, 'message']);
+$app->router->post('/utrance-railway/message', [AdminController::class, 'message']);
+
+$app->router->get('/utrance-railway/messageFull', [AdminController::class, 'messageFull']);
+$app->router->post('/utrance-railway/messageFull', [AdminController::class, 'messageFull']);
+
