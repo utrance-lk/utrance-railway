@@ -240,7 +240,7 @@ libxml_clear_errors();
               <?php
 
 $html = "";
-$html .= "<form action='/utrance-railway/upload' method='POST' enctype='multipart/form-data'>";
+$html .= "<form action='/utrance-railway/upload' method='POST' class='user-img' enctype='multipart/form-data'>";
 $html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
 $image_name = App::$APP->activeUser()['user_image'];
 var_dump($image_name);

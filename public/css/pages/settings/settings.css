@@ -31,3 +31,11 @@
   width: 8rem;
 } */
 
+#image_preview {
+  border-radius: 50%;
+}
+
+.user-img {
+  margin: 0 7rem;
+}
+
