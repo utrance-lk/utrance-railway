@@ -11,12 +11,10 @@ class AdminController extends Controller
         $authMiddleware = new AuthMiddleware();
 
         if (!$authMiddleware->isLoggedIn()) {
-            echo 'Your are not logged in!';
             return false;
         }
 
         if (!$authMiddleware->restrictTo('admin')) {
-            echo 'You are unorthorized to perform this action!!';
             return false;
         }
         return true;
@@ -27,7 +25,7 @@ class AdminController extends Controller
 
     // manage users
 
-    public function manageUsers($request)
+    public function manageUsers($request, $response)
     {
 
         if ($this->protect()) {
@@ -45,123 +43,170 @@ class AdminController extends Controller
             return $this->render(['admin', 'manageUsers'], $getUserArray);
 
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
     public function addUser($request, $response)
     { //Admin page add user function
 
-        $adminFunction = new AdminModel();
+        if ($this->protect()) {
+            $adminFunction = new AdminModel();
 
-        if ($request->isPost()) {
-            $adminFunction->loadData($request->getBody());
-            $state = $adminFunction->addUser();
+            if ($request->isPost()) {
+                $adminFunction->loadData($request->getBody());
+                $state = $adminFunction->addUser();
 
-            if ($state === "success") {
-                return $response->redirect('/utrance-railway/users/add');
-            } else {
-                $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
-                return $this->render(['admin', 'addUser'], $addUserSetValue); //Ashika
+                if ($state === "success") {
+                    return $response->redirect('/utrance-railway/users/add');
+                } else {
+                    $addUserSetValue = $adminFunction->registerSetValue($state); //Ashika
+                    return $this->render(['admin', 'addUser'], $addUserSetValue); //Ashika
+                }
+
             }
-
+            return $this->render(['admin', 'addUser']);
         }
-        return $this->render(['admin', 'addUser']);
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
-    public function viewUser($request)
+    public function viewUser($request, $response)
     { //View users from manage users
 
-        if ($request->isGet()) {
-            $adminViewUser = new AdminModel();
-            $adminViewUser->loadData($request->getQueryParams());
-            $updateUserArray = $adminViewUser->getUserDetails();
-            return $this->render(['admin', 'updateUser'], $updateUserArray);
+        if ($this->protect()) {
+            if ($request->isGet()) {
+                $adminViewUser = new AdminModel();
+                $adminViewUser->loadData($request->getQueryParams());
+                $updateUserArray = $adminViewUser->getUserDetails();
+                return $this->render(['admin', 'updateUser'], $updateUserArray);
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
-    public function viewTrains($request)
+    public function viewTrains($request, $response)
     {
-        if ($request->isGet()) {
-            $adminViewTrain = new AdminModel();
-            $adminViewTrain->loadData($request->getQueryParams());
-            $updateTrainArray = $adminViewTrain->getTrainDetails();
-            return $this->render(['admin', 'updateUser'], $updateTrainArray);
+
+        if ($this->protect()) {
+
+            if ($request->isGet()) {
+                $adminViewTrain = new AdminModel();
+                $adminViewTrain->loadData($request->getQueryParams());
+                $updateTrainArray = $adminViewTrain->getTrainDetails();
+                return $this->render(['admin', 'updateUser'], $updateTrainArray);
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
     public function updateUser($request, $response)
     { //update users from manage users
 
-        if ($request->isPost()) {
-            $saveDetailsModel = new AdminModel();
+        if ($this->protect()) {
 
-            $tempBody = $request->getBody();
-            $id = $request->getQueryParams()['id'];
-            $tempBody['id'] = $id;
-            $saveDetailsModel->loadData($tempBody);
-            $state = $saveDetailsModel->updateUserDetails();
+            if ($request->isPost()) {
+                $saveDetailsModel = new AdminModel();
 
-            if ($state === "success") {
-                return $response->redirect('/utrance-railway/users/view?id=' . $id);
-            } else {
-                $commonArray = $saveDetailsModel->getUserDetails();
-                $commonArray["updateSetValue"] = $saveDetailsModel->registerSetValue($state); //Ashika
-                return $this->render(['admin', 'updateUser'], $commonArray); //Ashika
+                $tempBody = $request->getBody();
+                $id = $request->getQueryParams()['id'];
+                $tempBody['id'] = $id;
+                $saveDetailsModel->loadData($tempBody);
+                $state = $saveDetailsModel->updateUserDetails();
+
+                if ($state === "success") {
+                    return $response->redirect('/utrance-railway/users/view?id=' . $id);
+                } else {
+                    $commonArray = $saveDetailsModel->getUserDetails();
+                    $commonArray["updateSetValue"] = $saveDetailsModel->registerSetValue($state); //Ashika
+                    return $this->render(['admin', 'updateUser'], $commonArray); //Ashika
+                }
+
             }
-
+            return $this->render(['admin', 'updateUser']);
         }
-        return $this->render(['admin', 'updateUser']);
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
     public function changeUserStatus($request, $response) /// Activate and deactivate part in manage users
 
-    { //Ashika
-        if ($request->isGet()) {
-            $changeUserStatusModel = new AdminModel();
-            $changeUserStatusModel->loadData($request->getQueryParams());
-            $changeUserStatusModel->changeUserStatusDetails();
-            $changeStatusArray = $changeUserStatusModel->getUsers();
-
-        }
-        $response->redirect('/utrance-railway/users');
-    }
-
-    public function filterSearch($request)
     {
 
-        if ($request->isPost()) {
-            $saveDetailsModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $newtempBody['index2'] = $_POST['index2'];
-            $saveDetailsModel->loadData($tempBody, $newtempBody);
+        if ($this->protect()) {
+            if ($request->isGet()) {
+                $changeUserStatusModel = new AdminModel();
+                $changeUserStatusModel->loadData($request->getQueryParams());
+                $changeUserStatusModel->changeUserStatusDetails();
+                $changeStatusArray = $changeUserStatusModel->getUsers();
+                // TODO: what is it doing here?
+                return true;
 
-            $trainArrays = $saveDetailsModel->getMyUsers();
+            }
 
-            echo json_encode($trainArrays);
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+    }
+
+    public function filterSearch($request, $response)
+    {
+
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $saveDetailsModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $newtempBody['index2'] = $_POST['index2'];
+                $saveDetailsModel->loadData($tempBody, $newtempBody);
+
+                $trainArrays = $saveDetailsModel->getMyUsers();
+
+                echo json_encode($trainArrays);
+                return true;
+            }
+        }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
     // manage trains
 
-    public function newsearch($request)
+    public function newsearch($request, $response)
     {
+        if ($this->protect()) {
 
-        if ($request->isPost()) {
-            $saveDetailsModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $newtempBody['index2'] = $_POST['index2'];
-            $saveDetailsModel->loadData($tempBody, $newtempBody);
+            if ($request->isPost()) {
+                $saveDetailsModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $newtempBody['index2'] = $_POST['index2'];
+                $saveDetailsModel->loadData($tempBody, $newtempBody);
 
-            $trainArrays = $saveDetailsModel->getMyTrains();
+                $trainArrays = $saveDetailsModel->getMyTrains();
 
-            echo json_encode($trainArrays);
+                echo json_encode($trainArrays);
+                return true;
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
-    public function manageTrains($request)
+    public function manageTrains($request, $response)
     {
         if ($this->protect()) {
 
@@ -179,9 +224,12 @@ class AdminController extends Controller
 
             }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
-    public function viewTrain($request)
+    public function viewTrain($request, $response)
     {
         if ($this->protect()) {
 
@@ -199,6 +247,9 @@ class AdminController extends Controller
 
             }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
@@ -231,6 +282,9 @@ class AdminController extends Controller
             }
         }
 
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+
     }
 
     public function deleteTrain($request, $response)
@@ -243,15 +297,14 @@ class AdminController extends Controller
 
                 $deleteTrainModel->loadData($request->getQueryParams());
 
-                $getResult['result']=$deleteTrainModel->deleteTrains();
-                     return $response->redirect('/utrance-railway/trains');
-               
-                
-
-   
+                $getResult['result'] = $deleteTrainModel->deleteTrains();
+                return $response->redirect('/utrance-railway/trains');
 
             }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
@@ -269,6 +322,9 @@ class AdminController extends Controller
 
             }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
@@ -295,39 +351,56 @@ class AdminController extends Controller
             }
         }
 
-        // var_dump($getrouteArray)
-        return $this->render(['admin', 'addTrain'], $getrouteArray);
+        // return $this->render(['admin', 'addTrain'], $getrouteArray);
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
     // manage routes
     public function getRoutesStations($request, $response)
     {
-        if ($request->isPost()) {
-            $saveDetailsModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $saveDetailsModel->loadData($tempBody);
-            $trainArray = $saveDetailsModel->getMyRoutsStations();
-            echo json_encode($trainArray);
+
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $saveDetailsModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $saveDetailsModel->loadData($tempBody);
+                $trainArray = $saveDetailsModel->getMyRoutsStations();
+                echo json_encode($trainArray);
+                return true;
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
     public function updateRoutes($request, $response)
     {
-        if ($request->isPost()) {
 
-            $saveDetailsModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $newtempBody['index2'] = $_POST['index2'];
-            $saveDetailsModel->loadData($tempBody, $newtempBody);
-            $trainArray = $saveDetailsModel->getMyRouts();
-            echo json_encode($trainArray);
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+
+                $saveDetailsModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $newtempBody['index2'] = $_POST['index2'];
+                $saveDetailsModel->loadData($tempBody, $newtempBody);
+                $trainArray = $saveDetailsModel->getMyRouts();
+                echo json_encode($trainArray);
+                return true;
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
-    public function manageRoutes($request)
+    public function manageRoutes($request, $response)
     {
 
         if ($this->protect()) {
@@ -341,15 +414,18 @@ class AdminController extends Controller
 
             } else if ($request->isPost()) {
                 $resultArray = $searchModel->searchRouteDetails();
-              
+
                 return $this->render(['admin', 'manageRoutes'], $resultArray);
 
             }
 
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
-    public function addRoute($request)
+    public function addRoute($request, $response)
     {
         if ($this->protect()) {
             if ($request->isPost()) {
@@ -358,6 +434,9 @@ class AdminController extends Controller
 
             return $this->render(['admin', 'addRoute']);
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
     public function viewRoute($request, $response)
@@ -376,14 +455,12 @@ class AdminController extends Controller
             }
 
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
     ////////////////////////
-
-    public function aboutUs()
-    {
-        return $this->render('aboutUs');
-    }
 
     public function manageNews($request, $response) //hasani
 
@@ -395,139 +472,201 @@ class AdminController extends Controller
             if ($request->isPost()) {
 
                 $getNewsArray['error'] = $manageNewsModel->uploadNews();
-               
-               if(empty($getNewsArray['error'])){
-              
-                return $response->redirect('/utrance-railway/home');
-               }else{
-                return $this->render(['admin', 'manageNews'],$getNewsArray);
-               }
-                
-                // return $this->render(['admin', 'manageNews'],$getNewsArray)
+
+                if (empty($getNewsArray['error'])) {
+
+                    return $response->redirect('/utrance-railway/home');
+                } else {
+                    return $this->render(['admin', 'manageNews'], $getNewsArray);
+                }
 
             }
             return $this->render(['admin', 'manageNews']);
         }
 
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+
     }
 
-    public function newsFeed($request, $response){
-        if ($this->protect()){
-            if ($request->isGet()){
+    // TODO: is this function needed?
+    public function newsFeed($request, $response)
+    {
+
+        if ($this->protect()) {
+
+            if ($this->protect()) {
+                if ($request->isGet()) {
+                    $getNewsModel = new AdminModel();
+                    $getNewsModel->loadData($request->getBody());
+
+                    $trainArray['news'] = $getNewsModel->getAllNews();
+
+                    return $this->render('newsFeed', $trainArray);
+                }
+
+            }
+        }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+
+    }
+
+    public function getNews($request, $response)
+    {
+
+        if ($this->protect()) {
+
+            if ($request->isGet()) {
                 $getNewsModel = new AdminModel();
                 $getNewsModel->loadData($request->getBody());
-    
-                $trainArray['news'] = $getNewsModel->getAllNews();
-         
-                return $this->render('newsFeed',$trainArray);
+
+                $trainArray = $getNewsModel->getNews();
+                echo json_encode($trainArray);
+                return true;
+            } else {
+                $saveDetailsModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $saveDetailsModel->loadData($tempBody);
+                $trainArray = $saveDetailsModel->getMyNews();
+                echo json_encode($trainArray);
+                return true;
             }
 
         }
-        
-        
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
-    public function getNews($request, $response){
-        
-        if ($request->isGet()){
-            $getNewsModel = new AdminModel();
-            $getNewsModel->loadData($request->getBody());
+    public function newsFeed01($request, $response)
+    {
 
-            $trainArray = $getNewsModel->getNews();
-            echo json_encode($trainArray);
-        }else{
+        if ($this->protect()) {
+
             $saveDetailsModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $saveDetailsModel->loadData($tempBody);
-            $trainArray = $saveDetailsModel->getMyNews();
-            echo json_encode($trainArray);
 
+            $tempBody = $request->getBody();
+            $tempBody['id'] = $request->getQueryParams()['id'];
+            $saveDetailsModel->loadData($tempBody);
+
+            $updateRouteArray['news'] = $saveDetailsModel->getMyNews();
+            $updateRouteArray['allnews'] = $saveDetailsModel->getAllNews();
+
+            return $this->render(['newsFeed', 'newsFeed01'], $updateRouteArray);
         }
 
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+
     }
 
-    public function newsFeed01($request, $response){
-      
-        $saveDetailsModel = new AdminModel();
+    public function getaddRoutesStations($request, $response)
+    {
 
-        $tempBody = $request->getBody();
-        $tempBody['id'] = $request->getQueryParams()['id'];
-        $saveDetailsModel->loadData($tempBody);
-
-        $updateRouteArray['news'] = $saveDetailsModel->getMyNews();
-        $updateRouteArray['allnews']= $saveDetailsModel->getAllNews();
-       
-               
-                return $this->render(['newsFeed','newsFeed01'],$updateRouteArray);
-    }
-
-    public function getaddRoutesStations($request, $response){
-        if ($this->protect()){
-            if ($request->isGet()){
+        if ($this->protect()) {
+            if ($request->isGet()) {
                 $getNewsModel = new AdminModel();
                 $getNewsModel->loadData($request->getBody());
-    
+
                 $trainArray = $getNewsModel->getaddRoutesStations();
                 echo json_encode($trainArray);
-         
-                
+                return true;
             }
 
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
 
     }
 
     public function addupdateRoutes($request, $response)
     {
-        if ($request->isGet()) {
-            $getNewsModel = new AdminModel();
-            $getNewsModel->loadData($request->getBody());
-    
-            $trainArray = $getNewsModel->getMyaddRouts();
 
-            echo json_encode($trainArray);
+        if ($this->protect()) {
+
+            if ($request->isGet()) {
+                $getNewsModel = new AdminModel();
+                $getNewsModel->loadData($request->getBody());
+
+                $trainArray = $getNewsModel->getMyaddRouts();
+
+                echo json_encode($trainArray);
+                return true;
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
 
-    public function getNewBookingTrain($request, $response){
-        if ($request->isPost()) {
-            $saveDetailsModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $saveDetailsModel->loadData($tempBody);
-            $trainArray = $saveDetailsModel->getNewBookingTrain();
+    public function getNewBookingTrain($request, $response)
+    {
 
-            echo json_encode($trainArray);
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $saveDetailsModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $saveDetailsModel->loadData($tempBody);
+                $trainArray = $saveDetailsModel->getNewBookingTrain();
+
+                echo json_encode($trainArray);
+                return true;
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
     }
-
-
 
     ///////////////Daranya///////////////////
-    public function getMessages($request){
-        if ($request->isPost()){
-            $getMessagesModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $getMessagesModel->loadData($tempBody);
-            $messageArray = $getMessagesModel->getMessages();
+    public function getMessages($request, $response)
+    {
 
-            echo json_encode($messageArray);
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $getMessagesModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $getMessagesModel->loadData($tempBody);
+                $messageArray = $getMessagesModel->getMessages();
+
+                echo json_encode($messageArray);
+                return true;
+            }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+
     }
 
-    public function getCount($request){
-        if ($request->isPost()){
-            $getCountModel = new AdminModel();
-            $tempBody = $request->getBody();
-            $tempBody['index1'] = $_POST['index1'];
-            $getCountModel->loadData($tempBody);
-            $messageArray = $getCountModel->getCount();
+    public function getCount($request, $response)
+    {
 
-            echo json_encode($messageArray);
+        if ($this->protect()) {
+
+            if ($request->isPost()) {
+                $getCountModel = new AdminModel();
+                $tempBody = $request->getBody();
+                $tempBody['index1'] = $_POST['index1'];
+                $getCountModel->loadData($tempBody);
+                $messageArray = $getCountModel->getCount();
+
+                echo json_encode($messageArray);
+                return true;
+            }
         }
-    }
 
+        $response->setStatusCode(403);
+        return $response->redirect('/utrance-railway/home');
+
+    }
 
 }
