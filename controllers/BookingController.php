@@ -32,10 +32,13 @@ class BookingController extends Controller
         }
     }
 
-    public function getBooking($request)
+    public function getBooking($request, $response)
     {
         if (!$this->authMiddleware->isLoggedIn()) {
-            return 'You are not logged in!';
+            // flash msg
+            // return 'You are not logged in!';
+            $response->redirect('/utrance-railway/login');
+
         }
 
         if ($request->isGet()) {
@@ -48,7 +51,9 @@ class BookingController extends Controller
     public function createSeatBooking($request, $response)
     {
         if (!$this->authMiddleware->isLoggedIn()) {
-            return 'You are not logged in!';
+            // return 'You are not logged in!';
+            $response->redirect('/utrance-railway/login');
+
         }
 
         if ($request->isGet()) {
