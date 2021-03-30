@@ -4,7 +4,7 @@ function renderNewsCard(newsArray){
     
    
     let myElement = document.querySelector(".slider-container");
-    myElement.style.overflow = "hidden";
+    // myElement.style.overflow = "hidden";
     // const html = `<button id='prevBtn'>Prev</button>
     //              <button id='nextBtn'>Next</button>`;
     // document.querySelector(".newsfeed").insertAdjacentHTML("afterend", html);
