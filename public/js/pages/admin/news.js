@@ -2,7 +2,7 @@ let count=0;
 
 function renderNewsCard(newsArray){
     
-    console.log(newsArray);
+   
     let myElement = document.querySelector(".slider-container");
     myElement.style.overflow = "hidden";
     // const html = `<button id='prevBtn'>Prev</button>
@@ -17,7 +17,7 @@ function renderNewsCard(newsArray){
 
     const carouselSlide = document.querySelector(".carousel-slide");
 const carouselImages = document.querySelectorAll(".newscard-small");
-console.log(carouselImages[0]);
+
 
 const prevBtn = document.querySelector('#prevBtn');
 const nextBtn = document.querySelector('#nextBtn');
@@ -153,7 +153,7 @@ function myFunction1(){
   
   for (var i = 0; i < els.length; i++) {
     els[i].onclick = function (e){
-        console.log(e.target.closest(".newscard-small").querySelector(".newscard-small__content").innerText);
+        
         let newsContent = e.target.closest(".newscard-small").querySelector(".newscard-small__content").innerText;
         let newNewsContent = newsContent.trim();
          $.ajax({
@@ -162,9 +162,9 @@ function myFunction1(){
                 data: { index1: newNewsContent },
                 success: function (data) {
                    
-                    console.log(data);
                 
-                     console.log(document.querySelector(".content-title"));
+                
+                    
                      document.querySelector(".content-title").insertAdjacentHTML("beforeend",html);
                 }
          });

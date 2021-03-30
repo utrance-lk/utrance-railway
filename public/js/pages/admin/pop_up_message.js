@@ -1,5 +1,5 @@
 let countMessages;
-const renderResults = function (messages){
+const messagerenderResults = function (messages){
     countMessages=0;
     // clearResults();
     let html =`<div class='form-popup' id='myForm'>

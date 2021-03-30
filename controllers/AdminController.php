@@ -216,8 +216,7 @@ class AdminController extends Controller
                 $saveDetailsModel->loadData($tempBody);
 
                 $validationState = $saveDetailsModel->updateTrainDetails();
-                
-                  
+
                 if ($validationState === "success") {
 
                     return $response->redirect('/utrance-railway/trains/view?id=' . $id);
@@ -236,7 +235,6 @@ class AdminController extends Controller
 
     public function deleteTrain($request, $response)
     {
-       
 
         if ($this->protect()) {
 
@@ -244,10 +242,13 @@ class AdminController extends Controller
                 $deleteTrainModel = new AdminModel();
 
                 $deleteTrainModel->loadData($request->getQueryParams());
+
                 $getResult['result']=$deleteTrainModel->deleteTrains();
                      return $response->redirect('/utrance-railway/trains');
                
                 
+
+   
 
             }
         }
@@ -392,6 +393,7 @@ class AdminController extends Controller
             $manageNewsModel->loadData($request->getBody());
 
             if ($request->isPost()) {
+
                 $getNewsArray['error'] = $manageNewsModel->uploadNews();
                
                if(empty($getNewsArray['error'])){
@@ -401,7 +403,7 @@ class AdminController extends Controller
                 return $this->render(['admin', 'manageNews'],$getNewsArray);
                }
                 
-               
+                // return $this->render(['admin', 'manageNews'],$getNewsArray)
 
             }
             return $this->render(['admin', 'manageNews']);

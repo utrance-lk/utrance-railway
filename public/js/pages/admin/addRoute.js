@@ -276,11 +276,11 @@ function addRouteEvents() {
                 myobj.remove();
                 const newaddRouteElement = document.querySelector(".view-routes__title");
                 newaddRouteElement.insertAdjacentHTML('afterend', html);
-                console.log(document.querySelector(".stop-card"));
+                
                 addStops(39);
 
                 if(newStations.length==1){
-                    console.log(newStations.length);
+                    
                     document.getElementById("updatebutton").disabled = true;
                     document.getElementById("updatebutton").style.opacity = "0.5";
                 }
@@ -322,11 +322,11 @@ const timeConversion = function (time) {
             url:'addnewmanageRoutesValidations',
             method:'get',
             success : function (data){
-                console.log(data);
+               
               train=JSON.parse(data)
               
               let stationLength = document.querySelectorAll(".stop-card").length;
-              console.log(stationLength);
+             
               // for(let j=0;j<stationLength;j++){
                
               //    console.log(document.querySelectorAll(".stop-card")[j].querySelector(".stop-card__station").innerText);
@@ -395,7 +395,7 @@ const timeConversion = function (time) {
           emptyArray = emptyArray.map((data)=>{
             return data = '<li>'+ data +'</li>';
           });
-          console.log(emptyArray);
+          
       
           searchWrapper.classList.add("active");
           showSuggestions(emptyArray); 

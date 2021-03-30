@@ -114,8 +114,10 @@ $(document).ready(function(){
       method:'post',
       data:{index1:newindex2,index2:newindex3},
       success : function (data) {
-     
-            if(data.length===4){
+      
+    
+     console.log(data.length);
+            if(data.length===6){
                window.location.href = "/utrance-railway/routes/";
             }else{
                 const newmarkup = `<p style="color:red;font-weight: bold; font-size: 18px;" id ="myerror">Please enter valid station name.</p>`;

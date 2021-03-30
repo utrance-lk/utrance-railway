@@ -14,7 +14,7 @@ function addStops(x) {
       if (!isAvailPopup) {
         const parent = e.target.closest(".stop-card");
         
-        console.log(parent);
+      
       //  console.log(parent.firstChild.firstChild.innerText.split("#")[1] * 1);
         const markup = `
         <style>
@@ -63,13 +63,13 @@ function addStops(x) {
           $("#arrtime").click(function(){
             // let newindex5= parent.firstChild.childNodes;
             let newindex5= parent.querySelector(".stop-card__details").querySelector(".stop-card__dept-time").innerText;
-            console.log(newindex5);
+      
             // console.log(newindex5[2]);
             document.querySelector(".add-stop-popup__arr-time--input").min = newindex5;
 
             if(parent.parentNode.nextElementSibling){
               let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
-              console.log(newIndexMax);
+              
               document.querySelector(".add-stop-popup__arr-time--input").max = newIndexMax;
 
             }
@@ -81,7 +81,7 @@ function addStops(x) {
             
             if(parent.parentNode.nextElementSibling){
               let newIndexMax = parent.parentNode.nextElementSibling.querySelector(".stop-card__arr-time").innerText;
-            console.log(newIndexMax);
+            
             document.querySelector(".add-stop-popup__dept-time--input").max = newIndexMax;
 
             }
@@ -95,7 +95,7 @@ function addStops(x) {
           }
           
           document.querySelector(".add-stop-popup__dept-time--input").min = document.getElementById("arrtime").value;
-          console.log(document.getElementById("arrtime").value);
+          
           var startDate = document.getElementById("arrtime").value;
           var endDate = document.getElementById("deptime").value;
           
@@ -260,7 +260,7 @@ function addStops(x) {
               }
 
             }
-            console.log(l);
+            
 
             if (l != 0) {
               for (let n = 0; n < newStations.length; n++) {
@@ -279,7 +279,7 @@ function addStops(x) {
             newStations.push(obj);
           
 
-            console.log(newStations);
+           
 
 
            
@@ -379,7 +379,7 @@ function myfun(x){
           train=JSON.parse(data)
           
           let stationLength = document.querySelectorAll(".stop-card").length;
-          console.log(stationLength);
+         
           // for(let j=0;j<stationLength;j++){
            
           //    console.log(document.querySelectorAll(".stop-card")[j].querySelector(".stop-card__station").innerText);
@@ -460,7 +460,7 @@ inputBox.onkeyup = (e)=>{
     emptyArray = emptyArray.map((data)=>{
       return data = '<li>'+ data +'</li>';
     });
-    console.log(emptyArray);
+    
 
     searchWrapper.classList.add("active");
     showSuggestions(emptyArray); 
@@ -526,5 +526,4 @@ function selected(element){
 
 // }
 
-console.log("hasani nimeshika");
-console.log(document.querySelectorAll(".stop-card__add-btn")[0]); 
+

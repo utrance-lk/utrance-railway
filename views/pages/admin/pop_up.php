@@ -31,7 +31,7 @@ $(".header-user__notifications").click(function(){
       success : function (data) {
         
         message=JSON.parse(data)
-        renderResults( message);
+        messagerenderResults( message);
         }
     })
 
