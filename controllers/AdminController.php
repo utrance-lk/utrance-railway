@@ -216,12 +216,8 @@ class AdminController extends Controller
                 $saveDetailsModel->loadData($tempBody);
 
                 $validationState = $saveDetailsModel->updateTrainDetails();
-<<<<<<< HEAD
                 
                   
-=======
-
->>>>>>> c19a2ed8fc431d1121d00d468356c5b2d50586b5
                 if ($validationState === "success") {
 
                     return $response->redirect('/utrance-railway/trains/view?id=' . $id);
@@ -240,26 +236,18 @@ class AdminController extends Controller
 
     public function deleteTrain($request, $response)
     {
-<<<<<<< HEAD
        
 
-=======
->>>>>>> c19a2ed8fc431d1121d00d468356c5b2d50586b5
         if ($this->protect()) {
 
             if ($request->isGet()) {
                 $deleteTrainModel = new AdminModel();
 
                 $deleteTrainModel->loadData($request->getQueryParams());
-<<<<<<< HEAD
                 $getResult['result']=$deleteTrainModel->deleteTrains();
                      return $response->redirect('/utrance-railway/trains');
                
                 
-=======
-                $deleteTrainModel->deleteTrains();
-                return $response->redirect('/utrance-railway/trains');
->>>>>>> c19a2ed8fc431d1121d00d468356c5b2d50586b5
 
             }
         }
