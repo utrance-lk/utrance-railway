@@ -43,7 +43,7 @@ public function contactAdmin()
 { //Daranya
   
   $this->messageDate=date("Y-m-d");
-  $this->read_message=1;
+  $this->read_message=0;
   
         $query = App::$APP->db->pdo->prepare("INSERT INTO give_details (first_name,email_id,details_type,detail,readMessage,receivedTime) VALUES (:fn,:eid,:dt,:de,:rm,:md)");
         $query->bindValue(":fn", $this->first_name);

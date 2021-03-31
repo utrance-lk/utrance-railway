@@ -2,6 +2,7 @@
         <div class="load-content">
           <div class="load-content--settings">
             <div class="content-title"!-->
+<?Php include_once "../views/components/backButton.php";?>
     <div class="dashboard">
     <?php include_once '../views/layouts/adminSideNav.php';?>
     <div class="dash-content__container">
