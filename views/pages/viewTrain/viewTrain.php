@@ -1,3 +1,5 @@
+<?Php include_once "../views/components/backButton.php";?>
+
 <section class="margin-t-m margin-b-m flex-row-sa-center">
     <div style="height:calc(100vh - 8rem)">
         <div class="center-text margin-b-l">
