@@ -15,14 +15,14 @@ echo renderAdminSearch(['routes', 'name', 'id'], '');
           </a>
             <div class="flex-col-stretch-center margin-t-m">
               <?php
-              $dom = new DOMDocument;
-              libxml_use_internal_errors(true);
-              $dom->loadHTML('...');
-              libxml_clear_errors();
+$dom = new DOMDocument;
+libxml_use_internal_errors(true);
+$dom->loadHTML('...');
+libxml_clear_errors();
 
-              if (isset($routes)) {
+if (isset($routes)) {
 
-                  foreach ($routes as $key => $value) {
+    foreach ($routes as $key => $value) {
 
                       $html = "<div class='manage-routes__route margin-b-m'>";
                       $html .= "<div class='search__result-route-idbox'>";
@@ -33,14 +33,14 @@ echo renderAdminSearch(['routes', 'name', 'id'], '');
                       $html .= "<div class='btn'>";
                       $html .= "</div></div>";
 
-                      $dom = new DOMDocument();
-                      $dom->loadHTML($html);
-                      print_r($dom->saveHTML());
-                  }
+        $dom = new DOMDocument();
+        $dom->loadHTML($html);
+        print_r($dom->saveHTML());
+    }
 
-              }
+}
 
-              ?>
+?>
 
             </div>
           </div>

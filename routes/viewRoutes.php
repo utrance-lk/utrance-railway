@@ -2,7 +2,6 @@
 
 require_once "../controllers/ViewController.php";
 require_once "../controllers/TicketController.php";
-require_once "../controllers/FreightController.php";
 
 $app->router->get('/home', [ViewController::class, 'home']);
 $app->router->get('/', [ViewController::class, 'home']);
@@ -13,7 +12,20 @@ $app->router->get('/view-train', [ViewController::class, 'viewTrain']);
 $app->router->get('/ticket-prices', [TicketController::class, 'ViewticketPrice']);
 $app->router->post('/ticket-prices', [TicketController::class, 'ViewticketPrice']);
 
-$app->router->get('/freight-prices', [FreightController::class, 'viewFreightPrice']);
-$app->router->post('/freight-prices', [FreightController::class, 'ViewtfreightPrice']);
+$app->router->get('/train-details', [ViewController::class, 'viewAllTrainDetails']);
+$app->router->post('/train-details', [ViewController::class, 'viewAllTrainDetails']);
+
+$app->router->get('/getSelect', [ViewController::class, 'newSearchResults']);
+$app->router->post('/getSelect', [ViewController::class, 'newSearchResults']);
+
+$app->router->get('/getSelect', [ViewController::class, 'newSearchResults']);
+$app->router->post('/getSelect', [ViewController::class, 'newSearchResults']);
+
+
+
+
+
+
+
 
 ?>

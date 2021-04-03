@@ -6,6 +6,7 @@
         </svg>
         <span>Settings</span>
       </a>
+     
       <a href="/myBookings" class="sidebar-nav__item">
         <svg class="sidebar-nav__icon">
           <use xlink:href="/public/img/svg/sprite.svg#icon-suitcase"></use>
@@ -50,6 +51,12 @@
           <use xlink:href="/public/img/svg/sprite.svg#icon-landline"></use>
         </svg>
         <span>Manage News</span>
+      </a>
+      <a href="/utrance-railway/message" class="sidebar-nav__item">
+        <svg class="sidebar-nav__icon">
+          <use xlink:href="../../../../utrance-railway/public/img/svg/sprite.svg#icon-list"></use>
+        </svg>
+        <span>Messages</span>
       </a>
     </div>
 </div>

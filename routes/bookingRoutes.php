@@ -3,18 +3,17 @@
 require_once "../controllers/BookingController.php";
 
 $app->router->get('/myBookings', [BookingController::class, 'getAllBookings']);
+$app->router->post('/myBookings', [BookingController::class, 'getAllBookings']);
 
 $app->router->get('/bookings', [BookingController::class, 'manageBookings']);
-// $app->router->post('/bookings', [BookingController::class, 'manageBookings']);
-// $app->router->post('/getSearchbookings', [BookingController::class, 'SearchManageBookings']);
-
 
 $app->router->get('/book-seats', [BookingController::class, 'createSeatBooking']);
 $app->router->post('/book-seats', [BookingController::class, 'createSeatBooking']);
 
 $app->router->get('/book-freights', [BookingController::class, 'bookFreight']);
 
-$app->router->get('/booked-tour', [BookingController::class, 'bookedTour']);
+$app->router->get('/booked-tourIntersect', [BookingController::class, 'bookedTourIntersect']);
+$app->router->get('/booked-tourDirect', [BookingController::class, 'bookedTourDirect']);
 
 $app->router->get('/booking-train', [BookingController::class, 'bookingForTrain']);
 $app->router->post('/booking-train', [BookingController::class, 'bookingForTrain']);

@@ -74,6 +74,10 @@ foreach ($trains as $key => $value) {
 ?>
 
 <script>
+    
+</script>
+
+<script>
     var arr = [];
     var t1 = {}; 
     var t2 = {};

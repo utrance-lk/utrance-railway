@@ -49,7 +49,7 @@
 }
 
 .margin-b-huge {
-  margin-bottom: 10rem;
+  margin-bottom: 10rem  !important;
 }
 
 .margin-t-xs {

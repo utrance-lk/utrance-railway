@@ -1,3 +1,4 @@
+<?Php include_once "../views/components/backButton.php";?>
 
 <section class="booking__users">
     <!-- <div class="booking__users--topic">
@@ -18,7 +19,7 @@
         $html .="<div class='topic__text'>".$reArray[0]['train_name']."</div>";
         $html .="<div class='topic__travel-date'>Journey date : ".$reArray[0]['train_date']."</div></div>";
         
-        $html .="<div class='booking__users--card-container'>";
+        $html .="<div class='booking__users--card-container margin-b-huge'>";
         
         foreach ($reArray as $key => $value){
 

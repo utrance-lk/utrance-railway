@@ -1,7 +1,7 @@
 <?php
 include_once "../models/UserModel.php";
 include_once "../models/AdminModel.php";
-include_once "../classes/core/Model.php";
+include_once "../classes/Model.php";
 
 class FormValidation
 {
@@ -34,7 +34,7 @@ class FormValidation
         $this->validateStreetLine2(trim($array['street_line2'])); //Ashika
         $this->validateCity(trim($array['city'])); //Ashika
         $this->validateContactNumber(trim($array['contact_num'])); //Ashika
-        $this->validateEmailIdForUpdate($array['email_id'], $array['id']); //Ashika
+        $this->validateEmailIdForUpdate(trim($array['email_id']), trim($array['id'])); //Ashika
         if (empty($this->errorArray)) {
             return "success";
         } else {
@@ -201,6 +201,7 @@ class FormValidation
         $resultArray = $query->fetchAll(PDO::FETCH_ASSOC);
         $emailVal = $resultArray[0]['email_id'];
         if ($emailVal != $email_id) {
+          
 
             $query1 = APP::$APP->db->pdo->prepare(" SELECT id FROM users WHERE email_id=:eid");
             $query1->bindValue(":eid", $email_id);

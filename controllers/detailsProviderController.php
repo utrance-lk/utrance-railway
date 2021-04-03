@@ -1,11 +1,9 @@
 <?php
 
-include_once "../classes/core/Controller.php";
+include_once "../classes/Controller.php";
 include_once "../controllers/AuthController.php";
 include_once "../middlewares/AuthMiddleware.php";
 include_once "../models/DetailsProviderModel.php";
-
-  
 
 class DetailsProviderController extends Controller
 {
@@ -14,31 +12,48 @@ class DetailsProviderController extends Controller
     {
         $authMiddleware = new AuthMiddleware();
 
-        if(!$authMiddleware->isLoggedIn()) {
-            return 'Your are not logged in!';
+        if (!$authMiddleware->isLoggedIn()) {
+            return false;
         }
 
         if (!$authMiddleware->restrictTo('detailsProvider')) {
+<<<<<<< HEAD
             echo 'You are unauthorized to perform this action!!';
+=======
+>>>>>>> master
             return false;
         }
         return true;
 
     }
 
-    public function contactAdmin($request)
-    { 
-        $contactAdminModel = new DetailsProviderModel();
+    public function contactAdmin($request, $response)
+    {
 
-        if ($request->isPost()) 
-        {
-            $contactAdminModel->loadData($request->getbody());
-            $addDetails = $contactAdminModel->contactAdmin();
-            
-            return $this->render(['detailsProvider','contactAdmin']); 
-        
+        if ($this->protect()) {
+
+            $contactAdminModel = new DetailsProviderModel();
+
+            if ($request->isPost()) {
+                $contactAdminModel->loadData($request->getbody());
+                var_dump($request->getbody());
+                $contactAdminModel->contactAdmin();
+
+                return $response->redirect('/utrance-railway/contact-admin');
+
+            }
+            if ($request->isGet()) {
+                $contactAdminModel->loadData($request->getBody());
+                $getAllAdminEmailResults = $contactAdminModel->getAdminEmails();
+
+                return $this->render(['detailsProvider', 'contactAdmin'], $getAllAdminEmailResults);
+
+            }
+
         }
-        return $this->render(['detailsProvider','contactAdmin']); 
+
+        $response->setStatusCode(403);
+        $response->redirect('utrance-railway/home');
 
     }
 

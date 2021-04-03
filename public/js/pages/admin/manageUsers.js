@@ -25,7 +25,7 @@ const renderUser = function (user) {
             <div class='margin-r-xs'>
                 <img src='/public/img/uploads/${
                   user.user_image
-                }.jpg' alt='profile-avatar' class='manage-users__avatar'/>
+                }' alt='profile-avatar' class='manage-users__avatar'/>
             </div>
             <div class='manage-users__nametag'>
                 <div class ='manage-users__nametage-name'>${

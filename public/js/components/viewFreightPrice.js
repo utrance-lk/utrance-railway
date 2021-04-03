@@ -43,7 +43,7 @@ const stationsArray = [
   "Traincomalee",
   "Maho Juction",
   "Batticaloa",
-  "Beliatta",
+  
 ];
 let from;
 let destination;
@@ -180,51 +180,68 @@ const renderResults = function (user) {
         <div class='results__set'>
             <div class='seat__class--box first__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/tree.svg#icon-looks_one'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-park'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Timber</div>
-                <div class='seat__class--box-item class__price' class='js__class--box-item first__class__price' id='first_class'>Rs ${user.first_class}</div>
+                <div class='seat__class--box-item class__price' class='js__class--box-item first__class__price' id='first_class'>Rs ${user.timber}</div>
             </div>
             <div class='seat__class--box second__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/tools.svg#icon-looks_two'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-construction''></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Metal</div>
-                <div class='seat__class--box-item class__price' class='js__class--box-item second__class__price' id='second_class'>Rs ${user.second_class}</div>
+                <div class='seat__class--box-item class__price' class='js__class--box-item second__class__price' id='second_class'>Rs ${user.metal}</div>
             </div>
             <div class='seat__class--box third__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_3'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-local_mall'></use>
                 </svg>
-                <div class='seat__class--box-item class__name'>Textile Industry Products</div>
-                <div class='seat__class--box-item class__price' class='js__class--box-item third__class__price' id='third_class'> Rs ${user.third_class}</div>
+                <div class='seat__class--box-item class__name'>Textile </div>
+                <div class='seat__class--box-item class__price' class='js__class--box-item third__class__price' id='third_class'> Rs ${user.textile_products}</div>
             </div>
             <div class='seat__class--box sleeping__berth--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-airline_seat_flat'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-spa'></use>
                 </svg>
-                <div class='seat__class--box-item class__name'>Agriculture Products</div>
-                <div class='seat__class--box-item class__price'>Rs 400</div>
+                <div class='seat__class--box-item class__name'>Agriculture </div>
+                <div class='seat__class--box-item class__price' id='agricultural__class'>Rs ${user.agricultural_products}</div>
             </div>
-            <div class='seat__class--box observartion__saloon--box'>
+            <!--div class='seat__class--box observartion__saloon--box'>
                 <svg class='seat__class--box-item class__icon'>
                     <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-filter_hdr'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Others</div>
-                <div class='seat__class--box-item class__price'>Rs 700</div>
-            </div>
+                <div class='seat__class--box-item class__price'>Rs ${user.others}</div>
+            </div!-->
         </div>
 
+       
         <div class='number-of-persons__box'>
-            <button class='btn minus-btn disabled' type='button'>-</button>
-            
-            <!--span class='number__box '>1</span!-->
-            <input id='number__box' value=1>
-            <button class='btn plus-btn' type='button'>+</button>
-            
-            <span id='number__box__name'>kg</span>
-        </div> 
-    `;
+        <select id='select-weight__range' style='font-size: 1.5rem;height: 30px;width: 100px;border: 1px solid var(--color-main);' onchange='getSelectValue();'>
+        <option value='1'>01 - 05 kg</option>
+        <option value='2'>05 - 10 kg</option>
+        <option value='3'>10 - 20 kg</option>
+        <option value='4'>20 - 40 kg</option>
+        <option value='5'>40 - 70 kg</option>
+        <option value='6'>70 - 99 kg</option>
+        </select>
+        </div>
+        
+
+    
+
+    `
+
+
+
+
+//     document
+//         .querySelector(".search__results-container")
+//         .insertAdjacentHTML("beforeend", markup);
+
+// }
+
+
 
   document
     .querySelector(".search__results-container")
@@ -237,48 +254,51 @@ const renderDefaultResults = function () {
         <div class='results__set'>
             <div class='seat__class--box first__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_one'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-park'></use>
                 </svg>
-                <div class='seat__class--box-item class__name'>First class</div>
-                <div class='seat__class--box-item class__price' class='js__class--box-item first__class__price' id='first_class'>Rs 800</div>
+                <div class='seat__class--box-item class__name'>Timber</div>
+                <div class='seat__class--box-item class__price' class='js__class--box-item first__class__price' id='first_class'>Rs:800</div>
             </div>
             <div class='seat__class--box second__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_two'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-construction'></use>
                 </svg>
-                <div class='seat__class--box-item class__name'>Second class</div>
+                <div class='seat__class--box-item class__name'>Metal</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item second__class__price'  id='second_class'>Rs 700</div>
             </div>
             <div class='seat__class--box third__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_3'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-local_mall'></use>
                 </svg>
-                <div class='seat__class--box-item class__name'>Third class</div>
+                <div class='seat__class--box-item class__name'>Textile </div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item third__class__price'  id='third_class'>Rs 600</div>
             </div>
             <div class='seat__class--box sleeping__berth--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-airline_seat_flat'></use>
+                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-spa'></use>
                 </svg>
-                <div class='seat__class--box-item class__name'>Sleeping berths</div>
-                <div class='seat__class--box-item class__price'>Rs 400</div>
+                <div class='seat__class--box-item class__name'>Agricultural</div>
+                <div class='seat__class--box-item class__price' id='agricultural__class'>Rs 400</div>
             </div>
-            <div class='seat__class--box observartion__saloon--box'>
+            <!--div class='seat__class--box observartion__saloon--box'>
                 <svg class='seat__class--box-item class__icon'>
                     <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-filter_hdr'></use>
                 </svg>
-                <div class='seat__class--box-item class__name'>Observation S</div>
+                <div class='seat__class--box-item class__name'>Other</div>
                 <div class='seat__class--box-item class__price'>Rs 700</div>
-            </div>
+            </div!-->
         </div>
 
+        
         <div class='number-of-persons__box'>
-            <button class='btn minus-btn disabled' type='button' > -</button>
-           
-            <input id='number__box' value=1>
-            <button class='btn plus-btn' type='button'>+</button>
-            
-            <span id='number__box__name'>Person</span>
+        <select id='select-weight__range' style='font-size: 1.5rem;height: 30px;width: 100px;border: 1px solid var(--color-main);' onchange="getSelectValue();">
+        <option value='1'>01 - 05 kg</option>
+        <option value='2'>05 - 10 kg</option>
+        <option value='3'>10 - 20 kg</option>
+        <option value='4'>20 - 40 kg</option>
+        <option value='5'>40 - 70 kg</option>
+        <option value='6' >70 - 99 kg</option>
+        </select>
         </div>
     `;
 

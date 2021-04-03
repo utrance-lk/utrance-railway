@@ -43,7 +43,7 @@ function renderTrainBookingCard($train, $id, $when)
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
-                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count{$id}' value='1' min='1' max='10'></input>&nbsp;<label for='person__count'>person(s)</label>
+                    <input type='number' id='persons{$id}' class='seat-booking-card__person-count' name='person__count{$id}' value='0' min='1' max='10' readonly></input>&nbsp;<label for='person__count'>person(s)</label>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box'>
@@ -51,6 +51,13 @@ function renderTrainBookingCard($train, $id, $when)
                         <option value='firstClass'>first class</option>
                         <option value='secondClass' selected>second class</option>
                     </select>
+                </div>
+                <div class='seat-booking-card__seperator'></div>
+                <div class='seat-booking-card__mini-box'>
+                    <input type='number' min='0' value='0' name='male_count{$id}' style='border: 1px solid black' id='malecount{$id}'/><label for='male_count' >Male Count</label>
+                </div>
+                <div class='seat-booking-card__mini-box'>
+                    <input type='number' min='0' value='0' name='female_count{$id}' style='border: 1px solid black' id='femalecount{$id}'/><label for='female_count' >Female Count</label>
                 </div>
                 <div class='seat-booking-card__seperator'></div>
                 <div class='seat-booking-card__mini-box seat-booking-card__price'>

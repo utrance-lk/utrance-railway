@@ -1,6 +1,6 @@
 <?php
 
-include_once "../classes/core/Controller.php";
+include_once "../classes/Controller.php";
 include_once "../models/PaymentModel.php";
 
 class PaymentController extends Controller

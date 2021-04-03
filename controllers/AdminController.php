@@ -1,6 +1,6 @@
 <?php
 
-include_once "../classes/core/Controller.php";
+include_once "../classes/Controller.php";
 include_once "../controllers/AuthController.php";
 include_once "../middlewares/AuthMiddleware.php";
 
@@ -149,7 +149,8 @@ class AdminController extends Controller
                 $changeUserStatusModel->changeUserStatusDetails();
                 $changeStatusArray = $changeUserStatusModel->getUsers();
                 // TODO: what is it doing here?
-                return true;
+                // return true;
+                return $this->render(['admin', 'manageUsers'], $changeStatusArray);
 
             }
 
@@ -174,7 +175,7 @@ class AdminController extends Controller
                 $trainArrays = $saveDetailsModel->getMyUsers();
 
                 return json_encode($trainArrays);
-                
+
             }
         }
 
@@ -198,7 +199,7 @@ class AdminController extends Controller
                 $trainArrays = $saveDetailsModel->getMyTrains();
 
                 return json_encode($trainArrays);
-               
+
             }
         }
 
@@ -369,7 +370,7 @@ class AdminController extends Controller
                 $saveDetailsModel->loadData($tempBody);
                 $trainArray = $saveDetailsModel->getMyRoutsStations();
                 return json_encode($trainArray);
-                
+
             }
         }
 
@@ -392,7 +393,7 @@ class AdminController extends Controller
                 $saveDetailsModel->loadData($tempBody, $newtempBody);
                 $trainArray = $saveDetailsModel->getMyRouts();
                 return json_encode($trainArray);
-                
+
             }
         }
 
@@ -490,7 +491,6 @@ class AdminController extends Controller
     }
 
     // TODO: is this function needed?
-    
 
     public function getaddRoutesStations($request, $response)
     {
@@ -502,7 +502,7 @@ class AdminController extends Controller
 
                 $trainArray = $getNewsModel->getaddRoutesStations();
                 return json_encode($trainArray);
-                
+
             }
 
         }
@@ -524,7 +524,7 @@ class AdminController extends Controller
                 $trainArray = $getNewsModel->getMyaddRouts();
 
                 return json_encode($trainArray);
-                
+
             }
         }
 
@@ -545,7 +545,7 @@ class AdminController extends Controller
                 $trainArray = $saveDetailsModel->getNewBookingTrain();
 
                 return json_encode($trainArray);
-                
+
             }
         }
 
@@ -567,7 +567,7 @@ class AdminController extends Controller
                 $messageArray = $getMessagesModel->getMessages();
 
                 return json_encode($messageArray);
-                
+
             }
         }
 
@@ -589,12 +589,54 @@ class AdminController extends Controller
                 $messageArray = $getCountModel->getCount();
 
                 return json_encode($messageArray);
-                
+
             }
         }
 
         $response->setStatusCode(403);
         return $response->redirect('/home');
+
+    }
+
+    public function messageFull($request)
+    {
+
+        if ($this->protect()) {
+
+            if ($request->isGet()) {
+                $messageFull = new AdminModel();
+
+                $tempBody = $request->getBody();
+                $details_id = $request->getQueryParams()['details_id'];
+                $tempBody['details_id'] = $details_id;
+
+                $messageFull->loadData($tempBody);
+                $messageArray = $messageFull->messageFull();
+
+                return $this->render(['admin', 'messageFull'], $messageArray);
+
+            }
+            return "success";
+        }
+
+    }
+
+    public function message($request)
+    {
+
+        if ($this->protect()) {
+
+            if ($request->isGet()) {
+                $message = new AdminModel();
+
+                $messageArray = $message->message();
+
+                return $this->render(['admin', 'message'], $messageArray);
+
+            }
+            return "success";
+
+        }
 
     }
 
