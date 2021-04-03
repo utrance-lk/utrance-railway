@@ -34,10 +34,8 @@ class BookingController extends Controller
             $getAllBookingsModel->loadData($tempUpdateUserBody);
             
             $getAllBookingArray = $getAllBookingsModel->getAllMyBookings();
-            //var_dump($getAllBookingArray);
             return $this->render('myBookings',$getAllBookingArray);
         }
-
         
     }
 
@@ -99,8 +97,6 @@ class BookingController extends Controller
 
         if ($request->isPost()) {
 
-            var_dump($_POST);
-
             $seatAvailability1 = new BookingModel();
 
             $seatAvailability1->loadData(['train_id' => $_POST['train1_id'], 'when' => $_POST['when']]);
@@ -142,12 +138,10 @@ class BookingController extends Controller
                 $_SESSION['booking'][$index]['class'] = $_POST['train_class' . $index];
                 $_SESSION['booking'][$index]['base_price'] = $_POST['tickpricetrain' . $index];
                 $_SESSION['booking'][$index]['total_amount'] = $_POST['amount'];
-                $_SESSION['booking'][$index]['male_count'] = $_POST['male_count'. $index];
-                $_SESSION['booking'][$index]['female_count'] = $_POST['female_count'. $index];
                 $index++;
             }
 
-            // return $this->render('payment', $_POST);
+            return $this->render('payment', $_POST);
 
         }
 
@@ -180,7 +174,7 @@ class BookingController extends Controller
 
             foreach ($bookingVar as $key => $value) {
                 $storeBooking = new BookingModel();
-                $storeBooking->loadData(['customer_id' => (int) $value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int) $value['train_id'], 'from_station' => $value['from'], 'to_station' => $value['to'], 'passengers' => (int) $value['passengers'], 'class' => $value['class'], 'base_price' => (int) $value['base_price'], 'total_amount' => (int) $value['total_amount'], 'other_booking' => $hashStr, 'male_count' => (int)$value['male_count'], 'female_count' => (int)$value['femail_count']]);
+                $storeBooking->loadData(['customer_id' => (int) $value['customer_id'], 'train_date' => $value['train_date'], 'train_id' => (int) $value['train_id'], 'from_station' => $value['from'], 'to_station' => $value['to'], 'passengers' => (int) $value['passengers'], 'class' => $value['class'], 'base_price' => (int) $value['base_price'], 'total_amount' => (int) $value['total_amount'], 'other_booking' => $hashStr]);
                 $storeBooking->createBooking();
             }
 
@@ -398,7 +392,7 @@ class BookingController extends Controller
                 
                 $bookedTourModel->loadData($tempBody);
                 $getBookedTourArray=$bookedTourModel->getBookedTourIntersect();
-            //var_dump($getBookedTourArray);
+
                  return $this->render('bookedTour',$getBookedTourArray);
             }
         } else {
@@ -413,10 +407,8 @@ class BookingController extends Controller
                 $bookedTourModel = new BookingModel();
                 $tempBody = $request->getBody();
                 $tempBody['id1'] = $request->getQueryParams()['id1'];
-                //var_dump($tempBody['id1']);
                 $bookedTourModel->loadData($tempBody);
                 $getBookedTourArray=$bookedTourModel->getBookedTourDirect();
-                //var_dump($getBookedTourArray);
                  return $this->render('bookedTour',$getBookedTourArray);
             }
         } else {

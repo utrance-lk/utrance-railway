@@ -100,7 +100,6 @@ class ViewController extends Controller
         if ($request->isPost()) {
             $saveDetailsModel = new ViewModel();
             $tempBody = $request->getBody();
-            //$tempBody['index1'] = $_POST['index1'];
             $tempBody['index2'] = $_POST['index2'];
             $saveDetailsModel->loadData($tempBody);
 
