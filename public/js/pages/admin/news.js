@@ -29,28 +29,13 @@ function renderNewsCard(newsArray) {
     if (counter >= carouselImages.length - 1) return;
     carouselSlide.style.transition = "transform 0.4s ease-in-out";
     counter++;
-<<<<<<< HEAD
-    carouselSlide.style.transform = "translateX(" + -300 * counter + "px)";
-  });
-=======
     carouselSlide.style.transform = 'translateX('+(-530*counter)+'px)';
 });
->>>>>>> master
 
   prevBtn.addEventListener("click", () => {
     if (counter <= 0) return;
     carouselSlide.style.transition = "transform 0.4s ease-in-out";
     counter--;
-<<<<<<< HEAD
-    carouselSlide.style.transform = "translateX(" + -300 * counter + "px)";
-  });
-
-  carouselSlide.addEventListener("transitionend", () => {
-    if (carouselImages[counter].id == "lastclone") {
-      carouselSlide.style.transition = "none";
-      counter = carouselImages.length - 2;
-      carouselSlide.style.transform = "translateX(" + -250 * counter + "px)";
-=======
     carouselSlide.style.transform = 'translateX('+(-530*counter)+'px)';
 });
 
@@ -60,7 +45,6 @@ carouselSlide.addEventListener('transitionend',()=>{
         carouselSlide.style.transition = "none";
         counter = carouselImages.length - 2;
         carouselSlide.style.transform = 'translateX('+(-250*counter)+'px)';
->>>>>>> master
     }
 
     if (carouselImages[counter].id == "firstclone") {
