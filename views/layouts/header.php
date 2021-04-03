@@ -27,12 +27,6 @@
               </svg>
               <span class="margin-l-xxs">Trains</span>
             </a>
-            <a href="/utrance-railway/freight-prices" class="header-main__item">
-              <svg class="header__icon">
-                <use xlink:href="/utrance-railway/public/img/svg/sprite.svg#icon-text-document-inverted"></use>
-              </svg>
-              <span class="margin-l-xxs">Freight Prices</span>
-            </a>
           </div>
         </div>
         <div class="header-user">
