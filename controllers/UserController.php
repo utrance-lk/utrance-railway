@@ -46,20 +46,12 @@ class UserController extends Controller
             $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
             $tempUpdateUserBody['file'] = $_FILES;
             $updateUserDetailsModel->loadData($tempUpdateUserBody);
-<<<<<<< HEAD
-            $array=$updateUserDetailsModel->uploadImage(App::$APP->activeUser()['id']);
-            if($array === "Success"){
-                return $response->redirect('/settings');
-            }else{
-=======
             $array = $updateUserDetailsModel->uploadImage(App::$APP->activeUser()['id']);
             if ($array === "Success") {
                 App::$APP->session->set('operation', 'success');
-                return $response->redirect('/utrance-railway/dashboard');
+                return $response->redirect('/dashboard');
             } else {
                 App::$APP->session->set('operation', 'fail');
->>>>>>> master
-                var_dump($array);
             }
 
         }
@@ -83,19 +75,12 @@ class UserController extends Controller
             $updateUserDetailsModel->loadData($tempUpdateUserBody);
 
             $state = $updateUserDetailsModel->updateMyProfile();
-<<<<<<< HEAD
-           
-            if ($state === 'success') { 
-                
-                return $response->redirect('/settings');
-=======
 
             if ($state === 'success') {
 
                 App::$APP->session->set('operation', 'success');
-                return $response->redirect('/utrance-railway/dashboard');
+                return $response->redirect('/dashboard');
 
->>>>>>> master
             } else {
                 $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
 
@@ -129,13 +114,4 @@ class UserController extends Controller
 
         return $this->render('newsFeed');
     }
-
-    // public function newsFeed01(){
-
-    //     return $this->render(['newsFeed','newsFeed01']);
-    // }
-
-    //return $this->render(['newsFeed', 'newsFeed01']);
-    //}
-
 }

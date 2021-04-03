@@ -35,7 +35,7 @@ class DetailsProviderController extends Controller
                 var_dump($request->getbody());
                 $contactAdminModel->contactAdmin();
 
-                return $response->redirect('/utrance-railway/contact-admin');
+                return $response->redirect('/contact-admin');
 
             }
             if ($request->isGet()) {
