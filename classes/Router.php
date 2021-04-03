@@ -1,7 +1,7 @@
 <?php {
 
     include_once "../middlewares/AuthMiddleware.php";
-    include_once "../classes/controller.php";
+    include_once "controller.php";
     class Router
     {
         public $request;
