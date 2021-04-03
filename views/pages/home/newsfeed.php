@@ -15,17 +15,15 @@
         </div>
 </section>
 
-<script type="text/javascript" src="public/js/pages/admin/news.js"></script>
+<script type="text/javascript" src="/public/js/pages/admin/news.js"></script>
 <script>
  $(document).ready(function(){
     $.ajax({
         url: "getNewNews",
         method: "get",
         success: function (data) {
-            console.log(data);
             news=JSON.parse(data);
             renderNewsCard(news);
-
         }
     });
  });
