@@ -26,22 +26,11 @@ const items = {
 
 const stationsArray = [
   "Matara",
-  "Colombo Fort",
+  "Colombo-Fort",
   "Galle",
-  "Katugoda",
-  "Gampaha",
+  "Badulla",
   "Kandy",
-  "Puttalam",
-  "Aluthgama",
-  "Midigama",
-  "Weligama",
-  "Avissawella",
-  "Beliatta",
-  "Wewurukannala",
-  "Kekanadura",
   "Maradana",
-  "Kalutara",
-  "Kegalle",
 ];
 let from;
 let destination;

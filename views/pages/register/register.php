@@ -66,19 +66,17 @@ if (isset($_SESSION['operation'] ) ) {
 				</div>
 				<div class="firstname-box form__container-item register__form--inputs">
 					<label for="first_name">First name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Steven'; ?>" value="<?php echo isset($first_name) ? $first_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
+                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Nuwan'; ?>" value="<?php echo isset($first_name) ? $first_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
 
 				</div>
 
 				<div class="lastname-box form__container-item register__form--inputs">
 					<label for="last_name">Last name</label>
-					<input type="text" id="last_name" name="last_name" placeholder="<?php echo isset($lastNameError) ? $lastNameError : 'Smith'; ?>" value="<?php echo isset($last_name) ? $last_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
-
-
+					<input type="text" id="last_name" name="last_name" placeholder="<?php echo isset($lastNameError) ? $lastNameError : 'Kumara'; ?>" value="<?php echo isset($last_name) ? $last_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
 				</div>
 				<div class="email-box form__container-item register__form--inputs">
 					<label for="email_id">Email</label>
-					<input type="email" id="email_id" name="email_id" placeholder="<?php echo isset($email_id_error) ? $email_id_error : 'stevensmith@example.com'; ?>"   value="<?php echo isset($email_id) ? $email_id : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
+					<input type="email" id="email_id" name="email_id" placeholder="<?php echo isset($email_id_error) ? $email_id_error : 'nuwan@example.com'; ?>"   value="<?php echo isset($email_id) ? $email_id : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
 
 				</div>
 				<div class="streetline1-box form__container-item register__form--inputs">

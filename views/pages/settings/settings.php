@@ -146,7 +146,7 @@ libxml_clear_errors();
                 $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img' alt='user-profile-picture' name='image_preview' id='image_preview' class=''/>";
                 $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo'    />";
                 
-                $html .= "<label for='photo'>Choose New Photo</label></div>";
+                $html .= "<label for='photo' class='btn btn-square-upload'>Choose New Photo</label></div>";
                
                 $html .="<div  class='search__result-user-managebtnbox'>";
                 $html .= "<div class='btn__save-box'>";
@@ -240,7 +240,7 @@ libxml_clear_errors();
               <?php
 
 $html = "";
-$html .= "<form action='/utrance-railway/upload' method='POST' enctype='multipart/form-data'>";
+$html .= "<form action='/utrance-railway/upload' method='POST' class='user-img' enctype='multipart/form-data'>";
 $html .= "<div class='userpicture-box' id='image_box' name='image_box'>";
 $image_name = App::$APP->activeUser()['user_image'];
 var_dump($image_name);

@@ -26,6 +26,7 @@ class AdminModel extends Model
     private $registerSetValueArray = [];
     public $userRole;
     public $user_image = "default.jpg";
+    public $details_id;
     
 
     //////////////Train//////////////////
@@ -1065,6 +1066,42 @@ class AdminModel extends Model
         $this->resultArray =$query->fetchAll(PDO::FETCH_ASSOC);
         return $this->resultArray;
     }
+
+    public function message()
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT  details_id, first_name, email_id, readMessage, details_type FROM give_details WHERE email_id=:email_id ORDER BY details_id DESC");
+        $query->bindValue(":email_id", App::$APP->activeUser()['email_id']);
+        $query->execute();
+        $this->resultArray['give_details'] = $query->fetchAll(PDO::FETCH_ASSOC);  
+        //var_dump($this->resultArray);     
+        return $this->resultArray;      
+    }
+
+   
+
+    public function messageFull()
+    {
+        $query = APP::$APP->db->pdo->prepare("SELECT details_id, first_name, email_id, details_type, detail, readMessage, detail FROM give_details WHERE details_id=:details_id");
+        //updateReadMessage("readMessage");
+
+        $query->bindValue(":details_id",$this->details_id);
+        $query->execute();
+        $this->resultArray['give_details'] = $query->fetchAll(PDO::FETCH_ASSOC); 
+        $this->updateMessageStatus=$this->updateReadMessage($this->resultArray['give_details'][0]['details_id']);
+        //var_dump($this->resultArray);     
+        return $this->resultArray;        
+    }
+
+    public function updateReadMessage($newdetails_id)
+    {
+        $query = App::$APP->db->pdo->prepare("UPDATE give_details SET readMessage = 1 WHERE details_id=:details_id");
+        $query->bindValue(":details_id",$newdetails_id);
+        $query->execute();
+        return 1;
+    
+    }
+
+    
 
    
 

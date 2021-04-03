@@ -168,7 +168,7 @@ if (isset($_SESSION['operation'] ) ) {
             <?php
 
           $html = "";
-          $html .= "<form action='/utrance-railway/upload' method='POST' enctype='multipart/form-data'>";
+          $html .= "<form action='/utrance-railway/upload' method='POST' class='user-img' enctype='multipart/form-data'>";
           $html .= "<div class='userpicture-box' id='image_box' name='image_box' >";
           $image_name = App::$APP->activeUser()['user_image'];
 
@@ -176,7 +176,7 @@ if (isset($_SESSION['operation'] ) ) {
 
           $html .= "<input type='file' name='file' onChange='displayImage(this)'   accept='image/*' class='form__upload' id='photo' >";
 
-          $html .= "<label for='photo'>Choose New Photo</label></div>";
+          $html .= "<label for='photo' class='btn btn-square-upload'>Choose New Photo</label></div>";
 
           $html .= "<div class='btn__upload-box'>";
 

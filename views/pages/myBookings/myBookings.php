@@ -1,10 +1,11 @@
+<?Php include_once "../views/components/backButton.php";?>    
     <div class="upcoming__trips-container margin-b-huge">
         <div class="upcoming__trips--header" style="margin-bottom:4rem">
             <div class="upcoming__trips--header-text">
                 Upcoming trips
             </div>
         </div>
-    <div class='upcoming__trips--cards-container' style="justify-content: space-around;width:95%;flex-wrap:wrap">
+    <div class='upcoming__trips--cards-container'>
 
 
 
