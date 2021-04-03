@@ -17,10 +17,6 @@ class DetailsProviderController extends Controller
         }
 
         if (!$authMiddleware->restrictTo('detailsProvider')) {
-<<<<<<< HEAD
-            echo 'You are unauthorized to perform this action!!';
-=======
->>>>>>> master
             return false;
         }
         return true;

@@ -30,12 +30,7 @@ $app->router->post('/trains/Activated', [AdminController::class, 'activeTrain'])
 $app->router->get('/ticket-prices', [TrainController::class, 'ticketPrice']);
 $app->router->post('/ticket-prices', [TrainController::class, 'ticketPrice']);
 
-$app->router->get('/frieght-prices', [TrainController::class, 'freightPrice']);
-$app->router->post('/freight-prices', [TrainController::class, 'freightPrice']);
 
-
-$app->router->post('/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
-$app->router->get('/FreightServicePrice', [TrainController::class, 'FreightServicePrice']);
 $app->router->post('/ticket', [TrainController::class, 'ticket']);
 $app->router->get('/ticket', [TrainController::class, 'ticket']);
 
