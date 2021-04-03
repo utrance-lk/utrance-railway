@@ -1,6 +1,6 @@
 <?php
 
-require_once "../classes/core/App.php";
+require_once "../classes/App.php";
 include_once "../models/UserModel.php";
 require_once "../vendor/autoload.php";
 
