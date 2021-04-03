@@ -41,24 +41,21 @@ class TicketModel extends Model
         $query->bindValue(":place", $station);
         $query->execute();
         $this->ClassPrice = $query->fetchAll(PDO::FETCH_ASSOC);
-        // var_dump($this->ClassPrice);
         return $this->ClassPrice[0][$class_type];
 
     }
 
     public function findStation($intersect_station_name)
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT station_name from ticket_price WHERE availability_lines LIKE '%{$intersect_station_name}%' LIMIT 1"); //Get a intersect station
+        $query = APP::$APP->db->pdo->prepare("SELECT station_name from ticket_price WHERE availability_lines LIKE '%{:comma}%' LIMIT 1"); //Get a intersect station
         $query->bindValue(":comma", $intersect_station_name);
         $query->execute();
         $station_name = $query->fetchAll(PDO::FETCH_ASSOC);
         return $station_name[0]['station_name'];
-
     }
 
     public function totalTicketPrice($start_price, $end_price)
     {
-        //var_dump($start_price);
         if ($start_price > $end_price) {
             $total_ticket_price = $start_price - $end_price;
         } else {
@@ -95,7 +92,6 @@ class TicketModel extends Model
                 if ($this->intLineStart == $this->intLineEnd) {
 
                     $train_class = ["first_class", "second_class", "third_class"];
-                    // var_dump($train_class);
                     $i = 0;
                     $j = 0;
                     $total_ticket_amount = [];
@@ -135,10 +131,8 @@ class TicketModel extends Model
                     $get_intersect_station_lines = [];
                     $get_start_lines = [];
                     $get_destination_lines = [];
-                    // var_dump($my_price);
                     $get_intersect_lines = $this->availabiltyLines($get_intersect_station);
                     $get_intersect_station_lines = $this->explodeValues($get_intersect_lines);
-                    //var_dump($my_interset_lines);
                     $n = sizeof($get_intersect_station_lines);
 
                     $get_start_lines = $this->availabiltyLines($this->start);
@@ -146,10 +140,6 @@ class TicketModel extends Model
 
                     $get_start_lines = $this->explodeValues($get_start_lines);
                     $get_destination_lines = $this->explodeValues($get_destination_lines);
-
-                    //var_dump($get_intersect_station_lines);
-                    //var_dump($get_start_lines);
-                    //var_dump($get_destination_lines);
 
                     $get_ticket_price_start = [];
                     $get_ticket_price_end = [];

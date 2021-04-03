@@ -3,8 +3,6 @@ var cardPrices = [];
 function getValues(arr, seatArr) {
   console.log(seatArr);
 
-  console.log(basePrices);
-
   var basePrices = arr;
 
   basePrices.forEach(function (e, i) {
@@ -12,43 +10,13 @@ function getValues(arr, seatArr) {
   });
 
   function setTicketPrice(id) {
-
     var selectElement = document.getElementById("train_class" + id);
-
-    var maleSelectElement = document.getElementById('malecount' + id);
-    var femaleSelectElement = document.getElementById('femalecount' + id);
-
-    var valMaleSelectElement = maleSelectElement.value;
-    var valFemaleSelectElement = femaleSelectElement.value;
-
-    if((valMaleSelectElement + valFemaleSelectElement) > 10 ) {
-
-    }
-
-    console.log(maleSelectElement.value, femaleSelectElement.value);
-
-
 
     cardPrices[id - 1] = basePrices[id - 1].scBasePrice; //default
     var ticketPrice = document.getElementById("tickprice" + id);
     ticketPrice.value = cardPrices[id - 1]; //default
 
     var personsElement = document.getElementById("persons" + id);
-
-    var persCount = personsElement.value * 1;
-    maleSelectElement.addEventListener("change", function () {
-      var x = femaleSelectElement.value * 1;
-      var y = maleSelectElement.value * 1;
-      var sum = x + y;
-      personsElement.value = sum;
-    });
-    
-    femaleSelectElement.addEventListener("change", function() {
-      var x = maleSelectElement.value * 1;
-      var y = femaleSelectElement.value * 1;
-      var sum =  x + y;
-      personsElement.value = sum;
-    })
 
     var finalAmountElement = document.getElementById("finalAmount");
 
@@ -80,7 +48,7 @@ function getValues(arr, seatArr) {
       }
       if (trainclass === "secondClass") {
         cardPrices[id - 1] =
-        personsElement.value * 1 * basePrices[id - 1].scBasePrice;
+          personsElement.value * 1 * basePrices[id - 1].scBasePrice;
         ticketPrice.value = cardPrices[id - 1];
         seatsAvailElement.innerText = seatArr[id - 1].scSeats + " seats left!";
         if (seatArr[id - 1].scSeats === 0) {
