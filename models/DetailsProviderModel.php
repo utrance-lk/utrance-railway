@@ -13,7 +13,6 @@ public $street_line2;
 
 public $contact_num;
 public $user_password;
-//public $email_id;
 public $user_role = "user";
 public $user_confirm_password;
 public $searchUserByNameOrId;

@@ -17,10 +17,6 @@ class DetailsProviderController extends Controller
         }
 
         if (!$authMiddleware->restrictTo('detailsProvider')) {
-<<<<<<< HEAD
-            echo 'You are unauthorized to perform this action!!';
-=======
->>>>>>> master
             return false;
         }
         return true;
@@ -39,7 +35,7 @@ class DetailsProviderController extends Controller
                 var_dump($request->getbody());
                 $contactAdminModel->contactAdmin();
 
-                return $response->redirect('/utrance-railway/contact-admin');
+                return $response->redirect('/contact-admin');
 
             }
             if ($request->isGet()) {

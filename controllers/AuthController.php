@@ -34,25 +34,21 @@ class AuthController extends Controller
             if ($result) {
                 if (!$result[0]['user_active_status']) {
                     App::$APP->session->set('operation', 'deactivated');
-                    return $response->redirect('/utrance-railway/login');
+                    return $response->redirect('/login');
                     //return 'Your account has been deactivated!';
                 }
                 $verifyPassword = password_verify($loginUser->user_password, $result[0]['user_password']);
                 if ($verifyPassword) {
                     
                     App::$APP->session->set('user', $result[0]['id']);
-<<<<<<< HEAD
-                    return $response->redirect('/home');
-=======
                     App::$APP->session->set('operation', 'success');
                     App::$APP->session->remove('operation');
-                    return $response->redirect('/utrance-railway/home');
+                    return $response->redirect('/home');
                     
->>>>>>> master
                 }
             }
             App::$APP->session->set('operation', 'fail');
-           return $response->redirect('/utrance-railway/login');
+           return $response->redirect('/login');
         }
         
         return $this->render('login');
@@ -83,7 +79,7 @@ class AuthController extends Controller
             $registrationState = $registerModel->register();
             if ($registrationState === 'success') {
                 App::$APP->session->set('operation', 'success');
-                return $response->redirect('/utrance-railway/login');
+                return $response->redirect('/login');
             } else {
                 App::$APP->session->set('operation', 'fail');
                 $registerSetValue = $registerModel->registerSetValue($registrationState); //Ashika       
@@ -168,13 +164,8 @@ class AuthController extends Controller
         $tempBody['email_id'] = $email;
         $resetPasswordUser->loadData($tempBody);
         $passwordChangeState = $resetPasswordUser->forgotUpdatePassword();
-<<<<<<< HEAD
-        if($passwordChangeState === 'success') {
-            return $response->redirect('/login');
-=======
         if ($passwordChangeState === 'success') {
-            return $response->redirect('/utrance-railway/login');
->>>>>>> master
+            return $response->redirect('/login');
         } else {
             // $registerSetValue = $resetPasswordUser->registerSetValue($passwordChangeState);
             // var_dump($registerSetValue);
