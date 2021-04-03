@@ -167,21 +167,21 @@ const renderResults = function (user) {
         <div class='results__set'>
             <div class='seat__class--box first__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_one'></use>
+                    <use xlink:href='/public/img/svg/sprite2.svg#icon-looks_one'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>First class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item first__class__price' id='first_class'>Rs ${user.first_class}</div>
             </div>
             <div class='seat__class--box second__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_two'></use>
+                    <use xlink:href='/public/img/svg/sprite2.svg#icon-looks_two'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Second class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item second__class__price' id='second_class'>Rs ${user.second_class}</div>
             </div>
             <div class='seat__class--box third__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_3'></use>
+                    <use xlink:href='/public/img/svg/sprite2.svg#icon-looks_3'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Third class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item third__class__price' id='third_class'> Rs ${user.third_class}</div>
@@ -214,21 +214,21 @@ const renderDefaultResults = function () {
         <div class='results__set'>
             <div class='seat__class--box first__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_one'></use>
+                    <use xlink:href='/public/img/svg/sprite2.svg#icon-looks_one'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>First class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item first__class__price' id='first_class'>Rs 800</div>
             </div>
             <div class='seat__class--box second__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_two'></use>
+                    <use xlink:href='/public/img/svg/sprite2.svg#icon-looks_two'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Second class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item second__class__price'  id='second_class'>Rs 700</div>
             </div>
             <div class='seat__class--box third__class--box'>
                 <svg class='seat__class--box-item class__icon'>
-                    <use xlink:href='../../../../utrance-railway/public/img/svg/sprite2.svg#icon-looks_3'></use>
+                    <use xlink:href='/public/img/svg/sprite2.svg#icon-looks_3'></use>
                 </svg>
                 <div class='seat__class--box-item class__name'>Third class</div>
                 <div class='seat__class--box-item class__price' class='js__class--box-item third__class__price'  id='third_class'>Rs 600</div>
