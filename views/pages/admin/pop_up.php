@@ -13,14 +13,12 @@ $(document).ready(function(){
       data:{index1:newindex},
       success : function (data) {
         message=JSON.parse(data)
-        
-        
         document.querySelector(".header-user__notification-number").innerText = message[0].myCount;
         
         }
     })
   
-$(".header-user__notifications").click(function(){
+    $(".header-user__notifications").click(function(){   
     document.querySelector(".header-user__notification-number").style.visibility="hidden";
 
 
@@ -35,7 +33,7 @@ $(".header-user__notifications").click(function(){
         }
     })
 
-});
+    });
 
   
 });

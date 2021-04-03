@@ -350,11 +350,12 @@ class AdminController extends Controller
                 }
 
             }
+             return $this->render(['admin', 'addTrain'], $getrouteArray);
         }
 
-        // return $this->render(['admin', 'addTrain'], $getrouteArray);
-        $response->setStatusCode(403);
-        return $response->redirect('/home');
+       
+         $response->setStatusCode(403);
+         return $response->redirect('/home');
     }
 
     // manage routes
