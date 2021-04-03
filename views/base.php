@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Utrance Railway</title>
 
+    <link rel="shortcut icon" href="/utrance-railway/public/img/logo/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/utrance-railway/public/img/logo/favicon.ico" type="image/x-icon">
+
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
 
     <link
