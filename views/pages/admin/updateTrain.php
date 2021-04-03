@@ -120,7 +120,7 @@ foreach ($week as $day) {
                         </div>
                     </div>
                 </fieldset>
-                <button class="btn btn-round-blue margin-b-l margin-t-s" type="submit">Add Train</button>
+                <button class="btn btn-round-blue margin-b-l margin-t-s" type="submit">Update</button>
             </form>
         </div>
     </div>

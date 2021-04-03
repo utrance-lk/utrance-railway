@@ -281,7 +281,7 @@ function addStops(x) {
             }
             newStations.push(obj);
           
-
+console.log(newStations);
             
 
 

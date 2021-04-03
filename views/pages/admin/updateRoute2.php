@@ -101,6 +101,7 @@ $(document).ready(function(){
   $("#button").click(function(){
    
  let newindex2=newStations;
+ console.log(newindex2);
 let newindex3='<?php echo $x; ?>';
 
     $.ajax({
