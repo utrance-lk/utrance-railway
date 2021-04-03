@@ -41,7 +41,6 @@ foreach ($trains as $key => $value) {
                 </div>
             </div>
             <div class="seat-booking__btn-container">
-                <!--?php var_dump($trains)  ;?-->    
                 <?php if ($trains['t1']['sa_second_class'] == 0) : ?>
                     <button class="btn btn-round-blue button-inactive" id="btn-book-now" type="submit" disabled>
                         Book now

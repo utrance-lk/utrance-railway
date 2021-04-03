@@ -21,7 +21,7 @@
               </svg>
               <span class="margin-l-xxs">Ticket Prices</span>
             </a>
-            <a href="/utrance-railway/train-details" class="header-main__item">
+            <a href="/train-details" class="header-main__item">
               <svg class="header__icon">
                 <use xlink:href="/public/img/svg/sprite2.svg#icon-train"></use>
               </svg>
