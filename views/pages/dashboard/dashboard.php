@@ -45,7 +45,7 @@ if (isset($_SESSION['operation'] ) ) {
 }
 
 ?>
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+<script type="text/javascript" src="/public/js/components/flashMessages.js"></script>
 
 
 
@@ -143,18 +143,6 @@ if (isset($_SESSION['operation'] ) ) {
                 }else{
                   $html .= "<input type='text' name='contact_num' class='form__input'  value='" .App::$APP->activeUser()['contact_num']."'></div>";
                 }
-                //asimdu
-
-                /*$user_img = App::$APP->activeUser()['user_image'];
-                $html .= "<div id='image_box' name='image_box'>";
-<<<<<<< HEAD
-                $html .= "<img src='/public/img/uploads/$user_img.jpg' alt='user-profile-picture' name='image_preview' id='image_preview' class='settings__profile-img'/>";
-=======
-                $html .= "<img src='../../../../utrance-railway/public/img/uploads/$user_img' alt='user-profile-picture' name='image_preview' id='image_preview' class='settings__profile-img'/>";
->>>>>>> master
-                $html .= "<input type='file' name='photo' accept='image/*' class='form__upload' id='photo'    />";
-                
-                $html .= "<label for='photo' class='btn-square-upload' >Choose New Photo</label></div>";*/
                
                 $html .= "<div class='settings__btn'>";
                 
@@ -172,11 +160,11 @@ if (isset($_SESSION['operation'] ) ) {
             <?php
 
           $html = "";
-          $html .= "<form action='/utrance-railway/upload' method='POST' class='user-img' enctype='multipart/form-data'>";
+          $html .= "<form action='/upload' method='POST' class='user-img' enctype='multipart/form-data'>";
           $html .= "<div class='userpicture-box' id='image_box' name='image_box' >";
           $image_name = App::$APP->activeUser()['user_image'];
 
-          $html .= "<img src='../../../../utrance-railway/public/img/uploads/$image_name' alt='user-profile-picture' name='image_preview' onClick='triggerClick()'  id='image_preview' style='width:128px;height:128px' />";
+          $html .= "<img src='/public/img/uploads/$image_name' alt='user-profile-picture' name='image_preview' onClick='triggerClick()'  id='image_preview' style='width:128px;height:128px' />";
 
           $html .= "<input type='file' name='file' onChange='displayImage(this)'   accept='image/*' class='form__upload' id='photo' >";
 
@@ -236,7 +224,7 @@ if (isset($_SESSION['operation'] ) ) {
         </div>
     </div>
 </div>
-<script type="text/javascript" src="../../../utrance-railway/public/js/components/viewUserImage.js"></script>
+<script type="text/javascript" src="/public/js/components/viewUserImage.js"></script>
 </body>
 </html>
 
