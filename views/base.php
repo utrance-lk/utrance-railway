@@ -24,17 +24,17 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="/utrance-railway/public/css/style.concat.css" />
-    <link rel="stylesheet" href="/utrance-railway/public/css/pages/newsFeed/newsFeed.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/myBookings/myBookings.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/booking/booking.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/flashError.css"/>
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/flashSuccess.css"/>
-    <link rel="stylesheet" href="../../../../utrance-railway/public/css/pages/admin/admin.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/resetPassword/resetPassword.css" />
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/flashErrorlogin.css"/>
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/layout/flashSuccesslogin.css"/>
-    <link rel="stylesheet" href="../../../utrance-railway/public/css/pages/forgotPassword/forgotPassword.css" />
+    <link rel="stylesheet" href="/public/css/style.concat.css" />
+    <link rel="stylesheet" href="/public/css/pages/newsFeed/newsFeed.css" />
+    <link rel="stylesheet" href="/public/css/pages/myBookings/myBookings.css" />
+    <link rel="stylesheet" href="/public/css/pages/booking/booking.css" />
+    <link rel="stylesheet" href="/public/css/layout/flashError.css"/>
+    <link rel="stylesheet" href="/public/css/layout/flashSuccess.css"/>
+    <link rel="stylesheet" href="/public/css/pages/admin/admin.css" />
+    <link rel="stylesheet" href="/public/css/pages/resetPassword/resetPassword.css" />
+    <link rel="stylesheet" href="/public/css/layout/flashErrorlogin.css"/>
+    <link rel="stylesheet" href="/public/css/layout/flashSuccesslogin.css"/>
+    <link rel="stylesheet" href="/public/css/pages/forgotPassword/forgotPassword.css" />
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
