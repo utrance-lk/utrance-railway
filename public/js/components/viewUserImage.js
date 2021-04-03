@@ -1,10 +1,7 @@
 var result=10;
 function triggerClick(){
     document.querySelector('#photo').click();
-    
-
 }
-
 
 function displayImage(e){
     

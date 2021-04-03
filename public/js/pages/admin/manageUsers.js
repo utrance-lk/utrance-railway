@@ -25,7 +25,7 @@ const renderUser = function (user) {
             <div class='margin-r-xs'>
                 <img src='/public/img/uploads/${
                   user.user_image
-                }.jpg' alt='profile-avatar' class='manage-users__avatar'/>
+                }' alt='profile-avatar' class='manage-users__avatar'/>
             </div>
             <div class='manage-users__nametag'>
                 <div class ='manage-users__nametage-name'>${
@@ -56,7 +56,7 @@ const renderUser = function (user) {
     markup += `<a href='/users/view?id=${user.id}' class='btn btn-box-white margin-r-s'>View</a>`;
   }
 
-  if (user.user_active_status==1) {
+  if (user.user_active_status == 1) {
     if (user.user_role !== "admin") {
       markup += `<a href='/users/deactivate?id=${user.id}&user_active_status=${user.user_active_status}' class='btn btn-box-white btn-box-white--delete'>Deactivate</a>`;
     } else {
@@ -84,15 +84,11 @@ const clearResults = function () {
 
 // EVENT LISTNERS
 
-document
-  .getElementById("pagination")
-  .addEventListener("click", function (e) {
-    const btn = e.target.closest(".btn-round-pagination");
-    if (btn) {
-      clearResults();
-      const goToPage = parseInt(btn.dataset.goto, 10);
-      renderResults(usersSet, activeUser, goToPage);
-    }
-  });
-
-
+document.getElementById("pagination").addEventListener("click", function (e) {
+  const btn = e.target.closest(".btn-round-pagination");
+  if (btn) {
+    clearResults();
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    renderResults(usersSet, activeUser, goToPage);
+  }
+});

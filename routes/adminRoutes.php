@@ -42,7 +42,7 @@ $app->router->post('/getNewBookingTrain', [AdminController::class, 'getNewBookin
 
 $app->router->get('/news/getmyNewNews', [ViewController::class, 'getNews']);
 
-$app->router->get('/news/news01', [ViewController::class, 'newsFeed01']); //TODO:
+$app->router->get('/news/news01', [ViewController::class, 'newsFeed01']);
 $app->router->get('/routes/addnewmanageRoutesValidations', [AdminController::class, 'getaddRoutesStations']);
 
 $app->router->post('/getMessages', [AdminController::class, 'getMessages']);
@@ -50,3 +50,10 @@ $app->router->post('/getCount', [AdminController::class, 'getCount']);
 
 $app->router->post('/news', [ViewController::class, 'newsFeed']);
 $app->router->get('/news', [ViewController::class, 'newsFeed']);
+
+$app->router->get('/message', [AdminController::class, 'message']);
+$app->router->post('/message', [AdminController::class, 'message']);
+
+$app->router->get('/messageFull', [AdminController::class, 'messageFull']);
+$app->router->post('/messageFull', [AdminController::class, 'messageFull']);
+

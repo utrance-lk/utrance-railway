@@ -246,7 +246,7 @@ input::-webkit-datetime-edit-year-field:focus {
 }
 
 .margin-b-huge {
-  margin-bottom: 10rem;
+  margin-bottom: 10rem  !important;
 }
 
 .margin-t-xs {
@@ -2219,6 +2219,23 @@ input::-webkit-datetime-edit-year-field:focus {
   display: flex;
 }
 
+<<<<<<< HEAD
+
+
+
+.form-popup{
+position: absolute;
+background-color: red;
+z-index: 100;
+left: 0;
+top: 110%;
+width: 25rem;
+padding: 1rem;
+border-radius: 5px;
+height: 20rem;
+
+}
+=======
 .form-popup {
   position: absolute;
   background-color: rgb(31, 58, 147);
@@ -2251,6 +2268,7 @@ input::-webkit-datetime-edit-year-field:focus {
   fill: red;
   cursor: pointer;
 }
+>>>>>>> 128dcd72d2aa03a5b676c58f6bea72066f67c897
 
 /* .settings__input {
   display: flex;
@@ -2279,6 +2297,20 @@ input::-webkit-datetime-edit-year-field:focus {
   display: flex;
   justify-content: flex-end;
 }
+
+/* .userpicture-box {
+  height: 8rem;
+  width: 8rem;
+} */
+
+#image_preview {
+  border-radius: 50%;
+}
+
+.user-img {
+  margin: 0 7rem;
+}
+
 
 .ticket-prices {
   margin-top: 5rem;
@@ -2377,7 +2409,7 @@ input::-webkit-datetime-edit-year-field:focus {
 
 .search__results-container {
   /* border: 1px solid red; */
-  margin: 5rem 15vw 0 15vw;
+  margin: 5rem 15vw 10rem 15vw;
   padding: 2rem 1rem;
   background-color: #fff;
   border-radius: 5px;

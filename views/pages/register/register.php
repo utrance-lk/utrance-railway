@@ -2,7 +2,64 @@
 		<div class="register__img-box register__container-item">  
         </div>
 		<div class="register__form-box register__container-item">
+<<<<<<< HEAD
 			<form class="form__container" method="POST" action="/register">
+=======
+
+		<?php
+if (isset($_SESSION['operation'] ) ) {
+ 
+     if(App::$APP->session->get('operation')=='fail'){
+  
+    $html="<div class='alert hide'>";
+    $html.="<span class='fas fa-exclamation-circle'></span>";
+    $html.="<span class='msg'>Error:Something Went Wrong!!</span>";
+    $html.="<span class='close-btn'>";
+    $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+
+               
+  }else if(App::$APP->session->get('operation')=='success'){
+    
+    $html="<div class='alert-Success hide-Success'>";
+    $html.="<span class='fas fa-check-circle'></span>";
+    $html.="<span class='msg-Success'>Sucess:Your File has been uploaded!!</span>";
+    $html.="<span class='close-btn-Success'>";
+     $html.="<span class='fas fa-times'></span></span></div>";
+
+    $dom = new DOMDocument();
+    $dom->loadHTML($html);
+    print_r($dom->saveHTML());
+    
+  }
+  App::$APP->session->remove('operation');
+}
+
+?>
+<script type="text/javascript" src="../../../utrance-railway/public/js/components/flashMessages.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<form class="form__container" method="POST" action="/utrance-railway/register">
+>>>>>>> master
 				<div class="new-account-box-container form__container-item">
 					<div class="register-text">
 						Sign up
@@ -13,19 +70,17 @@
 				</div>
 				<div class="firstname-box form__container-item register__form--inputs">
 					<label for="first_name">First name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Steven'; ?>" value="<?php echo isset($first_name) ? $first_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
+                    <input type="text" id="first_name" name="first_name" placeholder="<?php echo isset($firstNameError) ? $firstNameError : 'Nuwan'; ?>" value="<?php echo isset($first_name) ? $first_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
 
 				</div>
 
 				<div class="lastname-box form__container-item register__form--inputs">
 					<label for="last_name">Last name</label>
-					<input type="text" id="last_name" name="last_name" placeholder="<?php echo isset($lastNameError) ? $lastNameError : 'Smith'; ?>" value="<?php echo isset($last_name) ? $last_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
-
-
+					<input type="text" id="last_name" name="last_name" placeholder="<?php echo isset($lastNameError) ? $lastNameError : 'Kumara'; ?>" value="<?php echo isset($last_name) ? $last_name : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
 				</div>
 				<div class="email-box form__container-item register__form--inputs">
 					<label for="email_id">Email</label>
-					<input type="email" id="email_id" name="email_id" placeholder="<?php echo isset($email_id_error) ? $email_id_error : 'stevensmith@example.com'; ?>"   value="<?php echo isset($email_id) ? $email_id : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
+					<input type="email" id="email_id" name="email_id" placeholder="<?php echo isset($email_id_error) ? $email_id_error : 'nuwan@example.com'; ?>"   value="<?php echo isset($email_id) ? $email_id : ''; ?>" class="<?php echo isset($firstNameError) ? 'error__placeholder' : ''; ?>" required>
 
 				</div>
 				<div class="streetline1-box form__container-item register__form--inputs">

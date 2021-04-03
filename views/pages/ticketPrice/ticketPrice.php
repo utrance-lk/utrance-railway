@@ -1,3 +1,4 @@
+<?Php include_once "../views/components/backButton.php";?>
 
 <section class="ticket-prices margin-b-l">
   <form class="ticket-prices__search" method="POST" action="/ticket-prices">
@@ -31,6 +32,7 @@
 <?php if (isset($tickets)): ?>
         <script >
         let x=<?php echo json_encode($tickets); ?>;
+        
         document.querySelector(".js--from__station").textContent = x.start;
         document.querySelector(".js--to__station").textContent = x.destination;
         document.querySelector(".js--search-dropdown__search-from").value = x.start;
