@@ -1,6 +1,6 @@
 <?php
 
-include_once "../classes/core/Model.php";
+include_once "../classes/Model.php";
 include_once "HandlerFactory.php";
 
 class TicketModel extends Model

@@ -1,5 +1,5 @@
 <?php
-include_once "../classes/core/Controller.php";
+include_once "../classes/Controller.php";
 include_once "../models/TicketModel.php";
 class TicketController extends Controller
 {

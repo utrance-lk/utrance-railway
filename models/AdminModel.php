@@ -2,7 +2,7 @@
 
 // Admin's specific functionalities
 
-include_once "../classes/core/Model.php";
+include_once "../classes/Model.php";
 include_once "HandlerFactory.php";
 include_once "../middlewares/FormValidation.php";
 include_once "../middlewares/TrainFormValidation.php";

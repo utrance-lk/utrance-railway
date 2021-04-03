@@ -1,7 +1,7 @@
 <?php
 include_once "../models/UserModel.php";
 include_once "../models/AdminModel.php";
-include_once "../classes/core/Model.php";
+include_once "../classes/Model.php";
 
 class TrainFormValidation
 {
