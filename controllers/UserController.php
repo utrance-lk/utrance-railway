@@ -52,7 +52,6 @@ class UserController extends Controller
                 return $response->redirect('/utrance-railway/dashboard');
             } else {
                 App::$APP->session->set('operation', 'fail');
-                var_dump($array);
             }
 
         }
