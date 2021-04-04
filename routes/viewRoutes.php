@@ -21,11 +21,5 @@ $app->router->post('/getSelect', [ViewController::class, 'newSearchResults']);
 $app->router->get('/getSelect', [ViewController::class, 'newSearchResults']);
 $app->router->post('/getSelect', [ViewController::class, 'newSearchResults']);
 
-
-
-
-
-
-
-
-?>
+$app->router->post('/news', [ViewController::class, 'newsFeed']);
+$app->router->get('/news', [ViewController::class, 'newsFeed']);

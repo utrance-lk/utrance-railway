@@ -48,9 +48,6 @@ $app->router->get('/routes/addnewmanageRoutesValidations', [AdminController::cla
 $app->router->post('/getMessages', [AdminController::class, 'getMessages']);
 $app->router->post('/getCount', [AdminController::class, 'getCount']);
 
-$app->router->post('/news', [ViewController::class, 'newsFeed']);
-$app->router->get('/news', [ViewController::class, 'newsFeed']);
-
 $app->router->get('/message', [AdminController::class, 'message']);
 $app->router->post('/message', [AdminController::class, 'message']);
 
