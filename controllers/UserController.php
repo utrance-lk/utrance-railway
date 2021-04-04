@@ -6,24 +6,31 @@ include_once "../middlewares/AuthMiddleware.php";
 
 class UserController extends Controller
 {
-    private $authMiddleware;
 
-    public function __construct()
+    public function protect()
     {
-        $this->authMiddleware = new AuthMiddleware();
+        $authMiddleware = new AuthMiddleware();
+
+        if (!$authMiddleware->isLoggedIn()) {
+            return false;
+        }
+
+        return true;
+
     }
 
     public function getMe($request, $response)
     {
 
-        if ($this->authMiddleware->isLoggedIn()) {
+        if ($this->protect()) {
             if ($request->isGet()) {
-
                 return $this->render('dashboard');
             }
-        } else {
-            return 'You are not logged in!';
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/home');
+
     }
 
     public function viewAllTrains($request)
@@ -39,55 +46,66 @@ class UserController extends Controller
 
     public function upload($request, $response)
     {
-        if ($request->isPost()) {
+        if ($this->protect()) {
+            if ($request->isPost()) {
 
-            $updateUserDetailsModel = new UserModel();
-            $tempUpdateUserBody = $request->getBody();
-            $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
-            $tempUpdateUserBody['file'] = $_FILES;
-            $updateUserDetailsModel->loadData($tempUpdateUserBody);
-            $array = $updateUserDetailsModel->uploadImage(App::$APP->activeUser()['id']);
-            if ($array === "Success") {
-                App::$APP->session->set('operation', 'success');
-                return $response->redirect('/dashboard');
-            } else {
-                App::$APP->session->set('operation', 'fail');
+                $updateUserDetailsModel = new UserModel();
+                $tempUpdateUserBody = $request->getBody();
+                $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+                $tempUpdateUserBody['file'] = $_FILES;
+                $updateUserDetailsModel->loadData($tempUpdateUserBody);
+                $array = $updateUserDetailsModel->uploadImage(App::$APP->activeUser()['id']);
+                if ($array === "Success") {
+                    App::$APP->session->set('operation', 'success');
+                    return $response->redirect('/dashboard');
+                } else {
+                    App::$APP->session->set('operation', 'fail');
+                }
+
             }
-
+            return $this->render('dashboard');
         }
-        return $this->render('dashboard');
+
+        $response->setStatusCode(403);
+        return $response->redirect('/home');
 
     }
 
     public function updateMe($request, $response)
     {
 
-        $updateUserDetailsModel = new UserModel();
+        if ($this->protect()) {
 
-        if ($request->isPost()) {
+            $updateUserDetailsModel = new UserModel();
 
-            $tempUpdateUserBody = $request->getBody();
+            if ($request->isPost()) {
 
-            $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
-            $tempUpdateUserBody['user_role'] = App::$APP->activeUser()['role'];
-            $tempUpdateUserBody['user_profile_image'] = App::$APP->activeUser()['user_image'];
+                $tempUpdateUserBody = $request->getBody();
 
-            $updateUserDetailsModel->loadData($tempUpdateUserBody);
+                $tempUpdateUserBody['id'] = App::$APP->activeUser()['id'];
+                $tempUpdateUserBody['user_role'] = App::$APP->activeUser()['role'];
+                $tempUpdateUserBody['user_profile_image'] = App::$APP->activeUser()['user_image'];
 
-            $state = $updateUserDetailsModel->updateMyProfile();
+                $updateUserDetailsModel->loadData($tempUpdateUserBody);
 
-            if ($state === 'success') {
+                $state = $updateUserDetailsModel->updateMyProfile();
 
-                App::$APP->session->set('operation', 'success');
-                return $response->redirect('/dashboard');
+                if ($state === 'success') {
 
-            } else {
-                $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
+                    App::$APP->session->set('operation', 'success');
+                    return $response->redirect('/dashboard');
 
-                App::$APP->session->set('operation', 'fail');
-                return $this->render('dashboard', $updateUserDetailsSetValue);
+                } else {
+                    $updateUserDetailsSetValue = $updateUserDetailsModel->registerSetValue($state); //Ashika
+
+                    App::$APP->session->set('operation', 'fail');
+                    return $this->render('dashboard', $updateUserDetailsSetValue);
+                }
             }
         }
+
+        $response->setStatusCode(403);
+        return $response->redirect('/home');
 
     }
 
