@@ -26,7 +26,6 @@ class UserModel extends Model
     public $file;
     public $count;
 
-    // public $photo = "Chris-user-profile.jpg";
     public $user_image = "default.jpg";
 
     public $searchUserByNameOrId;
@@ -96,7 +95,6 @@ class UserModel extends Model
         $fileTmpName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
         $image_dimension = getimagesize($fileTmpName);
-        // var_dump($fileTmpName);
 
         $fileError = $_FILES['file']['error'];
         $fileType = $_FILES['file']['type'];
@@ -113,10 +111,10 @@ class UserModel extends Model
                 $query->bindValue(":id", $user_id);
                 $query->execute();
                 $previous_image_name = $query->fetchAll(PDO::FETCH_ASSOC);
-                $filePrevDestination = 'img/uploads/' . $previous_image_name[0]['user_image'];
+                $filePrevDestination = '/public/img/uploads/' . $previous_image_name[0]['user_image'];
                 $fileNameNew = uniqid(" ", true) . "." . $fileActualExt;
                 unlink($filePrevDestination);
-                $fileDestination = 'img/uploads/' . $fileNameNew;
+                $fileDestination = '/public/img/uploads/' . $fileNameNew;
 
                 $compressedImage = $this->compressImage($fileTmpName, $fileDestination, 70);
 
@@ -138,7 +136,6 @@ class UserModel extends Model
                 $query->bindValue(":image_value", $fileNameNew);
                 $query->execute();
                 return "Success";
-                echo "file Added Successfully";
 
             } else {
                 echo "There Was an error uploading your file!!!";
