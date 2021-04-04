@@ -21,11 +21,5 @@ $app->router->post('/utrance-railway/getSelect', [ViewController::class, 'newSea
 $app->router->get('/utrance-railway/getSelect', [ViewController::class, 'newSearchResults']);
 $app->router->post('/utrance-railway/getSelect', [ViewController::class, 'newSearchResults']);
 
-
-
-
-
-
-
-
-?>
+$app->router->post('/utrance-railway/news', [ViewController::class, 'newsFeed']);
+$app->router->get('/utrance-railway/news', [ViewController::class, 'newsFeed']);
