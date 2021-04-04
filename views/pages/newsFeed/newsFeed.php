@@ -21,11 +21,11 @@
     foreach ($news as $key => $value){
        if($value['News_type']=="train_schedule" && $count<2){
         $html = "<div class='column'><div class='card'>";
-        $html .="<img src='/utrance-railway/public/img/newsImages/" . $value['NewsImage'] . "' style='width:100%' width='160px' height='230px'>";
+        $html .="<img src='/public/img/newsImages/" . $value['NewsImage'] . "' style='width:100%' width='160px' height='230px'>";
         $html .="<div class='container'><br>";
         $html .="<h3>" . $value['Headline'] . "</h3><br>";
         $html .="<p style='text-align:justify;'>" . $value['Content'] . "</p>";
-        $html .="<a href='/utrance-railway/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
+        $html .="<a href='/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
         $html .="<div class='button'>Read More</div></a></div></div></div>";
        
          $count++;
@@ -56,11 +56,11 @@
     foreach ($news as $key => $value){
        if($value['News_type']=="ticket_price" && $count<2){
         $html = "<div class='column'><div class='card'>";
-        $html .="<img src='/utrance-railway/public/img/newsImages/" . $value['NewsImage'] . "' style='width:100%' width='160px' height='230px'>";
+        $html .="<img src='/public/img/newsImages/" . $value['NewsImage'] . "' style='width:100%' width='160px' height='230px'>";
         $html .="<div class='container'><br>";
         $html .="<h3>" . $value['Headline'] . "</h3><br>";
         $html .="<p style='text-align:justify;'>" . $value['Content'] . "</p>";
-        $html .="<a href='/utrance-railway/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
+        $html .="<a href='/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
         $html .="<div class='button'>Read More</div></a></div></div></div>";
        
          $count++;
@@ -93,11 +93,11 @@
     foreach ($news as $key => $value){
        if($value['News_type']=="other" && $count<2){
         $html = "<div class='column'><div class='card'>";
-        $html .="<img src='/utrance-railway/public/img/newsImages/" . $value['NewsImage'] . "' style='width:100%' width='160px' height='230px'>";
+        $html .="<img src='/public/img/newsImages/" . $value['NewsImage'] . "' style='width:100%' width='160px' height='230px'>";
         $html .="<div class='container'><br>";
         $html .="<h3>" . $value['Headline'] . "</h3><br>";
         $html .="<p style='text-align:justify;'>" . $value['Content'] . "</p>";
-        $html .="<a href='/utrance-railway/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
+        $html .="<a href='/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
         $html .="<div class='button'>Read More</div></a></div></div></div>";
        
          $count++;
@@ -140,7 +140,7 @@
                   $count = 0;
                   foreach ($news as $key => $value){
                     if($count>4 && $count<11){
-                      $html = "<a href='/utrance-railway/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
+                      $html = "<a href='/news/news01?id=" . $value['News_id'] . "' class='sidebar__nav-manage--trains sidebar__nav-item'>";
                       $html .="<svg class='bookings-icon sidebar__nav-icon'>";
                       $html .="<use xlink:href='/public/img/svg/sprite.svg#icon-news'></use></svg>";
                       $html .="<span class='manage--bookings-name'>" . $value['Headline'] . " ...</span></a>";
@@ -159,25 +159,25 @@
   
           ?> 
            
-              <!-- <a href="/utrance-railway/news/news07" class="sidebar__nav-manage--trains sidebar__nav-item">
+              <!-- <a href="/news/news07" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
                 <use xlink:href="/public/img/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="manage--bookings-name">Heavy rain in ...</span>
             </a>
-              <a href="/utrance-railway/news/news08" class="sidebar__nav-manage--trains sidebar__nav-item">
+              <a href="/news/news08" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="bookings-icon sidebar__nav-icon">
                 <use xlink:href="/public/img/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="manage--bookings-name">Ticket price meeting ...</span>
             </a>
-            <a href="/utrance-railway/news/news09" class="sidebar__nav-manage--trains sidebar__nav-item">
+            <a href="/news/news09" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="freights-icon sidebar__nav-icon">
                 <use xlink:href="/public/img/svg/sprite.svg#icon-news"></use>
               </svg>
               <span class="manage--freights-name">New trains ...</span>
            </a>
-           <a href="/utrance-railway/news/news10" class="sidebar__nav-manage--trains sidebar__nav-item">
+           <a href="/news/news10" class="sidebar__nav-manage--trains sidebar__nav-item">
               <svg class="freights-icon sidebar__nav-icon">
                 <use xlink:href="/public/img/svg/sprite.svg#icon-news"></use>
               </svg>
@@ -188,7 +188,7 @@
       </div>
 </div>
 
-<script type="module" src="../../../utrance-railway/public/js/pages/admin/main.js"></script>
+<script type="module" src="/public/js/pages/admin/main.js"></script>
 
 
 </body>

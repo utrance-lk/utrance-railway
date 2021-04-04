@@ -4,7 +4,7 @@ const createButton = function (page, type) {
   if(type === 'prev') {
     html += `
     <svg class='btn-round-pagination--img'>
-        <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-left'></use>
+        <use xlink:href='/public/img/svg/sprite.svg#icon-chevron-left'></use>
     </svg>
     <span>Page ${page - 1}</span>
     `;
@@ -12,7 +12,7 @@ const createButton = function (page, type) {
     html += `
     <span>Page ${page + 1}</span>
     <svg class='btn-round-pagination--img'>
-        <use xlink:href='/utrance-railway/public/img/svg/sprite.svg#icon-chevron-right'></use>
+        <use xlink:href='/public/img/svg/sprite.svg#icon-chevron-right'></use>
     </svg>
     `;
   }
