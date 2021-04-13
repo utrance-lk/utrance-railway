@@ -18,6 +18,7 @@ class TicketModel extends Model
     public $intLineEnd = [];
     public $end_lines = [];
     public $result = [];
+    public $station_intersect_name;
 
     public function availabiltyLines($find_line)
     {
@@ -26,11 +27,11 @@ class TicketModel extends Model
         $query->execute();
         $this->resultLine = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        if($this->resultLine) {
+        if ($this->resultLine) {
             return $this->resultLine[0]['availability_lines'];
         }
 
-        return null;        
+        return null;
 
     }
 
@@ -47,8 +48,9 @@ class TicketModel extends Model
 
     public function findStation($intersect_station_name)
     {
-        $query = APP::$APP->db->pdo->prepare("SELECT station_name from ticket_price WHERE availability_lines LIKE '%{:comma}%' LIMIT 1"); //Get a intersect station
-        $query->bindValue(":comma", $intersect_station_name);
+        $this->station_intersect_name = $intersect_station_name;
+        $query = APP::$APP->db->pdo->prepare("SELECT station_name from ticket_price WHERE availability_lines LIKE '%{$this->station_intersect_name}%' LIMIT 1"); //Get a intersect station
+        //$query->bindValue(":comma",$intersect_station_name);
         $query->execute();
         $station_name = $query->fetchAll(PDO::FETCH_ASSOC);
         return $station_name[0]['station_name'];
@@ -81,6 +83,8 @@ class TicketModel extends Model
 
         $lineLengthStart = strlen($this->availabiltyLines($this->start));
         $lineLengthEnd = strlen($this->availabiltyLines($this->destination));
+        // var_dump($lineLengthStart);
+        // var_dump($lineLengthEnd);
 
         $this->intLineStart = $this->availabiltyLines($this->start);
         $this->intLineEnd = $this->availabiltyLines($this->destination);
