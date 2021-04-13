@@ -6,7 +6,6 @@ include_once "../middlewares/AuthMiddleware.php";
 
 class UserController extends Controller
 {
-
     public function protect()
     {
         $authMiddleware = new AuthMiddleware();
@@ -30,7 +29,6 @@ class UserController extends Controller
 
         $response->setStatusCode(403);
         return $response->redirect('/home');
-
     }
 
     public function viewAllTrains($request)
@@ -47,6 +45,7 @@ class UserController extends Controller
     public function upload($request, $response)
     {
         if ($this->protect()) {
+
             if ($request->isPost()) {
 
                 $updateUserDetailsModel = new UserModel();
@@ -61,7 +60,6 @@ class UserController extends Controller
                 } else {
                     App::$APP->session->set('operation', 'fail');
                 }
-
             }
             return $this->render('dashboard');
         }
