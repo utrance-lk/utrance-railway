@@ -51,8 +51,6 @@ $app->router->get('/utrance-railway/routes/addnewmanageRoutesValidations', [Admi
 $app->router->post('/utrance-railway/getMessages', [AdminController::class, 'getMessages']);
 $app->router->post('/utrance-railway/getCount', [AdminController::class, 'getCount']);
 
-$app->router->post('/utrance-railway/news', [ViewController::class, 'newsFeed']);
-$app->router->get('/utrance-railway/news', [ViewController::class, 'newsFeed']);
 
 $app->router->get('/utrance-railway/message', [AdminController::class, 'message']);
 $app->router->post('/utrance-railway/message', [AdminController::class, 'message']);
