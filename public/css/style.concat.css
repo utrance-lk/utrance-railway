@@ -1,5 +1,5 @@
 :root {
-  --color-primary: #eeee22;
+  --color-primary: #eeeeee;
   --color-primary-light: 27, 147, 194;
   --color-secondary-dark: 19, 0, 38;
 
@@ -15,7 +15,7 @@
 
   /* buttons */
   --color-btn-box-background-white: #fff;
-  --color-btn-box-text-view: #000220;
+  --color-btn-box-text-view: #000000;
   --color-btn-box-text-delete: #d64221;
   --color-btn-box-text-activate: #3FC580;
 
