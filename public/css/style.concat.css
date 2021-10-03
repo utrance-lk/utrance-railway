@@ -1,5 +1,5 @@
 :root {
-  --color-primary: #eeeeee;
+  --color-primary: #eeee22;
   --color-primary-light: 27, 147, 194;
   --color-secondary-dark: 19, 0, 38;
 
@@ -15,14 +15,14 @@
 
   /* buttons */
   --color-btn-box-background-white: #fff;
-  --color-btn-box-text-view: #000000;
-  --color-btn-box-text-delete: #d64541;
-  --color-btn-box-text-activate: #3FC380;
+  --color-btn-box-text-view: #000220;
+  --color-btn-box-text-delete: #d64221;
+  --color-btn-box-text-activate: #3FC580;
 
   --color-btn-square-background: rgba(31, 58, 147, 0.8); 
   --color-btn-square-text: #fff;
   
-  --color-btn-round-background: rgba(31, 58, 147, 0.8); 
+  --color-btn-round-background: rgba(31, 58, 140, 0.8); 
   --color-btn-round-text: #fff;
   --color-btn-round-background--hover: rgb(250, 151, 70);
 
