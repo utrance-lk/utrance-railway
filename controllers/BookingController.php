@@ -427,6 +427,7 @@ class BookingController extends Controller
     }
 
     // admin
+    // this function books for the train
     public function bookingForTrain($request)
     {
         if ($this->authMiddleware->restrictTo('admin')) {
