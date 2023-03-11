@@ -26,6 +26,10 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `give_details`
 --
+DROP DATABASE IF EXISTS database_name;
+CREATE DATABASE utrancedb;
+
+USE utrancedb;
 
 CREATE TABLE `give_details` (
   `details_id` int(11) NOT NULL,

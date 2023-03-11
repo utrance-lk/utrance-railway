@@ -1,0 +1,3 @@
+{
+    "postCreateCommand": "sudo ./scripts/common-start.sh && sudo ./scripts/setup-db.sh && sudo ./scripts/common-end.sh && git config --global user.name 'Asindu Vidanagamachchi'&& git config --global user.email 'ashvg.dev@gmail.com'"
+}
