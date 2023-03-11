@@ -44,16 +44,34 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-sudo mysql_install_db
+# Check if the mysql.user table exists
+if sudo mysql -D mysql -e "SHOW TABLES LIKE 'user'" | grep -q user; then
+  # If the table exists, run mysql_upgrade
+  sudo mysql_upgrade -u root -p"\n"
+  if [ $? -ne 0 ]; then
+    echo "mysql_upgrade failed"
+    exit 1
+  fi
+else
+  # If the table does not exist, run mysql_install_db
+  sudo mysql_install_db
+  if [ $? -ne 0 ]; then
+    echo "mysql_install_db failed"
+    exit 1
+  fi
+fi
+
+sudo mysql -u root -p"\n" -e "GRANT CREATE USER ON *.* TO 'root'@'localhost'";
+
+echo -e "\n\nN\nN\nN\nY\nY\nY" | sudo mysql_secure_installation
 if [ $? -ne 0 ]; then
-    echo "Error: running mysql_install_db failed."
+    echo "Error: running mysql_secure_installation failed. If this command failed, Run it manually"
     exit 1
 fi
 
-echo -e "\n\nY\nN\nN\nY\nY\nY" | sudo mysql_secure_installation
-if [ $? -ne 0 ]; then
-    echo "Error: running mysql_secure_installation failed. If this command failed. Run it manually"
-    exit 1
-fi
+#import database dump
+sudo mariadb -u root -p"\n" < ./utrance.sql >> ~/.bashrc
+
+source ~/.bashrc
 
 echo "Setup completed at $(date)"
