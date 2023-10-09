@@ -1,7 +1,6 @@
 .env
 /vendor/
 ticketPrice.xlsx
-~$ticketPrice.xlsx
 node_modules
 .metals
 .vsode
